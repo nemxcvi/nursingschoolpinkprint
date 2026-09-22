@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Education &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Client Education</h2>
+
+  <div class="fc-topbar"><span id="cardcounter"></span><span id="counts"></span></div>
+  <div class="fc-progresswrap"><div id="progressbar" class="fc-progressbar"></div></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="row" style="display:none;">
+    <button class="btn dk" onclick="grade('dontknow', event)"><i class="ti ti-x" aria-hidden="true"></i> don't know</button>
+    <button class="btn al" onclick="grade('almost', event)">~ almost</button>
+    <button class="btn kn" onclick="grade('know', event)"><i class="ti ti-check" aria-hidden="true"></i> know it</button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <div class="row">
+    <button class="btn small" onclick="prevCard(event)"><i class="ti ti-arrow-left" aria-hidden="true"></i> prev</button>
+    <button class="btn small" onclick="nextCard(event)">next <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="row" style="margin-bottom:0;">
+    <button class="btn small" onclick="shuffleDeck(event)"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i> shuffle</button>
+    <button class="btn small" onclick="restartDeck(event)"><i class="ti ti-refresh" aria-hidden="true"></i> restart</button>
+  </div>
+  <p id="reviewnote" class="fc-note"></p>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/flashcards.js"></script>
+<script>
+var CATS = {
+  domains: {label:"Domains of learning", hue:"blue"},
+  knowles: {label:"Knowles's adult learning principles", hue:"green"},
+  process: {label:"The teaching process", hue:"red"},
+  strategies: {label:"Teaching strategies & methods", hue:"violet"},
+  barriers: {label:"Barriers & factors affecting learning", hue:"yellow"},
+  age_culture: {label:"Age & cultural considerations", hue:"orange"}
+};
+var CARDS = [
+[1,"domains","Cognitive domain — 6 stages","Knowledge, comprehension, application, analysis, synthesis, evaluation"],
+[2,"domains","Affective domain","The emotional domain — involves values, beliefs, feelings; 5 stages: receiving, responding, valuing, organization, characterization"],
+[3,"domains","Psychomotor domain — 7 stages","Perception, set, guided response, mechanism, complex overt response, adaptation, origination"],
+[4,"domains","Cognitive domain teaching methods","Lecture, question-and-answer, discussion"],
+[5,"domains","Affective domain teaching methods","Discussion, role play"],
+[6,"domains","Psychomotor domain teaching methods","Demonstration, return demonstration, games"],
+[7,"domains","Cognitive learning — example","A client learns the manifestations of hypoglycemia and can verbalize when to notify the provider"],
+[8,"domains","Psychomotor learning — example","A client practices preparing an insulin injection"],
+[9,"knowles","Knowles's 6 principles of adult learning","Relevance/need to know, self-directed, life experience, readiness, task-centered, motivation"],
+[10,"knowles","Self-directed learners","Take part in their own learning and accept responsibility for their choices and consequences"],
+[11,"knowles","Readiness to learn","Client is willing, able, and shows the ability to engage as a present, active participant"],
+[12,"knowles","Task-centered adult learning","Learning tied to life experiences/problems rather than simple memorization"],
+[13,"knowles","Internal vs external motivation","Internal = increases self-esteem, must be present for real learning; external = placed on the client by others"],
+[14,"knowles","Life experience principle","Clients use past academic/personal experiences as a foundation for new learning"],
+[15,"knowles","Relevance/need-to-know principle","Clients learn better when they understand why the information matters to them"],
+[16,"process","4 elements of the teaching process","Assessment, planning, implementation, evaluation"],
+[17,"process","Teaching plan assessment includes","Learning needs, readiness, motivation, resources, health literacy, learning disabilities, learning preferences, culture"],
+[18,"process","SMART outcome goal","Specific, Measurable, Achievable, Relevant, Timed"],
+[19,"process","Teaching plan vs nursing process — key difference","Teaching plan focuses on the client's learning needs; nursing process focuses on overall health care needs"],
+[20,"process","Teaching implementation approach","Multimodal, multisensory — verbal discussion, demonstration, teach-back, printed materials, videos, computer-based learning"],
+[21,"process","Evaluating a goal via teach-back","Ask the client to describe manifestations (e.g., of hypoglycemia) and what to do about them, in their own words"],
+[22,"process","Evaluating a goal via return demonstration","Have the client perform the skill themselves (e.g., checking their own blood sugar)"],
+[23,"strategies","Group instruction — ideal size","6 people or fewer, for better learning and satisfaction"],
+[24,"strategies","Group instruction examples","Childbirth education classes, support groups, diabetes education clinics"],
+[25,"strategies","Individual instruction","One-on-one teaching between nurse and client, often verbal plus handouts/videos"],
+[26,"strategies","Teach-back","Client explains the information back to the nurse in their own words to confirm understanding"],
+[27,"strategies","Digital technology in client education","Web-based sites, multimedia, mobile devices — increases consistency, especially combined with traditional strategies"],
+[28,"strategies","When group instruction doesn't work well","When physical or emotional barriers are present for a client"],
+[29,"barriers","Health literacy","A client's ability to obtain, read, and understand health information needed to make care decisions"],
+[30,"barriers","AHRQ Health Literacy Universal Precautions","Treat all clients as if they may have difficulty understanding their health information"],
+[31,"barriers","Low-stimulus environment","Good ventilation, adequate lighting, comfortable temperature, decreased noise — supports learning"],
+[32,"barriers","Barriers to learning — examples","Fear/anxiety/depression, physical discomfort, environmental distractions, sensory/perceptual deficits, psychomotor deficits, language/cultural factors"],
+[33,"barriers","Fine vs gross motor skills","Fine = small muscles for dexterity (writing, buttoning); gross = goal-directed patterned movements (walking, ROM)"],
+[34,"barriers","Repetition (as a teaching factor)","Providing the same education more than once, to build confidence and reinforce learning"],
+[35,"barriers","Feedback (as a teaching factor)","Information given to the client during/after teaching so they know if they understand or need more guidance"],
+[36,"barriers","Self-bias","A nurse's personal perceptions or stereotypes about people/situations; nurses should reflect to reduce its influence on care"],
+[37,"age_culture","Teaching infants/toddlers","Direct teaching primarily toward caregivers; use pictures/dolls/puppets; keep sessions brief, near the time of the event"],
+[38,"age_culture","Teaching preschoolers","Use play and sensory (visual/tactile) experiences; allow them to express fears openly"],
+[39,"age_culture","Teaching school-age children","Use logical reasoning activities — games, role-play, artwork, stories, books"],
+[40,"age_culture","Teaching adolescents","Focus on the adolescent, not just parents; use guidance rather than lecturing; protect modesty/privacy"],
+[41,"age_culture","Teaching older adults","Reduce distractions, speak in a low tone, allow more time, present info in smaller segments"],
+[42,"age_culture","Cultural diversity considerations","Language, beliefs, customs, values, gender preferences for caregiver, family involvement expectations"],
+[43,"age_culture","Using interpreters","Use certified medical interpreters — never a client's family or friend, due to confidentiality and accuracy concerns"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

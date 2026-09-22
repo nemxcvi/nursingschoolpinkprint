@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hygiene practice quiz &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Hygiene practice quiz</h2>
+
+  <div id="pq-mode-screen">
+    <p class="muted" style="margin-bottom:14px;">Choose how you want to practice.</p>
+    <div>
+      <button class="pq-mode-btn" data-mode="single">
+        <div class="pq-mode-title">One session</div>
+        <div class="pq-mode-sub">Answer a set of questions once, then see your results.</div>
+      </button>
+      <button class="pq-mode-btn" data-mode="rounds">
+        <div class="pq-mode-title">Mastery rounds</div>
+        <div class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</div>
+      </button>
+    </div>
+  </div>
+
+  <div id="pq-count-screen" class="hidden">
+    <p class="muted" style="margin-bottom:14px;">How many questions?</p>
+    <div id="pq-count-single" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="5">5</button>
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="15">15</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="25">25</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="35">35</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <div id="pq-count-rounds" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <button class="btn small" id="pq-back"><i class="ti ti-arrow-left" aria-hidden="true"></i> back</button>
+  </div>
+
+  <div id="pq-quiz-screen" class="hidden">
+    <div class="pq-top-row"><span id="pq-progress"></span><span id="pq-score"></span></div>
+    <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-prompt" class="pq-prompt"></div>
+    <div id="pq-options"></div>
+    <p id="pq-error" class="pq-error">select at least one answer</p>
+    <div id="pq-feedback" class="pq-feedback"></div>
+    <div class="pq-btn-row">
+      <button class="btn" id="pq-submit">check answer</button>
+      <button class="btn hidden" id="pq-next">next question &#8594;</button>
+    </div>
+    <button class="btn small" id="pq-end-test" style="margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto;">end and see results</button>
+  </div>
+
+  <div id="pq-round-complete-screen" class="hidden pq-center">
+    <div id="rc-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+    <div id="rc-score" class="pq-stat-big"></div>
+    <div class="pq-stat-sub">this round</div>
+    <div id="rc-detail" class="pq-stat-detail"></div>
+    <button class="btn" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+  </div>
+
+  <div id="pq-end-screen" class="hidden">
+    <div class="pq-center" style="margin-bottom:16px;">
+      <div id="end-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+      <div id="end-rounds-subtitle" class="hidden muted" style="margin-bottom:16px;"></div>
+      <div id="end-stats-single" class="hidden">
+        <div id="end-score" class="pq-stat-big"></div>
+        <div id="end-percent" class="muted"></div>
+      </div>
+      <div id="end-stats-rounds" class="hidden" style="display:flex;justify-content:center;gap:40px;">
+        <div><div id="end-pool-pct" class="pq-stat-big"></div><div class="muted">of pool completed</div></div>
+        <div><div id="end-accuracy-pct" class="pq-stat-big"></div><div class="muted">overall accuracy</div></div>
+      </div>
+    </div>
+    <p id="category-heading" class="eyebrow"></p>
+    <div id="category-grid" class="pq-cat-grid"></div>
+    <p class="eyebrow">review</p>
+    <div id="review-list" style="margin-bottom:20px;"></div>
+    <div class="pq-btn-row">
+      <button class="btn small" id="end-restart">practice again</button>
+      <button class="btn small" id="end-missed">redo missed questions</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/practice-quiz.js"></script>
+<script>
+var catLabels = {
+  integument: "Integumentary & infection prevention",
+  bathing: "Bathing & skin integrity",
+  oral: "Oral & denture care",
+  foot: "Foot & nail care",
+  perineal: "Perineal care",
+  special: "Special populations"
+};
+var bank = [
+{id:1, cat:"integument", type:"mc", prompt:"A nurse enters a client's room to start an IV catheter. Which action should the nurse take first?",
+ options:[{id:"a",text:"Apply alcohol-based hand sanitizer"},{id:"b",text:"Wash hands with soap and water for 5 seconds"},{id:"c",text:"Put on gloves without performing hand hygiene"},{id:"d",text:"Ask the client to leave the room"}],
+ correct:["a"], explanation:"Alcohol-based hand sanitizer should be used just before touching a client or performing a sterile technique like IV insertion, unless hands are visibly soiled."},
+{id:2, cat:"integument", type:"mc", prompt:"A charge nurse is teaching a nursing student about the layers of the skin. Which statement by the student requires further teaching?",
+ options:[{id:"a",text:"The epidermis has its own blood supply."},{id:"b",text:"The dermis contains nerves that sense pressure."},{id:"c",text:"The hypodermis stores fat that insulates the body."},{id:"d",text:"The epidermis is the outermost layer."}],
+ correct:["a"], explanation:"The epidermis is avascular (has no blood vessels) and receives nutrition from the dermis below it — this statement is incorrect and indicates a need for further teaching."},
+{id:3, cat:"integument", type:"mc", prompt:"A nursing student is explaining Langerhans cells to a classmate. Which statement indicates understanding?",
+ options:[{id:"a",text:"They travel through the body and help activate the immune response to pathogens on the skin."},{id:"b",text:"They produce collagen in the dermis."},{id:"c",text:"They form the hard enamel coating on teeth."},{id:"d",text:"They store fat in the hypodermis."}],
+ correct:["a"], explanation:"Langerhans cells are found in the skin and participate in the early immune response by detecting invaders."},
+{id:4, cat:"integument", type:"sata", prompt:"A nurse is teaching new graduate nurses about when to use soap and water instead of alcohol-based hand sanitizer. Select the 3 situations that require soap and water.",
+ options:[{id:"a",text:"Hands are visibly soiled"},{id:"b",text:"Before inserting an IV catheter"},{id:"c",text:"After caring for a client with infectious diarrhea"},{id:"d",text:"Before touching a client"},{id:"e",text:"After exposure to Clostridioides difficile spores"}],
+ correct:["a","c","e"], explanation:"Soap and water is required when hands are visibly soiled, after caring for a client with infectious diarrhea, and after exposure to C. diff spores, because alcohol-based sanitizer doesn't kill spores effectively."},
+{id:5, cat:"integument", type:"mc", prompt:"A nurse removes gloves after providing wound care. Which action should the nurse take next?",
+ options:[{id:"a",text:"Perform hand hygiene"},{id:"b",text:"Document the wound care"},{id:"c",text:"Move directly to the next client's room"},{id:"d",text:"Reapply a new pair of gloves"}],
+ correct:["a"], explanation:"Hand hygiene should be performed immediately after glove removal, before any other task, to prevent pathogen transmission."},
+{id:6, cat:"integument", type:"mc", prompt:"A nurse is teaching a client about HAIs (health care–associated infections). Which statement should the nurse include?",
+ options:[{id:"a",text:"An HAI is an infection that develops after you're admitted to the hospital and wasn't present when you arrived."},{id:"b",text:"An HAI is any infection you have before being admitted."},{id:"c",text:"HAIs only occur in the intensive care unit."},{id:"d",text:"HAIs cannot be prevented through hand hygiene."}],
+ correct:["a"], explanation:"HAIs develop during a client's stay in a health care facility and were not present on admission; hand hygiene is a key prevention strategy."},
+{id:7, cat:"integument", type:"mc", prompt:"A charge nurse asks a nursing student why mucous membranes are important. Which statement by the student shows understanding?",
+ options:[{id:"a",text:"They line passages like the respiratory and digestive tract and trap pathogens with mucus."},{id:"b",text:"They only protect the skin from sunburn."},{id:"c",text:"They produce the hard enamel on teeth."},{id:"d",text:"They store calcium for the bones."}],
+ correct:["a"], explanation:"Mucous membranes line body passages open to the outside environment and secrete mucus that traps pathogens and particles."},
+{id:8, cat:"bathing", type:"mc", prompt:"A nurse is preparing to bathe a client who cannot ambulate to the bathroom. Which type of bath should the nurse anticipate providing?",
+ options:[{id:"a",text:"Complete bed bath"},{id:"b",text:"Therapeutic bath"},{id:"c",text:"Partial bath only"},{id:"d",text:"No bath is needed"}],
+ correct:["a"], explanation:"A complete bed bath is given to clients unable to ambulate to the bathroom and bathe themselves."},
+{id:9, cat:"bathing", type:"mc", prompt:"A nurse is teaching a new assistive personnel about bathing a client at risk for DVT. Which statement requires further teaching?",
+ options:[{id:"a",text:"I'll use firm, deep strokes over the lower extremities."},{id:"b",text:"I'll wash the arms distal to proximal."},{id:"c",text:"I'll use light strokes over the lower extremities."},{id:"d",text:"I'll change the water if it becomes cool or soapy."}],
+ correct:["a"], explanation:"Firm, deep strokes should be avoided over the lower extremities of a client with a history of DVT; light strokes are used instead to avoid dislodging a clot."},
+{id:10, cat:"bathing", type:"mc", prompt:"A nurse educator is teaching about CHG bathing. Which statement by a new nurse indicates understanding?",
+ options:[{id:"a",text:"I'll massage the CHG cloths over all of the client's skin except the face."},{id:"b",text:"I'll apply CHG cloths only to the client's face."},{id:"c",text:"CHG bathing replaces the need for hand hygiene."},{id:"d",text:"CHG bathing is only used for ambulatory clients."}],
+ correct:["a"], explanation:"CHG (chlorhexidine gluconate) bathing involves massaging premoistened cloths over all skin except the face, and is commonly used to reduce infection risk in high-risk units like the ICU."},
+{id:11, cat:"bathing", type:"mc", prompt:"A nurse is washing a client's arm during a bed bath. Which technique should the nurse use?",
+ options:[{id:"a",text:"Wash from the hand toward the shoulder"},{id:"b",text:"Wash from the shoulder toward the hand"},{id:"c",text:"Wash in random, circular motions"},{id:"d",text:"Wash only the palm of the hand"}],
+ correct:["a"], explanation:"Washing distal to proximal (hand toward shoulder) facilitates venous blood return."},
+{id:12, cat:"bathing", type:"sata", prompt:"A nurse is caring for a client who has deep skin folds related to a higher body weight. Which nursing actions should the nurse plan to include?",
+ options:[{id:"a",text:"Wash the skin folds with a pH-balanced liquid soap"},{id:"b",text:"Leave the skin folds moist to prevent irritation"},{id:"c",text:"Lightly dab the skin dry after washing"},{id:"d",text:"Assess the folds for rash or breakdown regularly"},{id:"e",text:"Avoid washing between skin folds"}],
+ correct:["a","c","d"], explanation:"Skin folds should be washed with pH-balanced soap, dried gently (dabbed, not rubbed), and assessed regularly for rash or breakdown. Leaving them moist or avoiding washing increases infection risk."},
+{id:13, cat:"bathing", type:"mc", prompt:"A charge nurse is teaching a nursing student about the risk of using a bath basin during hospitalization. Which statement should the charge nurse include?",
+ options:[{id:"a",text:"Bath basins have been shown to harbor pathogens that can spread between clients."},{id:"b",text:"Bath basins eliminate the risk of skin breakdown."},{id:"c",text:"Bath basins are always safer than no-rinse cleansing products."},{id:"d",text:"Bath basins prevent the need for hand hygiene during bathing."}],
+ correct:["a"], explanation:"Bath basins have been shown to be contaminated with pathogens and can aid in transferring them within a health care setting."},
+{id:14, cat:"bathing", type:"mc", prompt:"A nurse is teaching about the order of a complete bed bath. Which statement by the student indicates understanding?",
+ options:[{id:"a",text:"I'll wash the face first, then work from the trunk down to the lower extremities."},{id:"b",text:"I'll wash the perineal area first to save time."},{id:"c",text:"I'll wash the feet first, then work upward."},{id:"d",text:"The order doesn't matter as long as everything gets washed."}],
+ correct:["a"], explanation:"A bed bath follows a clean-to-dirty, head-to-toe order: face first, then trunk/upper extremities, then lower extremities, with perineal care typically performed last."},
+{id:15, cat:"oral", type:"mc", prompt:"A nurse is caring for an unconscious client who requires oral hygiene. Which action should the nurse take first?",
+ options:[{id:"a",text:"Position the client on their side with the head turned toward the mattress"},{id:"b",text:"Place two fingers in the client's mouth to hold it open"},{id:"c",text:"Provide oral care with the client positioned flat on their back"},{id:"d",text:"Skip oral care since the client is unconscious"}],
+ correct:["a"], explanation:"Positioning an unconscious client on their side with the head turned toward the mattress allows secretions to drain out and reduces aspiration risk before beginning oral care."},
+{id:16, cat:"oral", type:"mc", prompt:"A nurse is teaching a client about denture care. Which statement by the client requires further teaching?",
+ options:[{id:"a",text:"I'll brush my dentures with my regular toothpaste."},{id:"b",text:"I'll store my dentures in a labeled cup with water."},{id:"c",text:"I'll handle my dentures carefully since they can break."},{id:"d",text:"I'll rinse my dentures with cool water after brushing."}],
+ correct:["a"], explanation:"Regular toothpaste is abrasive and can damage denture surfaces; denture-specific toothpaste should be used instead."},
+{id:17, cat:"oral", type:"mc", prompt:"A nurse is teaching a nursing student how to remove a client's upper denture. Which statement indicates understanding?",
+ options:[{id:"a",text:"I'll pull the upper denture down and out at the front to break the seal."},{id:"b",text:"I'll push the upper denture up and out at the front."},{id:"c",text:"I'll pull the upper denture straight back toward the throat."},{id:"d",text:"I'll twist the upper denture side to side."}],
+ correct:["a"], explanation:"The upper denture is removed by pulling down and out at the front, which breaks the seal between the denture and the roof of the mouth."},
+{id:18, cat:"oral", type:"sata", prompt:"A nurse is caring for a client on a ventilator. Select the 2 actions the nurse should take to help prevent ventilator-associated pneumonia.",
+ options:[{id:"a",text:"Perform regular oral hygiene, including brushing the teeth"},{id:"b",text:"Withhold all mouth care while the client is intubated"},{id:"c",text:"Suction oral secretions as needed"},{id:"d",text:"Leave the head of the bed flat at all times"},{id:"e",text:"Apply lotion to the lips only"}],
+ correct:["a","c"], explanation:"Regular oral hygiene and suctioning secretions both help reduce the bacterial load that can travel into the lungs through the artificial airway, lowering VAP risk."},
+{id:19, cat:"oral", type:"mc", prompt:"A nurse is assisting a client with fragile oral mucosa to brush their teeth. Which action should the nurse take?",
+ options:[{id:"a",text:"Use gentle brushing and flossing technique"},{id:"b",text:"Use a firm-bristle toothbrush for a more thorough clean"},{id:"c",text:"Brush vigorously to remove all plaque quickly"},{id:"d",text:"Avoid oral care altogether to prevent bleeding"}],
+ correct:["a"], explanation:"Clients with fragile oral mucosa require gentle brushing and flossing to clean effectively without causing trauma or bleeding."},
+{id:20, cat:"oral", type:"mc", prompt:"A nurse is teaching a client about gingivitis. Which statement should the nurse include?",
+ options:[{id:"a",text:"It's inflammation of the gums caused by plaque buildup, and it can progress to a more serious infection if untreated."},{id:"b",text:"It's a hardening of the tooth enamel."},{id:"c",text:"It only affects clients who wear dentures."},{id:"d",text:"It's unrelated to oral hygiene habits."}],
+ correct:["a"], explanation:"Gingivitis is gum inflammation from plaque caused by poor oral hygiene, and can progress to periodontitis if not addressed."},
+{id:21, cat:"oral", type:"sata", prompt:"A nurse is providing oral care for a client who can participate independently. Which actions should the nurse encourage the client to perform?",
+ options:[{id:"a",text:"Brush all surfaces of the teeth, front and back"},{id:"b",text:"Brush the surface of the tongue"},{id:"c",text:"Skip flossing since brushing is sufficient"},{id:"d",text:"Rinse with mouthwash after brushing and flossing"},{id:"e",text:"Avoid rinsing with water after brushing"}],
+ correct:["a","b","d"], explanation:"Brushing all tooth surfaces and the tongue, followed by flossing and a mouthwash rinse, are all recommended oral hygiene steps for an independent client."},
+{id:22, cat:"foot", type:"mc", prompt:"A nurse is providing foot care for a client who has diabetes mellitus and a history of peripheral neuropathy. Which action should the nurse avoid?",
+ options:[{id:"a",text:"Soaking the client's feet in a basin of water"},{id:"b",text:"Washing the feet with warm water and mild soap"},{id:"c",text:"Drying thoroughly between the toes"},{id:"d",text:"Inspecting the feet for redness or cuts"}],
+ correct:["a"], explanation:"Soaking the feet of a client with neuropathy or diabetes should be avoided — it can cause maceration and softening of the skin, increasing infection risk."},
+{id:23, cat:"foot", type:"mc", prompt:"A nurse is teaching a client with diabetes about foot care. Which statement by the client requires further teaching?",
+ options:[{id:"a",text:"I'll apply lotion between my toes to keep the skin soft."},{id:"b",text:"I'll wear clean cotton socks every day."},{id:"c",text:"I'll check my shoes for objects or rough seams before putting them on."},{id:"d",text:"I'll cut my toenails straight across."}],
+ correct:["a"], explanation:"Lotion should never be applied between the toes — the added moisture increases the risk of fungal infection."},
+{id:24, cat:"foot", type:"mc", prompt:"A nurse is teaching a client about nail hygiene. Which statement by the client indicates understanding?",
+ options:[{id:"a",text:"Keeping my nails trimmed short helps reduce the germs that build up underneath them."},{id:"b",text:"Longer nails are cleaner because there's more surface to wash."},{id:"c",text:"Nail length doesn't affect how many germs are on my hands."},{id:"d",text:"I should round the edges of my nails as much as possible when trimming."}],
+ correct:["a"], explanation:"Longer nails have been shown to harbor more germs than shorter nails; trimming nails short and cleaning underneath is recommended."},
+{id:25, cat:"foot", type:"sata", prompt:"A nurse is inspecting a client's feet during a routine assessment. Which findings should the nurse report to the provider?",
+ options:[{id:"a",text:"A small cut between the toes"},{id:"b",text:"Even coloring on both feet"},{id:"c",text:"A blister on the heel"},{id:"d",text:"Cracked, dry skin on both heels"},{id:"e",text:"Warm, dry skin with no lesions"}],
+ correct:["a","c","d"], explanation:"Cuts, blisters, and cracked skin are abnormal findings that increase infection risk and should be reported. Even coloring and warm, intact, dry skin are normal findings."},
+{id:26, cat:"foot", type:"mc", prompt:"A nurse is preparing to trim a client's toenails. Facility policy requires a podiatrist to trim nails for clients with diabetes. Which action should the nurse take?",
+ options:[{id:"a",text:"Refer the client to a podiatrist for nail trimming"},{id:"b",text:"Trim the nails as requested by the client"},{id:"c",text:"Soak the feet and trim the nails regardless of policy"},{id:"d",text:"Delegate the task to unlicensed assistive personnel"}],
+ correct:["a"], explanation:"When facility policy restricts nail trimming for at-risk clients, such as those with diabetes, to a qualified professional, the nurse should follow that policy and refer accordingly."},
+{id:27, cat:"foot", type:"mc", prompt:"A nurse is teaching a client about proper toenail trimming technique. Which statement indicates understanding?",
+ options:[{id:"a",text:"I'll cut my toenails straight across and file any sharp edges."},{id:"b",text:"I'll round the corners of my toenails when trimming."},{id:"c",text:"I'll cut my toenails as short as possible, close to the skin."},{id:"d",text:"I'll avoid filing any rough edges after trimming."}],
+ correct:["a"], explanation:"Cutting toenails straight across and filing sharp edges reduces the risk of ingrown toenails."},
+{id:28, cat:"foot", type:"mc", prompt:"A nurse is caring for a client who has a known open wound on the foot and a prescription for foot care. Which action should the nurse take first?",
+ options:[{id:"a",text:"Consult with the health care team before immersing the foot in a water basin"},{id:"b",text:"Immerse the foot in warm water as routinely done"},{id:"c",text:"Apply lotion directly into the open wound"},{id:"d",text:"Skip the consultation and proceed with standard foot care"}],
+ correct:["a"], explanation:"For a client with a known wound, the nurse should confirm orders for wound care with the health care team before immersing the foot in water, since soaking may not be advisable."},
+{id:29, cat:"perineal", type:"mc", prompt:"A nurse is performing perineal care for a female client. Which technique should the nurse use?",
+ options:[{id:"a",text:"Clean from front to back"},{id:"b",text:"Clean from back to front"},{id:"c",text:"Clean in a random pattern"},{id:"d",text:"Clean using the same area of the washcloth for the entire procedure"}],
+ correct:["a"], explanation:"Perineal care for a female client should move front to back (anterior to posterior) to avoid moving bacteria from the rectal area toward the urethra."},
+{id:30, cat:"perineal", type:"mc", prompt:"A nurse is teaching a new nurse about perineal care for an uncircumcised male client. Which statement requires further teaching?",
+ options:[{id:"a",text:"I'll leave the foreskin retracted after cleaning to allow it to air dry."},{id:"b",text:"I'll retract the foreskin before cleaning underneath it."},{id:"c",text:"I'll return the foreskin to its natural position after cleaning."},{id:"d",text:"I'll clean the tip of the penis in a circular motion, working outward."}],
+ correct:["a"], explanation:"The foreskin should always be returned to its natural position after cleaning — leaving it retracted can cause constriction, swelling, and pain."},
+{id:31, cat:"perineal", type:"mc", prompt:"A nurse is teaching a nursing student about indwelling catheter care. Which statement indicates understanding of the correct order?",
+ options:[{id:"a",text:"I'll clean the genital area first, then the meatus, then the catheter moving away from the body."},{id:"b",text:"I'll clean the catheter first, then the meatus, then the genital area."},{id:"c",text:"I'll clean all areas simultaneously with one pass of the washcloth."},{id:"d",text:"I'll clean the catheter moving toward the body."}],
+ correct:["a"], explanation:"Catheter care proceeds clean to dirty: genital area first, then the meatus where the catheter enters, then the catheter itself, cleaning away from the client's body."},
+{id:32, cat:"perineal", type:"sata", prompt:"A nurse is gathering supplies to perform perineal care. Which items should the nurse obtain?",
+ options:[{id:"a",text:"Waterproof pad"},{id:"b",text:"Facility-approved perineal wipes or cleanser"},{id:"c",text:"Sterile gloves"},{id:"d",text:"Washcloths and towels"},{id:"e",text:"Cotton swabs"}],
+ correct:["a","b","d"], explanation:"A waterproof pad, cleanser/wipes, and washcloths/towels are standard perineal care supplies. Sterile gloves and cotton swabs are not required for routine perineal care."},
+{id:33, cat:"perineal", type:"mc", prompt:"A nurse is preparing to perform perineal care for a client and needs to determine positioning. Which position is ideal for a female client who is able to tolerate it?",
+ options:[{id:"a",text:"Dorsal recumbent"},{id:"b",text:"Prone"},{id:"c",text:"High-Fowler's with legs extended straight"},{id:"d",text:"Left lateral only"}],
+ correct:["a"], explanation:"The dorsal recumbent position (lying on the back with knees bent) provides ideal access to the perineum for care, if the client is able to tolerate it."},
+{id:34, cat:"perineal", type:"mc", prompt:"A nurse is teaching a new nurse about perineal care technique for a female client. Which statement requires further teaching?",
+ options:[{id:"a",text:"I'll use the same section of the washcloth for each downward pass over the labia."},{id:"b",text:"I'll separate the labia with my nondominant hand to clean the labia minora."},{id:"c",text:"I'll rinse the perineum and gently pat it dry when finished."},{id:"d",text:"I'll wash the labia majora from front to back first."}],
+ correct:["a"], explanation:"A new, unused section of the washcloth should be used for each downward pass to prevent spreading microorganisms — reusing the same section requires further teaching."},
+{id:35, cat:"special", type:"mc", prompt:"A nurse is assisting a client who had a left-sided stroke with dressing. Which action should the nurse take first?",
+ options:[{id:"a",text:"Place clothing on the affected (right) side using the unaffected arm"},{id:"b",text:"Place clothing on the unaffected side first"},{id:"c",text:"Ask the client to dress independently without assistance"},{id:"d",text:"Undress the affected side first"}],
+ correct:["a"], explanation:"When dressing a client after a stroke, the unaffected arm is used to place clothing on the affected side first; when undressing, the unaffected side is removed first."},
+{id:36, cat:"special", type:"mc", prompt:"A nurse is teaching a client with a spinal cord injury about safe bathing. Which statement should the nurse include?",
+ options:[{id:"a",text:"Always check the water temperature carefully since you may have reduced ability to sense heat."},{id:"b",text:"Water temperature doesn't need special attention."},{id:"c",text:"You should bathe in water as hot as you can tolerate."},{id:"d",text:"Reduced sensation only affects your ability to feel cold water."}],
+ correct:["a"], explanation:"Spinal cord injuries can impair the ability to sense temperature, increasing the risk of burns — water temperature should always be checked carefully before bathing."},
+{id:37, cat:"special", type:"mc", prompt:"A nurse is teaching a caregiver about diaper dermatitis. Which statement by the caregiver indicates understanding?",
+ options:[{id:"a",text:"I'll change the diaper frequently and use a soap-free cleanser on the skin."},{id:"b",text:"I'll leave the diaper on longer between changes to avoid irritation."},{id:"c",text:"I'll use a scented baby wipe with alcohol to clean the area."},{id:"d",text:"I'll avoid using any barrier product on the skin."}],
+ correct:["a"], explanation:"Frequent diaper changes and a soap-free cleanser decrease skin exposure to urine and feces, which is the core treatment for diaper dermatitis, along with a topical emollient barrier."},
+{id:38, cat:"special", type:"mc", prompt:"A nurse reviews a client's notes. 0700: Client has dementia, refuses morning shower, becomes agitated when approached about bathing. 0730: Client is calm and cooperative after breakfast. Based on this information, which approach should the nurse try next?",
+ options:[{id:"a",text:"Offer to bathe the client on the commode after their next bowel movement, when calmer"},{id:"b",text:"Insist the client shower immediately at 0700 as originally scheduled"},{id:"c",text:"Document the refusal and skip bathing for the entire week"},{id:"d",text:"Physically guide the client to the shower against their wishes"}],
+ correct:["a"], explanation:"For clients with dementia, adapting the timing and method of bathing — such as bathing on the commode after a bowel movement, when the client is calmer — supports dignity and cooperation rather than forcing care during agitation."},
+{id:39, cat:"special", type:"mc", prompt:"A nurse is teaching a client who has a visual impairment how to shave safely. Which instruction should the nurse include first?",
+ options:[{id:"a",text:"Explore the facial contours with the fingers before beginning"},{id:"b",text:"Begin shaving immediately using long strokes"},{id:"c",text:"Use a razor with the blade exposed while practicing"},{id:"d",text:"Ask a family member to perform the shaving instead"}],
+ correct:["a"], explanation:"The client should first explore their facial contours to identify areas needing shaving, then practice with the razor turned off before shaving, to build safety and confidence."},
+{id:40, cat:"special", type:"mc", prompt:"A nurse is teaching a caregiver about hygiene care for a client who has had an arm amputation. Which statement by the caregiver indicates understanding?",
+ options:[{id:"a",text:"I'll place a bath seat in the shower and add a grab bar for support."},{id:"b",text:"I'll avoid using any adaptive devices to encourage full independence right away."},{id:"c",text:"I'll discourage the use of a battery-powered toothbrush."},{id:"d",text:"I'll remove all anti-slip mats from the bathroom floor."}],
+ correct:["a"], explanation:"A bath seat and grab bars support safe transfers and bathing for a client adjusting to limb loss; adaptive devices like battery-powered toothbrushes and anti-slip mats also help maintain safety and independence."}
+];
+initPracticeQuiz(bank, catLabels);
+</script>
+</body>
+</html>
