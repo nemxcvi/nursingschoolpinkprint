@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBC/CMP Adult Lab Value Ranges &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 3</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">CBC/CMP Adult Lab Value Ranges</h2>
+
+  <div class="fc-topbar"><span id="cardcounter"></span><span id="counts"></span></div>
+  <div class="fc-progresswrap"><div id="progressbar" class="fc-progressbar"></div></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="row" style="display:none;">
+    <button class="btn dk" onclick="grade('dontknow', event)"><i class="ti ti-x" aria-hidden="true"></i> don't know</button>
+    <button class="btn al" onclick="grade('almost', event)">~ almost</button>
+    <button class="btn kn" onclick="grade('know', event)"><i class="ti ti-check" aria-hidden="true"></i> know it</button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <div class="row">
+    <button class="btn small" onclick="prevCard(event)"><i class="ti ti-arrow-left" aria-hidden="true"></i> prev</button>
+    <button class="btn small" onclick="nextCard(event)">next <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="row" style="margin-bottom:0;">
+    <button class="btn small" onclick="shuffleDeck(event)"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i> shuffle</button>
+    <button class="btn small" onclick="restartDeck(event)"><i class="ti ti-refresh" aria-hidden="true"></i> restart</button>
+  </div>
+  <p id="reviewnote" class="fc-note"></p>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/flashcards.js"></script>
+<script>
+var CATS = {
+  rbc: {label:"Red blood cell count & indices", hue:"red"},
+  plt: {label:"Platelets", hue:"violet"},
+  wbc: {label:"White blood cells", hue:"blue"},
+  renal: {label:"Renal & glucose panel", hue:"orange"},
+  liver: {label:"Liver & protein panel", hue:"yellow"},
+  lytes: {label:"Electrolytes", hue:"green"}
+};
+var CARDS = [
+[1,"rbc","Hematocrit (Hct) — Female","37% – 47%"],
+[2,"rbc","Hematocrit (Hct) — Male","42% – 52%"],
+[3,"rbc","Hemoglobin (Hgb) — Female","12–16 g/dL"],
+[4,"rbc","Hemoglobin (Hgb) — Male","14–18 g/dL"],
+[5,"rbc","RBC — Female","4.2–5.4 ×10⁶/µL"],
+[6,"rbc","RBC — Male","4.7–6.1 ×10⁶/µL"],
+[7,"rbc","MCV (mean corpuscular volume)","80–95 fL"],
+[8,"rbc","MCH (mean corpuscular hemoglobin)","27–31 pg"],
+[9,"rbc","MCHC (mean corp. hgb concentration)","32–36 g/dL"],
+[10,"rbc","RDW (red cell distribution width)","11–45% (per ATI)"],
+[11,"plt","Platelet count","150,000–400,000/mm³"],
+[12,"plt","MPV (mean platelet volume)","7.4–10.4 fL"],
+[13,"wbc","WBC","5,000–10,000/mm³"],
+[14,"renal","BUN (blood urea nitrogen)","10–20 mg/dL"],
+[15,"renal","Creatinine — Female","0.5–1.2 mg/dL overall (18–40: 0.5–1 | 41–60: 0.5–1.1 | 60+: 0.5–1.2)"],
+[16,"renal","Creatinine — Male","0.6–1.3 mg/dL overall (18–40: 0.6–1.2 | 41–60: 0.6–1.3 | 60+: 0.7–1.3)"],
+[17,"renal","Glucose","74–106 mg/dL"],
+[18,"liver","ALT (alanine aminotransferase)","4–36 units/L"],
+[19,"liver","AST (aspartate aminotransferase)","0–35 units/L"],
+[20,"liver","ALP (alkaline phosphatase)","30–120 units/L"],
+[21,"liver","Bilirubin (total)","0.3–1 mg/dL"],
+[22,"liver","Albumin","3.5–5 g/dL"],
+[23,"liver","Total protein","6.4–8.3 g/dL"],
+[24,"lytes","Sodium (Na)","136–145 mEq/L"],
+[25,"lytes","Potassium (K)","3.5–5 mEq/L"],
+[26,"lytes","Chloride (Cl)","98–106 mEq/L"],
+[27,"lytes","Bicarbonate (HCO3)","23–30 mEq/L"],
+[28,"lytes","Magnesium (Mg)","1.3–2.1 mEq/L"],
+[29,"lytes","Calcium","9.0–10.5 mg/dL"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

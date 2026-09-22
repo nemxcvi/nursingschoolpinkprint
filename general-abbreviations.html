@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General Abbreviations &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 1</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">General Abbreviations</h2>
+
+  <div class="fc-topbar"><span id="cardcounter"></span><span id="counts"></span></div>
+  <div class="fc-progresswrap"><div id="progressbar" class="fc-progressbar"></div></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="row" style="display:none;">
+    <button class="btn dk" onclick="grade('dontknow', event)"><i class="ti ti-x" aria-hidden="true"></i> don't know</button>
+    <button class="btn al" onclick="grade('almost', event)">~ almost</button>
+    <button class="btn kn" onclick="grade('know', event)"><i class="ti ti-check" aria-hidden="true"></i> know it</button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <div class="row">
+    <button class="btn small" onclick="prevCard(event)"><i class="ti ti-arrow-left" aria-hidden="true"></i> prev</button>
+    <button class="btn small" onclick="nextCard(event)">next <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="row" style="margin-bottom:0;">
+    <button class="btn small" onclick="shuffleDeck(event)"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i> shuffle</button>
+    <button class="btn small" onclick="restartDeck(event)"><i class="ti ti-refresh" aria-hidden="true"></i> restart</button>
+  </div>
+  <p id="reviewnote" class="fc-note"></p>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/flashcards.js"></script>
+<script>
+var CATS = {
+  process: {label:"Nursing process & clinical judgment", hue:"green"},
+  vitals: {label:"Priority setting & vitals/labs", hue:"red"},
+  ethics: {label:"Ethics & legal", hue:"aqua"},
+  comm: {label:"Communication & documentation", hue:"blue"},
+  ebp: {label:"Evidence-based practice", hue:"yellow"}
+};
+var CARDS = [
+[1,"process","ADPIE","Assess, Diagnose, Plan, Implement, Evaluate — the 5 steps of the nursing process.","Assess pain (location, quality, 7/10) \u2192 Diagnose 'Acute pain r/t surgical incision AEB verbalized pain rating of 7/10 and guarding behavior' \u2192 Plan a goal (pain \u22643/10 within 30 minutes) \u2192 Implement the ordered analgesic and repositioning \u2192 Evaluate pain level 30\u201360 minutes later."],
+[2,"process","NANDA-I","North American Nursing Diagnosis Association International — standardizes nursing diagnosis wording.","Choosing 'impaired physical mobility' from the official list."],
+[3,"process","AEB","As Evidenced By — links a diagnosis to the signs/symptoms proving it.","'Impaired physical mobility r/t pain AEB reluctance to walk and pain rating 8/10.'"],
+[4,"process","r/t","Related to — links a diagnosis to its cause.","'Risk for infection r/t surgical incision and compromised immune system.'"],
+[5,"process","SMART","Specific, Measurable, Attainable, Realistic, Time-bound — format for care plan goals.","'Client will ambulate 50 feet with a walker by discharge' is SMART; 'client will feel better' is not."],
+[6,"vitals","ABC/ABCDE","Airway, Breathing, Circulation, (Disability, Exposure) — order of priority for acutely ill clients.","Confirm airway and breathing before assessing a confused client's neuro status."],
+[7,"vitals","CO","Cardiac Output — half of the BP formula.","A client in heart failure has reduced CO, which can lower BP."],
+[8,"vitals","SVR","Systemic Vascular Resistance — the other half of the BP formula.","Vasoconstriction increases SVR, raising BP."],
+[9,"vitals","PQRST","Provocation, Quality, Region, Severity, Timing — pain assessment tool.","What triggers it? What does it feel like? Where is it, does it spread? How intense (1\u201310)? When does it occur and how long does it last?"],
+[10,"ethics","EMTALA","Emergency Medical Treatment and Labor Act — requires EDs to treat/stabilize regardless of ability to pay.","A hospital can't turn away a client in active labor for lacking insurance."],
+[11,"ethics","HIPAA","Health Insurance Portability and Accountability Act (1996) — protects client health information.","A nurse can't discuss a diagnosis with family without the client's permission."],
+[12,"ethics","PHI","Protected Health Information — what HIPAA protects.","Name, diagnosis, and treatment plan are all PHI."],
+[13,"comm","ISBARR","Introduction, Situation, Background, Assessment, Recommendation, Read-back — structured handoff format.","'This is Nurse Smith (I). Mr. Jones has chest pain (S). Post-op day 1, hip surgery (B). Stable, pain 7/10 (A). Recommend PRN pain med (R). Provider repeats the order back (R).'"],
+[14,"comm","SOAP","Subjective, Objective, Assessment, Plan — a charting format.","S: 'My leg hurts.' O: calf warm/swollen. A: possible DVT. P: notify provider, get Doppler."],
+[15,"comm","PIE","Problem, Intervention, Evaluation — a charting method.","Problem: acute pain. Intervention: gave analgesic. Evaluation: pain dropped from 8/10 to 3/10."],
+[16,"comm","CBE","Charting by Exception — only deviations from normal are documented.","Charting 'WNL' instead of listing every normal vital."],
+[17,"comm","FACT","Factual, Accurate, Complete, Timely — the documentation standard.","'Ambulated 20 ft in hallway without assistance at 1400.'"],
+[18,"comm","EHR","Electronic Health Record — the digital chart.","Vitals entered directly into the EHR at bedside."],
+[19,"comm","CPOE","Computerized Provider Order Entry — providers enter orders electronically.","A physician enters a new med order via CPOE instead of handwriting it."],
+[20,"comm","IDEAL","Discharge planning — Include client & family, Discuss 5 key areas, Educate in plain language, Assess understanding, Listen to client's goals.","Before discharge, review home life, meds, warning signs, follow-up labs/appointments, and what matters most to the client."],
+[21,"comm","OARS","Open-ended questions, Affirmations, Reflective listening, Summarizing — core motivational interviewing techniques.","Counseling a client on smoking cessation: 'What makes you want to quit?' (open-ended) \u2192 'That takes real strength to consider' (affirmation) \u2192 'So you're worried about your health but nervous about withdrawal' (reflective listening) \u2192 'Let's recap the plan' (summarizing)."],
+[22,"ebp","EBP","Evidence-Based Practice — using current best evidence to guide care.","Updating a fall-prevention protocol based on new research."],
+[23,"ebp","PICOT","Population, Intervention, Comparison, Outcome, Time — framework for an EBP question.","'In hospitalized adults (P), does alcohol-based hand rub (I) compared to soap-and-water handwashing (C) reduce hospital-acquired infection rates (O) during a 30-day admission (T)?'"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
