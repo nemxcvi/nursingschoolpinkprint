@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBC/CMP practice quiz &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 1</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">CBC/CMP practice quiz</h2>
+
+  <div id="pq-mode-screen">
+    <p class="muted" style="margin-bottom:14px;">Choose how you want to practice.</p>
+    <div>
+      <button class="pq-mode-btn" data-mode="single">
+        <div class="pq-mode-title">One session</div>
+        <div class="pq-mode-sub">Answer a set of questions once, then see your results.</div>
+      </button>
+      <button class="pq-mode-btn" data-mode="rounds">
+        <div class="pq-mode-title">Mastery rounds</div>
+        <div class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</div>
+      </button>
+    </div>
+  </div>
+
+  <div id="pq-count-screen" class="hidden">
+    <p class="muted" style="margin-bottom:14px;">How many questions?</p>
+    <div id="pq-count-single" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="5">5</button>
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="15">15</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="25">25</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="35">35</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <div id="pq-count-rounds" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <button class="btn small" id="pq-back"><i class="ti ti-arrow-left" aria-hidden="true"></i> back</button>
+  </div>
+
+  <div id="pq-quiz-screen" class="hidden">
+    <div class="pq-top-row"><span id="pq-progress"></span><span id="pq-score"></span></div>
+    <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-prompt" class="pq-prompt"></div>
+    <div id="pq-options"></div>
+    <p id="pq-error" class="pq-error">select at least one answer</p>
+    <div id="pq-feedback" class="pq-feedback"></div>
+    <div class="pq-btn-row">
+      <button class="btn" id="pq-submit">check answer</button>
+      <button class="btn hidden" id="pq-next">next question &#8594;</button>
+    </div>
+    <button class="btn small" id="pq-end-test" style="margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto;">end and see results</button>
+  </div>
+
+  <div id="pq-round-complete-screen" class="hidden pq-center">
+    <div id="rc-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+    <div id="rc-score" class="pq-stat-big"></div>
+    <div class="pq-stat-sub">this round</div>
+    <div id="rc-detail" class="pq-stat-detail"></div>
+    <button class="btn" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+  </div>
+
+  <div id="pq-end-screen" class="hidden">
+    <div class="pq-center" style="margin-bottom:16px;">
+      <div id="end-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+      <div id="end-rounds-subtitle" class="hidden muted" style="margin-bottom:16px;"></div>
+      <div id="end-stats-single" class="hidden">
+        <div id="end-score" class="pq-stat-big"></div>
+        <div id="end-percent" class="muted"></div>
+      </div>
+      <div id="end-stats-rounds" class="hidden" style="display:flex;justify-content:center;gap:40px;">
+        <div><div id="end-pool-pct" class="pq-stat-big"></div><div class="muted">of pool completed</div></div>
+        <div><div id="end-accuracy-pct" class="pq-stat-big"></div><div class="muted">overall accuracy</div></div>
+      </div>
+    </div>
+    <p id="category-heading" class="eyebrow"></p>
+    <div id="category-grid" class="pq-cat-grid"></div>
+    <p class="eyebrow">review</p>
+    <div id="review-list" style="margin-bottom:20px;"></div>
+    <div class="pq-btn-row">
+      <button class="btn small" id="end-restart">practice again</button>
+      <button class="btn small" id="end-missed">redo missed questions</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/practice-quiz.js"></script>
+<script>
+var bank = [
+{prompt:"Which hematocrit value is WITHIN normal limits for an adult female client?", type:"mc",
+ options:[{id:"a",text:"34%"},{id:"b",text:"41%"},{id:"c",text:"50%"},{id:"d",text:"30%"}],
+ correct:["b"], explanation:"Normal adult female Hct is 37–47%. 41% falls within range."},
+{prompt:"Which hematocrit value is WITHIN normal limits for an adult male client?", type:"mc",
+ options:[{id:"a",text:"38%"},{id:"b",text:"45%"},{id:"c",text:"55%"},{id:"d",text:"40%"}],
+ correct:["b"], explanation:"Normal adult male Hct is 42–52%. 45% falls within range."},
+{prompt:"Which hemoglobin value is expected for an adult female client?", type:"mc",
+ options:[{id:"a",text:"11.5 g/dL"},{id:"b",text:"13 g/dL"},{id:"c",text:"18 g/dL"},{id:"d",text:"9.5 g/dL"}],
+ correct:["b"], explanation:"Normal adult female Hgb is 12–16 g/dL. 13 g/dL falls within range; 11.5 and 9.5 are below range, and 18 is above."},
+{prompt:"A nurse reviews morning labs for a female client who reports fatigue and pallor: WBC 6,000/mm3, Hgb 9.5 g/dL, platelets 220,000/mm3. Which value should the nurse identify as the priority finding?", type:"mc",
+ options:[{id:"a",text:"WBC"},{id:"b",text:"Hemoglobin"},{id:"c",text:"Platelets"},{id:"d",text:"None are abnormal"}],
+ correct:["b"], explanation:"Hgb 9.5 g/dL is below the normal female range of 12–16 g/dL, which lines up with the client's fatigue and pallor. WBC and platelets are within normal limits."},
+{prompt:"Which hemoglobin value is WITHIN the normal range for ONLY an adult male client (not an adult female)?", type:"mc",
+ options:[{id:"a",text:"14 g/dL"},{id:"b",text:"18 g/dL"},{id:"c",text:"16 g/dL"},{id:"d",text:"19 g/dL"}],
+ correct:["b"], explanation:"Male range is 14–18 g/dL; female range is 12–16 g/dL. 14 and 16 fall in both ranges. 19 is above the male range entirely. 18 falls within the male range but above the female range — making it male-only."},
+{prompt:"Which RBC count is expected for an adult female client?", type:"mc",
+ options:[{id:"a",text:"4.1 ×10⁶/µL"},{id:"b",text:"5.2 ×10⁶/µL"},{id:"c",text:"5.6 ×10⁶/µL"},{id:"d",text:"3.5 ×10⁶/µL"}],
+ correct:["b"], explanation:"Normal adult female RBC is 4.2–5.4 ×10⁶/µL. 5.2 falls within range; 4.1 and 3.5 are below, and 5.6 is above."},
+{prompt:"Which RBC count is expected for an adult male client?", type:"mc",
+ options:[{id:"a",text:"4.6 ×10⁶/µL"},{id:"b",text:"5.8 ×10⁶/µL"},{id:"c",text:"6.2 ×10⁶/µL"},{id:"d",text:"6.4 ×10⁶/µL"}],
+ correct:["b"], explanation:"Normal adult male RBC is 4.7–6.1 ×10⁶/µL. 5.8 falls within range; 4.6 is below, and 6.2 and 6.4 are above."},
+{prompt:"Which MCV value falls WITHIN the normal adult range?", type:"mc",
+ options:[{id:"a",text:"75 fL"},{id:"b",text:"85 fL"},{id:"c",text:"100 fL"},{id:"d",text:"105 fL"}],
+ correct:["b"], explanation:"Normal adult MCV is 80–95 fL. 85 fL falls within range; 75 is below, and 100 and 105 are above."},
+{prompt:"Select all red blood cell indices that are BELOW normal for this client: MCV 78 fL, MCH 26 pg, MCHC 30 g/dL, RDW 10.5%, MPV 11 fL.", type:"sata",
+ options:[{id:"a",text:"MCV 78 fL"},{id:"b",text:"MCH 26 pg"},{id:"c",text:"MCHC 30 g/dL"},{id:"d",text:"RDW 10.5%"},{id:"e",text:"MPV 11 fL"}],
+ correct:["a","b","c","d"], explanation:"MCV (normal 80–95), MCH (normal 27–31), and MCHC (normal 32–36) are all below their ranges. RDW 10.5% is below ATI's normal adult range of 11–45%. MPV 11 fL is actually above the normal range of 7.4–10.4 fL — not below."},
+{prompt:"Which RDW value is considered WITHIN the normal adult range?", type:"mc",
+ options:[{id:"a",text:"10%"},{id:"b",text:"14%"},{id:"c",text:"46%"},{id:"d",text:"50%"}],
+ correct:["b"], explanation:"Per ATI, normal adult RDW is 11–45%. 14% falls within that range; 10% is just below it, and 46% and 50% are just above it."},
+{prompt:"Which platelet count falls WITHIN the normal adult range?", type:"mc",
+ options:[{id:"a",text:"140,000/mm3"},{id:"b",text:"160,000/mm3"},{id:"c",text:"420,000/mm3"},{id:"d",text:"110,000/mm3"}],
+ correct:["b"], explanation:"Normal adult platelet count is 150,000–400,000/mm3. 160,000 falls within range; 140,000 and 110,000 are below, and 420,000 is above."},
+{prompt:"Which MPV value is WITHIN the normal adult range?", type:"mc",
+ options:[{id:"a",text:"5 fL"},{id:"b",text:"9 fL"},{id:"c",text:"11 fL"},{id:"d",text:"15 fL"}],
+ correct:["b"], explanation:"Normal MPV is 7.4–10.4 fL. 9 fL falls within range; 5 is below, and 11 and 15 are above."},
+{prompt:"Which WBC count is expected for an adult client?", type:"mc",
+ options:[{id:"a",text:"4,000/mm3"},{id:"b",text:"7,500/mm3"},{id:"c",text:"12,000/mm3"},{id:"d",text:"15,000/mm3"}],
+ correct:["b"], explanation:"Normal adult WBC is 5,000–10,000/mm3. 7,500 falls within range; 4,000 is below, and 12,000 and 15,000 are above."},
+{prompt:"Which BUN value is expected for an adult client?", type:"mc",
+ options:[{id:"a",text:"8 mg/dL"},{id:"b",text:"15 mg/dL"},{id:"c",text:"25 mg/dL"},{id:"d",text:"30 mg/dL"}],
+ correct:["b"], explanation:"Normal adult BUN is 10–20 mg/dL. 15 mg/dL falls within range."},
+{prompt:"Which creatinine value is expected for a 30-year-old female client?", type:"mc",
+ options:[{id:"a",text:"0.4 mg/dL"},{id:"b",text:"0.9 mg/dL"},{id:"c",text:"1.1 mg/dL"},{id:"d",text:"1.2 mg/dL"}],
+ correct:["b"], explanation:"For females age 18 to under 41, normal creatinine is 0.5–1 mg/dL. 0.9 mg/dL fits within that; 0.4 is below, and 1.1 and 1.2 are above."},
+{prompt:"A client's hematocrit value is 36%. How should the nurse interpret this finding?", type:"mc",
+ options:[{id:"a",text:"Within normal limits for both an adult male and an adult female"},{id:"b",text:"Above normal for an adult female, within normal limits for an adult male"},{id:"c",text:"Below normal for both an adult male and an adult female"},{id:"d",text:"Below normal for an adult male, within normal limits for an adult female"}],
+ correct:["c"], explanation:"Normal female Hct is 37–47% and normal male Hct is 42–52%. 36% falls below both ranges."},
+{prompt:"Which glucose value is WITHIN normal limits for an adult?", type:"mc",
+ options:[{id:"a",text:"70 mg/dL"},{id:"b",text:"75 mg/dL"},{id:"c",text:"120 mg/dL"},{id:"d",text:"110 mg/dL"}],
+ correct:["b"], explanation:"Normal adult glucose is 74–106 mg/dL. 75 mg/dL falls within range; 70 is just below, and 120 and 110 are above."},
+{prompt:"A nurse reviews morning labs for a client with a history of poorly controlled diabetes: BUN 22 mg/dL, Creatinine (female client, age 64) 1.1 mg/dL, Glucose 210 mg/dL. Which value should the nurse identify as the priority finding?", type:"mc",
+ options:[{id:"a",text:"BUN"},{id:"b",text:"Creatinine"},{id:"c",text:"Glucose"},{id:"d",text:"None are abnormal"}],
+ correct:["c"], explanation:"Glucose 210 mg/dL is markedly above the normal range of 74–106 mg/dL, consistent with hyperglycemia — the priority finding here. BUN 22 is only mildly elevated (normal 10–20). For a 64-year-old female, normal creatinine is 0.5–1.2 mg/dL, so 1.1 is actually within normal limits, not abnormal."},
+{prompt:"Which ALT value is expected for an adult client?", type:"mc",
+ options:[{id:"a",text:"2 units/L"},{id:"b",text:"10 units/L"},{id:"c",text:"38 units/L"},{id:"d",text:"40 units/L"}],
+ correct:["b"], explanation:"Normal adult ALT is 4–36 units/L. 10 units/L falls within range; 2 is below, and 38 and 40 are above."},
+{prompt:"Which AST value is expected for an adult client?", type:"mc",
+ options:[{id:"a",text:"45 units/L"},{id:"b",text:"30 units/L"},{id:"c",text:"50 units/L"},{id:"d",text:"60 units/L"}],
+ correct:["b"], explanation:"Normal adult AST is 0–35 units/L. 30 units/L falls within range; 45, 50, and 60 are all above."},
+{prompt:"Which ALP value is expected for an adult client?", type:"mc",
+ options:[{id:"a",text:"25 units/L"},{id:"b",text:"75 units/L"},{id:"c",text:"130 units/L"},{id:"d",text:"20 units/L"}],
+ correct:["b"], explanation:"Normal adult ALP is 30–120 units/L. 75 units/L falls within range; 25 and 20 are below, and 130 is above."},
+{prompt:"Which total bilirubin value is expected for an adult client?", type:"mc",
+ options:[{id:"a",text:"0.1 mg/dL"},{id:"b",text:"0.6 mg/dL"},{id:"c",text:"1.2 mg/dL"},{id:"d",text:"2.0 mg/dL"}],
+ correct:["b"], explanation:"Normal adult total bilirubin is 0.3–1 mg/dL. 0.6 mg/dL falls within range; 0.1 is below, and 1.2 and 2.0 are above."},
+{prompt:"Which albumin value is expected for an adult client?", type:"mc",
+ options:[{id:"a",text:"2.8 g/dL"},{id:"b",text:"4.2 g/dL"},{id:"c",text:"5.8 g/dL"},{id:"d",text:"6.5 g/dL"}],
+ correct:["b"], explanation:"Normal adult albumin is 3.5–5 g/dL. 4.2 g/dL falls within range; 2.8 is below, and 5.8 and 6.5 are above."},
+{prompt:"Select all liver/protein panel values that are BELOW normal: ALT 2 units/L, AST 5 units/L, ALP 25 units/L, Albumin 3.0 g/dL, Bilirubin 0.1 mg/dL.", type:"sata",
+ options:[{id:"a",text:"ALT 2 units/L"},{id:"b",text:"AST 5 units/L"},{id:"c",text:"ALP 25 units/L"},{id:"d",text:"Albumin 3.0 g/dL"},{id:"e",text:"Bilirubin 0.1 mg/dL"}],
+ correct:["a","c","d","e"], explanation:"ALT 2 (normal 4–36), ALP 25 (normal 30–120), albumin 3.0 (normal 3.5–5), and bilirubin 0.1 (normal 0.3–1) are all below range. AST 5 is still within its normal range of 0–35."},
+{prompt:"Which sodium level is WITHIN normal limits for an adult?", type:"mc",
+ options:[{id:"a",text:"128 mEq/L"},{id:"b",text:"140 mEq/L"},{id:"c",text:"150 mEq/L"},{id:"d",text:"160 mEq/L"}],
+ correct:["b"], explanation:"Normal adult sodium is 136–145 mEq/L. 140 mEq/L falls within range."},
+{prompt:"Which chloride value falls WITHIN the expected adult range?", type:"mc",
+ options:[{id:"a",text:"90 mEq/L"},{id:"b",text:"100 mEq/L"},{id:"c",text:"110 mEq/L"},{id:"d",text:"115 mEq/L"}],
+ correct:["b"], explanation:"Normal adult chloride is 98–106 mEq/L. 100 mEq/L falls within range."},
+{prompt:"Which magnesium value is WITHIN the normal adult range?", type:"mc",
+ options:[{id:"a",text:"0.9 mEq/L"},{id:"b",text:"1.6 mEq/L"},{id:"c",text:"2.5 mEq/L"},{id:"d",text:"3.0 mEq/L"}],
+ correct:["b"], explanation:"Normal adult magnesium is 1.3–2.1 mEq/L. 1.6 mEq/L falls within range."},
+{prompt:"Select all electrolyte values that are WITHIN normal limits for an adult client: Sodium 138 mEq/L, Potassium 5.8 mEq/L, Chloride 102 mEq/L, Magnesium 2.6 mEq/L, Calcium 9.8 mg/dL.", type:"sata",
+ options:[{id:"a",text:"Sodium 138 mEq/L"},{id:"b",text:"Potassium 5.8 mEq/L"},{id:"c",text:"Chloride 102 mEq/L"},{id:"d",text:"Magnesium 2.6 mEq/L"},{id:"e",text:"Calcium 9.8 mg/dL"}],
+ correct:["a","c","e"], explanation:"Sodium, chloride, and calcium fall within their normal adult ranges. Potassium 5.8 (normal 3.5–5) and magnesium 2.6 (normal 1.3–2.1) are both elevated."},
+{prompt:"Which MCH value is WITHIN the normal adult range?", type:"mc",
+ options:[{id:"a",text:"20 pg"},{id:"b",text:"29 pg"},{id:"c",text:"35 pg"},{id:"d",text:"40 pg"}],
+ correct:["b"], explanation:"Normal adult MCH is 27–31 pg. 29 pg falls within range."},
+{prompt:"The nurse is reviewing red blood cell indices for a client: MCH 34 pg, MCHC 30 g/dL. How should the nurse interpret these findings?", type:"mc",
+ options:[{id:"a",text:"Within normal limits for both"},{id:"b",text:"Below normal range for MCH, above normal for MCHC"},{id:"c",text:"Above normal range for MCH, below normal for MCHC"},{id:"d",text:"Below normal range for both"}],
+ correct:["c"], explanation:"MCH 34 pg exceeds the normal range of 27–31 pg. MCHC 30 g/dL falls below the normal range of 32–36 g/dL."},
+{prompt:"Select all CBC values that are WITHIN normal limits for an adult male client: Hct 46%, Hgb 17 g/dL, RBC 4.5 ×10⁶/µL, Platelets 380,000/mm3, WBC 8,500/mm3.", type:"sata",
+ options:[{id:"a",text:"Hct 46%"},{id:"b",text:"Hgb 17 g/dL"},{id:"c",text:"RBC 4.5 ×10⁶/µL"},{id:"d",text:"Platelets 380,000/mm3"},{id:"e",text:"WBC 8,500/mm3"}],
+ correct:["a","b","d","e"], explanation:"Hct, Hgb, platelets, and WBC are all within normal adult male ranges. RBC 4.5 ×10⁶/µL is below the normal male range of 4.7–6.1."},
+{prompt:"A client's serum creatinine is 1.2 mg/dL. How should the nurse interpret this finding?", type:"mc",
+ options:[{id:"a",text:"Within normal limits for a 65-year-old male"},{id:"b",text:"Above normal range for a 45-year-old male"},{id:"c",text:"Within normal limits for a 20-year-old female"},{id:"d",text:"Above normal range for a 65-year-old female"}],
+ correct:["a"], explanation:"For males age 60 and older, normal creatinine is 0.7–1.3 mg/dL, so 1.2 is normal. For a 45-year-old male (normal 0.6–1.3), 1.2 is also normal, not above. For a 20-year-old female (normal 0.5–1), 1.2 is above normal, not within. For a 65-year-old female (normal 0.5–1.2), 1.2 is at the upper limit, so it's normal, not above."},
+{prompt:"Which bicarbonate value is WITHIN normal adult limits?", type:"mc",
+ options:[{id:"a",text:"18 mEq/L"},{id:"b",text:"25 mEq/L"},{id:"c",text:"32 mEq/L"},{id:"d",text:"15 mEq/L"}],
+ correct:["b"], explanation:"Normal adult bicarbonate is 23–30 mEq/L. 25 mEq/L falls within range."},
+{prompt:"Select all values that are ABOVE normal for an adult client: Potassium 5.6 mEq/L, Sodium 148 mEq/L, Magnesium 2.5 mEq/L, Calcium 11.5 mg/dL.", type:"sata",
+ options:[{id:"a",text:"Potassium 5.6 mEq/L"},{id:"b",text:"Sodium 148 mEq/L"},{id:"c",text:"Magnesium 2.5 mEq/L"},{id:"d",text:"Calcium 11.5 mg/dL"}],
+ correct:["a","b","c","d"], explanation:"Potassium (normal 3.5–5), sodium (normal 136–145), magnesium (normal 1.3–2.1), and calcium (normal 9.0–10.5) are all elevated here."},
+{prompt:"Which creatinine value best reflects an expected finding for an 18-year-old female client?", type:"mc",
+ options:[{id:"a",text:"0.4 mg/dL"},{id:"b",text:"0.8 mg/dL"},{id:"c",text:"1.1 mg/dL"},{id:"d",text:"0.3 mg/dL"}],
+ correct:["b"], explanation:"For females age 18 to under 41, normal creatinine is 0.5–1 mg/dL. 0.8 mg/dL falls within that; 0.4 and 0.3 are below, and 1.1 is above."},
+{prompt:"Which ALT and AST pairing would the nurse expect to see both WITHIN normal limits?", type:"mc",
+ options:[{id:"a",text:"ALT 50 units/L, AST 45 units/L"},{id:"b",text:"ALT 20 units/L, AST 15 units/L"},{id:"c",text:"ALT 40 units/L, AST 40 units/L"},{id:"d",text:"ALT 60 units/L, AST 10 units/L"}],
+ correct:["b"], explanation:"Normal ALT is 4–36 units/L and AST is 0–35 units/L. Only option b has both values within range."},
+{prompt:"You are assigned 5 clients at the start of your shift. Which of the following morning lab results should be reported to the provider? Select all that apply.", type:"sata",
+ options:[{id:"a",text:"A client's total protein of 9.6 g/dL"},{id:"b",text:"A client's potassium level of 2.8 mEq/L"},{id:"c",text:"A client's platelet count of 410,000/mm3"},{id:"d",text:"A client's glucose level of 92 mg/dL"},{id:"e",text:"A client's sodium level of 140 mEq/L"}],
+ correct:["a","b","c"], explanation:"Total protein 9.6 (normal 6.4–8.3) is elevated. Potassium 2.8 (normal 3.5–5) is low. Platelets 410,000 (normal 150,000–400,000) is elevated. Glucose 92 and sodium 140 are both within normal limits."},
+{prompt:"Which of the following morning lab results should be reported to the provider? Select all that apply.", type:"sata",
+ options:[{id:"a",text:"A client's bicarbonate level of 19 mEq/L"},{id:"b",text:"A client's chloride level of 92 mEq/L"},{id:"c",text:"A client's magnesium level of 1.7 mEq/L"},{id:"d",text:"A client's calcium level of 9.9 mg/dL"},{id:"e",text:"A client's WBC of 7,200/mm3"}],
+ correct:["a","b"], explanation:"Bicarbonate 19 (normal 23–30) is low. Chloride 92 (normal 98–106) is low. Magnesium 1.7, calcium 9.9, and WBC 7,200 are all within normal limits."},
+{prompt:"Which of the following morning lab results should be reported to the provider? Select all that apply.", type:"sata",
+ options:[{id:"a",text:"A client's total protein of 5.9 g/dL"},{id:"b",text:"A client's hematocrit of 55% (male client)"},{id:"c",text:"A client's ALT of 30 units/L"},{id:"d",text:"A client's total bilirubin of 1.8 mg/dL"},{id:"e",text:"A client's BUN of 16 mg/dL"}],
+ correct:["a","b","d"], explanation:"Total protein 5.9 (normal 6.4–8.3) is low. Male hematocrit 55% (normal 42–52) is elevated. Total bilirubin 1.8 (normal 0.3–1) is elevated. ALT 30 and BUN 16 are both within normal limits."},
+{prompt:"Which of the following morning lab results should be reported to the provider? Select all that apply.", type:"sata",
+ options:[{id:"a",text:"A client's glucose level of 58 mg/dL"},{id:"b",text:"A client's RBC count of 3.6 ×10⁶/µL (female client)"},{id:"c",text:"A client's ALP of 95 units/L"},{id:"d",text:"A client's magnesium level of 2.3 mEq/L"},{id:"e",text:"A client's creatinine of 0.9 mg/dL (35-year-old male client)"}],
+ correct:["a","b","d"], explanation:"Glucose 58 (normal 74–106) is low. Female RBC 3.6 (normal 4.2–5.4) is low. Magnesium 2.3 (normal 1.3–2.1) is elevated. ALP 95 and creatinine 0.9 (normal 0.6–1.2 for this age) are both within normal limits."}
+];
+var catLabels = {CBC:"CBC", CMP:"CMP", mixed:"CBC+CMP combined"};
+initPracticeQuiz(bank, catLabels);
+</script>
+</body>
+</html>

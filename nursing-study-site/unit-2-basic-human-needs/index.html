@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 &middot; Basic Human Needs &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="backlink" href="../"><i class="ti ti-arrow-left" aria-hidden="true"></i> All units</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px;">
+    <div class="unit-icon" style="width:44px;height:44px;font-size:20px;background:var(--u2-bg);color:var(--u2-text);"><i class="ti ti-bed" aria-hidden="true"></i></div>
+    <div>
+      <h2>Unit 2 &middot; Basic Human Needs</h2>
+      <p class="muted">Weeks 4&ndash;5</p>
+    </div>
+  </div>
+
+  <div class="tags">
+    <button class="tag active" onclick="filterType('all', event)">All</button>
+    <button class="tag" onclick="filterType('flashcards', event)">Flashcards</button>
+    <button class="tag" onclick="filterType('quiz', event)">Quizzes</button>
+  </div>
+
+  <div id="widgetlist">
+    <a class="widgetrow" href="mobility-flashcards.html" data-type="flashcards">
+      <div><p class="title">Mobility</p><p class="sub">Flashcards &middot; 56 cards</p></div>
+      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
+    </a>
+    <a class="widgetrow" href="mobility-quiz.html" data-type="quiz">
+      <div><p class="title">Mobility practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
+      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
+    </a>
+    <a class="widgetrow" href="hygiene-flashcards.html" data-type="flashcards">
+      <div><p class="title">Hygiene</p><p class="sub">Flashcards &middot; 44 cards</p></div>
+      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
+    </a>
+    <a class="widgetrow" href="hygiene-quiz.html" data-type="quiz">
+      <div><p class="title">Hygiene practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
+      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
+    </a>
+    <a class="widgetrow" href="client-education-flashcards.html" data-type="flashcards">
+      <div><p class="title">Client Education</p><p class="sub">Flashcards &middot; 43 cards</p></div>
+      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
+    </a>
+    <a class="widgetrow" href="client-education-quiz.html" data-type="quiz">
+      <div><p class="title">Client Education practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
+      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <div style="border-top:0.5px solid var(--border);margin:24px 0 16px;"></div>
+  <p class="eyebrow">Mix it up</p>
+  <a class="widgetrow" style="border-color:var(--border-accent);" href="mix-quiz.html">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <i class="ti ti-arrows-shuffle" style="font-size:20px;color:var(--text-accent);" aria-hidden="true"></i>
+      <div><p class="title">Mix all</p><p class="sub">Random from every quiz in the unit</p></div>
+    </div>
+  </a>
+
+</div>
+
+<script src="../assets/theme.js"></script>
+<script>
+function filterType(type, e){
+  document.querySelectorAll(".tag").forEach(function(t){ t.classList.remove("active"); });
+  e.target.classList.add("active");
+  document.querySelectorAll("#widgetlist .widgetrow").forEach(function(row){
+    row.style.display = (type === "all" || row.getAttribute("data-type") === type) ? "flex" : "none";
+  });
+}
+</script>
+</body>
+</html>

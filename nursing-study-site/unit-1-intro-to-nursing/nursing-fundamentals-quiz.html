@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nursing Fundamentals practice quiz &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 1</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Nursing Fundamentals practice quiz</h2>
+
+  <div id="pq-mode-screen">
+    <p class="muted" style="margin-bottom:14px;">Choose how you want to practice.</p>
+    <div>
+      <button class="pq-mode-btn" data-mode="single">
+        <div class="pq-mode-title">One session</div>
+        <div class="pq-mode-sub">Answer a set of questions once, then see your results.</div>
+      </button>
+      <button class="pq-mode-btn" data-mode="rounds">
+        <div class="pq-mode-title">Mastery rounds</div>
+        <div class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</div>
+      </button>
+    </div>
+  </div>
+
+  <div id="pq-count-screen" class="hidden">
+    <p class="muted" style="margin-bottom:14px;">How many questions?</p>
+    <div id="pq-count-single" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="5">5</button>
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="15">15</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+    </div>
+    <div id="pq-count-rounds" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+    </div>
+    <button class="btn small" id="pq-back"><i class="ti ti-arrow-left" aria-hidden="true"></i> back</button>
+  </div>
+
+  <div id="pq-quiz-screen" class="hidden">
+    <div class="pq-top-row"><span id="pq-progress"></span><span id="pq-score"></span></div>
+    <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-prompt" class="pq-prompt"></div>
+    <div id="pq-options"></div>
+    <p id="pq-error" class="pq-error">select at least one answer</p>
+    <div id="pq-feedback" class="pq-feedback"></div>
+    <div class="pq-btn-row">
+      <button class="btn" id="pq-submit">check answer</button>
+      <button class="btn hidden" id="pq-next">next question &#8594;</button>
+    </div>
+    <button class="btn small" id="pq-end-test" style="margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto;">end and see results</button>
+  </div>
+
+  <div id="pq-round-complete-screen" class="hidden pq-center">
+    <div id="rc-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+    <div id="rc-score" class="pq-stat-big"></div>
+    <div class="pq-stat-sub">this round</div>
+    <div id="rc-detail" class="pq-stat-detail"></div>
+    <button class="btn" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+  </div>
+
+  <div id="pq-end-screen" class="hidden">
+    <div class="pq-center" style="margin-bottom:16px;">
+      <div id="end-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+      <div id="end-rounds-subtitle" class="hidden muted" style="margin-bottom:16px;"></div>
+      <div id="end-stats-single" class="hidden">
+        <div id="end-score" class="pq-stat-big"></div>
+        <div id="end-percent" class="muted"></div>
+      </div>
+      <div id="end-stats-rounds" class="hidden" style="display:flex;justify-content:center;gap:40px;">
+        <div><div id="end-pool-pct" class="pq-stat-big"></div><div class="muted">of pool completed</div></div>
+        <div><div id="end-accuracy-pct" class="pq-stat-big"></div><div class="muted">overall accuracy</div></div>
+      </div>
+    </div>
+    <p id="category-heading" class="eyebrow"></p>
+    <div id="category-grid" class="pq-cat-grid"></div>
+    <p class="eyebrow">review</p>
+    <div id="review-list" style="margin-bottom:20px;"></div>
+    <div class="pq-btn-row">
+      <button class="btn small" id="end-restart">practice again</button>
+      <button class="btn small" id="end-missed">redo missed questions</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/practice-quiz.js"></script>
+<script>
+var catLabels = {
+  process: "Nursing process & priority",
+  vitals: "Vital signs & pain",
+  ethics: "Ethics & legal",
+  comm: "Communication",
+  ebp_doc: "EBP & documentation"
+};
+var bank = [
+{id:1, cat:"vitals", type:"mc", prompt:"A nurse is giving an opioid analgesic for a pain score of 6/10. The vital sign most directly affected by this medication will be:",
+ options:[{id:"a",text:"Temperature"},{id:"b",text:"Respiratory rate"},{id:"c",text:"Pulse oximetry"},{id:"d",text:"Blood pressure"}],
+ correct:["b"], explanation:"Opioids depress the central respiratory drive, making respiratory rate the vital sign most directly affected."},
+{id:2, cat:"vitals", type:"mc", prompt:"A client asks the nurse what the normal range is for blood pressure. The nurse knows the expected range for an adult is:",
+ options:[{id:"a",text:"Greater than 140/90 mmHg"},{id:"b",text:"Less than 120/80 mmHg"},{id:"c",text:"Between 110/60 and 150/100 mmHg"},{id:"d",text:"Less than 90/60 mmHg"}],
+ correct:["b"], explanation:"Less than 120/80 mmHg is the expected normal adult blood pressure."},
+{id:3, cat:"vitals", type:"mc", prompt:"The nurse delegates obtaining an oxygen saturation reading to the UAP. Which equipment will the UAP take into the room?",
+ options:[{id:"a",text:"Pulse oximeter"},{id:"b",text:"Sphygmomanometer"},{id:"c",text:"Thermometer"},{id:"d",text:"Stethoscope"}],
+ correct:["a"], explanation:"A pulse oximeter measures SpO2, the oxygen saturation reading."},
+{id:4, cat:"process", type:"mc", prompt:"Which step of the nursing process involves identifying expected outcomes and defining the interventions needed to reach them?",
+ options:[{id:"a",text:"Assessment"},{id:"b",text:"Planning"},{id:"c",text:"Implementation"},{id:"d",text:"Evaluation"}],
+ correct:["b"], explanation:"Planning generates potential solutions and goals, and identifies interventions to reach the desired outcome."},
+{id:5, cat:"process", type:"mc", prompt:"Which nursing diagnosis is written correctly as a 'risk for' diagnosis?",
+ options:[{id:"a",text:"Impaired physical mobility r/t pain AEB reluctance to walk"},{id:"b",text:"Risk for infection r/t surgical incision and compromised immune system"},{id:"c",text:"Acute pain r/t surgical incision AEB pain rating of 8/10"},{id:"d",text:"Risk for infection AEB elevated WBC count"}],
+ correct:["b"], explanation:"A 'risk for' diagnosis has no AEB, since the problem hasn't happened yet — only risk factors are listed."},
+{id:6, cat:"ethics", type:"mc", prompt:"According to ATI, accountability is best defined as:",
+ options:[{id:"a",text:"Delegating tasks appropriately to the care team"},{id:"b",text:"A legal obligation with a moral and ethical commitment to do the right thing every time"},{id:"c",text:"Completing all assigned tasks on time"},{id:"d",text:"Following the chain of command"}],
+ correct:["b"], explanation:"ATI defines accountability as a legal obligation with a moral and ethical commitment to do the right thing every time and in every situation."},
+{id:7, cat:"vitals", type:"mc", prompt:"A client's heart rate is 110 bpm with a regular rhythm. The nurse documents this as:",
+ options:[{id:"a",text:"Bradycardia"},{id:"b",text:"Tachycardia"},{id:"c",text:"Dysrhythmia"},{id:"d",text:"Normal sinus rhythm"}],
+ correct:["b"], explanation:"A heart rate over 100 bpm is tachycardia."},
+{id:8, cat:"vitals", type:"mc", prompt:"A client's respiratory rate is 8 breaths/min. This is best described as:",
+ options:[{id:"a",text:"Tachypnea"},{id:"b",text:"Apnea"},{id:"c",text:"Bradypnea"},{id:"d",text:"Dyspnea"}],
+ correct:["c"], explanation:"Bradypnea is a regular breathing pattern under 12 breaths per minute."},
+{id:9, cat:"vitals", type:"mc", prompt:"Which of the following is an example of primary prevention?",
+ options:[{id:"a",text:"Colonoscopy screening"},{id:"b",text:"Cardiac rehabilitation"},{id:"c",text:"Vaccination"},{id:"d",text:"Mammogram"}],
+ correct:["c"], explanation:"Primary prevention decreases the risk of developing a disease before it occurs, as with vaccines. Colonoscopy and mammogram are secondary prevention; cardiac rehab is tertiary."},
+{id:10, cat:"vitals", type:"mc", prompt:"A client's blood pressure drops from 128/78 to 100/70 with a compensatory increase in heart rate within two minutes of standing, and they report dizziness. The nurse suspects:",
+ options:[{id:"a",text:"Hypertensive crisis"},{id:"b",text:"Orthostatic hypotension"},{id:"c",text:"Shock"},{id:"d",text:"Bradycardia"}],
+ correct:["b"], explanation:"A systolic drop of 20+ mmHg with reflex tachycardia within 1-3 minutes of a position change is orthostatic hypotension."},
+{id:11, cat:"process", type:"mc", prompt:"Why does the nurse assess the ABCs before completing a neurological exam on an acutely ill client?",
+ options:[{id:"a",text:"Neuro exams take longer to complete"},{id:"b",text:"Airway, breathing, and circulation problems can affect neurological findings"},{id:"c",text:"It is hospital policy to always start with vital signs"},{id:"d",text:"The client is more cooperative early in the assessment"}],
+ correct:["b"], explanation:"ABCs are assessed first because compromise in any of them can directly impact neurological status."},
+{id:12, cat:"comm", type:"mc", prompt:"Which communication model includes the concepts of sender, encoder, channel, decoder, receiver, and noise?",
+ options:[{id:"a",text:"Shannon-Weaver model"},{id:"b",text:"TeamSTEPPS model"},{id:"c",text:"SBAR model"},{id:"d",text:"Health Belief Model"}],
+ correct:["a"], explanation:"The Shannon-Weaver model's six concepts are sender, encoder, channel, decoder, receiver, and noise."},
+{id:13, cat:"ethics", type:"mc", prompt:"A nurse reports a colleague's unsafe medication practices to hospital administration. This is an example of:",
+ options:[{id:"a",text:"Mandatory reporting"},{id:"b",text:"Whistleblowing"},{id:"c",text:"Good Samaritan action"},{id:"d",text:"Informed consent"}],
+ correct:["b"], explanation:"Whistleblowing is reporting unethical, illegal, or unsafe practices."},
+{id:14, cat:"comm", type:"mc", prompt:"During a client interview, the nurse says, 'So what I'm hearing is that the pain gets worse at night and eases with rest.' This is an example of:",
+ options:[{id:"a",text:"Giving advice"},{id:"b",text:"Restating/paraphrasing"},{id:"c",text:"False reassurance"},{id:"d",text:"A closed-ended question"}],
+ correct:["b"], explanation:"Restating/paraphrasing reflects back what the client said to confirm understanding — a therapeutic technique."},
+{id:15, cat:"ethics", type:"mc", prompt:"HIPAA primarily protects which of the following?",
+ options:[{id:"a",text:"A client's right to refuse treatment"},{id:"b",text:"A client's protected health information (PHI)"},{id:"c",text:"A nurse's scope of practice"},{id:"d",text:"A client's right to informed consent"}],
+ correct:["b"], explanation:"HIPAA (the Health Insurance Portability and Accountability Act) protects a client's protected health information."},
+{id:16, cat:"comm", type:"mc", prompt:"In the ISBARR communication tool, what does the second 'R' stand for?",
+ options:[{id:"a",text:"Response"},{id:"b",text:"Read-back"},{id:"c",text:"Referral"},{id:"d",text:"Reassessment"}],
+ correct:["b"], explanation:"ISBARR stands for Introduction, Situation, Background, Assessment, Recommendation, Read-back — confirming the receiver understood correctly."},
+{id:17, cat:"ebp_doc", type:"mc", prompt:"In a PICOT question, the 'T' stands for:",
+ options:[{id:"a",text:"Type of study"},{id:"b",text:"Treatment"},{id:"c",text:"Time"},{id:"d",text:"Team"}],
+ correct:["c"], explanation:"PICOT = Population, Intervention, Comparison, Outcome, Time."},
+{id:18, cat:"ebp_doc", type:"mc", prompt:"Which documentation method charts only significant findings or deviations from the norm?",
+ options:[{id:"a",text:"SOAP charting"},{id:"b",text:"Problem-oriented medical record"},{id:"c",text:"Charting by exception (CBE)"},{id:"d",text:"Focus charting"}],
+ correct:["c"], explanation:"Charting by exception (CBE) only documents findings that deviate from the expected norm."},
+{id:19, cat:"process", type:"mc", prompt:"Which of the following best demonstrates the 'least restrictive, least invasive' principle in priority setting?",
+ options:[{id:"a",text:"Restraining a confused client immediately"},{id:"b",text:"Trying reorientation and a sitter before considering restraints"},{id:"c",text:"Sedating an agitated client right away"},{id:"d",text:"Notifying security before attempting redirection"}],
+ correct:["b"], explanation:"The least restrictive/least invasive approach means trying gentler interventions before more restrictive ones like restraints."},
+{id:20, cat:"vitals", type:"mc", prompt:"A nursing student asks about the difference between nociceptive and neuropathic pain. Which statement is correct?",
+ options:[{id:"a",text:"Nociceptive pain is related to nerve damage; neuropathic pain is related to tissue damage"},{id:"b",text:"Nociceptive pain is related to tissue damage; neuropathic pain is related to nerve damage"},{id:"c",text:"Both types are related to psychological distress only"},{id:"d",text:"Neuropathic pain always resolves within 6 months"}],
+ correct:["b"], explanation:"Nociceptive pain relates to tissue damage; neuropathic pain relates to nerve damage."}
+];
+initPracticeQuiz(bank, catLabels);
+</script>
+</body>
+</html>
