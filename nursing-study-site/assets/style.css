@@ -129,10 +129,11 @@ h2{font-size:20px;}
 .pp-card-bottom .pp-line{flex:1;height:1px;background:var(--border);}
 
 .pp-footer{display:flex;justify-content:flex-end;margin-top:32px;}
-.pp-next{background:transparent;border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 22px;min-width:220px;text-align:left;}
+.pp-next{background:transparent;border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 22px;min-width:260px;text-align:left;}
 .pp-next-label{display:block;font-size:12px;letter-spacing:.06em;color:var(--label);text-transform:uppercase;margin-bottom:6px;}
+.pp-next-row{display:flex;align-items:baseline;gap:14px;}
 .pp-next-val{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;color:var(--heading);}
-.pp-next-status{display:block;font-size:11px;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-top:8px;}
+.pp-next-status{font-size:11px;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;white-space:nowrap;}
 
 /* Flashcard widget */
 .fc-topbar{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;}
