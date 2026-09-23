@@ -1,3 +1,6 @@
+var FC_FIXED_HEIGHT = 260;
+var FC_MIN_SCALE = 0.72;
+
 function measureFaceHeight(el){
   var prevPosition = el.style.position;
   var prevWidth = el.style.width;
@@ -7,6 +10,20 @@ function measureFaceHeight(el){
   el.style.position = prevPosition;
   el.style.width = prevWidth;
   return h;
+}
+
+function fitFaceToFixedHeight(face){
+  var textEls = face.querySelectorAll(".fc-term, .fc-def, .fc-ex, .fc-cat, .fc-hint");
+  textEls.forEach(function(el){ el.style.fontSize = ""; });
+
+  var natural = measureFaceHeight(face);
+  if (natural <= FC_FIXED_HEIGHT) return;
+
+  var scale = Math.max(FC_MIN_SCALE, (FC_FIXED_HEIGHT / natural) * 0.97);
+  textEls.forEach(function(el){
+    var base = parseFloat(getComputedStyle(el).fontSize);
+    el.style.fontSize = (base * scale) + "px";
+  });
 }
 
 function initFlashcards(CATS, CARDS){
@@ -104,11 +121,8 @@ function initFlashcards(CATS, CARDS){
       if (exEl) exEl.classList.toggle("long-text", isLong);
     }
 
-    var cardInner = document.getElementById("cardinner");
-    var frontFace = document.getElementById("cardfront");
-    var backFace = document.getElementById("cardback");
-    var neededHeight = Math.max(210, measureFaceHeight(frontFace), measureFaceHeight(backFace));
-    cardInner.style.minHeight = neededHeight + "px";
+    fitFaceToFixedHeight(document.getElementById("cardfront"));
+    fitFaceToFixedHeight(document.getElementById("cardback"));
 
     gradebtns.style.display = state.flipped ? "flex" : "none";
   }
