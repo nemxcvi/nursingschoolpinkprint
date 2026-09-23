@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nursing School Pinkprint</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=8">
+<link rel="stylesheet" href="assets/style.css?v=9">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
 </head>
 <body>
@@ -31,6 +31,11 @@
       <i class="ti ti-search" aria-hidden="true"></i>
       <input type="text" id="unitsearch" placeholder="Search flashcards & quizzes" oninput="renderHome()">
     </div>
+  </div>
+
+  <div class="pp-quote">
+    <p class="pp-quote-label">Note to future nurses</p>
+    <h1 class="pp-quote-h1" id="quoteText"></h1>
   </div>
 
   <p class="eyebrow" id="resultseyebrow" style="display:none;"></p>
@@ -84,6 +89,43 @@
 
 <script src="assets/theme.js"></script>
 <script>
+var QUOTES = [
+  "Every card you flip today is a patient you will care for tomorrow.",
+  "You do not have to be perfect. Be safe, be kind, keep learning.",
+  "Future nurse, current student. Both are hard. You are doing both.",
+  "Every exam is one step closer to Registered Nurse.",
+  "You are allowed to be a beginner. Even the best nurses had a first semester.",
+  "You do not have to master it the first time. You just have to come back to it.",
+  "You know more today than you did yesterday. Keep building.",
+  "You are turning effort into knowledge and knowledge into confidence.",
+  "Keep going, you are closer to your dream than when you started.",
+  "Every concept you understand is a little win worth celebrating.",
+  "Every correct answer started as something you once did not know.",
+  "Today: study tools. Someday: nursing tools.",
+  "Some days are about making progress. Some days are just about not giving up. Both count.",
+  "You are getting closer to the day you trade \"nursing student\" for \"Registered Nurse.\""
+];
+
+(function(){
+  var el = document.getElementById("quoteText");
+  if (!el) return;
+
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var idx = Math.floor(Math.random() * QUOTES.length);
+  el.textContent = QUOTES[idx];
+
+  if (reduced) return;
+
+  setInterval(function(){
+    el.classList.add("is-changing");
+    setTimeout(function(){
+      idx = (idx + 1) % QUOTES.length;
+      el.textContent = QUOTES[idx];
+      el.classList.remove("is-changing");
+    }, 600);
+  }, 8000);
+})();
+
 var WIDGETS = [
   {title:"General Abbreviations", type:"flashcards", unit:"Unit 1", href:"unit-1-intro-to-nursing/general-abbreviations.html"},
   {title:"Charting Abbreviations", type:"flashcards", unit:"Unit 1", href:"unit-1-intro-to-nursing/charting-abbreviations.html"},
