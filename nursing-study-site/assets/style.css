@@ -214,7 +214,7 @@ h2{font-size:20px;}
 .pq-option-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--radius);border:1.5px solid var(--border);margin-bottom:8px;cursor:pointer;}
 .pq-option-row:hover{background:var(--pill);}
 .pq-option-row input{flex-shrink:0;}
-.pq-option-row span{font-size:14px;}
+.pq-option-row span{font-family:'Source Serif 4',serif;font-size:14px;}
 .pq-error{font-size:13px;color:var(--danger-text);display:none;margin:4px 0 10px;}
 .pq-feedback{font-size:14px;line-height:1.5;margin:14px 0;padding:12px 14px;border-radius:var(--radius);background:var(--pill);display:none;}
 .pq-btn-row{display:flex;gap:8px;}
