@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comfort, Rest & Sleep practice quiz &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=18">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Comfort, Rest & Sleep practice quiz</h2>
+
+  <div id="pq-mode-screen">
+    <p class="muted" style="margin-bottom:14px;">Choose how you want to practice.</p>
+    <div>
+      <button class="pq-mode-btn" data-mode="single">
+        <div class="pq-mode-title">One session</div>
+        <div class="pq-mode-sub">Answer a set of questions once, then see your results.</div>
+      </button>
+      <button class="pq-mode-btn" data-mode="rounds">
+        <div class="pq-mode-title">Mastery rounds</div>
+        <div class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</div>
+      </button>
+    </div>
+  </div>
+
+  <div id="pq-count-screen" class="hidden">
+    <p class="muted" style="margin-bottom:14px;">How many questions?</p>
+    <div id="pq-count-single" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="5">5</button>
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="15">15</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="25">25</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="35">35</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <div id="pq-count-rounds" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <button class="btn small" id="pq-back"><i class="ti ti-arrow-left" aria-hidden="true"></i> back</button>
+  </div>
+
+  <div id="pq-quiz-screen" class="hidden">
+    <div class="pq-top-row"><span id="pq-progress"></span><span id="pq-score"></span></div>
+    <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-prompt" class="pq-prompt"></div>
+    <div id="pq-options"></div>
+    <p id="pq-error" class="pq-error">select at least one answer</p>
+    <div id="pq-feedback" class="pq-feedback"></div>
+    <div class="pq-btn-row">
+      <button class="btn" id="pq-submit">check answer</button>
+      <button class="btn hidden" id="pq-next">next question &#8594;</button>
+    </div>
+    <button class="btn small" id="pq-end-test" style="margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto;">end and see results</button>
+  </div>
+
+  <div id="pq-round-complete-screen" class="hidden pq-center">
+    <div id="rc-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+    <div id="rc-score" class="pq-stat-big"></div>
+    <div class="pq-stat-sub">this round</div>
+    <div id="rc-detail" class="pq-stat-detail"></div>
+    <button class="btn" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+  </div>
+
+  <div id="pq-end-screen" class="hidden">
+    <div class="pq-center" style="margin-bottom:16px;">
+      <div id="end-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+      <div id="end-rounds-subtitle" class="hidden muted" style="margin-bottom:16px;"></div>
+      <div id="end-stats-single" class="hidden">
+        <div id="end-score" class="pq-stat-big"></div>
+        <div id="end-percent" class="muted"></div>
+      </div>
+      <div id="end-stats-rounds" class="hidden" style="display:flex;justify-content:center;gap:40px;">
+        <div><div id="end-pool-pct" class="pq-stat-big"></div><div class="muted">of pool completed</div></div>
+        <div><div id="end-accuracy-pct" class="pq-stat-big"></div><div class="muted">overall accuracy</div></div>
+      </div>
+    </div>
+    <p id="category-heading" class="eyebrow"></p>
+    <div id="category-grid" class="pq-cat-grid"></div>
+    <p class="eyebrow">review</p>
+    <div id="review-list" style="margin-bottom:20px;"></div>
+    <div class="pq-btn-row">
+      <button class="btn small" id="end-restart">practice again</button>
+      <button class="btn small" id="end-missed">redo missed questions</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/practice-quiz.js"></script>
+<script>
+var catLabels = {
+  sleepphysiology: "Sleep Physiology",
+  stagesbrainwaves: "Stages & Brain Waves",
+  lifespanpatterns: "Lifespan Patterns",
+  sleepdeprivationdisruptors: "Sleep Deprivation & Disruptors",
+  sleepdisorders: "Sleep Disorders",
+  sleepmedications: "Sleep Medications",
+  sleeppromotioncomfort: "Sleep Promotion & Comfort"
+};
+var bank = [
+{id:1, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is teaching a client who asks about using melatonin for sleep. Which statement by the client indicates an understanding of the teaching?",
+ options:[{id:"a",text:"\"Melatonin is non-habit forming and has few adverse effects.\""},{id:"b",text:"\"Melatonin is the most commonly prescribed sleep medication.\""},{id:"c",text:"\"Melatonin works better than any other sleep medication.\""},{id:"d",text:"\"Melatonin should only be used by older adults.\""}],
+ correct:["a"], explanation:"Melatonin is cost-effective, non-habit forming, and has few adverse effects, and it may be first-line for all ages. However, its effectiveness may be limited, and nonbenzodiazepine hypnotics are the most commonly prescribed sleep meds."},
+{id:2, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is caring for an older adult client who reports difficulty sleeping. The provider wants to start with the option that has the fewest adverse effects and no risk of dependence. Which medication should the nurse anticipate?",
+ options:[{id:"a",text:"Lorazepam"},{id:"b",text:"Zolpidem"},{id:"c",text:"Melatonin"},{id:"d",text:"Diphenhydramine"}],
+ correct:["c"], explanation:"Melatonin may be the first-line option for all ages because it is non-habit forming with few adverse effects. Benzodiazepines carry dependence risk and require caution in older adults, zolpidem has abuse potential, and diphenhydramine causes anticholinergic effects."},
+{id:3, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is reviewing sleep medications with a group of nursing students. Which class of medications should the nurse identify as the most commonly prescribed for sleep?",
+ options:[{id:"a",text:"Benzodiazepines"},{id:"b",text:"Nonbenzodiazepine hypnotics"},{id:"c",text:"Antihistamines"},{id:"d",text:"Antidepressants"}],
+ correct:["b"], explanation:"Nonbenzodiazepine hypnotics (the z-drugs, such as zolpidem) are the most commonly prescribed sleep medications."},
+{id:4, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is teaching a client who has a new prescription for zolpidem. The nurse should instruct the client that which of the following is an adverse effect of this medication?",
+ options:[{id:"a",text:"Urinary retention"},{id:"b",text:"Memory loss"},{id:"c",text:"Hypertension"},{id:"d",text:"Bradycardia"}],
+ correct:["b"], explanation:"Adverse effects of nonbenzodiazepine hypnotics include GI discomfort, hallucinations, and memory loss. Urinary retention is associated with OTC antihistamine sleep aids."},
+{id:5, cat:"comfortrestsleep", type:"sata", prompt:"A nurse is teaching a client who plans to use diphenhydramine for sleep. Which adverse effects should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Dry mouth"},{id:"b",text:"Difficulty urinating"},{id:"c",text:"Constipation"},{id:"d",text:"Visual disturbances"},{id:"e",text:"Diarrhea"}],
+ correct:["a","b","c","d"], explanation:"OTC sleep aids such as diphenhydramine can cause daytime drowsiness, dry mouth, visual disturbances, difficulty urinating, and constipation. The nurse should encourage the client to discuss options with their provider first."},
+{id:6, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is reviewing a prescription for lorazepam for an 82-year-old client who has insomnia. Which finding is most important for the nurse to report to the provider?",
+ options:[{id:"a",text:"The client drinks one cup of decaf coffee each morning."},{id:"b",text:"The client has decreased kidney and liver function."},{id:"c",text:"The client naps for 20 minutes each afternoon."},{id:"d",text:"The client reports mild anxiety about sleeping."}],
+ correct:["b"], explanation:"Benzodiazepines should be used cautiously in older adults with decreased liver and kidney function because the medication may not be cleared effectively."},
+{id:7, cat:"comfortrestsleep", type:"mc", prompt:"A client who has been taking clonazepam for sleep asks why the provider wants to stop it after a few weeks. Which response by the nurse is appropriate?",
+ options:[{id:"a",text:"\"It stops working after a few weeks.\""},{id:"b",text:"\"Long-term use can lead to physical dependence.\""},{id:"c",text:"\"It causes high blood pressure over time.\""},{id:"d",text:"\"It is only approved for use in children.\""}],
+ correct:["b"], explanation:"Clients can develop physical dependence on benzodiazepines, so they are not recommended for long-term use."},
+{id:8, cat:"comfortrestsleep", type:"mc", prompt:"A hospitalized client asks the nurse for a snack before bed. Which snack should the nurse offer to promote sleep?",
+ options:[{id:"a",text:"A piece of candy"},{id:"b",text:"Toast with peanut butter"},{id:"c",text:"Slices of lunchmeat"},{id:"d",text:"A cup of cheese cubes"}],
+ correct:["b"], explanation:"A bedtime snack that promotes sleep pairs a carbohydrate with a protein. Protein alone (lunchmeat, cheese) is not recommended, and candy is a simple sugar with no protein."},
+{id:9, cat:"comfortrestsleep", type:"mc", prompt:"A nurse wakes a client at 0200 to obtain vital signs. The client is confused and groggy for the next 45 minutes. The nurse should recognize that the client was most likely awakened from which stage of sleep?",
+ options:[{id:"a",text:"Wake stage"},{id:"b",text:"Stage 1"},{id:"c",text:"Stage 2"},{id:"d",text:"Stage 3"}],
+ correct:["d"], explanation:"Stage 3 is the deepest sleep. A person awakened during stage 3 may have mental cloudiness that lasts 30 to 60 minutes."},
+{id:10, cat:"comfortrestsleep", type:"mc", prompt:"A nurse observes a sleeping client whose eyes are moving rapidly under the eyelids, whose breathing is irregular, and whose heart rate is slightly elevated. The client's limbs are completely relaxed. Which stage of sleep is the client in?",
+ options:[{id:"a",text:"Stage 1"},{id:"b",text:"Stage 2"},{id:"c",text:"Stage 3"},{id:"d",text:"REM"}],
+ correct:["d"], explanation:"During REM (stage 4), breathing is irregular, heart rate may be elevated, and skeletal muscles are atonic. It is the dreaming stage."},
+{id:11, cat:"comfortrestsleep", type:"mc", prompt:"A nursing student asks why the body loses skeletal muscle tone during REM sleep. Which response by the nurse is appropriate?",
+ options:[{id:"a",text:"\"It lowers the heart rate to its slowest point.\""},{id:"b",text:"\"It prevents the person from physically acting out their dreams.\""},{id:"c",text:"\"It allows muscles to repair and regenerate.\""},{id:"d",text:"\"It helps the person fall into deeper sleep.\""}],
+ correct:["b"], explanation:"Skeletal muscles are atonic during REM, which protects the person from acting out their dreams. Muscle and tissue repair occurs in stage 3."},
+{id:12, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is caring for a client recovering from major surgery. The nurse explains the importance of deep sleep. Which process should the nurse identify as occurring during stage 3 sleep?",
+ options:[{id:"a",text:"Dreaming"},{id:"b",text:"Repair and regeneration of muscles, tissues, and bones"},{id:"c",text:"Increased heart rate and irregular breathing"},{id:"d",text:"Alpha wave activity"}],
+ correct:["b"], explanation:"During stage 3, the immune system strengthens and muscles, tissues, and bones repair and regenerate. Pulse and respirations are at their lowest. Dreaming and irregular breathing occur during REM."},
+{id:13, cat:"comfortrestsleep", type:"sata", prompt:"A nurse is teaching a group of older adults about age-related changes in sleep. Which changes should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Decreased stage 3 sleep"},{id:"b",text:"Waking more frequently during the night"},{id:"c",text:"Taking longer to fall asleep"},{id:"d",text:"Increased stage 2 sleep"},{id:"e",text:"More REM cycles than younger adults"}],
+ correct:["a","b","c","d"], explanation:"Older adults have less stage 3 sleep and more stage 2 sleep, wake up more frequently, and take longer to fall asleep. They have fewer REM cycles, not more."},
+{id:14, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is teaching a class about the physiology of sleep. The nurse should include that which of the following occurs as a result of sleep?",
+ options:[{id:"a",text:"Decreased ability to concentrate"},{id:"b",text:"Weakened immune system"},{id:"c",text:"Transfer of memory from short-term to long-term"},{id:"d",text:"Increased cortisol release"}],
+ correct:["c"], explanation:"During sleep, the thalamus and cerebral cortex process information and transfer it from short-term to long-term memory. Sleep also strengthens the immune system and lowers cortisol release."},
+{id:15, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is explaining the circadian rhythm to a client. Which statement by the nurse is accurate?",
+ options:[{id:"a",text:"\"It only works when there are environmental cues like light.\""},{id:"b",text:"\"It recurs about every 24 hours and syncs with cues such as light and temperature.\""},{id:"c",text:"\"It is controlled entirely by the amount of caffeine you drink.\""},{id:"d",text:"\"It resets every 8 hours.\""}],
+ correct:["b"], explanation:"The circadian rhythm controls the sleep\u2013wake cycle about every 24 hours and synchronizes with environmental cues like light and temperature, although the body can maintain it without prompts."},
+{id:16, cat:"comfortrestsleep", type:"mc", prompt:"A client tells the nurse, \"I stayed up all night studying, and the next night I slept deeper than usual.\" The nurse should explain that this is due to which of the following?",
+ options:[{id:"a",text:"Circadian rhythm"},{id:"b",text:"Sleep\u2013wake homeostasis"},{id:"c",text:"Sensory overload"},{id:"d",text:"Selective sleep deprivation"}],
+ correct:["b"], explanation:"Sleep\u2013wake homeostasis helps the body remember to sleep after a given time, and sleep deepens according to the amount of sleep deprivation the person has experienced."},
+{id:17, cat:"comfortrestsleep", type:"sata", prompt:"A nurse is teaching a client about the effects of sleep deprivation. Which effects should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Impaired judgment and decreased response time"},{id:"b",text:"Increased risk for depression"},{id:"c",text:"Worsening blood glucose control in clients who have type 2 diabetes"},{id:"d",text:"Reduced risk of migraines"},{id:"e",text:"Decreased likelihood of obesity"}],
+ correct:["a","b","c"], explanation:"Sleep deprivation impairs judgment and response time, increases the risk of depression, and contributes to poor glucose control and obesity. It can trigger migraines rather than reduce them."},
+{id:18, cat:"comfortrestsleep", type:"sata", prompt:"A nurse is caring for a client in the intensive care unit. Which actions should the nurse take to reduce the risk of sensory overload? Select all that apply.",
+ options:[{id:"a",text:"Dim the lights at night."},{id:"b",text:"Offer earplugs and an eye mask."},{id:"c",text:"Cluster care to minimize interruptions."},{id:"d",text:"Obtain vital signs every hour throughout the night regardless of the client's condition."},{id:"e",text:"Leave the television on overnight for background noise."}],
+ correct:["a","b","c"], explanation:"Lowering light and noise, offering earplugs and eye masks, and coordinating care to minimize interruptions reduce sensory overload. Unnecessary interruptions and added stimulation increase it."},
+{id:19, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is teaching a client about sleep hygiene. Which statement by the client indicates an understanding of the teaching?",
+ options:[{id:"a",text:"\"I'll sleep in on the weekends to catch up on rest.\""},{id:"b",text:"\"I'll stop drinking coffee at least 6 hours before bedtime.\""},{id:"c",text:"\"I'll watch TV in bed until I fall asleep.\""},{id:"d",text:"\"I'll work out right before bed to tire myself out.\""}],
+ correct:["b"], explanation:"Stimulants like caffeine should be avoided 4 to 6 hours before bedtime. A consistent sleep schedule, keeping electronics out of the bedroom, and avoiding exercise close to bedtime also promote sleep."},
+{id:20, cat:"comfortrestsleep", type:"mc", prompt:"A client reports lying awake in bed for over an hour most nights. Which instruction should the nurse provide?",
+ options:[{id:"a",text:"\"Stay in bed with your eyes closed until you fall asleep.\""},{id:"b",text:"\"Get up, go to another room, and do a quiet activity until you feel tired.\""},{id:"c",text:"\"Take a longer nap during the day to make up for lost sleep.\""},{id:"d",text:"\"Watch TV in bed to help you relax.\""}],
+ correct:["b"], explanation:"If a client can't fall asleep, they should get up, go to another room, and do a quiet activity like reading or listening to music, then return when tired. Staying in bed while restless contributes to sleep deprivation."},
+{id:21, cat:"comfortrestsleep", type:"sata", prompt:"A nurse is reviewing a client's sleep diary. Which behaviors should the nurse identify as contributing to sleep deprivation? Select all that apply.",
+ options:[{id:"a",text:"Stays in bed when unable to sleep"},{id:"b",text:"Sleeps 3 hours later on weekends"},{id:"c",text:"Keeps a television in the bedroom"},{id:"d",text:"Takes a warm shower before bed"},{id:"e",text:"Keeps the bedroom dark and cool"}],
+ correct:["a","b","c"], explanation:"Staying in bed while restless, changing sleep patterns on weekends, and keeping electronics in the bedroom contribute to sleep deprivation. A bedtime routine and a dark, cool room promote sleep."},
+{id:22, cat:"comfortrestsleep", type:"mc", prompt:"A nurse who works rotating night shifts asks about health risks. Which response by the occupational health nurse is accurate?",
+ options:[{id:"a",text:"\"Night-shift work has no long-term health effects.\""},{id:"b",text:"\"Night-shift workers have a higher risk of cardiovascular disease, obesity, and diabetes.\""},{id:"c",text:"\"Night-shift work improves circadian rhythm over time.\""},{id:"d",text:"\"Night-shift workers are less likely to experience daytime sleepiness.\""}],
+ correct:["b"], explanation:"Shift workers have a disrupted circadian rhythm, excessive daytime sleepiness, and a higher incidence of cardiovascular disease, obesity, and diabetes."},
+{id:23, cat:"comfortrestsleep", type:"mc", prompt:"An adolescent client tells the nurse they use their phone in bed until they fall asleep. Which effect should the nurse include when teaching the client?",
+ options:[{id:"a",text:"Longer total sleep time"},{id:"b",text:"Improved sleep quality"},{id:"c",text:"Increased daytime sleepiness"},{id:"d",text:"Decreased risk of depression"}],
+ correct:["c"], explanation:"Using a cell phone after going to bed is associated with shorter sleep duration, poor sleep quality, and daytime sleepiness, and it is a risk factor for depression."},
+{id:24, cat:"comfortrestsleep", type:"mc", prompt:"A client reports difficulty falling asleep and waking at 0400 every morning unable to return to sleep, even though they go to bed with plenty of time to rest. Which sleep disorder should the nurse suspect?",
+ options:[{id:"a",text:"Narcolepsy"},{id:"b",text:"Insomnia"},{id:"c",text:"Hypersomnia"},{id:"d",text:"Central sleep apnea"}],
+ correct:["b"], explanation:"Insomnia is an ongoing inability to sleep despite the opportunity, including trouble falling asleep, staying asleep, or waking early."},
+{id:25, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is caring for a client who is suspected of having obstructive sleep apnea. Which diagnostic test should the nurse anticipate?",
+ options:[{id:"a",text:"Polysomnography"},{id:"b",text:"Electrocardiogram"},{id:"c",text:"Electroencephalogram alone"},{id:"d",text:"Pulmonary function test"}],
+ correct:["a"], explanation:"OSA is diagnosed with polysomnography, usually in a sleep lab. It records heart rate, blood pressure, breathing, oxygen saturation, brain waves, body movements, and snoring."},
+{id:26, cat:"comfortrestsleep", type:"mc", prompt:"A 52-year-old client reports working overtime at a high-stress job, recently gaining 10 lb, and starting to smoke again. The client's partner says the snoring is \"out of control,\" and the client feels exhausted all day. Which sleep disorder should the nurse suspect?",
+ options:[{id:"a",text:"Narcolepsy"},{id:"b",text:"Restless legs syndrome"},{id:"c",text:"Obstructive sleep apnea"},{id:"d",text:"Night terrors"}],
+ correct:["c"], explanation:"Snoring, obesity, smoking, and daytime exhaustion are consistent with OSA, which involves recurrent upper airway collapse during sleep."},
+{id:27, cat:"comfortrestsleep", type:"sata", prompt:"A nurse is teaching a client who has obstructive sleep apnea. Which instructions should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Wear the CPAP device while sleeping."},{id:"b",text:"Follow a healthy weight-loss program."},{id:"c",text:"Avoid alcohol."},{id:"d",text:"Stop smoking."},{id:"e",text:"Sleep on your back."}],
+ correct:["a","b","c","d"], explanation:"CPAP is the most widely recommended treatment for OSA, along with weight loss and avoiding smoking and alcohol. Sleeping on the back can worsen OSA."},
+{id:28, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is reviewing the health histories of several clients. Which client is at highest risk for central sleep apnea?",
+ options:[{id:"a",text:"A client who has enlarged tonsils"},{id:"b",text:"A client who has heart failure"},{id:"c",text:"A client who has obesity"},{id:"d",text:"A client who has iron deficiency"}],
+ correct:["b"], explanation:"Central sleep apnea is a reduction in the brain's signals to the respiratory muscles. Common causes are heart failure and opioid overdose. Enlarged tonsils and obesity are associated with obstructive sleep apnea."},
+{id:29, cat:"comfortrestsleep", type:"mc", prompt:"In which of the following sleep disorders does the client experience sudden, uncontrollable episodes of sleep?",
+ options:[{id:"a",text:"Insomnia"},{id:"b",text:"Obstructive sleep apnea"},{id:"c",text:"Narcolepsy"},{id:"d",text:"Restless legs syndrome"}],
+ correct:["c"], explanation:"Narcolepsy is characterized by sudden sleepiness and sudden periods of sleep. Clients have difficulty staying awake."},
+{id:30, cat:"comfortrestsleep", type:"mc", prompt:"A client who has narcolepsy suddenly loses muscle tone and slumps over while laughing at a joke. The nurse should document this as which of the following?",
+ options:[{id:"a",text:"Cataplexy"},{id:"b",text:"Seizure"},{id:"c",text:"Sleep paralysis"},{id:"d",text:"Hypopnea"}],
+ correct:["a"], explanation:"Cataplexy is a brief loss of voluntary muscle tone triggered by an emotional stimulus, such as laughter. It occurs in narcolepsy type 1."},
+{id:31, cat:"comfortrestsleep", type:"mc", prompt:"A client reports sleeping 10 hours every night but still feeling exhausted throughout the day. The client's circadian rhythm is normal. Which sleep disorder should the nurse suspect?",
+ options:[{id:"a",text:"Insomnia"},{id:"b",text:"Hypersomnia"},{id:"c",text:"Central sleep apnea"},{id:"d",text:"Night terrors"}],
+ correct:["b"], explanation:"Hypersomnia is excessive daytime fatigue that does not improve with more sleep and is not caused by poor nighttime sleep or a disturbed circadian rhythm."},
+{id:32, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is teaching a client who has restless legs syndrome. Which instruction should the nurse include?",
+ options:[{id:"a",text:"\"Drink a cup of coffee in the evening to reduce symptoms.\""},{id:"b",text:"\"Avoid caffeine, nicotine, and alcohol.\""},{id:"c",text:"\"Your symptoms will be worse in the morning.\""},{id:"d",text:"\"Lying still in bed will relieve the sensations.\""}],
+ correct:["b"], explanation:"Avoiding caffeine, nicotine, and alcohol may help control RLS. Symptoms worsen in the evening and with inactivity, such as lying down to sleep."},
+{id:33, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is assessing a client who reports trouble sleeping. Which finding is consistent with restless legs syndrome?",
+ options:[{id:"a",text:"Loud snoring with pauses in breathing"},{id:"b",text:"An uncomfortable urge to move the legs that worsens when lying down at night"},{id:"c",text:"Sudden loss of muscle tone when laughing"},{id:"d",text:"Waking in panic with no memory of the event"}],
+ correct:["b"], explanation:"RLS is an uncontrollable urge to move the legs with an uncomfortable sensation, worsening in the evening and with inactivity. It can be associated with iron or vitamin deficiencies."},
+{id:34, cat:"comfortrestsleep", type:"mc", prompt:"A parent tells the nurse their 5-year-old child screams and seems terrified shortly after falling asleep but doesn't remember it the next morning. Which information should the nurse include when teaching the parent about night terrors?",
+ options:[{id:"a",text:"\"Night terrors occur during NREM sleep, usually in the first third of the night.\""},{id:"b",text:"\"Night terrors occur during REM sleep, usually in the second half of the night.\""},{id:"c",text:"\"Your child will usually remember the dream in detail.\""},{id:"d",text:"\"Night terrors are most common in older adults.\""}],
+ correct:["a"], explanation:"Night terrors are a parasomnia that occurs during NREM sleep in the first third of the night; the person wakes in panic with no memory of it, and they are most common in young children. REM sleep and remembering the dream describe nightmares."},
+{id:35, cat:"comfortrestsleep", type:"mc", prompt:"A child wakes early in the morning crying and describes a scary dream about being chased. The nurse should recognize this as which of the following?",
+ options:[{id:"a",text:"A night terror occurring during NREM sleep"},{id:"b",text:"A nightmare occurring during REM sleep"},{id:"c",text:"Cataplexy"},{id:"d",text:"Sensory overload"}],
+ correct:["b"], explanation:"Nightmares occur during REM sleep, most commonly in the second half of the night, and the person remembers the dream. Night terrors occur during NREM sleep in the first third of the night with no recall."},
+{id:36, cat:"comfortrestsleep", type:"sata", prompt:"A nurse is planning nonpharmacological interventions to promote sleep for a hospitalized client. Which interventions should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Guided imagery"},{id:"b",text:"Music therapy"},{id:"c",text:"Massage"},{id:"d",text:"Mindfulness and restful breathing"},{id:"e",text:"A caffeinated beverage at bedtime"}],
+ correct:["a","b","c","d"], explanation:"Guided imagery, music therapy, massage, mindfulness, meditation, and restful breathing are nonpharmacological interventions that promote sleep. Caffeine is a stimulant that disrupts sleep."},
+{id:37, cat:"comfortrestsleep", type:"mc", prompt:"A nurse asks a client who reports poor sleep to keep a sleep diary for 2 weeks. The client asks why. Which response by the nurse is appropriate?",
+ options:[{id:"a",text:"\"It will help us identify your sleep problems and create a plan that fits your lifestyle.\""},{id:"b",text:"\"It's required before you can get a prescription for sleep medication.\""},{id:"c",text:"\"It will show whether you're exaggerating your sleep problems.\""},{id:"d",text:"\"It replaces the need for a sleep study.\""}],
+ correct:["a"], explanation:"A sleep diary helps the nurse assess the client's sleep habits, identify problems, and collaboratively develop a plan of care tailored to the client's lifestyle, which increases the likelihood the client will follow it."},
+{id:38, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is caring for a hospitalized client who reports being woken up several times each night. Which action should the nurse take to promote sleep?",
+ options:[{id:"a",text:"Cluster nursing care to avoid interrupting the client's sleep."},{id:"b",text:"Obtain vital signs every 2 hours overnight."},{id:"c",text:"Keep the door open and hallway lights on for safety."},{id:"d",text:"Schedule the client's bath for 0200."}],
+ correct:["a"], explanation:"Clustering and scheduling care avoids unnecessary interruptions of sleep cycles. The nurse should also control lights, noise, and the timing of vital signs and procedures."},
+{id:39, cat:"comfortrestsleep", type:"mc", prompt:"A nurse is caring for a client who is anxious about an upcoming procedure. Which nursing action best promotes the client's comfort?",
+ options:[{id:"a",text:"Answer the client's questions honestly and allow them to make informed choices about their care."},{id:"b",text:"Tell the client not to worry because everything will be fine."},{id:"c",text:"Limit the information given to avoid increasing the client's anxiety."},{id:"d",text:"Make decisions for the client to reduce their stress."}],
+ correct:["a"], explanation:"Informing clients decreases fear of the unknown. Answering questions honestly and permitting informed choices make clients feel valued, respected, and safe. False reassurance and withholding information are not therapeutic."},
+{id:40, cat:"comfortrestsleep", type:"mc", prompt:"A client in a busy hospital unit tells the nurse they can't fall asleep during the day. The nurse suggests quiet rest instead. Which benefit of rest should the nurse explain?",
+ options:[{id:"a",text:"Rest reduces stress and improves mood and mental clarity."},{id:"b",text:"Rest provides the same tissue repair as stage 3 sleep."},{id:"c",text:"Rest transfers memories from short-term to long-term."},{id:"d",text:"Rest has no benefit unless the client falls asleep."}],
+ correct:["a"], explanation:"Resting lets muscles and organs relax even while awake, reducing stress and improving mood, mental alertness, and clarity. Tissue repair and memory transfer occur during sleep."}
+];
+initPracticeQuiz(bank, catLabels);
+</script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stress and Coping practice quiz &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=18">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Stress and Coping practice quiz</h2>
+
+  <div id="pq-mode-screen">
+    <p class="muted" style="margin-bottom:14px;">Choose how you want to practice.</p>
+    <div>
+      <button class="pq-mode-btn" data-mode="single">
+        <div class="pq-mode-title">One session</div>
+        <div class="pq-mode-sub">Answer a set of questions once, then see your results.</div>
+      </button>
+      <button class="pq-mode-btn" data-mode="rounds">
+        <div class="pq-mode-title">Mastery rounds</div>
+        <div class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</div>
+      </button>
+    </div>
+  </div>
+
+  <div id="pq-count-screen" class="hidden">
+    <p class="muted" style="margin-bottom:14px;">How many questions?</p>
+    <div id="pq-count-single" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="5">5</button>
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="15">15</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="25">25</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="35">35</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <div id="pq-count-rounds" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <button class="btn small" id="pq-back"><i class="ti ti-arrow-left" aria-hidden="true"></i> back</button>
+  </div>
+
+  <div id="pq-quiz-screen" class="hidden">
+    <div class="pq-top-row"><span id="pq-progress"></span><span id="pq-score"></span></div>
+    <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-prompt" class="pq-prompt"></div>
+    <div id="pq-options"></div>
+    <p id="pq-error" class="pq-error">select at least one answer</p>
+    <div id="pq-feedback" class="pq-feedback"></div>
+    <div class="pq-btn-row">
+      <button class="btn" id="pq-submit">check answer</button>
+      <button class="btn hidden" id="pq-next">next question &#8594;</button>
+    </div>
+    <button class="btn small" id="pq-end-test" style="margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto;">end and see results</button>
+  </div>
+
+  <div id="pq-round-complete-screen" class="hidden pq-center">
+    <div id="rc-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+    <div id="rc-score" class="pq-stat-big"></div>
+    <div class="pq-stat-sub">this round</div>
+    <div id="rc-detail" class="pq-stat-detail"></div>
+    <button class="btn" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+  </div>
+
+  <div id="pq-end-screen" class="hidden">
+    <div class="pq-center" style="margin-bottom:16px;">
+      <div id="end-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+      <div id="end-rounds-subtitle" class="hidden muted" style="margin-bottom:16px;"></div>
+      <div id="end-stats-single" class="hidden">
+        <div id="end-score" class="pq-stat-big"></div>
+        <div id="end-percent" class="muted"></div>
+      </div>
+      <div id="end-stats-rounds" class="hidden" style="display:flex;justify-content:center;gap:40px;">
+        <div><div id="end-pool-pct" class="pq-stat-big"></div><div class="muted">of pool completed</div></div>
+        <div><div id="end-accuracy-pct" class="pq-stat-big"></div><div class="muted">overall accuracy</div></div>
+      </div>
+    </div>
+    <p id="category-heading" class="eyebrow"></p>
+    <div id="category-grid" class="pq-cat-grid"></div>
+    <p class="eyebrow">review</p>
+    <div id="review-list" style="margin-bottom:20px;"></div>
+    <div class="pq-btn-row">
+      <button class="btn small" id="end-restart">practice again</button>
+      <button class="btn small" id="end-missed">redo missed questions</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/practice-quiz.js"></script>
+<script>
+var catLabels = {
+  stressbasics: "Stress Basics",
+  stressphysiology: "Stress Physiology",
+  generaladaptationsyndromegas: "General Adaptation Syndrome (GAS)",
+  typesofstressdisorders: "Types of Stress & Disorders",
+  crisis: "Crisis",
+  copingdefensemechanisms: "Coping & Defense Mechanisms",
+  nursingcarestressmanagement: "Nursing Care & Stress Management",
+  stressinnursing: "Stress in Nursing"
+};
+var bank = [
+{id:1, cat:"stresscoping", type:"mc", prompt:"A nurse is teaching a class about physical manifestations associated with the fight-or-flight response. Which manifestation should the nurse include?",
+ options:[{id:"a",text:"Dilated pupils"},{id:"b",text:"Decreased blood pressure"},{id:"c",text:"Bronchial airway constriction"},{id:"d",text:"Hypoglycemia"}],
+ correct:["a"], explanation:"Fight-or-flight causes pupil dilation, increased HR, BP, cardiac output, and blood glucose, and bronchial dilation."},
+{id:2, cat:"stresscoping", type:"mc", prompt:"A nurse is explaining the HPA axis to a client with prolonged stress. Which sequence should the nurse describe?",
+ options:[{id:"a",text:"Adrenal glands release ACTH \u2192 pituitary releases CRH \u2192 hypothalamus releases cortisol"},{id:"b",text:"Hypothalamus releases CRH \u2192 pituitary releases ACTH \u2192 adrenal glands release cortisol"},{id:"c",text:"Pituitary releases cortisol \u2192 hypothalamus releases ACTH \u2192 adrenal glands release CRH"},{id:"d",text:"Hypothalamus releases cortisol \u2192 adrenal glands release CRH \u2192 pituitary releases ACTH"}],
+ correct:["b"], explanation:"The hypothalamus releases CRH, which stimulates the pituitary to release ACTH, which stimulates the adrenal glands to release cortisol."},
+{id:3, cat:"stresscoping", type:"mc", prompt:"A client is brought to the emergency department minutes after a motor vehicle crash. The client's HR is 118/min, BP is elevated, pupils are dilated, and blood glucose is elevated. Which stage of the general adaptation syndrome is the client experiencing?",
+ options:[{id:"a",text:"Alarm"},{id:"b",text:"Resistance"},{id:"c",text:"Exhaustion"},{id:"d",text:"Reappraisal"}],
+ correct:["a"], explanation:"In the alarm stage, the adrenal medulla releases catecholamines such as epinephrine, triggering fight-or-flight with increased HR, BP, blood glucose, and alertness and dilated pupils."},
+{id:4, cat:"stresscoping", type:"mc", prompt:"A client who has been hospitalized for 2 weeks is irritable, fatigued, and having difficulty concentrating, but vital signs are near their baseline. Which stage of the general adaptation syndrome is the client most likely experiencing?",
+ options:[{id:"a",text:"Alarm"},{id:"b",text:"Resistance"},{id:"c",text:"Exhaustion"},{id:"d",text:"Countershock"}],
+ correct:["b"], explanation:"In the resistance stage, the body resists the stressor and the parasympathetic system moderates fight-or-flight. Fatigue, irritability, and decreased concentration may occur."},
+{id:5, cat:"stresscoping", type:"mc", prompt:"A client who has experienced years of ongoing caregiver stress now has chronic hypertension, depression, and frequent infections. The nurse should recognize these findings as consistent with which of the following?",
+ options:[{id:"a",text:"The alarm stage"},{id:"b",text:"The resistance stage"},{id:"c",text:"The exhaustion stage and allostatic load"},{id:"d",text:"Allostasis"}],
+ correct:["c"], explanation:"In the exhaustion stage, the body's ability to adapt is depleted and prolonged stress leads to illness and allostatic load, the wear and tear that causes conditions like chronic hypertension and depression. Allostasis is the body adjusting to minor stressors."},
+{id:6, cat:"stresscoping", type:"sata", prompt:"A nurse is teaching a group of students about the general adaptation syndrome. Which statements should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"The three stages are alarm, resistance, and exhaustion."},{id:"b",text:"It can be triggered by physical or psychological stressors."},{id:"c",text:"It occurs whether a stressor is perceived as positive or negative."},{id:"d",text:"It is triggered only by negative events."},{id:"e",text:"The exhaustion stage occurs first."}],
+ correct:["a","b","c"], explanation:"GAS is a three-stage response (alarm, resistance, exhaustion) triggered by physical or psychological stressors, whether positive or negative. Alarm is the first stage."},
+{id:7, cat:"stresscoping", type:"mc", prompt:"A nurse is teaching a class about sources of stress. The nurse should include that which of the following is an example of a psychological stressor?",
+ options:[{id:"a",text:"Hypothermia"},{id:"b",text:"Financial difficulties"},{id:"c",text:"Burn injury"},{id:"d",text:"Wrist fracture"}],
+ correct:["b"], explanation:"Psychological stressors are events or situations a person interprets as negative or threatening, such as financial difficulties. Hypothermia, burns, and fractures are physiological stressors."},
+{id:8, cat:"stresscoping", type:"mc", prompt:"A nurse is caring for several clients. Which client is experiencing a physiological stressor?",
+ options:[{id:"a",text:"A client going through a divorce"},{id:"b",text:"A client with severe pain from a hip fracture"},{id:"c",text:"A client worried about final exams"},{id:"d",text:"A client living in a noisy, crowded apartment"}],
+ correct:["b"], explanation:"Physiological stress comes from injury or illness, such as trauma and pain. Divorce and exam pressure are psychological, and a noisy, crowded home is environmental."},
+{id:9, cat:"stresscoping", type:"sata", prompt:"A nurse is reviewing clients' histories for sources of chronic stress. Which findings should the nurse identify? Select all that apply.",
+ options:[{id:"a",text:"Living in poverty"},{id:"b",text:"Exposure to racism"},{id:"c",text:"Living with a prolonged illness"},{id:"d",text:"Growing up in a dysfunctional family"},{id:"e",text:"Being in a minor car accident yesterday"}],
+ correct:["a","b","c","d"], explanation:"Chronic stress is constant and prolonged, such as poverty, racism, prolonged illness, and a dysfunctional family. A car accident is a source of acute stress."},
+{id:10, cat:"stresscoping", type:"mc", prompt:"A student tells the school nurse, \"I wait until the last minute on every assignment, and I'm always panicking to finish on time.\" Which type of stress is the student experiencing?",
+ options:[{id:"a",text:"Traumatic stress"},{id:"b",text:"Episodic acute stress"},{id:"c",text:"Environmental stress"},{id:"d",text:"Physiological stress"}],
+ correct:["b"], explanation:"Episodic acute stress is frequent bouts of acute stress, often from taking on too much and feeling rushed and disorganized."},
+{id:11, cat:"stresscoping", type:"mc", prompt:"A family of six lives in a one-bedroom apartment in a neighborhood with frequent violence and no reliable access to food. Which type of stress should the nurse identify?",
+ options:[{id:"a",text:"Environmental stress"},{id:"b",text:"Episodic acute stress"},{id:"c",text:"Physiological stress"},{id:"d",text:"Traumatic stress"}],
+ correct:["a"], explanation:"Environmental stress comes from difficult surroundings such as crowding, housing instability, food insecurity, and neighborhood violence."},
+{id:12, cat:"stresscoping", type:"sata", prompt:"A nurse is teaching a client about the benefits of exercise for managing stress. Which information should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Decreases energy"},{id:"b",text:"Increases mood"},{id:"c",text:"Inhibits the release of endorphins"},{id:"d",text:"Decreases stress"},{id:"e",text:"Improves sleep"}],
+ correct:["b","d","e"], explanation:"Exercise increases mood and energy, decreases stress, improves sleep, and releases endorphins."},
+{id:13, cat:"stresscoping", type:"mc", prompt:"Two weeks after being assaulted, a client reports feeling numb and disconnected, is easily startled, and avoids the street where it happened. Which condition should the nurse suspect?",
+ options:[{id:"a",text:"Acute stress disorder"},{id:"b",text:"Posttraumatic stress disorder"},{id:"c",text:"Episodic acute stress"},{id:"d",text:"Existential crisis"}],
+ correct:["a"], explanation:"ASD starts right after a traumatic event and lasts up to 1 month, with numbness, dissociation, startle, reexperiencing, and avoidance. PTSD is diagnosed if symptoms last beyond 1 month."},
+{id:14, cat:"stresscoping", type:"mc", prompt:"A client who survived a house fire 4 months ago continues to have flashbacks and nightmares about the event. Which condition should the nurse suspect?",
+ options:[{id:"a",text:"Acute stress disorder"},{id:"b",text:"Posttraumatic stress disorder"},{id:"c",text:"Episodic acute stress"},{id:"d",text:"Developmental crisis"}],
+ correct:["b"], explanation:"When symptoms last beyond 1 month after a trauma, PTSD is diagnosed. Flashbacks and nightmares are hallmark manifestations."},
+{id:15, cat:"stresscoping", type:"sata", prompt:"A nurse is assessing a client who has posttraumatic stress disorder. Which manifestations should the nurse expect? Select all that apply.",
+ options:[{id:"a",text:"Flashbacks of the trauma"},{id:"b",text:"Nightmares"},{id:"c",text:"Exaggerated startle response"},{id:"d",text:"Increased heart rate"},{id:"e",text:"Bradycardia"}],
+ correct:["a","b","c","d"], explanation:"PTSD manifestations include flashbacks, nightmares, sweating, increased heart rate, and an exaggerated startle response."},
+{id:16, cat:"stresscoping", type:"mc", prompt:"A client completing a health history reports an adverse childhood experiences (ACE) score of 5. Which of the following should the nurse recognize?",
+ options:[{id:"a",text:"The client has a significantly higher risk of chronic illness in adulthood."},{id:"b",text:"ACEs only affect mental health during childhood."},{id:"c",text:"An ACE score does not affect adult health."},{id:"d",text:"The client is protected from future stress."}],
+ correct:["a"], explanation:"Individuals who score four or more on an ACE questionnaire are at significantly higher risk of developing a chronic illness in adulthood."},
+{id:17, cat:"stresscoping", type:"mc", prompt:"A nurse is caring for a client who has been under severe stress for months. Which finding should the nurse recognize as an effect of chronically elevated cortisol?",
+ options:[{id:"a",text:"Faster wound healing"},{id:"b",text:"Frequent infections and slow wound healing"},{id:"c",text:"Improved immune function"},{id:"d",text:"Decreased inflammation"}],
+ correct:["b"], explanation:"Short-term cortisol enhances some immune functions, but chronic elevation suppresses immunity, causes inflammation, slows healing, and increases infection risk."},
+{id:18, cat:"stresscoping", type:"sata", prompt:"A nurse is teaching a community group about health conditions linked to chronic stress. Which conditions should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Hypertension"},{id:"b",text:"Gastric ulcers"},{id:"c",text:"Delayed wound healing"},{id:"d",text:"Sleep disorders"},{id:"e",text:"Hypotension"}],
+ correct:["a","b","c","d"], explanation:"Chronic stress is linked to hypertension, CAD, stroke, diabetes, anxiety, depression, immunosuppression, delayed wound healing, gastric ulcers, tension headaches, and sleep disorders."},
+{id:19, cat:"stresscoping", type:"mc", prompt:"A client in crisis is pacing, yelling, and threatening to hurt themself. Which action should the nurse take first?",
+ options:[{id:"a",text:"Ask the client what triggered the crisis."},{id:"b",text:"Ensure the safety of the client and others."},{id:"c",text:"Explore the client's past coping strategies."},{id:"d",text:"Develop a follow-up plan with the client."}],
+ correct:["b"], explanation:"Safety comes first in crisis intervention. After safety is ensured, the nurse can identify the precipitating event, explore coping, and plan for current and future crises."},
+{id:20, cat:"stresscoping", type:"sata", prompt:"A nurse is assessing a client in crisis. Which findings indicate the client is experiencing a mental health emergency? Select all that apply.",
+ options:[{id:"a",text:"Acting on a suicide threat"},{id:"b",text:"Throwing and breaking items"},{id:"c",text:"Threatening to harm others"},{id:"d",text:"Hostile and belligerent behavior"},{id:"e",text:"Asking to speak with a chaplain"}],
+ correct:["a","b","c","d"], explanation:"Signs of a mental health emergency include acting on a suicide threat, hostile or belligerent behavior, throwing or breaking items, and threatening harm."},
+{id:21, cat:"stresscoping", type:"mc", prompt:"A client who recently retired after 35 years tells the nurse, \"I don't know what to do with myself now.\" Which type of crisis is the client experiencing?",
+ options:[{id:"a",text:"Situational"},{id:"b",text:"Developmental"},{id:"c",text:"Psychiatric emergency"},{id:"d",text:"Adventitious"}],
+ correct:["b"], explanation:"Developmental crises are life transitions such as puberty, retirement, menopause, and starting a family."},
+{id:22, cat:"stresscoping", type:"mc", prompt:"A nurse plans to use the Perceived Stress Scale with a client. The nurse should explain that this tool measures which of the following?",
+ options:[{id:"a",text:"The number of stressful events in the client's environment"},{id:"b",text:"How unpredictable, uncontrollable, and overwhelming the client feels life is over the past month"},{id:"c",text:"The client's cortisol levels"},{id:"d",text:"The client's risk for PTSD"}],
+ correct:["b"], explanation:"The PSS is a self-report tool that measures how unpredictable, uncontrollable, and overwhelming a person perceives their life to be over the past month."},
+{id:23, cat:"stresscoping", type:"mc", prompt:"A client who survived a serious illness tells the nurse, \"I keep asking myself what the point of my life is and who I'm supposed to be now.\" Which type of crisis should the nurse identify?",
+ options:[{id:"a",text:"Developmental"},{id:"b",text:"Situational"},{id:"c",text:"Existential"},{id:"d",text:"Psychiatric emergency"}],
+ correct:["c"], explanation:"An existential crisis involves internal conflicts about personal meaning, identity, or purpose."},
+{id:24, cat:"stresscoping", type:"mc", prompt:"A client becomes tense and tearful when the nurse approaches to start an IV. The client has a history of trauma. Which action reflects trauma-informed care?",
+ options:[{id:"a",text:"Proceed quickly to minimize the client's anxiety."},{id:"b",text:"Explain each step, ask permission, and give the client a sense of control."},{id:"c",text:"Tell the client the reaction is an overreaction."},{id:"d",text:"Postpone the IV without explaining why."}],
+ correct:["b"], explanation:"Trauma-informed care recognizes that past trauma shapes a client's responses and focuses on building safety and trust to avoid retraumatizing the client."},
+{id:25, cat:"stresscoping", type:"mc", prompt:"A nurse is using Roberts' Seven-Stage Model with a client in crisis. Which action should the nurse take in the first stage?",
+ options:[{id:"a",text:"Establish rapport with the client."},{id:"b",text:"Assess the client, including suicide and homicide risk."},{id:"c",text:"Explore the client's past coping strategies."},{id:"d",text:"Implement an action plan."}],
+ correct:["b"], explanation:"The first stage is a thorough assessment, including suicide and homicide risk. Rapport is stage 2, exploring coping is stage 5, and the action plan is stage 6."},
+{id:26, cat:"stresscoping", type:"mc", prompt:"A nurse is teaching a client about nutrition for managing stress. Which statement by the client indicates a need for further teaching?",
+ options:[{id:"a",text:"\"I'll eat more whole grains and beans to help stabilize my blood sugar.\""},{id:"b",text:"\"Oranges can help lower my stress hormones.\""},{id:"c",text:"\"A glass of wine each night will lower my stress levels.\""},{id:"d",text:"\"Eating fish can help improve my mood.\""}],
+ correct:["c"], explanation:"Alcohol worsens stress by raising cortisol. Complex carbs stabilize blood sugar, vitamin C lowers stress hormones, and omega-3s improve mood."},
+{id:27, cat:"stresscoping", type:"mc", prompt:"A nurse is assigned to a new unit and thinks, \"Is this assignment something I need to worry about?\" According to the Transactional Theory of Stress and Coping, the nurse is in which stage?",
+ options:[{id:"a",text:"Primary appraisal"},{id:"b",text:"Secondary appraisal"},{id:"c",text:"Reappraisal"},{id:"d",text:"Exhaustion"}],
+ correct:["a"], explanation:"Primary appraisal asks \"Is this a threat?\"\u2014deciding whether the situation is a threat, a challenge, or irrelevant."},
+{id:28, cat:"stresscoping", type:"mc", prompt:"A client facing surgery says, \"My sister can help me at home, and I've recovered from surgery before.\" The client is demonstrating which of the following?",
+ options:[{id:"a",text:"Primary appraisal"},{id:"b",text:"Secondary appraisal"},{id:"c",text:"Denial"},{id:"d",text:"Projection"}],
+ correct:["b"], explanation:"Secondary appraisal asks \"Can I handle it?\" by evaluating available resources such as social support, skills, and past successes."},
+{id:29, cat:"stresscoping", type:"sata", prompt:"A nurse is providing education about the Transactional Theory of Stress and Coping. Which statements should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Stress is a dynamic transaction between a person and their environment."},{id:"b",text:"How a person appraises a stressor determines their response."},{id:"c",text:"Reappraisal is an ongoing reassessment of the stressor and resources."},{id:"d",text:"Secondary appraisal evaluates available resources."},{id:"e",text:"Stress is a static event that doesn't change once it occurs."}],
+ correct:["a","b","c","d"], explanation:"TTSC views stress as a dynamic transaction between person and environment, shaped by appraisal. Reappraisal continually reassesses the stressor and resources."},
+{id:30, cat:"stresscoping", type:"mc", prompt:"After losing their job, a client creates a monthly budget and applies to three new jobs. The client is using which type of coping?",
+ options:[{id:"a",text:"Problem-focused coping"},{id:"b",text:"Emotion-focused coping"},{id:"c",text:"Denial"},{id:"d",text:"Regression"}],
+ correct:["a"], explanation:"Problem-focused coping involves changing the situation itself."},
+{id:31, cat:"stresscoping", type:"mc", prompt:"A nursing student who failed a quiz says, \"One quiz doesn't define whether I'll be a good nurse.\" The student is using which type of coping?",
+ options:[{id:"a",text:"Problem-focused coping"},{id:"b",text:"Emotion-focused coping"},{id:"c",text:"Rationalization"},{id:"d",text:"Suppression"}],
+ correct:["b"], explanation:"Emotion-focused coping changes how a person feels about the situation by reframing or avoiding it, without changing the situation itself."},
+{id:32, cat:"stresscoping", type:"mc", prompt:"A nurse is assessing a client's coping strategies. Which strategy should the nurse identify as adaptive?",
+ options:[{id:"a",text:"Smoking a cigarette after a stressful day"},{id:"b",text:"Going for a walk after a stressful day"},{id:"c",text:"Drinking alcohol to relax"},{id:"d",text:"Withdrawing from friends and family"}],
+ correct:["b"], explanation:"Adaptive coping, such as exercise, helps in the short and long term. Smoking, drinking, and withdrawal give short-term relief but cause long-term harm."},
+{id:33, cat:"stresscoping", type:"sata", prompt:"A nurse is reviewing a client's coping behaviors. Which behaviors should the nurse identify as maladaptive? Select all that apply.",
+ options:[{id:"a",text:"Smoking"},{id:"b",text:"Drinking alcohol"},{id:"c",text:"Withdrawing from friends"},{id:"d",text:"Exercising regularly"},{id:"e",text:"Planning ahead for stressful events"}],
+ correct:["a","b","c"], explanation:"Maladaptive coping provides short-term relief but long-term harm, such as smoking, drinking, and withdrawal. Exercise and planning ahead are adaptive."},
+{id:34, cat:"stresscoping", type:"mc", prompt:"A client newly diagnosed with type 2 diabetes continues eating as usual and tells the nurse, \"The doctor is overreacting. I don't really have diabetes.\" Which defense mechanism is the client using?",
+ options:[{id:"a",text:"Denial"},{id:"b",text:"Projection"},{id:"c",text:"Rationalization"},{id:"d",text:"Regression"}],
+ correct:["a"], explanation:"Denial is refusing to acknowledge a distressing reality."},
+{id:35, cat:"stresscoping", type:"mc", prompt:"A client who is angry about a new cancer diagnosis tells the nurse, \"Why are you being so hostile toward me?\" even though the nurse has been calm. Which defense mechanism is the client using?",
+ options:[{id:"a",text:"Denial"},{id:"b",text:"Projection"},{id:"c",text:"Repression"},{id:"d",text:"Compartmentalization"}],
+ correct:["b"], explanation:"Projection is blaming one's own undesirable feelings or tendencies on others. The client is attributing their own anger to the nurse."},
+{id:36, cat:"stresscoping", type:"mc", prompt:"A nurse is required to follow a care plan that conflicts with what the nurse believes is ethically right for the client. The nurse feels frustrated and guilty and has trouble sleeping. Which action should the nurse take?",
+ options:[{id:"a",text:"Ignore the feelings until they pass."},{id:"b",text:"Seek support through a formal debriefing, peers, or the ethics committee."},{id:"c",text:"Stop caring for clients with similar care plans."},{id:"d",text:"Keep the concerns private to avoid conflict."}],
+ correct:["b"], explanation:"The nurse is experiencing moral distress. Ways to reduce it include ethics committees, formal debriefings, support from peers and leadership, and the ANA Code of Ethics."},
+{id:37, cat:"stresscoping", type:"mc", prompt:"A 4-year-old who was toilet trained begins wetting the bed after a new sibling is born. Which defense mechanism is the child demonstrating?",
+ options:[{id:"a",text:"Denial"},{id:"b",text:"Projection"},{id:"c",text:"Regression"},{id:"d",text:"Rationalization"}],
+ correct:["c"], explanation:"Regression is returning to behaviors from an earlier developmental stage under stress."},
+{id:38, cat:"stresscoping", type:"mc", prompt:"A nursing student is comparing coping and defense mechanisms. Which statement by the student indicates an understanding?",
+ options:[{id:"a",text:"\"Coping is conscious and deliberate, while defense mechanisms are unconscious and automatic.\""},{id:"b",text:"\"Both coping and defense mechanisms are always conscious choices.\""},{id:"c",text:"\"Defense mechanisms are only used in severe anxiety.\""},{id:"d",text:"\"Coping mechanisms protect self-esteem without the person being aware of them.\""}],
+ correct:["a"], explanation:"Coping is conscious and intentional. Defense mechanisms are unconscious and automatic, protect self-esteem, and are useful in mild to moderate anxiety."},
+{id:39, cat:"stresscoping", type:"mc", prompt:"A single parent facing eviction reports feeling exhausted, having headaches, and being unable to sleep. Which intervention is the nurse's priority?",
+ options:[{id:"a",text:"Suggest the client keep a journal of stressors."},{id:"b",text:"Determine whether the client has thoughts of self-harm."},{id:"c",text:"Teach the client progressive relaxation."},{id:"d",text:"Connect the client with community housing resources."}],
+ correct:["b"], explanation:"Determining whether the client has thoughts of self-harm is the priority to ensure safety. The other interventions are appropriate after safety is established."},
+{id:40, cat:"stresscoping", type:"mc", prompt:"A nurse is caring for a client who is experiencing stress. Which action should the nurse take first?",
+ options:[{id:"a",text:"Develop a statement about the client's health alteration."},{id:"b",text:"Conduct a mental status exam."},{id:"c",text:"Review whether the plan of care was effective."},{id:"d",text:"Establish short- and long-term goals."}],
+ correct:["b"], explanation:"Assessment is the first step of the nursing process. A mental status exam is part of the initial assessment, followed by analysis, planning, implementation, and evaluation."}
+];
+initPracticeQuiz(bank, catLabels);
+</script>
+</body>
+</html>

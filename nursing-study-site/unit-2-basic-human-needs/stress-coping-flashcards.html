@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stress and Coping &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=18">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Stress and Coping</h2>
+
+  <div class="fc-topbar"><span id="cardcounter"></span><span id="counts"></span></div>
+  <div class="fc-progresswrap"><div id="progressbar" class="fc-progressbar"></div></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="row" style="display:none;">
+    <button class="btn dk" onclick="grade('dontknow', event)"><i class="ti ti-x" aria-hidden="true"></i> don't know</button>
+    <button class="btn al" onclick="grade('almost', event)">~ almost</button>
+    <button class="btn kn" onclick="grade('know', event)"><i class="ti ti-check" aria-hidden="true"></i> know it</button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <div class="row">
+    <button class="btn small" onclick="prevCard(event)"><i class="ti ti-arrow-left" aria-hidden="true"></i> prev</button>
+    <button class="btn small" onclick="nextCard(event)">next <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="row" style="margin-bottom:0;">
+    <button class="btn small" onclick="shuffleDeck(event)"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i> shuffle</button>
+    <button class="btn small" onclick="restartDeck(event)"><i class="ti ti-refresh" aria-hidden="true"></i> restart</button>
+  </div>
+  <p id="reviewnote" class="fc-note"></p>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/flashcards.js?v=3"></script>
+<script>
+var CATS = {
+  stressbasics: {label:"Stress Basics", hue:"red"},
+  stressphysiology: {label:"Stress Physiology", hue:"orange"},
+  generaladaptationsyndromegas: {label:"General Adaptation Syndrome (GAS)", hue:"yellow"},
+  typesofstressdisorders: {label:"Types of Stress & Disorders", hue:"green"},
+  crisis: {label:"Crisis", hue:"aqua"},
+  copingdefensemechanisms: {label:"Coping & Defense Mechanisms", hue:"blue"},
+  nursingcarestressmanagement: {label:"Nursing Care & Stress Management", hue:"violet"},
+  stressinnursing: {label:"Stress in Nursing", hue:"magenta"}
+};
+var CARDS = [
+[1,"stressbasics","Stress","The mental, emotional, or physical response and adaptation to real or perceived changes and challenges; occurs when demands exceed a person's resources"],
+[2,"stressbasics","Stressor","Any event, experience, or environmental stimulus that causes stress; stressors are inherently neutral (Selye)"],
+[3,"stressbasics","Appraisal","A person's perception of a stressor, which determines whether it's positive (eustress) or negative (distress)"],
+[4,"stressbasics","Allostasis","The body adjusting to meet new challenges; how it compensates for minor stressors"],
+[5,"stressbasics","Allostatic load","Wear and tear on organs from chronic stress responses; leads to chronic hypertension, depression, and autoimmune disorders"],
+[6,"stressphysiology","Body systems activated by a serious stressor","Nervous and endocrine systems: hypothalamus, pituitary gland, sympathetic nervous system, adrenal glands"],
+[7,"stressphysiology","SAM system (sympathetic\u2013adrenal\u2013medullary)","Rapidly releases norepinephrine, epinephrine, and dopamine (catecholamines), producing fight-or-flight within seconds"],
+[8,"stressphysiology","Fight-or-flight manifestations","Increased HR, BP, cardiac output, and blood glucose; bronchial dilation; pupil dilation"],
+[9,"stressphysiology","HPA axis (hypothalamic\u2013pituitary\u2013adrenal)","Hypothalamus releases CRH \u2192 pituitary releases ACTH \u2192 adrenal glands release cortisol"],
+[10,"stressphysiology","Functions of cortisol","Regulates the stress response, immunity, metabolism, fertility, and the autonomic nervous system; increases alertness and focus"],
+[11,"stressphysiology","Short-term vs chronic cortisol","Short-term: enhances some immune functions. Chronic: suppresses immunity, causes inflammation, slows healing, increases infection risk"],
+[12,"stressphysiology","Adverse childhood experiences (ACEs)","Childhood trauma linked to chronic disease; a score of 4+ significantly increases the risk of chronic illness in adulthood"],
+[13,"stressphysiology","Health conditions linked to chronic stress","Hypertension, CAD, stroke, diabetes, anxiety, depression, PTSD, immunosuppression, delayed wound healing, gastric ulcers, tension headaches, sleep disorders"],
+[14,"stressphysiology","Physiologic signs of prolonged stress","Backache, stiff neck, GI issues, decreased sex drive, dilated pupils, dry mouth, headache, increased urination, sweating, increased pulse, nausea, sleep disturbances"],
+[15,"generaladaptationsyndromegas","General adaptation syndrome (GAS)","The body's three-stage response to maintain homeostasis: alarm, resistance, exhaustion; triggered by physical or psychological stressors, positive or negative"],
+[16,"generaladaptationsyndromegas","Alarm stage","CNS is aroused; the adrenal medulla releases catecholamines (epinephrine), triggering fight-or-flight; HR, BP, blood glucose, oxygen intake, and alertness increase; pupils dilate"],
+[17,"generaladaptationsyndromegas","Resistance stage","The body resists the stressor and tries to restore balance; the parasympathetic system moderates fight-or-flight; coping mechanisms are used; fatigue, irritability, and decreased concentration may occur"],
+[18,"generaladaptationsyndromegas","Exhaustion stage","The body's ability to adapt is depleted; prolonged stress leads to illness, disease, and allostatic load"],
+[19,"typesofstressdisorders","Acute stress","Most common type; brief, can be positive or negative; immediate fight-or-flight reaction; manifestations include irritability, chest tightness, headache, GI upset, sweaty palms, SOB","A car accident, losing a loved one, being a victim of a crime"],
+[20,"typesofstressdisorders","Episodic acute stress","Frequent bouts of acute stress; often from taking on too much responsibility and feeling rushed and disorganized","A student who procrastinates on every assignment lives in a constant cycle of last-minute panics"],
+[21,"typesofstressdisorders","Chronic stress","Constant, prolonged stress that is disabling; causes or worsens anxiety, depression, and cardiovascular disease","Living in poverty, exposure to racism, prolonged illness, a dysfunctional family"],
+[22,"typesofstressdisorders","Traumatic stress","Results from events like natural disasters, accidents, or violence that exceed a person's ability to cope; can lead to PTSD","An individual who was physically assaulted while walking home develops severe hypervigilance"],
+[23,"typesofstressdisorders","Environmental stress","Stress from difficult surroundings: loud noise, pollution, crowding, housing instability, food insecurity, neighborhood violence","A student tries to study for their exams while living in a crowded household with no quiet space"],
+[24,"typesofstressdisorders","Psychological stress","An event, comment, or situation a person interprets as negative or threatening","Academic pressure, financial difficulties, divorce"],
+[25,"typesofstressdisorders","Physiological stress","Stress from injury or illness","Extreme temperatures, trauma, pain, hypothermia, burns, fractures, illness"],
+[26,"typesofstressdisorders","Acute stress disorder (ASD)","An intense, dysfunctional reaction after a traumatic event: numbness, dissociation, disrupted sleep, being easily startled, reexperiencing the event, avoiding reminders"],
+[27,"typesofstressdisorders","Posttraumatic stress disorder (PTSD)","Prolonged, heightened stress after trauma: flashbacks, nightmares, sweating, increased HR, exaggerated startle response; onset may be delayed days to years"],
+[28,"typesofstressdisorders","ASD vs PTSD","ASD starts right after the trauma and lasts up to 1 month. If symptoms last beyond 1 month, PTSD is diagnosed"],
+[29,"crisis","Crisis","A threatening situation triggered by a precipitating event that causes a strong behavioral, emotional, or psychiatric response and pushes a person beyond their ability to cope"],
+[30,"crisis","Signs of a mental health emergency","Acting on a suicide threat, hostile or belligerent behavior, throwing or breaking items, threatening harm"],
+[31,"crisis","Developmental crisis","Life transitions","Puberty, retirement, menopause, starting a family"],
+[32,"crisis","Situational crisis","External events","Loss of a loved one, trauma, natural disaster, domestic violence, illness, job loss"],
+[33,"crisis","Existential crisis","Internal conflicts about personal meaning, identity, or purpose","Questioning the meaning of one's life after surviving a serious illness; struggling with who you are or what your purpose is"],
+[34,"crisis","Psychiatric emergency","An acute mental health episode","Suicide attempt, severe depression, psychosis"],
+[35,"crisis","Types of stress factors","Developmental (maturational events), adventitious (natural disasters), cultural (beliefs affecting stress response), socioeconomic (poverty, homelessness), situational (personal, family, or work issues)"],
+[36,"crisis","Goal of crisis intervention","Ensure safety first, help the client identify the precipitating event, use their skills and support systems, and plan for current and future crises"],
+[37,"crisis","Roberts' Seven-Stage Model of Crisis Intervention","1. Assess (including suicide/homicide risk) 2. Establish rapport 3. Identify the problem 4. Explore feelings 5. Explore past coping and alternatives 6. Implement an action plan 7. Follow up"],
+[38,"copingdefensemechanisms","Coping","Conscious, intentional thoughts and actions used to manage stress"],
+[39,"copingdefensemechanisms","Coping vs defense mechanisms","Coping: conscious and deliberate. Defense mechanisms: unconscious and automatic; protect self-esteem; useful in mild to moderate anxiety"],
+[40,"copingdefensemechanisms","Transactional Theory of Stress and Coping (TTSC)","Stress is a dynamic transaction between a person and their environment; how a person appraises a stressor determines their response"],
+[41,"copingdefensemechanisms","Primary appraisal","\"Is this a threat?\" Deciding whether the situation is a threat, a challenge, or irrelevant"],
+[42,"copingdefensemechanisms","Secondary appraisal","\"Can I handle it?\" Evaluating available resources like social support, skills, and past successes"],
+[43,"copingdefensemechanisms","Reappraisal","Ongoing reassessment of the stressor and resources; refines or replaces coping strategies"],
+[44,"copingdefensemechanisms","Problem-focused coping","Changing the situation itself","Making a study schedule to prepare for a hard exam"],
+[45,"copingdefensemechanisms","Emotion-focused coping","Changing how you feel about the situation by reframing or avoiding it","Reminding yourself one exam doesn't define your career"],
+[46,"copingdefensemechanisms","Adaptive vs maladaptive coping","Adaptive: helps in the short and long term (exercise). Maladaptive: short-term relief, long-term harm (smoking, drinking, withdrawal)"],
+[47,"copingdefensemechanisms","Reactive vs proactive coping","Reactive: responding after a stressor occurs. Proactive: acting to prevent or reduce future stress"],
+[48,"copingdefensemechanisms","Denial","Refusing to acknowledge a distressing reality","A client newly diagnosed with diabetes keeps eating as usual, saying \"the doctor is overreacting\""],
+[49,"copingdefensemechanisms","Projection","Blaming one's own undesirable feelings or tendencies on others","A client who is angry at their diagnosis accuses the nurse of being hostile"],
+[50,"copingdefensemechanisms","Rationalization","Explaining away improper behavior by making it seem logical or justified","\"I failed the exam because the questions were unfair\""],
+[51,"copingdefensemechanisms","Regression","Returning to behaviors from an earlier developmental stage under stress","A toilet-trained 4-year-old starts wetting the bed after a new sibling is born"],
+[52,"copingdefensemechanisms","Repression vs suppression","Repression: unconsciously burying memories or feelings. Suppression: deliberately pushing thoughts out of awareness"],
+[53,"copingdefensemechanisms","Compartmentalization","Separating conflicting thoughts, feelings, or roles into isolated mental \"compartments\" to avoid anxiety","A nurse completely separates their personal beliefs from their professional role to care for a client without bias"],
+[54,"nursingcarestressmanagement","Perceived Stress Scale (PSS)","Self-report tool measuring how unpredictable, uncontrollable, and overwhelming a person feels life is over the past month"],
+[55,"nursingcarestressmanagement","Trauma-informed care","Recognizes that past trauma shapes a client's responses; builds safety and trust and avoids retraumatizing the client"],
+[56,"nursingcarestressmanagement","First action for a client experiencing stress","Assessment, such as a mental status exam"],
+[57,"nursingcarestressmanagement","Signs of anxiety","Shakiness, increased HR and RR, chest tightness, racing thoughts, excessive worry, restlessness, fatigue, poor concentration, irritability, muscle tension, sleep disturbances"],
+[58,"nursingcarestressmanagement","Priority intervention for a highly stressed client","Determine whether the client has thoughts of self-harm"],
+[59,"nursingcarestressmanagement","Benefits of exercise for stress","Increases mood and energy, decreases stress, improves sleep, releases endorphins"],
+[60,"nursingcarestressmanagement","Stress-reducing nutrition","Complex carbs stabilize blood sugar; vitamin C (oranges) lowers stress hormones; omega-3s improve mood; black tea lowers cortisol after stress; alcohol worsens stress by raising cortisol"],
+[61,"nursingcarestressmanagement","Resilience","The ability to bounce back and adapt well to adversity, trauma, and stress; fostered by mindfulness"],
+[62,"nursingcarestressmanagement","Relaxation techniques","Mindfulness (being fully present without judgment), guided imagery (relaxing while visualizing a pleasant scene), progressive relaxation (tensing and releasing muscles from head to toe)"],
+[63,"nursingcarestressmanagement","Biofeedback","A mind-body technique that uses monitoring devices to teach control of automatic functions like HR and RR"],
+[64,"stressinnursing","Moral distress","When a nurse's actions differ from what they believe is ethically correct; signs include frustration, guilt, reduced confidence, insomnia, overeating, poor communication"],
+[65,"stressinnursing","Reducing moral distress","Ethics committees, formal debriefings, support from peers and leadership, the ANA Code of Ethics"],
+[66,"stressinnursing","Work-related stress outcomes in nursing","Burnout, compassion fatigue, moral distress"],
+[67,"stressinnursing","Stressful activities in nursing","Taking on responsibilities you're unprepared for, working with unqualified personnel, unsupportive supervisors, caring for clients in cardiac arrest or who are dying, conflict with peers"],
+[68,"stressinnursing","Healthy Nurse, Healthy Nation (HNHN)","ANA program to improve nurse well-being across 5 domains: quality of life, safety, physical activity, sleep, nutrition"],
+[69,"stressinnursing","Nurse stress management strategies","Self-awareness of early stress signs, healthy routines, adequate rest, physical activity, peer support, planning ahead, task-focused coping"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

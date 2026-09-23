@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comfort, Rest & Sleep &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=18">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Comfort, Rest & Sleep</h2>
+
+  <div class="fc-topbar"><span id="cardcounter"></span><span id="counts"></span></div>
+  <div class="fc-progresswrap"><div id="progressbar" class="fc-progressbar"></div></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="row" style="display:none;">
+    <button class="btn dk" onclick="grade('dontknow', event)"><i class="ti ti-x" aria-hidden="true"></i> don't know</button>
+    <button class="btn al" onclick="grade('almost', event)">~ almost</button>
+    <button class="btn kn" onclick="grade('know', event)"><i class="ti ti-check" aria-hidden="true"></i> know it</button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <div class="row">
+    <button class="btn small" onclick="prevCard(event)"><i class="ti ti-arrow-left" aria-hidden="true"></i> prev</button>
+    <button class="btn small" onclick="nextCard(event)">next <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="row" style="margin-bottom:0;">
+    <button class="btn small" onclick="shuffleDeck(event)"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i> shuffle</button>
+    <button class="btn small" onclick="restartDeck(event)"><i class="ti ti-refresh" aria-hidden="true"></i> restart</button>
+  </div>
+  <p id="reviewnote" class="fc-note"></p>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/flashcards.js?v=3"></script>
+<script>
+var CATS = {
+  sleepphysiology: {label:"Sleep Physiology", hue:"red"},
+  stagesbrainwaves: {label:"Stages & Brain Waves", hue:"orange"},
+  lifespanpatterns: {label:"Lifespan Patterns", hue:"yellow"},
+  sleepdeprivationdisruptors: {label:"Sleep Deprivation & Disruptors", hue:"green"},
+  sleepdisorders: {label:"Sleep Disorders", hue:"aqua"},
+  sleepmedications: {label:"Sleep Medications", hue:"blue"},
+  sleeppromotioncomfort: {label:"Sleep Promotion & Comfort", hue:"violet"}
+};
+var CARDS = [
+[1,"sleepphysiology","Circadian rhythm","Internal process that controls the sleep\u2013wake cycle about every 24 hours; makes you sleepy at night and wake in the morning; syncs with light and temperature but runs without cues"],
+[2,"sleepphysiology","Sleep\u2013wake homeostasis","Helps the body remember to sleep after a given time; sleep deepens according to how sleep deprived the person is"],
+[3,"sleepphysiology","Factors that disrupt the sleep\u2013wake rhythm","Bright lights, medications, caffeine, foods, sleep environment, stress"],
+[4,"sleepphysiology","Melatonin (hormone)","Natural hormone made by the pineal gland that helps the body prepare for sleep"],
+[5,"sleepphysiology","Benefits of sleep","Improves learning, memory, and concentration; restores energy; improves coping; strengthens the immune system; clears toxins that build up in the brain while awake"],
+[6,"sleepphysiology","What happens to memory during sleep","It's transferred from short-term to long-term memory"],
+[7,"sleepphysiology","Sleep and type 2 diabetes risk","Sleep lowers cortisol release; high cortisol makes it harder for insulin to move sugar into cells"],
+[8,"sleepphysiology","Sleep vs rest","Sleep: cyclical altered consciousness, decreased motor activity and perception, selective response to stimuli. Rest: awake but relaxed with decreased activity; reduces stress and leaves you refreshed"],
+[9,"stagesbrainwaves","EEG (electroencephalogram)","Measures the brain's electrical activity; used to define sleep stages"],
+[10,"stagesbrainwaves","NREM vs REM","NREM: stages 1\u20133; the parasympathetic nervous system becomes more dominant. REM: dreaming; the brain becomes highly active"],
+[11,"stagesbrainwaves","Wake stage","Alpha and beta waves; when a person gets drowsy and closes their eyes, alpha waves dominate; breathing normal and muscle tone present"],
+[12,"stagesbrainwaves","Alpha waves","8\u201312 Hz; awake but relaxed with eyes closed"],
+[13,"stagesbrainwaves","Beta waves","13\u201330 Hz; alert and engaged"],
+[14,"stagesbrainwaves","Stage 1 (NREM)","Lightest sleep; lasts 1\u20135 min; about 5% of sleep; muscle twitching possible"],
+[15,"stagesbrainwaves","Stage 2 (NREM)","Deeper sleep; harder to awaken; HR and body temp decrease; sleep spindles and K-complexes; about 50% of sleep; gets longer each cycle"],
+[16,"stagesbrainwaves","Sleep spindles and K-complexes","Stage 2 waveforms that help consolidate memory; K-complexes also help maintain sleep"],
+[17,"stagesbrainwaves","Stage 3 (NREM)","Deepest sleep; delta waves; immune system strengthens; muscles, tissues, and bones repair; pulse and respirations at their lowest; about 25% of sleep; lasts up to 40 min"],
+[18,"stagesbrainwaves","If awakened during stage 3","Mental cloudiness that can last 30\u201360 minutes"],
+[19,"stagesbrainwaves","Delta waves","Slow-frequency, high-amplitude brain waves; the hallmark of stage 3"],
+[20,"stagesbrainwaves","REM (stage 4)","Dreaming stage; EEG looks like wakefulness (beta waves); breathing irregular; HR may be elevated; starts about 90 min after falling asleep; first cycle about 10 min, then lengthens up to 1 hr; 20\u201325% of sleep"],
+[21,"stagesbrainwaves","Why skeletal muscles are atonic in REM","Prevents the person from physically acting out their dreams"],
+[22,"stagesbrainwaves","Number of sleep cycles per night (adults)","About 4\u20135"],
+[23,"lifespanpatterns","Adult (20\u201335) sleep distribution","Stage 1: 2\u20135%; stage 2: 45\u201355%; stage 3: 25%; REM: 20\u201325%"],
+[24,"lifespanpatterns","Older adult sleep changes","Less stage 3, more stage 2, fewer REM cycles; wake more often, take longer to fall asleep; lighter sleep and fewer dreams"],
+[25,"lifespanpatterns","Recommended hours of sleep","Young and middle adults: 7\u20139 hr. Older adults: 7\u20138 hr"],
+[26,"sleepdeprivationdisruptors","Sleep deprivation","When the body's biological sleep requirement is not met"],
+[27,"sleepdeprivationdisruptors","Types of sleep deprivation","Total: losing a full night or staying awake. Partial: reduced sleep hours. Chronic: ongoing partial deprivation. Selective: losing a specific sleep cycle"],
+[28,"sleepdeprivationdisruptors","Effects of sleep deprivation","Impaired judgment, slowed response time, cognitive decline; triggers seizures, migraines, and tension headaches; increased risk of accidents, depression, stroke, mood swings, obesity, and poor glucose control in type 2 diabetes"],
+[29,"sleepdeprivationdisruptors","Causes of sleep deprivation","Stress, a newborn, illness, medications, aging, sleep disorders, increased workload, hospital interruptions"],
+[30,"sleepdeprivationdisruptors","Sensory overload","Overstimulation of one or more senses; common in acute care settings"],
+[31,"sleepdeprivationdisruptors","Preventing sensory overload interventions","Lower noise, dim lights at night, offer eye masks and earplugs, cluster care to minimize interruptions"],
+[32,"sleepdeprivationdisruptors","Cell phone use in bed","Shorter sleep, poorer sleep quality, daytime sleepiness; a risk factor for depression"],
+[33,"sleepdeprivationdisruptors","Night-shift workers","Disrupted circadian rhythm, daytime sleepiness, unhealthy nighttime eating; higher risk of cardiovascular disease, obesity, and diabetes"],
+[34,"sleepdeprivationdisruptors","Menopause and sleep","A common cause of sleep disturbances; most prevalent during postmenopause"],
+[35,"sleepdisorders","Insomnia","Ongoing inability to sleep despite the opportunity: trouble falling or staying asleep, waking early, or feeling tired on waking. Treatment: meds, sleep hygiene, cognitive-behavioral therapy"],
+[36,"sleepdisorders","Apnea vs hypopnea","Apnea: airflow completely stops for 10+ seconds. Hypopnea: airflow partially reduced for 10+ seconds."],
+[37,"sleepdisorders","Central sleep apnea (CSA)","The brain doesn't send signals to the respiratory muscles, so breathing stops. Common causes: opioid overdose, heart failure"],
+[38,"sleepdisorders","Obstructive sleep apnea (OSA)","Recurrent upper airway collapse during sleep; snoring is common; linked to obesity, enlarged tonsils, and an inactive tongue; causes daytime sleepiness even with enough hours of sleep"],
+[39,"sleepdisorders","How OSA is diagnosed","Polysomnography in a sleep lab (records HR, BP, breathing, O2 saturation, brain waves, movement, snoring)"],
+[40,"sleepdisorders","OSA treatment","CPAP is the most recommended; also weight loss, quitting smoking and alcohol, and avoiding sleeping on the back"],
+[41,"sleepdisorders","Narcolepsy","Sudden sleepiness and sudden sleep episodes; may include hallucinations, sleep paralysis, and vivid dreams. Treatment: meds, counseling, short naps, support groups"],
+[42,"sleepdisorders","Cataplexy","Brief loss of voluntary muscle tone triggered by emotion, like laughter; seen in narcolepsy type 1 (lack of hypocretin)"],
+[43,"sleepdisorders","Hypersomnia","Excessive daytime fatigue that does NOT improve with more sleep"],
+[44,"sleepdisorders","Restless legs syndrome (Willis-Ekbom disease)","Uncontrollable urge to move the legs with an uncomfortable sensation; worse in the evening and at rest; linked to iron or vitamin deficiency; avoid caffeine, nicotine, and alcohol"],
+[45,"sleepdisorders","Night terrors","A parasomnia during NREM sleep in the first third of the night; the person wakes in panic with no memory of it; most common in young children"],
+[46,"sleepdisorders","Night terrors vs nightmares","Night terrors: NREM, first third of the night, no recall. Nightmares: REM, second half of the night, the person remembers the dream"],
+[47,"sleepmedications","Benzodiazepines (GABA agonists)","Alprazolam, clonazepam, lorazepam; cause drowsiness, muscle relaxation, reduced anxiety, retrograde amnesia; risk of dependence, so not for long-term use; use caution in older adults with decreased liver or kidney function"],
+[48,"sleepmedications","Nonbenzodiazepine hypnotics (\"z-drugs\")","Zolpidem, zaleplon, eszopiclone; the most commonly prescribed sleep meds. Adverse effects: GI discomfort, hallucinations, memory loss; potential for abuse"],
+[49,"sleepmedications","Melatonin (supplement)","May be the first-line med for all ages; cost-effective, non-habit forming, few adverse effects; effectiveness may be limited"],
+[50,"sleepmedications","OTC sleep aids","Diphenhydramine, doxylamine. Adverse effects: daytime drowsiness, dry mouth, visual disturbances, urinary retention, constipation. The client should talk to their provider first"],
+[51,"sleepmedications","Nursing responsibilities with sleep meds","A sleep study may be needed to rule out other disorders; monitor for adverse effects; follow the rights of medication administration; sleep meds shouldn't be used long term"],
+[52,"sleeppromotioncomfort","Sleep hygiene teaching","Avoid caffeine, alcohol, and nicotine 4\u20136 hr before bed; keep a consistent sleep schedule; keep the room dark, quiet, and cool; have a bedtime routine; keep naps short; exercise regularly but not close to bedtime; use the bed only for sleep and sex"],
+[53,"sleeppromotioncomfort","When a client can't fall asleep","Get up, go to another room, and do a quiet activity like reading or listening to music, then return when tired"],
+[54,"sleeppromotioncomfort","Behaviors that contribute to sleep deprivation","Staying in bed while restless, sleeping in on weekends, keeping a TV or electronics in the bedroom"],
+[55,"sleeppromotioncomfort","Bedtime snacks that promote sleep","A carbohydrate paired with a protein; protein alone is not recommended and must be accompanied by a carb","Toast with peanut butter"],
+[56,"sleeppromotioncomfort","Nonpharmacological sleep interventions","Acupuncture, massage, thermotherapy (heat/cold packs), yoga, guided imagery, mindfulness, meditation, music therapy"],
+[57,"sleeppromotioncomfort","Sleep diary","Helps the nurse and client identify sleep problems and build a personalized plan of care together"],
+[58,"sleeppromotioncomfort","Nursing interventions to promote sleep","Cluster care, create a restful environment, promote comfort, support bedtime routines, offer sleep-promoting foods, maintain safety, teach sleep hygiene and about sleep meds"],
+[59,"sleeppromotioncomfort","Comfort","Relief from pain, negativity, and emotional and physical distress; promoted through empathy, honesty, presence, and letting clients make informed choices"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

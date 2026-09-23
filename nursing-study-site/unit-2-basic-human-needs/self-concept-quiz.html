@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Concept practice quiz &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=18">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Self-Concept practice quiz</h2>
+
+  <div id="pq-mode-screen">
+    <p class="muted" style="margin-bottom:14px;">Choose how you want to practice.</p>
+    <div>
+      <button class="pq-mode-btn" data-mode="single">
+        <div class="pq-mode-title">One session</div>
+        <div class="pq-mode-sub">Answer a set of questions once, then see your results.</div>
+      </button>
+      <button class="pq-mode-btn" data-mode="rounds">
+        <div class="pq-mode-title">Mastery rounds</div>
+        <div class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</div>
+      </button>
+    </div>
+  </div>
+
+  <div id="pq-count-screen" class="hidden">
+    <p class="muted" style="margin-bottom:14px;">How many questions?</p>
+    <div id="pq-count-single" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="5">5</button>
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="15">15</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="25">25</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="35">35</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <div id="pq-count-rounds" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <button class="btn small" id="pq-back"><i class="ti ti-arrow-left" aria-hidden="true"></i> back</button>
+  </div>
+
+  <div id="pq-quiz-screen" class="hidden">
+    <div class="pq-top-row"><span id="pq-progress"></span><span id="pq-score"></span></div>
+    <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-prompt" class="pq-prompt"></div>
+    <div id="pq-options"></div>
+    <p id="pq-error" class="pq-error">select at least one answer</p>
+    <div id="pq-feedback" class="pq-feedback"></div>
+    <div class="pq-btn-row">
+      <button class="btn" id="pq-submit">check answer</button>
+      <button class="btn hidden" id="pq-next">next question &#8594;</button>
+    </div>
+    <button class="btn small" id="pq-end-test" style="margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto;">end and see results</button>
+  </div>
+
+  <div id="pq-round-complete-screen" class="hidden pq-center">
+    <div id="rc-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+    <div id="rc-score" class="pq-stat-big"></div>
+    <div class="pq-stat-sub">this round</div>
+    <div id="rc-detail" class="pq-stat-detail"></div>
+    <button class="btn" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+  </div>
+
+  <div id="pq-end-screen" class="hidden">
+    <div class="pq-center" style="margin-bottom:16px;">
+      <div id="end-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+      <div id="end-rounds-subtitle" class="hidden muted" style="margin-bottom:16px;"></div>
+      <div id="end-stats-single" class="hidden">
+        <div id="end-score" class="pq-stat-big"></div>
+        <div id="end-percent" class="muted"></div>
+      </div>
+      <div id="end-stats-rounds" class="hidden" style="display:flex;justify-content:center;gap:40px;">
+        <div><div id="end-pool-pct" class="pq-stat-big"></div><div class="muted">of pool completed</div></div>
+        <div><div id="end-accuracy-pct" class="pq-stat-big"></div><div class="muted">overall accuracy</div></div>
+      </div>
+    </div>
+    <p id="category-heading" class="eyebrow"></p>
+    <div id="category-grid" class="pq-cat-grid"></div>
+    <p class="eyebrow">review</p>
+    <div id="review-list" style="margin-bottom:20px;"></div>
+    <div class="pq-btn-row">
+      <button class="btn small" id="end-restart">practice again</button>
+      <button class="btn small" id="end-missed">redo missed questions</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/practice-quiz.js"></script>
+<script>
+var catLabels = {
+  rogerstheory: "Rogers' Theory",
+  influencingfactors: "Influencing Factors",
+  identityformation: "Identity Formation",
+  selfconceptstressors: "Self-Concept Stressors",
+  rolestressors: "Role Stressors",
+  nursingprocess: "Nursing Process"
+};
+var bank = [
+{id:1, cat:"selfconcept", type:"mc", prompt:"A nurse is caring for a client 2 days after a mastectomy. Which statement by the client shows positive self-esteem related to body image?",
+ options:[{id:"a",text:"\"I don't want my partner to see me like this.\""},{id:"b",text:"\"Can you tell me where I can get fitted for a breast prosthesis?\""},{id:"c",text:"\"I'll just wear baggy clothes so nobody notices.\""},{id:"d",text:"\"Please tell my friends not to visit this week.\""}],
+ correct:["b"], explanation:"Seeking ways to cope with or improve body image shows positive self-esteem. Hiding the change and withdrawing from visitors suggest negative self-esteem."},
+{id:2, cat:"selfconcept", type:"mc", prompt:"A nurse is talking with a 17-year-old client who says, \"My parents are both pharmacists, so I'm going to pharmacy school. I've never really thought about doing anything else.\" Which identity status should the nurse recognize?",
+ options:[{id:"a",text:"Identity achievement"},{id:"b",text:"Moratorium"},{id:"c",text:"Foreclosure"},{id:"d",text:"Identity diffusion"}],
+ correct:["c"], explanation:"Foreclosure is commitment without exploration, adopting the expectations of authority figures without questioning them. Achievement requires exploring first; moratorium is exploring without committing; diffusion is neither."},
+{id:3, cat:"selfconcept", type:"mc", prompt:"A nurse is assessing a client's self-concept. Which question should the nurse ask to assess role performance?",
+ options:[{id:"a",text:"\"How would you describe yourself?\""},{id:"b",text:"\"How successful do you feel in fulfilling your responsibilities as a parent?\""},{id:"c",text:"\"How do you respond when you experience failure?\""},{id:"d",text:"\"Which aspects of your appearance would you like to change?\""}],
+ correct:["b"], explanation:"Asking how successful the client feels in their roles assesses role performance. Self-description assesses identity, response to failure assesses self-esteem, and appearance assesses body image."},
+{id:4, cat:"selfconcept", type:"mc", prompt:"A client works full time, cares for her father who has dementia, and is raising three children. She tells the nurse, \"There aren't enough hours in the day to do everything that's expected of me.\" Which role stressor is the client experiencing?",
+ options:[{id:"a",text:"Role ambiguity"},{id:"b",text:"Role overload"},{id:"c",text:"Role clarity"},{id:"d",text:"Role enhancement"}],
+ correct:["b"], explanation:"Role overload occurs when the demands of multiple roles exceed a person's ability to manage them. Role ambiguity is unclear expectations; role clarity and role enhancement reduce stress."},
+{id:5, cat:"selfconcept", type:"sata", prompt:"A nurse is assessing a client for behaviors that may indicate an altered self-concept. Which findings should the nurse identify? Select all that apply.",
+ options:[{id:"a",text:"Tearfulness during the interview"},{id:"b",text:"Frequently apologizing to the nurse"},{id:"c",text:"Difficulty making simple decisions"},{id:"d",text:"Asking questions about the treatment plan"},{id:"e",text:"Referring to themself as \"useless\""}],
+ correct:["a","b","c","e"], explanation:"Tearfulness, being overly apologetic, indecisiveness, and negative self-talk can indicate an altered self-concept. Asking questions about treatment shows engagement in care."},
+{id:6, cat:"selfconcept", type:"sata", prompt:"A nurse is planning care for a client who had a below-the-knee amputation and is unable to return to work. Which actions should the nurse include to promote a healthy self-concept? Select all that apply.",
+ options:[{id:"a",text:"Encourage the client to express feelings about the change in body function."},{id:"b",text:"Discuss available rehabilitation and support resources."},{id:"c",text:"Perform all ADLs for the client to conserve their energy."},{id:"d",text:"Establish goals collaboratively with the client and family."},{id:"e",text:"Postpone addressing emotional needs until physical rehabilitation is complete."}],
+ correct:["a","b","d"], explanation:"Expressing feelings, using resources, and collaborative goal-setting support adaptation and a client-centered plan. Doing all ADLs promotes dependence, and delaying emotional care ignores the holistic approach."},
+{id:7, cat:"selfconcept", type:"mc", prompt:"A nurse is evaluating the plan of care for a client who has a disturbed body image after surgery. Which client statement shows the plan has been effective?",
+ options:[{id:"a",text:"\"I'm learning to accept how my body looks now.\""},{id:"b",text:"\"I don't want to talk about my scar.\""},{id:"c",text:"\"I feel overwhelmed every time I look in the mirror.\""},{id:"d",text:"\"I'll deal with this after I get home.\""}],
+ correct:["a"], explanation:"Verbalizing acceptance of body image is an expected outcome. Avoiding the topic and feeling overwhelmed mean further interventions are needed."},
+{id:8, cat:"selfconcept", type:"mc", prompt:"A nurse manager is discussing emotional intelligence with staff. Which statement by a staff nurse shows an understanding of self-regulation?",
+ options:[{id:"a",text:"\"I take a few deep breaths before I respond when a family member yells at me.\""},{id:"b",text:"\"I can usually tell when a coworker is upset.\""},{id:"c",text:"\"I stay persistent when working toward my goals.\""},{id:"d",text:"\"I find it easy to build rapport with new clients.\""}],
+ correct:["a"], explanation:"Self-regulation is managing one's emotional state, or thinking before acting. Sensing a coworker's feelings is empathy, persistence toward goals is motivation, and building rapport is social skill."},
+{id:9, cat:"selfconcept", type:"mc", prompt:"A school nurse is planning a health education program on body image. Which age group should the nurse recognize as most vulnerable to body dissatisfaction?",
+ options:[{id:"a",text:"School-age children"},{id:"b",text:"Adolescents"},{id:"c",text:"Middle adults"},{id:"d",text:"Older adults"}],
+ correct:["b"], explanation:"Adolescents are the most vulnerable because rapid physical and hormonal changes during puberty coincide with greater exposure to cultural ideals of attractiveness."},
+{id:10, cat:"selfconcept", type:"mc", prompt:"A nurse is teaching a client who has a new diagnosis of type 2 diabetes. Which client statement shows low self-efficacy?",
+ options:[{id:"a",text:"\"I'm nervous, but I know I can learn to check my blood sugar.\""},{id:"b",text:"\"I'll never be able to manage all of this, so why even try?\""},{id:"c",text:"\"Can you show me the insulin injection one more time?\""},{id:"d",text:"\"My daughter and I are going to take the diabetes class together.\""}],
+ correct:["b"], explanation:"Low self-efficacy shows up as self-doubt and giving up before trying. The other statements show confidence, engagement in learning, and use of support."},
+{id:11, cat:"selfconcept", type:"mc", prompt:"A 19-year-old client tells the nurse, \"I keep switching my major between nursing, art, and business. I get so anxious because I can't decide what I want to do with my life.\" Which identity status should the nurse recognize?",
+ options:[{id:"a",text:"Identity achievement"},{id:"b",text:"Moratorium"},{id:"c",text:"Foreclosure"},{id:"d",text:"Identity diffusion"}],
+ correct:["b"], explanation:"Moratorium is active exploration without commitment, often with anxiety and feeling overwhelmed. Achievement requires both exploring and committing; foreclosure is commitment without exploring; diffusion lacks both."},
+{id:12, cat:"selfconcept", type:"sata", prompt:"A nurse is reviewing the health histories of several clients. Which clients should the nurse identify as experiencing self-esteem stressors? Select all that apply.",
+ options:[{id:"a",text:"A client who recently retired and says, \"I feel like I have no purpose now.\""},{id:"b",text:"A client whose spouse died 6 months ago"},{id:"c",text:"A client who was laid off from their job last month"},{id:"d",text:"A client who was recently promoted at work"},{id:"e",text:"A client who just completed their first marathon"}],
+ correct:["a","b","c"], explanation:"Self-esteem stressors include feeling irrelevant after retirement, loss of social support after a spouse's death, and loss of career. A promotion and completing a marathon are more likely to boost self-esteem."},
+{id:13, cat:"selfconcept", type:"mc", prompt:"A client tells the nurse, \"My manager wants me to work this Saturday, but that's my son's championship game and I promised him I'd be there.\" The nurse should recognize the client is experiencing which of the following?",
+ options:[{id:"a",text:"Role ambiguity"},{id:"b",text:"Role conflict"},{id:"c",text:"Role clarity"},{id:"d",text:"Identity confusion"}],
+ correct:["b"], explanation:"Role conflict happens when two or more role expectations (employee and parent) can't be met at the same time. Role ambiguity is unclear expectations; role clarity reduces stress; identity confusion is an unclear sense of self."},
+{id:14, cat:"selfconcept", type:"mc", prompt:"A client says, \"I've always wanted to be a strong leader, but I never speak up in meetings at work. I feel like such a failure.\" Which concept should the nurse recognize?",
+ options:[{id:"a",text:"Self-concept congruence"},{id:"b",text:"Self-concept incongruence"},{id:"c",text:"Self-actualization"},{id:"d",text:"High self-efficacy"}],
+ correct:["b"], explanation:"Incongruence occurs when the ideal self doesn't match actual life experiences, leading to negative feelings and uncertainty. Congruence and self-actualization require alignment."},
+{id:15, cat:"selfconcept", type:"sata", prompt:"A nurse is teaching a group of nursing students about ways to enhance self-awareness. Which strategies should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Keep a reflection journal."},{id:"b",text:"Ask peers and instructors for feedback."},{id:"c",text:"Complete self-assessments."},{id:"d",text:"Avoid considering other people's points of view."},{id:"e",text:"Practice listening carefully to understand others."}],
+ correct:["a","b","c","e"], explanation:"Journaling, asking for feedback, self-assessments, and careful listening all build self-awareness. Seeking to understand other points of view is also recommended because it helps a person see situations the way others do."},
+{id:16, cat:"selfconcept", type:"mc", prompt:"A client who recently lost their job tells the nurse, \"I feel worthless.\" Which question should the nurse ask to assess the client's self-esteem?",
+ options:[{id:"a",text:"\"What words might others use to describe you?\""},{id:"b",text:"\"What are some accomplishments or qualities that make you feel good about yourself?\""},{id:"c",text:"\"How would you describe your physical appearance?\""},{id:"d",text:"\"What kind of support do you have to fulfill your roles?\""}],
+ correct:["b"], explanation:"Asking about accomplishments and qualities assesses self-esteem. How others would describe the client assesses identity, physical appearance assesses body image, and support for roles assesses role performance."},
+{id:17, cat:"selfconcept", type:"mc", prompt:"A nurse is caring for a client from a cultural background different from the nurse's own. Which action shows the nurse understands culture's influence on self-concept?",
+ options:[{id:"a",text:"Assume the client shares the same beliefs as others from their ethnic group."},{id:"b",text:"Ask the client about their personal cultural beliefs and practices."},{id:"c",text:"Base the plan of care on common traits of the client's culture."},{id:"d",text:"Encourage the client to adopt the values of the dominant culture."}],
+ correct:["b"], explanation:"Differences exist within cultures and even within families, so the nurse should ask about the client's own beliefs. Assuming shared beliefs or relying on general traits leads to stereotyping."},
+{id:18, cat:"selfconcept", type:"mc", prompt:"A client who recently divorced tells the nurse, \"I was married for 20 years. I don't even know who I am anymore.\" The nurse should recognize the client is experiencing which of the following?",
+ options:[{id:"a",text:"Identity confusion"},{id:"b",text:"Role overload"},{id:"c",text:"Body image disturbance"},{id:"d",text:"Identity foreclosure"}],
+ correct:["a"], explanation:"Divorce is an identity stressor, and trouble adapting to it can cause identity confusion, an unclear sense of self. Role overload means too many demands; foreclosure is an identity status."},
+{id:19, cat:"selfconcept", type:"sata", prompt:"A nurse is preparing a class about factors that influence body image across the lifespan. Which statements should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Hormonal changes during puberty can affect body image."},{id:"b",text:"Weight stigma can negatively affect a person's self-concept."},{id:"c",text:"Age-related loss of muscle and bone mass can cause older adults to reevaluate their body image."},{id:"d",text:"Body image becomes fixed once a person reaches adulthood."},{id:"e",text:"Adults rarely experience body image changes unless they develop a chronic illness."}],
+ correct:["a","b","c"], explanation:"Body image changes throughout life with puberty, societal attitudes like weight stigma, and aging. It is never fixed, and adults can experience changes from normal aging, not only from illness."},
+{id:20, cat:"selfconcept", type:"mc", prompt:"A nurse is caring for a client who has low self-esteem after a stroke left them with right-sided weakness. Which intervention should the nurse implement?",
+ options:[{id:"a",text:"Help the client identify past accomplishments and strengths."},{id:"b",text:"Discourage the client from talking about the losses they've experienced."},{id:"c",text:"Tell the client, \"Don't worry, you'll be back to normal in no time.\""},{id:"d",text:"Make daily care decisions for the client to reduce their stress."}],
+ correct:["a"], explanation:"Identifying past and current accomplishments promotes a positive self-concept. Discouraging expression of feelings blocks coping, false reassurance is nontherapeutic, and making decisions for the client promotes dependence."},
+{id:21, cat:"selfconcept", type:"mc", prompt:"A 22-year-old client tells the nurse, \"I shadowed a nurse, a respiratory therapist, and a physical therapist before choosing nursing. I just enrolled in my first nursing course.\" Which identity status should the nurse recognize?",
+ options:[{id:"a",text:"Identity achievement"},{id:"b",text:"Moratorium"},{id:"c",text:"Foreclosure"},{id:"d",text:"Identity diffusion"}],
+ correct:["a"], explanation:"Identity achievement is exploring alternatives and then committing. Moratorium lacks commitment, foreclosure lacks exploration, and diffusion lacks both."},
+{id:22, cat:"selfconcept", type:"mc", prompt:"A 20-year-old client spends most days playing online games and says, \"I don't really care what I do with my life. I'll figure it out eventually.\" Which identity status should the nurse recognize?",
+ options:[{id:"a",text:"Identity achievement"},{id:"b",text:"Moratorium"},{id:"c",text:"Foreclosure"},{id:"d",text:"Identity diffusion"}],
+ correct:["d"], explanation:"Identity diffusion is a lack of both exploration and commitment; the person drifts without purpose or direction. Moratorium involves active exploration, often with anxiety."},
+{id:23, cat:"selfconcept", type:"mc", prompt:"A nurse is teaching a group of parents about identity formation. Which statement by a parent indicates an understanding of the teaching?",
+ options:[{id:"a",text:"\"My teen's identity will be set by the time they turn 18.\""},{id:"b",text:"\"Identity keeps developing throughout adulthood, but it's most intense during adolescence.\""},{id:"c",text:"\"If my teen tries out different identities, it means something is wrong.\""},{id:"d",text:"\"Identity formation is mostly finished by early childhood.\""}],
+ correct:["b"], explanation:"Identity formation is lifelong, but it is most intense during adolescence. Trying out different roles and identities is an expected part of adolescent development."},
+{id:24, cat:"selfconcept", type:"mc", prompt:"A newly hired nurse tells a coworker, \"Nobody has explained what I'm responsible for on this unit, and I'm not sure what's expected of me.\" Which role stressor is the nurse experiencing?",
+ options:[{id:"a",text:"Role conflict"},{id:"b",text:"Role ambiguity"},{id:"c",text:"Role overload"},{id:"d",text:"Role satisfaction"}],
+ correct:["b"], explanation:"Role ambiguity is a lack of clarity about what is expected, which leads to doubt and lower commitment. Role conflict is competing expectations, and role overload is too many demands."},
+{id:25, cat:"selfconcept", type:"mc", prompt:"A client caring for a spouse who has advanced Parkinson's disease tells the nurse, \"I can't keep up with all of his care needs. I feel like I'm failing as his caregiver.\" The nurse should recognize the client is experiencing which of the following?",
+ options:[{id:"a",text:"Role strain"},{id:"b",text:"Role clarity"},{id:"c",text:"Role enhancement"},{id:"d",text:"Identity foreclosure"}],
+ correct:["a"], explanation:"Role strain is difficulty meeting the responsibilities of a particular life role. Role clarity and role enhancement reduce stress, and foreclosure is an identity status."},
+{id:26, cat:"selfconcept", type:"sata", prompt:"A nurse is assessing a client who reports stress related to their various life roles. Which role performance stressors should the nurse consider? Select all that apply.",
+ options:[{id:"a",text:"Role conflict"},{id:"b",text:"Role overload"},{id:"c",text:"Role ambiguity"},{id:"d",text:"Role satisfaction"},{id:"e",text:"Role enhancement"}],
+ correct:["a","b","c"], explanation:"Role conflict, role overload, and role ambiguity are role performance stressors. Role satisfaction and role enhancement are positive effects of fulfilling roles and do not cause stress."},
+{id:27, cat:"selfconcept", type:"mc", prompt:"An adolescent client tells the nurse they feel distressed because their gender identity does not match the sex they were assigned at birth. The nurse should recognize this as which of the following?",
+ options:[{id:"a",text:"Gender dysphoria"},{id:"b",text:"Identity diffusion"},{id:"c",text:"Role ambiguity"},{id:"d",text:"Self-concept congruence"}],
+ correct:["a"], explanation:"Gender dysphoria is a feeling of incongruity between one's gender identity and assigned sex at birth, and it is an identity stressor that can threaten self-concept."},
+{id:28, cat:"selfconcept", type:"mc", prompt:"A nurse is assessing a client who has psoriasis on the face and arms. Which question should the nurse ask to assess the client's body image?",
+ options:[{id:"a",text:"\"How comfortable are you expressing your opinions?\""},{id:"b",text:"\"Which aspects of your physical appearance do you like and appreciate?\""},{id:"c",text:"\"How would others describe you?\""},{id:"d",text:"\"How do you cope when your roles conflict?\""}],
+ correct:["b"], explanation:"Questions about physical appearance assess body image. Expressing opinions assesses self-esteem, how others describe the client assesses identity, and coping with conflicting roles assesses role performance."},
+{id:29, cat:"selfconcept", type:"mc", prompt:"A nurse is completing a self-concept assessment. Which question should the nurse ask to assess the client's identity?",
+ options:[{id:"a",text:"\"How is your identity influenced by others or by society?\""},{id:"b",text:"\"How important is it to always look your best?\""},{id:"c",text:"\"How much do you worry about what others think of you?\""},{id:"d",text:"\"Describe two or three of your primary roles.\""}],
+ correct:["a"], explanation:"Asking how identity is influenced by others or society assesses identity. Looking your best assesses body image, worrying about others' opinions assesses self-esteem, and primary roles assess role performance."},
+{id:30, cat:"selfconcept", type:"mc", prompt:"A nurse is caring for several clients who recently had a colostomy placed. Which client requires further assessment for negative self-esteem related to body image?",
+ options:[{id:"a",text:"A client who asks about local ostomy support groups"},{id:"b",text:"A client who refuses to look at the stoma and asks family not to visit"},{id:"c",text:"A client who asks for help choosing clothing that fits over the pouch"},{id:"d",text:"A client who practices changing the pouch with the nurse"}],
+ correct:["b"], explanation:"Refusing to look at the stoma and withdrawing from family suggest negative self-esteem related to body image. The other clients are coping by seeking support and learning self-care."},
+{id:31, cat:"selfconcept", type:"sata", prompt:"A nurse is planning interventions to improve self-efficacy for a client after a percutaneous coronary intervention. Which interventions should the nurse include? Select all that apply.",
+ options:[{id:"a",text:"Provide ongoing education."},{id:"b",text:"Offer emotional support."},{id:"c",text:"Involve the client's family in care."},{id:"d",text:"Encourage participation in group activities."},{id:"e",text:"Discourage the client from asking questions about their recovery."}],
+ correct:["a","b","c","d"], explanation:"Self-efficacy interventions include ongoing education, emotional support, family involvement, and group activities to build competence and social support. Discouraging questions would undermine the client's confidence and learning."},
+{id:32, cat:"selfconcept", type:"mc", prompt:"A client tells the nurse, \"I'm a very patient person.\" The client's family later describes the client as short-tempered. The nurse should recognize this reflects which component of self-concept?",
+ options:[{id:"a",text:"Self-image"},{id:"b",text:"Ideal self"},{id:"c",text:"Self-efficacy"},{id:"d",text:"Role performance"}],
+ correct:["a"], explanation:"Self-image is how a person views their own qualities, and it may not be consistent with reality or with how others see them."},
+{id:33, cat:"selfconcept", type:"mc", prompt:"A nursing student says, \"Someday I want to be a respected, dependable nurse that clients trust.\" This statement reflects which component of self-concept?",
+ options:[{id:"a",text:"Self-image"},{id:"b",text:"Self-esteem"},{id:"c",text:"Ideal self"},{id:"d",text:"Identity confusion"}],
+ correct:["c"], explanation:"The ideal self is what a person desires to be, such as strong, intelligent, respected, and appreciated."},
+{id:34, cat:"selfconcept", type:"mc", prompt:"A nurse is caring for a client the night before surgery. Which action by the nurse best demonstrates the emotional intelligence domain of empathy?",
+ options:[{id:"a",text:"The nurse recognizes the client's fear and adjusts their approach to address the client's concerns."},{id:"b",text:"The nurse stays calm when the surgical schedule changes unexpectedly."},{id:"c",text:"The nurse sets a goal to become certified in perioperative nursing."},{id:"d",text:"The nurse reflects on their own strengths and weaknesses after the shift."}],
+ correct:["a"], explanation:"Empathy is understanding others' emotions, needs, and concerns and using that knowledge to guide behavior. Staying calm is self-regulation, setting career goals is motivation, and reflecting on strengths is self-awareness."},
+{id:35, cat:"selfconcept", type:"mc", prompt:"A nurse observes that a client appears disheveled, is tearful, and repeatedly says, \"I'm sorry for being such a burden.\" Which action should the nurse take first?",
+ options:[{id:"a",text:"Refer the client to a support group."},{id:"b",text:"Use open-ended questions to explore the client's feelings."},{id:"c",text:"Tell the client there is no need to apologize."},{id:"d",text:"Assist the client with hygiene and grooming."}],
+ correct:["b"], explanation:"Assessment comes first. These behaviors may indicate an altered self-concept, so the nurse should use therapeutic communication to explore the client's feelings before planning interventions. Telling the client not to apologize dismisses their feelings."},
+{id:36, cat:"selfconcept", type:"mc", prompt:"A nurse is assessing an adolescent client who has a distorted body image related to pressure to be thin. Which action should the nurse take?",
+ options:[{id:"a",text:"Tell the client their weight is normal and there's nothing to worry about."},{id:"b",text:"Focus the assessment only on the client's height and weight."},{id:"c",text:"Involve significant others to gain insight into how the client is perceived by others."},{id:"d",text:"Avoid discussing messages the client receives from friends and social media."}],
+ correct:["c"], explanation:"Involving significant others during assessment helps the nurse understand how the client is perceived by others. The nurse should also explore the impact of messages from family, friends, and media. False reassurance and a purely physical focus are not therapeutic."},
+{id:37, cat:"selfconcept", type:"sata", prompt:"A nurse is evaluating a client's progress after an amputation. Which findings indicate the plan of care for altered self-concept has been effective? Select all that apply.",
+ options:[{id:"a",text:"The client verbalizes statements of self-worth."},{id:"b",text:"The client uses healthy coping strategies during physical therapy."},{id:"c",text:"The client looks at the residual limb during dressing changes."},{id:"d",text:"The client refuses to discuss being fitted for a prosthesis."},{id:"e",text:"The client states, \"I'm useless now.\""}],
+ correct:["a","b","c"], explanation:"Statements of self-worth, healthy coping, and acceptance of body appearance and function indicate an effective plan. Avoidance and negative self-talk indicate unresolved self-concept concerns."},
+{id:38, cat:"selfconcept", type:"mc", prompt:"A nurse is assessing how a client's culture influences their self-concept. Which client statement reflects a healthy integration of culture?",
+ options:[{id:"a",text:"\"My family's traditions help me feel confident in who I am.\""},{id:"b",text:"\"I try to hide my cultural background so I fit in.\""},{id:"c",text:"\"I compare myself to people on social media to decide how I should look.\""},{id:"d",text:"\"My culture doesn't really matter to how I see myself.\""}],
+ correct:["a"], explanation:"Individuals who have effectively integrated their culture tend to have a healthier self-concept, and it protects them against biases and stereotypes projected by media."},
+{id:39, cat:"selfconcept", type:"mc", prompt:"A nurse is teaching a group of nursing students about self-concept. Which statement by a student indicates an understanding of the teaching?",
+ options:[{id:"a",text:"\"Self-concept is fixed once it forms in early childhood.\""},{id:"b",text:"\"Self-concept can change based on new experiences and feedback.\""},{id:"c",text:"\"Self-concept affects a person's thoughts but not their behavior.\""},{id:"d",text:"\"Self-concept is determined mostly by genetics.\""}],
+ correct:["b"], explanation:"Self-concept is learned and dynamic, and people refine it based on new information and feedback. It influences behavior, choices, and interactions with others, not just internal thoughts."},
+{id:40, cat:"selfconcept", type:"mc", prompt:"A nurse is caring for a 14-year-old male client who has not yet gone through a growth spurt and is shorter than his peers. Which of the following should the nurse recognize?",
+ options:[{id:"a",text:"Boys who mature later report greater body dissatisfaction than early-maturing peers."},{id:"b",text:"Adolescent males rarely have body image concerns."},{id:"c",text:"Body image concerns in adolescence are limited to females."},{id:"d",text:"Late maturation improves body image because it delays societal pressure."}],
+ correct:["a"], explanation:"Boys who mature later and have not achieved socially accepted body ideals report greater body dissatisfaction than peers who mature earlier. Adolescent males are not immune to body image concerns."}
+];
+initPracticeQuiz(bank, catLabels);
+</script>
+</body>
+</html>

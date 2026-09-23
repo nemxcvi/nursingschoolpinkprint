@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diversity, Equity, and Inclusion practice quiz &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=18">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Diversity, Equity, and Inclusion practice quiz</h2>
+
+  <div id="pq-mode-screen">
+    <p class="muted" style="margin-bottom:14px;">Choose how you want to practice.</p>
+    <div>
+      <button class="pq-mode-btn" data-mode="single">
+        <div class="pq-mode-title">One session</div>
+        <div class="pq-mode-sub">Answer a set of questions once, then see your results.</div>
+      </button>
+      <button class="pq-mode-btn" data-mode="rounds">
+        <div class="pq-mode-title">Mastery rounds</div>
+        <div class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</div>
+      </button>
+    </div>
+  </div>
+
+  <div id="pq-count-screen" class="hidden">
+    <p class="muted" style="margin-bottom:14px;">How many questions?</p>
+    <div id="pq-count-single" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="5">5</button>
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="15">15</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="25">25</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="35">35</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <div id="pq-count-rounds" class="pq-count-grid hidden">
+      <button class="pq-count-btn" data-count="10">10</button>
+      <button class="pq-count-btn" data-count="20">20</button>
+      <button class="pq-count-btn" data-count="30">30</button>
+      <button class="pq-count-btn" data-count="40">40</button>
+    </div>
+    <button class="btn small" id="pq-back"><i class="ti ti-arrow-left" aria-hidden="true"></i> back</button>
+  </div>
+
+  <div id="pq-quiz-screen" class="hidden">
+    <div class="pq-top-row"><span id="pq-progress"></span><span id="pq-score"></span></div>
+    <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-prompt" class="pq-prompt"></div>
+    <div id="pq-options"></div>
+    <p id="pq-error" class="pq-error">select at least one answer</p>
+    <div id="pq-feedback" class="pq-feedback"></div>
+    <div class="pq-btn-row">
+      <button class="btn" id="pq-submit">check answer</button>
+      <button class="btn hidden" id="pq-next">next question &#8594;</button>
+    </div>
+    <button class="btn small" id="pq-end-test" style="margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto;">end and see results</button>
+  </div>
+
+  <div id="pq-round-complete-screen" class="hidden pq-center">
+    <div id="rc-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+    <div id="rc-score" class="pq-stat-big"></div>
+    <div class="pq-stat-sub">this round</div>
+    <div id="rc-detail" class="pq-stat-detail"></div>
+    <button class="btn" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+  </div>
+
+  <div id="pq-end-screen" class="hidden">
+    <div class="pq-center" style="margin-bottom:16px;">
+      <div id="end-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+      <div id="end-rounds-subtitle" class="hidden muted" style="margin-bottom:16px;"></div>
+      <div id="end-stats-single" class="hidden">
+        <div id="end-score" class="pq-stat-big"></div>
+        <div id="end-percent" class="muted"></div>
+      </div>
+      <div id="end-stats-rounds" class="hidden" style="display:flex;justify-content:center;gap:40px;">
+        <div><div id="end-pool-pct" class="pq-stat-big"></div><div class="muted">of pool completed</div></div>
+        <div><div id="end-accuracy-pct" class="pq-stat-big"></div><div class="muted">overall accuracy</div></div>
+      </div>
+    </div>
+    <p id="category-heading" class="eyebrow"></p>
+    <div id="category-grid" class="pq-cat-grid"></div>
+    <p class="eyebrow">review</p>
+    <div id="review-list" style="margin-bottom:20px;"></div>
+    <div class="pq-btn-row">
+      <button class="btn small" id="end-restart">practice again</button>
+      <button class="btn small" id="end-missed">redo missed questions</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/practice-quiz.js"></script>
+<script>
+var catLabels = {
+  culturebias: "Culture & Bias",
+  healthequity: "Health Equity",
+  vulnerablepopulations: "Vulnerable Populations",
+  leiningersunriseenabler: "Leininger & Sunrise Enabler",
+  culturalassessmentcommunication: "Cultural Assessment & Communication"
+};
+var bank = [
+{id:1, cat:"dei", type:"mc", prompt:"During a chart audit, a nurse realizes they consistently spend less time with clients who have limited English proficiency, although the nurse never intended to. The nurse should recognize this as which of the following?",
+ options:[{id:"a",text:"Explicit bias"},{id:"b",text:"Implicit bias"},{id:"c",text:"Cultural competence"},{id:"d",text:"Etic knowledge"}],
+ correct:["b"], explanation:"Implicit bias is unconscious and involuntary and affects perceptions, decisions, and interactions without the person realizing it."},
+{id:2, cat:"dei", type:"mc", prompt:"A nurse tells a coworker, \"I'd rather not be assigned to clients of that religion.\" The charge nurse should recognize this statement as which of the following?",
+ options:[{id:"a",text:"Explicit bias"},{id:"b",text:"Implicit bias"},{id:"c",text:"Cultural awareness"},{id:"d",text:"Emic knowledge"}],
+ correct:["a"], explanation:"Explicit bias is conscious bias from thoughts and beliefs a person is aware of and can report."},
+{id:3, cat:"dei", type:"mc", prompt:"A nurse wants to improve their cultural awareness. Which action should the nurse take first?",
+ options:[{id:"a",text:"Memorize the health practices of several cultures."},{id:"b",text:"Complete a self-assessment of their own biases."},{id:"c",text:"Ask a family member to interpret for clients."},{id:"d",text:"Review the hospital's policies on visitation."}],
+ correct:["b"], explanation:"Cultural awareness begins with a self-assessment of one's own biases, then investigating and understanding differences between one's own culture and others'."},
+{id:4, cat:"dei", type:"mc", prompt:"A nurse asks a client to explain what a family healing ceremony means to them and how it relates to their recovery. The nurse is gaining which type of knowledge?",
+ options:[{id:"a",text:"Emic knowledge"},{id:"b",text:"Etic knowledge"},{id:"c",text:"Explicit knowledge"},{id:"d",text:"Organizational knowledge"}],
+ correct:["a"], explanation:"Emic knowledge is the insider's perspective, defined by members of the culture."},
+{id:5, cat:"dei", type:"mc", prompt:"A nurse reads a research study about health practices common in a particular cultural group. The nurse is gaining which type of knowledge?",
+ options:[{id:"a",text:"Emic knowledge"},{id:"b",text:"Etic knowledge"},{id:"c",text:"Implicit knowledge"},{id:"d",text:"Personal health literacy"}],
+ correct:["b"], explanation:"Etic knowledge is the outsider's perspective, based on external observation, objective data, or scientific theories about a culture."},
+{id:6, cat:"dei", type:"mc", prompt:"A nurse is teaching a group of nursing students about cultural competence. Which statement by a student indicates an understanding of the teaching?",
+ options:[{id:"a",text:"\"Cultural competence means knowing the definitions of different cultures.\""},{id:"b",text:"\"Cultural competence means integrating nursing care with both emic and etic knowledge.\""},{id:"c",text:"\"Cultural competence means treating every client exactly the same way.\""},{id:"d",text:"\"Cultural competence only matters when a client speaks another language.\""}],
+ correct:["b"], explanation:"Cultural competence includes appreciating, accepting, and respecting clients' cultural beliefs, open communication and feedback, and integrating nursing care with emic and etic knowledge."},
+{id:7, cat:"dei", type:"mc", prompt:"A nurse cares for two clients from the same cultural background and notices they have very different health practices and beliefs. The nurse should recognize which of the following?",
+ options:[{id:"a",text:"One of the clients is not following their culture correctly."},{id:"b",text:"Cultural diversity occurs within, as well as among, cultural groups."},{id:"c",text:"Cultural differences only exist between different ethnic groups."},{id:"d",text:"The nurse should base care on the more common practice."}],
+ correct:["b"], explanation:"Cultural diversity occurs within and among cultural groups, so the nurse should never assume all members of a group share the same beliefs."},
+{id:8, cat:"dei", type:"mc", prompt:"A client's name on their insurance card doesn't match the name they give the nurse. Which part of the cultural health assessment is the nurse completing when respectfully clarifying this?",
+ options:[{id:"a",text:"Demographic assessment"},{id:"b",text:"Biological factors"},{id:"c",text:"Technological factors"},{id:"d",text:"Culture care repatterning"}],
+ correct:["a"], explanation:"The demographic assessment lays the foundation for who the client is, and the nurse should be aware that a client's name or gender may differ from their records."},
+{id:9, cat:"dei", type:"sata", prompt:"A nurse educator is teaching staff how bias can affect client care. Which effects should the educator include? Select all that apply.",
+ options:[{id:"a",text:"Less compassion shown to certain clients"},{id:"b",text:"Less time spent building relationships"},{id:"c",text:"Poorer client assessment"},{id:"d",text:"Contribution to health care disparities"},{id:"e",text:"Improved client outcomes"}],
+ correct:["a","b","c","d"], explanation:"Bias can lead to less compassion, less time building relationships, and poorer assessment, which contribute to health care disparities."},
+{id:10, cat:"dei", type:"mc", prompt:"A new urgent care center opens in a rural town. The nurse arranges transportation vouchers for residents who don't have a car. This action is an example of which of the following?",
+ options:[{id:"a",text:"Health equality"},{id:"b",text:"Health equity"},{id:"c",text:"Explicit bias"},{id:"d",text:"Organizational health literacy"}],
+ correct:["b"], explanation:"Equity adjusts for individual needs so everyone can reach the same outcome. Equality gives everyone the same thing, such as simply opening the center to all residents."},
+{id:11, cat:"dei", type:"mc", prompt:"A nurse is beginning care for a newly admitted client from a different cultural background. When should the nurse begin collecting cultural health assessment data?",
+ options:[{id:"a",text:"At the first encounter with the client"},{id:"b",text:"Only if the client requests it"},{id:"c",text:"After the client is stabilized for discharge"},{id:"d",text:"Only if the client does not speak English"}],
+ correct:["a"], explanation:"The cultural health assessment should begin at the first client encounter. The nurse should always ask and never assume."},
+{id:12, cat:"dei", type:"mc", prompt:"A client repeatedly misses follow-up appointments because they have no car and no health insurance. The nurse should recognize these barriers as which of the following?",
+ options:[{id:"a",text:"Social determinants of health"},{id:"b",text:"Implicit bias"},{id:"c",text:"Emic knowledge"},{id:"d",text:"Culture care preservation"}],
+ correct:["a"], explanation:"Social determinants of health are conditions that affect health, quality of life, and well-being and contribute to disparities, such as lack of insurance or transportation."},
+{id:13, cat:"dei", type:"mc", prompt:"A nurse is teaching a class about health disparities. Which definition should the nurse include?",
+ options:[{id:"a",text:"Differences in health outcomes between populations, particularly vulnerable groups compared with the majority"},{id:"b",text:"The distribution of the same resources to everyone"},{id:"c",text:"An individual's ability to understand health information"},{id:"d",text:"A blueprint for organizations to improve quality"}],
+ correct:["a"], explanation:"Health disparities are differences in health outcomes between populations, particularly vulnerable groups compared with the majority, and can limit access to care."},
+{id:14, cat:"dei", type:"mc", prompt:"A nurse manager is explaining the purpose of the National CLAS standards to staff. Which statement by the manager is accurate?",
+ options:[{id:"a",text:"\"They are a blueprint for organizations to advance health equity, improve quality, and eliminate disparities.\""},{id:"b",text:"\"They are a cultural assessment tool used at the bedside.\""},{id:"c",text:"\"They determine the reading level for all patient materials.\""},{id:"d",text:"\"They describe the three modes of culture care.\""}],
+ correct:["a"], explanation:"The CLAS standards are a blueprint for health care organizations to advance health equity, improve quality, and eliminate health care disparities."},
+{id:15, cat:"dei", type:"mc", prompt:"After receiving discharge teaching, a client is unable to explain how to take their new medication or why they need it. The nurse should recognize a concern with which of the following?",
+ options:[{id:"a",text:"Organizational health literacy"},{id:"b",text:"Personal health literacy"},{id:"c",text:"Health equality"},{id:"d",text:"Etic knowledge"}],
+ correct:["b"], explanation:"Personal health literacy is the extent to which a person can obtain, process, and understand basic health information."},
+{id:16, cat:"dei", type:"mc", prompt:"A hospital provides simplified health materials in several languages and trains staff to help clients find and use health services. This is an example of which of the following?",
+ options:[{id:"a",text:"Personal health literacy"},{id:"b",text:"Organizational health literacy"},{id:"c",text:"Implicit bias"},{id:"d",text:"Folk care"}],
+ correct:["b"], explanation:"Organizational health literacy is the extent to which organizations equitably help people find, understand, and use health information and services."},
+{id:17, cat:"dei", type:"mc", prompt:"A nurse is creating written education materials for clients. At which reading level should the nurse write the materials?",
+ options:[{id:"a",text:"College level"},{id:"b",text:"12th grade"},{id:"c",text:"10th grade"},{id:"d",text:"8th grade or lower"}],
+ correct:["d"], explanation:"The NIH recommends presenting all health information at an 8th-grade reading level or lower."},
+{id:18, cat:"dei", type:"sata", prompt:"A nurse is reviewing clients on a community health caseload. Which clients should the nurse identify as members of a vulnerable population? Select all that apply.",
+ options:[{id:"a",text:"An 8-year-old child experiencing poverty"},{id:"b",text:"A 91-year-old client who has heart failure"},{id:"c",text:"A 1-year-old child who has cerebral palsy"},{id:"d",text:"A 17-year-old client who is pregnant"},{id:"e",text:"A high-income adult who has no chronic illness"}],
+ correct:["a","b","c","d"], explanation:"Vulnerable populations include children, older adults, people living in poverty, clients with chronic illness or disabilities, and pregnant adolescents. A high-income adult without chronic illness does not face these barriers."},
+{id:19, cat:"dei", type:"sata", prompt:"A nurse is caring for an adolescent client who recently shared that they are bisexual. The nurse should recognize the client is at increased risk for which of the following? Select all that apply.",
+ options:[{id:"a",text:"Bullying"},{id:"b",text:"Depression"},{id:"c",text:"Sexually transmitted infections"},{id:"d",text:"Illicit substance use"},{id:"e",text:"Suicide"},{id:"f",text:"Increased need for prescription opioids"}],
+ correct:["a","b","c","d","e"], explanation:"LGBTQ+ youth are at increased risk for bullying, physical and sexual violence, depression, illicit substance use, STIs, and suicide, with effects that can last into adulthood."},
+{id:20, cat:"dei", type:"mc", prompt:"During an outbreak of influenza, which client should the nurse identify as being at highest risk for infection because of population density?",
+ options:[{id:"a",text:"A client who lives alone in a rural home"},{id:"b",text:"A client who lives in a nursing home"},{id:"c",text:"A client who works from home"},{id:"d",text:"A client who lives with one roommate in a house"}],
+ correct:["b"], explanation:"Living close together, as in nursing homes, shelters, dorms, and apartments, increases the spread of infection."},
+{id:21, cat:"dei", type:"mc", prompt:"A client living in poverty who also experiences racial discrimination and has multiple chronic illnesses reports high stress and recent substance use. The nurse should recognize this as an example of which of the following?",
+ options:[{id:"a",text:"Intersectionality"},{id:"b",text:"Cultural competence"},{id:"c",text:"Health equality"},{id:"d",text:"Emic knowledge"}],
+ correct:["a"], explanation:"Intersectionality is experiencing multiple disparities at the same time, which leads to greater stress, lower self-esteem, and riskier behaviors such as substance use."},
+{id:22, cat:"dei", type:"mc", prompt:"A nurse is preparing a community emergency plan. Which population should the nurse recognize as disproportionately affected by disasters?",
+ options:[{id:"a",text:"Young adults"},{id:"b",text:"Older adults"},{id:"c",text:"Middle-income adults without chronic illness"},{id:"d",text:"College students"}],
+ correct:["b"], explanation:"Older adults are more vulnerable because of greater physical disabilities and dependence on others, and they are disproportionately affected by disasters."},
+{id:23, cat:"dei", type:"sata", prompt:"A nurse is assessing barriers that may affect a client's access to health care. Which factors should the nurse assess? Select all that apply.",
+ options:[{id:"a",text:"Access to transportation"},{id:"b",text:"Health insurance"},{id:"c",text:"Geographic location"},{id:"d",text:"Sensory deficits"},{id:"e",text:"Blood type"}],
+ correct:["a","b","c","d"], explanation:"Factors affecting access to care include transportation, accessibility, insurance, religion, geographic location, sensory deficits, disabilities, mental health, socioeconomic status, race, ethnicity, gender, sexual orientation, and limited education."},
+{id:24, cat:"dei", type:"mc", prompt:"A nurse is reviewing factors that affect vulnerable populations. Which of the following is a socioeconomic factor?",
+ options:[{id:"a",text:"Age"},{id:"b",text:"English proficiency"},{id:"c",text:"Household income"},{id:"d",text:"Chronic health conditions"}],
+ correct:["c"], explanation:"Socioeconomic factors include education level, employment status, household income, and poverty status. Age and English proficiency are demographic factors, and chronic conditions are health status factors."},
+{id:25, cat:"dei", type:"mc", prompt:"A nurse is reviewing factors that affect vulnerable populations. Which of the following is a health status factor?",
+ options:[{id:"a",text:"Population density"},{id:"b",text:"Health insurance status"},{id:"c",text:"Employment status"},{id:"d",text:"Household type"}],
+ correct:["b"], explanation:"Health status factors include chronic health conditions, disabilities, and health insurance status. Population density and household type are demographic factors, and employment is a socioeconomic factor."},
+{id:26, cat:"dei", type:"mc", prompt:"A transgender client tells the nurse their chosen name and pronouns. Which action should the nurse take?",
+ options:[{id:"a",text:"Use the name listed on the client's insurance card."},{id:"b",text:"Use the client's chosen name and pronouns consistently."},{id:"c",text:"Ask the client to provide legal documentation of the name change."},{id:"d",text:"Avoid using the client's name altogether."}],
+ correct:["b"], explanation:"Using a client's chosen name and pronouns shows respect and openness. Inconsistent use is a barrier to gender-affirming care."},
+{id:27, cat:"dei", type:"mc", prompt:"A nurse is explaining Leininger's Theory of Culture Care Diversity and Universality. Which statement by the nurse is accurate?",
+ options:[{id:"a",text:"\"It guides nurses to give care that fits the client's cultural values, beliefs, and practices.\""},{id:"b",text:"\"It measures how stressful a client perceives their life to be.\""},{id:"c",text:"\"It describes the stages of sleep.\""},{id:"d",text:"\"It is used to determine a client's reading level.\""}],
+ correct:["a"], explanation:"Leininger's theory, also called Transcultural Nursing Theory, guides nurses to give care that fits the client's cultural values, beliefs, and practices."},
+{id:28, cat:"dei", type:"mc", prompt:"A nurse is using Leininger's Sunrise Enabler. Which of the following is one of its five categories?",
+ options:[{id:"a",text:"Three modes of care decisions and actions"},{id:"b",text:"Twelve cultural domains"},{id:"c",text:"Primary and secondary appraisal"},{id:"d",text:"Alarm, resistance, and exhaustion"}],
+ correct:["a"], explanation:"The five categories are the upper level (worldview), the rays of the sun (basic elements), the central core, the focus on individuals, families, groups, communities, or institutions, and the three modes of care decisions and actions."},
+{id:29, cat:"dei", type:"sata", prompt:"A nurse is completing a cultural assessment based on the basic elements (rays of the sun) of the Sunrise Enabler. Which elements should the nurse assess? Select all that apply.",
+ options:[{id:"a",text:"Technological factors"},{id:"b",text:"Kinship and social factors"},{id:"c",text:"Economic factors"},{id:"d",text:"Educational factors"},{id:"e",text:"Hospital staffing ratios"}],
+ correct:["a","b","c","d"], explanation:"The basic elements are technological; religious, spiritual, and philosophical; kinship and social; cultural values, beliefs, and lifeways; biological; political and legal; economic; and educational factors."},
+{id:30, cat:"dei", type:"mc", prompt:"A nurse asks a client whether they have access to a phone, internet, or computer. The nurse is assessing which element of the Sunrise Enabler?",
+ options:[{id:"a",text:"Technological factors"},{id:"b",text:"Biological factors"},{id:"c",text:"Political and legal factors"},{id:"d",text:"Kinship and social factors"}],
+ correct:["a"], explanation:"Technological factors include access to a phone, internet, or computer, which affects access to care and communication with providers."},
+{id:31, cat:"dei", type:"mc", prompt:"A nurse asks a client about any personal or family history of mental illness or genetic conditions. The nurse is assessing which element of the Sunrise Enabler?",
+ options:[{id:"a",text:"Biological factors"},{id:"b",text:"Economic factors"},{id:"c",text:"Educational factors"},{id:"d",text:"Technological factors"}],
+ correct:["a"], explanation:"Biological factors include personal or family history of physical or mental illness and genetic conditions."},
+{id:32, cat:"dei", type:"mc", prompt:"A nurse asks a client, \"Who is your support system?\" and \"What is your marital status?\" The nurse is assessing which element of the Sunrise Enabler?",
+ options:[{id:"a",text:"Kinship and social factors"},{id:"b",text:"Technological factors"},{id:"c",text:"Political and legal factors"},{id:"d",text:"Biological factors"}],
+ correct:["a"], explanation:"Kinship and social factors include marital status and support systems such as family and friends."},
+{id:33, cat:"dei", type:"mc", prompt:"A client's grandmother prepares a traditional remedy passed down through generations to help the client recover. The nurse should recognize this as which of the following?",
+ options:[{id:"a",text:"Folk (generic) care"},{id:"b",text:"Integrative care"},{id:"c",text:"Culture care repatterning"},{id:"d",text:"Etic knowledge"}],
+ correct:["a"], explanation:"Folk (generic) care is nonprofessional care based on tradition, given by family or a folk practitioner."},
+{id:34, cat:"dei", type:"mc", prompt:"A client wants to continue using a traditional herbal remedy along with prescribed treatment. The nurse collaborates with the provider so the client can safely use both. The nurse is practicing which of the following?",
+ options:[{id:"a",text:"Folk care"},{id:"b",text:"Integrative care"},{id:"c",text:"Explicit bias"},{id:"d",text:"Health equality"}],
+ correct:["b"], explanation:"In integrative care, the nurse acts as a bridge between folk or naturopathic medicine and Western medicine."},
+{id:35, cat:"dei", type:"mc", prompt:"A client requests a female caregiver because of religious beliefs, and the nurse arranges the assignment. This is an example of which mode of culture care?",
+ options:[{id:"a",text:"Culture care preservation and maintenance"},{id:"b",text:"Culture care accommodation and negotiation"},{id:"c",text:"Culture care repatterning and restructuring"},{id:"d",text:"Integrative care"}],
+ correct:["a"], explanation:"Culture care preservation and maintenance supports the client in maintaining their cultural beliefs and values."},
+{id:36, cat:"dei", type:"mc", prompt:"A client who has diabetes wants to eat traditional holiday foods high in carbohydrates. The nurse helps the client adjust portion sizes so they can still take part safely. This is an example of which mode of culture care?",
+ options:[{id:"a",text:"Culture care preservation and maintenance"},{id:"b",text:"Culture care accommodation and negotiation"},{id:"c",text:"Culture care repatterning and restructuring"},{id:"d",text:"Folk care"}],
+ correct:["b"], explanation:"Culture care accommodation and negotiation helps the client adapt their cultural beliefs and practices for safety, health, and wellness."},
+{id:37, cat:"dei", type:"mc", prompt:"A client's cultural practice is causing harm to their health. The nurse works with the client to change the practice to improve outcomes. This is an example of which mode of culture care?",
+ options:[{id:"a",text:"Culture care preservation and maintenance"},{id:"b",text:"Culture care accommodation and negotiation"},{id:"c",text:"Culture care repatterning and restructuring"},{id:"d",text:"Emic knowledge"}],
+ correct:["c"], explanation:"Culture care repatterning and restructuring helps the client restructure their cultural beliefs to improve health outcomes."},
+{id:38, cat:"dei", type:"mc", prompt:"A client with limited English proficiency is being admitted. The client's adult daughter offers to interpret. Which action should the nurse take?",
+ options:[{id:"a",text:"Accept the daughter's offer because she knows the client best."},{id:"b",text:"Request a certified medical interpreter."},{id:"c",text:"Ask a staff member who speaks some of the client's language to interpret."},{id:"d",text:"Speak slowly and loudly in English."}],
+ correct:["b"], explanation:"A certified medical interpreter ensures accurate, complete, and confidential communication. Family members or other staff may omit, alter, or misinterpret information and don't know medical terminology."},
+{id:39, cat:"dei", type:"sata", prompt:"A nurse is preparing to give discharge instructions to a client who speaks a different language than the nurse. Which actions are appropriate? Select all that apply.",
+ options:[{id:"a",text:"Consult a certified medical interpreter."},{id:"b",text:"Provide written instructions in the client's preferred language."},{id:"c",text:"Have a family member translate the instructions."},{id:"d",text:"Ask a staff member who speaks some of the client's language to explain the instructions."},{id:"e",text:"Speak more loudly in English."}],
+ correct:["a","b"], explanation:"Discharge teaching with a language barrier requires a certified medical interpreter and written instructions in the client's preferred language. Family members and other staff may misinterpret information and compromise confidentiality."},
+{id:40, cat:"dei", type:"sata", prompt:"A nurse is caring for a client who has hearing loss. Which actions should the nurse take? Select all that apply.",
+ options:[{id:"a",text:"Face the client when speaking."},{id:"b",text:"Reduce background noise."},{id:"c",text:"Use a loud tone of voice."},{id:"d",text:"Speak at a faster pace."},{id:"e",text:"Write everything down on paper."}],
+ correct:["a","b"], explanation:"The nurse should face the client and reduce background noise. A loud voice, faster speech, or writing everything down are not effective strategies."}
+];
+initPracticeQuiz(bank, catLabels);
+</script>
+</body>
+</html>

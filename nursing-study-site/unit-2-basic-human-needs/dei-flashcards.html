@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diversity, Equity, and Inclusion &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=18">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Diversity, Equity, and Inclusion</h2>
+
+  <div class="fc-topbar"><span id="cardcounter"></span><span id="counts"></span></div>
+  <div class="fc-progresswrap"><div id="progressbar" class="fc-progressbar"></div></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="row" style="display:none;">
+    <button class="btn dk" onclick="grade('dontknow', event)"><i class="ti ti-x" aria-hidden="true"></i> don't know</button>
+    <button class="btn al" onclick="grade('almost', event)">~ almost</button>
+    <button class="btn kn" onclick="grade('know', event)"><i class="ti ti-check" aria-hidden="true"></i> know it</button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <div class="row">
+    <button class="btn small" onclick="prevCard(event)"><i class="ti ti-arrow-left" aria-hidden="true"></i> prev</button>
+    <button class="btn small" onclick="nextCard(event)">next <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="row" style="margin-bottom:0;">
+    <button class="btn small" onclick="shuffleDeck(event)"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i> shuffle</button>
+    <button class="btn small" onclick="restartDeck(event)"><i class="ti ti-refresh" aria-hidden="true"></i> restart</button>
+  </div>
+  <p id="reviewnote" class="fc-note"></p>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/flashcards.js?v=3"></script>
+<script>
+var CATS = {
+  culturebias: {label:"Culture & Bias", hue:"red"},
+  healthequity: {label:"Health Equity", hue:"orange"},
+  vulnerablepopulations: {label:"Vulnerable Populations", hue:"yellow"},
+  leiningersunriseenabler: {label:"Leininger & Sunrise Enabler", hue:"green"},
+  culturalassessmentcommunication: {label:"Cultural Assessment & Communication", hue:"aqua"}
+};
+var CARDS = [
+[1,"culturebias","Culture","The integration of human behaviors (communication, language, actions, beliefs, values, customs) of racial, religious, social, and ethnic groups; affects how clients perceive and receive health care"],
+[2,"culturebias","Culture (Leininger's definition)","The learned, shared, and transmitted values, beliefs, norms, and lifeways of a group that guide their thinking, decisions, and actions"],
+[3,"culturebias","Cultural awareness","The ability and willingness to investigate and understand differences between your own culture and others'; begins with a self-assessment of your own bias"],
+[4,"culturebias","Explicit bias","Conscious bias from thoughts and beliefs a person is aware of and can report","A nurse openly states they prefer not to care for clients of a certain religion"],
+[5,"culturebias","Implicit bias","Unconscious, involuntary attitudes that affect perceptions, decisions, and interactions; can involve gender, race, or disability","A nurse spends less time with certain clients without realizing it due to personal bias"],
+[6,"culturebias","How bias affects care","Less compassion, less time building relationships, and poorer assessment, which contribute to health care disparities"],
+[7,"culturebias","Diversity","A broad range of individual, population, and social characteristics: age, ethnicity, gender identity, geographic location, language, religion, socioeconomic status"],
+[8,"culturebias","Cultural diversity","Differences that occur within and among cultural groups; can increase the chance of miscommunication between clients and nurses"],
+[9,"culturebias","Inclusion (APA)","An environment that embraces individual differences so people can bring their whole selves and reach their full capacity"],
+[10,"culturebias","Cultural competence","Appreciating, accepting, and respecting clients' cultural beliefs, customs, and values; open communication and feedback; integrating nursing care with emic and etic knowledge"],
+[11,"culturebias","Emic knowledge","The insider's perspective, defined by members of the culture","A client explains what a healing ritual means to their family"],
+[12,"culturebias","Etic knowledge","The outsider's perspective, based on external observation, objective data, or scientific theories about a culture","A nurse reads research on health practices common in a cultural group"],
+[13,"healthequity","Health disparities","Differences in health outcomes between populations, particularly vulnerable groups compared with the majority; can limit access to care"],
+[14,"healthequity","Social determinants of health (SDOH)","Conditions that affect health, quality of life, and well-being and contribute to disparities","A client without insurance or transportation misses health promotion appointments"],
+[15,"healthequity","Equity vs equality","Equality gives everyone the same thing; equity adjusts for individual needs so everyone can reach the same outcome","A new rural urgent care center is equal for all residents, but not equitable for those without transportation"],
+[16,"healthequity","CLAS standards","A blueprint for health care organizations to advance health equity, improve quality, and eliminate disparities"],
+[17,"healthequity","Personal health literacy","The extent to which a person can obtain, process, and understand basic health information"],
+[18,"healthequity","Organizational health literacy","The extent to which organizations equitably help people find, understand, and use health information and services"],
+[19,"healthequity","Recommended reading level for health information","8th grade or lower (NIH)"],
+[20,"vulnerablepopulations","Vulnerable populations","Groups at higher risk for poor health outcomes because of barriers to social, economic, and environmental resources, including illness or disability"],
+[21,"vulnerablepopulations","Examples of vulnerable populations","Older adults, children, immigrants, marginalized ethnic groups, people living in poverty, clients with chronic illness or disabilities, veterans, pregnant adolescents"],
+[22,"vulnerablepopulations","Factors affecting access to care","Transportation, accessibility, health insurance, religion, geographic location, sensory deficits, physical and cognitive disabilities, mental health, socioeconomic status, race, ethnicity, gender, sexual orientation, limited education"],
+[23,"vulnerablepopulations","Demographic factors","Age, English proficiency, household type, population density, race and ethnicity, sex"],
+[24,"vulnerablepopulations","Health status factors","Chronic health conditions, disabilities, health insurance status"],
+[25,"vulnerablepopulations","Socioeconomic factors","Education level, employment status, household income, poverty status"],
+[26,"vulnerablepopulations","Population density and health","Living close together (nursing homes, shelters, dorms, apartments) increases the spread of infection"],
+[27,"vulnerablepopulations","Older adults as a vulnerable population","More physical disabilities and dependence on others; disproportionately affected by disasters"],
+[28,"vulnerablepopulations","Intersectionality","Experiencing multiple disparities at the same time, which leads to greater stress, lower self-esteem, and riskier behaviors such as substance use"],
+[29,"vulnerablepopulations","Health risks for LGBTQ+ youth","Bullying, physical and sexual violence, depression, illicit substance use, STIs, suicide; effects can last into adulthood"],
+[30,"vulnerablepopulations","Using chosen name and pronouns","Shows respect and openness; inconsistent use is a barrier to gender-affirming care"],
+[31,"leiningersunriseenabler","Leininger's Theory of Culture Care Diversity and Universality","Also called Transcultural Nursing Theory; guides nurses to give care that fits the client's cultural values, beliefs, and practices"],
+[32,"leiningersunriseenabler","5 categories of the Sunrise Enabler","Upper level (worldview), rays of the sun (basic elements), central core, focus on individuals/families/groups/communities/institutions, three modes of care decisions and actions"],
+[33,"leiningersunriseenabler","Basic elements (rays of the sun)","Technological; religious, spiritual, and philosophical; kinship and social; cultural values, beliefs, and lifeways; biological; political and legal; economic; educational"],
+[34,"leiningersunriseenabler","Technological factors","Access to a phone, internet, or computer affects access to care and communication with providers"],
+[35,"leiningersunriseenabler","Biological factors","Personal or family history of physical or mental illness and genetic conditions"],
+[36,"leiningersunriseenabler","Political and legal factors","Political views shape health behaviors; legal status affects care"],
+[37,"leiningersunriseenabler","Economic and educational factors","Education, employment, and income affect health literacy, insurance, transportation, and access to care"],
+[38,"leiningersunriseenabler","Folk (generic) care","Nonprofessional care based on tradition, given by family or a folk practitioner"],
+[39,"leiningersunriseenabler","Integrative care","The nurse acts as a bridge between folk or naturopathic medicine and Western medicine"],
+[40,"leiningersunriseenabler","Culture care preservation and maintenance","Supporting the client in maintaining their cultural beliefs and values"],
+[41,"leiningersunriseenabler","Culture care accommodation and negotiation","Helping the client adapt their cultural beliefs for safety, health, and wellness"],
+[42,"leiningersunriseenabler","Culture care repatterning and restructuring","Helping the client restructure their cultural beliefs to improve health outcomes"],
+[43,"culturalassessmentcommunication","Cultural health assessment","Systematically collecting a client's cultural attitudes, beliefs, values, and customs; start at the first encounter; always ask, don't assume"],
+[44,"culturalassessmentcommunication","Demographic assessment","Lays the foundation for who the client is; a client's name or gender may differ from their records"],
+[45,"culturalassessmentcommunication","Certified medical interpreter","Use when there's a language barrier; ensures accurate, complete, and confidential communication. Family members or other staff may omit, alter, or misinterpret information and don't know medical terminology; confidentiality can be compromised"],
+[46,"culturalassessmentcommunication","Discharge with a language barrier","Use a certified medical interpreter and provide written instructions in the client's preferred language"],
+[47,"culturalassessmentcommunication","Communicating with a client who has hearing loss","Face the client and reduce background noise. Avoid a loud voice, speaking faster, or writing everything down"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

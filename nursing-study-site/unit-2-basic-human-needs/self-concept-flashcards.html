@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Concept &mdash; Nursing School Pinkprint</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=18">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <h2 style="margin-bottom:18px;">Self-Concept</h2>
+
+  <div class="fc-topbar"><span id="cardcounter"></span><span id="counts"></span></div>
+  <div class="fc-progresswrap"><div id="progressbar" class="fc-progressbar"></div></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="row" style="display:none;">
+    <button class="btn dk" onclick="grade('dontknow', event)"><i class="ti ti-x" aria-hidden="true"></i> don't know</button>
+    <button class="btn al" onclick="grade('almost', event)">~ almost</button>
+    <button class="btn kn" onclick="grade('know', event)"><i class="ti ti-check" aria-hidden="true"></i> know it</button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <div class="row">
+    <button class="btn small" onclick="prevCard(event)"><i class="ti ti-arrow-left" aria-hidden="true"></i> prev</button>
+    <button class="btn small" onclick="nextCard(event)">next <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="row" style="margin-bottom:0;">
+    <button class="btn small" onclick="shuffleDeck(event)"><i class="ti ti-arrows-shuffle" aria-hidden="true"></i> shuffle</button>
+    <button class="btn small" onclick="restartDeck(event)"><i class="ti ti-refresh" aria-hidden="true"></i> restart</button>
+  </div>
+  <p id="reviewnote" class="fc-note"></p>
+</div>
+
+<script src="../assets/theme.js"></script>
+<script src="../assets/flashcards.js?v=3"></script>
+<script>
+var CATS = {
+  rogerstheory: {label:"Rogers' Theory", hue:"red"},
+  influencingfactors: {label:"Influencing Factors", hue:"orange"},
+  identityformation: {label:"Identity Formation", hue:"yellow"},
+  selfconceptstressors: {label:"Self-Concept Stressors", hue:"green"},
+  rolestressors: {label:"Role Stressors", hue:"aqua"},
+  nursingprocess: {label:"Nursing Process", hue:"blue"}
+};
+var CARDS = [
+[1,"rogerstheory","Self-concept","How a person views and evaluates themself; learned, dynamic, and evolves throughout the lifespan"],
+[2,"rogerstheory","Rogers' 3 components of self-concept","Self-image, self-esteem, ideal self"],
+[3,"rogerstheory","Self-image","How a person views their unique qualities (physical traits, intelligence, talents, strengths/weaknesses); may not match reality","A person sees themself as kind and caring, but others see them as harsh"],
+[4,"rogerstheory","Self-esteem","Generalized sense of self-worth; how much value a person places on themselves","A student feels great about themselves only when they receive A's. The moment they get a B, they feel inferior because their entire self-worth is tied to achievement"],
+[5,"rogerstheory","Ideal self","What a person desires to be","Strong, intelligent, respected, appreciated"],
+[6,"rogerstheory","Self-concept congruence","Self-image, self-esteem, and ideal self are aligned; the ideal self is consistent with life experiences"],
+[7,"rogerstheory","Self-concept incongruence","Misalignment of the three components; the ideal self is inconsistent with life experiences, causing confusion and uncertainty"],
+[8,"rogerstheory","Self-actualization","Becoming the best version of oneself; greater congruence leads to it"],
+[9,"influencingfactors","Emotional intelligence (EI)","Ability to perceive, understand, control, manage, and evaluate emotions"],
+[10,"influencingfactors","5 domains of EI","Self-awareness, self-regulation, motivation, empathy, social skill"],
+[11,"influencingfactors","Self-regulation (EI)","Managing one's emotional state; thinking before acting"],
+[12,"influencingfactors","Motivation (EI)","Passion and persistence that guide reaching one's goals"],
+[13,"influencingfactors","Empathy (EI)","Understanding others' emotions, needs, and concerns and using that to guide behavior"],
+[14,"influencingfactors","Social skill (EI)","Managing relationships, finding common ground, building rapport"],
+[15,"influencingfactors","Self-awareness","Seeing oneself clearly and objectively through reflection and introspection; knowing what you feel, why, and how others perceive you","Keeping a reflection journal or asking others for feedback"],
+[16,"influencingfactors","Body image","A person's feelings, perceptions, and attitudes toward their own physical appearance"],
+[17,"influencingfactors","Age group most vulnerable to body dissatisfaction","Adolescents, because of rapid puberty changes combined with exposure to cultural ideals"],
+[18,"influencingfactors","Positive self-esteem related to body image","The client seeks ways to cope with or improve their body image","A client receiving chemo asks where to buy a wig"],
+[19,"influencingfactors","Negative self-esteem related to body image","The client feels a loss of worth regarding their body image, often leading them to withdraw","A client undergoing chemotherapy refuses to leave the house or see friends because they feel unrecognizable after hair loss"],
+[20,"influencingfactors","Self-efficacy","A person's perceived ability to successfully complete a task","A client feels confident they can manage their own ostomy care"],
+[21,"influencingfactors","High vs low self-efficacy","High: persistence, task mastery, less stress. Low: self-doubt, avoids challenges, gives up quickly"],
+[22,"influencingfactors","Culture and self-concept","Integrating one's culture supports a healthier self-concept and protects against media stereotypes; never assume all members of a culture share the same experience"],
+[23,"influencingfactors","Role","A set of expected behaviors determined by family, culture, and societal norms"],
+[24,"influencingfactors","Role performance","The specific behaviors a person displays within each role, plus their perception of how well they fulfill those roles","Student, employee, partner; \"How many hats do you wear?\""],
+[25,"identityformation","Identity formation","Developing an understanding of oneself within family, cultural, and social norms; a lifelong process; most intense during adolescence"],
+[26,"identityformation","Influences on identity","Gender, race, ethnicity, birth order, family status, occupation, culture, religion, environment"],
+[27,"identityformation","Marcia's 2 criteria for identity status","Exploration (active searching) and commitment (demonstrated investment)"],
+[28,"identityformation","Identity achievement","Explored alternatives AND committed; solid, integrated self-concept","Anika explores careers and chooses chemical engineering over the family restaurant"],
+[29,"identityformation","Moratorium","Exploring but NOT committed; identity crisis; feels anxious and overwhelmed","Carlos wonders about the military, law school, or traveling the world"],
+[30,"identityformation","Foreclosure","Committed WITHOUT exploring; adopts values of authority figures without question","Talia becomes a teacher like her parents without ever questioning it"],
+[31,"identityformation","Identity diffusion","Neither explores nor commits; drifts without purpose or direction","Klaus plays video games all day; \"the future can wait\""],
+[32,"selfconceptstressors","Self-concept stressor","An event or perception that negatively impacts how a person perceives themself"],
+[33,"selfconceptstressors","Identity stressors","Gender dysphoria, job loss, divorce or death of a spouse, discrimination based on race or ethnicity"],
+[34,"selfconceptstressors","Gender dysphoria","A feeling of incongruity between one's gender identity and the sex assigned at birth"],
+[35,"selfconceptstressors","Identity confusion","An unclear sense of self, individuality, and personality; results from inability to adapt to identity stressors"],
+[36,"selfconceptstressors","Body image stressors","Puberty, aging, chronic illness (stroke, diabetes, obesity), amputation or surgical changes, weight stigma"],
+[37,"selfconceptstressors","Self-esteem stressors","Disability, chronic illness, job loss, financial change, retirement, death of a spouse, childhood abuse or neglect, intimate partner violence"],
+[38,"rolestressors","Role conflict","Two or more role expectations that cannot be met at the same time","A nurse is scheduled for a shift during their child's school event"],
+[39,"rolestressors","Role ambiguity","Lack of clarity about what is expected; leads to doubt and disengagement","A nursing student is assigned a project worth 50% of their grade, but the teacher provides no rubric, instructions, or guidelines on how the work will be graded"],
+[40,"rolestressors","Role overload","Responsibilities exceed a person's ability to manage them","Being a nurse, mother, partner, and instructor all at once"],
+[41,"rolestressors","Role strain","Difficulty meeting the responsibilities of a particular role, or incompatible demands placed on a person","A nurse struggles to provide thorough, compassionate patient care while simultaneously trying to complete massive documentation during the same shift"],
+[42,"rolestressors","Role concepts that are NOT stressors","Role satisfaction, role enhancement, role clarity (all reduce stress)"],
+[43,"nursingprocess","4 components assessed for self-concept","Identity, body image, self-esteem, role performance"],
+[44,"nursingprocess","Behaviors indicating altered self-concept","Negative self-talk, unkempt appearance, tearfulness, being overly apologetic, indecisiveness"],
+[45,"nursingprocess","Identity assessment questions","\"How would you describe yourself?\" and \"How do the opinions of others impact how you see yourself?\""],
+[46,"nursingprocess","Body image assessment questions","\"How would you describe your physical appearance?\" and \"Which aspects of your body do you wish you could change?\""],
+[47,"nursingprocess","Self-esteem assessment questions","\"How do you respond when you experience failure?\" and \"How much do you worry about what others think of you?\""],
+[48,"nursingprocess","Role performance assessment questions","\"How successful do you feel in fulfilling your roles?\" and \"What feelings do you experience when thinking about your roles?\""],
+[49,"nursingprocess","Planning for a positive self-concept","Collaborate with the client and family; encourage expression of feelings about body image; promote independence; discuss support and rehab resources"],
+[50,"nursingprocess","Implementation to promote a positive self-concept","Identify past accomplishments, coping strategies, and support systems; promote healthy eating, rest, and exercise"],
+[51,"nursingprocess","Evaluation: signs the plan is effective vs not","Effective: verbalizes self-acceptance, accepts body image, uses healthy coping. Not effective: feels overwhelmed, avoids discussing appearance changes"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
