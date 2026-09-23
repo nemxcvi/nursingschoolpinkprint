@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nursing School Pinkprint</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=9">
+<link rel="stylesheet" href="assets/style.css?v=10">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
 </head>
 <body>
@@ -110,9 +110,38 @@ var QUOTES = [
   var el = document.getElementById("quoteText");
   if (!el) return;
 
+  var MIN_FONT = 18;
+
+  function fitOneLine(){
+    el.style.fontSize = "";
+    el.style.whiteSpace = "";
+    el.style.minHeight = "";
+    if (window.innerWidth <= 700) return;
+    var baseSize = parseFloat(getComputedStyle(el).fontSize);
+    var available = el.parentElement.clientWidth;
+    var natural = el.scrollWidth;
+    if (natural > available){
+      var scaled = Math.floor(baseSize * (available / natural) * 0.98);
+      if (scaled < MIN_FONT){
+        el.style.fontSize = MIN_FONT + "px";
+        el.style.whiteSpace = "normal";
+        el.style.minHeight = Math.ceil(MIN_FONT * 1.3 * 2) + "px";
+      } else {
+        el.style.fontSize = scaled + "px";
+      }
+    }
+  }
+
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var idx = Math.floor(Math.random() * QUOTES.length);
   el.textContent = QUOTES[idx];
+  fitOneLine();
+
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(fitOneLine);
+  }
+
+  window.addEventListener("resize", fitOneLine);
 
   if (reduced) return;
 
@@ -121,6 +150,7 @@ var QUOTES = [
     setTimeout(function(){
       idx = (idx + 1) % QUOTES.length;
       el.textContent = QUOTES[idx];
+      fitOneLine();
       el.classList.remove("is-changing");
     }, 600);
   }, 8000);
