@@ -125,7 +125,7 @@ h2{font-size:20px;}
 @media(max-width:700px){.pp-grid{grid-template-columns:1fr;}}
 
 .pp-card{display:flex;flex-direction:column;justify-content:space-between;min-height:200px;padding:24px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);box-sizing:border-box;}
-.pp-card.draft{border:1.5px dashed var(--border);}
+.pp-card.draft{border:2px dashed var(--border);}
 .pp-card-top{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.06em;color:var(--label);text-transform:uppercase;}
 .pp-card-mid{display:flex;align-items:center;gap:14px;margin:22px 0;}
 .pp-card-mid i{font-size:36px;color:var(--label);flex-shrink:0;}
