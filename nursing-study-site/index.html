@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nursing School Pinkprint</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=14">
+<link rel="stylesheet" href="assets/style.css?v=15">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
 </head>
 <body>
@@ -35,6 +35,7 @@
 
   <div class="pp-quote">
     <p class="pp-quote-label">Note to future nurses</p>
+    <h1 class="pp-quote-h1" id="quoteTextDesktop"></h1>
     <div class="pp-quote-stack" id="quoteStack"></div>
   </div>
 
@@ -107,49 +108,92 @@ var QUOTES = [
 ];
 
 (function(){
+  var deskEl = document.getElementById("quoteTextDesktop");
   var stack = document.getElementById("quoteStack");
-  if (!stack) return;
+  if (!deskEl && !stack) return;
+
+  var MIN_FONT = 18;
+
+  function fitOneLine(){
+    if (!deskEl) return;
+    deskEl.style.fontSize = "";
+    deskEl.style.whiteSpace = "";
+    deskEl.style.minHeight = "";
+    if (window.innerWidth <= 700) return;
+    var baseSize = parseFloat(getComputedStyle(deskEl).fontSize);
+    var available = deskEl.parentElement.clientWidth;
+    var natural = deskEl.scrollWidth;
+    if (natural > available){
+      var scaled = Math.floor(baseSize * (available / natural) * 0.98);
+      if (scaled < MIN_FONT){
+        deskEl.style.fontSize = MIN_FONT + "px";
+        deskEl.style.whiteSpace = "normal";
+        deskEl.style.minHeight = Math.ceil(MIN_FONT * 1.3 * 2) + "px";
+      } else {
+        deskEl.style.fontSize = scaled + "px";
+      }
+    }
+  }
 
   var mobileMQ = window.matchMedia("(max-width: 700px)");
 
   function syncMobileHeight(){
+    if (!stack) return;
     if (!mobileMQ.matches){ stack.style.height = ""; return; }
     var active = items[idx];
-    stack.style.height = active.scrollHeight + "px";
+    if (active) stack.style.height = active.scrollHeight + "px";
+  }
+
+  var items = [];
+  if (stack){
+    items = QUOTES.map(function(q){
+      var h1 = document.createElement("h1");
+      h1.className = "pp-quote-item";
+      h1.textContent = q;
+      h1.setAttribute("aria-hidden", "true");
+      stack.appendChild(h1);
+      return h1;
+    });
   }
 
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var idx = Math.floor(Math.random() * QUOTES.length);
 
-  var items = QUOTES.map(function(q){
-    var h1 = document.createElement("h1");
-    h1.className = "pp-quote-item";
-    h1.textContent = q;
-    h1.setAttribute("aria-hidden", "true");
-    stack.appendChild(h1);
-    return h1;
-  });
-
-  var idx = Math.floor(Math.random() * items.length);
-  items[idx].classList.add("is-active");
-  items[idx].removeAttribute("aria-hidden");
+  if (deskEl) deskEl.textContent = QUOTES[idx];
+  if (items[idx]){
+    items[idx].classList.add("is-active");
+    items[idx].removeAttribute("aria-hidden");
+  }
+  fitOneLine();
   syncMobileHeight();
 
   if (document.fonts && document.fonts.ready){
-    document.fonts.ready.then(syncMobileHeight);
+    document.fonts.ready.then(function(){ fitOneLine(); syncMobileHeight(); });
   }
-  window.addEventListener("resize", syncMobileHeight);
+  window.addEventListener("resize", function(){ fitOneLine(); syncMobileHeight(); });
 
   if (reduced) return;
 
   setInterval(function(){
-    var current = items[idx];
-    var nextIdx = (idx + 1) % items.length;
-    var next = items[nextIdx];
+    var nextIdx = (idx + 1) % QUOTES.length;
 
-    current.classList.remove("is-active");
-    current.setAttribute("aria-hidden", "true");
-    next.removeAttribute("aria-hidden");
-    next.classList.add("is-active");
+    if (deskEl){
+      deskEl.classList.add("is-changing");
+      (function(targetIdx){
+        setTimeout(function(){
+          deskEl.textContent = QUOTES[targetIdx];
+          fitOneLine();
+          deskEl.classList.remove("is-changing");
+        }, 600);
+      })(nextIdx);
+    }
+
+    if (items[idx] && items[nextIdx]){
+      items[idx].classList.remove("is-active");
+      items[idx].setAttribute("aria-hidden", "true");
+      items[nextIdx].removeAttribute("aria-hidden");
+      items[nextIdx].classList.add("is-active");
+    }
 
     idx = nextIdx;
     syncMobileHeight();

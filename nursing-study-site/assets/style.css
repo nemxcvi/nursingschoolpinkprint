@@ -115,8 +115,16 @@ h2{font-size:20px;}
 .pp-quote{margin:20px 0 28px;}
 @media(max-width:700px){.pp-quote{margin:20px 0 32px;}}
 .pp-quote-label{font-size:12px;letter-spacing:.08em;color:var(--label);text-transform:uppercase;margin:0 0 8px;}
-.pp-quote-stack{display:grid;}
-.pp-quote-item{grid-area:1 / 1;font-family:'Young Serif',serif;font-weight:400;font-size:clamp(24px,6vw,34px);line-height:1.3;color:var(--heading);margin:0;opacity:0;transition:opacity .6s ease;}
+
+/* Desktop: single element, shrink-to-fit-one-line */
+.pp-quote-h1{font-family:'Young Serif',serif;font-weight:400;font-size:34px;line-height:1.3;color:var(--heading);margin:0;min-height:48px;white-space:nowrap;opacity:1;transform:translateY(0);transition:opacity .6s ease,transform .6s ease;}
+.pp-quote-h1.is-changing{opacity:0;transform:translateY(8px);}
+@media(max-width:700px){.pp-quote-h1{display:none;}}
+@media(prefers-reduced-motion:reduce){.pp-quote-h1{transition:none;}}
+
+/* Mobile: crossfade stack, dynamic height matching the active quote */
+.pp-quote-stack{display:none;}
+.pp-quote-item{font-family:'Young Serif',serif;font-weight:400;font-size:clamp(24px,6vw,34px);line-height:1.3;color:var(--heading);margin:0;opacity:0;transition:opacity .6s ease;}
 .pp-quote-item.is-active{opacity:1;}
 @media(max-width:700px){
   .pp-quote-stack{display:block;position:relative;overflow:hidden;transition:height .4s ease;}
