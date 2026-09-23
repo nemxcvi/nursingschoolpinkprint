@@ -108,7 +108,7 @@ h2{font-size:20px;}
   .pp-header-actions{justify-self:center;flex-wrap:wrap;justify-content:center;}
 }
 
-.pp-searchrow{display:flex;justify-content:flex-end;padding:22px 0 8px;}
+.pp-searchrow{display:flex;justify-content:flex-end;padding:22px 0 98px;}
 .pp-searchrow .searchwrap{width:420px;max-width:100%;margin:0;}
 @media(max-width:700px){.pp-searchrow{justify-content:stretch;}.pp-searchrow .searchwrap{width:100%;}}
 
