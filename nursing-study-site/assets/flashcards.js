@@ -1,3 +1,14 @@
+function measureFaceHeight(el){
+  var prevPosition = el.style.position;
+  var prevWidth = el.style.width;
+  el.style.position = "static";
+  el.style.width = "100%";
+  var h = el.scrollHeight;
+  el.style.position = prevPosition;
+  el.style.width = prevWidth;
+  return h;
+}
+
 function initFlashcards(CATS, CARDS){
   var cardMap = {};
   CARDS.forEach(function(c){ cardMap[c[0]] = c; });
@@ -92,6 +103,12 @@ function initFlashcards(CATS, CARDS){
       defEl.classList.toggle("long-text", isLong);
       if (exEl) exEl.classList.toggle("long-text", isLong);
     }
+
+    var cardInner = document.getElementById("cardinner");
+    var frontFace = document.getElementById("cardfront");
+    var backFace = document.getElementById("cardback");
+    var neededHeight = Math.max(210, measureFaceHeight(frontFace), measureFaceHeight(backFace));
+    cardInner.style.minHeight = neededHeight + "px";
 
     gradebtns.style.display = state.flipped ? "flex" : "none";
   }
