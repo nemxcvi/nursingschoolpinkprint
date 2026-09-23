@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nursing School Pinkprint</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=12">
+<link rel="stylesheet" href="assets/style.css?v=13">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");})();</script>
 </head>
 <body>
@@ -110,6 +110,14 @@ var QUOTES = [
   var stack = document.getElementById("quoteStack");
   if (!stack) return;
 
+  var mobileMQ = window.matchMedia("(max-width: 700px)");
+
+  function syncMobileHeight(){
+    if (!mobileMQ.matches){ stack.style.height = ""; return; }
+    var active = items[idx];
+    stack.style.height = active.scrollHeight + "px";
+  }
+
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var items = QUOTES.map(function(q){
@@ -124,6 +132,12 @@ var QUOTES = [
   var idx = Math.floor(Math.random() * items.length);
   items[idx].classList.add("is-active");
   items[idx].removeAttribute("aria-hidden");
+  syncMobileHeight();
+
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(syncMobileHeight);
+  }
+  window.addEventListener("resize", syncMobileHeight);
 
   if (reduced) return;
 
@@ -138,6 +152,7 @@ var QUOTES = [
     next.classList.add("is-active");
 
     idx = nextIdx;
+    syncMobileHeight();
   }, 8000);
 })();
 

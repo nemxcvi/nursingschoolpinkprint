@@ -84,6 +84,15 @@ function initFlashcards(CATS, CARDS){
     document.getElementById("cardback").innerHTML =
       "<p class='fc-cat'>" + cat.label + "</p><p class='fc-def'>" + card[3] + "</p>" + exHtml;
 
+    var defEl = document.querySelector("#cardback .fc-def");
+    var exEl = document.querySelector("#cardback .fc-ex");
+    if (defEl){
+      var lineHeightPx = parseFloat(getComputedStyle(defEl).lineHeight);
+      var isLong = defEl.scrollHeight > lineHeightPx * 2 + 2;
+      defEl.classList.toggle("long-text", isLong);
+      if (exEl) exEl.classList.toggle("long-text", isLong);
+    }
+
     gradebtns.style.display = state.flipped ? "flex" : "none";
   }
 
