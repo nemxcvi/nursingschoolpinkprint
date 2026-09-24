@@ -114,16 +114,14 @@ h2{font-size:20px;}
 .pp-wrap{max-width:1400px;margin:0 auto;padding:0 64px 5rem;}
 @media(max-width:700px){.pp-wrap{padding:0 20px 4rem;}}
 
-.pp-header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:28px 0;border-bottom:1px solid var(--border);}
+.pp-header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:44px 0;border-bottom:1px solid var(--border);}
 .pp-header-label{font-size:13px;letter-spacing:.08em;color:var(--label);text-transform:uppercase;white-space:nowrap;}
-.pp-header-title{font-family:'Young Serif',serif;font-weight:400;font-size:52px;color:var(--heading);text-align:center;margin:0;padding-bottom:36px;line-height:1.1;min-width:0;}
+.pp-header-title{font-family:'Young Serif',serif;font-weight:400;font-size:52px;color:var(--heading);text-align:center;margin:0;line-height:1.1;min-width:0;}
 .pp-header-title .accent{color:var(--label);white-space:nowrap;}
 .palette-word-wrap{position:relative;display:inline-block;width:123px;}
-.palette-word{background:none;border:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;transition:opacity .15s ease;display:inline-block;width:100%;text-align:right;}
+.palette-word{background:none;border:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-decoration-thickness:2px;text-underline-offset:8px;transition:opacity .15s ease;display:inline-block;width:100%;text-align:right;}
 .palette-word:hover{opacity:.7;}
 .palette-word:focus-visible{opacity:.7;outline:2px solid var(--label);outline-offset:3px;border-radius:4px;}
-.palette-hint{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:6px;font-size:26px;line-height:1;font-weight:700;color:var(--label);pointer-events:none;}
-[data-hint-seen] .palette-hint{display:none;}
 .pp-header-actions{display:flex;align-items:center;gap:10px;justify-self:end;flex-shrink:0;}
 .pp-filters{display:flex;gap:8px;flex-wrap:nowrap;}
 @media(max-width:900px){

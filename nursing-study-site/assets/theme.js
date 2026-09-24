@@ -3,7 +3,6 @@
   if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
   var savedPalette = localStorage.getItem("palette");
   if (savedPalette === "blue") document.documentElement.setAttribute("data-palette", "blue");
-  if (localStorage.getItem("paletteHintSeen") === "1") document.documentElement.setAttribute("data-hint-seen", "1");
 })();
 function toggleTheme(){
   var root = document.documentElement;
@@ -28,8 +27,6 @@ function togglePalette(){
     root.setAttribute("data-palette", "blue");
     localStorage.setItem("palette", "blue");
   }
-  root.setAttribute("data-hint-seen", "1");
-  localStorage.setItem("paletteHintSeen", "1");
   updateBrandText();
 }
 function updateBrandText(){
