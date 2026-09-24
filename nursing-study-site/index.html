@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=25">
+<link rel="stylesheet" href="assets/style.css?v=26">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -28,10 +28,9 @@
     <div class="pp-header-label">SHEET 01 &mdash; NUR 114</div>
     <div class="pp-header-title">Nursing School <span class="accent"><span class="palette-word-wrap"><button class="palette-word" id="paletteWord" onclick="togglePalette()" aria-label="Switch to Blueprint palette" title="Switch to Blueprint">Pink</button><span class="palette-hint" id="paletteHint" aria-hidden="true">switch to blueprint</span></span>print</span></div>
     <div class="pp-header-actions">
-      <div class="pp-filters">
-        <button class="tag active" id="tag-all" onclick="setTag('all')">All</button>
-        <button class="tag" id="tag-flashcards" onclick="setTag('flashcards')">Flashcards</button>
-        <button class="tag" id="tag-quizzes" onclick="setTag('quizzes')">Quizzes</button>
+      <div class="searchwrap pp-header-search">
+        <i class="ti ti-search" aria-hidden="true"></i>
+        <input type="text" id="unitsearch" placeholder="Search" oninput="renderHome()">
       </div>
       <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
         <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
@@ -40,9 +39,10 @@
   </div>
 
   <div class="pp-searchrow">
-    <div class="searchwrap">
-      <i class="ti ti-search" aria-hidden="true"></i>
-      <input type="text" id="unitsearch" placeholder="Search flashcards & quizzes" oninput="renderHome()">
+    <div class="pp-filters">
+      <button class="tag" id="tag-flashcards" onclick="setTag('flashcards')">Flashcards</button>
+      <button class="tag" id="tag-quizzes" onclick="setTag('quizzes')">Quizzes</button>
+      <button class="tag" id="tag-studyguides" onclick="setTag('studyguides')">Study guides</button>
     </div>
   </div>
 
@@ -219,7 +219,6 @@ var WIDGETS = [
   {title:"CBC/CMP lab values", type:"flashcards", unit:"Unit 1", href:"unit-1-intro-to-nursing/cbc-cmp-lab-values.html"},
   {title:"Nursing Fundamentals practice quiz", type:"quiz", unit:"Unit 1", href:"unit-1-intro-to-nursing/nursing-fundamentals-quiz.html"},
   {title:"CBC/CMP practice quiz", type:"quiz", unit:"Unit 1", href:"unit-1-intro-to-nursing/cbc-cmp-quiz.html"},
-  {title:"Unit 1 mixed quiz", type:"quiz", unit:"Unit 1", href:"unit-1-intro-to-nursing/mix-quiz.html"},
   {title:"Mobility", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/mobility-flashcards.html"},
   {title:"Mobility practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/mobility-quiz.html"},
   {title:"Hygiene", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/hygiene-flashcards.html"},
@@ -234,16 +233,16 @@ var WIDGETS = [
   {title:"Comfort, Rest & Sleep practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/comfort-rest-sleep-quiz.html"},
   {title:"Stress and Coping", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/stress-coping-flashcards.html"},
   {title:"Stress and Coping practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/stress-coping-quiz.html"},
-  {title:"Unit 2 mixed quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/mix-quiz.html"}
+  {title:"Week 5 Study Guide", type:"studyguide", unit:"Unit 2", href:"unit-2-basic-human-needs/week5-study-guide.html"}
 ];
 var MIX_ALL = {title:"Mix all", type:"quiz", unit:"All units", href:"mix-all-quiz.html", special:true};
 
-var state = {tag:"all"};
+var state = {tag:null};
 
 function setTag(tag){
-  state.tag = tag;
-  ["all","flashcards","quizzes"].forEach(function(t){
-    document.getElementById("tag-" + t).classList.toggle("active", t === tag);
+  state.tag = (state.tag === tag) ? null : tag;
+  ["flashcards","quizzes","studyguides"].forEach(function(t){
+    document.getElementById("tag-" + t).classList.toggle("active", t === state.tag);
   });
   renderHome();
 }
@@ -255,7 +254,7 @@ function renderHome(){
   var eyebrow = document.getElementById("resultseyebrow");
   var footer = document.querySelector(".pp-footer");
 
-  if (q === "" && state.tag === "all"){
+  if (q === "" && state.tag === null){
     unitsGrid.style.display = "grid";
     widgetList.style.display = "none";
     eyebrow.style.display = "none";
@@ -271,17 +270,22 @@ function renderHome(){
   var items = WIDGETS.slice();
   if (state.tag === "quizzes") items = items.filter(function(w){ return w.type === "quiz"; });
   if (state.tag === "flashcards") items = items.filter(function(w){ return w.type === "flashcards"; });
+  if (state.tag === "studyguides") items = items.filter(function(w){ return w.type === "studyguide"; });
   if (q) items = items.filter(function(w){ return w.title.toLowerCase().indexOf(q) !== -1 || w.unit.toLowerCase().indexOf(q) !== -1; });
 
-  eyebrow.textContent = q ? ('results for "' + q + '"') : (state.tag === "quizzes" ? "all quizzes" : "all flashcards");
+  var tagLabels = {quizzes:"all quizzes", flashcards:"all flashcards", studyguides:"all study guides"};
+  eyebrow.textContent = q ? ('results for "' + q + '"') : (tagLabels[state.tag] || "all flashcards & quizzes");
+
+  var typeLabels = {quiz:"Quiz", flashcards:"Flashcards", studyguide:"Study guide"};
+  var typeIcons = {quiz:"ti-help-circle", flashcards:"ti-cards", studyguide:"ti-notebook"};
 
   var html = "";
   if (items.length === 0){
     html = "<p class='muted' style='text-align:center;padding:2rem 0;'>No matches.</p>";
   } else {
     html = items.map(function(w){
-      var icon = w.type === "quiz" ? "ti-help-circle" : "ti-cards";
-      return "<a class='widgetrow' href='" + w.href + "'><div><p class='title'>" + w.title + "</p><p class='sub'>" + w.unit + " &middot; " + (w.type === "quiz" ? "Quiz" : "Flashcards") + "</p></div><i class='ti " + icon + " chev' aria-hidden='true'></i></a>";
+      var icon = typeIcons[w.type];
+      return "<a class='widgetrow' href='" + w.href + "'><div><p class='title'>" + w.title + "</p><p class='sub'>" + w.unit + " &middot; " + typeLabels[w.type] + "</p></div><i class='ti " + icon + " chev' aria-hidden='true'></i></a>";
     }).join("");
   }
 

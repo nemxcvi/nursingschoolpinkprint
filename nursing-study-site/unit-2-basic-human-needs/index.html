@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=25">
+<link rel="stylesheet" href="../assets/style.css?v=26">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -42,76 +42,71 @@
     </div>
   </div>
 
-  <div class="tags">
-    <button class="tag active" onclick="filterType('all', event)">All</button>
-    <button class="tag" onclick="filterType('flashcards', event)">Flashcards</button>
-    <button class="tag" onclick="filterType('quiz', event)">Quizzes</button>
-  </div>
+  <a class="widgetrow" style="border-color:var(--label);margin-bottom:20px;" href="week5-study-guide.html">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <i class="ti ti-notebook" style="font-size:20px;color:var(--label);" aria-hidden="true"></i>
+      <div><p class="title">Week 5 Study Guide</p><p class="sub">Self-concept, sleep, stress &amp; DEI &middot; mnemonics &amp; quick checks</p></div>
+    </div>
+    <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
+  </a>
 
   <div id="widgetlist">
-    <a class="widgetrow" href="mobility-flashcards.html" data-type="flashcards">
-      <div><p class="title">Mobility</p><p class="sub">Flashcards &middot; 56 cards</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="mobility-quiz.html" data-type="quiz">
-      <div><p class="title">Mobility practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="hygiene-flashcards.html" data-type="flashcards">
-      <div><p class="title">Hygiene</p><p class="sub">Flashcards &middot; 44 cards</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="hygiene-quiz.html" data-type="quiz">
-      <div><p class="title">Hygiene practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="client-education-flashcards.html" data-type="flashcards">
-      <div><p class="title">Client Education</p><p class="sub">Flashcards &middot; 43 cards</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="client-education-quiz.html" data-type="quiz">
-      <div><p class="title">Client Education practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="dei-flashcards.html" data-type="flashcards">
-      <div><p class="title">Diversity, Equity, and Inclusion</p><p class="sub">Flashcards &middot; 47 cards</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="dei-quiz.html" data-type="quiz">
-      <div><p class="title">Diversity, Equity, and Inclusion practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="self-concept-flashcards.html" data-type="flashcards">
-      <div><p class="title">Self-Concept</p><p class="sub">Flashcards &middot; 51 cards</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="self-concept-quiz.html" data-type="quiz">
-      <div><p class="title">Self-Concept practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="comfort-rest-sleep-flashcards.html" data-type="flashcards">
-      <div><p class="title">Comfort, Rest & Sleep</p><p class="sub">Flashcards &middot; 59 cards</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="comfort-rest-sleep-quiz.html" data-type="quiz">
-      <div><p class="title">Comfort, Rest & Sleep practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="stress-coping-flashcards.html" data-type="flashcards">
-      <div><p class="title">Stress and Coping</p><p class="sub">Flashcards &middot; 69 cards</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
-    <a class="widgetrow" href="stress-coping-quiz.html" data-type="quiz">
-      <div><p class="title">Stress and Coping practice quiz</p><p class="sub">Quiz &middot; 40 questions &middot; session or mastery rounds</p></div>
-      <i class="ti ti-chevron-right chev" aria-hidden="true"></i>
-    </a>
+    <div class="topic-card">
+      <h3>Mobility</h3>
+      <div class="topic-card-links">
+        <a class="topic-pill" href="mobility-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards <span class="topic-pill-meta">56 cards</span></a>
+        <a class="topic-pill" href="mobility-quiz.html"><i class="ti ti-help-circle" aria-hidden="true"></i> Quiz <span class="topic-pill-meta">40 questions</span></a>
+      </div>
+    </div>
+    <div class="topic-card">
+      <h3>Hygiene</h3>
+      <div class="topic-card-links">
+        <a class="topic-pill" href="hygiene-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards <span class="topic-pill-meta">44 cards</span></a>
+        <a class="topic-pill" href="hygiene-quiz.html"><i class="ti ti-help-circle" aria-hidden="true"></i> Quiz <span class="topic-pill-meta">40 questions</span></a>
+      </div>
+    </div>
+    <div class="topic-card">
+      <h3>Client Education</h3>
+      <div class="topic-card-links">
+        <a class="topic-pill" href="client-education-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards <span class="topic-pill-meta">43 cards</span></a>
+        <a class="topic-pill" href="client-education-quiz.html"><i class="ti ti-help-circle" aria-hidden="true"></i> Quiz <span class="topic-pill-meta">40 questions</span></a>
+      </div>
+    </div>
+    <div class="topic-card">
+      <h3>Diversity, Equity, and Inclusion</h3>
+      <div class="topic-card-links">
+        <a class="topic-pill" href="dei-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards <span class="topic-pill-meta">47 cards</span></a>
+        <a class="topic-pill" href="dei-quiz.html"><i class="ti ti-help-circle" aria-hidden="true"></i> Quiz <span class="topic-pill-meta">40 questions</span></a>
+      </div>
+    </div>
+    <div class="topic-card">
+      <h3>Self-Concept</h3>
+      <div class="topic-card-links">
+        <a class="topic-pill" href="self-concept-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards <span class="topic-pill-meta">51 cards</span></a>
+        <a class="topic-pill" href="self-concept-quiz.html"><i class="ti ti-help-circle" aria-hidden="true"></i> Quiz <span class="topic-pill-meta">40 questions</span></a>
+      </div>
+    </div>
+    <div class="topic-card">
+      <h3>Comfort, Rest &amp; Sleep</h3>
+      <div class="topic-card-links">
+        <a class="topic-pill" href="comfort-rest-sleep-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards <span class="topic-pill-meta">59 cards</span></a>
+        <a class="topic-pill" href="comfort-rest-sleep-quiz.html"><i class="ti ti-help-circle" aria-hidden="true"></i> Quiz <span class="topic-pill-meta">40 questions</span></a>
+      </div>
+    </div>
+    <div class="topic-card">
+      <h3>Stress and Coping</h3>
+      <div class="topic-card-links">
+        <a class="topic-pill" href="stress-coping-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards <span class="topic-pill-meta">69 cards</span></a>
+        <a class="topic-pill" href="stress-coping-quiz.html"><i class="ti ti-help-circle" aria-hidden="true"></i> Quiz <span class="topic-pill-meta">40 questions</span></a>
+      </div>
+    </div>
   </div>
 
   <div style="border-top:0.5px solid var(--border);margin:24px 0 16px;"></div>
   <p class="eyebrow">Mix it up</p>
-  <a class="widgetrow" style="border-color:var(--border-accent);" href="mix-quiz.html">
+  <a class="widgetrow" style="border-color:var(--label);" href="mix-quiz.html">
     <div style="display:flex;align-items:center;gap:12px;">
-      <i class="ti ti-arrows-shuffle" style="font-size:20px;color:var(--text-accent);" aria-hidden="true"></i>
+      <i class="ti ti-arrows-shuffle" style="font-size:20px;color:var(--accent-text);" aria-hidden="true"></i>
       <div><p class="title">Mix all</p><p class="sub">Random from every quiz in the unit</p></div>
     </div>
   </a>
@@ -119,14 +114,5 @@
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script>
-function filterType(type, e){
-  document.querySelectorAll(".tag").forEach(function(t){ t.classList.remove("active"); });
-  e.target.classList.add("active");
-  document.querySelectorAll("#widgetlist .widgetrow").forEach(function(row){
-    row.style.display = (type === "all" || row.getAttribute("data-type") === type) ? "flex" : "none";
-  });
-}
-</script>
 </body>
 </html>

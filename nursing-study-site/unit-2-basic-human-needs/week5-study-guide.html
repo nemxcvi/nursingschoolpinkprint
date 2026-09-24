@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Week 5 study guide &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Week 5 study guide &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-2-basic-human-needs/week5-study-guide">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Week 5 study guide &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=26">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+<style>
+:root{
+  /* guide-specific accents only; base colors below reuse the site's own theme variables */
+  --flag:#0F6E62; --flag-bg:#DDF3EE;
+  --hook:#FFF4D6; --hook-line:#E9C766; --known:#E8E4FF; --known-line:#8D7CE6;
+  --side:#1E5FA8; --side-bg:#E1EEFB; --red:#B3261E; --red-bg:#FDE7E5;
+}
+[data-theme="dark"]{
+  --flag:#7FE0CF; --flag-bg:#123A34;
+  --hook:#3A2E12; --hook-line:#B8963A; --known:#262045; --known-line:#9D8FF0;
+  --side:#9CC4F5; --side-bg:#15263D; --red:#FF8A80; --red-bg:#3D1512;
+}
+.gwrap{max-width:980px;margin:0 auto;padding:0 20px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.guide-body{font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.6;}
+.guide-body h1,.guide-body h2,.guide-body h3{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+.guide-body a{color:var(--label)}
+.guide-body :focus-visible{outline:3px solid var(--label);outline-offset:3px;border-radius:4px}
+
+/* Hero */
+.guide-hero{padding:8px 0 32px}
+.guide-hero .course{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);margin:0 0 14px}
+.guide-hero h1{font-size:clamp(36px,7vw,64px);letter-spacing:-.01em;color:var(--heading)}
+.guide-hero p.lede{max-width:60ch;color:var(--muted);margin:18px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;font-size:15px}
+.legend span{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1.5px solid}
+.lg-known{background:var(--known);border-color:var(--known-line)}
+.lg-hook{background:var(--hook);border-color:var(--hook-line)}
+.lg-flag{background:var(--flag-bg);border-color:var(--flag);color:var(--flag)}
+
+/* In-guide topic nav */
+nav.topics{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(6px);border-block:1.5px solid var(--border)}
+nav.topics .gwrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px}
+nav.topics a{font-family:'IBM Plex Mono',monospace;font-size:14px;white-space:nowrap;text-decoration:none;color:var(--text);padding:7px 14px;border-radius:999px;border:1.5px solid transparent}
+nav.topics a:hover{border-color:var(--pill)}
+
+/* Sections */
+section.topic{padding:48px 0 20px}
+.topic-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--label);padding-bottom:10px;margin-bottom:28px}
+.topic-head h2{font-size:clamp(30px,5vw,46px);color:var(--label)}
+.topic-head p{margin:0;color:var(--muted);font-style:italic}
+.guide-body h3{font-size:26px;margin:34px 0 12px}
+.gcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.gbox{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px 18px}
+.gbox h4{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:20px;margin:0 0 6px;color:var(--heading)}
+.gbox p{margin:0}
+.guide-body ul.tight{margin:6px 0 0;padding-left:20px}
+.guide-body ul.tight li{margin:3px 0}
+.gex{display:block;font-style:italic;color:var(--muted);font-size:16px;margin-top:6px}
+
+/* Mnemonics: the signature element */
+.mnemo{border:2px solid;border-radius:16px;padding:18px 20px;margin:18px 0}
+.mnemo.known{background:var(--known);border-color:var(--known-line)}
+.mnemo.hook{background:var(--hook);border-color:var(--hook-line);border-style:dashed}
+.mnemo .tag{font-family:'IBM Plex Mono',monospace;font-size:13px;margin:0 0 8px;color:var(--muted);text-transform:none;letter-spacing:normal;padding:0;border:none;min-height:0;background:none;display:block;}
+.mnemo .phrase{font-family:'Young Serif',Georgia,serif;font-size:clamp(24px,3.6vw,34px);line-height:1.2;margin:0 0 12px;color:var(--heading)}
+.glet{display:flex;flex-wrap:wrap;gap:10px}
+.glet div{flex:1 1 150px;display:flex;gap:10px;align-items:baseline}
+.glet b{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:38px;line-height:1;color:var(--label);min-width:34px}
+.glet span{font-size:16px}
+.gnote{font-size:15px;color:var(--muted);margin:10px 0 0}
+
+.gside{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--side);background:var(--side-bg);border:1.5px solid var(--side);border-radius:999px;padding:2px 10px;vertical-align:middle;margin-right:6px}
+.lg-side{background:var(--side-bg);border-color:var(--side);color:var(--side)}
+.gflag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--flag);background:var(--flag-bg);border:1.5px solid var(--flag);border-radius:999px;padding:2px 10px;vertical-align:middle;margin-left:6px}
+
+/* Tables */
+.gtbl{overflow-x:auto;border:1.5px solid var(--border);border-radius:14px;background:var(--card);margin:14px 0}
+.gtbl table{border-collapse:collapse;width:100%;min-width:620px;font-size:16px}
+.gtbl th,.gtbl td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--border)}
+.gtbl th{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:17px;background:color-mix(in srgb,var(--pill) 60%,var(--card));color:var(--heading)}
+.gtbl tr:last-child td{border-bottom:none}
+
+/* Congruence visual */
+.venn{display:flex;gap:28px;flex-wrap:wrap;margin:14px 0}
+.venn figure{margin:0;flex:1 1 240px;background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px;text-align:center}
+.venn .stage{position:relative;height:150px;max-width:240px;margin:0 auto}
+.venn .c{position:absolute;width:86px;height:86px;border-radius:50%;display:grid;place-items:center;font-size:13px;line-height:1.1;mix-blend-mode:multiply;color:#3B1128}
+[data-theme="dark"] .venn .c{mix-blend-mode:normal;opacity:.9}
+.c1{background:#F7A8C4}.c2{background:#FFD98A}.c3{background:#A9DCEB}
+.together .c1{left:48px;top:8px}.together .c2{left:104px;top:8px}.together .c3{left:76px;top:56px}
+.apart .c1{left:8px;top:6px}.apart .c2{left:146px;top:6px}.apart .c3{left:77px;top:64px}
+.venn figcaption{font-size:15px;color:var(--muted);margin-top:8px}
+
+/* Marcia grid */
+.marcia{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin:14px 0;font-size:16px}
+.marcia .h{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);align-self:end;padding:0 6px}
+.marcia .cell{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:12px 14px}
+.marcia .cell strong{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:19px;display:block;color:var(--label)}
+
+/* GAS strip */
+.gas{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:14px 0;border-radius:14px;overflow:hidden;border:1.5px solid var(--border)}
+.gas div{padding:14px 16px;background:var(--card)}
+.gas div+div{border-left:1.5px dashed var(--border)}
+.gas strong{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:22px;display:block;color:var(--heading)}
+.gas .a{background:color-mix(in srgb,#FFD98A 45%,var(--card))}
+.gas .e{background:color-mix(in srgb,#F7A8C4 45%,var(--card))}
+@media (max-width:640px){.gas{grid-template-columns:1fr}.gas div+div{border-left:none;border-top:1.5px dashed var(--border)}}
+
+/* HPA chain */
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0;font-size:16px}
+.chain span{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:8px 12px}
+.chain i{font-style:normal;color:var(--label);font-size:20px}
+
+/* Numbered sequence */
+ol.gseq{counter-reset:s;list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+ol.gseq li{counter-increment:s;display:flex;gap:12px;align-items:baseline;background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:10px 14px}
+ol.gseq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;font-size:24px;color:var(--label);min-width:22px}
+
+/* Quick checks */
+.gcheck{margin:26px 0 8px;display:grid;gap:10px}
+.gcheck h3{margin:0 0 4px;font-size:22px}
+.guide-body details{background:var(--card);border:1.5px solid var(--pill);border-radius:12px;padding:12px 16px}
+.guide-body summary{cursor:pointer;font-weight:600;list-style:none;color:var(--text)}
+.guide-body summary::-webkit-details-marker{display:none}
+.guide-body summary::after{content:" Show answer";font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:13px;color:var(--label);margin-left:6px}
+.guide-body details[open] summary::after{content:" Hide"}
+.guide-body details p{margin:10px 0 0}
+
+.guide-footer{padding:24px 0 60px;color:var(--muted);font-size:15px}
+.guide-footer .gbox{background:var(--red-bg);border-color:var(--red);color:var(--text)}
+.guide-footer .gbox strong{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="backlink" href="./"><i class="ti ti-arrow-left" aria-hidden="true"></i> Unit 2</a>
+    <div style="display:flex;gap:8px;">
+      <a class="iconbtn" href="../" aria-label="Home"><i class="ti ti-home" aria-hidden="true"></i></a>
+      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="guide-body">
+
+<header class="guide-hero gwrap">
+  <p class="course">NUR 114 &middot; Unit 2 &middot; Week 5</p>
+  <h1>Self-concept, stress, sleep &amp; DEI study guide</h1>
+  <p class="lede">Everything from the Week 5 module, boiled down. Use the mnemonics to lock in lists, then hit the quick checks at the end of each topic.</p>
+  <div class="legend" aria-label="Key">
+    <span class="lg-known">Known mnemonic</span>
+    <span class="lg-hook">Memory hook made for this guide</span>
+    <span class="lg-flag">Instructor flagged for the test</span>
+    <span class="lg-side">Side note from this guide</span>
+  </div>
+</header>
+
+<nav class="topics" aria-label="Topics">
+  <div class="gwrap">
+    <a href="#self-concept">Self-concept</a>
+    <a href="#sleep">Comfort, rest &amp; sleep</a>
+    <a href="#stress">Stress &amp; coping</a>
+    <a href="#dei">DEI</a>
+  </div>
+</nav>
+
+<main class="gwrap">
+
+<!-- ===================== SELF-CONCEPT ===================== -->
+<section class="topic" id="self-concept">
+  <div class="topic-head"><h2>Self-concept</h2><p>How a person sees and values themself. Learned, dynamic, lifelong.</p></div>
+
+  <h3>Rogers' three components</h3>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook</p>
+    <p class="phrase">"Me, myself, and my goals"</p>
+    <div class="glet">
+      <div><b>Me</b><span><strong>Self-image</strong>: how I see my qualities (may not match reality)</span></div>
+      <div><b>My</b><span><strong>Self-esteem</strong>: how much I value myself</span></div>
+      <div><b>Goals</b><span><strong>Ideal self</strong>: who I want to be</span></div>
+    </div>
+  </div>
+  <div class="venn">
+    <figure class="together" aria-label="Congruence: three circles overlapping">
+      <div class="stage"><div class="c c1">Self-esteem</div><div class="c c2">Ideal self</div><div class="c c3">Self-image</div></div>
+      <figcaption><strong>Congruence</strong>: all three overlap. Ideal self matches life experience, which leads toward self-actualization.<span class="gex">"I want to be a caring nurse, and I'm proud of how I treat my clients."</span></figcaption>
+    </figure>
+    <figure class="apart" aria-label="Incongruence: three circles separated">
+      <div class="stage"><div class="c c1">Self-esteem</div><div class="c c2">Ideal self</div><div class="c c3">Self-image</div></div>
+      <figcaption><strong>Incongruence</strong>: circles drift apart. Causes confusion and uncertainty.<span class="gex">"I want to be a leader, but I never speak up."</span></figcaption>
+    </figure>
+  </div>
+
+  <h3>Factors that shape self-concept</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Emotional intelligence</h4><p>Perceive, understand, control, manage, and evaluate emotions.<span class="gex">Taking a breath before responding to an upset family member</span></p></div>
+    <div class="gbox"><h4>Self-awareness</h4><p>Seeing yourself clearly through reflection.<span class="gex">Journaling, asking for feedback</span></p></div>
+    <div class="gbox"><h4>Body image</h4><p>Feelings about your appearance. Adolescents are most vulnerable.<span class="gex">A teen compares their body to images on social media</span></p></div>
+    <div class="gbox"><h4>Self-efficacy</h4><p>Belief you can complete a task. Low = gives up quickly.<span class="gex">A client feels confident they can manage their own ostomy care</span></p></div>
+    <div class="gbox"><h4>Culture</h4><p>Integrating your culture supports a healthier self-concept. Never assume everyone in a culture is the same.<span class="gex">Family traditions help a client feel confident in who they are</span></p></div>
+    <div class="gbox"><h4>Role performance</h4><p>Behaviors in each role and how well you think you fill them.<span class="gex">Student, employee, partner: how many hats do you wear?</span></p></div>
+  </div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; the 5 EI domains</p>
+    <p class="phrase">"Some Really Motivated Empaths Socialize"</p>
+    <div class="glet">
+      <div><b>S</b><span>Self-awareness: know your feelings and their effect on others</span></div>
+      <div><b>R</b><span>Self-regulation: think before acting</span></div>
+      <div><b>M</b><span>Motivation: passion + persistence</span></div>
+      <div><b>E</b><span>Empathy: understand others' needs</span></div>
+      <div><b>S</b><span>Social skill: build rapport</span></div>
+    </div>
+  </div>
+  <div class="gcols">
+    <div class="gbox"><h4>Positive self-esteem + body change</h4><p>Client looks for ways to cope.<span class="gex">A client on chemo asks where to buy a wig.</span></p></div>
+    <div class="gbox"><h4>Negative self-esteem + body change</h4><p>Client withdraws or hides.<span class="gex">Refuses visitors, won't look at the stoma.</span></p></div>
+  </div>
+
+  <h3>Marcia's identity statuses</h3>
+  <p>Two questions: did they <strong>explore</strong>, and did they <strong>commit</strong>? Identity formation is lifelong but most intense in adolescence.</p>
+  <div class="marcia" role="table" aria-label="Marcia's identity statuses">
+    <div class="h" role="columnheader"></div>
+    <div class="h" role="columnheader">Committed</div>
+    <div class="h" role="columnheader">Not committed</div>
+    <div class="h" role="rowheader">Explored</div>
+    <div class="cell"><strong>Achievement</strong>Explored, then chose.<span class="gex">Anika shadows several careers, picks engineering.</span></div>
+    <div class="cell"><strong>Moratorium</strong>Still searching, anxious.<span class="gex">Carlos: military? law? travel?</span></div>
+    <div class="h" role="rowheader">Didn't explore</div>
+    <div class="cell"><strong>Foreclosure</strong>Chose without looking.<span class="gex">Talia becomes a teacher like her parents.</span></div>
+    <div class="cell"><strong>Diffusion</strong>Drifting, no direction.<span class="gex">Klaus: "the future can wait."</span></div>
+  </div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook</p>
+    <p class="phrase">The names tell the story</p>
+    <ul class="tight">
+      <li><strong>Moratorium</strong> literally means "a pause." They want <em>more time</em> to decide.</li>
+      <li><strong>Foreclosure</strong>: they <em>closed the door</em> before looking inside.</li>
+      <li><strong>Diffusion</strong>: energy <em>diffused</em> everywhere and nowhere.</li>
+      <li><strong>Achievement</strong>: they did the work of both, so they earned it.</li>
+    </ul>
+  </div>
+
+  <h3>Stressors</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Identity</h4><p>Gender dysphoria, job loss, divorce or death of a spouse, discrimination. Can cause <strong>identity confusion</strong>.</p></div>
+    <div class="gbox"><h4>Body image</h4><p>Puberty, aging, stroke, diabetes, obesity, amputation, weight stigma.</p></div>
+    <div class="gbox"><h4>Self-esteem</h4><p>Disability, chronic illness, job loss, money changes, retirement, loss of a spouse, abuse or neglect.</p></div>
+  </div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; role stressors</p>
+    <p class="phrase">Too many roles will SOAC you</p>
+    <div class="glet">
+      <div><b>S</b><span><strong>Strain</strong>: can't meet one role's demands</span></div>
+      <div><b>O</b><span><strong>Overload</strong>: too many roles at once</span></div>
+      <div><b>A</b><span><strong>Ambiguity</strong>: no idea what's expected</span></div>
+      <div><b>C</b><span><strong>Conflict</strong>: two roles, same time</span></div>
+    </div>
+    <p class="gnote">Not stressors: role satisfaction, role enhancement, role clarity.</p>
+  </div>
+
+  <h3>Nursing process</h3>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; the 4 things you assess</p>
+    <p class="phrase">"I Bet She Rocks"</p>
+    <div class="glet">
+      <div><b>I</b><span><strong>Identity</strong>: "How would you describe yourself?"</span></div>
+      <div><b>B</b><span><strong>Body image</strong>: "How would you describe your appearance?"</span></div>
+      <div><b>S</b><span><strong>Self-esteem</strong>: "How do you respond to failure?"</span></div>
+      <div><b>R</b><span><strong>Role performance</strong>: "How successful do you feel in your roles?"</span></div>
+    </div>
+  </div>
+  <div class="gcols">
+    <div class="gbox"><h4>Red flags</h4><p>Negative self-talk, unkempt, tearful, over-apologizing, indecisive.</p></div>
+    <div class="gbox"><h4>Plan &amp; implement</h4><p>Collaborate with client and family, let them express feelings, promote independence, name past accomplishments, connect to resources.</p></div>
+    <div class="gbox"><h4>It worked if&hellip;</h4><p>Client verbalizes self-acceptance, accepts body image, uses healthy coping. Still avoiding or overwhelmed = not yet.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A 17-year-old is going to pharmacy school "because my parents are pharmacists" and never considered anything else. Status?</summary><p><strong>Foreclosure.</strong> Committed without exploring.</p></details>
+    <details><summary>"My boss wants me Saturday, but it's my son's championship." Which role stressor?</summary><p><strong>Role conflict.</strong> Two role expectations that can't both be met at once.</p></details>
+    <details><summary>Which question assesses self-esteem: "How would others describe you?" or "What accomplishments make you feel good about yourself?"</summary><p>The <strong>accomplishments</strong> question. How others describe you assesses identity.</p></details>
+  </div>
+</section>
+
+<!-- ===================== SLEEP ===================== -->
+<section class="topic" id="sleep">
+  <div class="topic-head"><h2>Comfort, rest &amp; sleep</h2><p>Your instructor says the test will have sleep questions. <span class="gflag">Flagged</span></p></div>
+
+  <div class="gcols">
+    <div class="gbox"><h4>Circadian rhythm</h4><p>Your ~24-hour internal clock. Syncs with light and temperature but runs even without cues.</p></div>
+    <div class="gbox"><h4>Sleep&ndash;wake homeostasis</h4><p>Sleep pressure. The more deprived you are, the deeper you sleep next time.</p></div>
+    <div class="gbox"><h4>Sleep vs rest</h4><p>Sleep = altered consciousness in cycles. Rest = awake but relaxed; still lowers stress and sharpens focus.</p></div>
+  </div>
+  <p>Sleep strengthens the immune system, restores energy, improves coping, clears brain toxins, and moves memory from <strong>short-term to long-term</strong>.</p>
+
+  <h3>Stages &amp; brain waves</h3>
+  <div class="mnemo known">
+    <p class="tag">Known mnemonic &middot; brain waves from awake to deep sleep</p>
+    <p class="phrase">"At night, BATS Drink Blood"</p>
+    <div class="glet">
+      <div><b>B</b><span><strong>Beta</strong>: awake, alert (13&ndash;30 Hz)</span></div>
+      <div><b>A</b><span><strong>Alpha</strong>: awake, relaxed, eyes closed (8&ndash;12 Hz)</span></div>
+      <div><b>T</b><span><strong>Theta</strong>: stage 1 (your module calls it low-amplitude, mixed-frequency)</span></div>
+      <div><b>S</b><span><strong>Spindles</strong> &amp; K-complexes: stage 2</span></div>
+      <div><b>D</b><span><strong>Delta</strong>: stage 3, deepest</span></div>
+      <div><b>B</b><span><strong>Beta</strong> again: REM looks awake on EEG</span></div>
+    </div>
+    <p class="gnote">The word "theta" isn't in your module, but the pattern is the same one it describes.</p>
+  </div>
+  <div class="gtbl">
+    <table>
+      <thead><tr><th>Stage</th><th>What's happening</th><th>Share of sleep (adults 20&ndash;35)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Stage 1</strong> (NREM)</td><td>Lightest sleep, 1&ndash;5 min, muscle twitching possible</td><td>2&ndash;5%</td></tr>
+        <tr><td><strong>Stage 2</strong> (NREM)</td><td>Harder to wake. HR and temp drop. Spindles and K-complexes help consolidate memory. Gets longer each cycle</td><td>45&ndash;55%</td></tr>
+        <tr><td><strong>Stage 3</strong> (NREM)</td><td>Deepest. Delta waves. Tissue, muscle, and bone repair, immune boost, lowest pulse and RR. Wake them and they're foggy 30&ndash;60 min</td><td>25%</td></tr>
+        <tr><td><strong>REM</strong> (stage 4)</td><td>Dreaming. Irregular breathing, HR may rise, muscles atonic. Starts ~90 min in, first cycle ~10 min, up to 1 hr later</td><td>20&ndash;25%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; REM</p>
+    <p class="phrase">Rapid Eyes, Muscles off</p>
+    <p class="gnote">Your brain is busy dreaming, so your body is "paralyzed" to keep you from acting the dream out.</p>
+  </div>
+  <div class="gcols">
+    <div class="gbox"><h4>Adults</h4><p>4&ndash;5 cycles a night. Recommended 7&ndash;9 hours.</p></div>
+    <div class="gbox"><h4>Older adults</h4><p>Less stage 3, more stage 2, fewer REM cycles, wake more often, take longer to fall asleep. Recommended 7&ndash;8 hours.</p></div>
+  </div>
+  <p class="gnote"><span class="gside">Side note</span> Adults 20&ndash;35 are the only age group your module gives stage percentages for. On the test, I'd expect "which stage increases or decreases" questions about older adults.</p>
+
+  <h3>Sleep deprivation</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Types</h4><ul class="tight"><li><strong>Total</strong>: a whole night lost</li><li><strong>Partial</strong>: fewer hours</li><li><strong>Chronic</strong>: partial that keeps going</li><li><strong>Selective</strong>: a specific stage lost</li></ul></div>
+    <div class="gbox"><h4>Effects</h4><p>Impaired judgment, slow reaction time, seizures, migraines, accidents, depression, stroke, obesity, poor glucose control in T2DM.</p></div>
+    <div class="gbox"><h4>Sensory overload</h4><p>Common in acute care. Dim lights, cut noise, offer earplugs and eye masks, cluster care.</p></div>
+  </div>
+  <p>Other disruptors: phone in bed (shorter, worse sleep; depression risk), night shift (higher CVD, obesity, diabetes risk), and menopause (sleep problems peak postmenopause).</p>
+
+  <h3>Sleep disorders</h3>
+  <div class="gtbl">
+    <table>
+      <thead><tr><th>Disorder</th><th>The tell</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Insomnia</strong></td><td>Can't fall or stay asleep despite the chance</td><td>Treat with meds, sleep hygiene, CBT</td></tr>
+        <tr><td><strong>Obstructive sleep apnea</strong></td><td>Airway collapses; loud snoring; exhausted all day</td><td>Diagnosed by <strong>polysomnography</strong>. Treat with <strong>CPAP</strong>, weight loss, no smoking or alcohol, don't sleep on your back</td></tr>
+        <tr><td><strong>Central sleep apnea</strong></td><td>Brain stops signaling breathing muscles</td><td>Causes: heart failure, opioid overdose</td></tr>
+        <tr><td><strong>Narcolepsy</strong></td><td>Sudden, uncontrollable sleep attacks</td><td><strong>Cataplexy</strong>: muscle tone drops with emotion, like laughter</td></tr>
+        <tr><td><strong>Hypersomnia</strong></td><td>Exhausted all day even with more sleep</td><td>More sleep doesn't fix it</td></tr>
+        <tr><td><strong>Restless legs</strong></td><td>Urge to move legs, worse at night and at rest</td><td>Linked to iron/vitamin deficiency; avoid caffeine, nicotine, alcohol</td></tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; night terrors vs nightmares</p>
+    <p class="phrase">Terrors are early and erased. Nightmares are late and remembered.</p>
+    <p class="gnote">Night terrors: NREM, first third of the night, no recall, mostly young kids. Nightmares: REM, second half of the night, you remember the dream.</p>
+  </div>
+
+  <h3>Sleep medications <span class="gflag">Melatonin will be on the test</span></h3>
+  <div class="gtbl">
+    <table>
+      <thead><tr><th>Class</th><th>Examples</th><th>Key points</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Melatonin</strong></td><td>Supplement</td><td>May be first-line for all ages. Cheap, non-habit forming, few side effects. Effectiveness may be limited</td></tr>
+        <tr><td><strong>Nonbenzodiazepine hypnotics</strong> ("z-drugs")</td><td>Zolpidem, zaleplon, eszopiclone</td><td><strong>Most commonly prescribed.</strong> GI upset, hallucinations, <strong>memory loss</strong>, abuse potential</td></tr>
+        <tr><td><strong>Benzodiazepines</strong> (GABA agonists)</td><td>Alprazolam, clonazepam, lorazepam</td><td>Drowsiness, muscle relaxation, less anxiety, retrograde amnesia. Dependence risk, so short-term only. Caution in older adults with liver or kidney issues</td></tr>
+        <tr><td><strong>OTC antihistamines</strong></td><td>Diphenhydramine, doxylamine</td><td>Daytime drowsiness plus the anticholinergic effects below. Talk to the provider first</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mnemo known">
+    <p class="tag">Known mnemonic &middot; anticholinergic side effects of OTC sleep aids</p>
+    <p class="phrase">Can't see, can't pee, can't spit, can't poop</p>
+    <p class="gnote">Visual disturbances, urinary retention, dry mouth, constipation.</p>
+  </div>
+
+  <h3>Promoting sleep &amp; comfort</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Sleep hygiene</h4><ul class="tight"><li>No caffeine, alcohol, or nicotine 4&ndash;6 hr before bed</li><li>Same bedtime and wake time, even on weekends</li><li>Dark, quiet, cool room</li><li>Bedtime routine, short naps</li><li>Exercise, but not right before bed</li><li>Bed is for sleep and sex only; no TV</li></ul><span class="gex">No coffee after 4 p.m. for a 10 p.m. bedtime</span></div>
+    <div class="gbox"><h4>Can't fall asleep?</h4><p>Get up, go to another room, do something quiet, come back when tired. Lying there restless makes it worse.<span class="gex">Reading on the couch until drowsy</span></p></div>
+    <div class="gbox"><h4>Bedtime snack</h4><p>A <strong>carb paired with a protein</strong>. Protein alone doesn't count.<span class="gex">Toast with peanut butter</span></p></div>
+    <div class="gbox"><h4>In the hospital</h4><p>Cluster care, restful environment, support bedtime routines, keep them safe, teach sleep hygiene and meds. A sleep diary helps you plan together.<span class="gex">Doing vitals, meds, and a dressing change in one visit instead of three</span></p></div>
+    <div class="gbox"><h4>Nonpharm options</h4><p>Acupuncture, massage, heat or cold packs, yoga, guided imagery, mindfulness, meditation, music.<span class="gex">Soft music and guided imagery before lights out</span></p></div>
+    <div class="gbox"><h4>Comfort</h4><p>Relief from pain and distress. Be honest, be present, and let clients make informed choices.<span class="gex">Answering a client's questions honestly before a procedure</span></p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>You wake a client at 0200 and they're groggy for 45 minutes. Which stage were they in?</summary><p><strong>Stage 3.</strong> Deepest sleep, with mental cloudiness for 30&ndash;60 minutes after waking.</p></details>
+    <details><summary>Which snack promotes sleep: cheese cubes, candy, or toast with peanut butter?</summary><p><strong>Toast with peanut butter.</strong> Carb plus protein. Cheese alone is protein only.</p></details>
+    <details><summary>Most commonly prescribed class of sleep medication?</summary><p><strong>Nonbenzodiazepine hypnotics</strong>, like zolpidem.</p></details>
+  </div>
+</section>
+
+<!-- ===================== STRESS ===================== -->
+<section class="topic" id="stress">
+  <div class="topic-head"><h2>Stress &amp; coping</h2><p>Stressors are neutral. Your appraisal decides whether they help or hurt.</p></div>
+
+  <h3>The body under stress</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Fight or flight (SAM system)</h4><p>Norepinephrine, epinephrine, and dopamine in seconds. HR, BP, cardiac output, and glucose go <strong>up</strong>. Pupils and bronchi <strong>dilate</strong>.</p></div>
+    <div class="gbox"><h4>Cortisol</h4><p>Short-term: boosts some immune function. Chronic: suppresses immunity, slows healing, drives inflammation.</p></div>
+  </div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; fight or flight</p>
+    <p class="phrase">Everything you need to run goes up</p>
+    <p class="gnote">Heart rate, BP, breathing, blood sugar, and pupil size all rise to help you fight or flee. Digestion slows down because you don't need it to escape.</p>
+  </div>
+  <h3>The HPA axis</h3>
+  <div class="chain" aria-label="HPA axis sequence">
+    <span>Hypothalamus releases <strong>CRH</strong></span><i aria-hidden="true">&#8594;</i>
+    <span>Pituitary releases <strong>ACTH</strong></span><i aria-hidden="true">&#8594;</i>
+    <span>Adrenals release <strong>cortisol</strong></span>
+  </div>
+  <p class="gnote">Top of the head to the top of the kidneys: <strong>H</strong>ypothalamus, <strong>P</strong>ituitary, <strong>A</strong>drenals, in that order.</p>
+
+  <h3>General adaptation syndrome</h3>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook</p>
+    <p class="phrase">"A-R-E you stressed?"</p>
+    <p class="gnote">Alarm, Resistance, Exhaustion. Happens with good or bad stress, physical or psychological.</p>
+  </div>
+  <div class="gas">
+    <div class="a"><strong>Alarm</strong> <span class="gflag">Flagged</span><p>CNS aroused. Adrenal medulla releases <strong>epinephrine</strong>: fight or flight. HR, BP, glucose, O&#8322; intake, alertness up; pupils dilate.</p></div>
+    <div><strong>Resistance</strong><p>Body fights back. Parasympathetic system calms things down. Coping kicks in. Fatigue, irritability, poor focus.</p></div>
+    <div class="e"><strong>Exhaustion</strong><p>Resources used up. Illness, disease, and <strong>allostatic load</strong> (chronic HTN, depression, autoimmune disease).</p></div>
+  </div>
+
+  <h3>Types of stress</h3>
+  <div class="gtbl">
+    <table>
+      <thead><tr><th>Type</th><th>What it is</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Acute</strong></td><td>Most common, brief, immediate fight or flight</td><td>Car accident, crime, losing a loved one</td></tr>
+        <tr><td><strong>Episodic acute</strong></td><td>Frequent bouts of acute stress; overcommitted and rushed</td><td>Always cramming at the last minute</td></tr>
+        <tr><td><strong>Chronic</strong></td><td>Constant, prolonged, disabling</td><td>Poverty, racism, long illness, dysfunctional family</td></tr>
+        <tr><td><strong>Traumatic</strong></td><td>Overwhelms coping; can lead to PTSD</td><td>Assault, disaster</td></tr>
+        <tr><td><strong>Environmental</strong></td><td>Hard surroundings</td><td>Crowding, noise, food or housing insecurity</td></tr>
+        <tr><td><strong>Psychological</strong></td><td>Something you interpret as threatening</td><td>Finances, exams, divorce</td></tr>
+        <tr><td><strong>Physiological</strong></td><td>Injury or illness</td><td>Burns, fractures, hypothermia, pain</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; ASD vs PTSD</p>
+    <p class="phrase">ASD is Acute. PTSD Persists.</p>
+    <p class="gnote">ASD: starts right after the trauma and lasts up to 1 month. Past 1 month, it's PTSD: flashbacks, nightmares, sweating, fast HR, exaggerated startle.</p>
+  </div>
+  <p>Adverse childhood experiences (ACEs): a score of <strong>4 or more</strong> significantly raises the risk of chronic illness as an adult.</p>
+
+  <h3>Appraisal &amp; coping (TTSC)</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Primary appraisal</h4><p>"Is this a threat?" Threat, challenge, or irrelevant.</p></div>
+    <div class="gbox"><h4>Secondary appraisal</h4><p>"Can I handle it?" Checks resources: support, skills, past wins.</p></div>
+    <div class="gbox"><h4>Reappraisal</h4><p>Keeps reassessing and adjusts coping as things change.</p></div>
+  </div>
+  <div class="gcols" style="margin-top:16px">
+    <div class="gbox"><h4>Problem-focused</h4><p>Change the situation.<span class="gex">Make a study schedule.</span></p></div>
+    <div class="gbox"><h4>Emotion-focused</h4><p>Change how you feel about it.<span class="gex">"One exam doesn't define my career."</span></p></div>
+    <div class="gbox"><h4>Adaptive vs maladaptive</h4><p>Adaptive helps now and later. Maladaptive helps now, hurts later (smoking, drinking, withdrawal).<span class="gex">Going for a walk vs. smoking after a hard day</span></p></div>
+  </div>
+
+  <h3>Defense mechanisms</h3>
+  <p>Unconscious and automatic; they protect self-esteem and help in mild to moderate anxiety. Coping, by contrast, is conscious and deliberate.</p>
+  <div class="gtbl">
+    <table>
+      <thead><tr><th>Mechanism</th><th>What it is</th><th>Sounds like</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Denial</strong></td><td>Refusing to accept reality</td><td>"The doctor is overreacting. I don't have diabetes."</td></tr>
+        <tr><td><strong>Projection</strong></td><td>Putting your feelings on someone else</td><td>Angry client: "Why are <em>you</em> so hostile?"</td></tr>
+        <tr><td><strong>Rationalization</strong></td><td>A logical-sounding excuse</td><td>"I failed because the test was unfair."</td></tr>
+        <tr><td><strong>Regression</strong></td><td>Going back to earlier behavior</td><td>A potty-trained 4-year-old wets the bed after a new baby arrives</td></tr>
+        <tr><td><strong>Repression</strong></td><td>Burying memories <em>unconsciously</em></td><td>Has no memory of a traumatic event</td></tr>
+        <tr><td><strong>Suppression</strong></td><td>Pushing thoughts away <em>on purpose</em></td><td>"I'll deal with that after my shift."</td></tr>
+        <tr><td><strong>Compartmentalization</strong></td><td>Keeping conflicting parts of life in separate boxes</td><td>A nurse sets personal beliefs aside to care for a client without bias</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook</p>
+    <p class="phrase">Suppression is on purpose. Repression is buried.</p>
+    <p class="gnote">Both push something out of mind; only suppression is a choice.</p>
+  </div>
+
+  <h3>Crisis <span class="gflag">Safety comes first</span></h3>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; 4 types of crisis</p>
+    <p class="phrase">"Dogs Smell Every Pizza"</p>
+    <div class="glet">
+      <div><b>D</b><span><strong>Developmental</strong>: life transitions (puberty, retirement)</span></div>
+      <div><b>S</b><span><strong>Situational</strong>: outside events (job loss, disaster)</span></div>
+      <div><b>E</b><span><strong>Existential</strong>: meaning, identity, purpose</span></div>
+      <div><b>P</b><span><strong>Psychiatric emergency</strong>: suicide attempt, psychosis</span></div>
+    </div>
+  </div>
+  <p>Mental health emergency signs: acting on a suicide threat, hostility, throwing or breaking things, threatening harm.</p>
+  <p><strong>Roberts' seven-stage model</strong>, in order:</p>
+  <ol class="gseq">
+    <li>Assess, including suicide and homicide risk</li>
+    <li>Build rapport</li>
+    <li>Identify the problem and what triggered it</li>
+    <li>Explore feelings</li>
+    <li>Explore past coping and alternatives</li>
+    <li>Carry out the action plan</li>
+    <li>Follow up</li>
+  </ol>
+
+  <h3>Nursing care &amp; self-care</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>First action</h4><p>Assess. A mental status exam comes before goals or interventions.</p></div>
+    <div class="gbox"><h4>Priority</h4><p>Find out whether the client has thoughts of self-harm.</p></div>
+    <div class="gbox"><h4>Perceived Stress Scale</h4><p>Self-report of how unpredictable, uncontrollable, and overwhelming life has felt this past month.</p></div>
+    <div class="gbox"><h4>Trauma-informed care</h4><p>Past trauma shapes responses. Build safety and trust; don't retraumatize.</p></div>
+    <div class="gbox"><h4>Exercise</h4><p>Improves mood, energy, and sleep, lowers stress, releases endorphins.</p></div>
+    <div class="gbox"><h4>Food</h4><p>Complex carbs, oranges (vitamin C), omega-3s, black tea. Alcohol raises cortisol.</p></div>
+    <div class="gbox"><h4>Relaxation</h4><p>Mindfulness, guided imagery, progressive relaxation (tense and release, head to toe), biofeedback.</p></div>
+    <div class="gbox"><h4>Moral distress</h4><p>Your actions don't match what you believe is right. Use debriefings, ethics committees, peer support, and the ANA Code of Ethics.</p></div>
+    <div class="gbox"><h4>Healthy Nurse, Healthy Nation</h4><p>ANA program: quality of life, safety, physical activity, sleep, nutrition.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Minutes after a car crash: HR 118, BP up, pupils dilated, glucose up. Which GAS stage?</summary><p><strong>Alarm.</strong> Epinephrine drives fight or flight.</p></details>
+    <details><summary>Two weeks after an assault: numb, easily startled, avoiding the street. ASD or PTSD?</summary><p><strong>ASD.</strong> It's under a month. Past a month would be PTSD.</p></details>
+    <details><summary>Client in crisis is yelling and threatening self-harm. First action?</summary><p><strong>Ensure safety</strong> for the client and others.</p></details>
+  </div>
+</section>
+
+<!-- ===================== DEI ===================== -->
+<section class="topic" id="dei">
+  <div class="topic-head"><h2>Diversity, equity &amp; inclusion</h2><p>Always ask. Don't assume.</p></div>
+
+  <h3>Culture &amp; bias</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Culture (Leininger)</h4><p>Learned, shared, and passed-down values, beliefs, norms, and lifeways that guide a group's thinking and decisions.</p></div>
+    <div class="gbox"><h4>Cultural awareness</h4><p>Being willing to understand differences between your culture and others'. Starts with checking your own bias.</p></div>
+    <div class="gbox"><h4>Cultural competence</h4><p>Appreciating, accepting, and respecting beliefs, plus open communication and feedback, blending emic and etic knowledge.</p></div>
+  </div>
+  <div class="gcols" style="margin-top:16px">
+    <div class="gbox"><h4>Explicit bias</h4><p>Conscious. You know it and can admit it.<span class="gex">A nurse says they'd rather not care for clients of a certain religion.</span></p></div>
+    <div class="gbox"><h4>Implicit bias</h4><p>Unconscious. You don't notice it.<span class="gex">Spending less time with certain clients without realizing it.</span></p></div>
+  </div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook</p>
+    <p class="phrase">eMic = Members. eTic = Theory.</p>
+    <p class="gnote">Emic is the insider view from members of the culture. Etic is the outsider view from research, theories, and outside observation.</p>
+  </div>
+  <p>Cultural diversity happens <strong>within</strong> groups too, not just between them. Two clients from the same culture can have very different practices.</p>
+
+  <h3>Health equity</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Equality</h4><p>Everyone gets the same box to stand on.</p></div>
+    <div class="gbox"><h4>Equity</h4><p>Everyone gets what they need to see over the fence.</p></div>
+    <div class="gbox"><h4>Health disparities</h4><p>Differences in outcomes between groups, often driven by social determinants of health like insurance or transportation.</p></div>
+  </div>
+  <div class="gcols" style="margin-top:16px">
+    <div class="gbox"><h4>Personal health literacy</h4><p>Can this person find, process, and understand health info?</p></div>
+    <div class="gbox"><h4>Organizational health literacy</h4><p>Does the organization equitably help people find and use info and services?</p></div>
+    <div class="gbox"><h4>Reading level</h4><p>Write health materials at an <strong>8th-grade level or lower</strong>.</p></div>
+  </div>
+  <p><strong>CLAS standards</strong>: a blueprint for organizations to advance equity, improve quality, and eliminate disparities.</p>
+
+  <h3>Vulnerable populations</h3>
+  <p>Higher risk for poor outcomes because of barriers to social, economic, and environmental resources. Includes older adults, children, immigrants, marginalized ethnic groups, people in poverty, people with chronic illness or disabilities, veterans, and pregnant teens.</p>
+  <div class="gcols">
+    <div class="gbox"><h4>Demographic</h4><p>Age, English proficiency, household type, population density, race and ethnicity, sex.</p></div>
+    <div class="gbox"><h4>Health status</h4><p>Chronic conditions, disabilities, insurance status.</p></div>
+    <div class="gbox"><h4>Socioeconomic</h4><p>Education, employment, household income, poverty.</p></div>
+  </div>
+  <div class="gcols" style="margin-top:16px">
+    <div class="gbox"><h4>Intersectionality</h4><p>Several disparities at once, leading to more stress, lower self-esteem, and riskier behavior.</p></div>
+    <div class="gbox"><h4>Population density</h4><p>Nursing homes, shelters, and dorms spread infection faster.</p></div>
+    <div class="gbox"><h4>LGBTQ+ youth</h4><p>Higher risk of bullying, violence, depression, substance use, STIs, and suicide. Use chosen name and pronouns consistently.</p></div>
+  </div>
+
+  <h3>Leininger's Sunrise Enabler</h3>
+  <p>Five interrelated categories: the upper level (worldview), the rays of the sun (basic elements), the central core, the focus on individuals through institutions, and the three modes of care.</p>
+  <div class="gbox"><h4>The rays: basic elements to assess</h4><p>Technological (phone, internet access), religious and spiritual, kinship and social (support system, marital status), cultural values and lifeways, biological (personal or family illness history), political and legal, economic, educational.</p></div>
+  <div class="mnemo hook">
+    <p class="tag">Memory hook &middot; the three modes of care</p>
+    <p class="phrase">It's all PAR for the course</p>
+    <div class="glet">
+      <div><b>P</b><span><strong>Preservation</strong> &amp; maintenance: keep the belief<span class="gex">Arrange a female caregiver as requested</span></span></div>
+      <div><b>A</b><span><strong>Accommodation</strong> &amp; negotiation: adapt it safely<span class="gex">Smaller portions of holiday foods for a client with diabetes</span></span></div>
+      <div><b>R</b><span><strong>Repatterning</strong> &amp; restructuring: change a harmful practice<span class="gex">Helping a client replace a practice that is harming their health</span></span></div>
+    </div>
+  </div>
+  <div class="gcols">
+    <div class="gbox"><h4>Folk (generic) care</h4><p>Traditional, nonprofessional care from family or a folk practitioner.</p></div>
+    <div class="gbox"><h4>Integrative care</h4><p>The nurse bridges folk medicine and Western medicine.</p></div>
+  </div>
+
+  <h3>Assessment &amp; communication</h3>
+  <div class="gcols">
+    <div class="gbox"><h4>Cultural health assessment</h4><p>Start at the very first encounter. Name or gender may differ from records, so ask respectfully.</p></div>
+    <div class="gbox"><h4>Language barrier</h4><p>Use a <strong>certified medical interpreter</strong>. Never family or other staff: they can omit or alter info and break confidentiality. Add written instructions in the client's language.</p></div>
+    <div class="gbox"><h4>Hearing loss</h4><p>Face the client and reduce background noise. Don't shout, speed up, or write everything down.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client's daughter offers to interpret. What do you do?</summary><p><strong>Request a certified medical interpreter.</strong></p></details>
+    <details><summary>You read research on a culture's health practices. Emic or etic?</summary><p><strong>Etic</strong>: an outsider's, external view.</p></details>
+    <details><summary>Rural clinic opens, and you arrange ride vouchers for residents without cars. Equality or equity?</summary><p><strong>Equity.</strong> You adjusted for their need.</p></details>
+  </div>
+</section>
+</main>
+
+<footer class="guide-footer gwrap">
+  <div class="gbox">
+    <p><strong>Not covered here, per your instructor:</strong> Erikson's eight stages, brain structures essential to sleep, and the gender identity / sexual orientation spectrum slide. Where the slides and module disagreed, this guide follows the module (ATI).</p>
+  </div>
+</footer>
+
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+</body>
+</html>
