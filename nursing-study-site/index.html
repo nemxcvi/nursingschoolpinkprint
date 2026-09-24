@@ -18,25 +18,15 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=29">
+<link rel="stylesheet" href="assets/style.css?v=31">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div class="pp-wrap">
 
-  <div class="pp-header">
-    <div class="pp-header-label">SHEET 01 &mdash; NUR 114</div>
-    <div class="pp-header-title">Nursing School <span class="accent"><span class="palette-word-wrap"><button class="palette-word" id="paletteWord" onclick="togglePalette()" aria-label="Switch to Blueprint palette" title="Switch to Blueprint">Pink</button><span class="palette-hint" id="paletteHint" aria-hidden="true">switch to blueprint</span></span>print</span></div>
-    <div class="pp-header-actions">
-      <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
-        <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
-      </button>
-      <div class="searchwrap pp-header-search">
-        <i class="ti ti-search" aria-hidden="true"></i>
-        <input type="search" id="unitsearch" placeholder="Search" enterkeyhint="search" onkeydown="if(event.key==='Enter')applySearch()" oninput="if(!this.value)applySearch()">
-      </div>
-    </div>
-  </div>
+  <div id="site-header" data-mode="full" data-sheet="nur114"></div>
+  <script src="assets/site-data.js?v=1"></script>
+  <script src="assets/header.js?v=2"></script>
 
   <div class="pp-searchrow">
     <div class="pp-filters">
@@ -88,16 +78,6 @@
   </div>
 
   <div id="widgetresults" style="display:none;"></div>
-
-  <div class="pp-footer">
-    <div class="pp-next">
-      <span class="pp-next-label">Next sheet</span>
-      <div class="pp-next-row">
-        <span class="pp-next-val">NUR 121</span>
-        <span class="pp-next-status">Coming soon</span>
-      </div>
-    </div>
-  </div>
 
 </div>
 
@@ -213,75 +193,57 @@ var QUOTES = [
   }, 8000);
 })();
 
-var WIDGETS = [
-  {title:"General Abbreviations", type:"flashcards", unit:"Unit 1", href:"unit-1-intro-to-nursing/general-abbreviations.html"},
-  {title:"Charting Abbreviations", type:"flashcards", unit:"Unit 1", href:"unit-1-intro-to-nursing/charting-abbreviations.html"},
-  {title:"CBC/CMP lab values", type:"flashcards", unit:"Unit 1", href:"unit-1-intro-to-nursing/cbc-cmp-lab-values.html"},
-  {title:"Nursing Fundamentals practice quiz", type:"quiz", unit:"Unit 1", href:"unit-1-intro-to-nursing/nursing-fundamentals-quiz.html"},
-  {title:"CBC/CMP practice quiz", type:"quiz", unit:"Unit 1", href:"unit-1-intro-to-nursing/cbc-cmp-quiz.html"},
-  {title:"Mobility", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/mobility-flashcards.html"},
-  {title:"Mobility practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/mobility-quiz.html"},
-  {title:"Hygiene", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/hygiene-flashcards.html"},
-  {title:"Hygiene practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/hygiene-quiz.html"},
-  {title:"Client Education", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/client-education-flashcards.html"},
-  {title:"Client Education practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/client-education-quiz.html"},
-  {title:"Diversity, Equity, and Inclusion", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/dei-flashcards.html"},
-  {title:"Diversity, Equity, and Inclusion practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/dei-quiz.html"},
-  {title:"Self-Concept", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/self-concept-flashcards.html"},
-  {title:"Self-Concept practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/self-concept-quiz.html"},
-  {title:"Comfort, Rest & Sleep", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/comfort-rest-sleep-flashcards.html"},
-  {title:"Comfort, Rest & Sleep practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/comfort-rest-sleep-quiz.html"},
-  {title:"Stress and Coping", type:"flashcards", unit:"Unit 2", href:"unit-2-basic-human-needs/stress-coping-flashcards.html"},
-  {title:"Stress and Coping practice quiz", type:"quiz", unit:"Unit 2", href:"unit-2-basic-human-needs/stress-coping-quiz.html"},
-  {title:"Week 5 Study Guide", type:"studyguide", unit:"Unit 2", href:"unit-2-basic-human-needs/week5-study-guide.html"}
-];
-var MIX_ALL = {title:"Mix all", type:"quiz", unit:"All units", href:"mix-all-quiz.html", special:true};
+var MIX_ALL = SITE.mixAll;
+var TAGS = ["flashcards","quizzes","studyguides"];
 
-var state = {tag:null, q:""};
+var params = new URLSearchParams(location.search);
+var startType = SITE.getType(params.get("type") || "");
+var state = {tag: startType ? startType.key : null, unit: startType ? params.get("unit") : null};
 
-function applySearch(){
-  state.q = document.getElementById("unitsearch").value.trim().toLowerCase();
-  renderHome();
+function syncTags(){
+  TAGS.forEach(function(t){
+    document.getElementById("tag-" + t).classList.toggle("active", t === state.tag);
+  });
+}
+
+function syncUrl(){
+  var p = new URLSearchParams();
+  if (state.tag) p.set("type", state.tag);
+  if (state.tag && state.unit) p.set("unit", state.unit);
+  var qs = p.toString();
+  history.replaceState(null, "", location.pathname + (qs ? "?" + qs : ""));
 }
 
 function setTag(tag){
   state.tag = (state.tag === tag) ? null : tag;
-  ["flashcards","quizzes","studyguides"].forEach(function(t){
-    document.getElementById("tag-" + t).classList.toggle("active", t === state.tag);
-  });
+  state.unit = null;
+  syncTags();
+  syncUrl();
   renderHome();
 }
 
 function renderHome(){
-  var q = state.q;
   var unitsGrid = document.getElementById("unitgrid");
   var widgetList = document.getElementById("widgetresults");
   var eyebrow = document.getElementById("resultseyebrow");
-  var footer = document.querySelector(".pp-footer");
 
-  if (q === "" && state.tag === null){
+  if (state.tag === null){
     unitsGrid.style.display = "grid";
     widgetList.style.display = "none";
     eyebrow.style.display = "none";
-    if (footer) footer.style.display = "flex";
     return;
   }
 
   unitsGrid.style.display = "none";
   widgetList.style.display = "block";
   eyebrow.style.display = "block";
-  if (footer) footer.style.display = "none";
 
-  var items = WIDGETS.slice();
-  if (state.tag === "quizzes") items = items.filter(function(w){ return w.type === "quiz"; });
-  if (state.tag === "flashcards") items = items.filter(function(w){ return w.type === "flashcards"; });
-  if (state.tag === "studyguides") items = items.filter(function(w){ return w.type === "studyguide"; });
-  if (q) items = items.filter(function(w){ return w.title.toLowerCase().indexOf(q) !== -1 || w.unit.toLowerCase().indexOf(q) !== -1; });
+  var items = SITE.search("", state.tag);
+  if (state.unit) items = items.filter(function(w){ return w.unit === state.unit; });
 
   var tagLabels = {quizzes:"all quizzes", flashcards:"all flashcards", studyguides:"all study guides"};
-  eyebrow.textContent = q ? ('results for "' + q + '"') : (tagLabels[state.tag] || "all flashcards & quizzes");
+  eyebrow.textContent = state.unit ? (state.unit + " \u00b7 " + SITE.getType(state.tag).label.toLowerCase()) : tagLabels[state.tag];
 
-  var typeLabels = {quiz:"Quiz", flashcards:"Flashcards", studyguide:"Study guide"};
   var typeIcons = {quiz:"ti-help-circle", flashcards:"ti-cards", studyguide:"ti-notebook"};
 
   var html = "";
@@ -290,12 +252,11 @@ function renderHome(){
   } else {
     html = items.map(function(w){
       var icon = typeIcons[w.type];
-      return "<a class='widgetrow' href='" + w.href + "'><div><p class='title'>" + w.title + "</p><p class='sub'>" + w.unit + " &middot; " + typeLabels[w.type] + "</p></div><i class='ti " + icon + " chev' aria-hidden='true'></i></a>";
+      return "<a class='widgetrow' href='" + w.href + "'><div><p class='title'>" + w.title + "</p><p class='sub'>" + SITE.unitLabel(w) + " &middot; " + SITE.getType(w.type).one + "</p></div><i class='ti " + icon + " chev' aria-hidden='true'></i></a>";
     }).join("");
   }
 
-  var showMixAll = state.tag === "quizzes" && (q === "" || MIX_ALL.title.toLowerCase().indexOf(q) !== -1);
-  if (showMixAll){
+  if (state.tag === "quizzes" && !state.unit){
     html += "<div style='border-top:1px solid var(--border);margin:24px 0 16px;'></div>";
     html += "<p class='eyebrow'>Mix it up</p>";
     html += "<a class='widgetrow' style='border-color:var(--label);' href='" + MIX_ALL.href + "'><div style='display:flex;align-items:center;gap:12px;'><i class='ti ti-arrows-shuffle' style='font-size:20px;color:var(--accent-text);' aria-hidden='true'></i><div><p class='title'>" + MIX_ALL.title + "</p><p class='sub'>Random from every quiz on the site</p></div></div></a>";
@@ -304,6 +265,7 @@ function renderHome(){
   widgetList.innerHTML = html;
 }
 
+syncTags();
 renderHome();
 </script>
 </body>
