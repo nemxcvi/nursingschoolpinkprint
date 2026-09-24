@@ -3,7 +3,7 @@ function initPracticeQuiz(bank, catLabels){
   var mode = null, pool = [], missedMap = {};
   var singleQuestions = [], singleResults = [];
   var queue = [], currentRound = [], currentRoundIndex = 0, roundsTaken = 0;
-  var attempts = {}, latestResult = {}, correctSoFar = 0, missedSoFar = 0;
+  var attempts = {}, latestResult = {}, correctSoFar = 0, missedSoFar = 0, categoryTotals = {};
   var answered = false, userSelection = [], currentDisplayOptions = [];
 
   function shuffle(arr){
@@ -81,7 +81,7 @@ function initPracticeQuiz(bank, catLabels){
 
   function startRounds(){
     queue = shuffle(pool);
-    roundsTaken = 0; attempts = {}; latestResult = {}; correctSoFar = 0; missedSoFar = 0;
+    roundsTaken = 0; attempts = {}; latestResult = {}; correctSoFar = 0; missedSoFar = 0; categoryTotals = {};
     drawRound();
   }
 
@@ -164,7 +164,9 @@ function initPracticeQuiz(bank, catLabels){
     } else {
       attempts[q.id] = (attempts[q.id] || 0) + 1;
       latestResult[q.id] = {question: q, userSelection: userSelection.slice(), correct: isCorrect};
-      if (isCorrect){ correctSoFar++; }
+      if (!categoryTotals[q.cat]) categoryTotals[q.cat] = {correct:0, total:0};
+      categoryTotals[q.cat].total++;
+      if (isCorrect){ correctSoFar++; categoryTotals[q.cat].correct++; }
       else {
         missedSoFar++;
         var insertAt = queue.length === 0 ? 0 : Math.floor(Math.random() * (queue.length + 1));
@@ -358,13 +360,7 @@ function initPracticeQuiz(bank, catLabels){
       document.getElementById("end-pool-pct").textContent = pctCompleted + "%";
       document.getElementById("end-accuracy-pct").textContent = overallPct + "%";
 
-      var statsByCat2 = {};
-      attemptedPool.forEach(function(q){
-        var c = q.cat;
-        if (!statsByCat2[c]) statsByCat2[c] = {correct:0, total:0};
-        statsByCat2[c].total++;
-        if (latestResult[q.id] && latestResult[q.id].correct) statsByCat2[c].correct++;
-      });
+      var statsByCat2 = categoryTotals;
       buildCategoryGrid(statsByCat2);
       buildReviewListRounds(attemptedPool);
       hide("end-missed");
