@@ -136,12 +136,14 @@ h2{font-size:20px;}
 .palette-word:focus-visible{opacity:.7;outline:2px solid var(--label);outline-offset:3px;border-radius:4px;}
 .palette-hint{position:absolute;top:100%;left:0;width:123px;margin-top:5px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.01em;color:var(--muted);white-space:nowrap;text-align:center;pointer-events:none;line-height:1.2;}
 [data-hint-seen] .palette-hint{display:none;}
-.pp-header-actions{display:flex;align-items:center;gap:10px;justify-self:end;flex-shrink:0;}
+.pp-header-actions{display:flex;align-items:center;gap:10px;justify-self:start;flex-shrink:0;order:-1;}
+.pp-header-label{justify-self:end;order:1;}
 .pp-filters{display:flex;gap:8px;flex-wrap:nowrap;}
 @media(max-width:900px){
   .pp-header{grid-template-columns:1fr;justify-items:center;text-align:center;gap:16px;}
   .pp-header-title{padding-bottom:20px;}
-  .pp-header-actions{justify-self:center;flex-wrap:wrap;justify-content:center;}
+  .pp-header-actions{justify-self:center;flex-wrap:wrap;justify-content:center;order:0;}
+  .pp-header-label{justify-self:center;order:0;}
 }
 
 .pp-searchrow{display:flex;justify-content:flex-start;padding:22px 0 8px;}
