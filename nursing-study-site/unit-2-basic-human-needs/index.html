@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 <link rel="stylesheet" href="../assets/style.css?v=25">
-<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue")document.documentElement.setAttribute("data-palette","blue");if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div class="wrap">
@@ -118,7 +118,7 @@
 
 </div>
 
-<script src="../assets/theme.js?v=5"></script>
+<script src="../assets/theme.js?v=6"></script>
 <script>
 function filterType(type, e){
   document.querySelectorAll(".tag").forEach(function(t){ t.classList.remove("active"); });

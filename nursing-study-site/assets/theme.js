@@ -31,6 +31,12 @@ function togglePalette(){
   root.setAttribute("data-hint-seen", "1");
   localStorage.setItem("paletteHintSeen", "1");
   updateBrandText();
+  updateFavicon();
+}
+function updateFavicon(){
+  var isBlue = document.documentElement.getAttribute("data-palette") === "blue";
+  var icon = document.querySelector('link[rel="icon"]');
+  if (icon) icon.href = icon.href.replace(/favicon(-blue)?\.svg/, isBlue ? "favicon-blue.svg" : "favicon.svg");
 }
 function updateBrandText(){
   var isBlue = document.documentElement.getAttribute("data-palette") === "blue";
