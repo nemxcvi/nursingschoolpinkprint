@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=27">
+<link rel="stylesheet" href="assets/style.css?v=28">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -28,13 +28,13 @@
     <div class="pp-header-label">SHEET 01 &mdash; NUR 114</div>
     <div class="pp-header-title">Nursing School <span class="accent"><span class="palette-word-wrap"><button class="palette-word" id="paletteWord" onclick="togglePalette()" aria-label="Switch to Blueprint palette" title="Switch to Blueprint">Pink</button><span class="palette-hint" id="paletteHint" aria-hidden="true">switch to blueprint</span></span>print</span></div>
     <div class="pp-header-actions">
-      <div class="searchwrap pp-header-search">
-        <i class="ti ti-search" aria-hidden="true"></i>
-        <input type="text" id="unitsearch" placeholder="Search" oninput="renderHome()">
-      </div>
       <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle dark mode">
         <i id="themeicon" class="ti ti-moon" aria-hidden="true"></i>
       </button>
+      <div class="searchwrap pp-header-search">
+        <i class="ti ti-search" aria-hidden="true"></i>
+        <input type="search" id="unitsearch" placeholder="Search" enterkeyhint="search" onkeydown="if(event.key==='Enter')applySearch()" oninput="if(!this.value)applySearch()">
+      </div>
     </div>
   </div>
 
@@ -237,7 +237,12 @@ var WIDGETS = [
 ];
 var MIX_ALL = {title:"Mix all", type:"quiz", unit:"All units", href:"mix-all-quiz.html", special:true};
 
-var state = {tag:null};
+var state = {tag:null, q:""};
+
+function applySearch(){
+  state.q = document.getElementById("unitsearch").value.trim().toLowerCase();
+  renderHome();
+}
 
 function setTag(tag){
   state.tag = (state.tag === tag) ? null : tag;
@@ -248,7 +253,7 @@ function setTag(tag){
 }
 
 function renderHome(){
-  var q = document.getElementById("unitsearch").value.trim().toLowerCase();
+  var q = state.q;
   var unitsGrid = document.getElementById("unitgrid");
   var widgetList = document.getElementById("widgetresults");
   var eyebrow = document.getElementById("resultseyebrow");
