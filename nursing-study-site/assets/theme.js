@@ -3,6 +3,7 @@
   if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
   var savedPalette = localStorage.getItem("palette");
   if (savedPalette === "blue") document.documentElement.setAttribute("data-palette", "blue");
+  if (localStorage.getItem("paletteHintSeen") === "1") document.documentElement.setAttribute("data-hint-seen", "1");
 })();
 function toggleTheme(){
   var root = document.documentElement;
@@ -27,13 +28,19 @@ function togglePalette(){
     root.setAttribute("data-palette", "blue");
     localStorage.setItem("palette", "blue");
   }
+  root.setAttribute("data-hint-seen", "1");
+  localStorage.setItem("paletteHintSeen", "1");
   updateBrandText();
 }
 function updateBrandText(){
   var isBlue = document.documentElement.getAttribute("data-palette") === "blue";
   document.title = document.title.replace(/Pinkprint|Blueprint/, isBlue ? "Blueprint" : "Pinkprint");
-  var accent = document.querySelector(".pp-header-title .accent");
-  if (accent) accent.textContent = isBlue ? "Blueprint" : "Pinkprint";
+  var word = document.getElementById("paletteWord");
+  if (word){
+    word.textContent = isBlue ? "Blue" : "Pink";
+    word.setAttribute("aria-label", isBlue ? "Switch to Pinkprint palette" : "Switch to Blueprint palette");
+    word.setAttribute("title", isBlue ? "Switch to Pinkprint" : "Switch to Blueprint");
+  }
 }
 document.addEventListener("DOMContentLoaded", function(){
   var icon = document.getElementById("themeicon");
