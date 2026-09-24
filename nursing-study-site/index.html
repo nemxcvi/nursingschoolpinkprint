@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nursing School Pinkprint</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=20">
+<link rel="stylesheet" href="assets/style.css?v=21">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue")document.documentElement.setAttribute("data-palette","blue");if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -13,7 +13,10 @@
 
   <div class="pp-header">
     <div class="pp-header-label">SHEET 01 &mdash; NUR 114</div>
-    <div class="pp-header-title">Nursing School <span class="accent"><button class="palette-word" id="paletteWord" onclick="togglePalette()" aria-label="Switch to Blueprint palette" title="Switch to Blueprint">Pink</button>print</span></div>
+    <div class="pp-header-title">
+      <div class="pp-title-row">Nursing School</div>
+      <div class="pp-title-row"><span class="accent"><span class="palette-word-wrap"><button class="palette-word" id="paletteWord" onclick="togglePalette()" aria-label="Switch to Blueprint palette" title="Switch to Blueprint">Pink</button><span class="palette-hint" id="paletteHint" aria-hidden="true">&#8644;</span></span>print</span></div>
+    </div>
     <div class="pp-header-actions">
       <div class="pp-filters">
         <button class="tag active" id="tag-all" onclick="setTag('all')">All</button>
@@ -25,7 +28,6 @@
       </button>
     </div>
   </div>
-  <p class="palette-hint" id="paletteHint" aria-hidden="true">&#8644;</p>
 
   <div class="pp-searchrow">
     <div class="searchwrap">
