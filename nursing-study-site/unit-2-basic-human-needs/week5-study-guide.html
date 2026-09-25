@@ -145,6 +145,9 @@ ol.gseq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fo
 .guide-body details[open] summary::after{content:" Hide"}
 .guide-body details p{margin:10px 0 0}
 
+.gseq-title{margin:18px 0 0}
+/* keep a gap between back-to-back card groups and after notes */
+.gcols + .gcols,.gnote + .gcols{margin-top:16px}
 .guide-footer{padding-top:24px;padding-bottom:60px;color:var(--muted);font-size:15px}
 .guide-footer .gbox{background:var(--red-bg);border-color:var(--red);color:var(--text)}
 .guide-footer .gbox strong{color:var(--red)}
@@ -183,14 +186,10 @@ ol.gseq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fo
   <div class="topic-head"><h2>Self-concept</h2><p>How a person sees and values themself. Learned, dynamic, lifelong.</p></div>
 
   <h3>Rogers' three components</h3>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook</p>
-    <p class="phrase">"Me, myself, and my goals"</p>
-    <div class="glet">
-      <div><b>Me</b><span><strong>Self-image</strong>: how I see my qualities (may not match reality)</span></div>
-      <div><b>My</b><span><strong>Self-esteem</strong>: how much I value myself</span></div>
-      <div><b>Goals</b><span><strong>Ideal self</strong>: who I want to be</span></div>
-    </div>
+  <div class="gcols">
+    <div class="gbox"><h4>Self-image</h4><p>How I see my qualities (may not match reality).</p></div>
+    <div class="gbox"><h4>Self-esteem</h4><p>How much I value myself.</p></div>
+    <div class="gbox"><h4>Ideal self</h4><p>Who I want to be.</p></div>
   </div>
   <div class="venn">
     <figure class="together" aria-label="Congruence: three circles overlapping">
@@ -212,16 +211,13 @@ ol.gseq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fo
     <div class="gbox"><h4>Culture</h4><p>Integrating your culture supports a healthier self-concept. Never assume everyone in a culture is the same.<span class="gex">Family traditions help a client feel confident in who they are</span></p></div>
     <div class="gbox"><h4>Role performance</h4><p>Behaviors in each role and how well you think you fill them.<span class="gex">Student, employee, partner: how many hats do you wear?</span></p></div>
   </div>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; the 5 EI domains</p>
-    <p class="phrase">"Some Really Motivated Empaths Socialize"</p>
-    <div class="glet">
-      <div><b>S</b><span>Self-awareness: know your feelings and their effect on others</span></div>
-      <div><b>R</b><span>Self-regulation: think before acting</span></div>
-      <div><b>M</b><span>Motivation: passion + persistence</span></div>
-      <div><b>E</b><span>Empathy: understand others' needs</span></div>
-      <div><b>S</b><span>Social skill: build rapport</span></div>
-    </div>
+  <p class="gseq-title"><strong>The 5 EI domains</strong></p>
+  <div class="gcols">
+    <div class="gbox"><h4>Self-awareness</h4><p>Know your feelings and their effect on others.</p></div>
+    <div class="gbox"><h4>Self-regulation</h4><p>Think before acting.</p></div>
+    <div class="gbox"><h4>Motivation</h4><p>Passion + persistence.</p></div>
+    <div class="gbox"><h4>Empathy</h4><p>Understand others' needs.</p></div>
+    <div class="gbox"><h4>Social skill</h4><p>Build rapport.</p></div>
   </div>
   <div class="gcols">
     <div class="gbox"><h4>Positive self-esteem + body change</h4><p>Client looks for ways to cope.<span class="gex">A client on chemo asks where to buy a wig.</span></p></div>
@@ -258,28 +254,22 @@ ol.gseq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fo
     <div class="gbox"><h4>Body image</h4><p>Puberty, aging, stroke, diabetes, obesity, amputation, weight stigma.</p></div>
     <div class="gbox"><h4>Self-esteem</h4><p>Disability, chronic illness, job loss, money changes, retirement, loss of a spouse, abuse or neglect.</p></div>
   </div>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; role stressors</p>
-    <p class="phrase">Too many roles will SOAC you</p>
-    <div class="glet">
-      <div><b>S</b><span><strong>Strain</strong>: can't meet one role's demands</span></div>
-      <div><b>O</b><span><strong>Overload</strong>: too many roles at once</span></div>
-      <div><b>A</b><span><strong>Ambiguity</strong>: no idea what's expected</span></div>
-      <div><b>C</b><span><strong>Conflict</strong>: two roles, same time</span></div>
-    </div>
-    <p class="gnote">Not stressors: role satisfaction, role enhancement, role clarity.</p>
+  <p class="gseq-title"><strong>Role stressors</strong></p>
+  <div class="gcols">
+    <div class="gbox"><h4>Strain</h4><p>Can't meet one role's demands.</p></div>
+    <div class="gbox"><h4>Overload</h4><p>Too many roles at once.</p></div>
+    <div class="gbox"><h4>Ambiguity</h4><p>No idea what's expected.</p></div>
+    <div class="gbox"><h4>Conflict</h4><p>Two roles, same time.</p></div>
   </div>
+  <p class="gnote">Not stressors: role satisfaction, role enhancement, role clarity.</p>
 
   <h3>Nursing process</h3>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; the 4 things you assess</p>
-    <p class="phrase">"I Bet She Rocks"</p>
-    <div class="glet">
-      <div><b>I</b><span><strong>Identity</strong>: "How would you describe yourself?"</span></div>
-      <div><b>B</b><span><strong>Body image</strong>: "How would you describe your appearance?"</span></div>
-      <div><b>S</b><span><strong>Self-esteem</strong>: "How do you respond to failure?"</span></div>
-      <div><b>R</b><span><strong>Role performance</strong>: "How successful do you feel in your roles?"</span></div>
-    </div>
+  <p class="gseq-title"><strong>The 4 things you assess</strong></p>
+  <div class="gcols">
+    <div class="gbox"><h4>Identity</h4><p>"How would you describe yourself?"</p></div>
+    <div class="gbox"><h4>Body image</h4><p>"How would you describe your appearance?"</p></div>
+    <div class="gbox"><h4>Self-esteem</h4><p>"How do you respond to failure?"</p></div>
+    <div class="gbox"><h4>Role performance</h4><p>"How successful do you feel in your roles?"</p></div>
   </div>
   <div class="gcols">
     <div class="gbox"><h4>Red flags</h4><p>Negative self-talk, unkempt, tearful, over-apologizing, indecisive.</p></div>
@@ -429,11 +419,7 @@ ol.gseq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fo
   <p class="gnote">Top of the head to the top of the kidneys: <strong>H</strong>ypothalamus, <strong>P</strong>ituitary, <strong>A</strong>drenals, in that order.</p>
 
   <h3>General adaptation syndrome</h3>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook</p>
-    <p class="phrase">"A-R-E you stressed?"</p>
-    <p class="gnote">Alarm, Resistance, Exhaustion. Happens with good or bad stress, physical or psychological.</p>
-  </div>
+  <p>Alarm, Resistance, Exhaustion. Happens with good or bad stress, physical or psychological.</p>
   <div class="gas">
     <div class="a"><strong>Alarm</strong> <span class="gflag">Flagged</span><p>CNS aroused. Adrenal medulla releases <strong>epinephrine</strong>: fight or flight. HR, BP, glucose, O&#8322; intake, alertness up; pupils dilate.</p></div>
     <div><strong>Resistance</strong><p>Body fights back. Parasympathetic system calms things down. Coping kicks in. Fatigue, irritability, poor focus.</p></div>
@@ -497,15 +483,12 @@ ol.gseq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fo
   </div>
 
   <h3>Crisis <span class="gflag">Safety comes first</span></h3>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; 4 types of crisis</p>
-    <p class="phrase">"Dogs Smell Every Pizza"</p>
-    <div class="glet">
-      <div><b>D</b><span><strong>Developmental</strong>: life transitions (puberty, retirement)</span></div>
-      <div><b>S</b><span><strong>Situational</strong>: outside events (job loss, disaster)</span></div>
-      <div><b>E</b><span><strong>Existential</strong>: meaning, identity, purpose</span></div>
-      <div><b>P</b><span><strong>Psychiatric emergency</strong>: suicide attempt, psychosis</span></div>
-    </div>
+  <p class="gseq-title"><strong>4 types of crisis</strong></p>
+  <div class="gcols">
+    <div class="gbox"><h4>Developmental</h4><p>Life transitions (puberty, retirement).</p></div>
+    <div class="gbox"><h4>Situational</h4><p>Outside events (job loss, disaster).</p></div>
+    <div class="gbox"><h4>Existential</h4><p>Meaning, identity, purpose.</p></div>
+    <div class="gbox"><h4>Psychiatric emergency</h4><p>Suicide attempt, psychosis.</p></div>
   </div>
   <p>Mental health emergency signs: acting on a suicide threat, hostility, throwing or breaking things, threatening harm.</p>
   <p><strong>Roberts' seven-stage model</strong>, in order:</p>
