@@ -33,6 +33,7 @@ var SITE = {
     {title:"Comfort, Rest & Sleep practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/comfort-rest-sleep-quiz.html", count:40},
     {title:"Stress and Coping", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/stress-coping-flashcards.html", count:69},
     {title:"Stress and Coping practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/stress-coping-quiz.html", count:40},
+    {title:"Week 4 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/week4-study-guide.html", meta:"Mobility, hygiene & client education · mnemonics & quick checks"},
     {title:"Week 5 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/week5-study-guide.html", meta:"Self-concept, sleep, stress & DEI · mnemonics & quick checks"}
   ],
   mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html", meta:"Random from every quiz on the site"},
