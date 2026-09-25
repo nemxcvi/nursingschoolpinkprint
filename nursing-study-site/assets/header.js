@@ -39,32 +39,30 @@
   function unitInner(u){
     return "<span class='nav-code'>" + u.code + "</span><span class='nav-name'>" + esc(u.name) + "</span>";
   }
-  function section(key, label, body){
-    return "<div class='nav-sec' data-sec='" + key + "'>" +
-      "<button class='nav-row nav-sechead' aria-expanded='false' aria-controls='navsec-" + key + "'>" +
+  function section(key, label, body, sub){
+    return "<div class='nav-sec" + (sub ? " nav-subsec" : "") + "' data-sec='" + key + "'>" +
+      "<button class='nav-row nav-sechead" + (sub ? " nav-sub" : "") + "' aria-expanded='false' aria-controls='navsec-" + key + "'>" +
       "<span class='nav-name'>" + label + "</span><span class='nav-caret' aria-hidden='true'></span></button>" +
       "<div class='nav-secbody' id='navsec-" + key + "' hidden>" + body + "</div></div>";
   }
 
+  /* Each sheet with content is its own dropdown of units; future sheets are dimmed */
   function sheetsBody(){
     return SITE.sheets.map(function(s){
-      var name = "<span class='nav-name'>Sheet " + s.num + " &mdash; " + s.code + "</span>";
-      if (SITE.widgetsFor(s.id).length === 0) return offRow(name, DRAFT, "nav-sub");
-      var href = ROOT + (s.id === SITE.currentSheet ? "" : "?sheet=" + s.id);
-      return row(href, name, "sheet:" + s.id, "nav-sub") +
-        SITE.unitsWithContent(s.id).map(function(u){
-          return row(ROOT + u.slug, unitInner(u), "unit:" + s.id + ":" + u.code, "nav-sub2");
-        }).join("");
+      var name = "Sheet " + s.num + " &mdash; " + s.code;
+      if (SITE.widgetsFor(s.id).length === 0) return offRow("<span class='nav-name'>" + name + "</span>", DRAFT, "nav-sub");
+      return section("sheet-" + s.id, name, SITE.unitsWithContent(s.id).map(function(u){
+        return row(ROOT + u.slug, unitInner(u), "unit:" + s.id + ":" + u.code, "nav-sub2");
+      }).join(""), true);
     }).join("");
   }
 
   function typeBody(t){
     var html = row(ROOT + "?type=" + t.key, "<span class='nav-name'>All units</span>", "type:" + t.key + ":all", "nav-sub");
-    SITE.unitsWithContent(sheet.id).forEach(function(u){
+    /* Only units that have this type of content */
+    SITE.getSheet(sheet.id).units.forEach(function(u){
       if (SITE.widgetsFor(sheet.id, u.code, t.key).length){
         html += row(ROOT + "?type=" + t.key + "&unit=" + u.code, unitInner(u), "type:" + t.key + ":" + u.code, "nav-sub");
-      } else {
-        html += offRow(unitInner(u), DRAFT, "nav-sub");
       }
     });
     return html;
@@ -86,11 +84,11 @@
     var brand = isHome ? "Nursing School " : "<a class='pp-header-home' href='" + ROOT + "'>Nursing School</a> ";
     host.className = "pp-header site-header";
     host.innerHTML =
-      "<div class='hdr-left'>" + themeBtn() + "</div>" +
+      "<div class='hdr-left'><div class='pp-header-label'>Sheet " + sheet.num + " &mdash; " + sheet.code + "</div>" + menuBtn + "</div>" +
       "<div class='pp-header-title'>" + brand + "<span class='accent'><span class='palette-word-wrap'>" +
         "<button class='palette-word' id='paletteWord' onclick='togglePalette()' aria-label='Switch to Blueprint palette' title='Switch to Blueprint'>" + (isBlue() ? "Blue" : "Pink") + "</button>" +
         "<span class='palette-hint' id='paletteHint' aria-hidden='true'>switch to blueprint</span></span>print</span></div>" +
-      "<div class='hdr-right'><div class='pp-header-label'>Sheet " + sheet.num + " &mdash; " + sheet.code + "</div>" + menuBtn + "</div>" +
+      "<div class='hdr-right'>" + themeBtn() + "</div>" +
       panelHtml;
   } else {
     var back = unit ? ROOT + unit.slug : ROOT;
@@ -106,10 +104,10 @@
     host.className = "cbar site-header";
     host.innerHTML =
       "<div class='cbar-inner'>" +
-        "<div class='cbar-left'>" + themeBtn(" iconbtn-sm") + "<span class='cbar-div' aria-hidden='true'></span>" +
+        "<div class='cbar-left'>" + menuBtn + "<span class='cbar-div' aria-hidden='true'></span>" +
           "<a class='cbar-back' href='" + esc(back) + "'><i class='ti ti-arrow-left' aria-hidden='true'></i> Back</a></div>" +
         "<div class='cbar-label'><span class='cbar-code'>" + labelCode + "</span><span class='cbar-rest'>" + labelRest + "</span></div>" +
-        "<div class='cbar-right'>" + menuBtn + "</div>" +
+        "<div class='cbar-right'>" + themeBtn(" iconbtn-sm") + "</div>" +
         panelHtml +
       "</div>";
   }
@@ -122,12 +120,13 @@
   var backdrop = document.getElementById("navbackdrop");
   var anchor = panel.parentNode;
   var secs = Array.prototype.slice.call(panel.querySelectorAll(".nav-sec"));
+  var topSecs = secs.filter(function(sec){ return !sec.classList.contains("nav-subsec"); });
   var closeTimer = null;
   var REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function setSec(sec, open, animate){
-    var head = sec.querySelector(".nav-sechead");
-    var body = sec.querySelector(".nav-secbody");
+    var head = sec.querySelector(":scope > .nav-sechead");
+    var body = sec.querySelector(":scope > .nav-secbody");
     head.setAttribute("aria-expanded", open ? "true" : "false");
     sec.classList.toggle("is-open", open);
     if (!animate || REDUCE.matches){
@@ -147,15 +146,18 @@
     }
   }
   secs.forEach(function(sec){
-    var body = sec.querySelector(".nav-secbody");
+    var body = sec.querySelector(":scope > .nav-secbody");
     body.addEventListener("transitionend", function(e){
       if (e.target !== body || e.propertyName !== "height") return;
       if (sec.classList.contains("is-open")) body.style.height = "auto";
       else body.hidden = true;
     });
-    sec.querySelector(".nav-sechead").addEventListener("click", function(){
+    sec.querySelector(":scope > .nav-sechead").addEventListener("click", function(){
       var opening = !sec.classList.contains("is-open");
-      secs.forEach(function(other){ if (other !== sec && other.classList.contains("is-open")) setSec(other, false, true); });
+      /* One open at a time among sections at the same level */
+      Array.prototype.forEach.call(sec.parentNode.children, function(other){
+        if (other !== sec && other.classList.contains("nav-sec") && other.classList.contains("is-open")) setSec(other, false, true);
+      });
       setSec(sec, opening, true);
     });
   });
@@ -174,11 +176,15 @@
   }
   function applyState(){
     var st = currentState();
-    secs.forEach(function(sec){ setSec(sec, sec.getAttribute("data-sec") === st.sec, false); });
+    /* Sheet dropdowns always start closed */
+    secs.forEach(function(sec){ setSec(sec, topSecs.indexOf(sec) !== -1 && sec.getAttribute("data-sec") === st.sec, false); });
     panel.querySelectorAll("[data-cur]").forEach(function(a){
       var on = a.getAttribute("data-cur") === st.cur;
       a.classList.toggle("is-current", on);
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    panel.querySelectorAll(".nav-subsec").forEach(function(sub){
+      sub.classList.toggle("has-current", !!sub.querySelector(".is-current"));
     });
   }
 
@@ -186,8 +192,8 @@
     var a = anchor.getBoundingClientRect();
     var b = btn.getBoundingClientRect();
     panel.style.top = (b.bottom - a.top + 8) + "px";
-    if (window.innerWidth > 600) panel.style.right = (a.right - b.right) + "px";
-    else panel.style.right = "";
+    if (window.innerWidth > 600) panel.style.left = (b.left - a.left) + "px";
+    else panel.style.left = "";
     panel.style.maxHeight = Math.max(200, window.innerHeight - b.bottom - 20) + "px";
   }
   function isOpen(){ return btn.getAttribute("aria-expanded") === "true"; }
