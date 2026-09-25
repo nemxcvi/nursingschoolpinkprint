@@ -102,10 +102,12 @@ section.topic{padding:48px 0 20px}
 .venn{display:flex;gap:28px;flex-wrap:wrap;margin:14px 0}
 .venn figure{margin:0;flex:1 1 240px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center}
 .venn .stage{position:relative;height:150px;max-width:240px;margin:0 auto}
-.venn .c{position:absolute;width:86px;height:86px;border-radius:50%;display:grid;place-items:center;font-size:13px;line-height:1.1;mix-blend-mode:multiply;color:#3B1128}
+.venn .c{position:absolute;width:86px;height:86px;border-radius:50%;display:grid;place-items:center;font-size:12px;line-height:1.1;mix-blend-mode:multiply;color:#3B1128}
 [data-theme="dark"] .venn .c{mix-blend-mode:normal;opacity:.9}
 .c1{background:color-mix(in srgb,var(--border) 55%,#fff)}.c2{background:#FFD98A}.c3{background:#A9DCEB}
 .together .c1{left:48px;top:8px}.together .c2{left:104px;top:8px}.together .c3{left:76px;top:56px}
+/* nudge each label into the part of its circle that doesn't overlap */
+.together .c{white-space:nowrap}.together .c1{padding-right:16px}.together .c2{padding-left:16px}.together .c3{padding-top:26px}
 .apart .c1{left:8px;top:6px}.apart .c2{left:146px;top:6px}.apart .c3{left:77px;top:64px}
 .venn figcaption{font-size:15px;color:var(--muted);margin-top:8px}
 
