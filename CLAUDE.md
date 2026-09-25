@@ -30,7 +30,7 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 ## Link previews (iMessage, GroupMe, etc.)
 
 - Every page repeats the same meta block: `description`, `og:*` and `twitter:*`. The tagline, kept identical to the text in the image, is:
-  `Flashcards, quizzes & study guides drafted from ATI & lecture material.` (written with `&amp;` in HTML).
+  `Flashcards, quizzes & study guides drafted from ATI & lecture material` (written with `&amp;` in HTML).
 - `assets/og-image.png` is 1600×840 on a 44px grid. GroupMe draws its link bubble over roughly the top 37% of the image, so the title has to stay below about y=310. If you change the image, bump `og-image.png?v=N` on every page.
 - Messaging apps cache previews per URL. To test a change, share a new URL such as `nursingschoolpinkprint.com/?v=2`.
 
