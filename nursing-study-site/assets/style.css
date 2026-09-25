@@ -414,7 +414,11 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 @media(max-width:640px){
   .ledger-wrap{padding:28px 20px 56px;}
   .ledger-row{grid-template-columns:30px minmax(0,1fr);row-gap:12px;padding:16px;}
-  .lr-actions{grid-column:2;justify-content:flex-start;}
+  .lr-actions{grid-column:2;justify-content:flex-end;}
+  /* library rows have one short button: keep it beside the title on the right */
+  a.ledger-row{grid-template-columns:30px minmax(0,1fr) auto;}
+  a.ledger-row .lr-actions{grid-column:auto;justify-content:flex-end;}
+  a.ledger-row .lbtn{padding:0 14px;}
   .lr-title{font-size:20px;}
   .ledger-feature{grid-template-columns:auto minmax(0,1fr);padding:16px;}
   .ledger-feature > .lf-go,.ledger-feature > .lbtn{grid-column:2;justify-self:start;}
