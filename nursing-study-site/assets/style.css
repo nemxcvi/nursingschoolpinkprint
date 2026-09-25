@@ -349,7 +349,7 @@ a.nav-row:hover,button.nav-row:hover,.nav-row:focus-visible{background:var(--pil
 .nav-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .nav-code,.nav-arrow,.nav-caret{flex-shrink:0;color:var(--label);}
 .nav-caret::before{content:"\25B8";}
-.nav-sec.is-open .nav-caret::before{content:"\25BE";}
+.nav-sec.is-open > .nav-sechead .nav-caret::before{content:"\25BE";}
 .nav-sechead{font-weight:500;}
 .nav-secbody{overflow:hidden;transition:height .25s ease;}
 .nav-sub{padding-left:28px;}
