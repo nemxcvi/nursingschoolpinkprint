@@ -78,6 +78,7 @@ h2{font-size:20px;}
 .brand i{font-size:34px;color:var(--label);}
 .iconbtn{border:0;background:transparent;color:var(--text);width:44px;height:44px;border-radius:0;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
 .iconbtn:hover{background:var(--pill);color:var(--label);}
+.iconbtn i{font-size:22px;}
 
 .searchwrap{position:relative;margin:18px 0 14px;}
 .searchwrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--label);font-size:17px;}
@@ -137,7 +138,7 @@ h2{font-size:20px;}
 .hdr-left{justify-self:start;display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
 .hdr-navrow{display:flex;align-items:center;gap:12px;}
 .hdr-div{width:1.5px;height:24px;background:var(--border);}
-.hdr-right{justify-self:end;}
+.hdr-right{justify-self:end;align-self:end;margin-bottom:-4px;}
 .pp-header-home{color:inherit;}
 .pp-headwrap{padding-bottom:0;}
 .pp-filters{display:flex;gap:8px;flex-wrap:nowrap;}
@@ -148,7 +149,7 @@ h2{font-size:20px;}
   .hdr-left .hdr-navrow{grid-area:menu;justify-self:start;}
   /* unit pages: menu + Back take the top row, sheet label moves under it */
   .pp-header.has-back{grid-template-areas:"menu menu theme" "label label label" "title title title";}
-  .hdr-right{grid-area:theme;}
+  .hdr-right{grid-area:theme;align-self:center;margin-bottom:0;}
   .pp-header-title{grid-area:title;padding-bottom:20px;}
 }
 
