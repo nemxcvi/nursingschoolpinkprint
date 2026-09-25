@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=39">
+<link rel="stylesheet" href="../assets/style.css?v=40">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -26,63 +26,57 @@
   <div id="site-header" data-mode="full" data-sheet="nur114" data-unit="U-01"></div>
 </div>
 <script src="../assets/site-data.js?v=2"></script>
-<script src="../assets/header.js?v=5"></script>
+<script src="../assets/header.js?v=6"></script>
+<div class="pp-wrap pp-headwrap">
+  <div class="pp-searchrow">
+    <div class="pp-filters">
+      <a class="tag" href="../">Home</a>
+      <button class="tag" data-filter="flashcards">Flashcards</button>
+      <button class="tag" data-filter="quizzes">Quizzes</button>
+      <button class="tag" data-filter="studyguides">Study guides</button>
+    </div>
+  </div>
+</div>
 <div class="ledger-wrap">
   <p class="ledger-eyebrow">U-01 &middot; Weeks 1&ndash;3</p>
   <h1 class="ledger-h1">Intro to Nursing</h1>
 
-  <div class="ledger-tabs">
-    <button class="tag active" onclick="filterType('all', event)">All</button>
-    <button class="tag" onclick="filterType('flashcards', event)">Flashcards</button>
-    <button class="tag" onclick="filterType('quiz', event)">Quizzes</button>
-  </div>
 
   <div class="ledger" id="widgetlist">
       <div class="ledger-row" data-types="flashcards">
         <span class="lr-num">01</span>
         <div><h2 class="lr-title">General Abbreviations</h2><span class="lr-meta">23 cards</span></div>
-        <div class="lr-actions"><a class="lbtn btn-primary" href="general-abbreviations.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a></div>
+        <div class="lr-actions"><a class="lbtn btn-primary" data-kind="flashcards" href="general-abbreviations.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a></div>
       </div>
       <div class="ledger-row" data-types="flashcards">
         <span class="lr-num">02</span>
         <div><h2 class="lr-title">Charting Abbreviations</h2><span class="lr-meta">50 cards</span></div>
-        <div class="lr-actions"><a class="lbtn btn-primary" href="charting-abbreviations.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a></div>
+        <div class="lr-actions"><a class="lbtn btn-primary" data-kind="flashcards" href="charting-abbreviations.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a></div>
       </div>
       <div class="ledger-row" data-types="flashcards quiz">
         <span class="lr-num">03</span>
         <div><h2 class="lr-title">CBC/CMP Adult Lab Value Ranges</h2><span class="lr-meta">29 cards &middot; 40 questions</span></div>
-        <div class="lr-actions"><a class="lbtn btn-primary" href="cbc-cmp-lab-values.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a><a class="lbtn btn-secondary" href="cbc-cmp-quiz.html"><i class="ti ti-help-square" aria-hidden="true"></i> Quiz</a></div>
+        <div class="lr-actions"><a class="lbtn btn-primary" data-kind="flashcards" href="cbc-cmp-lab-values.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a><a class="lbtn btn-secondary" data-kind="quiz" href="cbc-cmp-quiz.html"><i class="ti ti-help-square" aria-hidden="true"></i> Quiz</a></div>
       </div>
       <div class="ledger-row" data-types="quiz">
         <span class="lr-num">04</span>
         <div><h2 class="lr-title">Nursing Fundamentals</h2><span class="lr-meta">20 questions &middot; session or mastery rounds</span></div>
-        <div class="lr-actions"><a class="lbtn btn-primary" href="nursing-fundamentals-quiz.html"><i class="ti ti-help-square" aria-hidden="true"></i> Quiz</a></div>
+        <div class="lr-actions"><a class="lbtn btn-primary" data-kind="quiz" href="nursing-fundamentals-quiz.html"><i class="ti ti-help-square" aria-hidden="true"></i> Quiz</a></div>
       </div>
   </div>
 
+  <div data-kind="quiz">
   <p class="ledger-label">Mix it up</p>
   <a class="ledger-feature" href="mix-quiz.html">
     <i class="ti ti-arrows-shuffle" aria-hidden="true"></i>
     <span><span class="lf-title">Mix all</span><span class="lf-sub">Random from every quiz in the unit</span></span>
     <span class="lf-go">Start &rarr;</span>
   </a>
+  </div>
+  <div class="ledger ledger-empty" id="unit-filter-empty" hidden><p></p></div>
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script>
-function filterType(type, e){
-  document.querySelectorAll(".ledger-tabs .tag").forEach(function(t){ t.classList.remove("active"); });
-  e.target.classList.add("active");
-  var rows = document.querySelectorAll("#widgetlist .ledger-row"), last = null;
-  rows.forEach(function(row){
-    var show = type === "all" || row.getAttribute("data-types").split(" ").indexOf(type) !== -1;
-    row.style.display = show ? "" : "none";
-    row.classList.remove("is-last");
-    if (show) last = row;
-  });
-  /* no divider under the last visible row */
-  if (last) last.classList.add("is-last");
-}
-</script>
+<script src="../assets/unit-filter.js?v=1"></script>
 </body>
 </html>

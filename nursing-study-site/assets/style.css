@@ -53,6 +53,7 @@
 }
 
 *{box-sizing:border-box;}
+[hidden]{display:none !important;}
 /* Buttons don't inherit the page font by default; keep them in IBM Plex Mono */
 button{font-family:inherit;}
 body{
@@ -147,8 +148,6 @@ h2{font-size:20px;}
   .hdr-left{display:contents;}
   .hdr-left .pp-header-label{grid-area:label;justify-self:center;}
   .hdr-left .hdr-navrow{grid-area:menu;justify-self:start;}
-  /* unit pages: menu + Back take the top row, sheet label moves under it */
-  .pp-header.has-back{grid-template-areas:"menu menu theme" "label label label" "title title title";}
   .hdr-right{grid-area:theme;align-self:center;margin-bottom:0;}
   .pp-header-title{grid-area:title;padding-bottom:20px;}
 }
@@ -394,6 +393,7 @@ a.ledger-feature:hover .lf-go{color:var(--text);}
 .ledger{background:var(--card);border:1.5px solid var(--border);margin-bottom:26px;}
 .ledger-row{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid color-mix(in srgb,var(--border) 35%,transparent);color:var(--text);}
 .ledger-row:last-child,.ledger-row.is-last{border-bottom:0;}
+a.tag{display:inline-flex;align-items:center;justify-content:center;}
 a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .lr-num{font-size:12px;letter-spacing:.06em;color:var(--label);}
 .lr-title{display:block;margin:0 0 6px;font-family:'Young Serif',serif;font-size:23px;line-height:1.2;color:var(--heading);}
