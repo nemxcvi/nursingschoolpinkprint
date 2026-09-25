@@ -172,7 +172,7 @@ h2{font-size:20px;}
 .pp-quote-item{font-family:'Young Serif',serif;font-weight:400;font-size:clamp(24px,6vw,34px);line-height:1.3;color:var(--heading);margin:0;opacity:0;transition:opacity .6s ease;}
 .pp-quote-item.is-active{opacity:1;}
 @media(max-width:700px){
-  .pp-quote-stack{display:block;position:relative;overflow:hidden;transition:height .4s ease;}
+  .pp-quote-stack{display:block;position:relative;overflow:hidden;}
   .pp-quote-item{position:absolute;top:0;left:0;width:100%;}
 }
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.pp-quote-stack{transition:none;}}
