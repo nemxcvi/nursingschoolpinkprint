@@ -42,7 +42,7 @@ var SITE = {
   types: [
     {key:"flashcards", widgetType:"flashcards", label:"Flashcards", one:"Flashcards", title:"All Flashcards", item:["deck","decks"], unitWord:["card","cards"], action:"Study"},
     {key:"quizzes", widgetType:"quiz", label:"Quizzes", one:"Quiz", title:"All Quizzes", item:["quiz","quizzes"], unitWord:["question","questions"], action:"Start"},
-    {key:"studyguides", widgetType:"studyguide", label:"Study guides", one:"Study guide", title:"Study Guides", item:["guide","guides"], unitWord:null, action:"Open"}
+    {key:"studyguides", widgetType:"studyguide", label:"Study guides", one:"Study guide", title:"All Study Guides", item:["guide","guides"], unitWord:null, action:"Open"}
   ]
 };
 

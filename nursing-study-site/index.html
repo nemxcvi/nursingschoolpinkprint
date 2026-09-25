@@ -25,12 +25,11 @@
 <div class="pp-wrap">
 
   <div id="site-header" data-mode="full" data-sheet="nur114"></div>
-  <script src="assets/site-data.js?v=3"></script>
+  <script src="assets/site-data.js?v=4"></script>
   <script src="assets/header.js?v=6"></script>
 
   <div class="pp-searchrow">
     <div class="pp-filters">
-      <button class="tag" id="tag-home" onclick="goHome()">Home</button>
       <button class="tag" id="tag-flashcards" onclick="setTag('flashcards')">Flashcards</button>
       <button class="tag" id="tag-quizzes" onclick="setTag('quizzes')">Quizzes</button>
       <button class="tag" id="tag-studyguides" onclick="setTag('studyguides')">Study guides</button>
@@ -212,7 +211,6 @@ var startType = SITE.getType(params.get("type") || "");
 var state = {tag: startType ? startType.key : null, unit: startType ? params.get("unit") : null};
 
 function syncTags(){
-  document.getElementById("tag-home").classList.toggle("active", state.tag === null);
   TAGS.forEach(function(t){
     document.getElementById("tag-" + t).classList.toggle("active", t === state.tag);
   });
@@ -224,15 +222,6 @@ function syncUrl(){
   if (state.tag && state.unit) p.set("unit", state.unit);
   var qs = p.toString();
   history.replaceState(null, "", location.pathname + (qs ? "?" + qs : ""));
-}
-
-/* Home button: back to the plain unit grid, no filter */
-function goHome(){
-  state.tag = null;
-  state.unit = null;
-  syncTags();
-  syncUrl();
-  renderHome();
 }
 
 function setTag(tag){
