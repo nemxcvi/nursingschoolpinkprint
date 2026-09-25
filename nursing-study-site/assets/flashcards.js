@@ -1,29 +1,20 @@
-var FC_FIXED_HEIGHT = 260;
-var FC_MIN_SCALE = 0.72;
+/* Shrink a face's text until it fits the card (the label is absolutely placed and never moves) */
+var FC_MIN_SCALE = 0.55;
 
-function measureFaceHeight(el){
-  var prevPosition = el.style.position;
-  var prevWidth = el.style.width;
-  el.style.position = "static";
-  el.style.width = "100%";
-  var h = el.scrollHeight;
-  el.style.position = prevPosition;
-  el.style.width = prevWidth;
-  return h;
-}
-
-function fitFaceToFixedHeight(face){
-  var textEls = face.querySelectorAll(".fc-term, .fc-def, .fc-ex, .fc-cat, .fc-hint");
+function fitFace(face){
+  var body = face.querySelector(".fc-body");
+  if (!body) return;
+  var textEls = body.querySelectorAll(".fc-term, .fc-def, .fc-ex, .fc-hint");
   textEls.forEach(function(el){ el.style.fontSize = ""; });
-
-  var natural = measureFaceHeight(face);
-  if (natural <= FC_FIXED_HEIGHT) return;
-
-  var scale = Math.max(FC_MIN_SCALE, (FC_FIXED_HEIGHT / natural) * 0.97);
-  textEls.forEach(function(el){
-    var base = parseFloat(getComputedStyle(el).fontSize);
-    el.style.fontSize = (base * scale) + "px";
-  });
+  var cs = getComputedStyle(face);
+  var avail = face.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  if (avail <= 0 || body.scrollHeight <= avail) return;
+  var base = [];
+  textEls.forEach(function(el){ base.push(parseFloat(getComputedStyle(el).fontSize)); });
+  for (var scale = 0.95; scale >= FC_MIN_SCALE; scale -= 0.05){
+    textEls.forEach(function(el, i){ el.style.fontSize = (base[i] * scale) + "px"; });
+    if (body.scrollHeight <= avail) return;
+  }
 }
 
 function initFlashcards(CATS, CARDS){
@@ -104,34 +95,21 @@ function initFlashcards(CATS, CARDS){
     var cat = CATS[card[1]];
     document.getElementById("cardinner").className = "fc-inner" + (state.flipped ? " flipped" : "");
 
-    var bg = "background:var(--hue-" + cat.hue + "-bg);color:var(--hue-" + cat.hue + "-text);";
-    document.getElementById("cardfront").setAttribute("style", "");
-    document.getElementById("cardfront").className = "fc-face";
-    document.getElementById("cardfront").style.cssText = bg;
-    document.getElementById("cardback").className = "fc-face back";
-    document.getElementById("cardback").style.cssText = bg;
+    var front = document.getElementById("cardfront");
+    var back = document.getElementById("cardback");
+    front.innerHTML =
+      "<p class='fc-cat'>" + cat.label + "</p><div class='fc-body'><p class='fc-term'>" + card[2] + "</p><p class='fc-hint'>Tap to flip</p></div>";
 
-    document.getElementById("cardfront").innerHTML =
-      "<p class='fc-cat'>" + cat.label + "</p><p class='fc-term'>" + card[2] + "</p><p class='fc-hint'>Tap to flip</p>";
-
+    /* Examples get their own italic line under the definition */
     var exHtml = card[4] ? "<p class='fc-ex'>Ex: " + card[4] + "</p>" : "";
-    document.getElementById("cardback").innerHTML =
-      "<p class='fc-cat'>" + cat.label + "</p><p class='fc-def'>" + card[3] + "</p>" + exHtml;
+    back.innerHTML =
+      "<p class='fc-cat'>" + cat.label + "</p><div class='fc-body'><p class='fc-def'>" + card[3] + "</p>" + exHtml + "</div>";
 
-    var defEl = document.querySelector("#cardback .fc-def");
-    var exEl = document.querySelector("#cardback .fc-ex");
-    if (defEl){
-      var lineHeightPx = parseFloat(getComputedStyle(defEl).lineHeight);
-      var isLong = defEl.scrollHeight > lineHeightPx * 2 + 2;
-      defEl.classList.toggle("long-text", isLong);
-      if (exEl) exEl.classList.toggle("long-text", isLong);
-    }
-
-    fitFaceToFixedHeight(document.getElementById("cardfront"));
-    fitFaceToFixedHeight(document.getElementById("cardback"));
+    fitFace(front);
+    fitFace(back);
 
     /* The rating row always takes its space so nothing shifts; it only works once the card is flipped */
-    gradebtns.style.display = "flex";
+    gradebtns.style.display = "";
     gradebtns.querySelectorAll("button").forEach(function(b){ b.disabled = !state.flipped; });
   }
 
@@ -203,6 +181,11 @@ function initFlashcards(CATS, CARDS){
       window.nextCard(noop);
     }
   });
+
+  /* Card height changes with the screen, so refit the text; and again once the web fonts load */
+  var resizeTimer;
+  window.addEventListener("resize", function(){ clearTimeout(resizeTimer); resizeTimer = setTimeout(render, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(render);
 
   render();
 }
