@@ -18,18 +18,18 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=34">
+<link rel="stylesheet" href="../assets/style.css?v=36">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-02" data-type="flashcards"></div>
-<script src="../assets/site-data.js?v=1"></script>
-<script src="../assets/header.js?v=4"></script>
+<script src="../assets/site-data.js?v=2"></script>
+<script src="../assets/header.js?v=5"></script>
 <div class="wrap">
   <h2 style="margin-bottom:18px;">Hygiene</h2>
 
   <div class="fc-topbar"><span id="cardcounter"></span><span id="counts"></span></div>
-  <div class="fc-progresswrap"><div id="progressbar" class="fc-progressbar"></div></div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
 
   <div id="cardscene" class="fc-scene" onclick="flipCard()">
     <div id="cardinner" class="fc-inner">
@@ -38,10 +38,10 @@
     </div>
   </div>
 
-  <div id="gradebtns" class="row" style="display:none;">
-    <button class="btn dk" onclick="grade('dontknow', event)"><i class="ti ti-x" aria-hidden="true"></i> don't know</button>
-    <button class="btn al" onclick="grade('almost', event)">~ almost</button>
-    <button class="btn kn" onclick="grade('know', event)"><i class="ti ti-check" aria-hidden="true"></i> know it</button>
+  <div id="gradebtns" class="row">
+    <button class="btn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button class="btn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button class="btn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
   </div>
 
   <div id="completion" style="display:none;"></div>
@@ -55,10 +55,11 @@
     <button class="btn small" onclick="restartDeck(event)"><i class="ti ti-refresh" aria-hidden="true"></i> restart</button>
   </div>
   <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint" aria-hidden="true"><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script src="../assets/flashcards.js?v=3"></script>
+<script src="../assets/flashcards.js?v=4"></script>
 <script>
 var CATS = {
   integument: {label:"Integumentary system & infection prevention", hue:"blue"},

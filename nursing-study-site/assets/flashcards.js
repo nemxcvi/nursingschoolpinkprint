@@ -53,9 +53,15 @@ function initFlashcards(CATS, CARDS){
       "<span style='color:var(--success-text)'>&#10003; " + kn + "</span>";
   }
 
+  /* Segmented bar: red / amber / green in proportion to the tallies out of the whole deck */
   function updateProgress(){
-    var pct = state.deckIds.length ? Math.round((Math.min(state.pos, state.deckIds.length) / state.deckIds.length) * 100) : 100;
-    document.getElementById("progressbar").style.width = pct + "%";
+    var tally = {dontknow:0, almost:0, know:0};
+    for (var k in state.grades) if (tally.hasOwnProperty(state.grades[k])) tally[state.grades[k]]++;
+    var total = CARDS.length || 1;
+    var bar = document.getElementById("progressbar");
+    bar.querySelector(".seg.dk").style.width = (tally.dontknow / total * 100) + "%";
+    bar.querySelector(".seg.al").style.width = (tally.almost / total * 100) + "%";
+    bar.querySelector(".seg.kn").style.width = (tally.know / total * 100) + "%";
   }
 
   function updateCounter(){
@@ -124,7 +130,9 @@ function initFlashcards(CATS, CARDS){
     fitFaceToFixedHeight(document.getElementById("cardfront"));
     fitFaceToFixedHeight(document.getElementById("cardback"));
 
-    gradebtns.style.display = state.flipped ? "flex" : "none";
+    /* The rating row always takes its space so nothing shifts; it only works once the card is flipped */
+    gradebtns.style.display = "flex";
+    gradebtns.querySelectorAll("button").forEach(function(b){ b.disabled = !state.flipped; });
   }
 
   window.flipCard = function(){ state.flipped = !state.flipped; render(); };
@@ -172,6 +180,29 @@ function initFlashcards(CATS, CARDS){
     state.deckIds = CARDS.map(function(c){ return c[0]; });
     state.pos = 0; state.flipped = false; render();
   };
+
+  /* Keyboard: Space flips, 1/2/3 rate (after the flip), arrows move between cards */
+  var noop = {stopPropagation:function(){}};
+  document.addEventListener("keydown", function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+    var nav = document.getElementById("navbtn");
+    if (nav && nav.getAttribute("aria-expanded") === "true") return;
+    var onCard = state.pos < state.deckIds.length;
+    if (e.key === " " || e.code === "Space"){
+      if (!onCard) return;
+      e.preventDefault();
+      window.flipCard();
+    } else if (e.key === "1" || e.key === "2" || e.key === "3"){
+      if (!onCard || !state.flipped) return;
+      window.grade(["dontknow", "almost", "know"][Number(e.key) - 1], noop);
+    } else if (e.key === "ArrowLeft"){
+      window.prevCard(noop);
+    } else if (e.key === "ArrowRight"){
+      window.nextCard(noop);
+    }
+  });
 
   render();
 }

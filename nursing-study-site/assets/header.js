@@ -82,9 +82,20 @@
   /* ---------- Header markup ---------- */
   if (mode === "full"){
     var brand = isHome ? "Nursing School " : "<a class='pp-header-home' href='" + ROOT + "'>Nursing School</a> ";
-    host.className = "pp-header site-header";
+    /* Unit pages: Back sits next to the menu and returns to the home view you came from (a filtered list), else plain home */
+    var navRow = menuBtn;
+    if (unit){
+      var unitBack = ROOT;
+      try {
+        var r = new URL(document.referrer);
+        if (r.origin === location.origin && r.pathname === new URL(ROOT).pathname) unitBack = r.href;
+      } catch (e){}
+      navRow += "<span class='hdr-div' aria-hidden='true'></span>" +
+        "<a class='cbar-back' href='" + esc(unitBack) + "'><i class='ti ti-arrow-left' aria-hidden='true'></i> Back</a>";
+    }
+    host.className = "pp-header site-header" + (unit ? " has-back" : "");
     host.innerHTML =
-      "<div class='hdr-left'><div class='pp-header-label'>Sheet " + sheet.num + " &mdash; " + sheet.code + "</div>" + menuBtn + "</div>" +
+      "<div class='hdr-left'><div class='pp-header-label'>Sheet " + sheet.num + " &mdash; " + sheet.code + "</div><div class='hdr-navrow'>" + navRow + "</div></div>" +
       "<div class='pp-header-title'>" + brand + "<span class='accent'><span class='palette-word-wrap'>" +
         "<button class='palette-word' id='paletteWord' onclick='togglePalette()' aria-label='Switch to Blueprint palette' title='Switch to Blueprint'>" + (isBlue() ? "Blue" : "Pink") + "</button>" +
         "<span class='palette-hint' id='paletteHint' aria-hidden='true'>switch to blueprint</span></span>print</span></div>" +
@@ -110,19 +121,6 @@
         "<div class='cbar-right'>" + themeBtn(" iconbtn-sm") + "</div>" +
         panelHtml +
       "</div>";
-  }
-
-  /* Unit pages: Back returns to the home view you came from (a filtered list), else plain home */
-  if (mode === "full" && unit){
-    document.addEventListener("DOMContentLoaded", function(){
-      var unitBack = document.getElementById("unitback");
-      if (!unitBack) return;
-      unitBack.href = ROOT;
-      try {
-        var ref = new URL(document.referrer);
-        if (ref.origin === location.origin && ref.pathname === new URL(ROOT).pathname) unitBack.href = ref.href;
-      } catch (e){}
-    });
   }
 
   /* ---------- Behavior ---------- */

@@ -4,44 +4,44 @@ var SITE = {
   currentSheet: "nur114",
   sheets: [
     {id:"nur114", num:"01", code:"NUR 114", units:[
-      {code:"U-01", num:1, name:"Intro to Nursing", slug:"unit-1-intro-to-nursing/"},
-      {code:"U-02", num:2, name:"Basic Human Needs", slug:"unit-2-basic-human-needs/"},
-      {code:"U-03", num:3, name:"Skin, Wounds & Diagnostics", slug:"unit-3-skin-wounds-diagnostics/"},
-      {code:"U-04", num:4, name:"Fluids & Nutrition", slug:"unit-4-fluids-nutrition/"},
-      {code:"U-05", num:5, name:"Gas Exchange & Med Math", slug:"unit-5-gas-exchange-med-math/"},
-      {code:"U-06", num:6, name:"Pharmacology & Med Admin", slug:"unit-6-pharmacology-med-admin/"}
+      {code:"U-01", num:1, weeks:"1–3", name:"Intro to Nursing", slug:"unit-1-intro-to-nursing/"},
+      {code:"U-02", num:2, weeks:"4–5", name:"Basic Human Needs", slug:"unit-2-basic-human-needs/"},
+      {code:"U-03", num:3, weeks:"6–7", name:"Skin, Wounds & Diagnostics", slug:"unit-3-skin-wounds-diagnostics/"},
+      {code:"U-04", num:4, weeks:"8–9", name:"Fluids & Nutrition", slug:"unit-4-fluids-nutrition/"},
+      {code:"U-05", num:5, weeks:"10–11", name:"Gas Exchange & Med Math", slug:"unit-5-gas-exchange-med-math/"},
+      {code:"U-06", num:6, weeks:"12–13", name:"Pharmacology & Med Admin", slug:"unit-6-pharmacology-med-admin/"}
     ]},
     {id:"nur121", num:"02", code:"NUR 121", units:[]}
   ],
   widgets: [
-    {title:"General Abbreviations", type:"flashcards", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/general-abbreviations.html"},
-    {title:"Charting Abbreviations", type:"flashcards", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/charting-abbreviations.html"},
-    {title:"CBC/CMP lab values", type:"flashcards", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/cbc-cmp-lab-values.html"},
-    {title:"Nursing Fundamentals practice quiz", type:"quiz", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/nursing-fundamentals-quiz.html"},
-    {title:"CBC/CMP practice quiz", type:"quiz", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/cbc-cmp-quiz.html"},
-    {title:"Mobility", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/mobility-flashcards.html"},
-    {title:"Mobility practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/mobility-quiz.html"},
-    {title:"Hygiene", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/hygiene-flashcards.html"},
-    {title:"Hygiene practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/hygiene-quiz.html"},
-    {title:"Client Education", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/client-education-flashcards.html"},
-    {title:"Client Education practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/client-education-quiz.html"},
-    {title:"Diversity, Equity, and Inclusion", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/dei-flashcards.html"},
-    {title:"Diversity, Equity, and Inclusion practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/dei-quiz.html"},
-    {title:"Self-Concept", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/self-concept-flashcards.html"},
-    {title:"Self-Concept practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/self-concept-quiz.html"},
-    {title:"Comfort, Rest & Sleep", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/comfort-rest-sleep-flashcards.html"},
-    {title:"Comfort, Rest & Sleep practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/comfort-rest-sleep-quiz.html"},
-    {title:"Stress and Coping", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/stress-coping-flashcards.html"},
-    {title:"Stress and Coping practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/stress-coping-quiz.html"},
-    {title:"Week 5 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/week5-study-guide.html"}
+    {title:"General Abbreviations", type:"flashcards", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/general-abbreviations.html", count:23},
+    {title:"Charting Abbreviations", type:"flashcards", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/charting-abbreviations.html", count:50},
+    {title:"CBC/CMP Adult Lab Value Ranges", type:"flashcards", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/cbc-cmp-lab-values.html", count:29},
+    {title:"Nursing Fundamentals practice quiz", type:"quiz", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/nursing-fundamentals-quiz.html", count:20, note:"Session or mastery rounds"},
+    {title:"CBC/CMP practice quiz", type:"quiz", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/cbc-cmp-quiz.html", count:40},
+    {title:"Mobility", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/mobility-flashcards.html", count:56},
+    {title:"Mobility practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/mobility-quiz.html", count:40},
+    {title:"Hygiene", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/hygiene-flashcards.html", count:44},
+    {title:"Hygiene practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/hygiene-quiz.html", count:40},
+    {title:"Client Education", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/client-education-flashcards.html", count:43},
+    {title:"Client Education practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/client-education-quiz.html", count:40},
+    {title:"Diversity, Equity, and Inclusion", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/dei-flashcards.html", count:47},
+    {title:"Diversity, Equity, and Inclusion practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/dei-quiz.html", count:40},
+    {title:"Self-Concept", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/self-concept-flashcards.html", count:51},
+    {title:"Self-Concept practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/self-concept-quiz.html", count:40},
+    {title:"Comfort, Rest & Sleep", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/comfort-rest-sleep-flashcards.html", count:59},
+    {title:"Comfort, Rest & Sleep practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/comfort-rest-sleep-quiz.html", count:40},
+    {title:"Stress and Coping", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/stress-coping-flashcards.html", count:69},
+    {title:"Stress and Coping practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/stress-coping-quiz.html", count:40},
+    {title:"Week 5 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/week5-study-guide.html", meta:"Self-concept, sleep, stress & DEI · mnemonics & quick checks"}
   ],
-  mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html"},
+  mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html", meta:"Random from every quiz on the site"},
 
   /* The three content types, keyed by the name used in URLs (?type=...) */
   types: [
-    {key:"flashcards", widgetType:"flashcards", label:"Flashcards", one:"Flashcards"},
-    {key:"quizzes", widgetType:"quiz", label:"Quizzes", one:"Quiz"},
-    {key:"studyguides", widgetType:"studyguide", label:"Study guides", one:"Study guide"}
+    {key:"flashcards", widgetType:"flashcards", label:"Flashcards", one:"Flashcards", title:"All Flashcards", item:["deck","decks"], unitWord:["card","cards"], action:"Study"},
+    {key:"quizzes", widgetType:"quiz", label:"Quizzes", one:"Quiz", title:"All Quizzes", item:["quiz","quizzes"], unitWord:["question","questions"], action:"Start"},
+    {key:"studyguides", widgetType:"studyguide", label:"Study guides", one:"Study guide", title:"Study Guides", item:["guide","guides"], unitWord:null, action:"Open"}
   ]
 };
 
@@ -84,4 +84,14 @@ SITE.search = function(q, typeKey){
     if (!q) return true;
     return w.title.toLowerCase().indexOf(q) !== -1 || SITE.unitLabel(w).toLowerCase().indexOf(q) !== -1;
   });
+};
+
+/* Display helpers for the library rows */
+SITE.plural = function(n, words){ return n + " " + (n === 1 ? words[0] : words[1]); };
+SITE.shortTitle = function(w){ return w.type === "quiz" ? w.title.replace(/ practice quiz$/i, "") : w.title; };
+SITE.metaLine = function(w){
+  if (w.meta) return w.meta;
+  var t = SITE.getType(w.type);
+  var line = t.unitWord && w.count ? SITE.plural(w.count, t.unitWord) : "";
+  return w.note ? line + " \u00b7 " + w.note : line;
 };

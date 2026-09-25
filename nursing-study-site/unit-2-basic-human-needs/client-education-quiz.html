@@ -18,64 +18,49 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=34">
+<link rel="stylesheet" href="../assets/style.css?v=36">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-02" data-type="quizzes"></div>
-<script src="../assets/site-data.js?v=1"></script>
-<script src="../assets/header.js?v=4"></script>
+<script src="../assets/site-data.js?v=2"></script>
+<script src="../assets/header.js?v=5"></script>
 <div class="wrap">
   <h2 style="margin-bottom:18px;">Client Education practice quiz</h2>
 
-  <div id="pq-mode-screen">
-    <p class="muted" style="margin-bottom:14px;">Choose how you want to practice.</p>
-    <div>
-      <button class="pq-mode-btn" data-mode="single">
-        <div class="pq-mode-title">One session</div>
-        <div class="pq-mode-sub">Answer a set of questions once, then see your results.</div>
-      </button>
-      <button class="pq-mode-btn" data-mode="rounds">
-        <div class="pq-mode-title">Mastery rounds</div>
-        <div class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</div>
-      </button>
+  <div id="pq-setup-screen">
+    <p class="pq-step">1 &middot; Choose a mode</p>
+    <div class="pq-modes">
+      <button type="button" class="pq-mode-btn" data-mode="single" aria-pressed="true"><span class="pq-mode-title"><span class="pq-check" aria-hidden="true"></span>One session</span><span class="pq-mode-sub">Answer a set of questions once, then see your results.</span></button>
+      <button type="button" class="pq-mode-btn" data-mode="rounds" aria-pressed="false"><span class="pq-mode-title"><span class="pq-check" aria-hidden="true"></span>Mastery rounds</span><span class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</span></button>
     </div>
-  </div>
-
-  <div id="pq-count-screen" class="hidden">
-    <p class="muted" style="margin-bottom:14px;">How many questions?</p>
-    <div id="pq-count-single" class="pq-count-grid hidden">
-      <button class="pq-count-btn" data-count="5">5</button>
-      <button class="pq-count-btn" data-count="10">10</button>
-      <button class="pq-count-btn" data-count="15">15</button>
-      <button class="pq-count-btn" data-count="20">20</button>
-      <button class="pq-count-btn" data-count="25">25</button>
-      <button class="pq-count-btn" data-count="30">30</button>
-      <button class="pq-count-btn" data-count="35">35</button>
-      <button class="pq-count-btn" data-count="40">40</button>
+    <p class="pq-step">2 &middot; How many questions?</p>
+    <div class="pq-count-row" id="pq-counts" data-single="5,10,15,20,25,30,35,40" data-rounds="10,20,30,40">
+      <button type="button" class="pq-count-btn" data-count="5" aria-pressed="false">5</button>
+      <button type="button" class="pq-count-btn" data-count="10" aria-pressed="false">10</button>
+      <button type="button" class="pq-count-btn" data-count="15" aria-pressed="false">15</button>
+      <button type="button" class="pq-count-btn" data-count="20" aria-pressed="false">20</button>
+      <button type="button" class="pq-count-btn" data-count="25" aria-pressed="false">25</button>
+      <button type="button" class="pq-count-btn" data-count="30" aria-pressed="false">30</button>
+      <button type="button" class="pq-count-btn" data-count="35" aria-pressed="false">35</button>
+      <button type="button" class="pq-count-btn" data-count="40" aria-pressed="false">40</button>
     </div>
-    <div id="pq-count-rounds" class="pq-count-grid hidden">
-      <button class="pq-count-btn" data-count="10">10</button>
-      <button class="pq-count-btn" data-count="20">20</button>
-      <button class="pq-count-btn" data-count="30">30</button>
-      <button class="pq-count-btn" data-count="40">40</button>
-    </div>
-    <button class="btn small" id="pq-back"><i class="ti ti-arrow-left" aria-hidden="true"></i> back</button>
+    <button type="button" class="btn btn-primary pq-start" id="pq-start">Start quiz &rarr;</button>
   </div>
 
   <div id="pq-quiz-screen" class="hidden">
-    <div class="pq-top-row"><span id="pq-progress"></span><span id="pq-score"></span></div>
+    <div class="pq-top-row"><span id="pq-progress"></span><span class="pq-top-right"><span id="pq-score"></span><button type="button" class="pq-endlink" id="pq-end-test">End &amp; see results</button></span></div>
     <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
-    <div id="pq-type-label" class="pq-type-label"></div>
     <div id="pq-prompt" class="pq-prompt"></div>
-    <div id="pq-options"></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-options" class="pq-options"></div>
     <p id="pq-error" class="pq-error">select at least one answer</p>
-    <div id="pq-feedback" class="pq-feedback"></div>
+    <div id="pq-feedback" class="pq-feedback" aria-live="polite"></div>
     <div class="pq-btn-row">
-      <button class="btn" id="pq-submit">check answer</button>
-      <button class="btn hidden" id="pq-next">next question &#8594;</button>
+      <button type="button" class="btn btn-primary" id="pq-submit" disabled>Check answer</button>
+      <button type="button" class="btn btn-primary hidden" id="pq-next">Next question &rarr;</button>
     </div>
-    <button class="btn small" id="pq-end-test" style="margin-top:8px;max-width:220px;margin-left:auto;margin-right:auto;">end and see results</button>
+    <p class="kbd-hint" id="pq-hint" aria-hidden="true"></p>
   </div>
 
   <div id="pq-round-complete-screen" class="hidden pq-center">
@@ -83,7 +68,7 @@
     <div id="rc-score" class="pq-stat-big"></div>
     <div class="pq-stat-sub">this round</div>
     <div id="rc-detail" class="pq-stat-detail"></div>
-    <button class="btn" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+    <button class="btn btn-primary" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
   </div>
 
   <div id="pq-end-screen" class="hidden">
@@ -104,14 +89,14 @@
     <p class="eyebrow">review</p>
     <div id="review-list" style="margin-bottom:20px;"></div>
     <div class="pq-btn-row">
-      <button class="btn small" id="end-restart">practice again</button>
-      <button class="btn small" id="end-missed">redo missed questions</button>
+      <button class="btn btn-secondary" id="end-restart">practice again</button>
+      <button class="btn btn-primary" id="end-missed">redo missed questions</button>
     </div>
   </div>
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script src="../assets/practice-quiz.js?v=2"></script>
+<script src="../assets/practice-quiz.js?v=4"></script>
 <script>
 var catLabels = {
   domains: "Domains of learning",

@@ -48,28 +48,45 @@ function initPracticeQuiz(bank, catLabels){
   function show(id){ document.getElementById(id).classList.remove("hidden"); }
   function hide(id){ document.getElementById(id).classList.add("hidden"); }
 
+  /* ---------- Setup: pick a mode and a question count on one screen ---------- */
+  var countRow = document.getElementById("pq-counts");
+  var countsFor = {
+    single: countRow.getAttribute("data-single").split(",").map(Number),
+    rounds: countRow.getAttribute("data-rounds").split(",").map(Number)
+  };
+  var chosenCount = 10;
+  mode = "single";
+
+  /* Counts a mode doesn't offer (e.g. 5/15/25/35 for mastery rounds) are disabled */
+  function syncSetup(){
+    document.querySelectorAll(".pq-mode-btn").forEach(function(btn){
+      var on = btn.getAttribute("data-mode") === mode;
+      btn.classList.toggle("is-selected", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    var allowed = countsFor[mode];
+    if (allowed.indexOf(chosenCount) === -1) chosenCount = allowed.indexOf(10) !== -1 ? 10 : allowed[0];
+    document.querySelectorAll(".pq-count-btn").forEach(function(btn){
+      var c = Number(btn.getAttribute("data-count"));
+      btn.disabled = allowed.indexOf(c) === -1;
+      btn.classList.toggle("is-selected", c === chosenCount);
+      btn.setAttribute("aria-pressed", c === chosenCount ? "true" : "false");
+    });
+  }
+
   document.querySelectorAll(".pq-mode-btn").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      mode = btn.getAttribute("data-mode");
-      hide("pq-mode-screen"); show("pq-count-screen");
-      document.getElementById("pq-count-single").classList.toggle("hidden", mode !== "single");
-      document.getElementById("pq-count-rounds").classList.toggle("hidden", mode !== "rounds");
-    });
+    btn.addEventListener("click", function(){ mode = btn.getAttribute("data-mode"); syncSetup(); });
   });
-
-  document.getElementById("pq-back").addEventListener("click", function(){
-    hide("pq-count-screen"); show("pq-mode-screen");
-  });
-
   document.querySelectorAll(".pq-count-btn").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      var count = parseInt(btn.getAttribute("data-count"), 10);
-      pool = stratifiedSample(bank, count);
-      missedMap = {};
-      hide("pq-count-screen");
-      if (mode === "single") startSingle(); else startRounds();
-    });
+    btn.addEventListener("click", function(){ chosenCount = Number(btn.getAttribute("data-count")); syncSetup(); });
   });
+  document.getElementById("pq-start").addEventListener("click", function(){
+    pool = stratifiedSample(bank, chosenCount);
+    missedMap = {};
+    hide("pq-setup-screen");
+    if (mode === "single") startSingle(); else startRounds();
+  });
+  syncSetup();
 
   function startSingle(){
     singleQuestions = shuffle(pool);
@@ -97,11 +114,38 @@ function initPracticeQuiz(bank, catLabels){
 
   function activeQuestionList(){ return mode === "single" ? singleQuestions : currentRound; }
 
+  var LETTERS = "ABCDEFGH";
+
+  /* Highlight picked rows and only allow Check answer once something is picked */
+  function syncSelection(){
+    document.querySelectorAll("#pq-options .pq-option").forEach(function(row){
+      var on = userSelection.indexOf(row.getAttribute("data-opt")) !== -1;
+      row.classList.toggle("is-selected", on);
+      row.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    document.getElementById("pq-submit").disabled = userSelection.length === 0;
+  }
+
+  function pickOption(q, optId){
+    if (answered) return;
+    if (q.type === "sata"){
+      if (userSelection.indexOf(optId) === -1) userSelection.push(optId);
+      else userSelection = userSelection.filter(function(id){ return id !== optId; });
+    } else {
+      userSelection = [optId];
+    }
+    document.getElementById("pq-error").style.display = "none";
+    syncSelection();
+  }
+
   function renderCurrentQuestion(){
     answered = false; userSelection = [];
     document.getElementById("pq-error").style.display = "none";
-    document.getElementById("pq-feedback").style.display = "none";
+    var fbReset = document.getElementById("pq-feedback");
+    fbReset.style.display = "none";
+    fbReset.className = "pq-feedback";
     document.getElementById("pq-submit").classList.remove("hidden");
+    document.getElementById("pq-submit").disabled = true;
     document.getElementById("pq-next").classList.add("hidden");
 
     var list = activeQuestionList();
@@ -111,7 +155,7 @@ function initPracticeQuiz(bank, catLabels){
     var totalLabel;
     if (mode === "single"){
       totalLabel = "question " + (currentRoundIndex + 1) + " of " + list.length;
-      document.getElementById("pq-score").textContent = "score: " + singleResults.filter(function(r){ return r.correct; }).length + "/" + currentRoundIndex;
+      document.getElementById("pq-score").textContent = "score " + singleResults.filter(function(r){ return r.correct; }).length + "/" + currentRoundIndex;
     } else {
       totalLabel = "round " + roundsTaken + " \u2014 question " + (currentRoundIndex + 1) + " of " + list.length;
       document.getElementById("pq-score").textContent = "";
@@ -121,30 +165,31 @@ function initPracticeQuiz(bank, catLabels){
     document.getElementById("pq-type-label").textContent = q.type === "sata" ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
 
+    /* Each choice is a real button with a square letter box; pressed state carries the selection */
     var optsEl = document.getElementById("pq-options");
     optsEl.innerHTML = "";
-    currentDisplayOptions.forEach(function(opt){
-      var row = document.createElement("label");
-      row.className = "pq-option-row";
+    optsEl.setAttribute("role", "group");
+    optsEl.setAttribute("aria-label", q.type === "sata" ? "Select all that apply" : "Select one");
+    currentDisplayOptions.forEach(function(opt, i){
+      var row = document.createElement("button");
+      row.type = "button";
+      row.className = "pq-option";
       row.setAttribute("data-opt", opt.id);
-      var input = document.createElement("input");
-      input.type = q.type === "sata" ? "checkbox" : "radio";
-      input.name = "pq-opt";
-      input.value = opt.id;
-      input.addEventListener("change", function(){
-        if (q.type === "sata"){
-          if (input.checked) userSelection.push(opt.id);
-          else userSelection = userSelection.filter(function(id){ return id !== opt.id; });
-        } else {
-          userSelection = [opt.id];
-        }
-        document.getElementById("pq-error").style.display = "none";
-      });
+      row.setAttribute("aria-pressed", "false");
+      var letter = document.createElement("span");
+      letter.className = "pq-letter";
+      letter.setAttribute("aria-hidden", "true");
+      letter.textContent = LETTERS.charAt(i);
       var span = document.createElement("span");
+      span.className = "pq-opt-text";
       span.textContent = opt.text;
-      row.appendChild(input); row.appendChild(span);
+      row.appendChild(letter); row.appendChild(span);
+      row.addEventListener("click", function(){ pickOption(q, opt.id); });
       optsEl.appendChild(row);
     });
+
+    var last = LETTERS.charAt(currentDisplayOptions.length - 1);
+    document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; pick</span><span>Enter &middot; check / next</span>";
   }
 
   document.getElementById("pq-submit").addEventListener("click", function(){
@@ -161,6 +206,7 @@ function initPracticeQuiz(bank, catLabels){
     if (mode === "single"){
       singleResults.push({question: q, userSelection: userSelection.slice(), correct: isCorrect});
       if (!isCorrect) missedMap[q.id] = q; else delete missedMap[q.id];
+      document.getElementById("pq-score").textContent = "score " + singleResults.filter(function(r){ return r.correct; }).length + "/" + singleResults.length;
     } else {
       attempts[q.id] = (attempts[q.id] || 0) + 1;
       latestResult[q.id] = {question: q, userSelection: userSelection.slice(), correct: isCorrect};
@@ -174,22 +220,36 @@ function initPracticeQuiz(bank, catLabels){
       }
     }
 
-    document.querySelectorAll("#pq-options label").forEach(function(row){
+    /* Correct choices turn green with a check; wrong picks turn red with an x; the rest stay neutral */
+    document.querySelectorAll("#pq-options .pq-option").forEach(function(row){
       var optId = row.getAttribute("data-opt");
+      var letter = row.querySelector(".pq-letter");
+      row.classList.remove("is-selected");
+      row.disabled = true;
       if (q.correct.indexOf(optId) !== -1){
-        row.style.borderColor = "var(--success-border)";
+        row.classList.add("is-correct"); letter.textContent = "\u2713";
       } else if (userSelection.indexOf(optId) !== -1){
-        row.style.borderColor = "var(--danger-border)";
+        row.classList.add("is-wrong"); letter.textContent = "\u2715";
       }
     });
 
+    /* The heading says correct / not quite, so drop that prefix if the explanation repeats it */
     var fb = document.getElementById("pq-feedback");
+    fb.className = "pq-feedback " + (isCorrect ? "is-correct" : "is-wrong");
+    fb.innerHTML = "";
+    var head = document.createElement("p");
+    head.className = "pq-fb-head";
+    head.textContent = isCorrect ? "\u2713 Correct" : "\u2715 Not quite";
+    var text = document.createElement("p");
+    text.className = "pq-fb-text";
+    text.textContent = String(q.explanation).replace(/^\s*(correct|not quite|incorrect)\s*[.!:\u2014\u2013-]\s*/i, "");
+    fb.appendChild(head); fb.appendChild(text);
     fb.style.display = "block";
-    fb.style.color = isCorrect ? "var(--success-text)" : "var(--danger-text)";
-    fb.textContent = (isCorrect ? "Correct. " : "Not quite. ") + q.explanation;
 
     document.getElementById("pq-submit").classList.add("hidden");
-    document.getElementById("pq-next").classList.remove("hidden");
+    var nextBtn = document.getElementById("pq-next");
+    nextBtn.classList.remove("hidden");
+    nextBtn.focus({preventScroll:true});
   });
 
   function optText(q, ids){
@@ -368,7 +428,34 @@ function initPracticeQuiz(bank, catLabels){
   }
 
   document.getElementById("end-restart").addEventListener("click", function(){
-    hide("pq-end-screen"); show("end-missed"); show("pq-mode-screen");
+    hide("pq-end-screen"); show("end-missed"); show("pq-setup-screen");
+  });
+
+  /* Keyboard: A-H or 1-8 pick a choice, Enter checks / goes to the next question */
+  document.addEventListener("keydown", function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (document.getElementById("pq-quiz-screen").classList.contains("hidden")) return;
+    var t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+    var nav = document.getElementById("navbtn");
+    if (nav && nav.getAttribute("aria-expanded") === "true") return;
+    if (e.key === "Enter"){
+      if (t && (t.id === "pq-end-test" || t.tagName === "A")) return;
+      e.preventDefault();
+      var submit = document.getElementById("pq-submit");
+      if (answered) document.getElementById("pq-next").click();
+      else if (!submit.disabled) submit.click();
+      return;
+    }
+    if (answered) return;
+    var k = e.key.length === 1 ? e.key.toUpperCase() : "";
+    var idx = LETTERS.indexOf(k);
+    if (idx === -1 && k >= "1" && k <= "8") idx = Number(k) - 1;
+    var rows = document.querySelectorAll("#pq-options .pq-option");
+    if (idx !== -1 && idx < rows.length){
+      e.preventDefault();
+      rows[idx].click();
+    }
   });
 
   document.getElementById("end-missed").addEventListener("click", function(){

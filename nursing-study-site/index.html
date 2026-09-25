@@ -18,15 +18,15 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=34">
+<link rel="stylesheet" href="assets/style.css?v=36">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div class="pp-wrap">
 
   <div id="site-header" data-mode="full" data-sheet="nur114"></div>
-  <script src="assets/site-data.js?v=1"></script>
-  <script src="assets/header.js?v=4"></script>
+  <script src="assets/site-data.js?v=2"></script>
+  <script src="assets/header.js?v=5"></script>
 
   <div class="pp-searchrow">
     <div class="pp-filters">
@@ -43,7 +43,6 @@
     <div class="pp-quote-stack" id="quoteStack"></div>
   </div>
 
-  <p class="eyebrow" id="resultseyebrow" style="display:none;margin-top:28px;"></p>
 
   <div class="pp-grid" id="unitgrid">
     <a class="pp-card" href="unit-1-intro-to-nursing/">
@@ -233,10 +232,57 @@ function setTag(tag){
   renderHome();
 }
 
+function esc(t){
+  return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+/* One library row: number, title, meta line and a single action; the whole row is the link */
+function libraryRow(w, i, t){
+  return "<a class='ledger-row' href='" + w.href + "'>" +
+    "<span class='lr-num'>" + (i < 9 ? "0" : "") + (i + 1) + "</span>" +
+    "<span><span class='lr-title'>" + esc(SITE.shortTitle(w)) + "</span><span class='lr-meta'>" + esc(SITE.metaLine(w)) + "</span></span>" +
+    "<span class='lr-actions'><span class='lbtn btn-primary'>" + t.action + "</span></span></a>";
+}
+
+function sumCounts(items){
+  return items.reduce(function(n, w){ return n + (w.count || 0); }, 0);
+}
+
+/* Library view for ?type=flashcards|quizzes|studyguides (optionally &unit=U-02), grouped by unit */
+function renderLibrary(){
+  var t = SITE.getType(state.tag);
+  var sheet = SITE.getSheet(SITE.currentSheet);
+  var groups = sheet.units
+    .filter(function(u){ return !state.unit || u.code === state.unit; })
+    .map(function(u){ return {unit:u, items:SITE.widgetsFor(sheet.id, u.code, t.key)}; })
+    .filter(function(g){ return g.items.length > 0; });
+  var all = [].concat.apply([], groups.map(function(g){ return g.items; }));
+
+  var totals = SITE.plural(all.length, t.item) + (t.unitWord ? " \u00b7 " + SITE.plural(sumCounts(all), t.unitWord) : "");
+  var html = "<div class='ledger-wrap'>" +
+    "<div class='lib-head'><div><p class='ledger-eyebrow'>Library</p><h1 class='ledger-h1'>" + t.title + "</h1></div>" +
+    "<p class='lib-totals'>" + totals + "</p></div>";
+
+  if (t.key === "quizzes" && !state.unit){
+    html += "<a class='ledger-feature is-pill' href='" + MIX_ALL.href + "'><i class='ti ti-arrows-shuffle' aria-hidden='true'></i>" +
+      "<span><span class='lf-title'>" + MIX_ALL.title + "</span><span class='lf-sub'>" + esc(MIX_ALL.meta) + "</span></span>" +
+      "<span class='lbtn btn-primary'>Start &rarr;</span></a>";
+  }
+
+  groups.forEach(function(g){
+    /* Flashcard groups also total their cards; quiz and guide groups just count items */
+    var summary = SITE.plural(g.items.length, t.item) + (t.key === "flashcards" ? " \u00b7 " + SITE.plural(sumCounts(g.items), t.unitWord) : "");
+    html += "<div class='lib-group'><span>" + g.unit.code + " &middot; " + esc(g.unit.name) + "</span><span>" + summary + "</span></div>" +
+      "<div class='ledger'>" + g.items.map(function(w, i){ return libraryRow(w, i, t); }).join("") + "</div>";
+  });
+
+  if (groups.length === 0) html += "<div class='ledger ledger-empty'><p>Nothing here yet.</p></div>";
+  return html + "</div>";
+}
+
 function renderHome(){
   var unitsGrid = document.getElementById("unitgrid");
   var widgetList = document.getElementById("widgetresults");
-  var eyebrow = document.getElementById("resultseyebrow");
   var quote = document.querySelector(".pp-quote");
 
   /* The rotating quotes only belong on the plain home view, not the filtered lists */
@@ -245,39 +291,12 @@ function renderHome(){
   if (state.tag === null){
     unitsGrid.style.display = "grid";
     widgetList.style.display = "none";
-    eyebrow.style.display = "none";
     return;
   }
 
   unitsGrid.style.display = "none";
   widgetList.style.display = "block";
-  eyebrow.style.display = "block";
-
-  var items = SITE.search("", state.tag);
-  if (state.unit) items = items.filter(function(w){ return w.unit === state.unit; });
-
-  var tagLabels = {quizzes:"all quizzes", flashcards:"all flashcards", studyguides:"all study guides"};
-  eyebrow.textContent = state.unit ? (state.unit + " \u00b7 " + SITE.getType(state.tag).label.toLowerCase()) : tagLabels[state.tag];
-
-  var typeIcons = {quiz:"ti-help-circle", flashcards:"ti-cards", studyguide:"ti-notebook"};
-
-  var html = "";
-  if (items.length === 0){
-    html = "<p class='muted' style='text-align:center;padding:2rem 0;'>No matches.</p>";
-  } else {
-    html = items.map(function(w){
-      var icon = typeIcons[w.type];
-      return "<a class='widgetrow' href='" + w.href + "'><div><p class='title'>" + w.title + "</p><p class='sub'>" + SITE.unitLabel(w) + " &middot; " + SITE.getType(w.type).one + "</p></div><i class='ti " + icon + " chev' aria-hidden='true'></i></a>";
-    }).join("");
-  }
-
-  if (state.tag === "quizzes" && !state.unit){
-    html += "<div style='border-top:1px solid var(--border);margin:24px 0 16px;'></div>";
-    html += "<p class='eyebrow'>Mix it up</p>";
-    html += "<a class='widgetrow' style='border-color:var(--label);' href='" + MIX_ALL.href + "'><div style='display:flex;align-items:center;gap:12px;'><i class='ti ti-arrows-shuffle' style='font-size:20px;color:var(--accent-text);' aria-hidden='true'></i><div><p class='title'>" + MIX_ALL.title + "</p><p class='sub'>Random from every quiz on the site</p></div></div></a>";
-  }
-
-  widgetList.innerHTML = html;
+  widgetList.innerHTML = renderLibrary();
 }
 
 syncTags();
