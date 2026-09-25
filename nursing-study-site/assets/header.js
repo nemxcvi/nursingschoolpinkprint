@@ -11,7 +11,6 @@
   var sheet = SITE.getSheet(host.getAttribute("data-sheet") || SITE.currentSheet);
   var unit = host.getAttribute("data-unit") ? SITE.getUnit(sheet.id, host.getAttribute("data-unit")) : null;
   var pageType = host.getAttribute("data-type") ? SITE.getType(host.getAttribute("data-type")) : null;
-  var isHome = mode === "full" && !unit;
 
   function esc(s){
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -81,7 +80,8 @@
 
   /* ---------- Header markup ---------- */
   if (mode === "full"){
-    var brand = isHome ? "Nursing School " : "<a class='pp-header-home' href='" + ROOT + "'>Nursing School</a> ";
+    /* Always a link: on the home page it clears a library filter (?type=...) */
+    var brand = "<a class='pp-header-home' href='" + ROOT + "'>Nursing School</a> ";
     host.className = "pp-header site-header";
     host.innerHTML =
       "<div class='hdr-left'><div class='pp-header-label'>Sheet " + sheet.num + " &mdash; " + sheet.code + "</div><div class='hdr-navrow'>" + menuBtn + "</div></div>" +
