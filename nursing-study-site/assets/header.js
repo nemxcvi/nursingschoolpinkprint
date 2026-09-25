@@ -112,6 +112,19 @@
       "</div>";
   }
 
+  /* Unit pages: Back returns to the home view you came from (a filtered list), else plain home */
+  if (mode === "full" && unit){
+    document.addEventListener("DOMContentLoaded", function(){
+      var unitBack = document.getElementById("unitback");
+      if (!unitBack) return;
+      unitBack.href = ROOT;
+      try {
+        var ref = new URL(document.referrer);
+        if (ref.origin === location.origin && ref.pathname === new URL(ROOT).pathname) unitBack.href = ref.href;
+      } catch (e){}
+    });
+  }
+
   /* ---------- Behavior ---------- */
   var btn = document.getElementById("navbtn");
   var panel = document.getElementById("sitenav");

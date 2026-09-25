@@ -95,7 +95,7 @@ h2{font-size:20px;}
 .card p.title{font-family:'Young Serif',serif;font-weight:400;font-size:16px;margin:0 0 2px;}
 .card p.count{font-size:12px;color:var(--text2);margin:0;text-transform:uppercase;letter-spacing:.04em;}
 
-.backlink{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--label);text-transform:uppercase;letter-spacing:.05em;margin-bottom:18px;}
+.backlink{display:inline-flex;align-items:center;gap:6px;min-height:36px;font-size:12px;color:var(--label);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;}
 .backlink:hover{color:var(--text);}
 
 .widgetrow{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;}
@@ -148,7 +148,7 @@ h2{font-size:20px;}
 
 .pp-searchrow{display:flex;justify-content:center;padding:22px 0 8px;}
 .pp-searchrow .searchwrap{width:420px;max-width:100%;margin:0;}
-@media(max-width:700px){.pp-searchrow .searchwrap{width:100%;}}
+@media(max-width:700px){.pp-searchrow .searchwrap{width:100%;}.pp-filters{width:100%;gap:6px;}.pp-filters .tag{flex:1 1 auto;padding:0 8px;font-size:11px;}}
 
 .pp-quote{margin:20px 0 28px;}
 @media(max-width:700px){.pp-quote{margin:20px 0 32px;}}

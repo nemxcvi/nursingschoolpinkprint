@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards and practice quizzes for nursing students, with units drafted from ATI modules.">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=3">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=32">
+<link rel="stylesheet" href="assets/style.css?v=34">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -26,10 +26,11 @@
 
   <div id="site-header" data-mode="full" data-sheet="nur114"></div>
   <script src="assets/site-data.js?v=1"></script>
-  <script src="assets/header.js?v=3"></script>
+  <script src="assets/header.js?v=4"></script>
 
   <div class="pp-searchrow">
     <div class="pp-filters">
+      <button class="tag" id="tag-home" onclick="goHome()">Home</button>
       <button class="tag" id="tag-flashcards" onclick="setTag('flashcards')">Flashcards</button>
       <button class="tag" id="tag-quizzes" onclick="setTag('quizzes')">Quizzes</button>
       <button class="tag" id="tag-studyguides" onclick="setTag('studyguides')">Study guides</button>
@@ -201,6 +202,7 @@ var startType = SITE.getType(params.get("type") || "");
 var state = {tag: startType ? startType.key : null, unit: startType ? params.get("unit") : null};
 
 function syncTags(){
+  document.getElementById("tag-home").classList.toggle("active", state.tag === null);
   TAGS.forEach(function(t){
     document.getElementById("tag-" + t).classList.toggle("active", t === state.tag);
   });
@@ -212,6 +214,15 @@ function syncUrl(){
   if (state.tag && state.unit) p.set("unit", state.unit);
   var qs = p.toString();
   history.replaceState(null, "", location.pathname + (qs ? "?" + qs : ""));
+}
+
+/* Home button: back to the plain unit grid, no filter */
+function goHome(){
+  state.tag = null;
+  state.unit = null;
+  syncTags();
+  syncUrl();
+  renderHome();
 }
 
 function setTag(tag){
