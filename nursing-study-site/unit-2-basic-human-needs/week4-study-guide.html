@@ -87,8 +87,6 @@ section.topic{padding:48px 0 20px}
 .glet span{min-width:0;font-size:16px}
 .gnote{font-size:15px;color:var(--muted);margin:10px 0 0}
 
-.gside{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--side);background:var(--side-bg);border:1.5px solid var(--side);padding:2px 8px;vertical-align:middle;margin-right:6px}
-.lg-side{background:var(--side-bg);border-color:var(--side);color:var(--side)}
 .gflag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--flag);background:var(--flag-bg);border:1.5px solid var(--flag);padding:2px 8px;vertical-align:middle;margin-left:6px}
 
 /* Tables */
@@ -165,6 +163,36 @@ h3 .gslides,h4 .gslides{margin:0 0 0 6px}
 p.gex{margin:6px 0 0}
 /* a note right before a row of cards needs breathing room */
 .gnote + .gcols,.slides-note + .gcols,p.gex + .gcols{margin-top:14px}
+/* Figures: simple square diagrams built from the theme colors */
+.gfig{margin:14px 0;background:var(--card);border:1.5px solid var(--border);padding:16px 18px}
+.gfig figcaption{font-size:15px;color:var(--muted);margin-top:10px}
+.rpe{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));border:1.5px solid var(--border)}
+.rpe span{padding:9px 0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:13px;border-left:1px solid color-mix(in srgb,var(--border) 35%,transparent)}
+.rpe span:first-child{border-left:0}
+.rpe span.on{background:var(--border);color:var(--fill-text);border-left-color:var(--border)}
+.rpe-ends{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rpe-ends .on{color:var(--label)}
+@media (max-width:480px){.rpe span{font-size:11px;padding:8px 0}.rpe-ends{font-size:10px}}
+.hob{display:block;width:100%;max-width:520px;height:auto;margin:0 auto}
+.hob .wedge{fill:var(--pill)}
+.hob line{stroke:var(--border);stroke-width:2;stroke-linecap:square}
+.hob .bed{stroke:var(--heading);stroke-width:5}
+.hob .frame{stroke:var(--muted);stroke-width:1.5}
+.hob .ang.main{stroke:var(--label);stroke-width:3.5}
+.hob text{font-family:'IBM Plex Mono',monospace;font-size:15px;fill:var(--text)}
+.hob text.strong{fill:var(--label);font-weight:600}
+.hob text.muted{fill:var(--muted);font-size:13px}
+.pid{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));gap:4px;align-items:stretch}
+.pid b{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:22px;color:var(--label);text-align:center}
+.pid span{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-right:10px;align-self:center}
+.pid i{display:block;min-height:34px;border:1.5px solid var(--border);background:var(--card)}
+.pid i.hit{background:color-mix(in srgb,var(--danger-border) 55%,var(--card));border-color:var(--danger-border)}
+.pid i.mark{background:color-mix(in srgb,var(--danger-border) 18%,var(--card));border-color:var(--danger-border)}
+.plumb-fig{text-align:center}
+.plumb{position:relative;display:inline-flex;flex-direction:column;gap:12px;text-align:left;padding:2px 0}
+.plumb::before{content:"";position:absolute;left:5px;top:0;bottom:0;border-left:1.5px dashed var(--label)}
+.plumb span{position:relative;padding-left:26px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
+.plumb span::before{content:"";position:absolute;left:0;top:50%;width:12px;height:12px;margin-top:-6px;background:var(--border)}
 </style>
 </head>
 <body>
@@ -181,7 +209,6 @@ p.gex{margin:6px 0 0}
     <span class="lg-known">Known mnemonic</span>
     <span class="lg-hook">Memory hook made for this guide</span>
     <span class="lg-flag">Instructor flagged for the test</span>
-    <span class="lg-side">Side note from this guide</span>
     <span class="lg-slides">Slides content: covered in instructor's slides</span>
   </div>
 </header>
@@ -218,15 +245,15 @@ p.gex{margin:6px 0 0}
 
   <h3>The three principles of body mechanics</h3>
   <p>Lower back injuries are the most common problem for health care workers. Nurses have the highest rate of back injuries, usually from manual lifting and repositioning.</p>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook</p>
-    <p class="phrase">"Always Be Mindful"</p>
-    <div class="glet">
-      <div><b>A</b><span><strong>Alignment</strong>: back straight, chin level, abs tight. Ear, shoulder, hip, knee, and ankle on one vertical line.</span></div>
-      <div><b>B</b><span><strong>Balance</strong>: feet shoulder-width apart, knees bent. A lower center of gravity and a wider base = more stable.</span></div>
-      <div><b>M</b><span><strong>Movement</strong>: keep the load close, face the client, pivot your feet instead of twisting.</span></div>
-    </div>
+  <div class="gcols">
+    <div class="gbox"><h4>Alignment</h4><p>Back straight, chin level, abs tight. Ear, shoulder, hip, knee, and ankle on one vertical line.</p></div>
+    <div class="gbox"><h4>Balance</h4><p>Feet shoulder-width apart, knees bent. A lower center of gravity and a wider base = more stable.</p></div>
+    <div class="gbox"><h4>Movement</h4><p>Keep the load close, face the client, pivot your feet instead of twisting.</p></div>
   </div>
+  <figure class="gfig plumb-fig" aria-label="Alignment: ear, shoulder, hip, knee and ankle on one vertical line">
+    <div class="plumb"><span>Ear</span><span>Shoulder</span><span>Hip</span><span>Knee</span><span>Ankle</span></div>
+    <figcaption>Good alignment: one vertical line from ear to ankle.</figcaption>
+  </figure>
   <div class="gtbl">
     <table>
       <thead><tr><th>Do</th><th>Don't</th></tr></thead>
@@ -257,10 +284,14 @@ p.gex{margin:6px 0 0}
   <div class="gcols">
     <div class="gbox"><h4>Watch for (during activity)</h4><p>Weakness, fatigue, lightheadedness, chest pain, diaphoresis, significant vital sign changes.</p></div>
   </div>
-  <p class="gnote"><span class="gslides">Slides only</span> HR, BP, and RR rise with activity and should return to baseline with rest.</p>
+  <p class="gnote"><span class="gslides">Slides content</span> HR, BP, and RR rise with activity and should return to baseline with rest.</p>
   <div class="gcols">
     <div class="gbox"><h4>Borg RPE scale</h4><p>Client rates their own effort from <strong>6</strong> (resting) to <strong>20</strong> (max effort). Target: <strong>12–14</strong>, somewhat hard to strong.</p></div>
   </div>
+  <figure class="gfig" aria-label="Borg RPE scale from 6, resting, to 20, max effort, with the 12 to 14 target highlighted">
+    <div class="rpe"><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span class="on">12</span><span class="on">13</span><span class="on">14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span></div>
+    <div class="rpe-ends"><span>6 &middot; resting</span><span class="on">Target 12&ndash;14</span><span>20 &middot; max effort</span></div>
+  </figure>
 
   <h3>Mobility assessment</h3>
   <p>Done before first mobilizing the client, repeated per policy (every shift to every 24 hr), and after procedures that change mobility. Tells you the interventions, transfers, fall precautions, and devices the client needs.</p>
@@ -322,7 +353,7 @@ p.gex{margin:6px 0 0}
     <p class="gnote">Systolic drop of <strong>20</strong> mm Hg or more, OR diastolic drop of <strong>10</strong> or more, within <strong>3</strong> minutes of sitting or standing up.</p>
   </div>
   <div class="slides-note">
-    <p class="gnote"><span class="gslides">Slides only</span> <strong>Promoting venous return</strong></p>
+    <p class="gnote"><span class="gslides">Slides content</span> <strong>Promoting venous return</strong></p>
     <p class="gnote">Goals: get blood from the legs back to the heart, prevent DVT, and prevent PE. Methods: elastic antiembolism stockings ("TED hose"), SCDs, repositioning, and active or passive ROM.</p>
   </div>
 
@@ -355,6 +386,10 @@ p.gex{margin:6px 0 0}
     <li><span><strong>Beyond the skin</strong>: open wound, fat or granulation tissue visible</span></li>
     <li><span><strong>Deep</strong>: exposed muscle, ligament, or bone, dead tissue</span></li>
   </ol>
+  <figure class="gfig" aria-label="How deep each level of pressure damage reaches">
+    <div class="pid"><span></span><b>1</b><b>2</b><b>3</b><b>4</b><span>Skin</span><i class="mark"></i><i class="hit"></i><i class="hit"></i><i class="hit"></i><span>Fat</span><i></i><i></i><i class="hit"></i><i class="hit"></i><span>Muscle &amp; bone</span><i></i><i></i><i></i><i class="hit"></i></div>
+    <figcaption>Shaded = damaged tissue. Level 1 is still intact skin (redness only); level 4 reaches muscle, ligament, or bone.</figcaption>
+  </figure>
 
   <h3>Psychological</h3>
   <p>Loss of independence, privacy, work, and hobbies can cause frustration, anxiety, depression, and social isolation.</p>
@@ -381,6 +416,11 @@ p.gex{margin:6px 0 0}
     <div class="gbox"><h4>Cane</h4><p>Top at the wrist crease with arms at sides; elbow bent <strong>20–30°</strong> when gripping. Quad cane = broader base for more support. On stairs, keep the cane level with the <strong>weaker leg</strong>.</p></div>
     <div class="gbox"><h4>Walker</h4><p>Top at the wrist; elbow bent <strong>15°</strong>. Move the walker, then step with the <strong>weaker leg</strong>, then the stronger. Standard (no wheels) gives the most support but needs strength. <strong>Never on stairs or escalators.</strong></p></div>
     <div class="gbox"><h4>Crutches</h4><p>Usually younger clients with upper body strength. Pads <strong>1–2 inches below the axilla</strong>, grips at hip level, elbows bent <strong>20–30°</strong>. Weight goes on the hands, not the armpits, to avoid <strong>crutch palsy</strong> (numbness and tingling).</p></div>
+  </div>
+  <div class="mnemo known">
+    <p class="tag">Known mnemonic &middot; canes and crutches on stairs</p>
+    <p class="phrase">Up with the good, down with the bad</p>
+    <p class="gnote">Going up, step up with the stronger leg first, then bring up the cane or crutches with the weaker leg. Going down, lead with the cane or crutches and the weaker leg.</p>
   </div>
   <div class="mnemo hook">
     <p class="tag">Memory hook &middot; elbow angles</p>
@@ -418,10 +458,24 @@ p.gex{margin:6px 0 0}
       </tbody>
     </table>
   </div>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; positions</p>
-    <p class="phrase"><strong>F</strong>owler's <strong>F</strong>ills the lungs. <strong>P</strong>rone <strong>P</strong>revents hip and knee contractures. <strong>T</strong>rendelenburg <strong>T</strong>ips the head down.</p>
-  </div>
+  <figure class="gfig" aria-label="Head of bed angles: semi-Fowler's 15 to 30 degrees, Fowler's 45 degrees, high-Fowler's 60 to 90 degrees">
+    <svg class="hob" viewBox="0 0 450 200" role="img">
+      <polygon class="wedge" points="150,170 256.3,141.5 245.3,115"/>
+      <polygon class="wedge" points="150,170 205,74.7 150,60"/>
+      <line class="bed" x1="20" y1="170" x2="150" y2="170"/>
+      <line class="frame" x1="20" y1="184" x2="300" y2="184"/>
+      <line class="ang" x1="150" y1="170" x2="256.3" y2="141.5"/>
+      <line class="ang" x1="150" y1="170" x2="245.3" y2="115"/>
+      <line class="ang main" x1="150" y1="170" x2="227.8" y2="92.2"/>
+      <line class="ang" x1="150" y1="170" x2="205" y2="74.7"/>
+      <line class="ang" x1="150" y1="170" x2="150" y2="60"/>
+      <text x="262" y="134">semi-Fowler's 15&ndash;30&deg;</text>
+      <text x="236" y="92" class="strong">Fowler's 45&deg;</text>
+      <text x="160" y="58">high-Fowler's 60&ndash;90&deg;</text>
+      <text x="24" y="162" class="muted">foot of bed</text>
+    </svg>
+    <figcaption>Head of bed (HOB) angles for the Fowler's positions.</figcaption>
+  </figure>
 
   <h3>Range of motion</h3>
   <div class="gcols">
@@ -441,15 +495,15 @@ p.gex{margin:6px 0 0}
       </tbody>
     </table>
   </div>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; ab vs add</p>
+  <div class="mnemo known">
+    <p class="tag">Known mnemonic &middot; ab vs add</p>
     <p class="phrase"><strong>Ab</strong>duction <strong>ab</strong>ducts (takes away) the limb from the midline. <strong>Add</strong>uction <strong>add</strong>s it back.</p>
   </div>
 
   <h3>Exercise</h3>
   <p>Adults: at least <strong>150 min/week</strong> of moderate aerobic activity (30 min, 5 days). Older adults benefit from programs that mix aerobics, strength, and balance (adapted yoga, resistance bands). After illness, start with a few minutes and build up.</p>
 
-  <h3>Heat &amp; cold therapy <span class="gslides">Slides only</span></h3>
+  <h3>Heat &amp; cold therapy <span class="gslides">Slides content</span></h3>
   <div class="gcols">
     <div class="gbox"><h4>Heat</h4><p>Increases circulation and tissue metabolism, relaxes muscles, eases stiffness and pain. Moist: warm compress, soaks, sitz bath. Dry: hot pack, heating pad, warming blanket.</p></div>
     <div class="gbox"><h4>Heat cautions</h4><p>Bony prominences are more sensitive. No heat over metal devices, under an immobile client, or on a pregnant client's abdomen. <strong>Never</strong> in the first 24 hr of a traumatic injury, or with active bleeding, noninflammatory edema, or some skin disorders.</p></div>
@@ -484,11 +538,8 @@ p.gex{margin:6px 0 0}
     <div class="gbox"><h4>Teeth</h4><p>Chew food into a swallowable ball, support and shape the face, help with speech. Mouth bacteria make acid that dissolves enamel, leading to caries, infection, and tooth loss.</p></div>
     <div class="gbox"><h4>Nails</h4><p>Layers of keratin that protect fingertips and toes. The cuticle and hyponychium block infection underneath.</p></div>
   </div>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; tooth layers, outside in</p>
-    <p class="phrase">"Every Dentist Probes"</p>
-    <div class="chain"><span><strong>E</strong>namel (hardest material in the body)</span><i aria-hidden="true">&#8594;</i><span><strong>D</strong>entin (shields the pulp)</span><i aria-hidden="true">&#8594;</i><span><strong>P</strong>ulp (vessels and nerves)</span></div>
-  </div>
+  <p class="gseq-title"><strong>Tooth layers, outside in</strong></p>
+  <div class="chain"><span>Enamel (hardest material in the body)</span><i aria-hidden="true">&#8594;</i><span>Dentin (shields the pulp)</span><i aria-hidden="true">&#8594;</i><span>Pulp (vessels and nerves)</span></div>
 
   <h3>Hand hygiene</h3>
   <p>Prevents health care–associated infections (HAIs), the most common adverse events in client care.</p>
@@ -541,7 +592,7 @@ p.gex{margin:6px 0 0}
       </tbody>
     </table>
   </div>
-  <p class="gnote"><span class="gslides">Slides only</span> Warm bath water is 43–46°C (110–115°F).</p>
+  <p class="gnote"><span class="gslides">Slides content</span> Warm bath water is 43–46°C (110–115°F).</p>
   <div class="gcols">
     <div class="gbox"><h4>Linen changes</h4><p>Ask about PRN pain medication before an occupied bed change. Wear gloves, keep soiled linen <strong>away from your body</strong>, and put it straight into the designated receptacle.</p></div>
   </div>
@@ -554,17 +605,17 @@ p.gex{margin:6px 0 0}
     <div class="gbox"><h4>Ears</h4><p>Washcloth over your finger. <strong>No cotton swabs.</strong> Drainage is abnormal and may mean infection.</p></div>
     <div class="gbox"><h4>Feet</h4><p>Wash daily and dry <strong>between the toes</strong>. Lotion on the feet, not between the toes. For diabetes or poor circulation: warm (not hot) water, <strong>don't soak</strong> (dries skin), inspect for cuts and blisters. Trim straight across and file, per facility policy.</p></div>
   </div>
-  <p class="gnote"><span class="gslides">Slides only</span> Your slides say podiatry should be the <strong>only</strong> specialty to clip toenails for clients with diabetes, poor circulation, or immunosuppression; an emery board can file long toenails down. The module says to check facility policy and, if trimming is allowed, cut straight across and file. <strong>For ATI questions, go with the module.</strong></p>
+  <p class="gnote"><span class="gslides">Slides content</span> Your slides say podiatry should be the <strong>only</strong> specialty to clip toenails for clients with diabetes, poor circulation, or immunosuppression; an emery board can file long toenails down. The module says to check facility policy and, if trimming is allowed, cut straight across and file.</p>
   <div class="gcols">
     <div class="gbox"><h4>Fingernails</h4><p>Soak 10 min, clean under nails with an orange stick, cut <strong>straight across</strong>, file, apply lotion. Longer nails hide more germs.</p></div>
   </div>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; washing the face</p>
+  <div class="mnemo known">
+    <p class="tag">Known mnemonic &middot; washing the face</p>
     <p class="phrase">Clean to dirty</p>
     <p class="gnote"><strong>Eyes first</strong>, then forehead, cheeks, nose, ears, neck.</p>
   </div>
   <div class="slides-note">
-    <p class="gnote"><span class="gslides">Slides only</span> <strong>Shaving (your instructor marked this "Important!")</strong></p>
+    <p class="gnote"><span class="gslides">Slides content</span> <strong>Shaving (your instructor marked this "Important!")</strong></p>
     <p class="gnote">Clients who bleed easily, take anticoagulants, or have a low platelet count should use an <strong>electric razor</strong>. Shave in the direction of hair growth. Use extra caution with nail care for clients on anticoagulants, too.</p>
   </div>
 
@@ -585,7 +636,7 @@ p.gex{margin:6px 0 0}
     <div class="gbox"><h4>Dentures</h4><p>Clean them to remove trapped food and prevent thrush. Lost dentures affect eating, speech, mental health, and wallets.</p></div>
   </div>
   <div class="slides-note">
-    <p class="gnote"><span class="gslides">Slides only</span> <strong>Oral care for an unconscious client</strong></p>
+    <p class="gnote"><span class="gslides">Slides content</span> <strong>Oral care for an unconscious client</strong></p>
     <p class="gnote">Suction ready at the bedside, client on their side when able, foam swabs or an oral suction kit, and <strong>never put your fingers in their mouth</strong>. Assess swallowing and aspiration risk first.</p>
   </div>
   <div class="gcheck">
@@ -607,19 +658,14 @@ p.gex{margin:6px 0 0}
   </div>
 
   <h3>Knowles's principles of adult learning</h3>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook</p>
-    <p class="phrase">"Really Smart Learners Read Their Material"</p>
-    <div class="glet">
-      <div><b>R</b><span><strong>Relevance</strong>: knows why it applies to them</span></div>
-      <div><b>S</b><span><strong>Self-directed</strong>: controls choices and owns the consequences</span></div>
-      <div><b>L</b><span><strong>Life experience</strong>: builds on what they already know</span></div>
-      <div><b>R</b><span><strong>Readiness</strong>: ready, willing, and able right now</span></div>
-      <div><b>T</b><span><strong>Task-centered</strong>: tied to real problems, not memorization</span></div>
-      <div><b>M</b><span><strong>Motivation</strong>: internal and external both needed; internal is what makes it stick</span></div>
-    </div>
+  <div class="gcols">
+    <div class="gbox"><h4>Relevance</h4><p>Knows why it applies to them.</p></div>
+    <div class="gbox"><h4>Self-directed</h4><p>Controls choices and owns the consequences.</p></div>
+    <div class="gbox"><h4>Life experience</h4><p>Builds on what they already know.</p></div>
+    <div class="gbox"><h4>Readiness</h4><p>Ready, willing, and able right now.<span class="gex">A client in hypertensive crisis isn't ready to learn new meds.</span></p></div>
+    <div class="gbox"><h4>Task-centered</h4><p>Tied to real problems, not memorization.</p></div>
+    <div class="gbox"><h4>Motivation</h4><p>Internal and external both needed; internal is what makes it stick.</p></div>
   </div>
-  <p class="gex">Readiness example: a client in hypertensive crisis isn't ready to learn new meds.</p>
 
   <h3>What helps and what hurts</h3>
   <div class="gtbl">
@@ -662,29 +708,29 @@ p.gex{margin:6px 0 0}
     </table>
   </div>
   <div class="mnemo known">
-    <p class="tag">Known mnemonic &middot; cognitive stages (from your slides)</p>
-    <p class="phrase">"Keep Caring And Assessing Saves Everyone"</p>
-    <div class="chain"><span><strong>K</strong>nowledge</span><i aria-hidden="true">&#8594;</i><span><strong>C</strong>omprehension</span><i aria-hidden="true">&#8594;</i><span><strong>A</strong>pplication</span><i aria-hidden="true">&#8594;</i><span><strong>A</strong>nalysis</span><i aria-hidden="true">&#8594;</i><span><strong>S</strong>ynthesis</span><i aria-hidden="true">&#8594;</i><span><strong>E</strong>valuation</span></div>
-  </div>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; affective stages</p>
-    <p class="phrase">"Really Rich Vanilla Oreo Cookies"</p>
-    <div class="chain"><span><strong>R</strong>eceiving</span><i aria-hidden="true">&#8594;</i><span><strong>R</strong>esponding</span><i aria-hidden="true">&#8594;</i><span><strong>V</strong>aluing</span><i aria-hidden="true">&#8594;</i><span><strong>O</strong>rganization</span><i aria-hidden="true">&#8594;</i><span><strong>C</strong>haracterization</span></div>
-  </div>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook &middot; psychomotor stages, with a new stoma</p>
-    <p class="phrase">"People Say Great Moms Can Always Organize"</p>
+    <p class="tag">Known mnemonic &middot; the three domains</p>
+    <p class="phrase">Head, heart, hands</p>
     <div class="glet">
-      <div><b>P</b><span><strong>Perception</strong>: watches the nurse do stoma care</span></div>
-      <div><b>S</b><span><strong>Set</strong>: sets a goal to do it alone</span></div>
-      <div><b>G</b><span><strong>Guided response</strong>: observes and assists</span></div>
-      <div><b>M</b><span><strong>Mechanism</strong>: changes the pouch with supervision</span></div>
-      <div><b>C</b><span><strong>Complex overt response</strong>: changes it independently</span></div>
-      <div><b>A</b><span><strong>Adaptation</strong>: changes it consistently without error</span></div>
-      <div><b>O</b><span><strong>Origination</strong>: it's part of the daily routine</span></div>
+      <div><b>Head</b><span><strong>Cognitive</strong>: thinking</span></div>
+      <div><b>Heart</b><span><strong>Affective</strong>: feelings, values, beliefs</span></div>
+      <div><b>Hands</b><span><strong>Psychomotor</strong>: doing (skills)</span></div>
     </div>
   </div>
+  <p class="gseq-title"><strong>Cognitive stages</strong> (from your slides)</p>
+  <div class="chain"><span>Knowledge</span><i aria-hidden="true">&#8594;</i><span>Comprehension</span><i aria-hidden="true">&#8594;</i><span>Application</span><i aria-hidden="true">&#8594;</i><span>Analysis</span><i aria-hidden="true">&#8594;</i><span>Synthesis</span><i aria-hidden="true">&#8594;</i><span>Evaluation</span></div>
+  <p class="gseq-title"><strong>Affective stages</strong></p>
+  <div class="chain"><span>Receiving</span><i aria-hidden="true">&#8594;</i><span>Responding</span><i aria-hidden="true">&#8594;</i><span>Valuing</span><i aria-hidden="true">&#8594;</i><span>Organization</span><i aria-hidden="true">&#8594;</i><span>Characterization</span></div>
   <p class="gex">Affective example: a client with a new diabetes diagnosis talks through fear of needles before learning insulin.</p>
+  <p class="gseq-title"><strong>Psychomotor stages, with a new stoma</strong></p>
+  <ol class="gseq">
+    <li><span><strong>Perception</strong>: watches the nurse do stoma care</span></li>
+    <li><span><strong>Set</strong>: sets a goal to do it alone</span></li>
+    <li><span><strong>Guided response</strong>: observes and assists</span></li>
+    <li><span><strong>Mechanism</strong>: changes the pouch with supervision</span></li>
+    <li><span><strong>Complex overt response</strong>: changes it independently</span></li>
+    <li><span><strong>Adaptation</strong>: changes it consistently without error</span></li>
+    <li><span><strong>Origination</strong>: it's part of the daily routine</span></li>
+  </ol>
 
   <h3>Teaching strategies</h3>
   <div class="gcols">
@@ -718,10 +764,16 @@ p.gex{margin:6px 0 0}
     <li><span><strong>Implementation</strong>: remind them why it matters, encourage questions; mix verbal, demonstration, print, video, teach-back</span></li>
     <li><span><strong>Evaluation</strong>: were goals met? Teach-back or return demonstration. If not, is the goal realistic or do the methods need to change?</span></li>
   </ol>
-  <div class="mnemo hook">
-    <p class="tag">Memory hook</p>
+  <div class="mnemo known">
+    <p class="tag">Known mnemonic</p>
     <p class="phrase">Goals should be SMART</p>
-    <p class="gnote"><strong>S</strong>pecific &middot; <strong>M</strong>easurable &middot; <strong>A</strong>chievable &middot; <strong>R</strong>elevant &middot; <strong>T</strong>imed</p>
+    <div class="glet">
+      <div><b>S</b><span>Specific</span></div>
+      <div><b>M</b><span>Measurable</span></div>
+      <div><b>A</b><span>Achievable</span></div>
+      <div><b>R</b><span>Relevant</span></div>
+      <div><b>T</b><span>Timed</span></div>
+    </div>
     <p class="gnote"><em>"The client independently checks blood glucose with a glucometer by discharge."</em></p>
   </div>
   <div class="gcheck">
@@ -736,7 +788,7 @@ p.gex{margin:6px 0 0}
 
 <footer class="guide-footer gwrap">
   <div class="gbox">
-    <p><strong>Not covered here, per your instructor:</strong> the layers of the skin and the paralysis types chart. Where the slides and module disagreed (who trims toenails for clients with diabetes), this guide follows the module (ATI).</p>
+    <p><strong>Not covered here, per your instructor:</strong> the layers of the skin and the paralysis types chart.</p>
   </div>
 </footer>
 
