@@ -1,6 +1,6 @@
 /* Unit page tabs: Flashcards / Quizzes / Study guides narrow the page to that kind of content
    for this unit, shown as the same one-action rows the library uses (index.html ?type=...).
-   Clicking the active tab again shows the full topic list. Home is a plain link. */
+   All (or clicking the active tab again) shows everything in the unit. */
 (function(){
   var KINDS = {flashcards:"flashcards", quizzes:"quiz", studyguides:"studyguide"};
   var LABELS = {flashcards:"flashcards", quizzes:"quizzes", studyguides:"study guides"};
@@ -52,7 +52,7 @@
 
   function apply(){
     var want = current ? KINDS[current] : null;
-    tabs.forEach(function(t){ t.classList.toggle("active", t.getAttribute("data-filter") === current); });
+    tabs.forEach(function(t){ t.classList.toggle("active", t.getAttribute("data-filter") === (current || "all")); });
 
     /* Filtered: library-style list built from SITE data */
     var useLib = !!(current && wrap && unitCode && window.SITE);
@@ -117,7 +117,7 @@
   tabs.forEach(function(t){
     t.addEventListener("click", function(){
       var f = t.getAttribute("data-filter");
-      current = current === f ? null : f;
+      current = f === "all" || current === f ? null : f;
       apply();
     });
   });
