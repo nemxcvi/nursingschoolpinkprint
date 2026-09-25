@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=44">
+<link rel="stylesheet" href="../assets/style.css?v=45">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -50,9 +50,9 @@
   </div>
 
   <div id="gradebtns" class="fc-rate">
-    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled>don't know <span class="kbd" aria-hidden="true">1</span></button>
-    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>almost <span class="kbd" aria-hidden="true">2</span></button>
-    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled>know it <span class="kbd" aria-hidden="true">3</span></button>
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
   </div>
 
   <div id="completion" style="display:none;"></div>
@@ -62,7 +62,7 @@
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script src="../assets/flashcards.js?v=5"></script>
+<script src="../assets/flashcards.js?v=6"></script>
 <script>
 var CATS = {
   anat: {label:"Body regions & anatomy", hue:"blue"},

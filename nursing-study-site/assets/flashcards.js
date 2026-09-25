@@ -97,6 +97,10 @@ function initFlashcards(CATS, CARDS){
 
     var front = document.getElementById("cardfront");
     var back = document.getElementById("cardback");
+    /* Each section keeps its own tint */
+    var tint = "background:var(--hue-" + cat.hue + "-bg);color:var(--hue-" + cat.hue + "-text);";
+    front.style.cssText = tint;
+    back.style.cssText = tint;
     front.innerHTML =
       "<p class='fc-cat'>" + cat.label + "</p><div class='fc-body'><p class='fc-term'>" + card[2] + "</p><p class='fc-hint'>Tap to flip</p></div>";
 
