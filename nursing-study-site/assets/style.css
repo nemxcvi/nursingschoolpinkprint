@@ -9,6 +9,7 @@
   --danger-text:#B3261E; --danger-border:#E2554A;
   --warn-text:#8A5A00; --warn-border:#D98E00;
   --success-text:#1F6B3B; --success-border:#4FAE72;
+  --missed-bg:#FBEAF0; --missed-border:#D4537E; --missed-text:#72243E;
   --u1-bg:transparent; --u1-text:var(--label); --u2-bg:transparent; --u2-text:var(--label);
   --u3-bg:transparent; --u3-text:var(--label); --u4-bg:transparent; --u4-text:var(--label);
   --u5-bg:transparent; --u5-text:var(--label); --u6-bg:transparent; --u6-text:var(--label);
@@ -27,6 +28,7 @@
   --danger-text:#FF9B8A; --danger-border:#FF6B57;
   --warn-text:#FFD98A; --warn-border:#E0A83D;
   --success-text:#8FE3B0; --success-border:#4FC17E;
+  --missed-bg:#72243E; --missed-border:#ED93B1; --missed-text:#F4C0D1;
   --u1-bg:transparent; --u1-text:var(--label); --u2-bg:transparent; --u2-text:var(--label);
   --u3-bg:transparent; --u3-text:var(--label); --u4-bg:transparent; --u4-text:var(--label);
   --u5-bg:transparent; --u5-text:var(--label); --u6-bg:transparent; --u6-text:var(--label);
@@ -309,7 +311,7 @@ h2{font-size:20px;}
 .pq-prompt{font-family:'Young Serif',serif;font-size:22px;font-weight:400;line-height:1.4;color:var(--heading);margin-bottom:12px;}
 .pq-type-label{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label);margin-bottom:12px;}
 .pq-options{display:grid;gap:8px;margin-bottom:14px;}
-.pq-option{display:flex;align-items:center;gap:14px;width:100%;min-height:56px;padding:12px 16px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--text);text-align:left;cursor:pointer;}
+.pq-option{-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:14px;width:100%;min-height:56px;padding:12px 16px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--text);text-align:left;cursor:pointer;}
 .pq-option:hover:not(:disabled){background:color-mix(in srgb,var(--pill) 50%,var(--card));}
 .pq-option:disabled{cursor:default;}
 .pq-letter{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1.5px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:var(--label);}
@@ -338,11 +340,34 @@ h2{font-size:20px;}
 .pq-dd-item .pq-opt-text{font-size:15px;}
 .pq-dd-item.is-dragging{opacity:.35;}
 .pq-dd-item:disabled{cursor:default;}
-.pq-dd-ghost{position:fixed;left:0;top:0;z-index:1000;pointer-events:none;cursor:grabbing;border-color:var(--label);background:var(--pill);box-shadow:0 8px 20px rgba(0,0,0,.18);}
-.pq-option.is-missed{border:2px dashed var(--danger-border);}
-.pq-option.is-missed .pq-letter{border-color:var(--danger-border);color:var(--danger-text);}
+.pq-dd-ghost{position:fixed;left:0;top:0;z-index:1000;pointer-events:none;cursor:grabbing;border-color:var(--label);background:var(--page);background-image:linear-gradient(var(--pill),var(--pill));box-shadow:0 8px 20px rgba(0,0,0,.18);}
+/* Result states after checking (every question type) */
+.pq-option.is-graded{align-items:flex-start;}
+.pq-option.is-missed{background:var(--missed-bg);border-color:var(--missed-border);color:var(--missed-text);}
+.pq-option.is-missed .pq-letter{border-color:var(--missed-border);color:var(--missed-text);}
+.pq-opt-body{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0;}
+.pq-option.is-graded .pq-letter{margin-top:1px;}
+.pq-opt-tag{align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border:1.5px solid currentColor;color:var(--text2);}
+.pq-option.is-correct .pq-opt-tag{color:var(--success-text);}
+.pq-option.is-wrong .pq-opt-tag{color:var(--danger-text);}
+.pq-option.is-missed .pq-opt-tag{color:var(--missed-text);}
+.pq-opt-rat{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.5;color:var(--text);}
+.pq-opt-rat strong{font-weight:600;}
+.pq-option.is-correct .pq-opt-rat strong{color:var(--success-text);}
+.pq-option.is-wrong .pq-opt-rat strong{color:var(--danger-text);}
+.pq-option.is-missed .pq-opt-rat,.pq-option.is-missed .pq-opt-rat strong{color:var(--missed-text);}
+.pq-review-rat{margin-top:6px;}
+.pq-review-rat.is-correct strong{color:var(--success-text);}
+.pq-review-rat.is-wrong strong{color:var(--danger-text);}
+.pq-review-rat.is-missed strong{color:var(--missed-border);}
+/* Square radio (single answer) and checkbox (select all that apply) marks */
+.pq-mark{flex-shrink:0;margin-left:auto;width:20px;height:20px;border:1.5px solid var(--border);background:var(--card);display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1;color:var(--fill-text);}
+.pq-option.is-selected .pq-mark.is-radio::before{content:"";width:10px;height:10px;background:var(--label);}
+.pq-option.is-selected .pq-mark.is-check{background:var(--border);}
+.pq-option.is-selected .pq-mark.is-check::before{content:"\2713";}
+.pq-option.is-graded .pq-mark{display:none;}
 .pq-error{font-size:13px;color:var(--danger-text);display:none;margin:4px 0 10px;}
-.pq-feedback{display:none;margin:0 0 14px;padding:18px 20px;border:1.5px solid;}
+.pq-feedback{display:none;margin:0 0 14px;scroll-margin-top:72px;padding:18px 20px;border:1.5px solid;}
 .pq-feedback.is-correct{background:color-mix(in srgb,var(--success-border) 14%,var(--card));border-color:var(--success-border);}
 .pq-feedback.is-wrong{background:color-mix(in srgb,var(--danger-border) 14%,var(--card));border-color:var(--danger-border);}
 .pq-fb-head{font-family:'Young Serif',serif;font-weight:400;font-size:22px;margin:0 0 8px;}

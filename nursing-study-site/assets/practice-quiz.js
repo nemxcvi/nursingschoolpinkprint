@@ -5,21 +5,58 @@ function initPracticeQuiz(bank, catLabels){
   var queue = [], currentRound = [], currentRoundIndex = 0, roundsTaken = 0;
   var attempts = {}, latestResult = {}, correctSoFar = 0, missedSoFar = 0, categoryTotals = {};
   var answered = false, userSelection = [], currentDisplayOptions = [];
-  var LETTERS = "ABCDEFGH";
+  var LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var PREFIX_RE = /^\s*(correct|incorrect|not quite|missed)\s*[.!:—–-]\s*/i;
 
-  /* Drag-drop questions are written with stem/rationale and options flagged correct;
-     give them the same prompt/explanation/ids/correct shape as the other types */
-  bank.forEach(function(q){
-    if (q.type !== "dragdrop") return;
-    if (q.prompt == null) q.prompt = q.stem;
-    if (q.explanation == null) q.explanation = q.rationale || "";
-    q.correct = [];
-    q.options = q.options.map(function(o, i){
-      var id = o.id || LETTERS.charAt(i).toLowerCase();
-      if (o.correct) q.correct.push(id);
-      return {id: id, text: o.text, correct: !!o.correct};
+  /* ---------- Normalize every question into one shape ----------
+     Accepts the older format (prompt, options with ids, correct: ["a"], explanation)
+     and the newer one (stem, options flagged correct: true with their own rationale,
+     optional summary). After this, every question has:
+       id, prompt, options [{id, text, correct, rationale}], correct [ids],
+       multi (more than one correct answer), summary, explanation (older question-level text)
+     and type is "dragdrop", or else "sata"/"mc" decided by how many answers are correct. */
+  var missingRationale = [];
+  bank.forEach(function(q, qi){
+    if (q.id == null) q.id = "q" + (qi + 1);
+    if (q.prompt == null) q.prompt = q.stem || "";
+    var qText = q.explanation != null ? q.explanation : q.rationale;
+    q.explanation = qText ? String(qText).replace(PREFIX_RE, "") : "";
+    q.summary = q.summary ? String(q.summary) : "";
+    var listed = Array.isArray(q.correct) ? q.correct.map(String) : [];
+    var gaps = [];
+    q.options = (q.options || []).map(function(o, i){
+      var id = o.id != null ? String(o.id) : (i < LETTERS.length ? LETTERS.charAt(i).toLowerCase() : "o" + i);
+      var rationale = o.rationale ? String(o.rationale).replace(PREFIX_RE, "") : "";
+      if (!rationale) gaps.push(id);
+      return {id: id, text: o.text, correct: o.correct === true || listed.indexOf(id) !== -1, rationale: rationale};
     });
+    q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.id; });
+    q.multi = q.correct.length > 1;
+    if (q.type !== "dragdrop") q.type = q.multi ? "sata" : "mc";
+    if (q.correct.length === 0) console.warn("[quiz] question " + q.id + " has no correct option: " + q.prompt);
+    if (gaps.length) missingRationale.push({q: q, ids: gaps});
   });
+  if (missingRationale.length){
+    console.groupCollapsed("[quiz] " + missingRationale.length + " of " + bank.length + " questions have options without a rationale");
+    missingRationale.forEach(function(m){
+      console.warn("[quiz] question " + m.q.id + (m.q.cat ? " (" + m.q.cat + ")" : "") + ": option" + (m.ids.length === 1 ? " " : "s ") + m.ids.join(", ") + " missing a rationale — " + m.q.prompt.slice(0, 80));
+    });
+    console.groupEnd();
+  }
+
+  /* ---------- Scoring: one place for every question type ----------
+     All-or-nothing: correct only when every correct option is chosen and nothing else.
+     Each option also gets its result state and the prefix shown before its rationale. */
+  function gradeQuestion(q, selected){
+    var states = {}, allRight = true;
+    q.options.forEach(function(o){
+      var chosen = selected.indexOf(o.id) !== -1;
+      var state = o.correct ? (chosen ? "correct" : "missed") : (chosen ? "wrong" : "neutral");
+      if (state === "missed" || state === "wrong") allRight = false;
+      states[o.id] = {state: state, chosen: chosen, prefix: o.correct ? (chosen ? "Correct." : "Missed.") : "Incorrect."};
+    });
+    return {correct: allRight, states: states};
+  }
 
   function shuffle(arr){
     var a = arr.slice();
@@ -130,35 +167,87 @@ function initPracticeQuiz(bank, catLabels){
   function activeQuestionList(){ return mode === "single" ? singleQuestions : currentRound; }
   function currentQuestion(){ return activeQuestionList()[currentRoundIndex]; }
 
+  var optsEl = document.getElementById("pq-options");
+  var fbEl = document.getElementById("pq-feedback");
+  var errEl = document.getElementById("pq-error");
+  /* The summary and result heading sit above the per-option rationales */
+  optsEl.parentNode.insertBefore(fbEl, optsEl);
+
+  /* Option card: letter box, text, a slot for the rationale shown after checking,
+     and (for choice questions) a square radio or checkbox mark */
+  function buildOption(opt, i, tag){
+    var el = document.createElement(tag || "button");
+    if (el.tagName === "BUTTON") el.type = "button";
+    el.className = "pq-option";
+    el.setAttribute("data-opt", opt.id);
+    var letter = document.createElement("span");
+    letter.className = "pq-letter";
+    letter.setAttribute("aria-hidden", "true");
+    letter.textContent = LETTERS.charAt(i) || String(i + 1);
+    var body = document.createElement("span");
+    body.className = "pq-opt-body";
+    var text = document.createElement("span");
+    text.className = "pq-opt-text";
+    text.textContent = opt.text;
+    body.appendChild(text);
+    el.appendChild(letter); el.appendChild(body);
+    return el;
+  }
+
+  /* After checking: color the card, swap the letter for a check or x, and add
+     "Correct." / "Incorrect." / "Missed." plus the option's rationale under its text */
+  function showOptionResult(el, opt, res, withTags){
+    var letter = el.querySelector(".pq-letter");
+    el.classList.remove("is-selected");
+    el.classList.add("is-graded");
+    if (res.state === "correct"){ el.classList.add("is-correct"); letter.textContent = "✓"; }
+    else if (res.state === "wrong"){ el.classList.add("is-wrong"); letter.textContent = "✕"; }
+    else if (res.state === "missed"){ el.classList.add("is-missed"); }
+    var body = el.querySelector(".pq-opt-body");
+    if (withTags && (res.chosen || opt.correct)){
+      var tag = document.createElement("span");
+      tag.className = "pq-opt-tag";
+      tag.textContent = res.chosen ? "Your answer" : "Correct answer";
+      body.insertBefore(tag, body.firstChild);
+    }
+    if (opt.rationale){
+      var rat = document.createElement("span");
+      rat.className = "pq-opt-rat";
+      var b = document.createElement("strong");
+      b.textContent = res.prefix + " ";
+      rat.appendChild(b);
+      rat.appendChild(document.createTextNode(opt.rationale));
+      body.appendChild(rat);
+    }
+  }
+
   /* Highlight picked rows and only allow Check answer once something is picked */
   function syncSelection(){
-    document.querySelectorAll("#pq-options .pq-option").forEach(function(row){
+    optsEl.querySelectorAll(".pq-option").forEach(function(row){
       var on = userSelection.indexOf(row.getAttribute("data-opt")) !== -1;
       row.classList.toggle("is-selected", on);
-      row.setAttribute("aria-pressed", on ? "true" : "false");
+      row.setAttribute("aria-checked", on ? "true" : "false");
     });
     document.getElementById("pq-submit").disabled = userSelection.length === 0;
   }
 
   function pickOption(q, optId){
     if (answered) return;
-    if (q.type === "sata"){
+    if (q.multi){
       if (userSelection.indexOf(optId) === -1) userSelection.push(optId);
       else userSelection = userSelection.filter(function(id){ return id !== optId; });
     } else {
       userSelection = [optId];
     }
-    document.getElementById("pq-error").style.display = "none";
+    errEl.style.display = "none";
     syncSelection();
   }
 
   function renderCurrentQuestion(){
     answered = false; userSelection = [];
-    document.getElementById("pq-error").style.display = "none";
-    document.getElementById("pq-error").textContent = "select at least one answer";
-    var fbReset = document.getElementById("pq-feedback");
-    fbReset.style.display = "none";
-    fbReset.className = "pq-feedback";
+    errEl.style.display = "none";
+    fbEl.style.display = "none";
+    fbEl.className = "pq-feedback";
     document.getElementById("pq-submit").classList.remove("hidden");
     document.getElementById("pq-submit").disabled = true;
     document.getElementById("pq-next").classList.add("hidden");
@@ -172,50 +261,44 @@ function initPracticeQuiz(bank, catLabels){
       totalLabel = "question " + (currentRoundIndex + 1) + " of " + list.length;
       document.getElementById("pq-score").textContent = "score " + singleResults.filter(function(r){ return r.correct; }).length + "/" + currentRoundIndex;
     } else {
-      totalLabel = "round " + roundsTaken + " \u2014 question " + (currentRoundIndex + 1) + " of " + list.length;
+      totalLabel = "round " + roundsTaken + " — question " + (currentRoundIndex + 1) + " of " + list.length;
       document.getElementById("pq-score").textContent = "";
     }
     document.getElementById("pq-progress").textContent = totalLabel;
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
-    document.getElementById("pq-type-label").textContent = q.type === "sata" ? "select all that apply" : q.type === "dragdrop" ? "drag and drop \u00b7 or tap an option, then a box" : "select one";
+    document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
 
     if (q.type === "dragdrop"){ renderDragDrop(q); return; }
 
-    /* Each choice is a real button with a square letter box; pressed state carries the selection */
-    var optsEl = document.getElementById("pq-options");
+    /* One correct answer: radio-style single select. More than one: checkboxes. */
+    errEl.textContent = q.multi ? "Select at least one answer first" : "Select an answer first";
     optsEl.innerHTML = "";
-    optsEl.setAttribute("role", "group");
-    optsEl.setAttribute("aria-label", q.type === "sata" ? "Select all that apply" : "Select one");
+    optsEl.setAttribute("role", q.multi ? "group" : "radiogroup");
+    optsEl.setAttribute("aria-label", q.multi ? "Select all that apply" : "Select one");
     currentDisplayOptions.forEach(function(opt, i){
-      var row = document.createElement("button");
-      row.type = "button";
-      row.className = "pq-option";
-      row.setAttribute("data-opt", opt.id);
-      row.setAttribute("aria-pressed", "false");
-      var letter = document.createElement("span");
-      letter.className = "pq-letter";
-      letter.setAttribute("aria-hidden", "true");
-      letter.textContent = LETTERS.charAt(i);
-      var span = document.createElement("span");
-      span.className = "pq-opt-text";
-      span.textContent = opt.text;
-      row.appendChild(letter); row.appendChild(span);
+      var row = buildOption(opt, i);
+      row.setAttribute("role", q.multi ? "checkbox" : "radio");
+      row.setAttribute("aria-checked", "false");
+      var mark = document.createElement("span");
+      mark.className = "pq-mark " + (q.multi ? "is-check" : "is-radio");
+      mark.setAttribute("aria-hidden", "true");
+      row.appendChild(mark);
       row.addEventListener("click", function(){ pickOption(q, opt.id); });
       optsEl.appendChild(row);
     });
 
-    var last = LETTERS.charAt(currentDisplayOptions.length - 1);
-    document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; pick</span><span>Enter &middot; check / next</span>";
+    var last = LETTERS.charAt(Math.min(currentDisplayOptions.length, LETTERS.length) - 1);
+    document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; " + (q.multi ? "toggle" : "pick") + "</span><span>Enter &middot; check / next</span>";
   }
 
   /* ---------- Drag and drop ----------
-     Two boxes; every option starts on the left. Options move by pointer drag
-     (mouse, pen and touch all use pointer events), by tapping an option and then
-     a box, or with the A-H keys. Only the answer box counts when checked. */
+     Two boxes; every option starts on the left, shuffled. Options move by pointer
+     drag (mouse, pen and touch all use pointer events), by tapping an option and
+     then a box, or with the letter keys. Only the answer box counts when checked. */
   var ddPicked = null, ddDrag = null, ddDragEnd = {item: null, at: 0};
 
-  function ddBoxes(){ return document.querySelectorAll("#pq-options .pq-dd-box"); }
+  function ddBoxes(){ return optsEl.querySelectorAll(".pq-dd-box"); }
   function ddList(box){ return box.querySelector(".pq-dd-list"); }
   function ddBoxOf(item){ return item.closest(".pq-dd-box"); }
   function ddOtherBox(item){
@@ -223,7 +306,7 @@ function initPracticeQuiz(bank, catLabels){
     return ddBoxOf(item) === b[0] ? b[1] : b[0];
   }
   function ddAnswerIds(){
-    var box = document.querySelector('#pq-options .pq-dd-box[data-box="answer"]');
+    var box = optsEl.querySelector('.pq-dd-box[data-box="answer"]');
     if (!box) return [];
     return Array.prototype.map.call(box.querySelectorAll(".pq-dd-item"), function(el){ return el.getAttribute("data-opt"); });
   }
@@ -241,7 +324,7 @@ function initPracticeQuiz(bank, catLabels){
         return false;
       });
       list.insertBefore(item, before);
-      document.getElementById("pq-error").style.display = "none";
+      errEl.style.display = "none";
     }
     ddSync();
   }
@@ -253,7 +336,7 @@ function initPracticeQuiz(bank, catLabels){
     ddPicked = item;
     item.classList.add("is-selected");
     item.setAttribute("aria-pressed", "true");
-    document.querySelectorAll("#pq-options .pq-dd-box").forEach(function(b){ b.classList.toggle("is-target", b !== ddBoxOf(item)); });
+    ddBoxes().forEach(function(b){ b.classList.toggle("is-target", b !== ddBoxOf(item)); });
   }
 
   function ddUnpick(){
@@ -262,7 +345,7 @@ function initPracticeQuiz(bank, catLabels){
       ddPicked.setAttribute("aria-pressed", "false");
     }
     ddPicked = null;
-    document.querySelectorAll("#pq-options .pq-dd-box").forEach(function(b){ b.classList.remove("is-target"); });
+    ddBoxes().forEach(function(b){ b.classList.remove("is-target"); });
   }
 
   function ddSync(){
@@ -278,6 +361,7 @@ function initPracticeQuiz(bank, catLabels){
     return el ? el.closest("#pq-options .pq-dd-box") : null;
   }
 
+  /* While dragging near the top or bottom of the screen, scroll so the other box can be reached */
   function ddAutoScroll(){
     if (!ddDrag || !ddDrag.active) return;
     var edge = 70, y = ddDrag.y, h = window.innerHeight, dy = 0;
@@ -292,7 +376,7 @@ function initPracticeQuiz(bank, catLabels){
     if (ddDrag.raf) cancelAnimationFrame(ddDrag.raf);
     if (ddDrag.ghost) ddDrag.ghost.remove();
     ddDrag.item.classList.remove("is-dragging");
-    document.querySelectorAll("#pq-options .pq-dd-box").forEach(function(b){ b.classList.remove("is-over"); });
+    ddBoxes().forEach(function(b){ b.classList.remove("is-over"); });
     ddDrag = null;
   }
 
@@ -315,7 +399,6 @@ function initPracticeQuiz(bank, catLabels){
       ddDrag.ox = ddDrag.sx - r.left; ddDrag.oy = ddDrag.sy - r.top;
       var ghost = item.cloneNode(true);
       ghost.className = "pq-option pq-dd-item pq-dd-ghost";
-      ghost.removeAttribute("id");
       ghost.style.width = r.width + "px";
       document.body.appendChild(ghost);
       ddDrag.ghost = ghost;
@@ -343,7 +426,6 @@ function initPracticeQuiz(bank, catLabels){
 
   function renderDragDrop(q){
     ddPicked = null; ddCancelDrag();
-    var optsEl = document.getElementById("pq-options");
     optsEl.innerHTML = "";
     optsEl.removeAttribute("role");
     optsEl.removeAttribute("aria-label");
@@ -378,22 +460,12 @@ function initPracticeQuiz(bank, catLabels){
     });
     optsEl.appendChild(wrap);
 
-    var pool = ddList(wrap.querySelector('[data-box="pool"]'));
+    var poolList = ddList(wrap.querySelector('[data-box="pool"]'));
     currentDisplayOptions.forEach(function(opt, i){
-      var item = document.createElement("button");
-      item.type = "button";
-      item.className = "pq-option pq-dd-item";
-      item.setAttribute("data-opt", opt.id);
+      var item = buildOption(opt, i);
+      item.classList.add("pq-dd-item");
       item.setAttribute("data-order", i);
       item.setAttribute("aria-pressed", "false");
-      var letter = document.createElement("span");
-      letter.className = "pq-letter";
-      letter.setAttribute("aria-hidden", "true");
-      letter.textContent = LETTERS.charAt(i);
-      var span = document.createElement("span");
-      span.className = "pq-opt-text";
-      span.textContent = opt.text;
-      item.appendChild(letter); item.appendChild(span);
       item.addEventListener("pointerdown", ddPointerDown);
       item.addEventListener("pointermove", ddPointerMove);
       item.addEventListener("pointerup", ddPointerUp);
@@ -403,46 +475,30 @@ function initPracticeQuiz(bank, catLabels){
         if (ddDragEnd.item === item && Date.now() - ddDragEnd.at < 400) return;
         ddPick(item);
       });
-      pool.appendChild(item);
+      poolList.appendChild(item);
     });
     ddSync();
 
-    /* Checking with an empty answer box shows the inline message instead */
-    document.getElementById("pq-error").textContent = "move at least one answer into the answer box";
+    /* Checking with an empty answer box shows the inline message instead of grading */
+    errEl.textContent = "Move at least one option first";
     document.getElementById("pq-submit").disabled = false;
-    var last = LETTERS.charAt(currentDisplayOptions.length - 1);
+    var last = LETTERS.charAt(Math.min(currentDisplayOptions.length, LETTERS.length) - 1);
     document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; move between boxes</span><span>Enter &middot; check / next</span>";
   }
 
-  /* Green = correct option moved over, red = wrong option moved over,
-     dashed red outline = correct option left behind */
-  function markDragDrop(q){
-    ddUnpick();
-    document.querySelectorAll("#pq-options .pq-dd-item").forEach(function(item){
-      var optId = item.getAttribute("data-opt");
-      var letter = item.querySelector(".pq-letter");
-      var inAnswer = ddBoxOf(item).getAttribute("data-box") === "answer";
-      var isRight = q.correct.indexOf(optId) !== -1;
-      item.disabled = true;
-      if (inAnswer && isRight){ item.classList.add("is-correct"); letter.textContent = "✓"; }
-      else if (inAnswer){ item.classList.add("is-wrong"); letter.textContent = "✕"; }
-      else if (isRight){ item.classList.add("is-missed"); }
-    });
-    document.querySelectorAll("#pq-options .pq-dd-box").forEach(function(b){ b.classList.add("is-done"); });
-  }
-
+  /* ---------- Check answer (every type) ---------- */
   document.getElementById("pq-submit").addEventListener("click", function(){
     if (answered) return;
-    var list = activeQuestionList();
-    var q = list[currentRoundIndex];
+    var q = currentQuestion();
     if (q.type === "dragdrop") userSelection = ddAnswerIds();
     if (userSelection.length === 0){
-      document.getElementById("pq-error").style.display = "block";
+      errEl.style.display = "block";
       return;
     }
     answered = true;
-    ddCancelDrag();
-    var isCorrect = arraysMatch(userSelection, q.correct);
+    ddCancelDrag(); ddUnpick();
+    var graded = gradeQuestion(q, userSelection);
+    var isCorrect = graded.correct;
 
     if (mode === "single"){
       singleResults.push({question: q, userSelection: userSelection.slice(), correct: isCorrect});
@@ -455,39 +511,38 @@ function initPracticeQuiz(bank, catLabels){
       categoryTotals[q.cat].total++;
       if (isCorrect){ correctSoFar++; categoryTotals[q.cat].correct++; }
       else {
+        /* Anything short of fully correct goes back into the pool */
         missedSoFar++;
         var insertAt = queue.length === 0 ? 0 : Math.floor(Math.random() * (queue.length + 1));
         queue.splice(insertAt, 0, q);
       }
     }
 
-    if (q.type === "dragdrop") markDragDrop(q);
-
-    /* Correct choices turn green with a check; wrong picks turn red with an x; the rest stay neutral */
-    if (q.type !== "dragdrop") document.querySelectorAll("#pq-options .pq-option").forEach(function(row){
-      var optId = row.getAttribute("data-opt");
-      var letter = row.querySelector(".pq-letter");
-      row.classList.remove("is-selected");
-      row.disabled = true;
-      if (q.correct.indexOf(optId) !== -1){
-        row.classList.add("is-correct"); letter.textContent = "\u2713";
-      } else if (userSelection.indexOf(optId) !== -1){
-        row.classList.add("is-wrong"); letter.textContent = "\u2715";
-      }
+    /* Every option shows its result and rationale, wherever it ended up */
+    optsEl.querySelectorAll(".pq-option").forEach(function(el){
+      var id = el.getAttribute("data-opt");
+      var opt = q.options.filter(function(o){ return o.id === id; })[0];
+      el.disabled = true;
+      showOptionResult(el, opt, graded.states[id], q.type !== "dragdrop");
     });
+    if (q.type === "dragdrop") ddBoxes().forEach(function(b){ b.classList.add("is-done"); });
 
-    /* The heading says correct / not quite, so drop that prefix if the explanation repeats it */
-    var fb = document.getElementById("pq-feedback");
-    fb.className = "pq-feedback " + (isCorrect ? "is-correct" : "is-wrong");
-    fb.innerHTML = "";
+    /* Heading, then the optional summary, then any older question-level explanation */
+    fbEl.className = "pq-feedback " + (isCorrect ? "is-correct" : "is-wrong");
+    fbEl.innerHTML = "";
     var head = document.createElement("p");
     head.className = "pq-fb-head";
-    head.textContent = isCorrect ? "\u2713 Correct" : "\u2715 Not quite";
-    var text = document.createElement("p");
-    text.className = "pq-fb-text";
-    text.textContent = String(q.explanation).replace(/^\s*(correct|not quite|incorrect)\s*[.!:\u2014\u2013-]\s*/i, "");
-    fb.appendChild(head); fb.appendChild(text);
-    fb.style.display = "block";
+    head.textContent = isCorrect ? "✓ Correct" : "✕ Not quite";
+    fbEl.appendChild(head);
+    [q.summary, q.explanation].forEach(function(t){
+      if (!t) return;
+      var p = document.createElement("p");
+      p.className = "pq-fb-text";
+      p.textContent = t;
+      fbEl.appendChild(p);
+    });
+    fbEl.style.display = "block";
+    if (fbEl.getBoundingClientRect().top < 0) fbEl.scrollIntoView({block: "start", behavior: "smooth"});
 
     document.getElementById("pq-submit").classList.add("hidden");
     var nextBtn = document.getElementById("pq-next");
@@ -502,11 +557,28 @@ function initPracticeQuiz(bank, catLabels){
     }).join(", ");
   }
 
-  function arraysMatch(a, b){
-    if (a.length !== b.length) return false;
-    var as = a.slice().sort(), bs = b.slice().sort();
-    for (var i = 0; i < as.length; i++) if (as[i] !== bs[i]) return false;
-    return true;
+  /* Review screen: summary or older explanation, then the rationale for every option
+     that was picked or should have been */
+  function appendReviewDetail(item, q, selection){
+    [q.summary, q.explanation].forEach(function(t){
+      if (!t) return;
+      var line = document.createElement("div");
+      line.style.marginTop = "6px";
+      line.textContent = t;
+      item.appendChild(line);
+    });
+    var graded = gradeQuestion(q, selection);
+    q.options.forEach(function(o){
+      var res = graded.states[o.id];
+      if (!o.rationale || res.state === "neutral") return;
+      var line = document.createElement("div");
+      line.className = "pq-review-rat is-" + res.state;
+      var b = document.createElement("strong");
+      b.textContent = res.prefix + " ";
+      line.appendChild(b);
+      line.appendChild(document.createTextNode(o.text + ": " + o.rationale));
+      item.appendChild(line);
+    });
   }
 
   document.getElementById("pq-next").addEventListener("click", function(){
@@ -566,10 +638,7 @@ function initPracticeQuiz(bank, catLabels){
       answerLine.style.color = "var(--text2)"; answerLine.style.marginTop = "4px";
       answerLine.textContent = "your answer: " + optText(r.question, r.userSelection) + (r.correct ? "" : " | correct: " + optText(r.question, r.question.correct));
       item.appendChild(answerLine);
-      var explLine = document.createElement("div");
-      explLine.style.marginTop = "6px";
-      explLine.textContent = r.question.explanation;
-      item.appendChild(explLine);
+      appendReviewDetail(item, r.question, r.userSelection);
       listEl.appendChild(item);
     });
   }
@@ -607,10 +676,7 @@ function initPracticeQuiz(bank, catLabels){
         answerLine.textContent = (tries === 1 ? "your answer: " : "correct: ") + optText(q, q.correct);
       }
       item.appendChild(answerLine);
-      var explLine = document.createElement("div");
-      explLine.style.marginTop = "6px";
-      explLine.textContent = q.explanation;
-      item.appendChild(explLine);
+      appendReviewDetail(item, q, res.userSelection);
       listEl.appendChild(item);
     });
   }
@@ -674,7 +740,7 @@ function initPracticeQuiz(bank, catLabels){
     hide("pq-end-screen"); show("end-missed"); show("pq-setup-screen");
   });
 
-  /* Keyboard: A-H or 1-8 pick a choice, Enter checks / goes to the next question */
+  /* Keyboard: letters or 1-9 pick (or, for drag and drop, move) an option; Enter checks / goes next */
   document.addEventListener("keydown", function(e){
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (document.getElementById("pq-quiz-screen").classList.contains("hidden")) return;
@@ -691,23 +757,18 @@ function initPracticeQuiz(bank, catLabels){
       return;
     }
     if (answered) return;
-    var k = e.key.length === 1 ? e.key.toUpperCase() : "";
-    var idx = LETTERS.indexOf(k);
-    if (idx === -1 && k >= "1" && k <= "8") idx = Number(k) - 1;
     var q = currentQuestion();
-    if (q && q.type === "dragdrop"){
-      if (idx !== -1 && idx < currentDisplayOptions.length){
-        e.preventDefault();
-        var item = document.querySelector('#pq-options .pq-dd-item[data-opt="' + currentDisplayOptions[idx].id + '"]');
-        if (item) ddMove(item, ddOtherBox(item));
-      } else if (e.key === "Escape") ddUnpick();
-      return;
-    }
-    var rows = document.querySelectorAll("#pq-options .pq-option");
-    if (idx !== -1 && idx < rows.length){
-      e.preventDefault();
-      rows[idx].click();
-    }
+    if (!q) return;
+    if (e.key === "Escape"){ ddUnpick(); return; }
+    var k = e.key.length === 1 ? e.key.toUpperCase() : "";
+    var idx = k ? LETTERS.indexOf(k) : -1;
+    if (idx === -1 && k >= "1" && k <= "9") idx = Number(k) - 1;
+    if (idx === -1 || idx >= currentDisplayOptions.length) return;
+    e.preventDefault();
+    var el = optsEl.querySelector('.pq-option[data-opt="' + currentDisplayOptions[idx].id + '"]');
+    if (!el) return;
+    if (q.type === "dragdrop") ddMove(el, ddOtherBox(el));
+    else el.click();
   });
 
   document.getElementById("end-missed").addEventListener("click", function(){
