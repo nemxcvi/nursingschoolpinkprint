@@ -196,7 +196,7 @@ function initPracticeQuiz(bank, catLabels){
 
   /* After checking: color the card, swap the letter for a check or x, and add
      "Correct." / "Incorrect." / "Missed." plus the option's rationale under its text */
-  function showOptionResult(el, opt, res, withTags){
+  function showOptionResult(el, opt, res){
     var letter = el.querySelector(".pq-letter");
     el.classList.remove("is-selected");
     el.classList.add("is-graded");
@@ -204,12 +204,6 @@ function initPracticeQuiz(bank, catLabels){
     else if (res.state === "wrong"){ el.classList.add("is-wrong"); letter.textContent = "✕"; }
     else if (res.state === "missed"){ el.classList.add("is-missed"); }
     var body = el.querySelector(".pq-opt-body");
-    if (withTags && (res.chosen || opt.correct)){
-      var tag = document.createElement("span");
-      tag.className = "pq-opt-tag";
-      tag.textContent = res.chosen ? "Your answer" : "Correct answer";
-      body.insertBefore(tag, body.firstChild);
-    }
     if (opt.rationale){
       var rat = document.createElement("span");
       rat.className = "pq-opt-rat";
@@ -523,7 +517,7 @@ function initPracticeQuiz(bank, catLabels){
       var id = el.getAttribute("data-opt");
       var opt = q.options.filter(function(o){ return o.id === id; })[0];
       el.disabled = true;
-      showOptionResult(el, opt, graded.states[id], q.type !== "dragdrop");
+      showOptionResult(el, opt, graded.states[id]);
     });
     if (q.type === "dragdrop") ddBoxes().forEach(function(b){ b.classList.add("is-done"); });
 

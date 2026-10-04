@@ -347,10 +347,6 @@ h2{font-size:20px;}
 .pq-option.is-missed .pq-letter{border-color:var(--missed-border);color:var(--missed-text);}
 .pq-opt-body{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0;}
 .pq-option.is-graded .pq-letter{margin-top:1px;}
-.pq-opt-tag{align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border:1.5px solid currentColor;color:var(--text2);}
-.pq-option.is-correct .pq-opt-tag{color:var(--success-text);}
-.pq-option.is-wrong .pq-opt-tag{color:var(--danger-text);}
-.pq-option.is-missed .pq-opt-tag{color:var(--missed-text);}
 .pq-opt-rat{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.5;color:var(--text);}
 .pq-opt-rat strong{font-weight:600;}
 .pq-option.is-correct .pq-opt-rat strong{color:var(--success-text);}
