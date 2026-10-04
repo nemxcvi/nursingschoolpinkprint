@@ -350,6 +350,35 @@ function initPracticeQuiz(bank, catLabels){
     });
   }
 
+  /* Both boxes keep one fixed size while options move: the height of the options box
+     with every option still in it. Re-measured when the screen width changes. */
+  function ddLockSize(){
+    var boxes = ddBoxes();
+    if (boxes.length !== 2) return;
+    var pool = boxes[0];
+    boxes.forEach(function(b){ b.style.minHeight = ""; });
+    var moved = Array.prototype.slice.call(boxes[1].querySelectorAll(".pq-dd-item"));
+    var list = ddList(pool);
+    moved.forEach(function(el){ list.appendChild(el); });
+    pool.classList.remove("is-empty");
+    var h = pool.getBoundingClientRect().height;
+    moved.forEach(function(el){ ddList(boxes[1]).appendChild(el); });
+    ddResort(list); ddResort(ddList(boxes[1]));
+    ddSync();
+    boxes.forEach(function(b){ b.style.minHeight = Math.ceil(h) + "px"; });
+  }
+  function ddResort(list){
+    Array.prototype.slice.call(list.children)
+      .sort(function(a, b){ return Number(a.getAttribute("data-order")) - Number(b.getAttribute("data-order")); })
+      .forEach(function(el){ list.appendChild(el); });
+  }
+  var ddLastWidth = window.innerWidth;
+  window.addEventListener("resize", function(){
+    if (window.innerWidth === ddLastWidth || answered) return;
+    ddLastWidth = window.innerWidth;
+    if (optsEl.querySelector(".pq-dd")) ddLockSize();
+  });
+
   function ddBoxAt(x, y){
     var el = document.elementFromPoint(x, y);
     return el ? el.closest("#pq-options .pq-dd-box") : null;
@@ -472,6 +501,7 @@ function initPracticeQuiz(bank, catLabels){
       poolList.appendChild(item);
     });
     ddSync();
+    ddLockSize();
 
     /* Checking with an empty answer box shows the inline message instead of grading */
     errEl.textContent = "Move at least one option first";
