@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=45">
+<link rel="stylesheet" href="../assets/style.css?v=46">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -92,7 +92,7 @@
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script src="../assets/practice-quiz.js?v=4"></script>
+<script src="../assets/practice-quiz.js?v=5"></script>
 <script>
 var catLabels = {
   domains: "Domains of learning",
@@ -222,7 +222,9 @@ var bank = [
  correct:["a"], explanation:"A client actively requesting information and engaging with the material demonstrates readiness to learn, in contrast to statements reflecting avoidance or disengagement."},
 {id:40, cat:"strategies", type:"mc", prompt:"A nurse is deciding between group and individual instruction for a client recovering from a highly stigmatized diagnosis who expresses discomfort discussing it in front of others. Which strategy should the nurse choose?",
  options:[{id:"a",text:"Individual instruction"},{id:"b",text:"A large support group"},{id:"c",text:"A public health class"},{id:"d",text:"A group session with unfamiliar peers"}],
- correct:["a"], explanation:"When a client expresses discomfort or an emotional barrier to group settings, individual instruction is the more appropriate strategy."}
+ correct:["a"], explanation:"When a client expresses discomfort or an emotional barrier to group settings, individual instruction is the more appropriate strategy."},
+{"id": 41, "cat": "domains", "type": "dragdrop", "stem": "A nurse is reinforcing teaching for a client who has a new diagnosis of type 2 diabetes mellitus. Which actions address the cognitive domain? Move the correct actions to the answer box.", "leftLabel": "Nursing actions", "rightLabel": "Cognitive domain actions", "options": [{"text": "Give the client a pamphlet on carbohydrate counting", "correct": true}, {"text": "Ask the client questions about which foods raise blood glucose", "correct": true}, {"text": "Lead a discussion about the signs of hypoglycemia", "correct": true}, {"text": "Have the client return-demonstrate a fingerstick glucose check", "correct": false}, {"text": "Demonstrate how to draw up insulin in a syringe", "correct": false}, {"text": "Role-play how the client will tell friends about the diagnosis", "correct": false}], "rationale": "The cognitive domain is thinking: lecture, question-and-answer, discussion, and written information. Demonstration and return demonstration build skills (psychomotor). Role play works on feelings, values, and beliefs (affective)."},
+{"id": 42, "cat": "barriers", "type": "dragdrop", "stem": "A nurse is preparing to reinforce discharge teaching for a client who has hearing loss. Which actions should the nurse take? Move the correct actions to the answer box.", "leftLabel": "Nursing actions", "rightLabel": "Appropriate actions", "options": [{"text": "Face the client while speaking", "correct": true}, {"text": "Turn off the television in the room", "correct": true}, {"text": "Keep hands away from the face while talking", "correct": true}, {"text": "Raise the voice to a shout", "correct": false}, {"text": "Talk faster to keep the session short", "correct": false}, {"text": "Teach while the client is eating lunch", "correct": false}], "rationale": "For hearing loss, face the client, speak clearly, cut background noise, and keep your hands away from your face. Shouting and speeding up make speech harder to follow, and mealtimes are a distraction, so don't teach then."}
 ];
 initPracticeQuiz(bank, catLabels);
 </script>

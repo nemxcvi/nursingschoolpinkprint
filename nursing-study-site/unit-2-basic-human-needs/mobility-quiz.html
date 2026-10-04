@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=45">
+<link rel="stylesheet" href="../assets/style.css?v=46">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -92,7 +92,7 @@
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script src="../assets/practice-quiz.js?v=4"></script>
+<script src="../assets/practice-quiz.js?v=5"></script>
 <script>
 var catLabels = {
   musculo: "Musculoskeletal & neuro",
@@ -222,7 +222,9 @@ var bank = [
  correct:["a"], explanation:"Ankle pumps (pointing toes toward and away from the head) contract the calf muscles, which helps promote venous return — they're recommended hourly while awake, not just once daily, and don't replace prescribed compression devices."},
 {id:40, cat:"heatcold", type:"mc", prompt:"A nurse is teaching a client who had a suspected DVT identified in one leg. Which statement by the client indicates understanding of the teaching?",
  options:[{id:"a",text:"I should avoid massaging or rubbing the affected area."},{id:"b",text:"I should massage the area to help break up the clot."},{id:"c",text:"I should keep the leg lower than my heart."},{id:"d",text:"I should apply firm pressure to the area throughout the day."}],
- correct:["a"], explanation:"Massaging or applying pressure to a suspected clot can dislodge it, risking a pulmonary embolism; the leg should instead be elevated and the provider notified."}
+ correct:["a"], explanation:"Massaging or applying pressure to a suspected clot can dislodge it, risking a pulmonary embolism; the leg should instead be elevated and the provider notified."},
+{"id": 41, "cat": "effects", "type": "dragdrop", "stem": "A nurse is caring for a client who is on prolonged bed rest. Which interventions help prevent deep vein thrombosis (DVT)? Move the correct interventions to the answer box.", "leftLabel": "Interventions", "rightLabel": "DVT prevention", "options": [{"text": "Apply sequential compression devices (SCDs)", "correct": true}, {"text": "Teach ankle flexing and foot circles", "correct": true}, {"text": "Encourage oral fluids", "correct": true}, {"text": "Apply antiembolism stockings as prescribed", "correct": true}, {"text": "Massage the client's calves", "correct": false}, {"text": "Encourage use of an incentive spirometer", "correct": false}, {"text": "Increase fiber in the diet", "correct": false}], "rationale": "DVT prevention keeps blood moving out of the legs: antiembolism stockings, SCDs, lower-leg exercises, fluids, frequent ambulation, and anticoagulants as prescribed. Massaging the calves could dislodge a clot. The incentive spirometer prevents atelectasis, and fiber prevents constipation."},
+{"id": 42, "cat": "assess", "type": "dragdrop", "stem": "A nurse is reinforcing teaching with a client who has a new standard walker and a weak left leg. Which instructions should the nurse include? Move the correct instructions to the answer box.", "leftLabel": "Instructions", "rightLabel": "Walker teaching", "options": [{"text": "Move the walker first, then step with the left leg", "correct": true}, {"text": "The top of the walker should line up with your wrist", "correct": true}, {"text": "Your elbows should bend about 15 degrees when you hold the grips", "correct": true}, {"text": "Wear nonskid footwear", "correct": true}, {"text": "Step with the right leg first after moving the walker", "correct": false}, {"text": "Use the walker to go up and down stairs", "correct": false}, {"text": "Your elbows should bend 20 to 30 degrees when you hold the grips", "correct": false}], "rationale": "Move the walker, step with the weaker leg, then the stronger. The top sits at the wrist with the elbows bent about 15° (20–30° is for canes and crutches). Walkers are never used on stairs, and nonskid footwear is part of safe ambulation."}
 ];
 initPracticeQuiz(bank, catLabels);
 </script>

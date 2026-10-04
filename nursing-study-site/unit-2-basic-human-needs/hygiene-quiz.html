@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=45">
+<link rel="stylesheet" href="../assets/style.css?v=46">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -92,7 +92,7 @@
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script src="../assets/practice-quiz.js?v=4"></script>
+<script src="../assets/practice-quiz.js?v=5"></script>
 <script>
 var catLabels = {
   integument: "Integumentary & infection prevention",
@@ -222,7 +222,9 @@ var bank = [
  correct:["a"], explanation:"The client should first explore their facial contours to identify areas needing shaving, then practice with the razor turned off before shaving, to build safety and confidence."},
 {id:40, cat:"special", type:"mc", prompt:"A nurse is teaching a caregiver about hygiene care for a client who has had an arm amputation. Which statement by the caregiver indicates understanding?",
  options:[{id:"a",text:"I'll place a bath seat in the shower and add a grab bar for support."},{id:"b",text:"I'll avoid using any adaptive devices to encourage full independence right away."},{id:"c",text:"I'll discourage the use of a battery-powered toothbrush."},{id:"d",text:"I'll remove all anti-slip mats from the bathroom floor."}],
- correct:["a"], explanation:"A bath seat and grab bars support safe transfers and bathing for a client adjusting to limb loss; adaptive devices like battery-powered toothbrushes and anti-slip mats also help maintain safety and independence."}
+ correct:["a"], explanation:"A bath seat and grab bars support safe transfers and bathing for a client adjusting to limb loss; adaptive devices like battery-powered toothbrushes and anti-slip mats also help maintain safety and independence."},
+{"id": 41, "cat": "perineal", "type": "dragdrop", "stem": "A nurse is preparing to provide daily care for a client who has an indwelling urinary catheter. Which supplies should the nurse gather? Move the correct supplies to the answer box.", "leftLabel": "Supplies", "rightLabel": "Supplies for catheter care", "options": [{"text": "Washcloths", "correct": true}, {"text": "Skin cleanser", "correct": true}, {"text": "Skin protectant cream", "correct": true}, {"text": "Waterproof pad", "correct": true}, {"text": "Cotton swabs", "correct": false}, {"text": "Hydrogen peroxide", "correct": false}, {"text": "Povidone-iodine", "correct": false}, {"text": "Sterile gloves", "correct": false}], "rationale": "Catheter care uses washcloths, skin cleanser, skin protectant cream, a waterproof pad, and clean gloves. Cotton swabs, peroxide, gauze, talc, sterile gloves, and povidone-iodine aren't used."},
+{"id": 42, "cat": "integument", "type": "dragdrop", "stem": "A nurse is reviewing hand hygiene. In which situations should the nurse use soap and water instead of alcohol-based hand sanitizer? Move the correct situations to the answer box.", "leftLabel": "Situations", "rightLabel": "Use soap and water", "options": [{"text": "The nurse's hands are visibly soiled", "correct": true}, {"text": "After caring for a client who has C. difficile", "correct": true}, {"text": "After caring for a client who has infectious diarrhea", "correct": true}, {"text": "Before touching a client", "correct": false}, {"text": "Right after removing clean gloves", "correct": false}, {"text": "Before performing sterile technique", "correct": false}], "rationale": "Soap for the 3 S's: soiled (visibly dirty hands), stool (infectious diarrhea), and spores (C. difficile). Sanitizer is the default before touching a client, before sterile technique, and right after removing gloves."}
 ];
 initPracticeQuiz(bank, catLabels);
 </script>

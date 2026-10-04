@@ -5,6 +5,21 @@ function initPracticeQuiz(bank, catLabels){
   var queue = [], currentRound = [], currentRoundIndex = 0, roundsTaken = 0;
   var attempts = {}, latestResult = {}, correctSoFar = 0, missedSoFar = 0, categoryTotals = {};
   var answered = false, userSelection = [], currentDisplayOptions = [];
+  var LETTERS = "ABCDEFGH";
+
+  /* Drag-drop questions are written with stem/rationale and options flagged correct;
+     give them the same prompt/explanation/ids/correct shape as the other types */
+  bank.forEach(function(q){
+    if (q.type !== "dragdrop") return;
+    if (q.prompt == null) q.prompt = q.stem;
+    if (q.explanation == null) q.explanation = q.rationale || "";
+    q.correct = [];
+    q.options = q.options.map(function(o, i){
+      var id = o.id || LETTERS.charAt(i).toLowerCase();
+      if (o.correct) q.correct.push(id);
+      return {id: id, text: o.text, correct: !!o.correct};
+    });
+  });
 
   function shuffle(arr){
     var a = arr.slice();
@@ -113,8 +128,7 @@ function initPracticeQuiz(bank, catLabels){
   }
 
   function activeQuestionList(){ return mode === "single" ? singleQuestions : currentRound; }
-
-  var LETTERS = "ABCDEFGH";
+  function currentQuestion(){ return activeQuestionList()[currentRoundIndex]; }
 
   /* Highlight picked rows and only allow Check answer once something is picked */
   function syncSelection(){
@@ -141,6 +155,7 @@ function initPracticeQuiz(bank, catLabels){
   function renderCurrentQuestion(){
     answered = false; userSelection = [];
     document.getElementById("pq-error").style.display = "none";
+    document.getElementById("pq-error").textContent = "select at least one answer";
     var fbReset = document.getElementById("pq-feedback");
     fbReset.style.display = "none";
     fbReset.className = "pq-feedback";
@@ -162,8 +177,10 @@ function initPracticeQuiz(bank, catLabels){
     }
     document.getElementById("pq-progress").textContent = totalLabel;
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
-    document.getElementById("pq-type-label").textContent = q.type === "sata" ? "select all that apply" : "select one";
+    document.getElementById("pq-type-label").textContent = q.type === "sata" ? "select all that apply" : q.type === "dragdrop" ? "drag and drop \u00b7 or tap an option, then a box" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
+
+    if (q.type === "dragdrop"){ renderDragDrop(q); return; }
 
     /* Each choice is a real button with a square letter box; pressed state carries the selection */
     var optsEl = document.getElementById("pq-options");
@@ -192,15 +209,239 @@ function initPracticeQuiz(bank, catLabels){
     document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; pick</span><span>Enter &middot; check / next</span>";
   }
 
+  /* ---------- Drag and drop ----------
+     Two boxes; every option starts on the left. Options move by pointer drag
+     (mouse, pen and touch all use pointer events), by tapping an option and then
+     a box, or with the A-H keys. Only the answer box counts when checked. */
+  var ddPicked = null, ddDrag = null, ddDragEnd = {item: null, at: 0};
+
+  function ddBoxes(){ return document.querySelectorAll("#pq-options .pq-dd-box"); }
+  function ddList(box){ return box.querySelector(".pq-dd-list"); }
+  function ddBoxOf(item){ return item.closest(".pq-dd-box"); }
+  function ddOtherBox(item){
+    var b = ddBoxes();
+    return ddBoxOf(item) === b[0] ? b[1] : b[0];
+  }
+  function ddAnswerIds(){
+    var box = document.querySelector('#pq-options .pq-dd-box[data-box="answer"]');
+    if (!box) return [];
+    return Array.prototype.map.call(box.querySelectorAll(".pq-dd-item"), function(el){ return el.getAttribute("data-opt"); });
+  }
+
+  /* Keep each box in the original shuffled order so items don't jump around */
+  function ddMove(item, box){
+    if (answered || !box) return;
+    ddUnpick();
+    if (ddBoxOf(item) !== box){
+      var list = ddList(box);
+      var order = Number(item.getAttribute("data-order"));
+      var before = null;
+      Array.prototype.some.call(list.children, function(el){
+        if (Number(el.getAttribute("data-order")) > order){ before = el; return true; }
+        return false;
+      });
+      list.insertBefore(item, before);
+      document.getElementById("pq-error").style.display = "none";
+    }
+    ddSync();
+  }
+
+  function ddPick(item){
+    if (answered) return;
+    if (ddPicked === item){ ddUnpick(); return; }
+    ddUnpick();
+    ddPicked = item;
+    item.classList.add("is-selected");
+    item.setAttribute("aria-pressed", "true");
+    document.querySelectorAll("#pq-options .pq-dd-box").forEach(function(b){ b.classList.toggle("is-target", b !== ddBoxOf(item)); });
+  }
+
+  function ddUnpick(){
+    if (ddPicked){
+      ddPicked.classList.remove("is-selected");
+      ddPicked.setAttribute("aria-pressed", "false");
+    }
+    ddPicked = null;
+    document.querySelectorAll("#pq-options .pq-dd-box").forEach(function(b){ b.classList.remove("is-target"); });
+  }
+
+  function ddSync(){
+    ddBoxes().forEach(function(box){
+      var n = box.querySelectorAll(".pq-dd-item").length;
+      box.classList.toggle("is-empty", n === 0);
+      box.querySelector(".pq-dd-count").textContent = n;
+    });
+  }
+
+  function ddBoxAt(x, y){
+    var el = document.elementFromPoint(x, y);
+    return el ? el.closest("#pq-options .pq-dd-box") : null;
+  }
+
+  function ddAutoScroll(){
+    if (!ddDrag || !ddDrag.active) return;
+    var edge = 70, y = ddDrag.y, h = window.innerHeight, dy = 0;
+    if (y < edge) dy = -Math.ceil((edge - y) / 5);
+    else if (y > h - edge) dy = Math.ceil((y - (h - edge)) / 5);
+    if (dy) window.scrollBy(0, dy);
+    ddDrag.raf = requestAnimationFrame(ddAutoScroll);
+  }
+
+  function ddCancelDrag(){
+    if (!ddDrag) return;
+    if (ddDrag.raf) cancelAnimationFrame(ddDrag.raf);
+    if (ddDrag.ghost) ddDrag.ghost.remove();
+    ddDrag.item.classList.remove("is-dragging");
+    document.querySelectorAll("#pq-options .pq-dd-box").forEach(function(b){ b.classList.remove("is-over"); });
+    ddDrag = null;
+  }
+
+  function ddPointerDown(e){
+    if (answered || !e.isPrimary || (e.pointerType === "mouse" && e.button !== 0)) return;
+    var item = e.currentTarget;
+    ddCancelDrag();
+    ddDrag = {item: item, id: e.pointerId, sx: e.clientX, sy: e.clientY, x: e.clientX, y: e.clientY, active: false};
+    try { item.setPointerCapture(e.pointerId); } catch (err) {}
+  }
+
+  function ddPointerMove(e){
+    if (!ddDrag || e.pointerId !== ddDrag.id) return;
+    ddDrag.x = e.clientX; ddDrag.y = e.clientY;
+    if (!ddDrag.active){
+      if (Math.abs(e.clientX - ddDrag.sx) + Math.abs(e.clientY - ddDrag.sy) < 8) return;
+      var item = ddDrag.item, r = item.getBoundingClientRect();
+      ddUnpick();
+      ddDrag.active = true;
+      ddDrag.ox = ddDrag.sx - r.left; ddDrag.oy = ddDrag.sy - r.top;
+      var ghost = item.cloneNode(true);
+      ghost.className = "pq-option pq-dd-item pq-dd-ghost";
+      ghost.removeAttribute("id");
+      ghost.style.width = r.width + "px";
+      document.body.appendChild(ghost);
+      ddDrag.ghost = ghost;
+      item.classList.add("is-dragging");
+      ddDrag.raf = requestAnimationFrame(ddAutoScroll);
+    }
+    e.preventDefault();
+    ddDrag.ghost.style.transform = "translate(" + (e.clientX - ddDrag.ox) + "px," + (e.clientY - ddDrag.oy) + "px)";
+    var over = ddBoxAt(e.clientX, e.clientY);
+    ddBoxes().forEach(function(b){ b.classList.toggle("is-over", b === over && b !== ddBoxOf(ddDrag.item)); });
+  }
+
+  function ddPointerUp(e){
+    if (!ddDrag || e.pointerId !== ddDrag.id) return;
+    var drag = ddDrag;
+    if (drag.active){
+      var over = ddBoxAt(e.clientX, e.clientY);
+      ddCancelDrag();
+      ddDragEnd = {item: drag.item, at: Date.now()};
+      if (over && e.type === "pointerup") ddMove(drag.item, over);
+    } else {
+      ddDrag = null;
+    }
+  }
+
+  function renderDragDrop(q){
+    ddPicked = null; ddCancelDrag();
+    var optsEl = document.getElementById("pq-options");
+    optsEl.innerHTML = "";
+    optsEl.removeAttribute("role");
+    optsEl.removeAttribute("aria-label");
+    var wrap = document.createElement("div");
+    wrap.className = "pq-dd";
+
+    [["pool", q.leftLabel || "Options"], ["answer", q.rightLabel || "Answer"]].forEach(function(b){
+      var box = document.createElement("div");
+      box.className = "pq-dd-box";
+      box.setAttribute("data-box", b[0]);
+      box.setAttribute("role", "group");
+      box.setAttribute("aria-label", b[1]);
+      var head = document.createElement("div");
+      head.className = "pq-dd-head";
+      var title = document.createElement("span");
+      title.textContent = b[1];
+      var count = document.createElement("span");
+      count.className = "pq-dd-count";
+      head.appendChild(title); head.appendChild(count);
+      var list = document.createElement("div");
+      list.className = "pq-dd-list";
+      var empty = document.createElement("p");
+      empty.className = "pq-dd-empty";
+      empty.textContent = b[0] === "answer" ? "Drag or tap answers here" : "Empty";
+      box.appendChild(head); box.appendChild(list); box.appendChild(empty);
+      /* Tap-then-tap: with an option picked, tapping anywhere in the other box moves it */
+      box.addEventListener("click", function(e){
+        if (answered || !ddPicked || e.target.closest(".pq-dd-item")) return;
+        ddMove(ddPicked, box);
+      });
+      wrap.appendChild(box);
+    });
+    optsEl.appendChild(wrap);
+
+    var pool = ddList(wrap.querySelector('[data-box="pool"]'));
+    currentDisplayOptions.forEach(function(opt, i){
+      var item = document.createElement("button");
+      item.type = "button";
+      item.className = "pq-option pq-dd-item";
+      item.setAttribute("data-opt", opt.id);
+      item.setAttribute("data-order", i);
+      item.setAttribute("aria-pressed", "false");
+      var letter = document.createElement("span");
+      letter.className = "pq-letter";
+      letter.setAttribute("aria-hidden", "true");
+      letter.textContent = LETTERS.charAt(i);
+      var span = document.createElement("span");
+      span.className = "pq-opt-text";
+      span.textContent = opt.text;
+      item.appendChild(letter); item.appendChild(span);
+      item.addEventListener("pointerdown", ddPointerDown);
+      item.addEventListener("pointermove", ddPointerMove);
+      item.addEventListener("pointerup", ddPointerUp);
+      item.addEventListener("pointercancel", ddPointerUp);
+      item.addEventListener("click", function(){
+        /* A finished drag can fire a click on the item; don't treat it as a tap */
+        if (ddDragEnd.item === item && Date.now() - ddDragEnd.at < 400) return;
+        ddPick(item);
+      });
+      pool.appendChild(item);
+    });
+    ddSync();
+
+    /* Checking with an empty answer box shows the inline message instead */
+    document.getElementById("pq-error").textContent = "move at least one answer into the answer box";
+    document.getElementById("pq-submit").disabled = false;
+    var last = LETTERS.charAt(currentDisplayOptions.length - 1);
+    document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; move between boxes</span><span>Enter &middot; check / next</span>";
+  }
+
+  /* Green = correct option moved over, red = wrong option moved over,
+     dashed red outline = correct option left behind */
+  function markDragDrop(q){
+    ddUnpick();
+    document.querySelectorAll("#pq-options .pq-dd-item").forEach(function(item){
+      var optId = item.getAttribute("data-opt");
+      var letter = item.querySelector(".pq-letter");
+      var inAnswer = ddBoxOf(item).getAttribute("data-box") === "answer";
+      var isRight = q.correct.indexOf(optId) !== -1;
+      item.disabled = true;
+      if (inAnswer && isRight){ item.classList.add("is-correct"); letter.textContent = "✓"; }
+      else if (inAnswer){ item.classList.add("is-wrong"); letter.textContent = "✕"; }
+      else if (isRight){ item.classList.add("is-missed"); }
+    });
+    document.querySelectorAll("#pq-options .pq-dd-box").forEach(function(b){ b.classList.add("is-done"); });
+  }
+
   document.getElementById("pq-submit").addEventListener("click", function(){
     if (answered) return;
+    var list = activeQuestionList();
+    var q = list[currentRoundIndex];
+    if (q.type === "dragdrop") userSelection = ddAnswerIds();
     if (userSelection.length === 0){
       document.getElementById("pq-error").style.display = "block";
       return;
     }
     answered = true;
-    var list = activeQuestionList();
-    var q = list[currentRoundIndex];
+    ddCancelDrag();
     var isCorrect = arraysMatch(userSelection, q.correct);
 
     if (mode === "single"){
@@ -220,8 +461,10 @@ function initPracticeQuiz(bank, catLabels){
       }
     }
 
+    if (q.type === "dragdrop") markDragDrop(q);
+
     /* Correct choices turn green with a check; wrong picks turn red with an x; the rest stay neutral */
-    document.querySelectorAll("#pq-options .pq-option").forEach(function(row){
+    if (q.type !== "dragdrop") document.querySelectorAll("#pq-options .pq-option").forEach(function(row){
       var optId = row.getAttribute("data-opt");
       var letter = row.querySelector(".pq-letter");
       row.classList.remove("is-selected");
@@ -451,6 +694,15 @@ function initPracticeQuiz(bank, catLabels){
     var k = e.key.length === 1 ? e.key.toUpperCase() : "";
     var idx = LETTERS.indexOf(k);
     if (idx === -1 && k >= "1" && k <= "8") idx = Number(k) - 1;
+    var q = currentQuestion();
+    if (q && q.type === "dragdrop"){
+      if (idx !== -1 && idx < currentDisplayOptions.length){
+        e.preventDefault();
+        var item = document.querySelector('#pq-options .pq-dd-item[data-opt="' + currentDisplayOptions[idx].id + '"]');
+        if (item) ddMove(item, ddOtherBox(item));
+      } else if (e.key === "Escape") ddUnpick();
+      return;
+    }
     var rows = document.querySelectorAll("#pq-options .pq-option");
     if (idx !== -1 && idx < rows.length){
       e.preventDefault();

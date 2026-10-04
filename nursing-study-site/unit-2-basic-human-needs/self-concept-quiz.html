@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=45">
+<link rel="stylesheet" href="../assets/style.css?v=46">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -92,7 +92,7 @@
 </div>
 
 <script src="../assets/theme.js?v=6"></script>
-<script src="../assets/practice-quiz.js?v=4"></script>
+<script src="../assets/practice-quiz.js?v=5"></script>
 <script>
 var catLabels = {
   rogerstheory: "Rogers' Theory",
@@ -222,7 +222,9 @@ var bank = [
  correct:["b"], explanation:"Self-concept is learned and dynamic, and people refine it based on new information and feedback. It influences behavior, choices, and interactions with others, not just internal thoughts."},
 {id:40, cat:"selfconcept", type:"mc", prompt:"A nurse is caring for a 14-year-old male client who has not yet gone through a growth spurt and is shorter than his peers. Which of the following should the nurse recognize?",
  options:[{id:"a",text:"Boys who mature later report greater body dissatisfaction than early-maturing peers."},{id:"b",text:"Adolescent males rarely have body image concerns."},{id:"c",text:"Body image concerns in adolescence are limited to females."},{id:"d",text:"Late maturation improves body image because it delays societal pressure."}],
- correct:["a"], explanation:"Boys who mature later and have not achieved socially accepted body ideals report greater body dissatisfaction than peers who mature earlier. Adolescent males are not immune to body image concerns."}
+ correct:["a"], explanation:"Boys who mature later and have not achieved socially accepted body ideals report greater body dissatisfaction than peers who mature earlier. Adolescent males are not immune to body image concerns."},
+{"id": 41, "cat": "rolestressors", "type": "dragdrop", "stem": "A nurse is assessing clients for role stressors. Which statements describe a role stressor? Move the correct statements to the answer box.", "leftLabel": "Client statements", "rightLabel": "Role stressors", "options": [{"text": "\"My boss wants me to work Saturday, but that's my son's championship game.\"", "correct": true}, {"text": "\"Between work, school, and caring for my mom, I have too many roles.\"", "correct": true}, {"text": "\"No one has told me what I'm supposed to be doing in my new job.\"", "correct": true}, {"text": "\"I can't keep up with everything my job demands.\"", "correct": true}, {"text": "\"I finally understand what is expected of me at work.\"", "correct": false}, {"text": "\"Becoming a grandparent has made my life richer.\"", "correct": false}, {"text": "\"I really enjoy being a parent.\"", "correct": false}], "rationale": "Role stressors are strain (can't meet one role's demands), overload (too many roles), ambiguity (no idea what's expected), and conflict (two roles at the same time). Role clarity, enhancement, and satisfaction aren't stressors."},
+{"id": 42, "cat": "nursingprocess", "type": "dragdrop", "stem": "A nurse is evaluating a client who had a mastectomy 1 week ago. Which findings indicate the client is adapting to the change in body image? Move the correct findings to the answer box.", "leftLabel": "Client findings", "rightLabel": "Signs of adapting", "options": [{"text": "Looks at the incision during a dressing change", "correct": true}, {"text": "States, \"I'm learning to accept how my body looks now.\"", "correct": true}, {"text": "Asks about a support group for breast cancer survivors", "correct": true}, {"text": "Refuses visitors", "correct": false}, {"text": "Keeps their eyes closed during dressing changes", "correct": false}, {"text": "Apologizes repeatedly to the nurse", "correct": false}], "rationale": "Care is working when the client verbalizes self-acceptance, accepts the body change, and uses healthy coping like seeking support. Withdrawing, avoiding the body change, and over-apologizing are red flags that the client isn't there yet."}
 ];
 initPracticeQuiz(bank, catLabels);
 </script>
