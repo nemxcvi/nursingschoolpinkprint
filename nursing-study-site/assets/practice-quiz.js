@@ -97,6 +97,35 @@ function initPracticeQuiz(bank, catLabels){
     return shuffle(result);
   }
 
+  /* Every session mixes question types: drag-and-drop and select-all-that-apply each
+     get about 15% of the questions (at least one when the bank has any), and multiple
+     choice fills the rest. If a bank is short on a type, its spare slots go to the
+     others. Within each type, questions are still spread across categories. */
+  var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15};
+  function mixedSample(source, count){
+    count = Math.min(count, source.length);
+    var byType = {};
+    source.forEach(function(q){ (byType[q.type] = byType[q.type] || []).push(q); });
+    var quota = {}, used = 0;
+    Object.keys(TYPE_SHARE).forEach(function(t){
+      if (!byType[t]) return;
+      quota[t] = Math.min(byType[t].length, Math.max(1, Math.ceil(count * TYPE_SHARE[t])));
+      used += quota[t];
+    });
+    var rest = Object.keys(byType).filter(function(t){ return !(t in TYPE_SHARE); });
+    var restPool = [];
+    rest.forEach(function(t){ restPool = restPool.concat(byType[t]); });
+    var restCount = Math.min(restPool.length, Math.max(0, count - used));
+    var picked = stratifiedSample(restPool, restCount);
+    Object.keys(quota).forEach(function(t){ picked = picked.concat(stratifiedSample(byType[t], quota[t])); });
+    /* Top up from whatever is left if any type ran short */
+    if (picked.length < count){
+      var left = source.filter(function(q){ return picked.indexOf(q) === -1; });
+      picked = picked.concat(stratifiedSample(left, count - picked.length));
+    }
+    return shuffle(picked.slice(0, count));
+  }
+
   function show(id){ document.getElementById(id).classList.remove("hidden"); }
   function hide(id){ document.getElementById(id).classList.add("hidden"); }
 
@@ -133,7 +162,7 @@ function initPracticeQuiz(bank, catLabels){
     btn.addEventListener("click", function(){ chosenCount = Number(btn.getAttribute("data-count")); syncSetup(); });
   });
   document.getElementById("pq-start").addEventListener("click", function(){
-    pool = stratifiedSample(bank, chosenCount);
+    pool = mixedSample(bank, chosenCount);
     missedMap = {};
     hide("pq-setup-screen");
     if (mode === "single") startSingle(); else startRounds();
