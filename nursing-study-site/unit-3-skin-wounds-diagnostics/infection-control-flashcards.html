@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infection Control &amp; Isolation &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Infection Control &amp; Isolation &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-3-skin-wounds-diagnostics/infection-control-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Infection Control &amp; Isolation &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=48">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-03" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=5"></script>
+<script src="../assets/header.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Infection Control &amp; Isolation</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=6"></script>
+<script>
+var CATS = {
+  chainofinfection: {label:"Chain of Infection", hue:"red"},
+  transmission: {label:"Transmission", hue:"orange"},
+  bodydefenses: {label:"Body Defenses", hue:"yellow"},
+  inflammationstages: {label:"Inflammation &amp; Stages", hue:"green"},
+  diagnostictests: {label:"Diagnostic Tests", hue:"aqua"},
+  handhygieneasepsis: {label:"Hand Hygiene &amp; Asepsis", hue:"blue"},
+  precautionsppe: {label:"Precautions &amp; PPE", hue:"violet"},
+  haismdros: {label:"HAIs &amp; MDROs", hue:"magenta"}
+};
+var CARDS = [
+[1, "chainofinfection", "Chain of infection", "Infectious agent → reservoir → portal of exit → mode of transmission → portal of entry → susceptible host. Breaking any link prevents infection"],
+[2, "chainofinfection", "Infectious agent (pathogen)", "Bacterium, virus, fungus, parasite, or prion"],
+[3, "chainofinfection", "Breaking the chain: infectious agent", "Destroy the pathogen by disinfecting, sterilizing, cleaning, or giving antimicrobials"],
+[4, "chainofinfection", "Prion", "Acellular (nonliving) pathogen"],
+[5, "chainofinfection", "Cellular vs acellular pathogens", "Cellular (living): parasites, protozoa, fungi, bacteria. Acellular (nonliving): viruses, prions"],
+[6, "chainofinfection", "Pathogen examples", "Bacteria: S. aureus, E. coli, M. tuberculosis. Viruses: HIV, hepatitis, herpes, SARS-CoV-2. Fungi: Candida, Aspergillus. Prions: CJD. Parasites: protozoa, helminths, flukes, arthropods"],
+[7, "chainofinfection", "Reservoir", "Where the agent lives, grows, reproduces, and replicates. Can be animate or inanimate"],
+[8, "chainofinfection", "Asymptomatic reservoir", "A human reservoir may show no disease but can still pass the pathogen on"],
+[9, "chainofinfection", "Fomite", "An inanimate object that carries pathogens and can act as a reservoir"],
+[10, "chainofinfection", "Breaking the chain: reservoir", "Hand hygiene, preop skin prep, cleaning the environment per facility protocol"],
+[11, "chainofinfection", "Portal of exit", "Route the pathogen uses to leave the reservoir: any body orifice, the skin, or blood and body fluids"],
+[12, "chainofinfection", "Breaking the chain: portal of exit", "Contain body fluids with drains or dressings; decrease secretions"],
+[13, "chainofinfection", "Portal of entry", "Where the pathogen enters the new host: any orifice, breaks in skin or mucous membranes, invasive lines and devices"],
+[14, "chainofinfection", "Same portal of exit and entry", "Possible, depending on the organism"],
+[15, "chainofinfection", "Susceptible host", "A host the agent can take hold in. Not everyone exposed gets sick"],
+[16, "chainofinfection", "Colonized", "The agent lives in the body (temporarily or permanently) without causing problems"],
+[17, "chainofinfection", "Breaking the chain: susceptible host", "Immunizations, nutrition, supplements, hygiene, blood sugar control"],
+[18, "chainofinfection", "Factors that increase susceptibility", "Age; underlying disease (HIV/AIDS, malignancy, transplant); immunosuppressants, antirejection meds, antineoplastics, antimicrobials, corticosteroids, PPIs; surgery; radiation; indwelling devices"],
+[19, "chainofinfection", "Virulence", "How efficient an agent is at making people ill. More virulent means more potent"],
+[20, "transmission", "Modes of transmission", "Contact, droplet, airborne (the main 3), plus vehicle and vector-borne"],
+[21, "transmission", "Direct contact", "Pathogen moves straight from the infected person to another"],
+[22, "transmission", "Indirect contact", "Spread through a contaminated object or person in between"],
+[23, "transmission", "Pathogen notorious for indirect spread", "Staphylococcus aureus"],
+[24, "transmission", "Droplet transmission", "Respiratory droplets travel through the air into a host's mucosa; spreads within 3–6 ft. Spread by sneezing, coughing, singing, talking, CPR, intubation"],
+[25, "transmission", "Droplet pathogens", "Influenza, pertussis, RSV, adenovirus, rhinovirus, norovirus, coronavirus, Mycoplasma pneumoniae"],
+[26, "transmission", "Airborne transmission", "Small particles stay suspended in the air, travel long distances, and are inhaled"],
+[27, "transmission", "Airborne pathogens", "TB, measles (rubeola), varicella (chickenpox)"],
+[28, "transmission", "Airborne vs droplet particle size", "Airborne particles are smaller than 5 microns. Droplets are larger than 5 microns"],
+[29, "transmission", "Vehicle transmission", "One contaminated source spreads to many people"],
+[30, "transmission", "Vector-borne transmission", "An animal carries the micro-organism without being infected itself"],
+[31, "transmission", "Respiratory hygiene / cough etiquette", "Cover the mouth and nose, put tissues in a hands-free bin, wear a mask when coughing or out of the room, stay at least 3 ft from others, and perform hand hygiene"],
+[32, "bodydefenses", "3 types of body defenses", "Physical and chemical barriers, nonspecific immunity, specific immunity"],
+[33, "bodydefenses", "Skin", "Largest organ and primary physical defense. Reduces water loss, protects against abrasion and microbes"],
+[34, "bodydefenses", "Stratum corneum", "Skin's lipid layer. Damaged by detergents, tape, and chemicals. About half restored in 6 hr, fully in 5–6 days"],
+[35, "bodydefenses", "Protecting skin integrity", "Gentle cleansers, moisturizers, less tape, no irritants"],
+[36, "bodydefenses", "Mucous membranes", "Secrete mucus. If they dry and crack, microbes can enter. Keep moist; humidify oxygen"],
+[37, "bodydefenses", "Other barriers", "Tears, sweat, WBCs, cilia, coughing, GI acids and enzymes, normal GI flora (antibiotics destroy it), longer male urethra, vaginal pH"],
+[38, "bodydefenses", "Nonspecific immunity", "Neutrophils and macrophages working as phagocytes"],
+[39, "bodydefenses", "Phagocyte", "Eats and destroys micro-organisms"],
+[40, "bodydefenses", "Innate (nonspecific) immunity", "Responds immediately to any organism, whether or not the body has seen it before. No memory"],
+[41, "bodydefenses", "Specific immunity", "Antibodies (immunoglobulins) and lymphocytes (B and T cells). Antibodies bind the agent and activate WBCs and complement"],
+[42, "bodydefenses", "Acquired immunity", "Another name for specific immunity. Acts when nonspecific defenses fail; the body remembers a specific invader after exposure"],
+[43, "bodydefenses", "Passive immunity", "Antibodies come from an outside source. Temporary, with no memory"],
+[44, "bodydefenses", "Active immunity", "The body makes its own antibodies after exposure to an antigen. Takes time to develop, but is permanent and has memory"],
+[45, "bodydefenses", "Immunoglobulins", "IgA, IgD, IgE, IgG, IgM"],
+[46, "inflammationstages", "Inflammatory response", "The body's defense against injury, foreign substances, or infectious agents"],
+[47, "inflammationstages", "4 steps of inflammation", "Pattern receptors recognize harmful stimuli → pathway activated → markers released → inflammatory cells recruited"],
+[48, "inflammationstages", "Infectious triggers", "Viruses, bacteria, other micro-organisms (fungi)"],
+[49, "inflammationstages", "Noninfectious triggers", "Physical (burns, frostbite, trauma, foreign bodies, radiation); chemical (glucose, fatty acids, alcohol, toxins, irritants); biological (damaged cells); psychological (excitement, stress, depression, hostility)"],
+[50, "inflammationstages", "5 cardinal signs of inflammation", "Heat, redness, swelling, pain, loss of function"],
+[51, "inflammationstages", "Antihistamines", "Block histamine released by mast cells, which prevents swelling"],
+[52, "inflammationstages", "NSAIDs", "Decrease painful inflammation"],
+[53, "inflammationstages", "Acute vs chronic inflammation", "Acute is a one-time event (hit in the face by a ball). Chronic repeats (asthma, GERD) and can cause tissue destruction and cancer"],
+[54, "inflammationstages", "Inflammatory response sequence", "Bacteria invade → histamine, kinins, prostaglandins → plasma enters the site → phagocytosis → pus"],
+[55, "inflammationstages", "Stages of infection (in order)", "Incubation → prodromal → acute illness → decline → convalescence"],
+[56, "inflammationstages", "Incubation", "From exposure until the first symptom. Changes may show on labs before symptoms. Can last seconds, minutes, hours, days, or weeks depending on the agent"],
+[57, "inflammationstages", "Prodromal", "Nonspecific symptoms: fever, aches, poor appetite, malaise"],
+[58, "inflammationstages", "Acute illness", "Specific disease manifestations become obvious; the infection is severe"],
+[59, "inflammationstages", "Period of decline", "Symptoms subside; the client regains strength and function"],
+[60, "inflammationstages", "Convalescence", "Return to the previous or a new balanced state of health. There may be lasting effects"],
+[61, "inflammationstages", "Local infection", "Confined to one area. Treated with topical or oral antibiotics"],
+[62, "inflammationstages", "Systemic infection", "Starts local, then spreads through the bloodstream. Needs IV antibiotics and monitoring"],
+[63, "inflammationstages", "Systemic infection findings", "Fever, increased HR and RR, malaise, fatigue, anorexia, nausea and vomiting, enlarged lymph nodes"],
+[64, "inflammationstages", "Chills vs diaphoresis", "Chills happen while temperature is rising. Diaphoresis (sweating) happens while it's falling"],
+[65, "inflammationstages", "Infection in older adults", "May show atypical signs only: confusion, agitation, or incontinence. The infection may be advanced before it's recognized"],
+[66, "inflammationstages", "Sepsis", "A systemic inflammatory response to a serious infection, usually bacterial. Can lead to organ failure and shock. Blood cultures confirm the diagnosis"],
+[67, "inflammationstages", "Sepsis risk factors", "Very young age, very old age, weakened immune system, severe trauma"],
+[68, "inflammationstages", "Herpes zoster (shingles)", "Reactivated varicella virus that was dormant in the nerve roots. Causes a painful, one-sided vesicular rash along a dermatome, often preceded by pain, itching, or tingling"],
+[69, "inflammationstages", "Shingles nursing care", "Isolate until the vesicles crust over. Keep away from infants, pregnant people who haven't had chickenpox, and immunocompromised clients. Use cool compresses and calamine. Acyclovir works best when started early"],
+[70, "inflammationstages", "Shingles vaccine", "Two-dose recombinant zoster vaccine. Prevents shingles and postherpetic neuralgia but doesn't treat an active case"],
+[71, "inflammationstages", "Postherpetic neuralgia", "Pain lasting more than 3 months after the shingles rash resolves. Common after age 60; tricyclic antidepressants may help"],
+[72, "diagnostictests", "UA → C&amp;S", "UTI symptoms → urinalysis. If WBCs are present, culture and sensitivity identifies the organism"],
+[73, "diagnostictests", "Culture &amp; sensitivity", "The culture identifies the organism; the sensitivity shows which antibiotics work against it. Obtain before starting antibiotics"],
+[74, "diagnostictests", "Chest x-ray", "Confirms atelectasis or pneumonia but can't tell the type (viral, bacterial, fungal)"],
+[75, "diagnostictests", "Throat culture technique", "Swab only the tonsils, tonsillar pillars, or posterior pharynx. Put the swab in the medium immediately and label it"],
+[76, "diagnostictests", "Throat culture: avoid", "Don't touch the lips, teeth, tongue, cheeks, or uvula. If the epiglottis is severely inflamed, don't swab; notify the provider"],
+[77, "diagnostictests", "WBC count", "5,000–10,000/mm³. High = inflammation or infection. Low = decreased ability to fight infection"],
+[78, "diagnostictests", "Leukocytosis", "WBC count above 10,000"],
+[79, "diagnostictests", "Neutropenia", "Abnormally low WBCs; the body can't fight infection"],
+[80, "diagnostictests", "WBC differential (most to least)", "Neutrophils &gt; lymphocytes &gt; monocytes &gt; eosinophils &gt; basophils. Must total 100%"],
+[81, "diagnostictests", "Neutrophils", "55–70%. First responder to injury; eat bacteria through phagocytosis. Also called segs or polymorphonuclear leukocytes"],
+[82, "diagnostictests", "Bands / stabs", "Immature neutrophils. A \"left shift\" means ongoing infection"],
+[83, "diagnostictests", "Lymphocytes", "20–40%. Fight chronic bacterial and acute viral infections. T and B cells"],
+[84, "diagnostictests", "Monocytes", "2–8%. Phagocytes that clean up tissue damage; produce interferon"],
+[85, "diagnostictests", "Eosinophils", "1–4%. Allergic reactions and parasitic infections"],
+[86, "diagnostictests", "Basophils", "0.5–1%. Release histamine, serotonin, heparin. Also called mast cells"],
+[87, "diagnostictests", "CRP", "Nonspecific marker that rises with inflammation. &lt;1 is normal. Not standardized, so use the same lab each time"],
+[88, "diagnostictests", "ESR", "Nonspecific marker that rises with inflammation or infection. Expected range 15–20 mm/hr; above 20 indicates active inflammation. Varies by age and sex"],
+[89, "diagnostictests", "Procalcitonin (PCT)", "Nonspecific inflammation marker; not standardized across labs"],
+[90, "diagnostictests", "NLR, PLR, SII", "CBC-ratio markers of chronic inflammation, relevant to cancer and cardiovascular disease"],
+[91, "diagnostictests", "Antibody screening test", "Shows the client was exposed to a pathogen and made antibodies, but not whether they're currently infected"],
+[92, "diagnostictests", "Antigen test", "Detects a specific pathogen"],
+[93, "diagnostictests", "NAAT", "Nucleic acid amplification test. Detects a pathogen's genetic material and is highly sensitive"],
+[94, "diagnostictests", "Auto-antibody screening", "Detects antibodies against the body's own cells. Linked to autoimmune disease such as lupus and RA"],
+[95, "diagnostictests", "Immunoglobulin electrophoresis", "Measures the specific immunoglobulins present (IgG, IgA, IgM)"],
+[96, "diagnostictests", "Gallium scan", "IV radioactive gallium collects where WBCs gather, showing sites of inflammation"],
+[97, "handhygieneasepsis", "ABHR vs soap &amp; water", "ABHR is preferred unless hands are visibly soiled. Use soap and water for visible soil and for spores (C. diff)"],
+[98, "handhygieneasepsis", "Handwashing duration", "At least 20 seconds, about Happy Birthday twice"],
+[99, "handhygieneasepsis", "3 essentials of handwashing", "Soap, running water, friction"],
+[100, "handhygieneasepsis", "Hand sanitizer", "At least 60% alcohol. Cover all surfaces and rub until dry, about 20–30 seconds"],
+[101, "handhygieneasepsis", "C. diff spores", "Wear gloves, then wash with soap and water after removing them. Alcohol and antiseptics don't remove spores"],
+[102, "handhygieneasepsis", "When to perform hand hygiene", "Before and after client contact, after removing gloves, before procedures or sterile fields, before and after eating or drinking, after using the restroom"],
+[103, "handhygieneasepsis", "Nails", "Natural nails ≤0.25 in (0.6 cm), unpolished. No artificial nails. Chipped polish and gel polish harbor bacteria"],
+[104, "handhygieneasepsis", "Handwashing key points", "Hands below elbows, warm water, 3–5 mL soap, firm circular motions, wash 1 in above the wrist, rinse fingertips down, pat dry from fingertips to wrists, turn off the faucet with a dry towel"],
+[105, "handhygieneasepsis", "Subungual area", "Under the nails; harbors the most micro-organisms on the hand"],
+[106, "handhygieneasepsis", "Medical asepsis", "Clean technique; reduces the number of micro-organisms"],
+[107, "handhygieneasepsis", "Surgical asepsis", "Sterile technique; no micro-organisms present. Prevents SSIs"],
+[108, "handhygieneasepsis", "Medical vs surgical asepsis examples", "Medical: oral meds, NG tubes, hygiene care. Surgical: parenteral meds, urinary catheter insertion, sterile dressing changes"],
+[109, "handhygieneasepsis", "Latex allergy", "Check the client and team before any aseptic procedure; use latex-free supplies if anyone is allergic"],
+[110, "handhygieneasepsis", "Sterilization", "Kills all micro-organisms, including spores. Methods: thermal (autoclave), chemical, radiation"],
+[111, "handhygieneasepsis", "Disinfection", "Kills most, not all. High-level: some spores remain (endoscopes). Low-level: hospital-grade surface cleaners, not for visible blood"],
+[112, "handhygieneasepsis", "Before sterilizing or disinfecting", "Clean off visible soil first"],
+[113, "handhygieneasepsis", "Sterile field setup", "Waist-high flat surface, close to the client, 12–18 in from walls. Check package integrity and the indicator. The outer 1 in border is contaminated"],
+[114, "handhygieneasepsis", "Opening a sterile package", "Far flap → side flaps → near flap. Never reach over the field"],
+[115, "handhygieneasepsis", "Adding items to a sterile field", "Drop gently into the center from about 6 in (15 cm)"],
+[116, "handhygieneasepsis", "Opening extra sterile packages", "Open the items you'll use last first, and place them farthest from the field"],
+[117, "handhygieneasepsis", "Sterile field: contaminated zones", "Anything below the waist or above the chest"],
+[118, "handhygieneasepsis", "Sterile field: never", "Reach over it, turn your back on it, or cough or talk over it"],
+[119, "handhygieneasepsis", "Wet sterile package or drape", "Contaminated, because moisture wicks microbes through to the sterile side"],
+[120, "handhygieneasepsis", "Sterile field left waiting", "Prolonged exposure to air contaminates it"],
+[121, "handhygieneasepsis", "Pouring a sterile solution", "Place the cap face-up on a clean surface, hold the label in your palm, pour off 1–2 mL first, and don't touch the bottle to the site"],
+[122, "handhygieneasepsis", "What sterile gloves can touch", "The other sterile glove, items on the field, and inner wrappings of items on the field. Not the 1-in border or the outside of the solution bottle"],
+[123, "handhygieneasepsis", "Client coughing during a sterile procedure", "Have the client wear a mask"],
+[124, "handhygieneasepsis", "Surgical hand scrub", "Cap, shoe covers, mask, and eyewear go on first. Remove jewelry, clean nails, keep hands above elbows, scrub to 2 in above the elbow"],
+[125, "handhygieneasepsis", "Sterile gown: sterile area", "Sleeves from just above the cuff to 2 in above the elbow. The axilla and back are not sterile"],
+[126, "handhygieneasepsis", "Open vs closed gloving", "Open: no gown worn (e.g., catheter insertion). Closed: hands stay inside the gown cuffs"],
+[127, "precautionsppe", "Standard (universal) precautions", "Used for all clients. Covers blood, body fluids, secretions, excretions (except sweat), nonintact skin, mucous membranes"],
+[128, "precautionsppe", "Standard precautions: private room?", "Only if the client can't maintain appropriate hygiene"],
+[129, "precautionsppe", "Contact precautions", "Gown and gloves on room entry. Private room or cohort with 3 ft apart"],
+[130, "precautionsppe", "More contact precaution diseases", "Herpes simplex, impetigo, scabies, shigella"],
+[131, "precautionsppe", "Droplet precautions", "Surgical mask; gown and gloves if contact with secretions is anticipated. Private room or cohort with 3 ft apart and curtain drawn. Client wears a mask outside the room"],
+[132, "precautionsppe", "More droplet precaution diseases", "Hib, pertussis, mumps, rubella, strep pharyngitis or pneumonia, scarlet fever, meningococcal infection, plague"],
+[133, "precautionsppe", "Airborne precautions", "Fit-tested N95. AIIR (negative pressure) with the door closed. Client wears a mask outside the room"],
+[134, "precautionsppe", "AIIR", "Negative pressure room. 12 air exchanges/hr (new) or 6 (renovated). Air exhausted outside or through HEPA"],
+[135, "precautionsppe", "Protective isolation", "For immunocompromised clients (allogenic HSCT, first 100 days). Positive airflow, HEPA, ≥12 exchanges/hr, no plants. Client wears a mask when out of the room"],
+[136, "precautionsppe", "Cohorting", "Rooming clients with the same infection together. Consult infection control first"],
+[137, "precautionsppe", "Enhanced barrier precautions", "Nursing homes. Gown and gloves for high-contact care to reduce MDRO spread"],
+[138, "precautionsppe", "Transporting a client on precautions", "Put a surgical mask on clients with airborne or droplet infections, and cover any draining wounds"],
+[139, "precautionsppe", "Psychosocial effects of isolation", "Higher risk of depression and loneliness. Explain the reason for isolation and provide sensory stimulation"],
+[140, "precautionsppe", "When to wear gloves", "Potential contact with blood, body fluids, mucous membranes, nonintact skin, or infectious material; any client on contact precautions"],
+[141, "precautionsppe", "When to change gloves", "If torn, between sites on the same client, before touching keyboards, between clients. Never wash or reuse"],
+[142, "precautionsppe", "PPE donning order", "Hand hygiene → gown → mask/respirator → goggles/face shield → gloves (over the gown cuffs)"],
+[143, "precautionsppe", "PPE removal order", "Gloves → goggles/face shield → gown → mask → hand hygiene"],
+[144, "precautionsppe", "Gown", "Single use. Roll it inside out and discard before leaving the room"],
+[145, "precautionsppe", "N95 fit check", "Inhale and the respirator should collapse; exhale and no air should leak. Must be fit-tested"],
+[146, "precautionsppe", "Face shield vs goggles", "A crown-to-chin face shield protects best against splashes. Eyeglasses are not a substitute"],
+[147, "precautionsppe", "Clean parts of PPE", "Ties, earpieces, headband. The front is contaminated"],
+[148, "precautionsppe", "Blood or body fluid exposure", "Wash skin with soap and water; irrigate eyes with water or NS; flush nose or mouth with water; report immediately"],
+[149, "precautionsppe", "Needlestick prevention", "Engage the safety device, use a sharps box less than ¾ full, use needleless systems. Always report sticks"],
+[150, "precautionsppe", "Soiled linens", "Bag at the point of care. Don't shake or sort. Wear gloves. Double-bag if leaking"],
+[151, "precautionsppe", "Medical waste", "Leak-resistant biohazard bag; double-bag if punctured. Sharps go in a puncture-resistant container at the point of care"],
+[152, "precautionsppe", "HCW recommended immunizations", "Varicella, hep B, influenza, MMR, meningococcal, Tdap, COVID-19"],
+[153, "haismdros", "HAI", "Infection acquired in a health care facility"],
+[154, "haismdros", "4 major HAIs", "CLABSI, CAUTI, SSI, VAP"],
+[155, "haismdros", "Best way to prevent HAIs", "Hand hygiene"],
+[156, "haismdros", "Most common HAI site", "Urinary tract, often from E. coli, S. aureus, or enterococci"],
+[157, "haismdros", "Exogenous vs endogenous HAI", "Exogenous: from a source outside the client. Endogenous: from the client's own flora that has been altered"],
+[158, "haismdros", "Iatrogenic infection", "An HAI caused by a diagnostic or therapeutic procedure"],
+[159, "haismdros", "Invasive devices", "Create an extra portal of entry"],
+[160, "haismdros", "Care bundle", "A set of evidence-based practices to prevent HAIs, starting with hand hygiene"],
+[161, "haismdros", "CLABSI insertion bundle", "Maximal sterile barriers; avoid the femoral site in obese clients; chlorhexidine &gt;0.5% with alcohol"],
+[162, "haismdros", "CLABSI dressing changes", "Gauze every 2 days; semipermeable every 7 days; sooner if wet, soiled, or dislodged"],
+[163, "haismdros", "Scrub the hub", "Chlorhexidine, iodophor, 70% alcohol, or povidone-iodine, scrubbed with friction"],
+[164, "haismdros", "IV tubing changes", "Propofol: every 6–12 hr. Fat emulsions or blood: every 24 hr. Other continuous infusions: every 4–7 days"],
+[165, "haismdros", "CAUTI prevention", "Avoid unnecessary catheters, remove early, keep the system aseptic"],
+[166, "haismdros", "VAP bundle", "Hand hygiene, positioning, avoid frequent circuit changes, mouth care, nutrition"],
+[167, "haismdros", "MDROs", "MRSA, VRE, VRSA, VISA, ESBL-producing organisms, MDRSP"],
+[168, "haismdros", "MDRO care", "Resistant to one or more classes of antimicrobials; respond to only 1–2 medications; challenging to treat and require good antibiotic stewardship. Hand hygiene, gloves, contact precautions"],
+[169, "haismdros", "MRSA treatment", "Vancomycin or linezolid"],
+[170, "haismdros", "VRSA", "S. aureus resistant to vancomycin but still sensitive to some other antibiotics"],
+[171, "haismdros", "Antimicrobial teaching", "Finish the full course; avoid overusing antibiotics"],
+[172, "haismdros", "Antimicrobial effectiveness", "Reduced fever, increased comfort, decreasing WBC count"],
+[173, "haismdros", "Antipyretics", "Acetaminophen, ibuprofen, aspirin. Monitor and trend the client's temperature"],
+[174, "haismdros", "Reportable diseases", "More than 60 diseases must be reported to public health so cases get treated, outbreaks are tracked, and prevention is planned"],
+[175, "haismdros", "Recommended vaccines", "Hib for infants; pneumococcal (PPSV) for at-risk adults; meningococcal for adolescents before communal living; COVID-19 for everyone 6 months and older"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

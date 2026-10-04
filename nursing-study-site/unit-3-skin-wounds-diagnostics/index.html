@@ -25,7 +25,7 @@
 <div class="pp-wrap pp-headwrap">
   <div id="site-header" data-mode="full" data-sheet="nur114" data-unit="U-03"></div>
 </div>
-<script src="../assets/site-data.js?v=4"></script>
+<script src="../assets/site-data.js?v=5"></script>
 <script src="../assets/header.js?v=7"></script>
 <div class="pp-wrap pp-headwrap">
   <div class="pp-searchrow">
@@ -41,10 +41,33 @@
   <p class="ledger-eyebrow">U-03 &middot; Weeks 6&ndash;7</p>
   <h1 class="ledger-h1">Skin, Wounds &amp; Diagnostics</h1>
 
-  <div class="ledger ledger-empty">
-    <i class="ti ti-folder-plus" aria-hidden="true"></i>
-    <p>No widgets here yet.</p>
+  <div class="ledger" id="widgetlist">
+      <div class="ledger-row" data-types="flashcards quiz">
+        <span class="lr-num">01</span>
+        <div><h2 class="lr-title">Infection Control &amp; Isolation</h2><span class="lr-meta">175 cards &middot; 40 questions</span></div>
+        <div class="lr-actions"><a class="lbtn btn-primary" data-kind="flashcards" href="infection-control-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a><a class="lbtn btn-secondary" data-kind="quiz" href="infection-control-quiz.html"><i class="ti ti-help-square" aria-hidden="true"></i> Quiz</a></div>
+      </div>
+      <div class="ledger-row" data-types="flashcards quiz">
+        <span class="lr-num">02</span>
+        <div><h2 class="lr-title">Specimen Collection</h2><span class="lr-meta">29 cards &middot; 40 questions</span></div>
+        <div class="lr-actions"><a class="lbtn btn-primary" data-kind="flashcards" href="specimen-collection-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a><a class="lbtn btn-secondary" data-kind="quiz" href="specimen-collection-quiz.html"><i class="ti ti-help-square" aria-hidden="true"></i> Quiz</a></div>
+      </div>
+      <div class="ledger-row" data-types="flashcards quiz">
+        <span class="lr-num">03</span>
+        <div><h2 class="lr-title">Tissue Integrity</h2><span class="lr-meta">157 cards &middot; 40 questions</span></div>
+        <div class="lr-actions"><a class="lbtn btn-primary" data-kind="flashcards" href="tissue-integrity-flashcards.html"><i class="ti ti-cards" aria-hidden="true"></i> Flashcards</a><a class="lbtn btn-secondary" data-kind="quiz" href="tissue-integrity-quiz.html"><i class="ti ti-help-square" aria-hidden="true"></i> Quiz</a></div>
+      </div>
   </div>
+
+  <div data-kind="quiz">
+  <p class="ledger-label">Mix it up</p>
+  <a class="ledger-feature" href="mix-quiz.html">
+    <i class="ti ti-arrows-shuffle" aria-hidden="true"></i>
+    <span><span class="lf-title">Mix all</span><span class="lf-sub">Random from every quiz in the unit</span></span>
+    <span class="lf-go">Start &rarr;</span>
+  </a>
+  </div>
+  <div class="ledger ledger-empty" id="unit-filter-empty" hidden><p></p></div>
 </div>
 
 <script src="../assets/theme.js?v=6"></script>

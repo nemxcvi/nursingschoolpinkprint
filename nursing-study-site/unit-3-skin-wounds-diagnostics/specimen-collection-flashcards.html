@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specimen Collection &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Specimen Collection &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-3-skin-wounds-diagnostics/specimen-collection-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Specimen Collection &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=48">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-03" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=5"></script>
+<script src="../assets/header.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Specimen Collection</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=6"></script>
+<script>
+var CATS = {
+  stool: {label:"Stool", hue:"red"},
+  urine: {label:"Urine", hue:"yellow"},
+  culturesswabs: {label:"Cultures &amp; Swabs", hue:"green"},
+  capillaryglucose: {label:"Capillary Glucose", hue:"blue"}
+};
+var CARDS = [
+[1, "stool", "Stool specimen amount", "Formed stool: 1 inch (walnut-sized). Liquid stool: 15–30 mL"],
+[2, "stool", "Stool specimen: avoid", "Urine and toilet tissue in the sample"],
+[3, "stool", "Stool for C. diff", "Place the client on contact isolation until results come back"],
+[4, "stool", "Ova and parasites", "Collect three separate stool specimens"],
+[5, "stool", "Occult blood: delegation", "The UAP may collect the specimen but may not do the point-of-care test"],
+[6, "stool", "Occult blood: medications", "NSAIDs, iron, and anticoagulants can cause a false positive. Stop 7 days before"],
+[7, "stool", "Occult blood: diet", "Beets, rare meat, radishes, and melon can cause false results. Stop 3 days before"],
+[8, "stool", "Occult blood: vitamin C", "Can cause a false result. Stop 3 days before"],
+[9, "stool", "Occult blood: menstruation", "Test at least 3 days after the cycle ends"],
+[10, "stool", "Occult blood technique", "Two stool areas on one side, flip the card, 2 drops of solution on each box, read in 30–60 seconds"],
+[11, "urine", "Urine specimen: delegation", "Collection may be delegated to the UAP"],
+[12, "urine", "Urine volumes", "Culture: 10 mL. Urinalysis: 10–30 mL"],
+[13, "urine", "Clean catch: female", "Separate the labia; clean each side, then the center, front to back, with 2–3 towelettes"],
+[14, "urine", "Clean catch: male", "Retract the foreskin; clean in a circular motion from the meatus down the shaft"],
+[15, "urine", "Clean catch: collection", "Start voiding into the toilet, stop, then void into the cup"],
+[16, "urine", "Urine from an indwelling catheter", "Clamp tubing 3 in below the port (no more than 30 min), wipe the port, draw at least 10 mL with a syringe, then unclamp"],
+[17, "urine", "Urine from the drainage bag", "Never use urine from a bag already connected to the client. Bag urine is OK only at the time of first insertion"],
+[18, "urine", "24-hour urine", "Discard the first void and start the time. Collect all urine for 24 hr, have the client void at the end, and refrigerate if required"],
+[19, "culturesswabs", "Wound culture technique", "Clean the wound with NS, then rotate the swab on clean wound tissue. Avoid exudate"],
+[20, "culturesswabs", "Wound culture: report immediately", "Fever higher than 104°F (40°C) with hypotension, which suggests sepsis"],
+[21, "culturesswabs", "Sputum specimen", "Morning is best. Blow nose and rinse mouth with water (no mouthwash), deep breaths, then cough. Don't touch inside the cup. Collect 5–10 mL"],
+[22, "culturesswabs", "AFB sputum", "Three consecutive specimens, 8–24 hr apart"],
+[23, "culturesswabs", "Throat culture: delegation", "Do not delegate to the UAP"],
+[24, "culturesswabs", "Nasal swab: delegation", "Do not delegate to the UAP"],
+[25, "culturesswabs", "Nasal swab technique", "Blow nose, check patency, tilt head back. Insert 1.5 cm and rotate at least 4 times for 15 seconds; repeat in the other naris with the same swab"],
+[26, "culturesswabs", "Swab tube selection", "Use the correct tube: viral vs bacterial, nasal vs nasopharyngeal"],
+[27, "capillaryglucose", "Capillary glucose: delegation", "Usually can be delegated to the UAP"],
+[28, "capillaryglucose", "Expected glucose range", "74–106"],
+[29, "capillaryglucose", "Capillary glucose technique", "Check timing in the order (AC &amp; HS vs q6h). Don't squeeze or milk the finger. Wipe away the first drop, then apply blood when prompted"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

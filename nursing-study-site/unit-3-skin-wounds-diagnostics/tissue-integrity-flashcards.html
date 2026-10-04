@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tissue Integrity &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Tissue Integrity &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-3-skin-wounds-diagnostics/tissue-integrity-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tissue Integrity &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=48">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-03" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=5"></script>
+<script src="../assets/header.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Tissue Integrity</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=6"></script>
+<script>
+var CATS = {
+  skinriskfactors: {label:"Skin &amp; Risk Factors", hue:"red"},
+  skinassessment: {label:"Skin Assessment", hue:"orange"},
+  lesionsvascular: {label:"Lesions &amp; Vascular", hue:"yellow"},
+  pressureinjuries: {label:"Pressure Injuries", hue:"green"},
+  woundassessment: {label:"Wound Assessment", hue:"aqua"},
+  dressingsclosuresdrains: {label:"Dressings, Closures &amp; Drains", hue:"blue"},
+  woundhealing: {label:"Wound Healing", hue:"violet"},
+  complications: {label:"Complications", hue:"magenta"}
+};
+var CARDS = [
+[1, "skinriskfactors", "Functions of the skin", "Barrier against injury, infection, UV, and temperature changes; sensation; waste elimination; vitamin D synthesis"],
+[2, "skinriskfactors", "3 layers of skin", "Epidermis, dermis, subcutaneous (hypodermis)"],
+[3, "skinriskfactors", "Epidermis", "Outermost layer. Its keratinocytes protect against water loss, pathogens, and injury"],
+[4, "skinriskfactors", "Melanocytes", "Produce melanin, which gives skin color and absorbs UV rays"],
+[5, "skinriskfactors", "Merkel cells", "Detect light touch, especially on the palms and soles"],
+[6, "skinriskfactors", "Langerhans cells", "Present foreign antigens to lymphocytes to trigger an immune response"],
+[7, "skinriskfactors", "Dermis", "Connective tissue plus blood and lymph vessels. Collagen and elastin give strength and elasticity"],
+[8, "skinriskfactors", "Subcutaneous layer", "Adipose tissue that insulates, absorbs shock, and pads organs"],
+[9, "skinriskfactors", "Maceration", "Irritation of the epidermis caused by moisture"],
+[10, "skinriskfactors", "Dermatitis", "Red irritation from feces, urine, stoma effluent, or wound secretions"],
+[11, "skinriskfactors", "Skin tear", "Loss of the top skin layer from mechanical force"],
+[12, "skinriskfactors", "Skin frailty", "At-risk, vulnerable skin, often from immobility or chronic disease"],
+[13, "skinriskfactors", "Cellulitis", "Infection of the superficial skin layers"],
+[14, "skinriskfactors", "Ages at highest risk for skin breakdown", "Early life and late life"],
+[15, "skinriskfactors", "Older adult skin changes", "Thinner skin with less elasticity, subcutaneous tissue, blood supply, and hydration"],
+[16, "skinriskfactors", "Clients who are obese", "Moisture, maceration, and decreased blood flow put them at risk. Check between skin folds"],
+[17, "skinriskfactors", "MASD", "Moisture-associated skin damage from urine, feces, stoma effluent, or exudate. Causes pain, burning, itching"],
+[18, "skinriskfactors", "Factors affecting skin integrity", "Age, mobility, nutrition/hydration, sensation, circulation, medications, moisture, fever, infection, lifestyle"],
+[19, "skinassessment", "When to assess skin", "On admission (within 24 hr), with any change in condition, routinely per policy, and under all medical devices"],
+[20, "skinassessment", "Blanchable erythema", "Redness that turns white with pressure and returns to red when released"],
+[21, "skinassessment", "Nonblanchable erythema", "Redness that stays red with pressure, meaning small-vessel damage"],
+[22, "skinassessment", "Palpating skin temperature", "Use the back (dorsal side) of the hand. Warm = inflammation; cool = decreased blood flow"],
+[23, "skinassessment", "Pallor", "Light skin: loss of red undertones. Dark skin: ashen gray in mucous membranes and conjunctiva"],
+[24, "skinassessment", "Cyanosis", "Bluish color from hypoxia. In dark skin, check palms, soles, conjunctiva, nail beds, lips, and oral mucosa. This is the priority skin finding"],
+[25, "skinassessment", "Jaundice", "Yellow-orange color from liver dysfunction. Check the sclera, hard palate, palms, and soles"],
+[26, "skinassessment", "Erythema in dark skin", "Hard to see. Palpate for warmth, firmness, and tenderness"],
+[27, "skinassessment", "Ecchymosis", "Bruise: reddish or bluish on light skin, a darker area on dark skin; tender to touch"],
+[28, "skinassessment", "Assessing dark skin tones", "Use good lighting. Look for purple or ashen hues; palpate temperature, firm vs boggy tissue, and tenderness; ask about sensation"],
+[29, "skinassessment", "Skin turgor", "Pinch the skin on the forearm or sternum. Tenting suggests dehydration. Unreliable in older adults"],
+[30, "skinassessment", "Pitting edema scale", "1+ = 2 mm, rapid return · 2+ = 4 mm, 10–15 sec · 3+ = 6 mm, prolonged · 4+ = 8 mm, prolonged"],
+[31, "skinassessment", "Capillary refill", "Less than 3 seconds is expected"],
+[32, "skinassessment", "Clubbing", "Nail angle greater than 160°, from chronic low oxygen"],
+[33, "skinassessment", "Pulse grading", "0 absent · 1+ diminished · 2+ expected · 3+ increased · 4+ bounding"],
+[34, "skinassessment", "Carotid pulses", "Palpate one side at a time to avoid vagal stimulation"],
+[35, "skinassessment", "Arterial vs venous insufficiency", "Arterial: shiny, translucent, hairless feet and toes. Venous: brown pigmentation"],
+[36, "skinassessment", "Expected aging skin findings", "Thin, dry, wrinkled, less elastic. Hematomas and petechiae are not expected"],
+[37, "lesionsvascular", "Primary vs secondary lesions", "Primary lesions arise from healthy skin. Secondary lesions result from changes in a primary lesion"],
+[38, "lesionsvascular", "Macule", "Flat color change, under 1 cm"],
+[39, "lesionsvascular", "Papule", "Elevated, solid, under 1 cm"],
+[40, "lesionsvascular", "Nodule", "Firm and deep, 1–2 cm"],
+[41, "lesionsvascular", "Vesicle", "Filled with serous fluid, under 1 cm"],
+[42, "lesionsvascular", "Pustule", "Filled with pus"],
+[43, "lesionsvascular", "Tumor", "Solid, deep mass larger than 1–2 cm"],
+[44, "lesionsvascular", "Wheal", "Irregular, edematous raised area"],
+[45, "lesionsvascular", "Atrophy", "Thin, shiny, translucent skin"],
+[46, "lesionsvascular", "Erosion", "Lost epidermis; moist surface, no bleeding"],
+[47, "lesionsvascular", "Excoriation", "Superficial loss of epidermis, often linear, caused by scratching or friction"],
+[48, "lesionsvascular", "Crust", "Dried blood, serum, or pus"],
+[49, "lesionsvascular", "Scale", "Flaking skin"],
+[50, "lesionsvascular", "Fissure", "Linear crack"],
+[51, "lesionsvascular", "Ulcer", "Loss of epidermis and dermis"],
+[52, "lesionsvascular", "Scar", "Fibrous tissue at the site of an injury"],
+[53, "lesionsvascular", "ABCDE (skin cancer)", "Asymmetry, Border irregularity, Color variation, Diameter &gt;6 mm, Evolving"],
+[54, "lesionsvascular", "Petechiae vs purpura", "Petechiae are 1–3 mm; purpura are larger than 3 mm"],
+[55, "pressureinjuries", "Pressure injury", "Localized damage to skin and/or underlying tissue from pressure, or pressure plus shear"],
+[56, "pressureinjuries", "Most susceptible areas", "Heels, toes, sacrum, hips, elbows, shoulders, back of head"],
+[57, "pressureinjuries", "Shear", "Force parallel to the skin: deep tissue slides down while the skin stays in place"],
+[58, "pressureinjuries", "Friction", "Rubbing between two surfaces. It doesn't directly cause a pressure injury but damages the skin"],
+[59, "pressureinjuries", "Major risk factors", "Immobility, malnutrition, reduced perfusion, sensory loss, decreased level of consciousness"],
+[60, "pressureinjuries", "Intrinsic vs extrinsic risk factors", "Intrinsic: immobility, impaired sensation, malnourishment, age. Extrinsic: friction, pressure, shear, moisture"],
+[61, "pressureinjuries", "When deep damage becomes visible", "24–72 hr after the injury"],
+[62, "pressureinjuries", "Braden Scale", "Risk tool with 6 categories: sensory perception, moisture, activity, mobility, nutrition, friction &amp; shear. Scores range from 6 to 23; the lower the score, the higher the risk"],
+[63, "pressureinjuries", "Stage 1", "Intact skin with nonblanchable erythema. May feel warmer or cooler than surrounding skin"],
+[64, "pressureinjuries", "Stage 2", "Partial-thickness loss with exposed dermis: pink-red moist wound bed, or an intact or ruptured blister"],
+[65, "pressureinjuries", "Stage 3", "Full-thickness skin loss. Fat is visible; may have granulation, rolled edges, slough, or tunneling. No bone, tendon, or muscle visible"],
+[66, "pressureinjuries", "Stage 4", "Full-thickness skin and tissue loss. Bone, tendon, muscle, or cartilage is exposed"],
+[67, "pressureinjuries", "Unstageable", "Slough or eschar hides the wound bed. Once removed, it's a stage 3 or 4. Don't remove stable eschar on a heel"],
+[68, "pressureinjuries", "Deep tissue pressure injury (DTPI)", "Persistent nonblanchable deep red, maroon, or purple discoloration, or a blood-filled blister"],
+[69, "pressureinjuries", "Device-related pressure injury", "Caused by a device in contact with the skin; takes the shape of the device"],
+[70, "pressureinjuries", "Mucosal membrane pressure injury", "Caused by a device on mucous membranes. Cannot be staged"],
+[71, "pressureinjuries", "HAPI", "Hospital-acquired pressure injury. CMS limits reimbursement for stage 3 and 4"],
+[72, "pressureinjuries", "Slough", "Yellow or gray, stringy, nonviable tissue"],
+[73, "pressureinjuries", "Eschar", "Hard, black or brown, nonviable tissue"],
+[74, "pressureinjuries", "Undermining vs tunneling", "Undermining: tissue loss under the wound edges. Tunneling: a narrow channel extending from the wound base"],
+[75, "pressureinjuries", "Pressure injury in dark skin", "Temperature and moisture changes may be the first signs; also edema, hardness, and pain"],
+[76, "pressureinjuries", "Documenting a pressure injury", "Location, stage, size, tissue type, wound bed color, edges, surrounding skin, undermining/tunneling, drainage, odor, pain"],
+[77, "pressureinjuries", "TIME", "Tissue integrity, Inflammation/infection, Moisture, Edge of wound"],
+[78, "pressureinjuries", "Repositioning", "At least every 2 hr in bed and every 1 hr in a chair. Mobile clients shift weight every 15 min. Side-lying tilt of 20–30°"],
+[79, "pressureinjuries", "Head of bed", "30° or lower unless contraindicated, to reduce shear"],
+[80, "pressureinjuries", "Moving a client up in bed", "Lift, don't pull. Pulling creates friction"],
+[81, "pressureinjuries", "Never do", "Massage bony prominences; use powder or cornstarch; use cytotoxic cleansers (povidone-iodine, hydrogen peroxide, alcohol) on a pressure injury"],
+[82, "pressureinjuries", "Incontinence skin care", "Gentle cleanser, tepid water, pat dry, dimethicone barrier cream"],
+[83, "pressureinjuries", "Preventive foam dressing", "Silicone foam on the sacrum and heels within 24 hr of admission prevents HAPIs"],
+[84, "pressureinjuries", "Treatment by stage", "DTPI and stage 1: relieve pressure. Stage 2: keep moist (hydrocolloid). Stages 3–4: clean or debride, give antimicrobials. Unstageable: debride until it can be staged"],
+[85, "woundassessment", "Acute vs chronic wounds", "Acute: from surgery or trauma. Chronic: develop over time from disrupted healing or poor blood flow (PAD, diabetes)"],
+[86, "woundassessment", "Wound classifications", "Open/closed, acute/chronic, clean/contaminated/infected, superficial/partial/full thickness, penetrating"],
+[87, "woundassessment", "Surgical wound classes", "Clean and clean-contaminated wounds are closed. Contaminated and dirty wounds may be left open"],
+[88, "woundassessment", "Incision color over time", "Red days 1–4 → bright pink days 5–14 → pale pink from day 15 to 1 year"],
+[89, "woundassessment", "Expected incision findings", "Edges well approximated; edema and exudate gone by postoperative day 5"],
+[90, "woundassessment", "Serous exudate", "Clear to light yellow, watery"],
+[91, "woundassessment", "Sanguineous exudate", "Red, contains RBCs. Bright = active bleeding; dark = older bleeding"],
+[92, "woundassessment", "Serosanguineous exudate", "Pale pink and watery"],
+[93, "woundassessment", "Purulent exudate", "Thick and yellow, tan, green, or brown; may smell foul. Indicates infection; report it"],
+[94, "woundassessment", "Purosanguineous exudate", "Pus mixed with blood; seen in a newly infected wound"],
+[95, "woundassessment", "RYB wound color code", "Red: healthy, cover it. Yellow: slough, clean it. Black: eschar, debride it"],
+[96, "woundassessment", "Measuring a wound", "Length head-to-toe, width side-to-side, depth at the deepest point, all in cm. Use the same method every time"],
+[97, "woundassessment", "Clock method", "12:00 points toward the client's head. Used to locate tunneling and undermining"],
+[98, "woundassessment", "Measuring wound depth", "Insert a sterile, premoistened cotton-tipped applicator until you feel resistance, mark it, then measure"],
+[99, "woundassessment", "Weighing dressings", "1 g = 1 mL of drainage"],
+[100, "dressingsclosuresdrains", "Debridement", "Removing nonviable tissue so the wound can heal"],
+[101, "dressingsclosuresdrains", "Surgical debridement", "Provider removes dead tissue with a scalpel or scissors. The tissue can be cultured"],
+[102, "dressingsclosuresdrains", "Biological debridement", "Medical-grade maggots liquefy dead tissue and leave healthy tissue alone"],
+[103, "dressingsclosuresdrains", "Wound irrigation", "Usually 0.9% NaCl at 5–8 psi (30–60 mL syringe with a 19-gauge needle), tip 1 in above the wound, until the fluid runs clear"],
+[104, "dressingsclosuresdrains", "Cleansing direction", "From least to most contaminated (incision outward). Use new gauze for each stroke; no cotton balls"],
+[105, "dressingsclosuresdrains", "Ideal wound bed", "Moist, not wet"],
+[106, "dressingsclosuresdrains", "Sterile vs clean dressing changes", "Sterile for the first 24–48 hr after surgery, then clean technique"],
+[107, "dressingsclosuresdrains", "Nonocclusive (open) dressings", "Porous gauze dressings, such as dry or petrolatum gauze"],
+[108, "dressingsclosuresdrains", "Semiocclusive vs occlusive dressings", "Semiocclusive: partial barrier that allows gas exchange. Occlusive: fully sealed, holds in the most moisture. Films, hydrocolloids, alginates, hydrofibers, foams, and hydrogels fall in these groups"],
+[109, "dressingsclosuresdrains", "Wet-to-dry dressing", "Gauze moistened with NS is packed into the wound and allowed to dry. Removing it pulls out dead tissue, but also healthy granulation tissue, and it is painful"],
+[110, "dressingsclosuresdrains", "Transparent film", "For superficial wounds with minimal drainage. Lets you see the wound; leaks if drainage is heavy"],
+[111, "dressingsclosuresdrains", "Hydrocolloid", "Occlusive, keeps wound moist, stays on 3–5 days. A yellow, smelly gel under it is expected, not pus"],
+[112, "dressingsclosuresdrains", "Alginate", "For moderate to heavy drainage. Helps stop bleeding and can pack wounds. Needs a secondary dressing"],
+[113, "dressingsclosuresdrains", "Hydrofiber", "For moderate to heavy drainage. Causes less maceration than alginate"],
+[114, "dressingsclosuresdrains", "Foam", "For mild to moderate drainage. Used on the sacrum and heels to prevent HAPIs"],
+[115, "dressingsclosuresdrains", "Polymeric membrane dressing", "Foam-like dressing containing a cleanser, moisturizer, and absorbent. Absorbs exudate while keeping the wound moist, and can reduce wound pain"],
+[116, "dressingsclosuresdrains", "Hydrogel", "For dry or necrotic wounds; adds moisture and is soothing. Not for heavy drainage"],
+[117, "dressingsclosuresdrains", "Antimicrobial dressings", "Contain iodine, silver, or honey. Check for iodine and bee-sting allergies first"],
+[118, "dressingsclosuresdrains", "Staples", "Placed faster than sutures; usually removed in 7–14 days. Not used on the face or neck"],
+[119, "dressingsclosuresdrains", "Nonabsorbable sutures", "Remove by day 14"],
+[120, "dressingsclosuresdrains", "Skin adhesive", "For small, straight wounds; not over joints. Apply 3–4 layers, holding edges together 1 min each. Peels off in 5–10 days"],
+[121, "dressingsclosuresdrains", "Montgomery straps", "Adhesive strips with ties placed on both sides of a wound. They hold dressings that need frequent changes, so tape isn't removed and reapplied to the skin each time"],
+[122, "dressingsclosuresdrains", "NPWT", "Foam plus an occlusive dressing under suction. Reduces edema and increases granulation"],
+[123, "dressingsclosuresdrains", "Passive vs active drains", "Passive: gravity (Penrose). Active: negative pressure (bulb drain)"],
+[124, "dressingsclosuresdrains", "Open vs closed drains", "Open: drains onto gauze (Penrose). Closed: drains into a container and is less likely to get contaminated"],
+[125, "dressingsclosuresdrains", "Penrose drain", "Flat, open, passive drain held with a safety pin; drainage collects on gauze around it"],
+[126, "dressingsclosuresdrains", "Bulb suction (JP) drain", "Active, closed drain. Empty at least every 8 hr or when more than half full, then recompress the bulb"],
+[127, "dressingsclosuresdrains", "Large bottle drain", "For large expected drainage volumes. Change when half full"],
+[128, "dressingsclosuresdrains", "Circular portable wound suction device", "Has a spring inside. To empty, open the plug, empty it, squeeze it flat, and replug"],
+[129, "dressingsclosuresdrains", "Expected drain output", "Starts sanguineous and becomes serosanguineous"],
+[130, "dressingsclosuresdrains", "Drain: when to notify provider", "A big increase or decrease in drainage, clots, signs of infection, or accidental removal"],
+[131, "woundhealing", "Primary intention", "Clean wound with edges closed by sutures, staples, or glue. Fastest healing, low infection risk"],
+[132, "woundhealing", "Secondary intention", "Wound left open to heal from the bottom up with granulation. Longer healing, higher infection risk"],
+[133, "woundhealing", "Tertiary intention", "Delayed primary closure: the wound is left open 5–10 days, then sutured"],
+[134, "woundhealing", "Inflammatory (hemostatic) phase", "From injury to day 3–6. Bleeding is controlled, then WBCs clean the wound"],
+[135, "woundhealing", "Proliferative phase", "Days 3–24. Granulation tissue and collagen fill the wound, and edges contract"],
+[136, "woundhealing", "Remodeling (maturation) phase", "Starts around day 21 and can last over a year. Stronger collagen forms, but the scar stays weaker than the original tissue"],
+[137, "woundhealing", "DIDN'T HEAL", "Diabetes, Infection, Drugs, Nutrition problems, Tissue necrosis, Hypoxia, Extensive tension, Another wound, Low temperature"],
+[138, "woundhealing", "How diabetes delays healing", "Decreases perfusion and sensation"],
+[139, "woundhealing", "How corticosteroids delay healing", "Prevent collagen and fibroblast formation"],
+[140, "woundhealing", "Nutrients for healing", "Protein, vitamins A and C, zinc, omega-3 and omega-6 fatty acids"],
+[141, "woundhealing", "Albumin and healing", "Albumin below 3.5 g/dL increases the risk of delayed healing"],
+[142, "woundhealing", "Fluid and calorie needs", "At least 2,500 mL/day of fluid (unless contraindicated) and at least 1,500 kcal/day"],
+[143, "woundhealing", "Other factors that delay healing", "Obesity, smoking, low hemoglobin, coughing or vomiting (wound stress), older age"],
+[144, "woundhealing", "Splinting an incision", "Hold a pillow or folded blanket over the incision when the client coughs"],
+[145, "complications", "Local wound infection", "Redness, warmth, exudate, foul odor. Usually appears 2–11 days after injury or surgery"],
+[146, "complications", "Systemic infection (sepsis risk)", "Fever, chills, loss of appetite, hypotension, mental status changes"],
+[147, "complications", "SSI timeframe", "Superficial: within 30 days. Deep: within 30 or 90 days"],
+[148, "complications", "Most common cause of SSI", "Staphylococcus aureus. Chlorhexidine (CHG) wipes before surgery reduce risk"],
+[149, "complications", "Cultures and antibiotics", "Collect specimens for culture before starting antibiotics"],
+[150, "complications", "Dehiscence", "Partial or total separation of the suture line, usually 5–8 days after surgery. Often preceded by increased serosanguineous drainage or a \"popping\" feeling"],
+[151, "complications", "Dehiscence: nursing actions", "Notify the provider, cover with a sterile saline-moistened dressing, prepare for a possible return to surgery"],
+[152, "complications", "Evisceration", "Organs protrude through the opened wound. This is an emergency"],
+[153, "complications", "Evisceration: nursing actions", "Call for help and stay with the client. Cover with sterile saline-soaked dressings and don't reinsert organs. Position supine with hips and knees bent, keep NPO, watch for shock"],
+[154, "complications", "Dehiscence risk factors", "Obesity, abdominal surgery, straining or coughing, malnutrition, infection, radiation"],
+[155, "complications", "Hemorrhage", "Highest risk 24–48 hr after surgery. Apply a pressure dressing, notify the provider, monitor vital signs"],
+[156, "complications", "Hematoma", "A local collection of blood that looks like a red or blue bruise. Anticoagulants and obesity increase the risk"],
+[157, "complications", "Fistula", "An abnormal tract connecting two organs, or an organ and the skin, that can form when a wound doesn't heal properly"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
