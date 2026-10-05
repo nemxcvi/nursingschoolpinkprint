@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Week 6 study guide &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Week 6 study guide &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-3-skin-wounds-diagnostics/week6-study-guide">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Week 6 study guide &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=48">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+<style>
+/* Week 6: key colors and page shell match the Week 4 and 5 guides */
+:root{
+  /* guide-specific accents only; base colors below reuse the site's own theme variables */
+  --flag:#0F6E62; --flag-bg:#DDF3EE;
+  --hook:#FFF4D6; --hook-line:#E9C766; --known:#E8E4FF; --known-line:#8D7CE6;
+  --side:#1E5FA8; --side-bg:#E1EEFB; --red:#B3261E; --red-bg:#FDE7E5;
+}
+[data-theme="dark"]{
+  --flag:#7FE0CF; --flag-bg:#123A34;
+  --hook:#3A2E12; --hook-line:#B8963A; --known:#262045; --known-line:#9D8FF0;
+  --side:#9CC4F5; --side-bg:#15263D; --red:#FF8A80; --red-bg:#3D1512;
+}
+.gwrap{max-width:980px;margin:0 auto;padding:0 20px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + var(--cbar-h) + 64px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.guide-body{font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.6;}
+.guide-body h1,.guide-body h2,.guide-body h3{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+.guide-body a{color:var(--label)}
+.guide-body :focus-visible{outline:2px solid var(--label);outline-offset:3px}
+
+/* Hero */
+.guide-hero{padding-top:36px;padding-bottom:32px}
+.guide-hero .course{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);margin:0 0 14px}
+.guide-hero h1{font-size:clamp(36px,7vw,64px);letter-spacing:-.01em;color:var(--heading)}
+.guide-hero p.lede{max-width:60ch;color:var(--muted);margin:18px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.legend span{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1.5px solid;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.lg-known{background:var(--known);border-color:var(--known-line)}
+.lg-hook{background:var(--hook);border-color:var(--hook-line)}
+.lg-flag{background:var(--flag-bg);border-color:var(--flag);color:var(--flag)}
+
+/* In-guide topic nav */
+nav.topics{position:sticky;top:var(--cbar-h);z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(6px);border-block:1.5px solid var(--border)}
+nav.topics .gwrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.topics .gwrap::-webkit-scrollbar{display:none}
+nav.topics a{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-decoration:none;color:var(--label);padding:9px 14px;border:1.5px solid var(--border)}
+nav.topics a:hover{background:var(--pill)}
+
+/* Sections */
+section.topic{padding:48px 0 20px}
+.topic-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1.5px solid var(--border);padding-bottom:10px;margin-bottom:28px}
+.topic-head h2{font-size:clamp(30px,5vw,46px);color:var(--label)}
+.topic-head p{margin:0;color:var(--muted);font-style:italic}
+/* Tables */
+.tbl{overflow-x:auto;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--card);margin:14px 0}
+.tbl table{border-collapse:collapse;width:100%;font-size:16px}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--border)}
+.tbl th{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:17px;background:color-mix(in srgb,var(--pill) 60%,var(--card));color:var(--heading)}
+.tbl tr:last-child td{border-bottom:none}
+
+/* Quick checks */
+.gcheck{margin:26px 0 8px;display:grid;gap:10px}
+.gcheck h3{margin:0 0 4px;font-size:22px}
+.guide-body details{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:12px 16px}
+.guide-body summary{cursor:pointer;font-weight:600;list-style:none;color:var(--text)}
+.guide-body summary::-webkit-details-marker{display:none}
+.guide-body summary::after{content:" Show answer";font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;color:var(--label);margin-left:8px}
+.guide-body details[open] summary::after{content:" Hide"}
+.guide-body details p{margin:10px 0 0}
+
+/* Slides content: marks material from the instructor's slides (same tag as Week 4) */
+:root{--slides:#B23E0B;--slides-bg:#FDE4D3}
+[data-theme="dark"]{--slides:#FF976A;--slides-bg:#3F190B}
+.gslides{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slides);background:var(--slides-bg);border:1.5px solid var(--slides);padding:2px 8px;vertical-align:middle;margin-right:6px}
+.gslides.inl{margin:0 0 0 6px;font-size:10px;padding:1px 6px;font-style:normal;line-height:1.4}
+.lg-slides{background:var(--slides-bg);border-color:var(--slides);color:var(--slides)}
+.guide-footer{padding-top:24px;padding-bottom:60px;color:var(--muted);font-size:15px}:root{--l-epi:#F6C9B5;--l-derm:#EFA3A6;--l-fat:#F7E3A1;--l-musc:#C9737C;--l-bone:#EDE7DA;--wound:#8E1F3A}
+[data-theme="dark"]{--l-epi:#9C6A5A;--l-derm:#8F4E55;--l-fat:#8C7A3F;--l-musc:#6E343C;--l-bone:#6F6A5F;--wound:#F28AB5}
+.legend .lg-note{background:var(--side-bg);border-color:var(--side);color:var(--side)}
+.guide-body h4{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15}
+.gsub > h3{margin:0 0 10px}
+.guide-body td:first-child{font-weight:600}
+.guide-footer .box p{margin:4px 0}
+
+/* Week 6 layouts, drawn with the site and key colors */
+
+.gsub{margin-top:40px}
+.gsub > h3{font-size:28px;margin-bottom:10px}
+.guide-body h4{font-size:20px;margin:22px 0 8px}
+.guide-body p{margin:10px 0}
+.guide-body ul.tight{margin:8px 0;padding-left:22px}
+.guide-body ul.tight li{margin:3px 0}
+
+/* Callouts */
+.box{border:1.5px solid;padding:12px 16px;margin:14px 0;font-size:16.5px}
+.box .tag{display:block;padding:0;border:none;min-height:0;background:none;letter-spacing:.06em;text-transform:uppercase;font-size:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;margin-bottom:4px}
+.box p{margin:4px 0}
+.box ul{margin:4px 0;padding-left:20px}
+.known{background:var(--known);border-color:var(--known-line)}
+.known .tag{color:var(--muted)}
+.hook{background:var(--hook);border-color:var(--hook-line);border-width:2px;border-style:dashed}
+.hook .tag{color:var(--muted)}
+.flag{background:var(--flag-bg);border-color:var(--flag)}
+.flag .tag{color:var(--flag)}
+.note{background:var(--side-bg);border-color:var(--side)}
+.note .tag{color:var(--side)}
+.slides{background:var(--slides-bg);border-color:var(--slides)}
+.slides .tag{color:var(--slides)}
+.nc{background:var(--red-bg);border-color:var(--red)}
+.nc .tag{color:var(--red)}
+
+/* Two/three column panels */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:1.5px solid var(--border);background:var(--card);margin:12px 0}
+.cols > div{padding:14px 16px}
+.cols > div + div{border-left:1.5px dashed var(--border)}
+@media (max-width:640px){.cols > div + div{border-left:none;border-top:1.5px dashed var(--border)}}
+.cols h4{margin:0 0 6px}
+.cols ul{margin:0;padding-left:20px;font-size:16px}
+
+.signs{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:2px solid var(--flag);background:var(--card);margin:8px 0}
+.signs div{padding:12px 10px;text-align:center}
+.signs div + div{border-left:1.5px solid var(--flag)}
+.signs b{display:block;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:22px;color:var(--flag);line-height:1.1}
+.signs span{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-top:4px}
+@media (max-width:640px){.signs{grid-template-columns:1fr}.signs div + div{border-left:none;border-top:1.5px solid var(--flag)}}
+
+/* Chain loop */
+.loop{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);background:var(--card);margin:14px 0}
+.loop div{padding:14px;border-bottom:1.5px solid var(--border);position:relative}
+.loop div:nth-child(3n+1),.loop div:nth-child(3n+2){border-right:1.5px solid var(--border)}
+.loop div:nth-child(n+4){border-bottom:none}
+.loop b{display:block;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:21px;color:var(--label)}
+.loop small{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.loop span{display:block;font-size:15.5px;margin-top:4px}
+.loop-foot{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin-top:-6px}
+@media (max-width:640px){.loop{grid-template-columns:1fr}.loop div{border-right:none !important;border-bottom:1.5px solid var(--border) !important}.loop div:last-child{border-bottom:none !important}}
+
+/* Sequences */
+ol.seq{counter-reset:s;list-style:none;padding:0;margin:12px 0;display:grid;gap:0;border:1.5px solid var(--border);background:var(--card)}
+ol.seq li{counter-increment:s;display:flex;gap:12px;align-items:baseline;padding:10px 14px;font-size:16.5px}
+ol.seq li + li{border-top:1px solid var(--border)}
+ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;font-size:22px;color:var(--label);min-width:22px}
+.strip{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0;border:1.5px solid var(--border);background:var(--card)}
+.strip span{padding:8px 12px;font-size:15.5px;display:flex;align-items:center}
+.strip span + span{border-left:1.5px solid var(--border)}
+.strip span.arrow{color:var(--label);font-family:'IBM Plex Mono',monospace;border-left:none;padding:8px 4px}
+.strip span.arrow + span{border-left:none}
+.strip-label{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin:16px 0 0}
+
+/* Timeline */
+.timeline{border:1.5px solid var(--border);background:var(--card);padding:14px 16px;margin:12px 0}
+.tl-row{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;margin:8px 0;font-size:15px}
+.tl-track{position:relative;height:26px;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),var(--border) calc(10% - 1px) 10%)}
+.tl-bar{position:absolute;top:3px;bottom:3px;background:var(--border);color:var(--fill-text);font-family:'IBM Plex Mono',monospace;font-size:12px;display:flex;align-items:center;padding:0 6px;white-space:nowrap;overflow:hidden}
+.tl-scale{display:grid;grid-template-columns:150px 1fr;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.tl-scale div:last-child{display:flex;justify-content:space-between}
+@media (max-width:560px){.tl-row,.tl-scale{grid-template-columns:1fr}.tl-scale div:first-child{display:none}}
+
+/* Figures */
+.guide-body figure{margin:14px 0;border:1.5px solid var(--border);background:var(--card);padding:12px}
+.guide-body figcaption{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin-top:8px}
+.svg-text{font-family:'IBM Plex Mono',monospace;fill:var(--text)}
+.svg-title{font-family:'Young Serif',Georgia,serif;fill:var(--label)}
+
+.pic{max-width:100%;margin:14px 0}
+.pic img,.gallery img{display:block;width:100%;height:auto;background:#fff}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--min,170px),1fr));gap:10px;border:1.5px solid var(--border);background:var(--card);padding:10px;margin:14px 0}
+.gallery figure{margin:0;border:none;padding:0;background:none}
+.gallery img{height:170px;object-fit:contain}
+.gallery figcaption{margin-top:6px}
+.pq{display:flex;flex-direction:column;gap:8px}
+.pq img{height:190px;object-fit:cover}
+.pq details{padding:8px 10px;font-size:15px}
+
+</style>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-03" data-type="studyguides"></div>
+<script src="../assets/site-data.js?v=6"></script>
+<script src="../assets/header.js?v=7"></script>
+<div class="guide-body">
+
+<header class="guide-hero gwrap">
+  <p class="course">NUR 114 &middot; Unit 3 &middot; Week 6</p>
+  <h1>Infection control, tissue integrity &amp; specimen collection</h1>
+  <p class="lede">Everything from the Week 6 ATI modules and lecture slides, boiled down. Lock in the lists, check the flagged boxes twice, then hit the quick checks at the end of each topic.</p>
+  <div class="legend" aria-label="Key">
+    <span class="lg-known">Known mnemonic</span>
+    <span class="lg-hook">Memory hook made for this guide</span>
+    <span class="lg-flag">Instructor flagged for the test</span>
+    <span class="lg-note">Side note</span>
+    <span class="lg-slides">Slides only: in instructor's slides, not ATI</span>
+  </div>
+</header>
+
+<nav class="topics" aria-label="Topics">
+  <div class="gwrap">
+    <a href="#infection">Infection control &amp; isolation</a>
+    <a href="#tissue">Tissue integrity</a>
+    <a href="#specimen">Specimen collection</a>
+      </div>
+</nav>
+
+<main class="gwrap">
+
+<!-- ===================== INFECTION CONTROL ===================== -->
+<section class="topic" id="infection">
+  <div class="topic-head"><h2>Infection control &amp; isolation</h2><p>How infections spread, how the body fights back, and what the nurse does to break the chain.</p></div>
+
+  <div class="gsub">
+    <h3>The chain of infection</h3>
+    <div class="box flag"><span class="tag">Instructor flagged</span><p>Know all six links in order.</p></div>
+    <div class="loop">
+      <div><small>Link 1</small><b>Infectious agent</b><span>Bacteria, virus, fungus, parasite, or prion</span></div>
+      <div><small>Link 2</small><b>Reservoir</b><span>Where it lives and grows: people, animals, soil, food, water, equipment, IV fluids, feces</span></div>
+      <div><small>Link 3</small><b>Portal of exit</b><span>How it leaves: orifices, skin, blood, body fluids, coughs</span></div>
+      <div><small>Link 4</small><b>Mode of transmission</b><span>Contact, droplet, airborne, vehicle, vector</span></div>
+      <div><small>Link 5</small><b>Portal of entry</b><span>How it gets in: orifices, broken skin or mucosa, invasive devices</span></div>
+      <div><small>Link 6</small><b>Susceptible host</b><span>Someone it can take hold in. Not everyone exposed gets sick</span></div>
+    </div>
+    <p class="loop-foot">The host can then become the next reservoir, so the chain loops.</p>
+    <figure class="pic" style="max-width:640px"><img src="week6-img/01.jpg" alt="Chain of infection" loading="lazy"><figcaption>Chain of infection</figcaption></figure>
+
+    <div class="tbl"><table>
+      <tr><th>Link</th><th>How the nurse breaks it</th></tr>
+      <tr><td>Infectious agent</td><td>Disinfect, sterilize, clean; antimicrobials</td></tr>
+      <tr><td>Reservoir</td><td>Hand hygiene, preop skin prep, cleaning the environment per protocol</td></tr>
+      <tr><td>Portal of exit</td><td>Contain body fluids with drains and dressings; decrease secretions</td></tr>
+      <tr><td>Mode of transmission</td><td>Hand hygiene and barrier devices (PPE)</td></tr>
+      <tr><td>Portal of entry</td><td>Keep skin and mucosa intact; asepsis with invasive devices</td></tr>
+      <tr><td>Susceptible host</td><td>Immunizations, nutrition, hygiene, blood glucose control</td></tr>
+    </table></div>
+
+    <h4>What makes a host more susceptible</h4>
+    <p>Age; underlying disease (HIV/AIDS, malignancy, transplant); immunosuppressants, antirejection meds, antineoplastics, antimicrobials, corticosteroids, PPIs; surgery; radiation; indwelling devices (ET tubes, urinary and central catheters, pacemakers, artificial joints).</p>
+    <p><b>Colonized</b> means the organism lives in the body without causing problems. A colonized person can still be a reservoir and spread it. <b>Virulence</b> is how good an organism is at making people sick.</p>
+    <div class="box note"><span class="tag">Side note</span><p>A practice question favorite: clients, staff, furniture, and equipment are <b>reservoirs</b>. Bacteria and viruses are <b>agents</b>, not reservoirs.</p></div>
+    <div class="box slides"><span class="tag">Slides only</span><p>Pathogens can be grouped as cellular (living: parasites, protozoa, fungi, bacteria) or acellular (nonliving: viruses, prions). Prion example: CJD.</p></div>
+    <figure class="pic" style="max-width:760px"><img src="week6-img/02.jpg" alt="Cellular (living) vs acellular (nonliving) pathogens" loading="lazy"><figcaption>Cellular (living) vs acellular (nonliving) pathogens</figcaption></figure>
+  </div>
+
+  <div class="gsub">
+    <h3>Modes of transmission</h3>
+    <div class="tbl"><table>
+      <tr><th>Mode</th><th>How it spreads</th><th>Examples</th></tr>
+      <tr><td>Direct contact</td><td>Person to person, nothing in between</td><td>Blood into a nurse's open cut; scabies without gloves</td></tr>
+      <tr><td>Indirect contact</td><td>Through a contaminated object or person</td><td>Drainage on a bed rail; same gloves between clients; shared BP cuff</td></tr>
+      <tr><td>Droplet</td><td>Large droplets (&gt;5 microns) into a host's mucosa, within 3–6 ft</td><td>Influenza, pertussis, RSV, adenovirus, rhinovirus</td></tr>
+      <tr><td>Airborne</td><td>Small particles (&lt;5 microns) stay suspended and travel far</td><td>TB, measles, varicella</td></tr>
+      <tr><td>Vehicle</td><td>One contaminated source to many people</td><td>E. coli on produce, contaminated water</td></tr>
+      <tr><td>Vector-borne</td><td>An animal carries it without being infected</td><td>Mosquitoes, rats</td></tr>
+    </table></div>
+    <div class="box note"><span class="tag">Side note</span><p>ATI gives three different droplet distances (3 ft, 3–6 ft, and 6–10 ft). This guide uses <b>3–6 ft</b>.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Body defenses</h3>
+    <div class="cols">
+      <div><h4>Physical &amp; chemical barriers</h4><ul>
+        <li>Intact skin: largest organ, first line of defense</li>
+        <li>Moist mucous membranes (humidify O<sub>2</sub>)</li>
+        <li>Tears, sweat, cilia, coughing</li>
+        <li>Stomach acid, enzymes, normal GI flora</li>
+        <li>Longer male urethra; vaginal pH</li></ul></div>
+      <div><h4>Nonspecific (innate)</h4><ul>
+        <li>Neutrophils and macrophages</li>
+        <li>Work as phagocytes: eat and destroy microbes</li>
+        <li>Responds right away to anything</li>
+        <li>No memory</li></ul></div>
+      <div><h4>Specific (acquired)</h4><ul>
+        <li>Antibodies (IgA, IgD, IgE, IgG, IgM)</li>
+        <li>B and T lymphocytes</li>
+        <li>Remembers a specific invader after exposure</li>
+        <li>Takes time to respond</li></ul></div>
+    </div>
+    <figure class="pic" style="max-width:620px"><img src="week6-img/03.jpg" alt="Phagocytosis: a macrophage engulfs and destroys viruses" loading="lazy"><figcaption>Phagocytosis: a macrophage engulfs and destroys viruses</figcaption></figure>
+    <p><b>Protecting the skin barrier:</b> gentle cleansers, moisturizers, less tape, no irritants. Detergents strip the stratum corneum (about half back in 6 hr, fully back in 5–6 days).</p>
+    <p><b>Passive immunity</b> comes from an outside source (maternal antibodies, immunoglobulin) and is temporary. <b>Active immunity</b> is made by the body after exposure and lasts.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Inflammation</h3>
+    <p class="strip-label">The 4 steps</p>
+    <div class="strip"><span>Pattern receptors recognize harmful stimuli</span><span class="arrow">→</span><span>Pathway activated</span><span class="arrow">→</span><span>Markers released</span><span class="arrow">→</span><span>Inflammatory cells recruited</span></div>
+    <div class="box flag"><span class="tag">Instructor flagged</span><p><b>The 5 cardinal signs of inflammation</b></p>
+      <div class="signs"><div><b>Heat</b><span>Warm to touch</span></div><div><b>Redness</b><span>Erythema</span></div><div><b>Swelling</b><span>Edema</span></div><div><b>Pain</b><span>Tenderness</span></div><div><b>Loss of function</b><span>Hard to move or use</span></div></div>
+      <p>Example: a skinned knee is warm, red, swollen, painful, and hard to bend.</p></div>
+    <figure class="pic" style="max-width:640px"><img src="week6-img/04.jpg" alt="The 5 cardinal signs of inflammation" loading="lazy"><figcaption>The 5 cardinal signs of inflammation</figcaption></figure>
+    <div class="cols">
+      <div><h4>Infectious triggers</h4><ul><li>Viruses</li><li>Bacteria</li><li>Other micro-organisms (fungi)</li></ul></div>
+      <div><h4>Noninfectious triggers</h4><ul>
+        <li>Physical: burns, frostbite, trauma, foreign bodies, radiation</li>
+        <li>Chemical: glucose, fatty acids, alcohol, toxins, irritants</li>
+        <li>Biological: damaged cells</li>
+        <li>Psychological: excitement</li></ul></div>
+    </div>
+    <div class="box slides"><span class="tag">Slides only</span><p>Psychological triggers also include stress, depression, and hostility.</p></div>
+    <p class="strip-label">What happens at a wound</p>
+    <div class="strip"><span>Bacteria invade</span><span class="arrow">→</span><span>Histamine, kinins, prostaglandins</span><span class="arrow">→</span><span>Plasma enters (swelling, heat)</span><span class="arrow">→</span><span>Phagocytosis</span><span class="arrow">→</span><span>Pus</span></div>
+    <figure class="pic" style="max-width:760px"><img src="week6-img/05.jpg" alt="The inflammatory process at a wound" loading="lazy"><figcaption>The inflammatory process at a wound</figcaption></figure>
+    <p><b>Meds:</b> antihistamines (diphenhydramine) block histamine and prevent swelling; NSAIDs (ibuprofen) reduce painful inflammation. <b>Acute</b> inflammation is one event; <b>chronic</b> repeats (asthma, GERD) and can lead to tissue destruction and cancer.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Stages and types of infection</h3>
+    <ol class="seq">
+      <li><span><b>Incubation:</b> exposure to first symptom. No symptoms, but labs may show changes. Seconds to weeks, depending on the agent.</span></li>
+      <li><span><b>Prodromal:</b> vague symptoms: fever, aches, poor appetite, malaise.</span></li>
+      <li><span><b>Acute illness:</b> disease-specific symptoms are obvious; infection is severe.</span></li>
+      <li><span><b>Decline:</b> symptoms ease; strength returns.</span></li>
+      <li><span><b>Convalescence:</b> back to the old or a new balanced state of health; may have lasting effects.</span></li>
+    </ol>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>"I Prefer Avoiding Disease Completely"</b>: Incubation, Prodromal, Acute, Decline, Convalescence.</p></div>
+    <div class="cols">
+      <div><h4>Local</h4><ul><li>Confined to one area</li><li>Pain, tenderness, edema at the site</li><li>Topical or oral antibiotics</li></ul></div>
+      <div><h4>Systemic</h4><ul><li>Spreads through the bloodstream</li><li>Fever, ↑ HR and RR, malaise, fatigue, anorexia, N/V, enlarged lymph nodes</li><li>IV antibiotics and monitoring</li></ul></div>
+    </div>
+    <div class="gallery" style="--min:240px"><figure><img src="week6-img/06.jpg" alt="Local infection: erythema and edema" loading="lazy"><figcaption>Local infection: erythema and edema</figcaption></figure><figure><img src="week6-img/07.jpg" alt="Systemic infection: may need IV antibiotics and close monitoring" loading="lazy"><figcaption>Systemic infection: may need IV antibiotics and close monitoring</figcaption></figure></div>
+    <p><b>Chills</b> mean temperature is rising; <b>diaphoresis</b> means it is falling.</p>
+    <div class="box note"><span class="tag">Side note</span><p><b>Older adults</b> may only show confusion, agitation, or incontinence, so infection can be advanced before anyone notices.</p></div>
+    <p><b>Sepsis:</b> a systemic inflammatory response to serious infection that can cause organ failure and shock. Blood cultures confirm it. Highest risk: very young, very old, weak immune system, severe trauma.</p>
+    <p><b>Shingles (herpes zoster):</b> reactivated varicella. Painful one-sided vesicular rash along a dermatome. Isolate until the vesicles crust over; keep away from infants, pregnant people who haven't had chickenpox, and immunocompromised clients. Acyclovir works best early. The two-dose recombinant vaccine prevents it but doesn't treat it. Pain lasting over 3 months after the rash is <b>postherpetic neuralgia</b>.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Diagnostic tests</h3>
+    <p><b>WBC count:</b> 5,000–10,000/mm³. Above 10,000 (leukocytosis) = inflammation or infection. Below range = can't fight infection well (neutropenia).</p>
+    <div class="tbl"><table>
+      <tr><th>WBC type</th><th>Expected</th><th>Job</th></tr>
+      <tr><td>Neutrophils</td><td>55–70%</td><td>First responder; eat bacteria. Immature ones (bands/stabs) rising = left shift = ongoing infection</td></tr>
+      <tr><td>Lymphocytes</td><td>20–40%</td><td>Chronic bacterial and acute viral infections; T and B cells</td></tr>
+      <tr><td>Monocytes</td><td>2–8%</td><td>Clean up tissue damage; make interferon</td></tr>
+      <tr><td>Eosinophils</td><td>1–4%</td><td>Allergies and parasites</td></tr>
+      <tr><td>Basophils</td><td>0.5–1%</td><td>Release histamine, serotonin, heparin (mast cells)</td></tr>
+    </table></div>
+    <div class="box known"><span class="tag">Known mnemonic</span><p><b>"Never Let Monkeys Eat Bananas"</b>: most to least common, neutrophils → basophils. The differential always totals 100%.</p></div>
+    <ul class="tight">
+      <li><b>ESR:</b> nonspecific; expected 15–20 mm/hr, above 20 = active inflammation. Varies by age and sex.</li>
+      <li><b>CRP and procalcitonin:</b> nonspecific inflammation markers. Not standardized, so use the same lab for repeat draws.</li>
+      <li><b>UA → C&amp;S:</b> WBCs in the urine lead to a culture and sensitivity. The culture names the organism; the sensitivity shows which antibiotic works. <b>Collect cultures before antibiotics.</b></li>
+      <li><b>Chest x-ray:</b> confirms pneumonia or atelectasis but not the type.</li>
+      <li><b>Antibody test:</b> shows past exposure, not current infection. <b>Antigen test</b> and <b>NAAT</b> detect the pathogen itself.</li>
+      <li><b>Gallium scan:</b> radioactive tracer gathers where WBCs collect.</li>
+    </ul>
+    <div class="box slides"><span class="tag">Slides only</span><p>CRP: <b>less than 1 is normal</b>, higher when inflammation is present.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Hand hygiene</h3>
+    <div class="cols">
+      <div><h4>Alcohol-based hand rub</h4><ul><li>Preferred in most situations</li><li>At least 60% alcohol</li><li>Rub all surfaces until dry (20–30 sec)</li></ul></div>
+      <div><h4>Soap and water</h4><ul><li>Hands visibly soiled</li><li>Spores, like <b>C. diff</b>: alcohol doesn't remove them</li><li>At least <b>20 seconds</b> (Happy Birthday twice)</li></ul></div>
+    </div>
+    <div class="box note"><span class="tag">Side note</span><p>The slides say 15–30 seconds, but instructors confirmed <b>20 seconds</b> for exams.</p></div>
+    <p><b>Handwashing essentials:</b> soap, running water, friction. Hands below elbows, warm water, wash 1 in above the wrist, clean under nails (the subungual area holds the most microbes), rinse fingertips down, pat dry fingertips to wrists, turn the faucet off with a dry paper towel.</p>
+    <p><b>Nails:</b> natural, ≤0.25 in, unpolished. No artificial nails; chipped or gel polish harbors bacteria.</p>
+    <div class="box slides"><span class="tag">Slides only</span><p>When: before and after client contact, before and after eating or drinking, after using the restroom, after removing gloves.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Asepsis</h3>
+    <div class="tbl"><table>
+      <tr><th></th><th>Medical asepsis</th><th>Surgical asepsis</th></tr>
+      <tr><td>Also called</td><td>Clean technique</td><td>Sterile technique</td></tr>
+      <tr><td>Goal</td><td>Reduce the number of microbes</td><td>No microbes present; prevent SSIs</td></tr>
+      <tr><td>Examples</td><td>Hand hygiene, isolation precautions, oral meds, NG tubes, hygiene</td><td>Catheter insertion, central lines, parenteral meds, sterile dressing changes</td></tr>
+    </table></div>
+    <p><b>Sterilization</b> kills everything, including spores (autoclave, chemical, radiation). <b>Disinfection</b> kills most but not all: high-level leaves some spores (endoscopes); low-level is for surfaces and not for visible blood. Always clean off visible soil first. Check for latex allergies before any aseptic procedure.</p>
+    <h4>Sterile field rules</h4>
+    <ul class="tight">
+      <li>Waist-high flat surface, close to the client, 12–18 in from walls</li>
+      <li>Outer 1-inch border is contaminated</li>
+      <li>Below the waist or above the chest is contaminated</li>
+      <li>Never reach over it, turn your back on it, or cough or talk over it</li>
+      <li>Wet = contaminated (moisture wicks microbes through)</li>
+      <li>A long delay contaminates it</li>
+      <li>Drop items into the center from about 6 in</li>
+      <li>Pour solution: cap face-up, label in palm, pour off 1–2 mL first</li>
+      <li>Client coughing? Put a mask on the client</li>
+    </ul>
+    <p class="strip-label">Opening a sterile package</p>
+    <div class="strip"><span>Check integrity and expiration</span><span class="arrow">→</span><span>Flap farthest from you</span><span class="arrow">→</span><span>Side flaps, one at a time</span><span class="arrow">→</span><span>Flap closest to you</span></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>"Far, sides, near"</b>: so you never reach over the sterile part.</p></div>
+    <p><b>Sterile gloving:</b> open technique when no gown is worn; closed technique with hands inside the gown cuffs. A sterile gown is sterile only on the sleeves from just above the cuff to 2 in above the elbow; the axilla and back are not.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Precautions and PPE</h3>
+    <div class="tbl"><table>
+      <tr><th>Type</th><th>PPE</th><th>Room</th><th>Examples</th></tr>
+      <tr><td>Standard</td><td>Hand hygiene; gloves as needed; mask, eye protection, face shield if splashing</td><td>Private only if client can't maintain hygiene</td><td>Every client</td></tr>
+      <tr><td>Contact</td><td>Gown + gloves on entry</td><td>Private or cohort, 3 ft apart</td><td>MRSA, VRE, C. diff, norovirus, RSV, herpes simplex, impetigo, scabies</td></tr>
+      <tr><td>Droplet</td><td>Surgical mask; gown + gloves if contact with secretions</td><td>Private or cohort, 3 ft apart, curtain drawn</td><td>Influenza, pertussis, adenovirus, Hib, mumps, rubella, mycoplasma</td></tr>
+      <tr><td>Airborne</td><td>Fit-tested N95</td><td>Airborne infection isolation room (AIIR): negative pressure, door closed</td><td>TB, measles, varicella</td></tr>
+      <tr><td>Protective</td><td>Protect the client</td><td>Positive airflow, HEPA, ≥12 exchanges/hr, no plants</td><td>Allogenic hematopoietic stem cell transplant (HSCT), first 100 days</td></tr>
+    </table></div>
+    <p>Clients on airborne, droplet, or protective precautions <b>wear a mask when they leave the room</b>. Isolation raises the risk of loneliness and depression, so explain why it's needed and provide stimulation.</p>
+    <p class="strip-label">Putting PPE on</p>
+    <div class="strip"><span>Hand hygiene</span><span class="arrow">→</span><span>Gown</span><span class="arrow">→</span><span>Mask or N95</span><span class="arrow">→</span><span>Goggles or face shield</span><span class="arrow">→</span><span>Gloves (over cuffs)</span></div>
+    <p class="strip-label">Taking PPE off</p>
+    <div class="strip"><span>Gloves</span><span class="arrow">→</span><span>Goggles or face shield</span><span class="arrow">→</span><span>Gown</span><span class="arrow">→</span><span>Mask</span><span class="arrow">→</span><span>Hand hygiene</span></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Gloves go on last and come off first.</b> They're the dirtiest thing you're wearing.</p></div>
+    <ul class="tight">
+      <li>Touch only ties, ear loops, and headbands when removing PPE; the fronts are contaminated</li>
+      <li>Gowns are single use; roll inside out and discard before leaving the room</li>
+      <li>N95 fit check: inhale and it collapses; exhale and no air leaks</li>
+      <li>Change gloves if torn, between body sites, before touching keyboards, and between clients</li>
+      <li>Exposed to blood? Wash with soap and water (eyes: irrigate; nose or mouth: flush), then report right away</li>
+      <li>Sharps box less than ¾ full; engage safety devices; always report needlesticks</li>
+      <li>Linens: bag at the bedside, never shake or sort, double-bag if leaking</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>Health care–associated infections (HAIs) and multidrug-resistant organisms (MDROs)</h3>
+    <p>An HAI is an infection a client picks up while receiving care in a health care facility. The 4 major HAIs:</p>
+    <ul class="tight"><li><b>CLABSI:</b> central line–associated bloodstream infection</li><li><b>CAUTI:</b> catheter-associated urinary tract infection</li><li><b>SSI:</b> surgical site infection</li><li><b>VAP:</b> ventilator-associated pneumonia</li></ul>
+    <div class="gallery" style="--min:170px"><figure><img src="week6-img/08.jpg" alt="CLABSI: central line site" loading="lazy"><figcaption>CLABSI: central line site</figcaption></figure><figure><img src="week6-img/09.jpg" alt="CAUTI: indwelling urinary catheter" loading="lazy"><figcaption>CAUTI: indwelling urinary catheter</figcaption></figure><figure><img src="week6-img/10.jpg" alt="SSI: surgical incision" loading="lazy"><figcaption>SSI: surgical incision</figcaption></figure><figure><img src="week6-img/11.jpg" alt="VAP: chest x-ray" loading="lazy"><figcaption>VAP: chest x-ray</figcaption></figure></div>
+    <p>Invasive devices create an extra portal of entry. The urinary tract is the most common HAI site, and <b>hand hygiene</b> is the best prevention.</p>
+    <div class="tbl"><table>
+      <tr><th>Bundle</th><th>Key points</th></tr>
+      <tr><td>CLABSI</td><td>Maximal sterile barriers; avoid femoral site in obese clients; &gt;0.5% chlorhexidine with alcohol. Gauze dressing every 2 days, semipermeable every 7 days, sooner if wet or loose. Scrub the hub with friction</td></tr>
+      <tr><td>CAUTI</td><td>Avoid unnecessary catheters, remove early, keep the system aseptic</td></tr>
+      <tr><td>VAP</td><td>Hand hygiene, positioning, mouth care, avoid frequent circuit changes, nutrition</td></tr>
+      <tr><td>SSI</td><td>Surgical asepsis and preop skin prep; chlorhexidine (CHG) wipes before surgery reduce risk. Most common cause: <i>S. aureus</i>. Superficial SSIs appear within 30 days, deep within 30 or 90 days</td></tr>
+    </table></div>
+    <p><b>MDROs</b> resist one or more classes of antimicrobials and respond to only 1–2 drugs. Use contact precautions. MRSA is treated with vancomycin or linezolid. Teach clients to finish the full antibiotic course.</p>
+    <ul class="tight"><li><b>MRSA:</b> methicillin-resistant <i>Staphylococcus aureus</i></li><li><b>VRE:</b> vancomycin-resistant <i>Enterococcus</i></li><li><b>VRSA:</b> vancomycin-resistant <i>S. aureus</i></li><li><b>VISA:</b> vancomycin-intermediate <i>S. aureus</i></li><li><b>ESBL:</b> extended-spectrum beta-lactamase–producing organisms</li><li><b>MDRSP:</b> multidrug-resistant <i>Streptococcus pneumoniae</i></li></ul>
+    <p><b>Enhanced barrier precautions</b> (nursing homes): gown and gloves for high-contact care like bathing, toileting, wound care, and transfers.</p>
+    <div class="box slides"><span class="tag">Slides only</span><p>MDROs require good <b>antibiotic stewardship</b>.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client has a draining wound. Which link do you break with a dressing?</summary><p>Portal of exit. Containing drainage keeps the pathogen from leaving the reservoir.</p></details>
+    <details><summary>Soap and water or hand sanitizer after caring for a client with C. diff?</summary><p>Soap and water. Alcohol doesn't remove spores.</p></details>
+    <details><summary>Which precautions need a negative-pressure room?</summary><p>Airborne (TB, measles, varicella). Protective isolation uses positive pressure.</p></details>
+    <details><summary>Which PPE comes off first?</summary><p>Gloves, then goggles or face shield, then gown, then mask, then hand hygiene.</p></details>
+    <details><summary>Fever, aches, and malaise but nothing disease-specific yet. Which stage?</summary><p>Prodromal.</p></details>
+  </div>
+</section>
+
+<!-- ===================== TISSUE INTEGRITY ===================== -->
+<section class="topic" id="tissue">
+  <div class="topic-head"><h2>Tissue integrity</h2><p>The skin, how it breaks down, how to stage and care for wounds, and what can go wrong.</p></div>
+
+  <div class="gsub">
+    <h3>Skin structure and function</h3>
+    <div class="tbl"><table>
+      <tr><th>Layer</th><th>What's in it</th><th>Job</th></tr>
+      <tr><td>Epidermis</td><td>Keratinocytes, melanocytes, Merkel and Langerhans cells</td><td>Blocks water loss and pathogens; melanin absorbs UV; light touch; immune response</td></tr>
+      <tr><td>Dermis</td><td>Collagen, elastin, vessels, fibroblasts</td><td>Strength and elasticity; wound healing</td></tr>
+      <tr><td>Subcutaneous</td><td>Adipose tissue</td><td>Insulation, shock absorption, padding</td></tr>
+    </table></div>
+    <figure class="pic" style="max-width:560px"><img src="week6-img/12.jpg" alt="Three main layers of the skin" loading="lazy"><figcaption>Three main layers of the skin</figcaption></figure>
+    <p><b>Skin functions:</b> barrier against injury, infection, UV, and temperature changes; sensation; waste elimination; vitamin D synthesis.</p>
+    <p><b>Highest risk ages:</b> early and late life. Older adults have thinner skin with less collagen, elasticity, padding, blood supply, and hydration, so they get skin tears (often from tape) and pressure injuries. Obese clients are at risk from moisture in skin folds. <b>Moisture-associated skin damage (MASD)</b> is skin damage from urine, stool, effluent, or exudate.</p>
+    <div class="box slides"><span class="tag">Slides only</span><p><b>Factors affecting skin integrity:</b> age, mobility, nutrition and hydration, sensation, circulation, medications, moisture, fever, infection, lifestyle.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Assessing skin color</h3>
+    <div class="tbl"><table>
+      <tr><th>Finding</th><th>Light skin</th><th>Dark skin: where to look</th><th>Means</th></tr>
+      <tr><td>Pallor</td><td>Loss of red undertones</td><td>Ashen gray in mucous membranes, conjunctiva</td><td>Anemia, shock, poor blood flow</td></tr>
+      <tr><td>Cyanosis</td><td>Bluish</td><td>Palms, soles, conjunctiva, nail beds, lips, oral mucosa</td><td>Hypoxia: the <b>priority</b></td></tr>
+      <tr><td>Jaundice</td><td>Yellow-orange</td><td>Sclera, hard palate, palms, soles</td><td>Liver dysfunction</td></tr>
+      <tr><td>Erythema</td><td>Redness</td><td>Hard to see: palpate for warmth and firmness</td><td>Inflammation</td></tr>
+      <tr><td>Ecchymosis</td><td>Red or blue bruise</td><td>Darker area; tender</td><td>Bleeding under skin</td></tr>
+    </table></div>
+    <figure class="pic" style="max-width:420px"><img src="week6-img/13.jpg" alt="Skin color warning signs" loading="lazy"><figcaption>Skin color warning signs</figcaption></figure><div class="gallery" style="--min:170px"><figure><img src="week6-img/14.jpg" alt="Pallor in dark skin: check the conjunctiva" loading="lazy"><figcaption>Pallor in dark skin: check the conjunctiva</figcaption></figure><figure><img src="week6-img/15.jpg" alt="Cyanosis: fingers and nail beds" loading="lazy"><figcaption>Cyanosis: fingers and nail beds</figcaption></figure><figure><img src="week6-img/16.jpg" alt="Central cyanosis: lips (a later sign)" loading="lazy"><figcaption>Central cyanosis: lips (a later sign)</figcaption></figure><figure><img src="week6-img/17.jpg" alt="Jaundice: sclera" loading="lazy"><figcaption>Jaundice: sclera</figcaption></figure><figure><img src="week6-img/18.jpg" alt="Jaundice: skin" loading="lazy"><figcaption>Jaundice: skin</figcaption></figure><figure><img src="week6-img/19.jpg" alt="Erythema: light skin" loading="lazy"><figcaption>Erythema: light skin</figcaption></figure><figure><img src="week6-img/20.jpg" alt="Erythema: dark skin" loading="lazy"><figcaption>Erythema: dark skin</figcaption></figure><figure><img src="week6-img/21.jpg" alt="Ecchymosis: light skin" loading="lazy"><figcaption>Ecchymosis: light skin</figcaption></figure><figure><img src="week6-img/22.jpg" alt="Ecchymosis: dark skin" loading="lazy"><figcaption>Ecchymosis: dark skin</figcaption></figure></div>
+    <p><b>Blanchable</b> erythema turns white when pressed and comes back. <b>Nonblanchable</b> stays red and means small-vessel damage. Feel temperature with the back of your hand: warm = inflammation, cool = poor blood flow.</p>
+    <p><b>Also check:</b> turgor (tenting = dehydration; unreliable in older adults), capillary refill (&lt;3 sec), clubbing (nail angle &gt;160°).</p>
+    <div class="cols">
+      <div><h4>Pitting edema</h4><ul><li>1+ = 2 mm, rapid</li><li>2+ = 4 mm, 10–15 sec</li><li>3+ = 6 mm, prolonged</li><li>4+ = 8 mm, prolonged</li></ul></div>
+      <div><h4>Pulses</h4><ul><li>0 = absent</li><li>1+ = diminished</li><li>2+ = expected</li><li>3+ = increased</li><li>4+ = bounding</li><li>Palpate carotids one side at a time</li></ul></div>
+      <div><h4>Arterial vs venous insufficiency</h4><ul><li><b>Arterial</b> (poor blood flow to the legs): skin on the feet and toes is shiny, translucent, and hairless</li><li><b>Venous</b> (poor blood return from the legs): brown skin discoloration</li></ul></div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Skin lesions</h3>
+    <div class="cols">
+      <div><h4>Primary (from healthy skin)</h4><ul>
+        <li>Macule: flat, &lt;1 cm (freckle, petechiae)</li>
+        <li>Papule: raised, solid, &lt;1 cm (raised mole)</li>
+        <li>Nodule: firm, deep, 1–2 cm (wart)</li>
+        <li>Vesicle: serous fluid (blister, herpes)</li>
+        <li>Pustule: pus (acne)</li>
+        <li>Tumor: solid mass &gt;1–2 cm</li>
+        <li>Wheal: edematous (insect bite)</li>
+        <li>Atrophy: thin, shiny skin</li></ul></div>
+      <div><h4>Secondary (change in a primary)</h4><ul>
+        <li>Erosion: lost epidermis, moist</li>
+        <li>Excoriation: scratch-type surface loss</li>
+        <li>Crust: dried blood, serum, or pus (scab)</li>
+        <li>Scale: flaking (psoriasis, dandruff)</li>
+        <li>Fissure: linear crack (tinea pedis)</li>
+        <li>Ulcer: open sore; epidermis and dermis lost (pressure injury)</li>
+        <li>Scar: fibrous tissue</li></ul></div>
+    </div>
+    <div class="box known"><span class="tag">Known mnemonic</span><p><b>ABCDE</b> for skin cancer: Asymmetry, Border irregularity, Color variation, Diameter &gt;6 mm, Evolving.</p></div>
+    <p><b>Expected aging:</b> thin, dry, wrinkled, less elastic skin. Hematomas and petechiae are <b>not</b> expected.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Pressure injuries</h3>
+    <p>Localized damage to skin and tissue from <b>pressure</b>, or pressure plus <b>shear</b>, usually over bony prominences or medical devices. Most at risk: heels, toes, sacrum, hips, elbows, shoulders, back of head. Deep damage may not show for 24–72 hr.</p>
+    <div class="cols">
+      <div><h4>Pressure</h4><ul><li>Body weight pressing tissue against a surface</li><li><i>Ex: bony prominences pressing into the bed</i></li></ul></div>
+      <div><h4>Shear</h4><ul><li>Skin stays put while deeper tissue slides down</li><li><i>Ex: sliding down in bed in high-Fowler's</i></li></ul></div>
+      <div><h4>Friction</h4><ul><li>Rubbing damages the epidermis</li><li>Doesn't directly cause a pressure injury</li><li><i>Ex: toes rubbing under the blanket</i></li></ul></div>
+    </div>
+    <figure class="pic" style="max-width:760px"><img src="week6-img/23.jpg" alt="Pressure, shear, and friction" loading="lazy"><figcaption>Pressure, shear, and friction</figcaption></figure><figure class="pic" style="max-width:760px"><img src="week6-img/24.jpg" alt="Pressure points by position" loading="lazy"><figcaption>Pressure points by position</figcaption></figure>
+    <p><b>Top risk factors:</b> immobility, malnutrition, reduced perfusion, sensory loss, decreased level of consciousness.</p>
+    <p><b>Braden Scale:</b> 6 categories (sensory perception, moisture, activity, mobility, nutrition, friction and shear). Scores 6–23; <b>lower score = higher risk</b>.</p>
+
+    <h4>Staging</h4>
+    <div class="box flag"><span class="tag">Instructor flagged</span><p>Know every stage, plus unstageable and deep tissue pressure injury (DTPI). Expect picture-style staging questions.</p></div>
+    <figure>
+      <svg viewBox="0 0 820 250" role="img" aria-label="Cross-sections of skin showing stages 1 through 4 of a pressure injury">
+        <defs>
+          <g id="layers">
+            <rect x="0" y="30" width="180" height="16" style="fill:var(--l-epi)"/>
+            <rect x="0" y="46" width="180" height="34" style="fill:var(--l-derm)"/>
+            <rect x="0" y="80" width="180" height="52" style="fill:var(--l-fat)"/>
+            <rect x="0" y="132" width="180" height="46" style="fill:var(--l-musc)"/>
+            <rect x="0" y="178" width="180" height="32" style="fill:var(--l-bone)"/>
+          </g>
+        </defs>
+        <g transform="translate(10,0)"><use href="#layers"/><rect x="45" y="30" width="90" height="8" style="fill:var(--wound)" opacity=".55"/><text class="svg-title" x="0" y="20" font-size="18">Stage 1</text><text class="svg-text" x="0" y="232" font-size="12">Intact, nonblanchable</text></g>
+        <g transform="translate(215,0)"><use href="#layers"/><path d="M55 30 L125 30 L112 60 L68 60 Z" style="fill:var(--wound)"/><text class="svg-title" x="0" y="20" font-size="18">Stage 2</text><text class="svg-text" x="0" y="232" font-size="12">Partial thickness</text></g>
+        <g transform="translate(420,0)"><use href="#layers"/><path d="M45 30 L135 30 L122 115 L58 115 Z" style="fill:var(--wound)"/><text class="svg-title" x="0" y="20" font-size="18">Stage 3</text><text class="svg-text" x="0" y="232" font-size="12">Down into fat</text></g>
+        <g transform="translate(625,0)"><use href="#layers"/><path d="M40 30 L140 30 L128 190 L52 190 Z" style="fill:var(--wound)"/><text class="svg-title" x="0" y="20" font-size="18">Stage 4</text><text class="svg-text" x="0" y="232" font-size="12">Bone or muscle exposed</text></g>
+      </svg>
+      <figcaption>Layers top to bottom: epidermis, dermis, subcutaneous fat, muscle, bone.</figcaption>
+    </figure>
+    <div class="tbl"><table>
+      <tr><th>Stage</th><th>What you see</th><th>Treatment</th></tr>
+      <tr><td>Stage 1</td><td>Intact skin, nonblanchable erythema; may be warmer or cooler</td><td>Relieve pressure, reposition</td></tr>
+      <tr><td>Stage 2</td><td>Partial thickness, exposed dermis; pink-red moist bed or intact/ruptured blister. No slough or fat</td><td>Moist healing (hydrocolloid)</td></tr>
+      <tr><td>Stage 3</td><td>Full-thickness skin loss; fat visible; may have granulation, rolled edges, slough, tunneling. No bone</td><td>Clean or debride; antimicrobials</td></tr>
+      <tr><td>Stage 4</td><td>Full-thickness skin and tissue loss; bone, tendon, muscle, cartilage exposed</td><td>Clean or debride; antimicrobials; possible grafts</td></tr>
+      <tr><td>Unstageable</td><td>Slough or eschar hides the bed; turns out to be stage 3 or 4</td><td>Debride until it can be staged. <b>Leave stable heel eschar alone</b></td></tr>
+      <tr><td>Deep tissue pressure injury (DTPI)</td><td>Persistent nonblanchable deep red, maroon, or purple; intact skin or blood blister</td><td>Relieve pressure</td></tr>
+    </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>1 red, 2 pink and shallow, 3 fat, 4 bone.</b> Can't see the bottom? Unstageable. Purple, bruise-like, and intact? Deep tissue pressure injury.</p></div>
+    <figure class="pic" style="max-width:520px"><img src="week6-img/25.jpg" alt="Stages 1–4" loading="lazy"><figcaption>Stages 1–4</figcaption></figure><div class="gallery" style="--min:200px"><figure><img src="week6-img/26.jpg" alt="Deep tissue pressure injury" loading="lazy"><figcaption>Deep tissue pressure injury</figcaption></figure><figure><img src="week6-img/27.jpg" alt="Unstageable: slough and eschar" loading="lazy"><figcaption>Unstageable: slough and eschar</figcaption></figure><figure><img src="week6-img/28.jpg" alt="Unstageable: dark eschar" loading="lazy"><figcaption>Unstageable: dark eschar</figcaption></figure></div><p class="strip-label">Practice: stage these from the photos</p><div class="gallery practice" style="--min:200px"><div class="pq"><img src="week6-img/29.jpg" alt="Pressure injury photo 1" loading="lazy"><details><summary>Photo 1: what stage?</summary><p>Stage 1: intact skin, nonblanchable redness</p></details></div><div class="pq"><img src="week6-img/30.jpg" alt="Pressure injury photo 2" loading="lazy"><details><summary>Photo 2: what stage?</summary><p>Stage 2: shallow, pink, partial thickness</p></details></div><div class="pq"><img src="week6-img/31.jpg" alt="Pressure injury photo 3" loading="lazy"><details><summary>Photo 3: what stage?</summary><p>Stage 3: full-thickness skin loss, no bone or tendon visible</p></details></div><div class="pq"><img src="week6-img/32.jpg" alt="Pressure injury photo 4" loading="lazy"><details><summary>Photo 4: what stage?</summary><p>Stage 4: deep tissue loss with structures exposed</p></details></div><div class="pq"><img src="week6-img/33.jpg" alt="Pressure injury photo 5" loading="lazy"><details><summary>Photo 5: what stage?</summary><p>Unstageable: eschar covers the wound bed</p></details></div><div class="pq"><img src="week6-img/34.jpg" alt="Pressure injury photo 6" loading="lazy"><details><summary>Photo 6: what stage?</summary><p>Deep tissue pressure injury: deep purple-maroon discoloration</p></details></div></div>
+    <div class="box slides"><span class="tag">Slides only</span><p>Intrinsic risk factors: immobility, impaired sensation, malnourishment, age. Extrinsic: friction, pressure, shear, moisture.</p></div>
+    <p><b>Device-related</b> injuries take the shape of the device. <b>Mucosal</b> injuries from devices can't be staged. <b>Hospital-acquired pressure injuries (HAPIs):</b> CMS limits payment for stage 3 and 4.</p>
+    <p><b>Dark skin:</b> temperature and moisture changes may come first; also check for hardness, edema, pain, and areas darker than surrounding skin.</p>
+    <p><b>Document:</b> location, stage, size, tissue, wound bed color, edges, surrounding skin, undermining and tunneling, drainage, odor, pain.</p>
+
+    <h4>Prevention</h4>
+    <ul class="tight">
+      <li>Reposition at least every 2 hr in bed, every 1 hr in a chair; weight shifts every 15 min if able</li>
+      <li>Side-lying at a 20–30° tilt; head of bed 30° or lower</li>
+      <li>Lift, don't pull; raise heels off the bed</li>
+      <li>Pressure-redistributing mattress; gel, air, or foam seat cushion</li>
+      <li>Silicone foam dressing on sacrum and heels within 24 hr of admission</li>
+      <li>Incontinence: gentle cleanser, tepid water, pat dry, dimethicone barrier</li>
+      <li>Assess skin on admission (within 24 hr) and with every change in condition</li>
+    </ul>
+    <div class="box nc"><span class="tag">Never</span><p>Massage bony prominences, use powder or cornstarch, or clean a pressure injury with cytotoxic cleansers (povidone-iodine, hydrogen peroxide, alcohol, Dakin's).</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Wound assessment</h3>
+    <div class="tbl"><table>
+      <tr><th>Exudate</th><th>Looks like</th></tr>
+      <tr><td>Serous</td><td>Clear to light yellow, watery</td></tr>
+      <tr><td>Serosanguineous</td><td>Pale pink, watery</td></tr>
+      <tr><td>Sanguineous</td><td>Red; bright = active bleeding, dark = old</td></tr>
+      <tr><td>Purulent</td><td>Thick; yellow, tan, green, or brown; may smell. <b>Infection: report it</b></td></tr>
+      <tr><td>Purosanguineous</td><td>Pus mixed with blood; newly infected wound</td></tr>
+    </table></div>
+    <div class="box known"><span class="tag">Known mnemonic</span><p><b>RYB:</b> Red = healthy, cover it. Yellow = slough, clean it. Black = eschar, debride it.</p></div>
+    <p><b>Measuring:</b> length head-to-toe, width side-to-side, depth at the deepest point, all in cm. Use the same method every time. For tunneling and undermining, use the clock: <b>12:00 is toward the head</b>. Depth: premoistened sterile applicator until resistance.</p>
+    <figure class="pic" style="max-width:700px"><img src="week6-img/35.jpg" alt="Measuring wounds: length, width, depth, undermining, tunneling, and the clock method" loading="lazy"><figcaption>Measuring wounds: length, width, depth, undermining, tunneling, and the clock method</figcaption></figure>
+    <p><b>Expected incision:</b> red days 1–4, bright pink days 5–14, pale pink day 15 to 1 year. Edema and drainage resolve by postoperative day 5.</p>
+    <div class="box slides"><span class="tag">Slides only</span><p><b>TIME</b> for documenting pressure injuries: Tissue integrity, Inflammation/infection, Moisture, Edge of wound.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Wound care</h3>
+    <p><b>Debridement</b> removes dead tissue: surgical (scalpel or scissors) or biological (medical-grade maggots). <b>Irrigation</b> usually uses 0.9% NaCl at 5–8 psi (30–60 mL syringe with a 19-gauge needle), tip 1 in above the wound, until it runs clear. Clean from least to most contaminated with a new gauze each stroke.</p>
+    <p>A healing wound bed should be <b>moist, not wet</b>. Use sterile technique for the first 24–48 hr after surgery, then clean technique.</p>
+    <div class="tbl"><table>
+      <tr><th>Dressing</th><th>Use for</th><th>Remember</th></tr>
+      <tr><td>Gauze (nonocclusive)</td><td>Wet-to-dry debridement</td><td>Pulls out healthy tissue too; painful</td></tr>
+      <tr><td>Transparent film</td><td>Superficial, minimal drainage</td><td>See-through; leaks with heavy drainage</td></tr>
+      <tr><td>Hydrocolloid</td><td>Stage 2, small abrasions, superficial burns</td><td>Stays 3–5 days; yellow smelly gel is expected, not pus</td></tr>
+      <tr><td>Alginate</td><td>Moderate to heavy drainage</td><td>Stops bleeding; packs wounds; needs a cover dressing</td></tr>
+      <tr><td>Hydrofiber</td><td>Moderate to heavy drainage</td><td>Less maceration than alginate</td></tr>
+      <tr><td>Foam</td><td>Mild to moderate drainage</td><td>Prevents HAPIs on sacrum and heels</td></tr>
+      <tr><td>Hydrogel</td><td>Dry or necrotic wounds</td><td>Adds moisture; soothing; not for heavy drainage</td></tr>
+      <tr><td>Antimicrobial</td><td>Infected or at-risk wounds</td><td>Iodine, silver, honey; check iodine and bee-sting allergies</td></tr>
+    </table></div>
+    <p>Semiocclusive dressings allow some gas exchange; occlusive dressings seal completely.</p>
+    <h4>Closures</h4>
+    <ul class="tight">
+      <li><b>Staples:</b> faster to place; removed in 7–14 days; not on the face or neck</li>
+      <li><b>Nonabsorbable sutures:</b> out by day 14</li>
+      <li><b>Skin adhesive:</b> small straight wounds, not over joints; 3–4 layers, hold edges 1 min each; peels off in 5–10 days</li>
+      <li><b>Negative pressure wound therapy (NPWT):</b> wound vac; foam plus a sealed dressing under suction; reduces edema and builds granulation</li>
+      <li><b>Montgomery straps:</b> tie-closed adhesive strips that hold dressings needing frequent changes, so tape doesn't come off the skin each time</li>
+    </ul>
+    <div class="gallery" style="--min:220px"><figure><img src="week6-img/36.jpg" alt="Stitches, Steri-Strips, and staples" loading="lazy"><figcaption>Stitches, Steri-Strips, and staples</figcaption></figure><figure><img src="week6-img/37.jpg" alt="Montgomery straps" loading="lazy"><figcaption>Montgomery straps</figcaption></figure><figure><img src="week6-img/38.jpg" alt="Negative pressure wound therapy (wound vac)" loading="lazy"><figcaption>Negative pressure wound therapy (wound vac)</figcaption></figure></div>
+    <h4>Drains</h4>
+    <div class="box flag"><span class="tag">Instructor flagged</span><p><b>Penrose:</b> open, passive drain held with a safety pin. No collection chamber, so drainage soaks into gauze around it.</p></div>
+    <div class="tbl"><table>
+      <tr><th>Drain</th><th>Open or closed</th><th>Passive or active</th><th>Care</th></tr>
+      <tr><td>Penrose</td><td>Open</td><td>Passive (gravity)</td><td>Gauze around it; sterile dressing 24–48 hr</td></tr>
+      <tr><td>Bulb suction (JP)</td><td>Closed</td><td>Active (suction)</td><td>Empty every 8 hr or when more than half full; squeeze flat, then plug</td></tr>
+      <tr><td>Large bottle</td><td>Closed</td><td>Active</td><td>Large volumes; change when half full</td></tr>
+      <tr><td>Circular portable</td><td>Closed</td><td>Active (spring)</td><td>Empty, wipe plug with alcohol, squeeze flat, replug</td></tr>
+    </table></div>
+    <div class="gallery" style="--min:170px"><figure><img src="week6-img/39.jpg" alt="Penrose: open, passive" loading="lazy"><figcaption>Penrose: open, passive</figcaption></figure><figure><img src="week6-img/40.jpg" alt="Bulb suction: closed, active" loading="lazy"><figcaption>Bulb suction: closed, active</figcaption></figure><figure><img src="week6-img/41.jpg" alt="Large bottle: closed, active" loading="lazy"><figcaption>Large bottle: closed, active</figcaption></figure><figure><img src="week6-img/42.jpg" alt="Circular portable: closed, active" loading="lazy"><figcaption>Circular portable: closed, active</figcaption></figure></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Penrose = Pin, Passive, oPen.</b> If it has a bulb, bottle, or spring, it's closed and active.</p></div>
+    <p>Drainage goes from sanguineous to serosanguineous. <b>Call the provider</b> for a big change in amount, clots, signs of infection, or accidental removal. Some tenderness the first few days is expected.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Wound healing</h3>
+    <div class="box flag"><span class="tag">Instructor flagged</span><p>Know the three types of healing.</p></div>
+    <div class="tbl"><table>
+      <tr><th>Type</th><th>What happens</th><th>Example</th></tr>
+      <tr><td>Primary intention</td><td>Clean edges closed right away; fastest; low infection risk; minimal scar</td><td>Sutured or stapled incision; laceration with glue</td></tr>
+      <tr><td>Secondary intention</td><td>Left open; fills with granulation from the bottom up; slower; higher infection risk; scar</td><td>Pressure injury, open burn</td></tr>
+      <tr><td>Tertiary intention</td><td>Left open 5–10 days, then closed (delayed primary closure)</td><td>Abdominal wound left open until infection clears</td></tr>
+    </table></div>
+    <figure class="pic" style="max-width:480px"><img src="week6-img/43.jpg" alt="Primary, secondary, and tertiary intention" loading="lazy"><figcaption>Primary, secondary, and tertiary intention</figcaption></figure>
+    <h4>Phases</h4>
+    <div class="timeline" aria-label="Wound healing phase timeline">
+      <div class="tl-row"><span>Inflammatory</span><div class="tl-track"><div class="tl-bar" style="left:0;width:20%">Days 0–6</div></div></div>
+      <div class="tl-row"><span>Proliferative</span><div class="tl-track"><div class="tl-bar" style="left:10%;width:70%">Days 3–24</div></div></div>
+      <div class="tl-row"><span>Remodeling</span><div class="tl-track"><div class="tl-bar" style="left:70%;width:30%">Day 21 → 1 yr+</div></div></div>
+      <div class="tl-scale"><div></div><div><span>Day 0</span><span>10</span><span>20</span><span>30+</span></div></div>
+    </div>
+    <ul class="tight">
+      <li><b>Inflammatory (hemostatic):</b> bleeding stops, then WBCs clean the wound</li>
+      <li><b>Proliferative:</b> granulation tissue and collagen fill in; edges contract</li>
+      <li><b>Remodeling:</b> stronger collagen forms, but the scar stays weaker than the original skin</li>
+    </ul>
+    <h4>What helps and what hurts</h4>
+    <p><b>Needs:</b> protein, vitamins A and C, zinc; at least 2,500 mL/day fluid (unless contraindicated) and at least 1,500 kcal/day. Albumin below 3.5 g/dL increases risk.</p>
+    <p><b>Delays healing:</b> diabetes (poor perfusion and sensation), infection, corticosteroids (block collagen), anti-inflammatories and antineoplastics, malnutrition, necrosis, hypoxia, multiple wounds, obesity, smoking, low hemoglobin, coughing or vomiting (wound stress), older age.</p>
+    <div class="box slides"><span class="tag">Slides only · Known mnemonic</span><p><b>DIDN'T HEAL:</b> Diabetes, Infection, Drugs, Nutrition problems, Tissue necrosis, Hypoxia, Extensive tension, Another wound, Low temperature.</p></div>
+    <div class="box note"><span class="tag">Side note</span><p><b>"Drugs" does not mean every medication.</b> The ones ATI names are systemic corticosteroids (block collagen and fibroblasts), anti-inflammatories, and antineoplastics (chemo). In an ATI practice question, a client taking medication for depression was <b>not</b> a correct answer for poor wound healing.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Complications</h3>
+    <div class="tbl"><table>
+      <tr><th>Complication</th><th>When / signs</th><th>Nursing action</th></tr>
+      <tr><td>Infection</td><td>Days 2–11; purulent drainage, redness, warmth, odor, fever, ↑ WBC</td><td>Culture first, then antibiotics; aseptic dressing changes</td></tr>
+      <tr><td>Dehiscence</td><td>Days 5–8; edges separate; ↑ serosanguineous drainage; "popping" with coughing</td><td>Notify provider; sterile saline-moistened dressing; prepare for surgery</td></tr>
+      <tr><td>Evisceration</td><td>Organs protrude: <b>emergency</b></td><td>See steps below</td></tr>
+      <tr><td>Hemorrhage</td><td>Highest risk 24–48 hr after surgery</td><td>Pressure dressing, notify provider, monitor vitals</td></tr>
+      <tr><td>Hematoma</td><td>Red or blue bruise-like collection of blood; anticoagulants and obesity raise risk</td><td>Monitor small ones; large ones may be drained</td></tr>
+      <tr><td>Fistula</td><td>Abnormal tract between two organs or an organ and the skin</td><td>Report and monitor</td></tr>
+    </table></div>
+    <p class="strip-label">Evisceration: what to do</p>
+    <ol class="seq">
+      <li><span>Call for help and stay with the client</span></li>
+      <li><span>Cover with sterile saline-soaked dressings. Never push organs back</span></li>
+      <li><span>Supine with hips and knees bent</span></li>
+      <li><span>NPO and watch for shock</span></li>
+    </ol>
+    <figure class="pic" style="max-width:380px"><img src="week6-img/44.jpg" alt="Dehiscence (A) vs evisceration (B)" loading="lazy"><figcaption>Dehiscence (A) vs evisceration (B)</figcaption></figure>
+    <p><b>Prevent it:</b> splint the incision with a pillow when coughing. Risk factors include obesity, abdominal surgery, straining, malnutrition, infection, and radiation. A binder helps <b>prevent</b>, not treat, evisceration.</p>
+    <p><b>SSIs:</b> superficial within 30 days, deep within 30 or 90 days. Most common cause: <i>S. aureus</i>. Chlorhexidine wipes before surgery reduce risk.</p>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Full-thickness skin loss with visible fat but no bone. Stage?</summary><p>Stage 3.</p></details>
+    <details><summary>A heel wound is covered in stable black eschar. Remove it?</summary><p>No. It's unstageable, and stable heel eschar is left in place.</p></details>
+    <details><summary>An open pressure injury heals by which intention?</summary><p>Secondary. It's left open and fills in with granulation.</p></details>
+    <details><summary>Which drain is open and passive?</summary><p>Penrose.</p></details>
+    <details><summary>Organs are protruding from an abdominal incision. First thing to do?</summary><p>Call for help, stay with the client, and cover with sterile saline-soaked dressings.</p></details>
+  </div>
+</section>
+
+<!-- ===================== SPECIMEN COLLECTION ===================== -->
+<section class="topic" id="specimen">
+  <div class="topic-head"><h2>Specimen collection</h2><p>Who can collect what, how much you need, and how to keep it uncontaminated.</p></div>
+
+  <div class="gsub">
+    <h3>Delegation</h3>
+    <div class="box flag"><span class="tag">Instructor flagged</span><p>The UAP can <b>collect</b> an occult blood specimen but cannot do the <b>point-of-care test</b>. Throat cultures and nasal swabs are <b>never</b> delegated.</p></div>
+    <div class="tbl"><table>
+      <tr><th>Task</th><th>Delegate to UAP?</th></tr>
+      <tr><td>Stool specimen for occult blood</td><td>Yes, collection only</td></tr>
+      <tr><td>Point-of-care occult blood test</td><td>No</td></tr>
+      <tr><td>Urine specimens</td><td>Yes</td></tr>
+      <tr><td>Capillary blood glucose</td><td>Usually yes</td></tr>
+      <tr><td>Throat culture</td><td>No</td></tr>
+      <tr><td>Nasal swab</td><td>No</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Blood specimens</h3>
+    <h4>Capillary (fingerstick)</h4>
+    <ul class="tight">
+      <li>Usual site: fingers. Alternatives: palms, forearms, earlobes</li>
+      <li>Clean with facility antiseptic or soap and water; choose a vascular site</li>
+      <li>Poor circulation? Have the client warm their hands or let them dangle</li>
+      <li>Lancet on the <b>side</b> of the finger, not the central tip (more nerves there)</li>
+      <li><b>Don't milk the finger</b>: it can lyse (break) blood cells and alter results</li>
+      <li>Wipe away the first drop; apply blood when the meter prompts</li>
+      <li>Hold a tissue or cotton ball on the site; usually no bandage needed</li>
+      <li>Document method, client tolerance, and findings</li>
+    </ul>
+    <figure class="pic" style="max-width:320px"><img src="week6-img/45.jpg" alt="Capillary fingerstick" loading="lazy"><figcaption>Capillary fingerstick</figcaption></figure>
+    <div class="box slides"><span class="tag">Slides only</span><p>Check the order for timing (AC &amp; HS vs every 6 hr) and wipe away the first drop before testing.</p></div>
+    <h4>Blood glucose meters</h4>
+    <p>Expected fasting glucose: <b>74–106 mg/dL</b>. Readings <b>below 60 or above 400</b>: retest and possibly send a sample to the lab, since bedside meters are less accurate than lab testing. Store strips closed at room temperature, check the expiration date, and match lot numbers; poor storage causes falsely high or low readings.</p>
+    <h4>Venipuncture</h4>
+    <ol class="seq">
+      <li><span>Explain the procedure; choose a vein in the arm or hand (a transilluminator can help)</span></li>
+      <li><span>Tourniquet above the site; client pumps the hand; stroke distal to proximal, no vigorous rubbing</span></li>
+      <li><span>Remove the tourniquet once the site is chosen; clean with antiseptic and let it dry completely</span></li>
+      <li><span>Draw into evacuated tubes (cap color = which test); bandage the site and document</span></li>
+    </ol>
+    <p><b>Needle gauge:</b> the larger the number, the smaller the opening (18-gauge is bigger than 22-gauge). <b>Butterfly needles</b> are smaller and less painful for children or needle-averse clients but can lyse cells for some tests.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Stool</h3>
+    <ul class="tight">
+      <li>Amount: formed stool <b>1 inch (walnut-sized)</b>; liquid stool <b>15–30 mL</b></li>
+      <li>Have the client urinate first, then deposit stool in a dry, clean container. No urine, water, or toilet tissue</li>
+      <li>Transfer with a tongue blade; some tests need a preservative (keeps parasites alive)</li>
+      <li><b>Ova and parasites:</b> three separate specimens</li>
+      <li>Testing for <b>C. diff</b>? Contact isolation until results come back</li>
+      <li>Infants: apply a urine bag, then collect urine-free stool from the diaper</li>
+    </ul>
+    <h4>Fecal occult blood test (FOBT)</h4>
+    <p>Also called a guaiac test. Screens for colorectal cancer and detects GI bleeding. Recommended for clients over 50 before colonoscopy; three home samples are more accurate than one office test. Only valid for stool, not gastric contents.</p>
+    <div class="tbl"><table>
+      <tr><th>Before the test</th><th>Stop or avoid</th></tr>
+      <tr><td>Medications</td><td>Aspirin, iron, NSAIDs, anticoagulants: <b>7 days</b> before</td></tr>
+      <tr><td>Foods</td><td>Red or rare meat, poultry, fish, beets, radishes, melon, some raw vegetables: <b>3 days</b> before</td></tr>
+      <tr><td>Vitamin C</td><td><b>3 days</b> before</td></tr>
+      <tr><td>Bleeding</td><td>Wait at least 3 days after menstruation ends; don't collect during hemorrhoid flares</td></tr>
+      <tr><td>Other</td><td>No barium tests; avoid mineral oil and laxatives</td></tr>
+    </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Meds wait a week, food and vitamin C wait three.</b></p></div>
+    <p><b>Dark, tarry stool</b> = bleeding high in the GI tract. <b>Bright red streaks</b> = bleeding low (hemorrhoids, menstrual blood) and may give an inaccurate result.</p>
+    <div class="box slides"><span class="tag">Slides only</span><p>Technique: 2 stool areas on one side, flip the card, 2 drops of solution on each box, read in 30–60 seconds (or per manufacturer).</p></div>
+    <figure class="pic" style="max-width:320px"><img src="week6-img/46.jpg" alt="Fecal occult blood test kit" loading="lazy"><figcaption>Fecal occult blood test kit</figcaption></figure>
+  </div>
+
+  <div class="gsub">
+    <h3>Urine</h3>
+    <p>Document the collection method, client tolerance, and the urine's <b>color, clarity, and odor</b>. Refrigerate or keep on ice until transport.</p>
+    <div class="cols">
+      <div><h4>Clean catch: female</h4><ul><li>Separate the labia</li><li>Clean left side, right side, then center, front to back</li><li>New wipe each time</li></ul></div>
+      <div><h4>Clean catch: male</h4><ul><li>Retract the foreskin</li><li>Clean in a circle from the meatus outward</li></ul></div>
+      <div><h4>Both</h4><ul><li>Start voiding in the toilet, stop, then void into the cup</li><li>No need to observe unless necessary</li></ul></div>
+    </div>
+    <p><b>Children:</b> sterile receptacle in the toilet. <b>Infants:</b> adhesive collection bag. Never squeeze urine from a diaper.</p>
+    <div class="box slides"><span class="tag">Slides only</span><p>Volumes: culture 10 mL; urinalysis 10–30 mL.</p></div>
+    <p class="strip-label">From an indwelling catheter</p>
+    <div class="strip"><span>Clamp 3 in below port (≤30 min)</span><span class="arrow">→</span><span>Wipe port with alcohol</span><span class="arrow">→</span><span>Draw ≥10 mL with syringe</span><span class="arrow">→</span><span>Unclamp</span></div>
+    <div class="gallery" style="--min:240px"><figure><img src="week6-img/47.jpg" alt="Correct: draw from the sampling port" loading="lazy"><figcaption>Correct: draw from the sampling port</figcaption></figure><figure><img src="week6-img/48.jpg" alt="Wrong: this is the balloon inflation port, not the sampling port" loading="lazy"><figcaption>Wrong: this is the balloon inflation port, not the sampling port</figcaption></figure></div>
+    <div class="box nc"><span class="tag">Never</span><p>Take urine from a drainage bag that's been connected to the client; it's concentrated or contaminated. Bag urine is OK only when the catheter is first inserted. For a straight cath, let a small amount drain first, then fill the specimen cup.</p></div>
+    <p class="strip-label">24-hour urine</p>
+    <ol class="seq">
+      <li><span>Client voids; <b>discard</b> it and note the start time</span></li>
+      <li><span>Save all urine for 24 hours, on ice or refrigerated per lab guidelines</span></li>
+      <li><span>Client voids at the end; <b>include</b> it</span></li>
+      <li><span>If a void is discarded by mistake, restart the timing. Never take urine out of the container for other tests</span></li>
+    </ol>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Toss the first, keep the last.</b></p></div>
+    <figure class="pic" style="max-width:320px"><img src="week6-img/49.jpg" alt="24-hour urine containers" loading="lazy"><figcaption>24-hour urine containers</figcaption></figure>
+    <p>Timed urines (usually 24 hr, sometimes 2 or 12 hr) measure creatinine clearance, protein, or hormones. <b>Pregnancy test:</b> first morning void (detects hCG); document the last menstrual period.</p>
+    <h4>Dipstick (reagent strip)</h4>
+    <div class="tbl"><table>
+      <tr><th>Result</th><th>Means</th></tr>
+      <tr><td>pH</td><td>Expected 4.6–8.0</td></tr>
+      <tr><td>Specific gravity</td><td>Expected 1.005–1.030; high = concentrated (dehydration), low = dilute</td></tr>
+      <tr><td>Leukocytes or nitrites</td><td>Infection</td></tr>
+      <tr><td>Blood</td><td>Infection, cancer, other pathology</td></tr>
+      <tr><td>Ketones or glucose</td><td>Diabetes</td></tr>
+      <tr><td>Bilirubin or urobilinogen</td><td>Liver disease or RBC destruction</td></tr>
+    </table></div>
+    <p>Everything except pH and specific gravity should be negative. Dipsticks are screening only; confirm abnormal results with the lab.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Cultures and swabs</h3>
+    <h4>Wound culture</h4>
+    <ol class="seq">
+      <li><span>Remove the old dressing; change gloves and perform hand hygiene</span></li>
+      <li><span>Clean the wound with sterile water or 0.9% NaCl; change gloves again</span></li>
+      <li><span>Swab clean tissue in the <b>center</b> of the wound, not the edges. Never pooled exudate</span></li>
+      <li><span>Into the tube, cap it, squeeze to activate the medium</span></li>
+      <li><span>Label, requisition, biohazard bag, redress, document (vital signs, date, time, location, tolerance)</span></li>
+    </ol>
+    <p>Collect <b>before broad-spectrum antibiotics</b>; if the client is already on them, note it on the requisition. A <b>Gram stain</b> lets the provider treat sooner than waiting for culture results. Report fever above 104°F (40°C) with hypotension right away: possible sepsis.</p>
+    <h4>Throat culture</h4>
+    <ul class="tight">
+      <li>Client sitting upright, head tilted back, tongue out, says "ah"; penlight</li>
+      <li>Swab path: right tonsil → right arch → uvula → left arch → left tonsil</li>
+      <li>Avoid gums, tongue, teeth, lips, and cheeks. Touched them? Discard and start over</li>
+      <li>Epiglottis severely inflamed? <b>Don't swab</b>; notify the provider</li>
+      <li>Child: a guardian holds them on their lap with a hand on the forehead</li>
+      <li>Point-of-care swab tests are less accurate; confirm positive results</li>
+    </ul>
+    <figure class="pic" style="max-width:420px"><img src="week6-img/50.jpg" alt="Throat culture: swab only the tonsils and back of the throat" loading="lazy"><figcaption>Throat culture: swab only the tonsils and back of the throat</figcaption></figure>
+    <h4>Sputum</h4>
+    <ul class="tight">
+      <li>Morning, <b>before eating or drinking</b></li>
+      <li>Rinse with water (no mouthwash), deep breaths, cough; don't touch inside the cup</li>
+      <li>Amount: 1–2 teaspoons (5–10 mL)</li>
+      <li>Can't produce enough? Chest physiotherapy first; suctioning and transtracheal aspiration are last resorts</li>
+      <li><b>AFB (TB):</b> 3 serial samples in a sterile container. <b>Cytology:</b> needs a preservative; identifies lung cancer type</li>
+    </ul>
+    <div class="box note"><span class="tag">Side note</span><p>Suspected TB? Start <b>airborne precautions</b> before anything else, including collecting the sputum.</p></div>
+    <div class="box slides"><span class="tag">Slides only</span><ul>
+      <li>AFB specimens are collected 8–24 hr apart</li>
+      <li><b>Nasal swab:</b> blow nose, check patency, tilt head back, insert 1.5 cm, rotate at least 4 times for 15 sec, repeat in the other naris with the same swab</li>
+      <li>Use the right tube: viral vs bacterial, nasal vs nasopharyngeal</li></ul></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Can the UAP do the point-of-care occult blood test?</summary><p>No. The UAP can only collect the specimen.</p></details>
+    <details><summary>Which meds are stopped 7 days before an occult blood test?</summary><p>Aspirin, iron, NSAIDs, and anticoagulants.</p></details>
+    <details><summary>Where do you get urine from a catheter that's been in for 3 days?</summary><p>The sampling port, after clamping the tubing and wiping the port. Never the bag.</p></details>
+    <details><summary>A glucometer reads 410. Now what?</summary><p>Retest, and possibly send a blood sample to the lab.</p></details>
+    <details><summary>Where on a wound do you swab for a culture?</summary><p>Clean tissue in the center of the wound, after cleaning it. Not the edges and not pooled exudate.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer class="guide-footer gwrap">
+  <div class="box nc"><span class="tag">Not covered per instructor</span><p>Braden Scale scoring table (the detailed descriptors for each score).</p></div>
+  <p>Built from the Week 6 ATI modules and lecture slides. Where they disagreed, the version used here is the one chosen for exams.</p>
+</footer>
+
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+</body>
+</html>

@@ -37,10 +37,11 @@ var SITE = {
     {title:"Week 5 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/week5-study-guide.html", meta:"Self-concept, sleep, stress & DEI · mnemonics & quick checks"},
     {title:"Infection Control & Isolation", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/infection-control-flashcards.html", count:175},
     {title:"Infection Control & Isolation practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/infection-control-quiz.html", count:40},
-    {title:"Specimen Collection", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/specimen-collection-flashcards.html", count:29},
+    {title:"Specimen Collection", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/specimen-collection-flashcards.html", count:63},
     {title:"Specimen Collection practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/specimen-collection-quiz.html", count:40},
     {title:"Tissue Integrity", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/tissue-integrity-flashcards.html", count:157},
-    {title:"Tissue Integrity practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/tissue-integrity-quiz.html", count:40}
+    {title:"Tissue Integrity practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/tissue-integrity-quiz.html", count:40},
+    {title:"Week 6 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/week6-study-guide.html", meta:"Infection control, tissue integrity & specimen collection · mnemonics & quick checks"}
   ],
   mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html", meta:"Random from every quiz on the site"},
 
