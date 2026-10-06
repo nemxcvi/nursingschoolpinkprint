@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment: Integumentary, HEENT &amp; Neuro &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Assessment: Integumentary, HEENT &amp; Neuro &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-3-skin-wounds-diagnostics/assessment-integumentary-heent-neuro-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Assessment: Integumentary, HEENT &amp; Neuro &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=49">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-03" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=7"></script>
+<script src="../assets/header.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Assessment: Integumentary, HEENT &amp; Neuro</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  basicsintegumentary: {label:"Basics &amp; Integumentary", hue:"red"},
+  heent: {label:"HEENT", hue:"yellow"},
+  cranialnerves: {label:"Cranial Nerves", hue:"green"},
+  neuromentalstatus: {label:"Neuro &amp; Mental Status", hue:"aqua"}
+};
+var CARDS = [
+[1, "basicsintegumentary", "Purpose of physical assessment", "Obtain baseline data for the plan of care and detect changes in the client's condition"],
+[2, "basicsintegumentary", "Two types of physical assessment", "Complete and focal (focused)"],
+[3, "basicsintegumentary", "Four assessment techniques", "Inspection, palpation, percussion, auscultation"],
+[4, "basicsintegumentary", "Assessment introductions", "Two client identifiers, introduce yourself and state your role, hand hygiene, privacy, explain the procedure"],
+[5, "basicsintegumentary", "First step on entering the room", "Identify the client and check for acute distress (skin color, respiratory effort, alertness); if in distress, do a focused assessment"],
+[6, "basicsintegumentary", "General survey", "Alertness/orientation; skin color, respiratory effort, distress; height, weight, BMI, posture; facial expression; mobility aids; hygiene, grooming, dress, odors; mood/affect; vital signs"],
+[7, "basicsintegumentary", "Cultural considerations in the general survey", "Eye contact and facial expression vary by culture; obtain an interpreter for language barriers"],
+[8, "basicsintegumentary", "BMI categories", "Under 18.5 underweight; 25 or greater overweight; 30 or greater obese"],
+[9, "basicsintegumentary", "Calculating BMI without a calculator", "Weight (lb) × 703 ÷ height (in)²"],
+[10, "basicsintegumentary", "Stethoscope diaphragm", "High-pitched sounds (heart, lung, bowel); apply firm pressure with index and middle fingers"],
+[11, "basicsintegumentary", "Stethoscope bell", "Low-pitched sounds (murmurs, bruits, S3, S4); light pressure with the entire rim touching the skin"],
+[12, "basicsintegumentary", "Stethoscope earpieces and tubing", "Earpieces angled toward your nose; thick tubing no longer than 45 cm (18 in) transmits best; nothing should rub the tubing"],
+[13, "basicsintegumentary", "Penlight uses", "Viewing body orifices and skin folds, checking pupils, tangential lighting of skin"],
+[14, "basicsintegumentary", "Tangential lighting", "Light shone across the skin at an angle to show surface contours and visible pulsations"],
+[15, "basicsintegumentary", "Measuring devices", "Clear ruler (mm/cm) for lesions, redness, pressure injuries, and incisions; tape measure for abdominal girth and leg edema"],
+[16, "basicsintegumentary", "Skin assessment techniques", "Inspection and palpation, done simultaneously; compare side to side"],
+[17, "basicsintegumentary", "Best lighting for skin assessment", "Natural light (best for subtle color changes, especially in dark skin); fluorescent if natural light isn't available"],
+[18, "basicsintegumentary", "Why keep the room at a comfortable temperature", "Cold causes bluing of the lips and nail beds; heat causes a reddened undertone"],
+[19, "basicsintegumentary", "Tattoos during skin assessment", "Inspect and palpate them, since tattoos can mask rashes or color changes; skin cancer is more common where tattoos were removed"],
+[20, "basicsintegumentary", "Normal (WNL) skin documentation", "Skin is clean, dry, and intact without wounds or lesions"],
+[21, "basicsintegumentary", "Where to check undertone changes (cyanosis, jaundice)", "Palms, soles, mucous membranes"],
+[22, "basicsintegumentary", "Cyanosis", "Blue; hypoxia or impaired venous return. In dark skin, look for gray (palms, soles, lips, nail beds, mucosa)"],
+[23, "basicsintegumentary", "Jaundice", "Yellow-orange; liver dysfunction or RBC destruction (increased bilirubin). Check the sclera in light skin and the hard palate/oral mucosa in dark skin"],
+[24, "basicsintegumentary", "Erythema", "Redness; inflammation, rash, fever, sun exposure, vasodilation, bleeding or bruising. In dark skin, palpate for warmth, firmness, and tenderness"],
+[25, "basicsintegumentary", "Pallor", "Loss of color; anemia, shock, decreased blood flow. Dark skin appears gray; brown skin appears yellow-brown"],
+[26, "basicsintegumentary", "Priority skin color finding", "Cyanosis, because it indicates hypoxia (ABCs)"],
+[27, "basicsintegumentary", "Reliable sites for color change in dark skin", "Palms, soles, lips, tongue, nail beds"],
+[28, "basicsintegumentary", "Decreased pigment in an area", "Possible vitiligo or skin cancer"],
+[29, "basicsintegumentary", "Bruising or injury on skin assessment", "Possible indicator of abuse or neglect"],
+[30, "basicsintegumentary", "How to assess skin temperature", "Only with the dorsal (back) side of the hand; compare both sides"],
+[31, "basicsintegumentary", "Checking skin texture and moisture", "Use your fingertips (back of the hand is for temperature)"],
+[32, "basicsintegumentary", "Cool or cold skin", "Possible decreased blood flow"],
+[33, "basicsintegumentary", "Warm or hot skin", "Possible inflammation or infection"],
+[34, "basicsintegumentary", "Expected skin texture", "Smooth, soft, even, intact; thicker on palms and soles; older adults have drier, thinner skin"],
+[35, "basicsintegumentary", "Expected skin moisture", "Moist in axillae and skin folds, otherwise dry; check for diaphoresis, oiliness, or dry flaking"],
+[36, "basicsintegumentary", "Diaphoresis", "Excessive sweating"],
+[37, "basicsintegumentary", "Skin turgor technique", "Pinch a skin fold over the clavicle, sternum, or back of the hand; it should return within a few seconds"],
+[38, "basicsintegumentary", "Tenting", "Skin fold stays raised for several seconds; indicates dehydration and increases the risk of skin breakdown"],
+[39, "basicsintegumentary", "Turgor in older adults", "Not reliable, because decreased turgor can be an age-related change"],
+[40, "basicsintegumentary", "Edema", "Excess fluid in tissues, most often in the lower extremities; skin looks shiny and tight; a fingerprint indentation means edema is present"],
+[41, "basicsintegumentary", "Checking pitting edema", "Press at least 5 sec over a bony prominence (behind the medial malleolus, dorsum of the foot, shin); measure circumference and compare both sides"],
+[42, "basicsintegumentary", "Documenting edema", "Note how far up the leg it extends; measure circumference to compare sides and track over time"],
+[43, "basicsintegumentary", "Bilateral edema", "Fluid volume excess or venous insufficiency"],
+[44, "basicsintegumentary", "Unilateral edema", "Inflammation, DVT, lymphedema"],
+[45, "basicsintegumentary", "Unilateral edema follow-up", "Measure the affected limb and look for erythema and tenderness"],
+[46, "basicsintegumentary", "1+ edema", "Trace, 2 mm, rapid skin response"],
+[47, "basicsintegumentary", "2+ edema", "Mild, 4 mm, 10–15 sec response"],
+[48, "basicsintegumentary", "3+ edema", "Moderate, 6 mm, prolonged response"],
+[49, "basicsintegumentary", "4+ edema", "Severe, 8 mm, prolonged response"],
+[50, "basicsintegumentary", "Lesion and wound assessment", "Measure L × W × D (cm); note distribution, shape, size, color, texture, location, characteristics, exudate, odor, tenderness"],
+[51, "basicsintegumentary", "Primary lesion", "Arises from healthy skin"],
+[52, "basicsintegumentary", "Secondary lesion", "Results from a change in a primary lesion"],
+[53, "basicsintegumentary", "Macule", "Flat, nonpalpable color change under 1 cm", "freckle, petechiae"],
+[54, "basicsintegumentary", "Papule", "Palpable, solid, raised, under 1 cm", "elevated nevus"],
+[55, "basicsintegumentary", "Nodule", "Palpable, deep, firm, 1–2 cm", "wart"],
+[56, "basicsintegumentary", "Vesicle", "Serous fluid-filled, under 1 cm", "blister, herpes simplex, varicella"],
+[57, "basicsintegumentary", "Pustule", "Pus-filled, varies in size", "acne"],
+[58, "basicsintegumentary", "Tumor", "Solid, deep mass larger than 1–2 cm", "epithelioma"],
+[59, "basicsintegumentary", "Wheal", "Palpable, irregular borders, edematous", "insect bite"],
+[60, "basicsintegumentary", "Atrophy", "Thin, shiny, translucent skin with loss of normal furrows", "arterial insufficiency"],
+[61, "basicsintegumentary", "Erosion", "Lost epidermis, moist, no bleeding", "ruptured vesicle"],
+[62, "basicsintegumentary", "Crust", "Dried blood, serum, or pus", "scab"],
+[63, "basicsintegumentary", "Scale", "Flakes of skin that exfoliate", "dandruff, psoriasis, eczema"],
+[64, "basicsintegumentary", "Fissure", "Linear crack", "tinea pedis"],
+[65, "basicsintegumentary", "Ulcer", "Loss of epidermis and dermis, possible bleeding and scarring", "venous stasis ulcer, pressure injury"],
+[66, "basicsintegumentary", "ABCDE of skin lesions", "Asymmetry, Border irregularity, Color variation, Diameter over 6 mm, Evolving"],
+[67, "basicsintegumentary", "Melanoma in clients of African descent", "More common under the nails and on the palms and soles"],
+[68, "basicsintegumentary", "Common skin lesions: adults", "Contact dermatitis, tinea pedis, psoriasis, labial herpes simplex (cold sores)"],
+[69, "basicsintegumentary", "Common skin lesions: older adults", "Lentigines (liver spots), seborrheic keratosis, dermatosis papulosa nigra, acrochordons (skin tags), sebaceous hyperplasia"],
+[70, "basicsintegumentary", "Expected nail findings", "Symmetric nail beds, uniform color, firm base, nail angle about 160°"],
+[71, "basicsintegumentary", "Abnormal nail findings", "Discoloration, curvature over 160°, clubbing"],
+[72, "basicsintegumentary", "Clubbing", "Nail angle over 160°; chronic low oxygen saturation from heart or lung disease"],
+[73, "basicsintegumentary", "Fungal nail infection", "Thickening, yellowing, ragged edges"],
+[74, "basicsintegumentary", "Expected hair findings", "Even distribution, symmetric growth or loss; check for dry patches and infestations; postmenopausal clients may have patchy or generalized thinning"],
+[75, "basicsintegumentary", "Alopecia", "Hair loss; endocrine disorders, poor nutrition"],
+[76, "basicsintegumentary", "Hirsutism", "Hair growth on the face, shoulders, or chest in females; endocrine disorders, aging"],
+[77, "basicsintegumentary", "Pubic hair pattern", "Diamond shape in males, inverted triangle in females"],
+[78, "basicsintegumentary", "Client wearing a wig or head covering", "Ask them to remove it to examine the scalp"],
+[79, "basicsintegumentary", "Clients on bed rest", "Check skin over the elbows, coccyx, hips, and heels for erythema, open areas, or softening"],
+[80, "basicsintegumentary", "Clients in wheelchairs", "Risk of breakdown over the ischial tuberosities (lower buttocks)"],
+[81, "basicsintegumentary", "Nonblanchable erythema", "Redness that doesn't blanch when pressed; skin is damaged by pressure"],
+[82, "basicsintegumentary", "Pressure injury risk tool", "Braden scale"],
+[83, "basicsintegumentary", "Integumentary aging changes", "Thin, dry, fragile skin; loss of elasticity; wrinkles; thinning hair; thick, slow-growing nails; less oil and sweat; uneven pigmentation; slow healing; less fat over bony prominences; more vitiligo"],
+[84, "heent", "HEENT techniques", "Inspection and palpation (auscultation for thyroid and carotid bruits)"],
+[85, "heent", "Expected skull and face", "Normocephalic, symmetric, no deformities, masses, or tenderness; voluntary movements only; proportionate features"],
+[86, "heent", "Ear placement", "Top of the ears level with the eyes"],
+[87, "heent", "Facial symmetry landmarks", "Palpebral fissures (eye openings) and nasolabial folds"],
+[88, "heent", "Facial asymmetry", "Note whether all features on one side are affected or only some"],
+[89, "heent", "Expected neck", "Symmetric muscles, shoulders equal in height, smooth ROM (chin to chest, ear to shoulder, chin up)"],
+[90, "heent", "Lymph node palpation", "Pads of index and middle fingers in a circular motion; compare sides; nodes are usually not palpable, tender, or visible"],
+[91, "heent", "Occipital nodes", "Base of the skull"],
+[92, "heent", "Postauricular nodes", "Over the mastoid"],
+[93, "heent", "Preauricular nodes", "In front of the ear"],
+[94, "heent", "Tonsillar nodes", "Angle of the mandible"],
+[95, "heent", "Submandibular nodes", "Along the base of the mandible"],
+[96, "heent", "Submental nodes", "Midline under the chin"],
+[97, "heent", "Anterior cervical nodes", "Along the sternocleidomastoid"],
+[98, "heent", "Posterior cervical nodes", "Behind the sternocleidomastoid"],
+[99, "heent", "Supraclavicular nodes", "Above the clavicles"],
+[100, "heent", "Additional lymph nodes palpated", "Deep cervical and infraclavicular"],
+[101, "heent", "Enlarged lymph node assessment", "Location, tenderness, size, shape, consistency, mobility, warmth"],
+[102, "heent", "Thyroid gland", "Two lobes in front of the trachea, lower neck, fixed to the trachea; not visible at average size"],
+[103, "heent", "Thyroid exam", "Inspect with neck hyperextended; have the client sip water (thyroid moves up with the trachea); palpate both sides for size, masses, smoothness"],
+[104, "heent", "Thyroid bruit", "Auscultate an enlarged thyroid with the bell; a bruit means increased blood flow, possibly hyperthyroidism"],
+[105, "heent", "Trachea", "Should be midline above the suprasternal notch; masses or lung problems cause shifting"],
+[106, "heent", "Finding the trachea's position", "Palpate the groove between the trachea and the sternocleidomastoid on each side"],
+[107, "heent", "Eye exam sequence", "Visual acuity → EOMs → visual fields → external structures → internal structures"],
+[108, "heent", "Snellen chart", "Distance vision (myopia); client stands 20 ft away; test uncorrected vision first, then with correction; each eye, then both; use the E or picture chart for clients who can't read"],
+[109, "heent", "20/30 vision", "Client sees at 20 ft what an unimpaired eye sees at 30 ft"],
+[110, "heent", "Rosenbaum chart", "Near vision (presbyopia); hold 14 in (35.5 cm) from the face"],
+[111, "heent", "Near vision without a chart", "Have the client read newspaper print; if unable to read, have them count fingers"],
+[112, "heent", "Ishihara test", "Color vision"],
+[113, "heent", "Corneal light reflex", "Light reflection should be symmetric on both corneas"],
+[114, "heent", "Cover/uncover test", "Screens for strabismus; both eyes should gaze in the same direction"],
+[115, "heent", "Six cardinal positions of gaze", "Client follows your finger through a wide \"H\" without moving their head; expect full, smooth movement; a few beats of nystagmus in far lateral gaze is expected, but more is abnormal"],
+[116, "heent", "Nystagmus", "Jerky, tremor-like eye movements"],
+[117, "heent", "Visual fields test", "Face the client 2 ft away; each covers the opposite eye; bring fingers in from 4 directions; client should see them at the same time as the nurse"],
+[118, "heent", "Exophthalmos", "Bulging eyes"],
+[119, "heent", "Strabismus", "Crossed eyes"],
+[120, "heent", "Ptosis", "Upper eyelid covering the pupil"],
+[121, "heent", "Expected upper eyelid position", "Lid covers 1–2 mm of the iris; no sclera visible above the iris"],
+[122, "heent", "Expected external eye", "Parallel eyes, symmetric brows, lids close completely, lashes curve outward, no redness or edema"],
+[123, "heent", "Conjunctiva", "Palpebral is pink; bulbar is transparent"],
+[124, "heent", "Sclera", "White in fair skin; light yellow with possible brown macules in dark skin"],
+[125, "heent", "Cornea and lens", "Clear, shiny, smooth; a cloudy lens means cataracts"],
+[126, "heent", "Partially illuminated iris", "Glaucoma"],
+[127, "heent", "PERRLA", "Pupils Equal (3–7 mm), Round, Reactive to Light (direct and consensual), Accommodation"],
+[128, "heent", "Direct vs. consensual pupil response", "Direct: the lit pupil constricts. Consensual: the opposite pupil also constricts"],
+[129, "heent", "Accommodation", "Pupils dilate for far objects, then converge and constrict for near objects"],
+[130, "heent", "Red reflex", "Ophthalmoscope about 1 ft away, light on the pupil; fundus should look red; absent or asymmetric red reflex is unexpected"],
+[131, "heent", "Ophthalmoscope exam", "Darken the room; start at 0 diopter; use your right eye for the client's right eye; follow the red reflex from 25–30 cm to 2–3 cm"],
+[132, "heent", "Expected internal eye", "Optic disc light pink or yellow; retina without lesions; artery-to-vein ratio 2:3 with no nicking"],
+[133, "heent", "Lacrimal palpation", "Expect no tenderness and no discharge"],
+[134, "heent", "Abnormal eye findings", "Loss of visual fields, asymmetric light reflex, periorbital edema, drainage, conjunctivitis, corneal abrasion"],
+[135, "heent", "Arcus senilis", "Thin gray-white ring around the cornea in older adults"],
+[136, "heent", "Eye aging changes", "Presbyopia, decreased acuity and peripheral vision, glare intolerance, trouble distinguishing colors, slower pupil reaction, yellowing lens, arcus senilis, loss of lateral eyebrows, cataracts"],
+[137, "heent", "Expected external ear", "Top of the ear aligns with the outer canthus of the eye; skin matches the face; no lesions, tenderness, or malodorous discharge; small amount of cerumen"],
+[138, "heent", "Ear tenderness check", "Palpate the pinna and tragus, percuss the mastoid"],
+[139, "heent", "Otoscope exam: adult", "Pull the auricle up and back; insert the speculum slightly down and forward 1–1.5 cm without touching the canal"],
+[140, "heent", "Adult otoscope speculum", "4 mm; attach and twist firmly; discard after the exam"],
+[141, "heent", "Tympanic membrane", "Pearly gray, intact, taut; cone-shaped light reflex; umbo and manubrium visible"],
+[142, "heent", "Cone of light location", "5 o'clock in the right ear, 7 o'clock in the left"],
+[143, "heent", "Cerumen", "Moist and light brown to gray, or dry with Asian or Native American heritage; should not be in excess"],
+[144, "heent", "Cerumen color range", "Moist tan to flaky dark yellow or brown"],
+[145, "heent", "Otitis externa", "Swimmer's ear; manipulating the external ear is painful"],
+[146, "heent", "Middle ear infection", "Red, bulging tympanic membrane; cone of light obliterated"],
+[147, "heent", "Whisper test", "Occlude one ear and whisper; client should hear from 1–2 ft away without seeing your mouth (CN VIII)"],
+[148, "heent", "Other bedside hearing checks", "Rubbing fingers together near the ear, or a ticking watch"],
+[149, "heent", "Before documenting impaired hearing", "Check the ear canal with an otoscope, since cerumen impaction is a common cause (especially in older adults)"],
+[150, "heent", "Rinne test", "Tuning fork on the mastoid (bone conduction), then in front of the ear canal (air conduction); expect AC &gt; BC (2:1)"],
+[151, "heent", "Weber test", "Tuning fork on top of the head; expect sound equal in both ears (negative Weber)"],
+[152, "heent", "Weber with hearing loss", "Conductive loss: heard best in the impaired ear. Sensorineural loss: heard best in the unaffected ear"],
+[153, "heent", "Presbycusis", "Age-related loss of high-frequency hearing"],
+[154, "heent", "Ear aging changes", "Hearing loss, cerumen buildup, thickened tympanic membrane"],
+[155, "heent", "Expected nose", "Midline, symmetric; septum midline; nares patent; mucosa light red (redder than oral mucosa) and moist; no discharge"],
+[156, "heent", "Checking nare patency", "Occlude one naris at a time and have the client sniff"],
+[157, "heent", "Flaring nares on inspiration", "Breathing difficulty"],
+[158, "heent", "Abnormal nose findings", "Pallor, inflammation, discharge or drainage"],
+[159, "heent", "Nasal discharge documentation", "Thin and clear, thick and purulent, or bloody"],
+[160, "heent", "Internal nose exam", "Client tips head back; insert the nasal speculum just barely into each naris"],
+[161, "heent", "Sinus palpation", "Frontal (just below the eyebrows) and maxillary (from the sides of the nose to the corners of the mouth); expect no tenderness"],
+[162, "heent", "Sinus tenderness", "Possible congestion or inflammation"],
+[163, "heent", "Expected lips", "Darker than the face, moist, symmetric, smooth; pink to plum depending on skin tone"],
+[164, "heent", "Expected gums", "Tight against the teeth, pink, no bleeding; dark skin may have bluish or brown patches"],
+[165, "heent", "Inspecting the gums", "Remove dentures or partials to see all surfaces"],
+[166, "heent", "Expected oral mucosa", "Pink and moist; freckled pigmentation in dark skin; hyperpigmentation after age 50"],
+[167, "heent", "Best place to see pallor, cyanosis, or jaundice in dark skin", "Oral mucosa"],
+[168, "heent", "Tongue exam", "Hold the tip with gauze; top is pink with papillae; underside smooth with a symmetric vascular pattern; midline"],
+[169, "heent", "Expected teeth", "Shiny, white, smooth; have the client clench to check malocclusion; yellowing is common in older adults"],
+[170, "heent", "Palate and uvula", "Hard palate whitish and concave; soft palate light pink; both the soft palate and the midline uvula move with vocalization"],
+[171, "heent", "Tonsils +1", "Barely visible (behind the pillars)"],
+[172, "heent", "Tonsils +2", "Halfway to the uvula"],
+[173, "heent", "Tonsils +3", "Touching the uvula"],
+[174, "heent", "Tonsils +4", "Touching each other"],
+[175, "heent", "Abnormal mouth findings", "Pallor, jaundice, cyanosis; missing teeth; caries; abnormal speech; dry, cracked lips; lesions"],
+[176, "heent", "Ears, nose, mouth, and throat equipment", "Otoscope, watch, tuning fork, nasal speculum, tongue blade, penlight, gauze square, cotton-tipped applicators"],
+[177, "heent", "Mouth, nose, and voice aging changes", "Decreased taste and smell, tooth loss, pale gums, gum disease, darker teeth, less saliva; voice pitch rises"],
+[178, "cranialnerves", "Cranial nerve mnemonic", "Oh Oh Oh To Touch And Feel Very Good Velvet, AH (I–XII in order)"],
+[179, "cranialnerves", "Cranial nerve basics", "Numbered I–XII; can be sensory, motor, or both; located in the brain but affect various body parts"],
+[180, "cranialnerves", "CN I: Olfactory", "Sensory (smell); client closes eyes, occludes one nostril, and identifies a familiar scent (mint, coffee, toothpaste); repeat on the other side"],
+[181, "cranialnerves", "Why not use alcohol to test smell", "Noxious odors stimulate CN V (trigeminal) and cause a misleading response"],
+[182, "cranialnerves", "CN II: Optic", "Sensory; visual acuity (Snellen) and visual fields"],
+[183, "cranialnerves", "CN III: Oculomotor", "Motor; extraocular movements and pupil reaction (PERRLA)"],
+[184, "cranialnerves", "CN III functions", "Pupil constriction and dilation, upper eyelid elevation, eye movement"],
+[185, "cranialnerves", "CN IV: Trochlear", "Motor; extraocular movements"],
+[186, "cranialnerves", "CN VI: Abducens", "Motor; extraocular movements"],
+[187, "cranialnerves", "Test for CN III, IV, VI", "Six cardinal positions of gaze"],
+[188, "cranialnerves", "CN V: Trigeminal", "Both. Sensory: light touch on the face with cotton (eyes closed). Motor: clench teeth while palpating the jaw muscles and TMJ"],
+[189, "cranialnerves", "CN V branches", "Three branches covering the forehead, cheeks, and chin"],
+[190, "cranialnerves", "CN V motor test", "Clench and release the jaw while palpating the temporal and masseter muscles; bite on a tongue blade"],
+[191, "cranialnerves", "CN VII: Facial", "Both. Motor: smile, frown, puff cheeks, raise eyebrows, close eyes tightly, show teeth. Sensory: taste (salt/sweet) on the front of the tongue"],
+[192, "cranialnerves", "CN VII strength check", "Client closes eyes tightly while you try to open them"],
+[193, "cranialnerves", "CN VIII: Auditory or Vestibulocochlear", "Sensory; hearing and balance; whisper test"],
+[194, "cranialnerves", "CN IX: Glossopharyngeal", "Both. Sensory: taste (sour/bitter) on the back third of the tongue. Motor: swallowing, speech, gag reflex"],
+[195, "cranialnerves", "CN X: Vagus", "Both. Sensory: gag reflex. Motor: swallowing, speech quality; observe the soft palate while the client says \"AH\""],
+[196, "cranialnerves", "CN IX and X expected findings", "Uvula rises midline when the client says \"ahhh\"; client swallows easily"],
+[197, "cranialnerves", "When to test the gag reflex", "When the client can't open their mouth and say \"aah\" (such as unconscious clients), to assess airway protection"],
+[198, "cranialnerves", "CN XI: Spinal accessory", "Motor; shrug shoulders and turn head against resistance"],
+[199, "cranialnerves", "CN XI muscles", "Sternocleidomastoid (turn head against resistance) and trapezius (shrug against resistance)"],
+[200, "cranialnerves", "CN XII: Hypoglossal", "Motor; tongue movement and strength; push tongue into each cheek against resistance"],
+[201, "cranialnerves", "CN XII expected findings", "Tongue protrudes midline; client can push against the cheek and articulate \"light, tight, dynamite\""],
+[202, "cranialnerves", "Sensory-only cranial nerves", "I, II, VIII"],
+[203, "cranialnerves", "Motor-only cranial nerves", "III, IV, VI, XI, XII"],
+[204, "cranialnerves", "Sensory and motor cranial nerves", "V, VII, IX, X"],
+[205, "cranialnerves", "Nerves for swallowing", "CN IX and CN X; test with the gag reflex"],
+[206, "cranialnerves", "Nerves for taste", "CN VII (front two-thirds: salt/sweet) and CN IX (back third: sour/bitter)"],
+[207, "cranialnerves", "Gag reflex", "CN IX and X; explain the procedure first, then stimulate the back of the throat with a tongue blade"],
+[208, "cranialnerves", "Nerves tested in the head and neck exam", "V, VII, XI"],
+[209, "cranialnerves", "Nerves tested in the eye exam", "II, III, IV, VI (and V for the corneal reflex)"],
+[210, "cranialnerves", "Nerves tested in the ears, nose, mouth, and throat exam", "I, VII, VIII, IX, X, XII"],
+[211, "neuromentalstatus", "Neuro exam components", "Mental status, cranial nerves, motor function, sensory function, reflexes"],
+[212, "neuromentalstatus", "Neuro exam equipment", "Eye charts, aromatic substances, tongue blades, penlight, sugar and salt, tuning fork, reflex hammer, cotton balls, warm and cold test tubes, pencil, paper clips, key"],
+[213, "neuromentalstatus", "Alert", "Eyes open, responsive, answers spontaneously and appropriately"],
+[214, "neuromentalstatus", "Lethargic", "Opens eyes and responds, but drowsy and falls back asleep quickly"],
+[215, "neuromentalstatus", "Obtunded", "Responds to light shaking; may be confused and slow to respond"],
+[216, "neuromentalstatus", "Stuporous", "Needs painful stimuli for a brief response; may not respond verbally"],
+[217, "neuromentalstatus", "Comatose", "No response to repeated painful stimuli"],
+[218, "neuromentalstatus", "Unresponsive client: LOC sequence", "Test response to voice, then touch, then pain (press a pen across a nail bed; expect withdrawal)"],
+[219, "neuromentalstatus", "AVPU scale", "Alert, Voice (responds to verbal stimulus), Pain (responds to painful stimulus), Unresponsive"],
+[220, "neuromentalstatus", "Decorticate posturing", "Flexion and internal rotation of the arms and legs"],
+[221, "neuromentalstatus", "Decerebrate posturing", "Neck and elbow extension with wrists and fingers flexed"],
+[222, "neuromentalstatus", "Orientation", "Person (name), place (where they are), time (day or time of day), situation (why they're there)"],
+[223, "neuromentalstatus", "A&amp;O × 4", "Alert and oriented to person, place, time, and situation"],
+[224, "neuromentalstatus", "Hospitalized client unsure of the day", "Common because routines are disrupted; don't assume disorientation"],
+[225, "neuromentalstatus", "Expected appearance and mood", "Clean, dressed appropriately (consider culture); eye contact; emotions match the situation"],
+[226, "neuromentalstatus", "Testing immediate and recent memory", "Have the client repeat three words now (immediate), then again about 10 minutes later (recent)"],
+[227, "neuromentalstatus", "Testing remote memory", "State birth date or mother's maiden name (verifiable)"],
+[228, "neuromentalstatus", "Testing calculation", "Count backward from 100 by 7s"],
+[229, "neuromentalstatus", "Testing abstract thinking", "Interpret a cliché", "\"A bird in the hand is worth two in the bush\""],
+[230, "neuromentalstatus", "Testing judgment", "Ask how they'd solve a dilemma", "\"What would you do if you locked your keys in your car?\""],
+[231, "neuromentalstatus", "Abnormal thought process", "Flight of ideas (rapid topic changes) or nonsense words"],
+[232, "neuromentalstatus", "Thought content", "Note delusions, hallucinations, other ideas presented"],
+[233, "neuromentalstatus", "Mini-Mental State Examination", "Objective cognitive tool: orientation, attention/calculation, registration and recall, language, reading"],
+[234, "neuromentalstatus", "Glasgow Coma Scale", "Eye opening, verbal, and motor responses; used for baseline and ongoing LOC"],
+[235, "neuromentalstatus", "Glasgow Coma Scale scoring", "Minimum 3, maximum 15; higher is better; 15 = fully conscious"],
+[236, "neuromentalstatus", "Finger-to-nose test", "Client touches their nose, then your finger about 18 in away, alternating; repeat with eyes closed; expect smooth, accurate movement"],
+[237, "neuromentalstatus", "Rapid alternating movements", "Pat thighs alternating palm up and palm down, or touch thumb to each fingertip, increasing speed"],
+[238, "neuromentalstatus", "Heel-to-shin", "Client slides one heel up and down the opposite shin; expect a smooth, straight path"],
+[239, "neuromentalstatus", "Sensory testing setup", "Client's eyes closed; test all four extremities"],
+[240, "neuromentalstatus", "Pain sensation test", "Break a tongue blade, show the client the sharp and dull ends, then touch at random sites and intervals with the client's eyes closed"],
+[241, "neuromentalstatus", "Temperature sensation test", "Warm and cold test tubes of water"],
+[242, "neuromentalstatus", "Light touch test", "Cotton ball from proximal to distal; client reports when and where they feel it; calluses can block sensation"],
+[243, "neuromentalstatus", "Vibration test", "Handle of a vibrating tuning fork on the skin"],
+[244, "neuromentalstatus", "Tuning fork frequencies", "High frequency (500–1,000 Hz) tests hearing; low frequency (100–400 Hz) tests vibration"],
+[245, "neuromentalstatus", "Activating a tuning fork", "Hold the handle, strike a tine on the heel of your other hand, place the handle on the skin; don't touch the tines"],
+[246, "neuromentalstatus", "Position sense test", "Move the client's limb up or down and ask which"],
+[247, "neuromentalstatus", "Two-point discrimination", "Open paper clips; smallest distance where two points are still felt"],
+[248, "neuromentalstatus", "Stereognosis", "Identify a familiar object placed in the hand", "key, cotton ball"],
+[249, "neuromentalstatus", "Graphesthesia", "Identify a number traced on the palm"],
+[250, "neuromentalstatus", "10-gram monofilament", "Tests foot sensation in clients with diabetes or neuropathy; press until it bends for 1–2 sec at several sites on the sole, varying the timing"],
+[251, "neuromentalstatus", "Tips for eliciting DTRs", "Client must be relaxed; distract them; tap briskly with a loose wrist; compare both sides"],
+[252, "neuromentalstatus", "Biceps reflex", "Arm flexed 45°, thumb on the tendon, strike the thumb; expect elbow flexion"],
+[253, "neuromentalstatus", "Brachioradialis reflex", "Strike 2.5–5 cm above the wrist; expect forearm pronation and elbow flexion"],
+[254, "neuromentalstatus", "Triceps reflex", "Arm hanging at 90°, strike above the elbow; expect elbow extension"],
+[255, "neuromentalstatus", "Patellar reflex", "Leg dangling, strike below the knee; expect lower leg extension"],
+[256, "neuromentalstatus", "Achilles reflex", "Dorsiflex the foot, strike above the heel; expect plantar flexion"],
+[257, "neuromentalstatus", "4+ reflex", "Hyperactive, very brisk, with clonus"],
+[258, "neuromentalstatus", "3+ reflex", "Brisker than average (slightly hyperactive)"],
+[259, "neuromentalstatus", "2+ reflex", "Expected"],
+[260, "neuromentalstatus", "1+ reflex", "Diminished"],
+[261, "neuromentalstatus", "0 reflex", "No response"],
+[262, "neuromentalstatus", "Unable to find a reflex", "Document \"unable to elicit\""],
+[263, "neuromentalstatus", "Babinski (plantar) reflex", "Trace an upside-down \"J\" on the sole from heel to ball of the foot"],
+[264, "neuromentalstatus", "Expected adult Babinski", "No response or slight toe curling"],
+[265, "neuromentalstatus", "Abnormal adult Babinski", "Toes fan and great toe dorsiflexes; associated with upper motor neuron disease"],
+[266, "neuromentalstatus", "Neuro aging changes", "Short-term memory decline; slower reflexes; altered vibration, position, pain, and temperature sense; decreased senses; slower fine motor; difficulty learning complex info; impaired balance"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

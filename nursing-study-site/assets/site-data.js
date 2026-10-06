@@ -41,7 +41,14 @@ var SITE = {
     {title:"Specimen Collection practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/specimen-collection-quiz.html", count:40},
     {title:"Tissue Integrity", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/tissue-integrity-flashcards.html", count:157},
     {title:"Tissue Integrity practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/tissue-integrity-quiz.html", count:40},
-    {title:"Week 6 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/week6-study-guide.html", meta:"Infection control, tissue integrity & specimen collection · mnemonics & quick checks"}
+    {title:"Week 6 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/week6-study-guide.html", meta:"Infection control, tissue integrity & specimen collection · mnemonics & quick checks"},
+    {title:"Assessment: Integumentary, HEENT & Neuro", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-integumentary-heent-neuro-flashcards.html", count:266},
+    {title:"Assessment: Integumentary, HEENT & Neuro practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-integumentary-heent-neuro-quiz.html", count:40},
+    {title:"Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-thorax-cardiovascular-abdomen-musculoskeletal-flashcards.html", count:249},
+    {title:"Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-thorax-cardiovascular-abdomen-musculoskeletal-quiz.html", count:40},
+    {title:"Safety", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/safety-flashcards.html", count:349},
+    {title:"Safety practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/safety-quiz.html", count:40},
+    {title:"Week 7 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/week7-study-guide.html", meta:"Physical assessment & safety · diagrams & lecture photos"}
   ],
   mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html", meta:"Random from every quiz on the site"},
 

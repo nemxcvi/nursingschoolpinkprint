@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment: Thorax, Cardiovascular, Abdomen &amp; Musculoskeletal &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Assessment: Thorax, Cardiovascular, Abdomen &amp; Musculoskeletal &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-3-skin-wounds-diagnostics/assessment-thorax-cardiovascular-abdomen-musculoskeletal-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Assessment: Thorax, Cardiovascular, Abdomen &amp; Musculoskeletal &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=49">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-03" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=7"></script>
+<script src="../assets/header.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Assessment: Thorax, Cardiovascular, Abdomen &amp; Musculoskeletal</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  breaststhoraxlungs: {label:"Breasts, Thorax &amp; Lungs", hue:"blue"},
+  heartperipheralvascular: {label:"Heart &amp; Peripheral Vascular", hue:"violet"},
+  abdomen: {label:"Abdomen", hue:"magenta"},
+  musculoskeletal: {label:"Musculoskeletal", hue:"orange"}
+};
+var CARDS = [
+[1, "breaststhoraxlungs", "Timing of breast self-exam", "4–7 days after menses begins or right after it ends; same day each month if pregnant or postmenopausal"],
+[2, "breaststhoraxlungs", "Breast self-exam with implants", "Same procedure, since implants sit behind the breast tissue"],
+[3, "breaststhoraxlungs", "Breast inspection positions (women)", "Arms at sides, arms overhead, hands pressing on hips, leaning forward. Men: sitting or lying with arms at sides"],
+[4, "breaststhoraxlungs", "Breast palpation position", "Lying down, arm up by the head, small pillow under the shoulder on the side being examined"],
+[5, "breaststhoraxlungs", "Breast palpation technique", "Pads of three middle fingers; sternum to posterior axillary line, clavicle to bra line, including the nipple, areola, and tail of Spence; circular, wedge, or vertical strip pattern"],
+[6, "breaststhoraxlungs", "Before touching a breast", "Always get permission; wear gloves if skin isn't intact"],
+[7, "breaststhoraxlungs", "Nipple discharge check", "Compress gently; discharge is unexpected in nonlactating women"],
+[8, "breaststhoraxlungs", "Pendulous breast palpation", "Support the lower breast with one hand and palpate against it"],
+[9, "breaststhoraxlungs", "Breast nodule documentation", "Location (quadrant or clock), size (cm), shape, consistency, discreteness, tenderness, erythema, dimpling, lymphadenopathy, mobility"],
+[10, "breaststhoraxlungs", "Expected breast findings", "One breast slightly larger; round or oval darker areolas; everted nipples; symmetric venous patterns"],
+[11, "breaststhoraxlungs", "Breast findings associated with cancer", "Thickened skin, unilateral dilated veins, dimpling, edema, unilateral rash, recent nipple inversion, peau d'orange, change in size or contour"],
+[12, "breaststhoraxlungs", "Peau d'orange", "Orange-peel dimpling caused by edema dilating hair follicles"],
+[13, "breaststhoraxlungs", "Fibrocystic breast disease", "Tender cysts, more prominent during menstruation"],
+[14, "breaststhoraxlungs", "Gynecomastia", "Breast enlargement in males (adolescents or older adults)"],
+[15, "breaststhoraxlungs", "Breast aging changes", "Glandular tissue replaced by fat (softer, flatter, more pendulous); nipples smaller, flatter, may invert"],
+[16, "breaststhoraxlungs", "Thorax techniques", "Inspection, palpation, percussion, auscultation"],
+[17, "breaststhoraxlungs", "Thorax positioning", "Posterior: sitting or standing. Anterior: sitting, lying, or standing"],
+[18, "breaststhoraxlungs", "Lung lobes", "Right has 3, left has 2; auscultate the right middle lobe at the axilla"],
+[19, "breaststhoraxlungs", "Midsternal line", "Center of the sternum"],
+[20, "breaststhoraxlungs", "Midclavicular line", "Midpoint of the clavicle"],
+[21, "breaststhoraxlungs", "Anterior axillary line", "Anterior axillary fold"],
+[22, "breaststhoraxlungs", "Midaxillary line", "Apex of the axilla"],
+[23, "breaststhoraxlungs", "Posterior axillary line", "Posterior axillary fold"],
+[24, "breaststhoraxlungs", "Scapular lines", "Inferior angle of each scapula"],
+[25, "breaststhoraxlungs", "Vertebral line", "Center of the spine"],
+[26, "breaststhoraxlungs", "Where to percuss and auscultate", "Over the intercostal spaces, in a side-to-side pattern; each space is numbered by the rib above it"],
+[27, "breaststhoraxlungs", "Counting respirations", "Don't tell the client you're counting, because it may change their breathing"],
+[28, "breaststhoraxlungs", "Expected respiratory inspection", "RR 12–20 and regular; effortless, quiet, symmetric breathing; no accessory muscle use or retractions; no deformities; trachea midline"],
+[29, "breaststhoraxlungs", "Expected oxygen saturation", "95% or greater"],
+[30, "breaststhoraxlungs", "Prolonged expiration", "Common in COPD (difficulty moving air out)"],
+[31, "breaststhoraxlungs", "Signs of increased work of breathing", "Accessory muscle use (neck and intercostal muscles), intercostal retractions, sitting upright or leaning forward (orthopneic position)"],
+[32, "breaststhoraxlungs", "Expected chest shape", "Twice as wide as it is deep; AP diameter one-third to one-half of the transverse diameter"],
+[33, "breaststhoraxlungs", "Barrel chest", "AP diameter about equal to transverse; seen with aging and chronic lung disease"],
+[34, "breaststhoraxlungs", "Thorax palpation pattern", "Anterior from above the clavicles to the costal angle and out to the midaxillary line; posterior from above the scapulae to below the 12th rib"],
+[35, "breaststhoraxlungs", "Chest excursion", "Thumbs at T9–T10 with a skin fold between; on a deep breath, thumbs should move apart symmetrically"],
+[36, "breaststhoraxlungs", "Tactile fremitus", "Palms on the chest while the client says \"99\"; vibration should be symmetric and strongest near the top"],
+[37, "breaststhoraxlungs", "Increased fremitus", "Pneumonia"],
+[38, "breaststhoraxlungs", "Decreased or absent fremitus", "Pneumothorax"],
+[39, "breaststhoraxlungs", "Resonance", "Normal lung percussion sound; low-pitched, hollow (air-filled)"],
+[40, "breaststhoraxlungs", "Dullness on lung percussion", "Fluid or solid tissue; pneumonia, tumor, masses"],
+[41, "breaststhoraxlungs", "Hyperresonance", "Trapped air; emphysema or pneumothorax"],
+[42, "breaststhoraxlungs", "Maximizing breath sounds", "Diaphragm directly on skin; client takes deep breaths through an open mouth; quiet room; client doesn't talk; treat pain; sit upright"],
+[43, "breaststhoraxlungs", "Positioning for posterior lung sounds", "Client crosses their arms in front of the chest to separate the scapulae"],
+[44, "breaststhoraxlungs", "Auscultation technique", "Listen to a full inspiration and expiration at each site; let the client rest if they get lightheaded"],
+[45, "breaststhoraxlungs", "Bronchial sounds", "Loud, high-pitched, hollow; over the trachea and larynx (anterior only); expiration longer than inspiration"],
+[46, "breaststhoraxlungs", "Bronchial sounds heard over peripheral lung", "Abnormal"],
+[47, "breaststhoraxlungs", "Bronchovesicular sounds", "Medium pitch, blowing; over the main bronchi (anterior and posterior); inspiration equals expiration"],
+[48, "breaststhoraxlungs", "Vesicular sounds", "Soft, low-pitched, breezy; over peripheral lung fields toward the bases; inspiration longer than expiration"],
+[49, "breaststhoraxlungs", "Crackles (rales)", "Wet popping from air through fluid or collapsed alveoli snapping open; most common at the end of inspiration; don't clear with coughing; can mean fluid overload"],
+[50, "breaststhoraxlungs", "Wheezes", "Continuous sounds through constricted airways; high-pitched (common with asthma) or low-pitched; mild wheezing usually on expiration only, severe wheezing throughout", "asthma, inflammation, mucus plugs, tumors"],
+[51, "breaststhoraxlungs", "Rhonchi", "Low-pitched snoring or rumbling from fluid or mucus in large airways; may clear with coughing"],
+[52, "breaststhoraxlungs", "Rhonchi check", "Have the client take a deep breath and cough a couple of times, then listen again"],
+[53, "breaststhoraxlungs", "Pleural friction rub", "Coarse grating or scratching from inflamed pleura rubbing together; painful; doesn't clear with coughing"],
+[54, "breaststhoraxlungs", "Stridor", "High-pitched crowing heard without a stethoscope; upper airway obstruction; life-threatening"],
+[55, "breaststhoraxlungs", "Diminished breath sounds", "Hard to hear; increased adipose tissue, atelectasis, pleural effusion, pneumonia"],
+[56, "breaststhoraxlungs", "Atelectasis", "Absent breath sounds in the lower lobe bases; caused by hypoventilation or obstruction from secretions, fluid, or air"],
+[57, "breaststhoraxlungs", "Absent breath sounds", "Collapsed or surgically removed lobes"],
+[58, "breaststhoraxlungs", "Lung aging changes", "Barrel chest, lower vital capacity, less chest expansion, weaker cough reflex, less effective cilia, fewer alveoli, higher infection risk, kyphosis"],
+[59, "heartperipheralvascular", "Cardiac assessment techniques", "Inspection, palpation, auscultation"],
+[60, "heartperipheralvascular", "Cardiac assessment equipment", "Stethoscope, BP cuff, watch, two rulers (for JVP), penlight"],
+[61, "heartperipheralvascular", "Expected adult heart rate", "60–100/min"],
+[62, "heartperipheralvascular", "Best indicator of fluid retention", "Daily weight (more accurate than checking edema)"],
+[63, "heartperipheralvascular", "Aortic area", "Right of the sternum, 2nd intercostal space"],
+[64, "heartperipheralvascular", "Pulmonic area", "Left of the sternum, 2nd intercostal space"],
+[65, "heartperipheralvascular", "Erb's point", "Left of the sternum, 3rd intercostal space"],
+[66, "heartperipheralvascular", "Tricuspid area", "Left of the sternum, 4th intercostal space"],
+[67, "heartperipheralvascular", "Apical/mitral area", "Left midclavicular line, 5th intercostal space (PMI)"],
+[68, "heartperipheralvascular", "Finding the 2nd intercostal space", "Angle of Louis (where the manubrium meets the sternum); the space is just below the 2nd rib"],
+[69, "heartperipheralvascular", "Heart auscultation order", "APETM: \"All Pigs Eat Too Much\" (Aortic, Pulmonic, Erb's, Tricuspid, Mitral)"],
+[70, "heartperipheralvascular", "S1 (\"lub\")", "Mitral and tricuspid valves close; start of systole (contraction); listen with the diaphragm at the apex"],
+[71, "heartperipheralvascular", "S2 (\"dub\")", "Aortic and pulmonic valves close; start of diastole (relaxation); listen with the diaphragm at the aortic area"],
+[72, "heartperipheralvascular", "Where S1 and S2 are loudest", "S1 at the apex; S2 at the base (aortic and pulmonic areas)"],
+[73, "heartperipheralvascular", "Telling S1 from S2", "S1 coincides with the carotid pulse; the pause after S2 is longer (diastole)"],
+[74, "heartperipheralvascular", "Split heart sound", "Sounds like a stutter; valves on each side don't close at the same time", "bundle branch block"],
+[75, "heartperipheralvascular", "S3", "Ventricular gallop after S2 (\"Ken-tuck'-y\"); rapid ventricular filling; can be expected in young adults; associated with CHF; use the bell"],
+[76, "heartperipheralvascular", "S4", "Atrial gallop just before S1 (\"Ten'-nes-see\"); strong atrial contraction; can be expected in older and athletic adults; associated with HTN, CAD, MI; use the bell"],
+[77, "heartperipheralvascular", "Murmur", "Blowing or swishing from increased or altered blood flow; systolic murmurs follow S1, diastolic follow S2; use the bell"],
+[78, "heartperipheralvascular", "Stenotic valve", "Doesn't open widely; turbulent flow causes a murmur"],
+[79, "heartperipheralvascular", "Regurgitant (incompetent) valve", "Doesn't close tightly; backflow causes a murmur"],
+[80, "heartperipheralvascular", "Murmur grade 1", "Hard to hear, even in a quiet room"],
+[81, "heartperipheralvascular", "Murmur grade 2", "Clearly audible but quiet"],
+[82, "heartperipheralvascular", "Murmur grade 3", "Moderately loud"],
+[83, "heartperipheralvascular", "Murmur grade 4", "Loud, with a thrill"],
+[84, "heartperipheralvascular", "Murmur grade 5", "Very loud, easily palpable thrill"],
+[85, "heartperipheralvascular", "Murmur grade 6", "Very loud, may be heard without touching the chest; palpable and visible thrill"],
+[86, "heartperipheralvascular", "Thrill", "Palpable vibration (like a purring kitten); accompanies a murmur or cardiac malformation"],
+[87, "heartperipheralvascular", "Bruit", "Blowing or swishing from obstructed blood flow; use the bell"],
+[88, "heartperipheralvascular", "Pericardial friction rub", "High-pitched, scratchy sound (like sandpaper) from an inflamed pericardium; heard throughout systole and diastole; loudest at the apex"],
+[89, "heartperipheralvascular", "Dysrhythmia", "Heart fails to beat at regular intervals"],
+[90, "heartperipheralvascular", "Bell vs. diaphragm", "Bell: low-pitched extra sounds (S3, S4, murmurs, bruits). Diaphragm: S1, S2"],
+[91, "heartperipheralvascular", "Apical heart rate", "Count for a full minute; note the rhythm"],
+[92, "heartperipheralvascular", "Pulse deficit", "Radial pulse slower than apical pulse; report to the provider immediately"],
+[93, "heartperipheralvascular", "Pulse deficit procedure", "Two nurses count apical and radial pulses at the same time for 60 sec; a difference of 2 or more beats means a deficit"],
+[94, "heartperipheralvascular", "Positions for heart auscultation", "Sitting and leaning forward; supine; turned to the left side (best for extra sounds and murmurs)"],
+[95, "heartperipheralvascular", "Hard-to-hear heart sounds", "Reduce noise, put the stethoscope on bare skin, have the client sit up and lean forward or lie on their left side"],
+[96, "heartperipheralvascular", "PMI", "Gentle pulsation just medial to the left midclavicular line at the 4th–5th intercostal space; may not be visible in obese or muscular clients; displace large breasts"],
+[97, "heartperipheralvascular", "Expected PMI size", "No larger than a nickel"],
+[98, "heartperipheralvascular", "Enlarged or displaced PMI", "Left ventricular hypertrophy"],
+[99, "heartperipheralvascular", "Heave or lift", "Forceful visible elevation of the chest wall, usually at the left sternal border or PMI; indicates heart failure"],
+[100, "heartperipheralvascular", "Lift vs. heave", "Lift: pulsation forceful enough to lift your fingers. Heave: rolling pulsation under your fingers"],
+[101, "heartperipheralvascular", "Palpating the PMI and checking for heaves or thrills", "Advanced technique performed by an advanced provider"],
+[102, "heartperipheralvascular", "Jugular vein inspection", "Head of bed at 30–45°; expect no distention, with visible carotid pulsations"],
+[103, "heartperipheralvascular", "Positioning to check JVD", "Supine with the head elevated about 45°, head turned; JVD at 45° is unexpected and should be reported"],
+[104, "heartperipheralvascular", "JVD", "Blood backing up from the right atrium into the jugular veins; most commonly right-sided heart failure"],
+[105, "heartperipheralvascular", "JVD vs. carotid pulsation", "Carotid pulsation matches the radial pulse and isn't obliterated by light pressure; jugular pulsation disappears with gentle pressure"],
+[106, "heartperipheralvascular", "JVP measurement", "Expect under 2.5 cm (1 in) above the sternal angle; measured with two rulers in a T shape"],
+[107, "heartperipheralvascular", "Elevated JVP", "Bilateral: right-sided heart failure. One side only: obstruction"],
+[108, "heartperipheralvascular", "Absent carotid pulsation", "Decreased force of blood flow"],
+[109, "heartperipheralvascular", "Carotid artery quality", "Should feel soft and pliable; stiff suggests atherosclerosis"],
+[110, "heartperipheralvascular", "Carotid bruit check", "Bell with light pressure at 2–3 points along the artery; client may hold their breath briefly"],
+[111, "heartperipheralvascular", "Bruit auscultation sites", "Carotids; abdominal aorta (below the xiphoid); renal arteries (midclavicular, above the umbilicus); iliac arteries (below the umbilicus); femoral arteries"],
+[112, "heartperipheralvascular", "Pulse sites", "Temporal, carotid, apical, brachial, radial, femoral, popliteal, dorsalis pedis, posterior tibial"],
+[113, "heartperipheralvascular", "Carotid pulse", "Beside the trachea, medial to the sternocleidomastoid; palpate one side at a time"],
+[114, "heartperipheralvascular", "Why palpate one carotid at a time", "Vagal stimulation drops HR and BP; occluding both can cause loss of consciousness"],
+[115, "heartperipheralvascular", "Radial pulse", "Thumb side of the wrist"],
+[116, "heartperipheralvascular", "Brachial pulse", "Antecubital fossa, above the elbow"],
+[117, "heartperipheralvascular", "Femoral pulse", "Midway between the symphysis pubis and the anterosuperior iliac spine"],
+[118, "heartperipheralvascular", "Popliteal pulse", "Behind the knee, deep in the popliteal fossa, just lateral to midline"],
+[119, "heartperipheralvascular", "Dorsalis pedis pulse", "Top of the foot, lateral to the great toe extensor tendon"],
+[120, "heartperipheralvascular", "Posterior tibial pulse", "Behind and below the medial malleolus"],
+[121, "heartperipheralvascular", "Comparing pulses", "Palpate both sides at the same time (except carotids) to check symmetry"],
+[122, "heartperipheralvascular", "Order for palpating peripheral pulses", "Start at the most distal pulse; compare both sides"],
+[123, "heartperipheralvascular", "Most commonly tested lower-extremity pulse", "Dorsalis pedis; may need a Doppler to find it"],
+[124, "heartperipheralvascular", "If both radial pulses are expected", "Usually no need to check brachial pulses"],
+[125, "heartperipheralvascular", "0 pulse", "Absent, unable to palpate"],
+[126, "heartperipheralvascular", "1+ pulse", "Diminished, weak and thready"],
+[127, "heartperipheralvascular", "2+ pulse", "Brisk, expected"],
+[128, "heartperipheralvascular", "3+ pulse", "Increased, full and easy to palpate"],
+[129, "heartperipheralvascular", "4+ pulse", "Full volume, bounding"],
+[130, "heartperipheralvascular", "Capillary refill", "Press the nail bed until it blanches, then release; color should return in under 3 seconds"],
+[131, "heartperipheralvascular", "Delayed capillary refill", "Over 3 sec means decreased perfusion; can be expected in older adults and clients with chronic illness"],
+[132, "heartperipheralvascular", "Venous insufficiency skin", "Brown pigmentation"],
+[133, "heartperipheralvascular", "Arterial insufficiency skin", "Shiny, translucent, hairless skin on the toes and foot"],
+[134, "heartperipheralvascular", "Hair loss below the midcalf", "Common with peripheral vascular disease"],
+[135, "heartperipheralvascular", "Peripheral vein inspection", "Look for varicosities, redness, swelling"],
+[136, "heartperipheralvascular", "Spider angioma", "Red center with radiating red legs, up to 2 cm, possibly raised"],
+[137, "heartperipheralvascular", "Cherry angioma", "Red, round, 1–3 cm, possibly raised"],
+[138, "heartperipheralvascular", "Spider vein", "Bluish, spider-shaped or linear"],
+[139, "heartperipheralvascular", "Petechiae", "Deep reddish purple, flat, 1–3 mm"],
+[140, "heartperipheralvascular", "Purpura", "Deep reddish purple, flat, larger than 3 mm"],
+[141, "heartperipheralvascular", "Ecchymosis", "Bruise; purple fading to green or yellow; flat; variable size"],
+[142, "heartperipheralvascular", "Hematoma", "Raised ecchymosis"],
+[143, "heartperipheralvascular", "Bruising in dark skin", "Darkened areas; bleeding may show only as swelling or warmth"],
+[144, "heartperipheralvascular", "Cardiovascular aging changes", "Systolic hypertension with widened pulse pressure; PMI harder to palpate; stiff, narrowed vessels; lower cardiac output and activity tolerance; calcified valves; thickened left ventricle; reduced peripheral circulation"],
+[145, "abdomen", "Abdominal assessment order", "Inspection → auscultation → percussion → palpation; auscultate before touching because percussion and palpation alter bowel sounds"],
+[146, "abdomen", "Preparing for the abdominal exam", "Have the client void; supine with arms at sides and knees slightly bent"],
+[147, "abdomen", "Abdominal quadrants", "Lines through the umbilicus, from the xiphoid to the symphysis pubis: RUQ, LUQ, RLQ, LLQ"],
+[148, "abdomen", "Abdominal inspection", "Guarding or splinting; umbilicus; lesions, scars, striae, dilated veins; jaundice, cyanosis, ascites; contour; peristalsis; pulsations"],
+[149, "abdomen", "Inspecting abdominal contour", "View from more than one angle (from the side and from the foot of the bed)"],
+[150, "abdomen", "Expected abdominal skin", "Even color, usually a bit lighter than sun-exposed skin; some visible veins are expected"],
+[151, "abdomen", "Striae", "Silver stretch marks; expected finding"],
+[152, "abdomen", "Dilated abdominal veins", "Unexpected; possible cirrhosis, liver disease, portal hypertension, or IVC obstruction"],
+[153, "abdomen", "Ascites", "Fluid in the abdomen; possible cirrhosis"],
+[154, "abdomen", "Visible peristalsis", "Seen in thin adults or with intestinal obstruction"],
+[155, "abdomen", "Abdominal pulsations", "Beats midline above the umbilicus are expected in thin adults; a pulsating mass is unexpected"],
+[156, "abdomen", "Flat abdomen", "Horizontal line from the xiphoid to the symphysis pubis"],
+[157, "abdomen", "Convex abdomen", "Rounded"],
+[158, "abdomen", "Concave abdomen", "Sunken"],
+[159, "abdomen", "Distended abdomen", "Large protrusion from fat, fluid, or flatus; measure at the umbilicus to track fluid retention"],
+[160, "abdomen", "Distention from fat", "Rolls of adipose tissue along the sides; skin not taut"],
+[161, "abdomen", "Distention from fluid", "Flanks protrude; protrusion shifts to the dependent side when the client turns"],
+[162, "abdomen", "Distention from flatus", "Mainly midline protrusion; flanks unchanged"],
+[163, "abdomen", "Hernia", "Protrusion through the abdominal wall, more visible when the client flexes the abdominal muscles"],
+[164, "abdomen", "Bowel sound technique", "Use the diaphragm, ideally between meals; start in the RLQ; if no sounds, move to RUQ → LUQ → LLQ"],
+[165, "abdomen", "Why start bowel sounds in the RLQ", "Bowel sounds are usually active around the ileocecal valve"],
+[166, "abdomen", "Bowel sounds heard in the RLQ", "Not always necessary to listen in other quadrants (follow facility policy)"],
+[167, "abdomen", "Expected bowel sounds", "High-pitched clicks and gurgles 5–35/min"],
+[168, "abdomen", "Borborygmi", "Loud growling (\"stomach growling\") from hyperperistalsis, often heard without a stethoscope; unexpected finding"],
+[169, "abdomen", "Hyperactive bowel sounds", "Louder and more intense; diarrhea, anxiety, bowel inflammation, food reactions"],
+[170, "abdomen", "Hypoactive bowel sounds", "Soft, under 5/min; medications, anesthesia, constipation, obstruction"],
+[171, "abdomen", "Absent bowel sounds", "No sounds after a full 5 minutes; possible intestinal obstruction"],
+[172, "abdomen", "Unexpected bowel sounds", "Have a second nurse validate"],
+[173, "abdomen", "Abdominal vascular sounds", "Swishing suggests blood vessel or liver disorders; report to the provider"],
+[174, "abdomen", "Listening for abdominal bruits", "Use the bell over the aorta, renal, iliac, and femoral arteries"],
+[175, "abdomen", "Abdominal aortic bruit", "Possible abdominal aortic aneurysm (turbulent flow)"],
+[176, "abdomen", "Abdominal friction rub", "Inflamed peritoneum rubbing together; listen over the liver and spleen during a deep breath; sounds like sandpaper"],
+[177, "abdomen", "Abdominal percussion technique", "Nondominant hand palm down; tap its middle finger with the dominant middle finger"],
+[178, "abdomen", "Tympany", "Expected drum-like sound over most of the abdomen; lower pitch over the gastric bubble in the LUQ"],
+[179, "abdomen", "Abdominal dullness", "Over the liver, spleen, or a distended bladder"],
+[180, "abdomen", "Percussion tones by density", "Resonance (lung) is lowest pitch, tympany (gas) is higher, dullness (solid organ or full bladder) is highest"],
+[181, "abdomen", "Liver span", "6–12 cm at the right midclavicular line; larger means hepatomegaly"],
+[182, "abdomen", "CVA tenderness", "Fist percussion over the costovertebral angles; tenderness suggests kidney inflammation; expect none"],
+[183, "abdomen", "CVA percussion technique", "One hand flat over the costovertebral angle, thump it gently with your other fist; should not cause pain"],
+[184, "abdomen", "Helping the client relax for palpation", "Talk casually; have them raise their knees"],
+[185, "abdomen", "Light abdominal palpation", "Finger pads of one hand, about 1 cm (0.4 in) to 1.3 cm (0.5 in) deep, gentle dipping motion in each quadrant"],
+[186, "abdomen", "Light palpation and the bladder", "Useful for detecting bladder fullness between the umbilicus and symphysis pubis"],
+[187, "abdomen", "Order of palpating tender areas", "Palpate them last"],
+[188, "abdomen", "Expected palpation findings", "Soft, nontender, relaxed, no masses; bladder palpable only if full"],
+[189, "abdomen", "Voluntary guarding", "Anxious client tenses their abdominal muscles; having them exhale helps"],
+[190, "abdomen", "Involuntary rigidity", "Persistent hardness even when the client relaxes; indicates inflammation of the abdominal cavity"],
+[191, "abdomen", "Rigid abdomen", "Peritoneal irritation; needs follow-up, especially with hypoactive or absent bowel sounds"],
+[192, "abdomen", "Tenderness found on palpation", "Stop palpating and notify the provider; watch the client's face throughout"],
+[193, "abdomen", "Abnormal palpation findings", "Distention, rigidity, tenderness, masses, rebound tenderness"],
+[194, "abdomen", "Deep palpation", "Reserved for advanced providers; two hands, 2.5–7.5 cm deep; stool may be palpable in the descending colon"],
+[195, "abdomen", "Rebound tenderness (Blumberg's sign)", "Press firmly for 4 sec at a 90° angle, then release; pain on release means peritoneal irritation"],
+[196, "abdomen", "Never palpate deeply", "Abdominal masses, tender organs, surgical incisions"],
+[197, "abdomen", "Abdominal aging changes", "Rounder, protruding abdomen; peritonitis harder to detect (less pain, guarding, fever); less saliva and digestive secretions; slower motility"],
+[198, "musculoskeletal", "Musculoskeletal assessment", "Gait, alignment, symmetry, muscle mass and tone, ROM, involuntary movements, inflammation, deformities, height, posture, spine"],
+[199, "musculoskeletal", "Musculoskeletal techniques", "Inspection and palpation; compare both sides"],
+[200, "musculoskeletal", "Functional assessment focus", "The nurse assesses musculoskeletal function with safety in mind, tailored to the client"],
+[201, "musculoskeletal", "Muscle tone", "Balanced muscle tension that maintains posture; slight resistance during passive ROM"],
+[202, "musculoskeletal", "Flaccidity", "Decreased (lax) muscle tone"],
+[203, "musculoskeletal", "Spasticity", "Increased muscle tone"],
+[204, "musculoskeletal", "Expected spinal curves (viewed from the side)", "Concave cervical, convex thoracic, concave lumbar, convex sacral"],
+[205, "musculoskeletal", "Double S curve", "Normal spinal contour viewed from the side"],
+[206, "musculoskeletal", "Kyphosis", "Exaggerated thoracic curve; common in older adults"],
+[207, "musculoskeletal", "Kyphosis significance", "Common in older adults with osteoporosis or vertebral fractures; can restrict lung expansion"],
+[208, "musculoskeletal", "Lordosis", "Exaggerated lumbar curve; common in pregnancy"],
+[209, "musculoskeletal", "Scoliosis", "Exaggerated lateral curve; check with the client bending at the waist and reaching for the toes"],
+[210, "musculoskeletal", "Clue for scoliosis", "Asymmetric skin folds on the back; uneven hips or shoulders when bending forward"],
+[211, "musculoskeletal", "Scoliosis severity", "Under 20–30° is mild; over 60° can restrict lung function"],
+[212, "musculoskeletal", "Height loss", "Gradual height loss is expected with aging"],
+[213, "musculoskeletal", "Passive ROM", "Nurse moves the joints; never past pain or resistance"],
+[214, "musculoskeletal", "Active ROM", "Client repeats the movements the nurse demonstrates"],
+[215, "musculoskeletal", "Joint assessment", "Warmth, inflammation, edema, stiffness, crepitus, deformity, tenderness, limitation, instability"],
+[216, "musculoskeletal", "Crepitus", "Clicking or crunching in a joint; common in knees without pain"],
+[217, "musculoskeletal", "Flexion", "Decreases the angle between two bones"],
+[218, "musculoskeletal", "Extension", "Increases the angle between two bones"],
+[219, "musculoskeletal", "Hyperextension", "Movement beyond normal extended position"],
+[220, "musculoskeletal", "Supination", "Front surface faces up"],
+[221, "musculoskeletal", "Pronation", "Front surface faces down"],
+[222, "musculoskeletal", "Abduction", "Away from midline"],
+[223, "musculoskeletal", "Adduction", "Toward midline"],
+[224, "musculoskeletal", "Dorsiflexion", "Foot and toes flexed upward"],
+[225, "musculoskeletal", "Plantar flexion", "Foot and toes bent downward"],
+[226, "musculoskeletal", "Eversion", "Body part turned away from midline"],
+[227, "musculoskeletal", "Inversion", "Body part turned toward midline"],
+[228, "musculoskeletal", "External rotation", "Joint rotated outward"],
+[229, "musculoskeletal", "Internal rotation", "Joint rotated inward"],
+[230, "musculoskeletal", "Muscle strength testing", "Flex and extend the shoulder, elbow, wrist, hip, knee, and ankle against resistance; test grip by having the client squeeze your index and middle fingers"],
+[231, "musculoskeletal", "Expected muscle strength", "Equal on both sides, or slightly stronger on the dominant side"],
+[232, "musculoskeletal", "Muscle strength 0", "No contraction"],
+[233, "musculoskeletal", "Muscle strength 1", "Trace contraction (about 10%)"],
+[234, "musculoskeletal", "Muscle strength 2", "Moves with gravity eliminated (about 25%)"],
+[235, "musculoskeletal", "Muscle strength 3", "Moves against gravity (about 50%)"],
+[236, "musculoskeletal", "Muscle strength 4", "Moves against some resistance (about 75%)"],
+[237, "musculoskeletal", "Muscle strength 5", "Overcomes full resistance (100%, expected)"],
+[238, "musculoskeletal", "Dominant-side muscle size", "Usually slightly larger; less than 1 cm difference is not significant"],
+[239, "musculoskeletal", "Hypertrophy", "Muscle enlargement from strengthening"],
+[240, "musculoskeletal", "Muscle atrophy", "Decreased muscle size from disuse; feels soft and boggy"],
+[241, "musculoskeletal", "Gait assessment", "Observe when the client is unaware; expect steady, smooth, coordinated gait"],
+[242, "musculoskeletal", "Normal gait components", "Heel strike, foot flat, push off from the ball, swing through; toes forward; base 5–10 cm (2–4 in); arms swing opposite the legs"],
+[243, "musculoskeletal", "Gait abnormalities", "Small halting steps, favoring one side, wide base, foot drop"],
+[244, "musculoskeletal", "Four gaits tested", "Regular, heel-to-toe, tiptoe, heels"],
+[245, "musculoskeletal", "Romberg test", "Feet together, arms at sides, eyes closed; expect minimal sway for at least 5 sec (balance)"],
+[246, "musculoskeletal", "Romberg: when to stop", "If the client sways more than a couple of inches; document difficulty maintaining balance"],
+[247, "musculoskeletal", "Heel-to-toe walk", "Heel in front of toes in a straight line; expect no loss of balance"],
+[248, "musculoskeletal", "Get-up-and-go test", "Time the client rising from a chair without using the arms, walking 3 m (10 ft), turning, returning, and sitting; assistive devices are allowed"],
+[249, "musculoskeletal", "Musculoskeletal aging changes", "Less muscle mass and strength; bone loss and height loss (osteoporosis risk); degenerative joints; limited ROM; kyphosis; wider stance"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

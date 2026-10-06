@@ -4,7 +4,7 @@ var FC_MIN_SCALE = 0.55;
 function fitFace(face){
   var body = face.querySelector(".fc-body");
   if (!body) return;
-  var textEls = body.querySelectorAll(".fc-term, .fc-def, .fc-ex, .fc-hint");
+  var textEls = body.querySelectorAll(".fc-term, .fc-def, .fc-ex, .fc-cardnote, .fc-hint");
   textEls.forEach(function(el){ el.style.fontSize = ""; });
   var cs = getComputedStyle(face);
   var avail = face.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
@@ -106,8 +106,10 @@ function initFlashcards(CATS, CARDS){
 
     /* Examples get their own italic line under the definition */
     var exHtml = card[4] ? "<p class='fc-ex'>Ex: " + card[4] + "</p>" : "";
+    /* Notes (source disclaimers) get their own small line under that */
+    var noteHtml = card[5] ? "<p class='fc-cardnote'>" + card[5] + "</p>" : "";
     back.innerHTML =
-      "<p class='fc-cat'>" + cat.label + "</p><div class='fc-body'><p class='fc-def'>" + card[3] + "</p>" + exHtml + "</div>";
+      "<p class='fc-cat'>" + cat.label + "</p><div class='fc-body'><p class='fc-def'>" + card[3] + "</p>" + exHtml + noteHtml + "</div>";
 
     fitFace(front);
     fitFace(back);

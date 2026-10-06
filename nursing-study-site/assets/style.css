@@ -239,6 +239,7 @@ h2{font-size:20px;}
 .fc-hint{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 0 0;}
 .fc-def{font-family:'Young Serif',serif;font-weight:400;font-size:22px;line-height:1.45;color:inherit;margin:0;}
 .fc-ex{font-family:'Young Serif',serif;font-weight:400;font-style:italic;font-size:17px;line-height:1.5;color:inherit;opacity:.9;margin:14px 0 0;}
+.fc-cardnote{font-size:13px;line-height:1.45;color:inherit;opacity:.8;margin:12px 0 0;}
 @media(max-width:600px){
   .fc-face{padding-left:18px;padding-right:18px;}
   .fc-term{font-size:30px;}
