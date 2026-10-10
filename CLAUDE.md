@@ -37,4 +37,5 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 ## Content conventions
 
 - Study guides are organized by week (`weekN-study-guide.html`) with mnemonics/memory hooks and quick checks. Material taken straight from lecture slides is tagged as slide content.
+- Spell out every abbreviation the first time it appears on a page, in parentheses: `ADLs (activities of daily living)`. Mnemonics that are already spelled out letter by letter don't need it.
 - Keep wording plain and accurate. Prefer dropping a forced mnemonic to keeping a confusing one.
