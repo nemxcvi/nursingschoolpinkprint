@@ -23,7 +23,7 @@ var SITE = {
     {title:"Mobility practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/mobility-quiz.html", count:40},
     {title:"Hygiene", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/hygiene-flashcards.html", count:43},
     {title:"Hygiene practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/hygiene-quiz.html", count:40},
-    {title:"Client Education", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/client-education-flashcards.html", count:39},
+    {title:"Client Education", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/client-education-flashcards.html", count:40},
     {title:"Client Education practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/client-education-quiz.html", count:40},
     {title:"Diversity, Equity, and Inclusion", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/dei-flashcards.html", count:47},
     {title:"Diversity, Equity, and Inclusion practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/dei-quiz.html", count:40},
@@ -46,7 +46,7 @@ var SITE = {
     {title:"Assessment: Integumentary, HEENT & Neuro practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-integumentary-heent-neuro-quiz.html", count:40},
     {title:"Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-thorax-cardiovascular-abdomen-musculoskeletal-flashcards.html", count:249},
     {title:"Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-thorax-cardiovascular-abdomen-musculoskeletal-quiz.html", count:40},
-    {title:"Safety", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/safety-flashcards.html", count:344},
+    {title:"Safety", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/safety-flashcards.html", count:349},
     {title:"Safety practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/safety-quiz.html", count:40},
     {title:"Week 7 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/week7-study-guide.html", meta:"Physical assessment & safety · mnemonics & quick checks"}
   ],
