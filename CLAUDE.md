@@ -38,4 +38,6 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 
 - Study guides are organized by week (`weekN-study-guide.html`) with mnemonics/memory hooks and quick checks. Material taken straight from lecture slides is tagged as slide content.
 - Spell out every abbreviation the first time it appears on a page, in parentheses: `ADLs (activities of daily living)`. Mnemonics that are already spelled out letter by letter don't need it.
+- Content is for adult clients. Leave out infant- and child-focused material (pediatric care, teaching by child age group, child specimen collection); a passing mention inside adult content is fine.
+- Every topic quiz has exactly 40 questions. The mix quizzes (`unit-N/mix-quiz.html`, `mix-all-quiz.html`) hold copies of the topic questions, so rebuild them whenever a topic quiz changes. Keep `count` in `site-data.js` and the card/question counts on each unit `index.html` in sync.
 - Keep wording plain and accurate. Prefer dropping a forced mnemonic to keeping a confusing one.

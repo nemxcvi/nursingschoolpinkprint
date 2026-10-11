@@ -35,7 +35,7 @@
       <button type="button" class="pq-mode-btn" data-mode="rounds" aria-pressed="false"><span class="pq-mode-title"><span class="pq-check" aria-hidden="true"></span>Mastery rounds</span><span class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</span></button>
     </div>
     <p class="pq-step">2 &middot; How many questions?</p>
-    <div class="pq-count-row" id="pq-counts" data-single="10,20" data-rounds="10,20">
+    <div class="pq-count-row" id="pq-counts" data-single="10,20,30,40" data-rounds="10,20,30,40">
       <button type="button" class="pq-count-btn" data-count="10" aria-pressed="false">10</button>
       <button type="button" class="pq-count-btn" data-count="20" aria-pressed="false">20</button>
       <button type="button" class="pq-count-btn" data-count="30" aria-pressed="false">30</button>
@@ -161,7 +161,67 @@ var bank = [
  correct:["b"], explanation:"The least restrictive/least invasive approach means trying gentler interventions before more restrictive ones like restraints."},
 {id:20, cat:"vitals", type:"mc", prompt:"A nursing student asks about the difference between nociceptive and neuropathic pain. Which statement is correct?",
  options:[{id:"a",text:"Nociceptive pain is related to nerve damage; neuropathic pain is related to tissue damage"},{id:"b",text:"Nociceptive pain is related to tissue damage; neuropathic pain is related to nerve damage"},{id:"c",text:"Both types are related to psychological distress only"},{id:"d",text:"Neuropathic pain always resolves within 6 months"}],
- correct:["b"], explanation:"Nociceptive pain relates to tissue damage; neuropathic pain relates to nerve damage."}
+ correct:["b"], explanation:"Nociceptive pain relates to tissue damage; neuropathic pain relates to nerve damage."},
+{id:21, cat:"vitals", type:"mc", prompt:"A client just finished a cup of ice water. How long should the nurse wait before taking an oral temperature?",
+ options:[{id:"a",text:"No wait is needed"},{id:"b",text:"2 to 5 minutes"},{id:"c",text:"15 to 30 minutes"},{id:"d",text:"2 hours"}],
+ correct:["c"], explanation:"Hot or cold drinks, food, gum, and smoking change mouth temperature. Wait 15 to 30 minutes before taking an oral temperature."},
+{id:22, cat:"vitals", type:"mc", prompt:"A nurse uses a blood pressure cuff that is too small for the client's arm. How will this affect the reading?",
+ options:[{id:"a",text:"It will be falsely high"},{id:"b",text:"It will be falsely low"},{id:"c",text:"It will not change the reading"},{id:"d",text:"It will only change the diastolic reading"}],
+ correct:["a"], explanation:"A cuff that is too small or too narrow gives a falsely high reading. A cuff that is too large gives a falsely low reading."},
+{id:23, cat:"vitals", type:"mc", prompt:"A client's blood pressure is 140/90 mmHg. What is the client's pulse pressure?",
+ options:[{id:"a",text:"230 mmHg"},{id:"b",text:"90 mmHg"},{id:"c",text:"70 mmHg"},{id:"d",text:"50 mmHg"}],
+ correct:["d"], explanation:"Pulse pressure is the systolic pressure minus the diastolic pressure: 140 − 90 = 50 mmHg."},
+{id:24, cat:"vitals", type:"sata", prompt:"A nurse is reviewing an adult client's vital signs. Which findings are outside the expected range? Select all that apply.",
+ options:[{id:"a",text:"Heart rate 52/min"},{id:"b",text:"Respiratory rate 24/min"},{id:"c",text:"SpO2 97%"},{id:"d",text:"Temperature 38.4 °C (101.1 °F)"},{id:"e",text:"Blood pressure 116/74 mmHg"}],
+ correct:["a","b","d"], explanation:"Expected adult ranges: heart rate 60–100/min, respiratory rate 12–20/min, SpO2 95–100%, and blood pressure under 120/80. A temperature of 38.4 °C is a fever."},
+{id:25, cat:"process", type:"mc", prompt:"A nurse is collecting data during an admission assessment. Which finding is subjective data?",
+ options:[{id:"a",text:"The client says, \"I feel sick to my stomach.\""},{id:"b",text:"Blood pressure is 132/84 mmHg"},{id:"c",text:"A 3 cm wound on the left heel"},{id:"d",text:"The client vomited 200 mL"}],
+ correct:["a"], explanation:"Subjective data is what the client reports and only the client can describe, such as nausea or pain. Objective data is what the nurse can observe or measure."},
+{id:26, cat:"process", type:"mc", prompt:"A nurse is planning care for a client after surgery. Using Maslow's hierarchy of needs, which client need should the nurse address first?",
+ options:[{id:"a",text:"Anxiety about the surgery results"},{id:"b",text:"Airway clearance"},{id:"c",text:"Learning about the new diet"},{id:"d",text:"Feeling isolated from family"}],
+ correct:["b"], explanation:"Physiological needs come first in Maslow's hierarchy, and airway comes first among them. Safety, love and belonging, and esteem needs follow."},
+{id:27, cat:"process", type:"mc", prompt:"A client's goal was to walk 50 feet with a walker by day 3. On day 3, the nurse watches the client walk 50 feet with the walker. Which step of the nursing process is the nurse performing?",
+ options:[{id:"a",text:"Assessment"},{id:"b",text:"Planning"},{id:"c",text:"Implementation"},{id:"d",text:"Evaluation"}],
+ correct:["d"], explanation:"Evaluation compares the client's response to the expected outcome to decide whether the goal was met."},
+{id:28, cat:"process", type:"mc", prompt:"Which client outcome is written so the nurse can measure it?",
+ options:[{id:"a",text:"The client will understand the new diet"},{id:"b",text:"The client will feel less anxious"},{id:"c",text:"The client will walk 100 feet in the hallway with a walker by the end of the shift"},{id:"d",text:"The client will tolerate activity better"}],
+ correct:["c"], explanation:"A measurable outcome names a specific, observable behavior and a time frame. \"Understand,\" \"feel,\" and \"tolerate better\" can't be measured as written."},
+{id:29, cat:"process", type:"sata", prompt:"A nurse is caring for a client. Which nursing actions belong to the implementation step of the nursing process? Select all that apply.",
+ options:[{id:"a",text:"Giving a prescribed medication"},{id:"b",text:"Reinforcing teaching about the medication"},{id:"c",text:"Repositioning the client every 2 hours"},{id:"d",text:"Writing a goal for the plan of care"},{id:"e",text:"Deciding whether the client met the goal"}],
+ correct:["a","b","c"], explanation:"Implementation is carrying out the planned interventions. Writing goals is planning, and deciding whether a goal was met is evaluation."},
+{id:30, cat:"ethics", type:"mc", prompt:"After the provider explains the risks and benefits, a client decides not to have a recommended surgery. The nurse supports the client's decision. Which ethical principle is the nurse upholding?",
+ options:[{id:"a",text:"Autonomy"},{id:"b",text:"Beneficence"},{id:"c",text:"Justice"},{id:"d",text:"Fidelity"}],
+ correct:["a"], explanation:"Autonomy is the client's right to make their own decisions about their care, including refusing treatment."},
+{id:31, cat:"ethics", type:"mc", prompt:"A nurse checks a client's allergies before giving a new medication. Which ethical principle does this action reflect?",
+ options:[{id:"a",text:"Veracity"},{id:"b",text:"Nonmaleficence"},{id:"c",text:"Justice"},{id:"d",text:"Autonomy"}],
+ correct:["b"], explanation:"Nonmaleficence is the duty to do no harm. Checking allergies prevents harm from the medication."},
+{id:32, cat:"ethics", type:"mc", prompt:"A client is about to sign a consent form for surgery. What is the nurse's role in informed consent?",
+ options:[{id:"a",text:"Explain the risks and benefits of the surgery"},{id:"b",text:"Witness the client's signature and confirm the client understands"},{id:"c",text:"Decide whether the client needs the surgery"},{id:"d",text:"Sign the form for the client if the client is anxious"}],
+ correct:["b"], explanation:"The provider explains the procedure, risks, benefits, and alternatives. The nurse witnesses the signature and confirms understanding. If the client has questions, the nurse notifies the provider before the form is signed."},
+{id:33, cat:"ethics", type:"sata", prompt:"Which actions by a nurse violate a client's privacy under HIPAA? Select all that apply.",
+ options:[{id:"a",text:"Discussing a client's diagnosis in the elevator"},{id:"b",text:"Posting a photo of a client's wound on social media"},{id:"c",text:"Opening the chart of a client the nurse isn't caring for"},{id:"d",text:"Giving report to the oncoming nurse at shift change"},{id:"e",text:"Reviewing the chart of an assigned client"}],
+ correct:["a","b","c"], explanation:"Protected health information is shared only with people involved in the client's care, in private. Handoff report and reviewing an assigned client's chart are part of care."},
+{id:34, cat:"comm", type:"mc", prompt:"A client says, \"I'm scared about my surgery tomorrow.\" Which response by the nurse is therapeutic?",
+ options:[{id:"a",text:"\"Don't worry, everything will be fine.\""},{id:"b",text:"\"Tell me more about what's worrying you.\""},{id:"c",text:"\"Your surgeon is the best in the hospital.\""},{id:"d",text:"\"Why are you scared?\""}],
+ correct:["b"], explanation:"An open-ended invitation lets the client share their feelings. \"Don't worry\" and praising the surgeon are false reassurance, and \"why\" questions can make clients feel defensive."},
+{id:35, cat:"comm", type:"mc", prompt:"A nurse wants to learn more about a client's pain. Which question is open-ended?",
+ options:[{id:"a",text:"\"Is your pain worse today?\""},{id:"b",text:"\"Did the medication help?\""},{id:"c",text:"\"How would you describe your pain?\""},{id:"d",text:"\"Is the pain sharp?\""}],
+ correct:["c"], explanation:"Open-ended questions can't be answered with yes or no, so the client gives more detail. The other choices are closed-ended."},
+{id:36, cat:"comm", type:"mc", prompt:"Which statement by a nurse is nontherapeutic?",
+ options:[{id:"a",text:"\"Why didn't you take your medication?\""},{id:"b",text:"\"You seem upset. I'm here to listen.\""},{id:"c",text:"\"Go on, I'm listening.\""},{id:"d",text:"\"What happened when you stopped the medication?\""}],
+ correct:["a"], explanation:"\"Why\" questions sound like a demand for justification and can make the client defensive. The other statements are therapeutic: offering self, a general lead, and an open-ended question."},
+{id:37, cat:"comm", type:"mc", prompt:"A nurse is calling the provider using ISBARR. Which statement belongs in the Background section?",
+ options:[{id:"a",text:"\"This is Sam, the nurse caring for Ms. Lee in room 12.\""},{id:"b",text:"\"She was admitted 2 days ago for pneumonia and has a history of heart failure.\""},{id:"c",text:"\"I think she may be developing fluid overload.\""},{id:"d",text:"\"I'd like you to come see her and consider a diuretic.\""}],
+ correct:["b"], explanation:"Background gives the admitting diagnosis and relevant history. The other choices are Introduction, Assessment, and Recommendation."},
+{id:38, cat:"ebp_doc", type:"mc", prompt:"A nurse makes an error while documenting in a paper chart. Which action should the nurse take?",
+ options:[{id:"a",text:"Use correction fluid and rewrite the entry"},{id:"b",text:"Erase the entry completely"},{id:"c",text:"Draw a single line through the error, label it as an error, and add initials and the date"},{id:"d",text:"Tear out the page and start over"}],
+ correct:["c"], explanation:"The original entry must stay readable. A single line, a note that it was an error, and the nurse's initials and date keep the record legal and accurate."},
+{id:39, cat:"ebp_doc", type:"mc", prompt:"A nurse is looking for the strongest evidence to support a change in practice. Which source gives the highest level of evidence?",
+ options:[{id:"a",text:"An expert's opinion"},{id:"b",text:"A single case study"},{id:"c",text:"A systematic review of randomized controlled trials"},{id:"d",text:"A descriptive study"}],
+ correct:["c"], explanation:"A systematic review or meta-analysis of randomized controlled trials is the highest level of evidence. Expert opinion is the lowest."},
+{id:40, cat:"ebp_doc", type:"mc", prompt:"Which documentation entry is written correctly?",
+ options:[{id:"a",text:"\"Client ate 50% of breakfast.\""},{id:"b",text:"\"Client has a good appetite.\""},{id:"c",text:"\"Client seems to be in a bad mood.\""},{id:"d",text:"\"Client slept well.\""}],
+ correct:["a"], explanation:"Documentation should be objective and specific. \"Good,\" \"bad mood,\" and \"slept well\" are vague judgments."}
 ];
 initPracticeQuiz(bank, catLabels);
 </script>
