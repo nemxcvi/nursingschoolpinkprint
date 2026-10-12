@@ -44,6 +44,7 @@ var SITE = {
     {title:"Week 6 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/week6-study-guide.html", meta:"Infection control, tissue integrity & specimen collection · mnemonics & quick checks"},
     {title:"Assessment: Integumentary, HEENT & Neuro", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-integumentary-heent-neuro-flashcards.html", count:266},
     {title:"Assessment: Integumentary, HEENT & Neuro practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-integumentary-heent-neuro-quiz.html", count:40},
+    {title:"Cranial Nerves practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/cranial-nerves-quiz.html", count:40},
     {title:"Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-thorax-cardiovascular-abdomen-musculoskeletal-flashcards.html", count:249},
     {title:"Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/assessment-thorax-cardiovascular-abdomen-musculoskeletal-quiz.html", count:40},
     {title:"Safety", type:"flashcards", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/safety-flashcards.html", count:349},
