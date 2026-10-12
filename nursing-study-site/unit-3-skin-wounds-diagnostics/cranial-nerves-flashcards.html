@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cranial Nerves &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Cranial Nerves &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-3-skin-wounds-diagnostics/cranial-nerves-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cranial Nerves &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=49">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-03" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=10"></script>
+<script src="../assets/header.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Cranial Nerves</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  typesnames: {label:"Names &amp; Types", hue:"red"},
+  smellvision: {label:"CN I &amp; II: Smell &amp; Vision", hue:"yellow"},
+  eyemovement: {label:"CN III, IV &amp; VI: Eye Movement &amp; Pupils", hue:"green"},
+  facial: {label:"CN V &amp; VII: Face &amp; Taste", hue:"aqua"},
+  hearing: {label:"CN VIII: Hearing", hue:"blue"},
+  throatshouldertongue: {label:"CN IX–XII: Throat, Shoulders &amp; Tongue", hue:"violet"},
+  byexam: {label:"Nerves by Exam", hue:"orange"}
+};
+var CARDS = [
+[1, "typesnames", "Cranial nerve mnemonic", "Oh Oh Oh To Touch And Feel Very Good Velvet, AH (I–XII in order)"],
+[2, "typesnames", "Cranial nerve basics", "Numbered I–XII; can be sensory, motor, or both; located in the brain but affect various body parts"],
+[3, "typesnames", "Sensory-only cranial nerves", "I, II, VIII"],
+[4, "typesnames", "Motor-only cranial nerves", "III, IV, VI, XI, XII"],
+[5, "typesnames", "Sensory and motor cranial nerves", "V, VII, IX, X"],
+[6, "smellvision", "CN I: Olfactory", "Sensory (smell); client closes eyes, occludes one nostril, and identifies a familiar scent (mint, coffee, toothpaste); repeat on the other side"],
+[7, "smellvision", "Why not use alcohol to test smell", "Noxious odors stimulate CN V (trigeminal) and cause a misleading response"],
+[8, "smellvision", "CN II: Optic", "Sensory; visual acuity (Snellen) and visual fields"],
+[9, "smellvision", "Snellen chart", "Distance vision (myopia); client stands 20 ft away; test uncorrected vision first, then with correction; each eye, then both; use the E or picture chart for clients who can't read"],
+[10, "smellvision", "Visual fields test", "Face the client 2 ft away; each covers the opposite eye; bring fingers in from 4 directions; client should see them at the same time as the nurse"],
+[11, "eyemovement", "CN III: Oculomotor", "Motor; extraocular movements and pupil reaction (PERRLA)"],
+[12, "eyemovement", "CN III functions", "Pupil constriction and dilation, upper eyelid elevation, eye movement"],
+[13, "eyemovement", "PERRLA", "Pupils Equal (3–7 mm), Round, Reactive to Light (direct and consensual), Accommodation"],
+[14, "eyemovement", "Accommodation", "Pupils dilate for far objects, then converge and constrict for near objects"],
+[15, "eyemovement", "CN IV: Trochlear", "Motor; extraocular movements"],
+[16, "eyemovement", "CN VI: Abducens", "Motor; extraocular movements"],
+[17, "eyemovement", "Test for CN III, IV, VI", "Six cardinal positions of gaze"],
+[18, "eyemovement", "Six cardinal positions of gaze", "Client follows your finger through a wide \"H\" without moving their head; expect full, smooth movement; a few beats of nystagmus in far lateral gaze is expected, but more is abnormal"],
+[19, "facial", "CN V: Trigeminal", "Both. Sensory: light touch on the face with cotton (eyes closed). Motor: clench teeth while palpating the jaw muscles and TMJ"],
+[20, "facial", "CN V branches", "Three branches covering the forehead, cheeks, and chin"],
+[21, "facial", "CN V motor test", "Clench and release the jaw while palpating the temporal and masseter muscles; bite on a tongue blade"],
+[22, "facial", "CN VII: Facial", "Both. Motor: smile, frown, puff cheeks, raise eyebrows, close eyes tightly, show teeth. Sensory: taste (salt/sweet) on the front of the tongue"],
+[23, "facial", "CN VII strength check", "Client closes eyes tightly while you try to open them"],
+[24, "facial", "Nerves for taste", "CN VII (front two-thirds: salt/sweet) and CN IX (back third: sour/bitter)"],
+[25, "hearing", "CN VIII: Auditory or Vestibulocochlear", "Sensory; hearing and balance; whisper test"],
+[26, "hearing", "Whisper test", "Occlude one ear and whisper; client should hear from 1–2 ft away without seeing your mouth (CN VIII)"],
+[27, "hearing", "Rinne test", "Tuning fork on the mastoid (bone conduction), then in front of the ear canal (air conduction); expect AC &gt; BC (2:1)"],
+[28, "hearing", "Weber test", "Tuning fork on top of the head; expect sound equal in both ears (negative Weber)"],
+[29, "hearing", "Weber with hearing loss", "Conductive loss: heard best in the impaired ear. Sensorineural loss: heard best in the unaffected ear"],
+[30, "throatshouldertongue", "CN IX: Glossopharyngeal", "Both. Sensory: taste (sour/bitter) on the back third of the tongue. Motor: swallowing, speech, gag reflex"],
+[31, "throatshouldertongue", "CN X: Vagus", "Both. Sensory: gag reflex. Motor: swallowing, speech quality; observe the soft palate while the client says \"AH\""],
+[32, "throatshouldertongue", "CN IX and X expected findings", "Uvula rises midline when the client says \"ahhh\"; client swallows easily"],
+[33, "throatshouldertongue", "Palate and uvula", "Hard palate whitish and concave; soft palate light pink; both the soft palate and the midline uvula move with vocalization"],
+[34, "throatshouldertongue", "When to test the gag reflex", "When the client can't open their mouth and say \"aah\" (such as unconscious clients), to assess airway protection"],
+[35, "throatshouldertongue", "Gag reflex", "CN IX and X; explain the procedure first, then stimulate the back of the throat with a tongue blade"],
+[36, "throatshouldertongue", "Nerves for swallowing", "CN IX and CN X; test with the gag reflex"],
+[37, "throatshouldertongue", "CN XI: Spinal accessory", "Motor; shrug shoulders and turn head against resistance"],
+[38, "throatshouldertongue", "CN XI muscles", "Sternocleidomastoid (turn head against resistance) and trapezius (shrug against resistance)"],
+[39, "throatshouldertongue", "CN XII: Hypoglossal", "Motor; tongue movement and strength; push tongue into each cheek against resistance"],
+[40, "throatshouldertongue", "CN XII expected findings", "Tongue protrudes midline; client can push against the cheek and articulate \"light, tight, dynamite\""],
+[41, "byexam", "Nerves tested in the head and neck exam", "V, VII, XI"],
+[42, "byexam", "Nerves tested in the eye exam", "II, III, IV, VI (and V for the corneal reflex)"],
+[43, "byexam", "Nerves tested in the ears, nose, mouth, and throat exam", "I, VII, VIII, IX, X, XII"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
