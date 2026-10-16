@@ -129,7 +129,12 @@ var MyStudy = (function(){
       ["journal.html", "Mistake journal", journal ? journal + " to review" : "Nothing to review"],
       ["journal.html?tab=bookmarks", "Bookmarks", marks.length ? marks.length + " saved · " + notes + " with notes" : "None saved yet"]
     ];
-    if (T.feature("challenges")) t.push(["challenges.html", "Challenges", "Coming soon"]);
+    if (T.feature("challenges")){
+      /* Saved challenges from the last 7 days (links expire after 7 days) */
+      var week = Date.now() - 7 * 24 * 3600 * 1000;
+      var open = T.challenges().filter(function(c){ return (c.at || 0) > week; }).length;
+      t.push(["challenges.html", "Challenges", open ? plural(open, "challenge") + " this week" : "Send a friend the same questions"]);
+    }
     return '<section class="ms-tiles" aria-label="Study tools">' + t.map(function(x){
       return '<a class="ms-tile" href="' + x[0] + '"><span class="ms-tile-title">' + x[1] + '</span><span class="ms-tile-sub">' + esc(x[2]) + "</span></a>";
     }).join("") + "</section>";
