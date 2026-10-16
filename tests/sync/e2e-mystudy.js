@@ -157,6 +157,18 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(/Semester recap/.test(await text(".ms-main")) && /Holiday break: hitting your goal grows your streak; missing it only pauses it/.test(await text(".ms-week")), "after Dec 10: recap, and the weekly goal still counts during the break (on by default)");
   await shot("dashboard-recap");
 
+  // ---- My study header: night mode, Settings icon and the site menu at the right ----
+  await go("dashboard.html", "2026-10-01");
+  check(await pg.$(".ms-header .ms-hdr-right .ms-theme") && await pg.$(".ms-header .ms-hdr-right .ms-settings[aria-label='Settings']") && await pg.$(".ms-header .ms-hdr-right #navbtn"),
+    "My study header: night mode, Settings and menu on the right");
+  await pg.click(".ms-header #navbtn"); await pg.waitForTimeout(300);
+  check(await pg.isVisible("#sitenav") && await pg.$eval('#sitenav .nav-row.is-current', a => a.textContent.includes("Dashboard")), "menu opens on My study pages with Dashboard marked");
+  await pg.click(".ms-header #navbtn"); await pg.waitForTimeout(300);
+  await pg.click(".ms-theme");
+  check(await pg.evaluate(() => document.documentElement.getAttribute("data-theme") === "dark" && localStorage.getItem("theme") === "dark"), "night mode button switches to dark");
+  await pg.click(".ms-theme");
+  check(/Settings/.test(await text(".tp-intro")), "dashboard has a Settings link");
+
   // ---- Settings switches hide features ----
   await pg.evaluate(() => { Tracking.setFeature("countdown", false); Tracking.setFeature("goal", false); Tracking.setFeature("challenges", false); });
   await go("dashboard.html", "2026-10-01");

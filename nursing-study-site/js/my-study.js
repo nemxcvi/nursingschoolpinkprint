@@ -62,18 +62,35 @@ var MyStudy = (function(){
 
   /* ---------- Shared pieces ---------- */
   /* Top menu for My study pages: Dashboard, Progress, Journal, Challenges + nickname (Settings) */
+  /* My study header: brand, My study links, then night mode, Settings and the site menu at the
+     right edge (the menu is assets/header.js in "menu" mode, loaded after the page script).
+     Built once; later calls only refresh the links (e.g. after the Challenges switch changes). */
+  var MOON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
+  var SUN = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  function isDark(){ return document.documentElement.getAttribute("data-theme") === "dark"; }
   function header(active){
-    var st = T.state();
     var items = [["dashboard", "Dashboard", "dashboard.html"], ["progress", "Progress", "progress.html"], ["journal", "Journal", "journal.html"]];
     if (T.feature("challenges")) items.push(["challenges", "Challenges", "challenges.html"]);
+    var links = items.map(function(i){
+      return '<a href="' + i[2] + '"' + (i[0] === active ? ' class="is-current" aria-current="page"' : "") + ">" + i[1] + "</a>";
+    }).join("");
     var host = document.getElementById("ms-header");
+    var nav = host.querySelector(".ms-nav");
+    if (nav && host.querySelector(".ms-hdr-right")){ nav.innerHTML = links; return; }
     host.className = "tp-header ms-header";
     host.innerHTML = '<a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a>' +
-      '<nav class="ms-nav" aria-label="My study">' + items.map(function(i){
-        return '<a href="' + i[2] + '"' + (i[0] === active ? ' class="is-current" aria-current="page"' : "") + ">" + i[1] + "</a>";
-      }).join("") + "</nav>" +
-      '<a class="tp-nickbtn' + (active === "settings" ? " is-current" : "") + '" href="settings.html" aria-label="Settings for ' + esc(st.nickname) + '"' +
-      (active === "settings" ? ' aria-current="page"' : "") + "><span>" + esc(st.nickname) + "</span>" + SLIDERS + "</a>";
+      '<nav class="ms-nav" aria-label="My study">' + links + "</nav>" +
+      '<div class="ms-hdr-right">' +
+      '<button type="button" class="iconbtn ms-theme" aria-label="Toggle dark mode">' + (isDark() ? SUN : MOON) + "</button>" +
+      '<a class="iconbtn ms-settings' + (active === "settings" ? " is-current" : "") + '" href="settings.html" aria-label="Settings" title="Settings"' +
+      (active === "settings" ? ' aria-current="page"' : "") + ">" + SLIDERS + "</a>" +
+      '<div id="site-header" data-mode="menu"></div></div>';
+    host.querySelector(".ms-theme").addEventListener("click", function(e){
+      var dark = !isDark();
+      if (dark) document.documentElement.setAttribute("data-theme", "dark"); else document.documentElement.removeAttribute("data-theme");
+      try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (err) {}
+      e.currentTarget.innerHTML = dark ? SUN : MOON;
+    });
   }
 
   /* Mastery bar: exam ready (window only), mastered, still learning, not seen (white) */
@@ -143,7 +160,8 @@ var MyStudy = (function(){
   /* ---------- My dashboard ---------- */
   function dashboard(d, host){
     var st = d.state, plan = S.planToday(d.questions, d.store, d.today, d.exams);
-    var html = '<section class="tp-intro tp-intro-tight"><div class="tp-eyebrow">NUR 114 · ' + esc(S.longDate(d.today)) + '</div>' +
+    var html = '<section class="tp-intro tp-intro-tight"><div class="ms-grade-top"><div class="tp-eyebrow">NUR 114 · ' + esc(S.longDate(d.today)) + '</div>' +
+      '<a class="ms-linkbtn ms-toplink" href="settings.html">Settings</a></div>' +
       '<h1 class="tp-h1 ms-welcome">Welcome back, ' + esc(st.nickname) + "</h1></section>";
 
     var top = "";

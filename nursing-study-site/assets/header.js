@@ -7,7 +7,8 @@
   var host = document.getElementById("site-header");
   if (!host) return;
 
-  var mode = host.getAttribute("data-mode") === "compact" ? "compact" : "full";
+  /* "menu": only the menu button and panel (My study pages put it at their header's right edge) */
+  var mode = host.getAttribute("data-mode") === "compact" ? "compact" : host.getAttribute("data-mode") === "menu" ? "menu" : "full";
   var sheet = SITE.getSheet(host.getAttribute("data-sheet") || SITE.currentSheet);
   var unit = host.getAttribute("data-unit") ? SITE.getUnit(sheet.id, host.getAttribute("data-unit")) : null;
   var pageType = host.getAttribute("data-type") ? SITE.getType(host.getAttribute("data-type")) : null;
@@ -106,7 +107,10 @@
     "</div>";
 
   /* ---------- Header markup ---------- */
-  if (mode === "full"){
+  if (mode === "menu"){
+    host.className = "hdr-menuonly";
+    host.innerHTML = menuBtn + panelHtml;
+  } else if (mode === "full"){
     /* Always a link: on the home page it clears a library filter (?type=...) */
     var brand = "<a class='pp-header-home' href='" + ROOT + "'>Nursing School</a> ";
     host.className = "pp-header site-header";
@@ -191,6 +195,7 @@
 
   /* Which section starts open and which row is the current page */
   function currentState(){
+    if (mode === "menu") return {sec: "mystudy", cur: "mystudy:" + (location.pathname.split("/").pop() || "dashboard.html")};
     if (mode === "compact"){
       var key = pageType ? pageType.key : null;
       return {sec:key, cur: key ? "type:" + key + ":" + (unit ? unit.code : "all") : null};
@@ -216,8 +221,16 @@
   }
 
   function position(){
-    var a = anchor.getBoundingClientRect();
     var b = btn.getBoundingClientRect();
+    if (mode === "menu"){
+      /* Opens down and to the left from the button at the right edge */
+      panel.style.top = (b.bottom + 8) + "px";
+      panel.style.maxHeight = Math.max(200, window.innerHeight - b.bottom - 20) + "px";
+      if (window.innerWidth > 600){ panel.style.left = "auto"; panel.style.right = Math.max(12, window.innerWidth - b.right) + "px"; }
+      else { panel.style.left = "12px"; panel.style.right = "12px"; }
+      return;
+    }
+    var a = anchor.getBoundingClientRect();
     panel.style.top = (b.bottom - a.top + 8) + "px";
     if (window.innerWidth > 600) panel.style.left = (b.left - a.left) + "px";
     else panel.style.left = "";
