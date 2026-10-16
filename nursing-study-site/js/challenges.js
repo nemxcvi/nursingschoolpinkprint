@@ -105,7 +105,7 @@ var Challenges = (function(){
       return ok ? T.saveChallenge({id: entry.id, done: true, score: score}) : entry;
     });
   }
-  /* Group focus: share your answers with the group (or stop) */
+  /* Group focus: share your answers with the group, chosen before starting (locked once finished) */
   function share(id, yes){
     var entry = T.challenge(id);
     if (!entry) return Promise.resolve(false);
@@ -136,7 +136,7 @@ var Challenges = (function(){
       '<p class="tp-lede">Challenges are for studying together. Send friends the same questions, compare scores, then see what the group should review.</p>' +
       '<ul class="ch-how"><li><strong>Share</strong> a 4-character code or link. Up to 10 people, open for 7 days.</li>' +
       "<li><strong>Compare</strong> scores once you finish, so nobody sees answers early.</li>" +
-      "<li><strong>Group focus</strong>: everyone who shares their answers sees the group's weakest topics and most-missed questions, never who missed what.</li>" +
+      "<li><strong>Group focus</strong>: choose to share your answers before you start, and everyone who shares sees the group's weakest topics and most-missed questions, never who missed what.</li>" +
       "<li><strong>Counts for you</strong>: every challenge answer adds to your own progress.</li></ul></section>";
   }
 
@@ -245,8 +245,8 @@ var Challenges = (function(){
   }
 
   /* ---------- Group focus ----------
-     Opt-in: load_challenge sends {players, missed: {question id: how many missed it}} to people
-     who chose to share, once 2 or more are sharing, counting only the sharers. Only combined
+     Opt-in before starting: load_challenge sends {players, missed: {question id: how many missed
+     it}} to people who chose to share, once 2 or more sharers have finished, counting only them. Only combined
      numbers: never who missed which question. */
   var data = null;   /* this page's study data (questions and units), set by mainPage */
   function byId(){
@@ -287,41 +287,56 @@ var Challenges = (function(){
       right.map(function(o){ return "<p><strong>" + esc(o.text) + "</strong>" + (o.rationale ? " " + esc(strip(o.rationale)) : "") + "</p>"; }).join("") +
       (q.explanation ? '<p class="ch-expl">' + esc(q.explanation) + "</p>" : "") + "</div>";
   }
-  /* Asked of everyone who finished: share your answers so the group can study together */
-  function shareHtml(c){
-    var me = c.share.me, n = c.share.sharing;
-    var others = me ? n - 1 : n;
-    return '<section class="ch-focus ch-invite" aria-label="Group focus"><div class="ch-focus-head"><h3 class="ch-eyebrow">Group focus</h3>' +
-      (others ? '<span class="ch-meta">' + others + (others === 1 ? " other person" : " others") + " sharing</span>" : "") + "</div>" +
-      (me ? '<p class="ch-note">You\'re sharing. Group focus appears here as soon as someone else shares too.</p>' +
-            '<button type="button" class="ms-linkbtn ch-sharebtn" data-share="0">Stop sharing</button>'
-          : '<p class="ch-sharetext">Study this one together: share your answers to see which topics the group found hardest, the questions you all missed most, and a quiz built from them.</p>' +
-            '<p class="ch-note">Only combined numbers are shown, never who missed what, and only to people who share. With just two people sharing, each of you could tell which questions the other missed. You can stop sharing any time.</p>' +
-            '<button type="button" class="ms-btn is-small is-primary ch-sharebtn" data-share="1">Share my answers</button>') +
-      "</section>";
-  }
+  /* On the card: a short Group focus line; the full view is its own page (challenges.html?focus=ID) */
   function focusHtml(c){
-    if (!c.focus) return c.share ? shareHtml(c) : "";
+    var finished = c.me && c.me.finished;
+    if (!finished || !c.share) return "";
+    var head = '<section class="ch-focus ch-fsummary" aria-label="Group focus"><div class="ch-focus-head"><h3 class="ch-eyebrow">Group focus</h3>';
+    if (!c.focus) return head + "</div>" + '<p class="tp-hint">' + (c.share.me
+      ? "You're sharing. Group focus opens once someone else who shares finishes too."
+      : "You took this one without sharing your answers, so Group focus isn't available for it.") + "</p></section>";
+    var weakest = focusTopics(c)[0], missed = groupMissed(c).length;
+    return head + '<span class="ch-meta">' + c.focus.players + " sharing · combined results only</span></div>" +
+      '<p class="ch-fline">' + (weakest ? "Weakest: <strong>" + esc(weakest.label) + "</strong> · " + weakest.acc + "% right · " : "") +
+      (missed ? missed + (missed === 1 ? " question" : " questions") + " someone missed" : "Nobody missed a question") + "</p></section>";
+  }
+  /* The full Group focus: topics weakest first, most missed (up to limit) with answers */
+  function focusBody(c, limit){
     var n = c.focus.players, m = c.focus.missed || {}, qs = byId();
-    var topics = focusTopics(c);
-    var rows = topics.map(function(g){
+    var rows = focusTopics(c).map(function(g){
       return '<li><span class="ch-ftopic">' + esc(g.label) +
         (g.count < 3 ? ' <span class="ch-few">Only ' + g.count + (g.count === 1 ? " question" : " questions") + "</span>" : "") + "</span>" +
         '<span class="ch-fbar" role="img" aria-label="' + g.acc + ' percent right"><span style="width:' + g.acc + '%"></span></span>' +
         '<span class="ch-facc">' + g.acc + "%</span></li>";
     }).join("");
     var missed = (groupMissed(c) || []).filter(function(id){ return qs[id]; });
-    var top = missed.slice(0, 5).map(function(id){
+    var top = missed.slice(0, limit).map(function(id){
       var q = qs[id];
       return '<li><details><summary><span class="ch-qtext">' + esc(q.prompt) + '</span><span class="ch-missed">Missed by ' + m[id] + " of " + n + "</span></summary>" +
         rationaleHtml(q) + "</details></li>";
     }).join("");
-    return '<section class="ch-focus" aria-label="Group focus"><div class="ch-focus-head"><h3 class="ch-eyebrow">Group focus</h3>' +
-      '<span class="ch-meta">' + n + " sharing · combined results only · " +
-      '<button type="button" class="ms-linkbtn ch-sharebtn" data-share="0">Stop sharing</button></span></div>' +
-      '<div class="ch-fpart"><h4 class="ch-fh">Topics, weakest first</h4><ol class="ch-ftopics">' + rows + "</ol></div>" +
-      '<div class="ch-fpart"><h4 class="ch-fh">Most missed</h4>' +
-      (top ? '<ol class="ch-fmissed">' + top + "</ol>" : '<p class="tp-hint">Nobody missed a question. Nice work, everyone!</p>') + "</div></section>";
+    return '<section class="ms-card ch-fpart"><h2 class="ms-h2 ch-h2">Topics, weakest first</h2><ol class="ch-ftopics">' + rows + "</ol></section>" +
+      '<section class="ms-card ch-fpart"><h2 class="ms-h2 ch-h2">Most missed</h2>' +
+      (top ? '<p class="tp-hint">Tap a question to see the answer and why.</p><ol class="ch-fmissed">' + top + "</ol>" : '<p class="tp-hint">Nobody missed a question. Nice work, everyone!</p>') + "</section>";
+  }
+  function focusPage(d, host, id){
+    data = d;
+    host.innerHTML = '<p class="tp-hint">Loading&hellip;</p>';
+    var back = '<a class="ms-back" href="challenges.html#c-' + esc(id) + '">&larr; Challenges</a>';
+    load(id).then(function(c){
+      if (!c || !c.focus){
+        host.innerHTML = '<section class="tp-intro">' + back + '<div class="tp-eyebrow">Group focus</div><h1 class="tp-h1">Not available</h1>' +
+          '<p class="tp-lede">' + (!c ? "This challenge expired or was deleted."
+            : c.share && c.share.me ? "Group focus opens once someone else who shares their answers finishes too."
+            : "Group focus is for people who chose to share their answers before taking the challenge.") + "</p></section>";
+        return;
+      }
+      var missed = groupMissed(c).length;
+      host.innerHTML = '<section class="tp-intro">' + back + '<div class="tp-eyebrow">Group focus</div><h1 class="tp-h1">' + esc(c.title) + "</h1>" +
+        '<p class="tp-lede">From the ' + c.focus.players + " people who shared their answers. Combined results only, never who missed what.</p>" +
+        (missed ? '<a class="ms-btn is-primary is-big ch-quizus" href="session.html?mode=group&amp;id=' + c.id + '">Quiz us on these · ' + missed + " &rarr;</a>" : "") +
+        "</section>" + '<div class="ch-fpage">' + focusBody(c, 10) + "</div>";
+    }, function(err){ host.innerHTML = '<section class="tp-intro">' + back + '<p class="tp-note">' + esc(friendly(err)) + "</p></section>"; });
   }
 
   /* One challenge card, from load_challenge */
@@ -353,8 +368,7 @@ var Challenges = (function(){
       if (!c.me && c.joined >= MAX_PLAYERS) btns.push('<span class="ch-meta">This challenge is full.</span>');
       else btns.push('<a class="ms-btn is-primary ch-take" href="session.html?mode=challenge&amp;id=' + c.id + '">' + (c.me ? "Finish challenge" : "Take challenge") + " &rarr;</a>");
     }
-    var groupQs = groupMissed(c);
-    if (groupQs && groupQs.length) btns.push('<a class="ms-btn is-primary ch-take ch-quizus" href="session.html?mode=group&amp;id=' + c.id + '">Quiz us on these · ' + groupQs.length + " &rarr;</a>");
+    if (c.focus) btns.push('<a class="ms-btn is-primary ch-take ch-seefocus" href="challenges.html?focus=' + c.id + '">See Group focus &rarr;</a>');
     btns.push('<div class="ch-share"><span class="ch-cardcode" title="Challenge code">' + showCode(c.id) + "</span>" +
       '<button type="button" class="ch-btn ch-copycode">Copy code</button><button type="button" class="ch-btn ch-copylink">Copy link</button></div>');
     return head + body + '<div class="ch-btns">' + btns.join("") + "</div>";
@@ -380,12 +394,6 @@ var Challenges = (function(){
       if (location.hash === "#c-" + entry.id){ card.classList.add("is-new"); card.scrollIntoView({block: "center"}); }
       card.querySelector(".ch-copylink").addEventListener("click", function(e){ copy(link(c.id), e.currentTarget); });
       card.querySelector(".ch-copycode").addEventListener("click", function(e){ copy(showCode(c.id), e.currentTarget); });
-      [].forEach.call(card.querySelectorAll(".ch-sharebtn"), function(b){
-        b.addEventListener("click", function(){
-          b.disabled = true;
-          share(entry.id, b.getAttribute("data-share") === "1").then(function(){ drawCard(card, entry); }, function(err){ b.disabled = false; alert(friendly(err)); });
-        });
-      });
       var del = card.querySelector(".ch-delete"), rm = card.querySelector(".ch-remove");
       if (del) del.addEventListener("click", function(){
         if (!confirm("Delete this challenge for everyone? Its code and link will stop working.")) return;
@@ -481,11 +489,12 @@ var Challenges = (function(){
     if (!T.isOn()){ document.getElementById("ms-header").innerHTML = '<a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a>'; document.getElementById("ms-header").className = "tp-header ms-header"; guestPage(host, params.get("join")); return; }
     MyStudy.header("challenges");
     if (!T.feature("challenges")){ offPage(host); return; }
-    MyStudy.load().then(function(d){ mainPage(d, host, params); }, function(err){
+    var focusId = parseCode(params.get("focus"));
+    MyStudy.load().then(function(d){ if (focusId) focusPage(d, host, focusId); else mainPage(d, host, params); }, function(err){
       host.innerHTML = '<p class="tp-note">Couldn\'t load your study data. Refresh the page to try again.</p>';
       if (window.console) console.error(err);
     });
   }
 
-  return {page: page, parseCode: parseCode, create: create, join: join, load: load, submit: submit, groupMissed: groupMissed, remove: remove, link: link, friendly: friendly};
+  return {page: page, parseCode: parseCode, create: create, join: join, load: load, submit: submit, share: share, groupMissed: groupMissed, remove: remove, link: link, friendly: friendly};
 })();

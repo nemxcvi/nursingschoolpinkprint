@@ -11,33 +11,45 @@ next updated; where the two disagree, this file is newer.
 Challenges are meant for **studying together**: the page intro says so, and Group focus is how a
 group sees what to review next.
 
-### Sharing is opt-in
+### Sharing is opt-in, chosen before starting
 
-- Everyone who finishes a challenge is asked on its card: "Study this one together: share your
-  answers…" with a **Share my answers** button. Nothing is counted until they choose to.
-- Group focus counts **only the people who shared**, and shows **only to them** (sharing is what
-  gets you in). It appears once **2 or more** are sharing. Before that, a sharer sees "You're
-  sharing. Group focus appears here as soon as someone else shares too."
-- The invite says plainly that with just two people sharing, each can tell which questions the
-  other missed, and that you can stop sharing any time (**Stop sharing** on the card).
-- People who haven't shared see the invite and how many others are sharing, but no results. The
-  challenge's maker sees Group focus only if they took it and shared.
+- When someone starts a challenge for the first time, a **Before you start: Study this one
+  together?** box comes first, with **Share my answers** and **Just my score**. It explains that
+  only combined numbers are shown, only to people who share, and that with just two people
+  sharing each could tell which questions the other missed.
+- The choice is made **before seeing any questions** and is **locked once they finish** (both
+  ways), so nobody decides after seeing their score. Choosing after would skew the group's
+  numbers, since people who did badly would be more likely to opt out.
+- Group focus counts **only people who shared and finished**, and shows **only to them**, once
+  **2 or more** have.
 
-### What sharers see
+### On the challenge card
 
-Under the scores, a **Group focus** section ("N sharing · combined results only · Stop sharing"):
+Under the scores, a short **Group focus** line, so the list stays tidy:
 
-- **Topics, weakest first.** Each unit/topic in the challenge, ranked by the group's combined
-  accuracy (right answers from everyone sharing ÷ questions × sharers). A topic with fewer
-  than 3 questions in the challenge gets a small "Only N questions" label so nobody over-reads it.
-  When a challenge mixes units, topics are labelled "Unit N · Topic".
-- **Most missed.** Up to 5 questions, most missed first, each with "Missed by 4 of 6". Tapping one
-  opens the correct answer(s) with their rationale (and the question's explanation if it has one).
-  If nobody missed anything it says so.
+- Shared, and 2+ sharers finished: "N sharing · combined results only" and "Weakest: Topic ·
+  50% right · 6 questions someone missed", with a **See Group focus →** button.
+- Shared, waiting: "You're sharing. Group focus opens once someone else who shares finishes too."
+- Didn't share: "You took this one without sharing your answers, so Group focus isn't available
+  for it."
+
+### The Group focus page (`challenges.html?focus=<code>`)
+
+"← Challenges", the challenge title, "From the N people who shared their answers. Combined results
+only, never who missed what.", then:
+
 - **Quiz us on these · N →** builds a session (`session.html?mode=group&id=<code>`) from every
   question at least one sharer missed, most missed first. It works like any My study session:
   answers count toward each person's own progress, mastery, journal and tally. It never changes
   challenge scores.
+- **Topics, weakest first.** Each unit/topic in the challenge, ranked by the group's combined
+  accuracy (right answers from everyone sharing ÷ questions × sharers). A topic with fewer
+  than 3 questions in the challenge gets a small "Only N questions" label so nobody over-reads it.
+  When a challenge mixes units, topics are labelled "Unit N · Topic".
+- **Most missed.** Up to 10 questions, most missed first, each with "Missed by 2 of 3". Tapping
+  one opens the correct answer(s) with their rationale (and the question's explanation if it has
+  one). If nobody missed anything it says so.
+- Anyone else who opens the link sees "Not available" with the reason.
 
 ### Privacy rules
 
@@ -53,15 +65,15 @@ Under the scores, a **Group focus** section ("N sharing · combined results only
   saved for everyone who finishes but only counted once that player shares. No nickname, device
   or time is stored with it. Direct access is blocked like every other table.
 - New column `challenge_players.share_focus` (default off) and function
-  `share_focus(id, ticket, share)`: a player who finished turns sharing on or off.
+  `share_focus(id, ticket, share)`: a player who joined sets it before finishing; refused after.
 - Rows are tied to the player row (`on delete cascade`), so they are deleted with the challenge:
   when its maker deletes it, or 7 days after it expires (the existing clean-up in `ping()` and
   `create_challenge`).
 - New function `submit_answers(id, ticket, answers)`: takes one `{q, ok}` per challenge question
   (unanswered = wrong), checks every question belongs to the challenge exactly once, saves the
   answers and sets the score to the number right. `load_challenge` adds `share: {me, sharing}` for
-  a player who finished, and `focus: {players, missed}` (sharers only) when they're sharing and 2+
-  are.
+  any player, and `focus: {players, missed}` (finished sharers only) when they're sharing,
+  finished, and 2+ sharers have finished.
 - Older pages still call `submit_score`, which keeps working; those players just don't count
   toward Group focus and aren't asked to share. The site falls back to `submit_score` until
   the database update is run.

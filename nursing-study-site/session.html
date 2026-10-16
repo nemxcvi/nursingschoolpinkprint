@@ -19,7 +19,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=70">
+<link rel="stylesheet" href="assets/style.css?v=71">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -99,7 +99,7 @@
 <script src="js/study.js?v=1"></script>
 <script src="assets/practice-quiz.js?v=18"></script>
 <script src="js/my-study.js?v=6"></script>
-<script src="js/challenges.js?v=7"></script>
+<script src="js/challenges.js?v=8"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -168,10 +168,37 @@
         e.stopImmediatePropagation(); e.preventDefault();
       }
     }, true);
+    /* Before starting (first time only): share answers for Group focus? Chosen up front and locked
+       once finished, so nobody decides after seeing their score. */
+    function askShare(r, start){
+      if (r.entry.done) return start();
+      var box = document.createElement("section");
+      box.className = "ms-card ss-share";
+      box.innerHTML = '<span class="ch-eyebrow">Before you start</span><h3 class="ms-h2 ch-h2">Study this one together?</h3>' +
+        '<p class="ss-share-text">Share your answers with the group to unlock Group focus: the topics you all found hardest, the questions you missed most, and a quiz built from them.</p>' +
+        '<p class="ch-note">Only combined numbers are shown, never who missed what, and only to people who share. With just two people sharing, each of you could tell which questions the other missed. You can\'t change this once you start, so nobody decides after seeing their score.</p>' +
+        '<div class="ms-btns"><button type="button" class="ms-btn is-primary" data-share="1">Share my answers</button><button type="button" class="ms-btn" data-share="0">Just my score</button></div>' +
+        '<p class="tp-note hidden" role="alert"></p>';
+      var wrap = document.querySelector(".wrap");
+      wrap.insertBefore(box, document.getElementById("pq-setup-screen"));
+      [].forEach.call(box.querySelectorAll("[data-share]"), function(b){
+        b.addEventListener("click", function(){
+          [].forEach.call(box.querySelectorAll("button"), function(x){ x.disabled = true; });
+          var yes = b.getAttribute("data-share") === "1";
+          Challenges.share(r.entry.id, yes).then(function(){ box.remove(); start(); }, function(err){
+            if (!yes){ box.remove(); start(); return; }
+            var msg = box.querySelector(".tp-note");
+            msg.textContent = "Couldn't save your choice: " + Challenges.friendly(err);
+            msg.classList.remove("hidden");
+            [].forEach.call(box.querySelectorAll("button"), function(x){ x.disabled = false; });
+          });
+        });
+      });
+    }
     Challenges.join(id).then(function(r){
       var t = "Challenge: " + r.title;
       setTitle(t);
-      loadSessionQuiz({data: Tracking.ROOT + "data/nur114/", title: t, pick: function(){ return r.questions; }, onFinish: function(res){
+      askShare(r, function(){ loadSessionQuiz({data: Tracking.ROOT + "data/nur114/", title: t, pick: function(){ return r.questions; }, onFinish: function(res){
         var box = document.getElementById("ss-challenge") || document.createElement("div");
         box.id = "ss-challenge";
         box.className = "ss-challenge";
@@ -191,7 +218,7 @@
         }, function(err){
           box.querySelector("p").textContent = "Couldn't save your score: " + Challenges.friendly(err);
         });
-      }});
+      }}); });
     }, function(err){
       document.getElementById("ss-empty").textContent = Challenges.friendly(err);
       document.querySelector("#pq-empty a").setAttribute("href", "challenges.html");

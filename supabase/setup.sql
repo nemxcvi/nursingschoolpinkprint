@@ -92,7 +92,7 @@ create table if not exists public.challenge_players (
   primary key (challenge_id, ticket_hash)
 );
 
--- Group focus is opt-in: each player who finished chooses whether their answers count
+-- Group focus is opt-in: each player chooses before they start whether their answers count
 alter table public.challenge_players add column if not exists share_focus boolean not null default false;
 
 -- Right/wrong per question for each player who finished (Group focus). Only combined counts
@@ -345,7 +345,8 @@ begin
   return true;
 end $$;
 
--- Group focus: a player who finished (with answers) chooses to share them with the group, or stops.
+-- Group focus: a player chooses, before they finish, whether to share their answers with the group.
+-- Locked once they finish, so nobody decides after seeing their score (that would skew the totals).
 create or replace function public.share_focus(p_id text, p_ticket text, p_share boolean) returns boolean
 language plpgsql security definer set search_path = '' as $$
 begin
@@ -355,16 +356,16 @@ begin
     from public.challenges c
     where p.challenge_id = upper(p_id) and c.id = p.challenge_id and c.expires_at >= now()
       and p.ticket_hash = public.pp_hash(p_ticket)
-      and exists (select 1 from public.challenge_answers a where a.challenge_id = p.challenge_id and a.ticket_hash = p.ticket_hash);
+      and p.finished_at is null;
   return found;
 end $$;
 
 -- One challenge by its short ID. Everyone sees the title, size, expiry and how many joined.
 -- Scores are shown only to players who have finished, and to the creator, in the order people
--- finished. Group focus is opt-in: it counts only players who finished and chose to share
--- (share_focus), and shows only to them, once 2 or more are sharing: how many of the sharers
--- missed each question. Combined counts only. 'share' tells a finished player whether they're
--- sharing and how many are.
+-- finished. Group focus is opt-in, chosen before starting: it counts only players who finished
+-- and chose to share (share_focus), and shows only to them, once 2 or more are sharing: how many
+-- of the sharers missed each question. Combined counts only. 'share' tells a player whether
+-- they chose to share and how many finished players are sharing.
 create or replace function public.load_challenge(p_id text, p_ticket text default null) returns jsonb
 language plpgsql security definer set search_path = '' as $$
 declare
@@ -402,7 +403,7 @@ begin
                                           'finished', p.finished_at is not null, 'me', p.ticket_hash = h)
                        order by p.finished_at nulls last, p.joined_at)
       from public.challenge_players p where p.challenge_id = ch.id), '[]'::jsonb) end,
-    'share', case when me_answered then jsonb_build_object('me', me.share_focus, 'sharing', sharers) end,
+    'share', case when me.ticket_hash is not null then jsonb_build_object('me', me.share_focus, 'sharing', sharers) end,
     'focus', case when not (me_answered and me.share_focus and sharers >= 2) then null else jsonb_build_object(
       'players', sharers,
       'missed', (select jsonb_object_agg(q.id, (select count(*) from public.challenge_answers a

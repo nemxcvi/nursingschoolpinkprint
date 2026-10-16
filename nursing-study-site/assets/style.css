@@ -965,7 +965,14 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ch-jointoggle{align-self:center;padding:10px 0;}
 .ch-joinform:not(.ms-card){display:flex;flex-direction:column;gap:10px;}
 .ch-sharetext{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;color:var(--text);}
-.ch-invite .ms-btn,.ch-invite .ms-linkbtn{align-self:flex-start;}
+.ch-fline{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.5;color:var(--text2);}
+.ch-fline strong{color:var(--text);}
+.ch-fsummary{gap:8px;}
+.ch-fpage{display:flex;flex-direction:column;gap:16px;max-width:880px;}
+.ch-fpage .ch-fpart{gap:10px;}
+.tp-intro .ch-quizus{align-self:flex-start;margin-top:8px;}
+.ss-share{gap:12px;margin-bottom:20px;}
+.ss-share-text{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;color:var(--text);}
 .ch-focus-head .ms-linkbtn{font-size:11px;}
 /* Group focus */
 .ch-focus{display:flex;flex-direction:column;gap:16px;padding-top:18px;border-top:1.5px dashed var(--border);}

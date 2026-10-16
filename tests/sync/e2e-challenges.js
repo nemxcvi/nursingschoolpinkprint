@@ -110,6 +110,10 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   // ---- B takes it ----
   const tallyBefore = await tally();
   await pb.click(`#c-${id} .ch-take`);
+  await pb.waitForSelector(".ss-share");
+  check(/Study this one together/.test(await text(pb, ".ss-share")) && /can't change this once you start/.test(await text(pb, ".ss-share")) && !(await pb.isVisible("#pq-quiz-screen")),
+    "before starting: asked whether to share answers for Group focus");
+  await pb.click('.ss-share [data-share="0"]');
   await pb.waitForSelector("#pq-quiz-screen:not(.hidden)");
   check(/Challenge: Safety/.test(await text(pb, "#ss-title")) && /of 10/.test(await text(pb, "#pq-progress")), "session: the challenge's 10 questions", await text(pb, "#pq-progress"));
   const shown = [];
@@ -187,9 +191,11 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(await text(pc2, `#c-${id} .ch-cardcode`) === id, "each card shows its code");
   await pc2.screenshot({path: OUT + "/ch-joined-by-code.png", fullPage: true});
 
-  // ---- Group focus: opt-in; shows to people who share once 2 or more do ----
-  const takeAndEnd = async pg => {
+  // ---- Group focus: chosen before starting; shows to sharers once 2 sharers finish ----
+  const takeAndEnd = async (pg, share) => {
     await pg.click(`#c-${id} .ch-take`);
+    await pg.waitForSelector(".ss-share");
+    await pg.click(`.ss-share [data-share="${share ? 1 : 0}"]`);
     await pg.waitForSelector("#pq-quiz-screen:not(.hidden)");
     await pg.keyboard.press("a");
     await pg.click("#pq-check-sure");
@@ -198,44 +204,48 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   };
   await pc2.goto(BASE + "challenges.html");
   await pc2.waitForSelector(`#c-${id} .ch-take`);
-  await takeAndEnd(pc2);
+  await takeAndEnd(pc2, true);
+  await pc2.goto(BASE + "challenges.html");
+  await pc2.waitForSelector(`#c-${id} .ch-fsummary`);
+  check(/You're sharing/.test(await text(pc2, `#c-${id} .ch-fsummary`)) && !(await pc2.$(`#c-${id} .ch-seefocus`)), "one sharer finished: waiting for another");
   await pa.goto(BASE + "challenges.html");
   await pa.waitForSelector(`#c-${id} .ch-take`);
-  await takeAndEnd(pa);
+  await takeAndEnd(pa, true);
   const ans = await q("select ticket_hash, count(*)::int n, count(*) filter (where correct)::int ok from public.challenge_answers group by ticket_hash");
   const scores = await q("select ticket_hash, score from public.challenge_players where finished_at is not null");
   check(ans.length === 3 && ans.every(a => a.n === 10) && ans.every(a => scores.find(s => s.ticket_hash === a.ticket_hash).score === a.ok),
     "3 players' right/wrong saved (10 each); each score is the number right", JSON.stringify(ans.map(a => a.ok)));
+  check((await q("select count(*)::int n from public.challenge_players where share_focus"))[0].n === 2, "2 chose to share before starting");
+  const locked = await pb.evaluate(async id => (await (await fetch("api/challenges/share", {method: "POST", headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({id, ticket: Tracking.challenge(id).ticket, share: true})})).json()).result, id);
+  check(locked === false, "B can't start sharing after finishing", locked);
   await pa.goto(BASE + "challenges.html");
-  await pa.waitForSelector(`.ch-done #c-${id} .ch-invite`);
-  check(/Study this one together/.test(await text(pa, `#c-${id} .ch-invite`)) && !(await pa.$(`#c-${id} .ch-ftopics`)), "everyone who finished is asked to share; nothing shows before they do");
-  await pa.click(`#c-${id} .ch-sharebtn`);
-  await pa.waitForFunction(id => /You're sharing/.test(document.querySelector("#c-" + id + " .ch-invite")?.textContent || ""), id);
-  check(true, "A shares: waits for someone else");
-  await pc2.goto(BASE + "challenges.html");
-  await pc2.waitForSelector(`#c-${id} .ch-invite`);
-  check(/1 other person sharing/.test(await text(pc2, `#c-${id} .ch-invite`)), "C2 sees one other person sharing");
-  await pc2.click(`#c-${id} .ch-sharebtn`);
-  await pc2.waitForSelector(`#c-${id} .ch-ftopics`);
+  await pa.waitForSelector(`.ch-done #c-${id} .ch-seefocus`);
+  const summary = await text(pa, `#c-${id} .ch-fsummary`);
+  check(/2 sharing/.test(summary) && /Weakest: Safety/.test(summary) && !(await pa.$(`#c-${id} .ch-ftopics`)), "card shows a one-line summary; details on their own page", summary);
+  await pa.click(`#c-${id} .ch-seefocus`);
+  await pa.waitForSelector(".ch-ftopics");
+  check(/challenges\.html\?focus=/.test(pa.url()), "Group focus opens its own page", pa.url().replace(BASE, "/"));
   const sharedIds = (await q("select distinct a.question_id from public.challenge_answers a join public.challenge_players p using (challenge_id, ticket_hash) where not a.correct and p.share_focus")).length;
-  await pa.goto(BASE + "challenges.html");
-  await pa.waitForSelector(`#c-${id} .ch-ftopics`);
-  const focus = await text(pa, `#c-${id} .ch-focus`);
-  check(/Group focus/.test(focus) && /2 sharing/.test(focus) && /Topics, weakest first/.test(focus) && /Safety/.test(focus), "2 sharing: Group focus by topic", focus.slice(0, 120));
+  const focus = await text(pa, "#ms-main");
+  check(/Group focus/.test(focus) && /From the 2 people who shared/.test(focus) && /Topics, weakest first/.test(focus) && /Safety/.test(focus), "page: topics weakest first", focus.slice(0, 140));
   check(!new RegExp(nickB + "|" + nickA).test(focus), "Group focus names nobody");
-  await pb.goto(BASE + "challenges.html");
-  await pb.waitForSelector(`#c-${id} .ch-invite`);
-  check(!(await pb.$(`#c-${id} .ch-ftopics`)) && /2 others sharing/.test(await text(pb, `#c-${id} .ch-invite`)), "B hasn't shared: asked, sees nothing");
   const missedIds = sharedIds;
-  const missedRows = await pa.$$eval(`#c-${id} .ch-fmissed li`, l => l.map(x => x.textContent));
-  check(missedRows.length === Math.min(5, missedIds) && missedRows.every(r => /Missed by [1-2] of 2/.test(r)), "most-missed questions: missed by N of 2", missedRows.length);
-  await pa.click(`#c-${id} .ch-fmissed summary`);
-  check(/Correct answer/i.test(await text(pa, `#c-${id} .ch-fmissed details[open]`)), "a missed question opens to its answer and rationale");
+  const missedRows = await pa.$$eval(".ch-fmissed li", l => l.map(x => x.textContent));
+  check(missedRows.length === Math.min(10, missedIds) && missedRows.every(r => /Missed by [1-2] of 2/.test(r)), "most-missed questions: missed by N of 2", missedRows.length);
+  await pa.click(".ch-fmissed summary");
+  check(/Correct answer/i.test(await text(pa, ".ch-fmissed details[open]")), "a missed question opens to its answer and rationale");
   await pa.screenshot({path: OUT + "/ch-group-focus.png", fullPage: true});
-  const quizUs = await text(pa, `#c-${id} .ch-quizus`);
+  await pb.goto(BASE + "challenges.html");
+  await pb.waitForSelector(`#c-${id} .ch-fsummary`);
+  check(/without sharing/.test(await text(pb, `#c-${id} .ch-fsummary`)) && !(await pb.$(`#c-${id} .ch-seefocus`)), "B didn't share: told so, no Group focus");
+  await pb.goto(BASE + "challenges.html?focus=" + id);
+  await pb.waitForSelector(".tp-h1");
+  check(/Not available/.test(await text(pb, ".tp-h1")) && !(await pb.$(".ch-ftopics")), "B can't open the Group focus page either");
+  const quizUs = await text(pa, ".ch-quizus");
   check(new RegExp("Quiz us on these · " + missedIds).test(quizUs), "Quiz us on these: every question someone missed", quizUs);
   const progressBefore = await pa.evaluate(() => Object.keys(JSON.parse(localStorage.getItem("pinkprint-progress") || "{}")).length);
-  await pa.click(`#c-${id} .ch-quizus`);
+  await pa.click(".ch-quizus");
   await pa.waitForSelector("#pq-quiz-screen:not(.hidden)");
   check(/Group focus: Safety/.test(await text(pa, "#ss-title")) && new RegExp("of " + missedIds).test(await text(pa, "#pq-progress")), "group quiz has the missed questions", await text(pa, "#pq-progress"));
   await pa.keyboard.press("a");
