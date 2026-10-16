@@ -250,8 +250,9 @@ var MyStudy = (function(){
       var past = e.date <= d.today;
       var name = '<span class="g-name">' + esc(e.name) + '</span><span class="g-date">' + esc(S.shortDate(e.date)) + "</span>";
       if ((editingScores && (has || past)) || (!has && past)){
-        rows += '<div class="g-row is-input">' + name + '<span class="g-pts"><input class="ms-score" data-exam="' + e.id + '" inputmode="decimal" placeholder="Score" aria-label="' + esc(e.name) + ' score in percent" value="' + (has ? scorePct(scores[e.id], e.points) : "") + '"><span class="g-of">%</span></span>' +
-          '<span class="g-pct">' + (editingScores ? "" : '<button type="button" class="ms-logbtn" data-log="' + e.id + '">Log</button>') + "</span></div>";
+        rows += '<div class="g-row is-input">' + name + '<span class="g-pts">' + (has ? (+scores[e.id].toFixed(2)) : "—") + " / " + e.points + "</span>" +
+          '<span class="g-pct"><input class="ms-score" data-exam="' + e.id + '" inputmode="decimal" placeholder="Score" aria-label="' + esc(e.name) + ' score in percent" value="' + (has ? scorePct(scores[e.id], e.points) : "") + '"><span class="g-of">%</span>' +
+          (editingScores ? "" : '<button type="button" class="ms-logbtn" data-log="' + e.id + '">Log</button>') + "</span></div>";
       } else if (has){
         rows += '<div class="g-row">' + name + '<span class="g-pts">' + (+scores[e.id].toFixed(2)) + " / " + e.points + '</span><span class="g-pct">' + scorePct(scores[e.id], e.points) + "%</span></div>";
       } else {
