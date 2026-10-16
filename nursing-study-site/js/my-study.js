@@ -249,10 +249,9 @@ var MyStudy = (function(){
       var has = typeof scores[e.id] === "number";
       var past = e.date <= d.today;
       var name = '<span class="g-name">' + esc(e.name) + '</span><span class="g-date">' + esc(S.shortDate(e.date)) + "</span>";
-      if ((editingScores && (has || past)) || (!has && past)){
+      if (editingScores && (has || past)){
         rows += '<div class="g-row is-input">' + name + '<span class="g-pts">' + (has ? (+scores[e.id].toFixed(2)) : "—") + " / " + e.points + "</span>" +
-          '<span class="g-pct"><input class="ms-score" data-exam="' + e.id + '" inputmode="decimal" placeholder="Score" aria-label="' + esc(e.name) + ' score in percent" value="' + (has ? scorePct(scores[e.id], e.points) : "") + '"><span class="g-of">%</span>' +
-          (editingScores ? "" : '<button type="button" class="ms-logbtn" data-log="' + e.id + '">Log</button>') + "</span></div>";
+          '<span class="g-pct"><input class="ms-score" data-exam="' + e.id + '" inputmode="decimal" placeholder="Score" aria-label="' + esc(e.name) + ' score in percent" value="' + (has ? scorePct(scores[e.id], e.points) : "") + '"><span class="g-of">%</span></span></div>';
       } else if (has){
         rows += '<div class="g-row">' + name + '<span class="g-pts">' + (+scores[e.id].toFixed(2)) + " / " + e.points + '</span><span class="g-pct">' + scorePct(scores[e.id], e.points) + "%</span></div>";
       } else {
@@ -267,7 +266,7 @@ var MyStudy = (function(){
     else need = "To pass, you need about <strong>" + g.needPct + "%</strong> on everything left.";
     var parts = '<div class="ms-grade-left">' +
       '<div class="ms-grade-big"><span class="ms-bignum">' + (g.pct === null ? "—" : g.pct + "%") + "</span>" +
-      (g.pct === null ? '<span class="ms-sub">Log your first exam score to see your average</span>' : '<span class="ms-pass ' + (above ? "is-above" : "is-below") + '">' + (above ? "Above" : "Below") + " the " + g.passPct + "% to pass</span>") + "</div>" +
+      (g.pct === null ? '<span class="ms-sub">Use Edit scores to log your first exam</span>' : '<span class="ms-pass ' + (above ? "is-above" : "is-below") + '">' + (above ? "Above" : "Below") + " the " + g.passPct + "% to pass</span>") + "</div>" +
       '<div class="ms-gradebar" role="img" aria-label="Exam average with the ' + g.passPct + ' percent passing line marked"><span style="width:' + (g.pct || 0) + '%"></span><i style="left:' + g.passPct + '%"></i></div>' +
       '<div class="ms-gradelabel"><span style="left:' + g.passPct + '%">' + g.passPct + "% to pass</span></div>" +
       (need ? '<p class="ms-need">' + need + "</p>" : "") +
@@ -292,12 +291,11 @@ var MyStudy = (function(){
     if (edit) edit.addEventListener("click", function(){ editingScores = true; rerender(); });
     var cancel = document.getElementById("ms-cancelscores");
     if (cancel) cancel.addEventListener("click", function(){ editingScores = false; rerender(); });
-    function readScores(only){
+    function readScores(){
       var scores = {}, bad = null;
       Object.keys(d.state.scores || {}).forEach(function(k){ scores[k] = d.state.scores[k]; });
       host.querySelectorAll(".ms-score").forEach(function(inp){
         var id = inp.getAttribute("data-exam");
-        if (only && id !== only) return;
         var exam = d.exams.filter(function(e){ return e.id === id; })[0];
         var v = inp.value.trim();
         if (v === ""){ delete scores[id]; return; }
@@ -319,14 +317,6 @@ var MyStudy = (function(){
       if (!s) return;
       T.update({scores: s});
       editingScores = false; rerender();
-    });
-    host.querySelectorAll("[data-log]").forEach(function(b){
-      b.addEventListener("click", function(){
-        var s = readScores(b.getAttribute("data-log"));
-        if (!s) return;
-        T.update({scores: s});
-        rerender();
-      });
     });
   }
 

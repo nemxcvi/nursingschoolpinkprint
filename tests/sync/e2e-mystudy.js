@@ -68,10 +68,11 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check((await pg.$$eval(".ms-current .ms-row", r => r.length)) === 7, "dashboard: Unit 3 topic table (7 topics)");
   await shot("dashboard-oct1");
 
-  // Log Exam 3 with the Log button (past exam row) and check the average updates
+  // Log Exam 3 through Edit scores and check the average updates
   await go("dashboard.html", "2026-10-14");
+  await pg.click("#ms-editscores");
   await pg.fill('.ms-score[data-exam="exam-3"]', "90");
-  await pg.click('[data-log="exam-3"]');
+  await pg.click("#ms-savescores");
   await pg.waitForTimeout(300);
   check(/84%/.test(await text(".ms-grade-big")), "exam scores: logging Exam 3 updates the average", await text(".ms-grade-big"));
 
