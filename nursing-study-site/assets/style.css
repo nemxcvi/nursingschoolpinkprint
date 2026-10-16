@@ -750,6 +750,9 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-new{display:inline-block;vertical-align:middle;margin-left:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;background:var(--pill);color:var(--label);}
 @media(max-width:760px){.ms-thead{display:none;}.ms-row{flex-wrap:wrap;}.ms-table .c-name{flex:1 1 100%;}.ms-table .c-bar{flex:1 1 100%;}.ms-table .c-ready,.ms-table .c-acc,.ms-table .c-go{flex:0 0 auto;text-align:left;}}
 /* Exam average */
+.ms-grade-top{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:20px;}
+.ms-grade-top .ms-linkbtn{align-self:auto;padding:12px 0;margin:-12px 0;}
+.ms-grade-save{justify-content:flex-end;margin-top:16px;}
 .ms-grade-body{display:flex;gap:40px;flex-wrap:wrap;}
 .ms-grade-left,.ms-grade-right{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:12px;}
 .ms-grade-right{gap:0;font-size:14px;font-variant-numeric:tabular-nums;}
@@ -763,7 +766,7 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-gradelabel{position:relative;height:14px;font-size:11px;color:var(--text2);}
 .ms-gradelabel span{position:absolute;transform:translateX(-50%);white-space:nowrap;}
 .ms-need{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.5;}
-.g-row{display:grid;grid-template-columns:64px 64px minmax(0,1fr) 156px;gap:12px;align-items:center;min-height:44px;padding:4px 0;border-top:1.5px solid var(--soft);}
+.g-row{display:grid;grid-template-columns:64px 64px minmax(0,1fr) 156px;gap:12px;align-items:center;min-height:40px;padding:2px 0;border-top:1.5px solid var(--soft);}
 .g-row.g-head{border-top:0;min-height:0;padding-bottom:10px;color:var(--label);font-size:11px;letter-spacing:.06em;text-transform:uppercase;}
 .g-row.is-input{background:color-mix(in srgb,var(--border) 10%,transparent);}
 .g-row.is-future{color:var(--text2);}

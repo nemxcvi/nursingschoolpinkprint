@@ -264,19 +264,21 @@ var MyStudy = (function(){
     else if (g.needPct === null) need = "";
     else if (g.needPct > 100) need = "You'd need more than 100% on everything left to reach " + g.passPct + "%. Talk with your instructor about your options.";
     else need = "To pass, you need about <strong>" + g.needPct + "%</strong> on everything left.";
+    var saveBtns = editingScores ? '<div class="ms-btns ms-grade-save"><button type="button" class="ms-btn is-small" id="ms-cancelscores">Cancel</button><button type="button" class="ms-btn is-small is-primary" id="ms-savescores">Save</button></div>' : "";
     var parts = '<div class="ms-grade-left">' +
       '<div class="ms-grade-big"><span class="ms-bignum">' + (g.pct === null ? "—" : g.pct + "%") + "</span>" +
       (g.pct === null ? '<span class="ms-sub">Use Edit scores to log your first exam</span>' : '<span class="ms-pass ' + (above ? "is-above" : "is-below") + '">' + (above ? "Above" : "Below") + " the " + g.passPct + "% to pass</span>") + "</div>" +
       '<div class="ms-gradebar" role="img" aria-label="Exam average with the ' + g.passPct + ' percent passing line marked"><span style="width:' + (g.pct || 0) + '%"></span><i style="left:' + g.passPct + '%"></i></div>' +
       '<div class="ms-gradelabel"><span style="left:' + g.passPct + '%">' + g.passPct + "% to pass</span></div>" +
       (need ? '<p class="ms-need">' + need + "</p>" : "") +
-      '<p class="tp-hint">' + (g.passed ? "" : g.needPoints + " of the " + g.left + " points left · ") + "Exams 1–6 are 100 points each, the final is 300 · ATI not included</p></div>" +
-      '<div class="ms-grade-right"><div class="g-row g-head"><span class="g-name">Exam</span><span class="g-date">Date</span><span class="g-pts">Points</span><span class="g-pct">Score</span></div>' + rows + "</div>";
-    return '<section class="ms-card ms-grade"><div class="ms-current-head"><div class="tp-stack"><span class="tp-eyebrow">Exam average</span><h2 class="ms-h2">Your grade so far</h2><span class="tp-hint">Just a reminder that only you can see this.</span></div>' +
-      (editingScores ? '<div class="ms-btns"><button type="button" class="ms-btn is-small" id="ms-cancelscores">Cancel</button><button type="button" class="ms-btn is-small is-primary" id="ms-savescores">Save</button></div>'
-                     : '<button type="button" class="ms-btn is-small" id="ms-editscores">Edit scores</button>') +
-      '</div><div class="ms-grade-body">' + parts + '</div><p class="tp-note hidden" id="ms-scoremsg" role="status"></p></section>';
+      '<p class="tp-hint">' + (g.passed ? "" : g.needPoints + " of the " + g.left + " points left · ") + "Exams 1–6 are 100 points each, the final is 300</p></div>" +
+      '<div class="ms-grade-right"><div class="g-row g-head"><span class="g-name">Exam</span><span class="g-date">Date</span><span class="g-pts">Points</span><span class="g-pct">Score</span></div>' + rows + saveBtns + "</div>";
+    return '<section class="ms-card ms-grade"><div class="tp-stack ms-grade-head">' +
+      '<div class="ms-grade-top"><span class="tp-eyebrow">Exam average</span>' + (editingScores ? "" : '<button type="button" class="ms-linkbtn" id="ms-editscores">Edit scores</button>') + "</div>" +
+      '<h2 class="ms-h2">Your grade so far</h2><span class="tp-hint">Just a reminder that only you can see this.</span></div>' +
+      '<div class="ms-grade-body">' + parts + '</div><p class="tp-note hidden" id="ms-scoremsg" role="status"></p></section>';
   }
+
   /* Scores are saved as points; students type them as a percent */
   function scorePct(points, total){ return Math.round(points / total * 1000) / 10; }
 
