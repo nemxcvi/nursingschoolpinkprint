@@ -529,7 +529,7 @@ var MyStudy = (function(){
         quote.parentNode.insertBefore(a, quote.nextSibling);
       }
     }
-    /* Unit cards: the current unit is marked and opens My dashboard (no mastery bars here) */
+    /* Unit cards: the current unit gets the highlighted border (its Ready / In draft label stays) and opens My dashboard. No mastery bars here this semester. */
     document.querySelectorAll("#unitgrid .pp-card").forEach(function(card){
       var m = (card.getAttribute("href") || "").match(/unit-(\d+)-/);
       if (!m) return;
@@ -538,8 +538,7 @@ var MyStudy = (function(){
       if (isCurrent){
         card.classList.add("is-current");
         card.setAttribute("href", "dashboard.html");
-        var label = card.querySelector(".pp-card-top span:last-child");
-        if (label) label.textContent = "Current unit";
+        card.setAttribute("title", "Current unit · opens My dashboard");
       }
     });
   }
