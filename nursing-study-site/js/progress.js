@@ -8,8 +8,10 @@
    Progress is one object in localStorage "pinkprint-progress", keyed by question ID:
      seen, correct          times answered / times fully correct
      streak                 correct in a row (a wrong answer resets it to 0)
-     missStreak             wrong in a row (2+ makes a blind spot)
+     missStreak             wrong in a row
      lastAnswered           "YYYY-MM-DD", the day it was last answered
+     lastCorrect, lastSure  how the latest answer went, and whether it was "I'm sure" or "I guessed"
+                            (wrong + sure = blind spot, right + guessed = lucky guess)
      mastered, masteredOn   2 correct in a row; a wrong answer un-masters it
      bookmarked
      journal                in the mistake journal: added on a miss, leaves after 2 correct in a row
@@ -21,13 +23,12 @@
   var TODAY_KEY = "pinkprint-today";
   var MASTER_STREAK = 2;        // correct in a row to master a question
   var JOURNAL_EXIT_STREAK = 2;  // correct in a row to leave the mistake journal
-  var BLIND_SPOT_MISSES = 2;    // wrong in a row to count as a blind spot
   var REVIEW_BEFORE_EXAM = 3;   // a mastered question comes due this many days before its exam
   var REVIEW_EVERY = 28;        // ...and then every 4 weeks after it was last answered correctly
   var READY_WINDOW = 3;         // exam ready window: the last 3 days before an exam (not the exam day)
 
   /* Status priority, highest first. Review-due mastered questions sit right after bookmarked. */
-  var STATUS_ORDER = ["blindspot", "journal", "bookmarked", "reviewdue", "new", "learning", "mastered"];
+  var STATUS_ORDER = ["blindspot", "journal", "bookmarked", "reviewdue", "luckyguess", "new", "learning", "mastered"];
 
   /* ---------- Dates: plain "YYYY-MM-DD" strings, math done in UTC so DST never shifts a day ---------- */
   function toUTC(d){ var p = d.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
@@ -62,9 +63,10 @@
             mastered: false, masteredOn: null, bookmarked: false, journal: false, examReady: {}};
   }
 
-  /* Apply one answer. `correct` means fully correct (SATA and drag-drop are all-or-nothing).
+  /* Apply one answer. `correct` means fully correct (SATA and drag-drop are all-or-nothing);
+     `sure` is false for "I guessed" (a lucky guess still counts toward mastery).
      Returns the updated record and what changed: {mastered, journaled, ready: [examIds]}. */
-  function applyAnswer(rec, correct, today, unit, exams){
+  function applyAnswer(rec, correct, today, unit, exams, sure){
     var r = JSON.parse(JSON.stringify(rec || blankRecord()));
     if (!r.examReady) r.examReady = {};
     var events = {mastered: false, journaled: false, ready: []};
@@ -78,6 +80,8 @@
 
     r.seen++;
     r.lastAnswered = today;
+    r.lastCorrect = !!correct;
+    r.lastSure = sure !== false;
     if (correct){
       r.correct++;
       r.streak++;
@@ -129,10 +133,11 @@
 
   function statusOf(rec, unit, today, exams){
     if (!rec) return "new";
-    if (rec.missStreak >= BLIND_SPOT_MISSES) return "blindspot";
+    if (rec.lastCorrect === false && rec.lastSure === true) return "blindspot";
     if (rec.journal) return "journal";
     if (rec.bookmarked) return "bookmarked";
     if (isReviewDue(rec, unit, today, exams)) return "reviewdue";
+    if (rec.lastCorrect === true && rec.lastSure === false) return "luckyguess";
     if (!rec.seen) return "new";
     if (!rec.mastered) return "learning";
     return "mastered";
@@ -200,9 +205,9 @@
     return dataCache;
   };
 
-  api.record = function(q, correct){
+  api.record = function(q, correct, sure){
     var store = api.load();
-    var res = applyAnswer(store[q.id], correct, api.today(), q.unit, api.exams || []);
+    var res = applyAnswer(store[q.id], correct, api.today(), q.unit, api.exams || [], sure);
     store[q.id] = res.record;
     api.save(store);
     return res.events;

@@ -330,6 +330,23 @@ h2{font-size:20px;}
 .pq-mastery-line a{color:var(--label);}
 .pq-review-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;}
 .pq-tag-blind{flex:0 0 auto;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--missed-text);background:var(--missed-bg);border:1.5px solid var(--missed-border);padding:2px 6px;}
+.pq-tag-sure,.pq-tag-lucky{flex:0 0 auto;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;padding:2px 6px;}
+.pq-tag-sure{color:var(--text2);border:1.5px solid #F7C6DA;}
+.pq-tag-lucky{color:var(--label);border:1.5px solid var(--border);}
+[data-theme="dark"] .pq-tag-sure,[data-palette="blue"] .pq-tag-sure{border-color:color-mix(in srgb,var(--border) 35%,var(--page));}
+/* Confidence check (tracking on): two check buttons replace "Check answer" */
+#pq-submit.is-tracked{display:none !important;}
+#pq-check-guess:disabled{background:transparent;border-color:color-mix(in srgb,var(--muted) 45%,transparent);color:color-mix(in srgb,var(--muted) 70%,transparent);cursor:not-allowed;}
+.pq-sure-tag{display:inline-block;vertical-align:middle;margin-left:12px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--border);color:var(--label);padding:4px 10px;}
+/* My note: hidden behind "+ Add note"; shows a saved note with Edit, or the editor with Cancel / Save note */
+.pq-addnote{flex:0 0 auto;padding:0 20px;}
+.pq-note-head{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.pq-note-text{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;color:var(--text);white-space:pre-wrap;}
+.pq-note-btn{flex:0 0 auto;min-height:40px;padding:0 16px;}
+.pq-note textarea,.pq-note-actions{display:none;}
+.pq-note.is-editing textarea{display:block;}
+.pq-note.is-editing .pq-note-actions{display:flex;justify-content:flex-end;gap:8px;}
+.pq-note.is-editing .pq-note-text,.pq-note.is-editing #pq-note-edit{display:none;}
 .pq-progress-track{height:6px;background:var(--pill);overflow:hidden;margin-bottom:22px;}
 .pq-progress-fill{height:100%;width:0;background:var(--border);transition:width .25s ease;}
 .pq-prompt{font-family:'Young Serif',serif;font-size:22px;font-weight:400;line-height:1.4;color:var(--heading);margin-bottom:12px;}

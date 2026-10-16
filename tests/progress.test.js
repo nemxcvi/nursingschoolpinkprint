@@ -6,11 +6,12 @@ const assert = require("node:assert/strict");
 const P = require("../nursing-study-site/js/progress.js");
 const EXAMS = require("../nursing-study-site/data/nur114/exams.json").exams;
 
-/* Answer a question several times: answers is a list of [date, correct] */
+/* Answer a question several times: answers is a list of [date, correct, sure].
+   sure defaults to true ("Check · I'm sure"); pass false for "Check · I guessed". */
 function play(answers, unit = 3, start = null){
   let rec = start, events = [];
-  for (const [date, correct] of answers){
-    const res = P.applyAnswer(rec, correct, date, unit, EXAMS);
+  for (const [date, correct, sure = true] of answers){
+    const res = P.applyAnswer(rec, correct, date, unit, EXAMS, sure);
     rec = res.record; events.push(res.events);
   }
   return {rec, events, last: events[events.length - 1]};
@@ -58,23 +59,62 @@ test("mistake journal: a miss adds it, 2 correct in a row removes it", () => {
   assert.equal(twoMisses.last.journaled, false, "only reported when it first goes in");
 });
 
-test("status: blind spot after 2 misses in a row, then the priority order", () => {
+test("sure / guessed: saved with each answer; a lucky guess still counts toward mastery", () => {
+  const sure = play([["2026-09-01", true]]).rec;
+  assert.equal(sure.lastCorrect, true);
+  assert.equal(sure.lastSure, true);
+  const guessed = play([["2026-09-01", false, false]]).rec;
+  assert.equal(guessed.lastCorrect, false);
+  assert.equal(guessed.lastSure, false);
+  assert.equal(guessed.journal, true, "a wrong guess still goes in the mistake journal");
+
+  const twoGuesses = play([["2026-09-01", true, false], ["2026-09-02", true, false]]);
+  assert.equal(twoGuesses.rec.mastered, true, "2 lucky guesses in a row still master it");
+  const mixed = play([["2026-09-01", true], ["2026-09-02", true, false]]);
+  assert.equal(mixed.rec.mastered, true);
+  const leaveJournal = play([["2026-09-01", false], ["2026-09-02", true, false], ["2026-09-03", true]]);
+  assert.equal(leaveJournal.rec.journal, false, "lucky guesses count toward leaving the journal too");
+});
+
+test("status: blind spot, lucky guess and the priority order", () => {
   const today = "2026-09-05";
   const st = (rec, unit = 3) => P.statusOf(rec, unit, today, EXAMS);
   assert.equal(st(null), "new");
-  assert.equal(st(play([["2026-09-01", false]]).rec), "journal");
-  assert.equal(st(play([["2026-09-01", false], ["2026-09-02", false]]).rec), "blindspot");
-  assert.equal(st(play([["2026-09-01", false], ["2026-09-02", false], ["2026-09-03", true]]).rec), "journal",
+
+  // Blind spot = the latest answer was wrong while sure
+  assert.equal(st(play([["2026-09-01", false]]).rec), "blindspot");
+  assert.equal(st(play([["2026-09-01", false, false]]).rec), "journal", "wrong but guessed is not a blind spot");
+  assert.equal(st(play([["2026-09-01", false], ["2026-09-02", false, false]]).rec), "journal",
+    "only the latest answer decides: a later wrong guess ends the blind spot");
+  assert.equal(st(play([["2026-09-01", false], ["2026-09-02", true]]).rec), "journal",
     "a correct answer ends the blind spot, but it stays in the journal");
+
+  // Lucky guess = the latest answer was right but guessed
+  assert.equal(st(play([["2026-09-01", true, false]]).rec), "luckyguess");
+  assert.equal(st(play([["2026-09-01", true, false], ["2026-09-02", true]]).rec), "mastered",
+    "answering sure next time ends the lucky guess");
+  assert.equal(st(play([["2026-09-01", true], ["2026-09-02", true, false]]).rec), "luckyguess",
+    "a lucky guess outranks mastered");
+  assert.equal(st(play([["2026-09-01", false], ["2026-09-02", true, false]]).rec), "journal",
+    "the mistake journal outranks a lucky guess");
+
   assert.equal(st(play([["2026-09-01", true]]).rec), "learning");
   assert.equal(st(play([["2026-09-01", true], ["2026-09-02", true]]).rec), "mastered");
 
   const bookmarked = Object.assign(P.blankRecord(), {bookmarked: true});
   assert.equal(st(bookmarked), "bookmarked", "a bookmarked question outranks never seen");
-  const journalAndBookmark = Object.assign(play([["2026-09-01", false]]).rec, {bookmarked: true});
+  const journalAndBookmark = Object.assign(play([["2026-09-01", false, false]]).rec, {bookmarked: true});
   assert.equal(st(journalAndBookmark), "journal");
+  const blindAndBookmark = Object.assign(play([["2026-09-01", false]]).rec, {bookmarked: true});
+  assert.equal(st(blindAndBookmark), "blindspot");
+  const luckyAndBookmark = Object.assign(play([["2026-09-01", true, false]]).rec, {bookmarked: true});
+  assert.equal(st(luckyAndBookmark), "bookmarked");
 
-  assert.deepEqual(P.STATUS_ORDER, ["blindspot", "journal", "bookmarked", "reviewdue", "new", "learning", "mastered"]);
+  // Review-due mastered questions sit right after bookmarked, ahead of lucky guesses
+  const dueLucky = play([["2026-09-30", true], ["2026-10-01", true, false]]).rec;
+  assert.equal(P.statusOf(dueLucky, 3, "2026-10-09", EXAMS), "reviewdue");
+
+  assert.deepEqual(P.STATUS_ORDER, ["blindspot", "journal", "bookmarked", "reviewdue", "luckyguess", "new", "learning", "mastered"]);
 });
 
 test("review due: 3 days before the exam covering the unit, then every 4 weeks", () => {
@@ -180,24 +220,25 @@ test("next exam and smart session picking", () => {
   assert.equal(P.nextExam(EXAMS, "2026-12-09"), null);
 
   const q = (id, unit) => ({id, unit});
-  const questions = [q("u3-new", 3), q("u3-mastered", 3), q("u3-journal", 3), q("u3-blind", 3), q("u3-bm", 3), q("u3-learning", 3), q("u2-blind", 2), q("u2-new", 2)];
+  const questions = [q("u3-new", 3), q("u3-mastered", 3), q("u3-journal", 3), q("u3-blind", 3), q("u3-bm", 3), q("u3-learning", 3), q("u3-lucky", 3), q("u2-blind", 2), q("u2-new", 2)];
   const store = {
     "u3-mastered": play([["2026-10-01", true], ["2026-10-02", true]]).rec,
-    "u3-journal": play([["2026-10-01", false]]).rec,
-    "u3-blind": play([["2026-10-01", false], ["2026-10-02", false]]).rec,
+    "u3-journal": play([["2026-10-01", false, false]]).rec,
+    "u3-blind": play([["2026-10-01", false]]).rec,
+    "u3-lucky": play([["2026-10-01", true, false]]).rec,
     "u3-bm": Object.assign(P.blankRecord(), {bookmarked: true}),
     "u3-learning": play([["2026-10-01", true]]).rec,
-    "u2-blind": play([["2026-09-20", false], ["2026-09-21", false]], 2).rec
+    "u2-blind": play([["2026-09-21", false]], 2).rec
   };
   // Oct 5: next exam is Exam 3 (Unit 3). Unit 3 questions come first, in priority order.
-  const picked = P.pickSmart(questions, 6, store, "2026-10-05", EXAMS).map(x => x.id);
-  assert.deepEqual(picked, ["u3-blind", "u3-journal", "u3-bm", "u3-new", "u3-learning", "u3-mastered"]);
+  const picked = P.pickSmart(questions, 7, store, "2026-10-05", EXAMS).map(x => x.id);
+  assert.deepEqual(picked, ["u3-blind", "u3-journal", "u3-bm", "u3-lucky", "u3-new", "u3-learning", "u3-mastered"]);
   // Asking for more than Unit 3 has fills in from other units, also by priority
-  const more = P.pickSmart(questions, 8, store, "2026-10-05", EXAMS).map(x => x.id);
-  assert.deepEqual(more.slice(6), ["u2-blind", "u2-new"]);
+  const more = P.pickSmart(questions, 9, store, "2026-10-05", EXAMS).map(x => x.id);
+  assert.deepEqual(more.slice(7), ["u2-blind", "u2-new"]);
   // Oct 9 is 3 days before Exam 3, so the mastered question is review due and moves up after bookmarked
-  const due = P.pickSmart(questions, 6, store, "2026-10-09", EXAMS).map(x => x.id);
-  assert.deepEqual(due, ["u3-blind", "u3-journal", "u3-bm", "u3-mastered", "u3-new", "u3-learning"]);
+  const due = P.pickSmart(questions, 7, store, "2026-10-09", EXAMS).map(x => x.id);
+  assert.deepEqual(due, ["u3-blind", "u3-journal", "u3-bm", "u3-mastered", "u3-lucky", "u3-new", "u3-learning"]);
   // The Final covers every unit, so everything competes on priority
   const final = P.pickSmart(questions, 3, store, "2026-12-08", EXAMS).map(x => x.id);
   assert.deepEqual(final.slice(0, 2).sort(), ["u2-blind", "u3-blind"]);

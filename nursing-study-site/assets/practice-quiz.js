@@ -360,7 +360,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
     document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
-    if (tracking){ syncBookmark(q); noteBox.classList.add("hidden"); }
+    if (tracking){ syncBookmark(q); hideNote(); }
 
     if (q.type === "dragdrop"){ renderDragDrop(q); return; }
 
@@ -622,18 +622,21 @@ function initPracticeQuiz(bank, catLabels, opts){
     ddCancelDrag(); ddUnpick();
     var graded = gradeQuestion(q, userSelection);
     var isCorrect = graded.correct;
+    /* "Check · I'm sure" / "Check · I guessed" (tracking on); Enter counts as sure */
+    var sure = tracking ? pendingSure : null;
+    pendingSure = true;
     if (tracking){
-      noteProgress(q, Progress.record(q, isCorrect));
+      noteProgress(q, Progress.record(q, isCorrect, sure));
       showNote(q);
     }
 
     if (mode === "single"){
-      singleResults.push({question: q, userSelection: userSelection.slice(), correct: isCorrect});
+      singleResults.push({question: q, userSelection: userSelection.slice(), correct: isCorrect, sure: sure});
       if (!isCorrect) missedMap[q.id] = q; else delete missedMap[q.id];
       document.getElementById("pq-score").textContent = "score " + singleResults.filter(function(r){ return r.correct; }).length + "/" + singleResults.length;
     } else {
       attempts[q.id] = (attempts[q.id] || 0) + 1;
-      latestResult[q.id] = {question: q, userSelection: userSelection.slice(), correct: isCorrect};
+      latestResult[q.id] = {question: q, userSelection: userSelection.slice(), correct: isCorrect, sure: sure};
       if (!categoryTotals[q.cat]) categoryTotals[q.cat] = {correct:0, total:0};
       categoryTotals[q.cat].total++;
       if (isCorrect){ correctSoFar++; categoryTotals[q.cat].correct++; }
@@ -660,6 +663,12 @@ function initPracticeQuiz(bank, catLabels, opts){
     var head = document.createElement("p");
     head.className = "pq-fb-head";
     head.textContent = isCorrect ? "✓ Correct" : "✕ Not quite";
+    if (tracking){
+      var sureTag = document.createElement("span");
+      sureTag.className = "pq-sure-tag";
+      sureTag.textContent = sure ? "You were sure" : "You guessed";
+      head.appendChild(sureTag);
+    }
     fbEl.appendChild(head);
     [q.summary, q.explanation].forEach(function(t){
       if (!t) return;
@@ -760,7 +769,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       var promptLine = document.createElement("div");
       promptLine.style.fontWeight = "600";
       promptLine.textContent = (r.correct ? "\u2713 " : "\u2717 ") + r.question.prompt;
-      var tag = blindSpotTag(r.question);
+      var tag = confidenceTag(r.correct, r.sure);
       if (tag){
         var row = document.createElement("div");
         row.className = "pq-review-top";
@@ -800,7 +809,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       triesEl.style.whiteSpace = "nowrap"; triesEl.style.color = col.text;
       triesEl.textContent = isResolved ? (tries + (tries === 1 ? " try" : " tries")) : "not yet correct";
       topRow.appendChild(promptEl);
-      var tag = blindSpotTag(q);
+      var tag = confidenceTag(res.correct, res.sure);
       if (tag) topRow.appendChild(tag);
       topRow.appendChild(triesEl);
       item.appendChild(topRow);
@@ -836,7 +845,7 @@ function initPracticeQuiz(bank, catLabels, opts){
 
   /* Bookmark button at the top right of the question, and the "My note" box under the
      rationales, shown once the answer is checked */
-  var bookmarkBtn = null, noteBox = null, noteInput = null;
+  var bookmarkBtn = null, noteBox = null, noteInput = null, noteText = null, addNoteBtn = null, pendingSure = true;
   if (tracking){
     var qhead = document.createElement("div");
     qhead.className = "pq-qhead";
@@ -856,22 +865,69 @@ function initPracticeQuiz(bank, catLabels, opts){
       if (e.detail > 0) bookmarkBtn.blur();
     });
 
+    /* Two check buttons stand in for "Check answer". The original button stays in the page
+       (hidden) so everything that enables, disables or presses it keeps working. */
+    var submitBtn = document.getElementById("pq-submit");
+    var btnRow = submitBtn.parentNode;
+    submitBtn.classList.add("is-tracked");
+    var checkSure = makeButton("pq-check-sure", "btn btn-primary", "Check \u00b7 I'm sure");
+    var checkGuess = makeButton("pq-check-guess", "btn btn-secondary", "Check \u00b7 I guessed");
+    btnRow.insertBefore(checkSure, submitBtn);
+    btnRow.insertBefore(checkGuess, submitBtn);
+    [[checkSure, true], [checkGuess, false]].forEach(function(b){
+      b[0].addEventListener("click", function(){ pendingSure = b[1]; submitBtn.click(); pendingSure = true; });
+    });
+    var syncChecks = function(){
+      [checkSure, checkGuess].forEach(function(b){
+        b.classList.toggle("hidden", submitBtn.classList.contains("hidden"));
+        b.disabled = submitBtn.disabled;
+      });
+    };
+    new MutationObserver(syncChecks).observe(submitBtn, {attributes: true, attributeFilter: ["class", "disabled"]});
+    syncChecks();
+
+    /* After checking: "+ Add note" on the left of "Next question". The note box opens only
+       when it's tapped (Cancel / Save note); a saved note shows with an Edit button. */
+    addNoteBtn = makeButton("pq-add-note", "btn btn-secondary pq-addnote hidden", "+ Add note");
+    btnRow.insertBefore(addNoteBtn, document.getElementById("pq-next"));
+
     noteBox = document.createElement("div");
     noteBox.className = "pq-note hidden";
+    var noteHead = document.createElement("div");
+    noteHead.className = "pq-note-head";
     var noteLabel = document.createElement("label");
     noteLabel.className = "pq-note-label";
     noteLabel.setAttribute("for", "pq-note-input");
     noteLabel.textContent = "My note \u00b7 shows every time this question comes back";
+    var noteEdit = makeButton("pq-note-edit", "btn btn-secondary pq-note-btn", "Edit");
+    noteHead.appendChild(noteLabel); noteHead.appendChild(noteEdit);
+    noteText = document.createElement("p");
+    noteText.className = "pq-note-text";
     noteInput = document.createElement("textarea");
     noteInput.id = "pq-note-input";
     noteInput.rows = 2;
-    noteBox.appendChild(noteLabel);
-    noteBox.appendChild(noteInput);
+    var noteActions = document.createElement("div");
+    noteActions.className = "pq-note-actions";
+    var noteCancel = makeButton("pq-note-cancel", "btn btn-secondary pq-note-btn", "Cancel");
+    var noteSave = makeButton("pq-note-save", "btn btn-primary pq-note-btn", "Save note");
+    noteActions.appendChild(noteCancel); noteActions.appendChild(noteSave);
+    noteBox.appendChild(noteHead); noteBox.appendChild(noteText); noteBox.appendChild(noteInput); noteBox.appendChild(noteActions);
     optsEl.parentNode.insertBefore(noteBox, optsEl.nextSibling);
-    noteInput.addEventListener("input", function(){
+
+    addNoteBtn.addEventListener("click", function(){ editNote(); });
+    noteEdit.addEventListener("click", function(){ editNote(); });
+    noteCancel.addEventListener("click", function(){ var q = currentQuestion(); if (q) showNote(q); });
+    noteSave.addEventListener("click", function(){
       var q = currentQuestion();
-      if (q) Progress.setNote(q.id, noteInput.value);
+      if (!q) return;
+      Progress.setNote(q.id, noteInput.value);
+      showNote(q);
     });
+  }
+  function makeButton(id, cls, text){
+    var b = document.createElement("button");
+    b.type = "button"; b.id = id; b.className = cls; b.textContent = text;
+    return b;
   }
   function syncBookmark(q){
     var r = Progress.get(q.id);
@@ -880,10 +936,27 @@ function initPracticeQuiz(bank, catLabels, opts){
     bookmarkBtn.classList.toggle("is-on", on);
     bookmarkBtn.setAttribute("aria-pressed", on ? "true" : "false");
   }
+  /* Note states: hidden with "+ Add note" (no note yet), showing a saved note with Edit,
+     or editing with Cancel / Save note */
+  function hideNote(){
+    noteBox.classList.add("hidden");
+    addNoteBtn.classList.add("hidden");
+  }
   function showNote(q){
     var r = Progress.get(q.id);
+    var note = (r && r.note) || "";
+    noteBox.classList.remove("is-editing");
+    noteBox.classList.toggle("hidden", !note);
+    addNoteBtn.classList.toggle("hidden", !!note);
+    noteText.textContent = note;
+  }
+  function editNote(){
+    var r = Progress.get(currentQuestion().id);
     noteInput.value = (r && r.note) || "";
+    noteBox.classList.add("is-editing");
     noteBox.classList.remove("hidden");
+    addNoteBtn.classList.add("hidden");
+    noteInput.focus();
   }
 
   /* Mastery box under the score: this quiz's questions mastered before -> after the session,
@@ -946,12 +1019,13 @@ function initPracticeQuiz(bank, catLabels, opts){
     center.parentNode.insertBefore(box, center.nextSibling);
   }
 
-  /* "Blind spot" tag on a review item: missed 2 or more times in a row */
-  function blindSpotTag(q){
-    if (!tracking || Progress.status(q) !== "blindspot") return null;
+  /* Review tags: "Sure" (right and sure), "Lucky guess" (right but guessed),
+     "Blind spot" (wrong but sure). Wrong and guessed gets no tag. */
+  function confidenceTag(correct, sure){
+    if (!tracking || sure == null || (!correct && !sure)) return null;
     var tag = document.createElement("span");
-    tag.className = "pq-tag-blind";
-    tag.textContent = "Blind spot";
+    tag.className = correct ? (sure ? "pq-tag-sure" : "pq-tag-lucky") : "pq-tag-blind";
+    tag.textContent = correct ? (sure ? "Sure" : "Lucky guess") : "Blind spot";
     return tag;
   }
 
@@ -1025,6 +1099,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (nav && nav.getAttribute("aria-expanded") === "true") return;
     if (e.key === "Enter"){
       if (t && (t.id === "pq-end-test" || t.id === "pq-bookmark" || t.tagName === "A")) return;
+      if (t && t.closest && t.closest(".pq-note, #pq-add-note, #pq-check-sure, #pq-check-guess")) return;
       e.preventDefault();
       var submit = document.getElementById("pq-submit");
       if (answered) document.getElementById("pq-next").click();
