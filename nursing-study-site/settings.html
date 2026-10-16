@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Settings &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/settings">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Settings &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/style.css?v=54">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div class="tp-wrap">
+  <header class="tp-header">
+    <a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a>
+    <a class="tp-nickbtn is-current" id="se-nickbtn" href="settings.html" aria-current="page"></a>
+  </header>
+
+  <section class="tp-intro tp-intro-tight">
+    <div class="tp-eyebrow">Saved on your linked devices</div>
+    <h1 class="tp-h1">Settings</h1>
+  </section>
+
+  <section class="tp-card tp-split">
+    <div class="tp-stack">
+      <span class="tp-label">Nickname</span>
+      <span class="tp-big" id="se-nick"></span>
+      <span class="tp-hint">Shows on your home page and in challenges.</span>
+    </div>
+    <button type="button" class="tp-btn" id="se-switch">Switch nickname</button>
+    <div class="tp-editor hidden" id="se-nickedit">
+      <div class="tp-row">
+        <select id="se-nickselect" class="tp-select" aria-label="Pick a nickname"></select>
+        <button type="button" class="tp-btn" id="se-reroll"></button>
+      </div>
+      <div class="tp-actions">
+        <button type="button" class="tp-btn" id="se-nickcancel">Cancel</button>
+        <button type="button" class="tp-btn tp-btn-primary" id="se-nicksave">Save nickname</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="tp-card tp-col">
+    <h2 class="tp-h2 tp-h2-lg">Your code and devices</h2>
+    <div class="tp-row tp-row-wrap">
+      <span class="tp-codebox" id="se-code"></span>
+      <button type="button" class="tp-btn tp-btn-48" id="se-show">Show code</button>
+      <button type="button" class="tp-btn tp-btn-48" id="se-email">Email it to myself</button>
+      <button type="button" class="tp-btn tp-btn-48" id="se-manager">Save to password manager</button>
+    </div>
+    <div class="tp-row tp-row-wrap tp-gap16">
+      <div class="tp-dashed tp-linkqr">
+        <div class="tp-qr tp-qr-120" id="se-qr" role="img" aria-label="QR code for linking a device"><span>QR code</span></div>
+        <div class="tp-stack">
+          <span class="tp-h3">Link a new device <span class="tp-soontag">Coming soon</span></span>
+          <span class="tp-hint">On your phone or another computer, open the site, tap Link a device, and scan this.</span>
+        </div>
+      </div>
+      <form class="tp-dashed tp-col tp-linkform" id="se-linkform">
+        <label for="se-linkcode" class="tp-h3">Link this device instead <span class="tp-soontag">Coming soon</span></label>
+        <span class="tp-hint">Type a code from your other device. Spaces and capitals don't matter.</span>
+        <div class="tp-row">
+          <input id="se-linkcode" class="tp-input" placeholder="flashcard pulse coffee 4821" autocomplete="off" autocapitalize="off" spellcheck="false">
+          <button type="submit" class="tp-btn tp-btn-primary tp-btn-flat">Link</button>
+        </div>
+        <p class="tp-soon hidden" id="se-linksoon" role="status">Linking devices is coming soon.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="tp-card tp-split">
+    <div class="tp-stack">
+      <span class="tp-label">Weekly goal</span>
+      <span class="tp-big tp-big-22" id="se-goal"></span>
+    </div>
+    <button type="button" class="tp-btn" id="se-goalchange">Change goal</button>
+    <div class="tp-editor hidden" id="se-goaledit">
+      <div id="se-goalpicker" class="tp-goal"></div>
+      <div class="tp-actions">
+        <button type="button" class="tp-btn" id="se-goalcancel">Cancel</button>
+        <button type="button" class="tp-btn tp-btn-primary" id="se-goalsave">Save goal</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="tp-card tp-features">
+    <h2 class="tp-h2 tp-h2-lg">Study features</h2>
+    <p class="tp-hint tp-features-sub">All on by default. Turning one off hides it; your saved progress stays.</p>
+    <div id="se-features"></div>
+  </section>
+
+  <section class="tp-card tp-split tp-danger">
+    <div class="tp-stack">
+      <span class="tp-danger-title">Delete my data</span>
+      <span class="tp-hint">Erases your progress, notes and nickname on every linked device. This can't be undone.</span>
+    </div>
+    <button type="button" class="tp-btn tp-btn-danger" id="se-delete">Delete my data</button>
+  </section>
+</div>
+<script src="assets/vendor/qrcode.js?v=1"></script>
+<script src="js/tracking.js?v=1"></script>
+<script src="js/progress.js?v=4"></script>
+<script src="js/tracking-ui.js?v=1"></script>
+<script>
+(function(){
+  if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
+  var $ = function(id){ return document.getElementById(id); };
+  var SLIDERS = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>';
+  var FEATURES = [
+    ["sure", "Sure / Guessed tap", "Mark how sure you were. Finds lucky guesses and blind spots."],
+    ["goal", "Weekly goal and streaks", "The goal bar and streak counter on your home page."],
+    ["countdown", "Exam countdown", "The next exam, its study plan and the exam ready window."],
+    ["review", "Due for review labels", "Labels like 8 due for review on your mastery bars."],
+    ["notes", "My notes under rationales", "Your bookmark notes below rationales. Notes stay saved when off."],
+    ["challenges", "Challenges", "The Challenges page and Challenge a friend buttons."],
+    ["celebrations", "Celebration animations", "For streaks, exam ready and newly mastered questions."]
+  ];
+  var names = [], codeShown = false;
+  function st(){ return Tracking.state(); }
+
+  function render(){
+    var s = st();
+    $("se-nick").textContent = s.nickname;
+    $("se-nickbtn").innerHTML = "<span></span>" + SLIDERS;
+    $("se-nickbtn").firstChild.textContent = s.nickname;
+    $("se-nickbtn").setAttribute("aria-label", "Settings for " + s.nickname);
+    $("se-code").textContent = codeShown ? s.code : Tracking.maskCode(s.code);
+    $("se-show").textContent = codeShown ? "Hide code" : "Show code";
+    $("se-goal").textContent = Tracking.goalLabel(s.goal);
+  }
+  render();
+  document.addEventListener("pinkprint-nickname", render);
+  $("se-qr").innerHTML = Tracking.qrSvg(Tracking.linkUrl(st().code), 4);
+
+  /* Switch nickname: reroll or pick from the list */
+  $("se-reroll").innerHTML = TrackingUI.DICE + "Reroll";
+  Tracking.loadNicknames().then(function(n){ names = n; });
+  function fillSelect(selected){
+    var sel = $("se-nickselect");
+    sel.innerHTML = "";
+    var list = names.slice();
+    if (list.indexOf(st().nickname) === -1) list.unshift(st().nickname);
+    list.forEach(function(n){
+      var o = document.createElement("option");
+      o.value = n; o.textContent = n;
+      if (n === selected) o.selected = true;
+      sel.appendChild(o);
+    });
+  }
+  $("se-switch").addEventListener("click", function(){
+    fillSelect(st().nickname);
+    $("se-nickedit").classList.remove("hidden");
+    $("se-switch").classList.add("hidden");
+  });
+  $("se-reroll").addEventListener("click", function(){ fillSelect(Tracking.pickNickname(names, $("se-nickselect").value)); });
+  function closeNick(){ $("se-nickedit").classList.add("hidden"); $("se-switch").classList.remove("hidden"); }
+  $("se-nickcancel").addEventListener("click", closeNick);
+  $("se-nicksave").addEventListener("click", function(){ Tracking.update({nickname: $("se-nickselect").value}); closeNick(); render(); });
+
+  /* Code */
+  $("se-show").addEventListener("click", function(){ codeShown = !codeShown; render(); });
+  TrackingUI.wireBackups({email: $("se-email"), manager: $("se-manager")},
+    function(){ return st().code; }, function(){ return st().nickname; });
+  $("se-linkform").addEventListener("submit", function(e){ e.preventDefault(); $("se-linksoon").classList.remove("hidden"); });
+
+  /* Weekly goal */
+  var pending = null;
+  $("se-goalchange").addEventListener("click", function(){
+    TrackingUI.goalPicker($("se-goalpicker"), st().goal || Tracking.DEFAULT_GOAL, function(g){ pending = g; });
+    $("se-goaledit").classList.remove("hidden");
+    $("se-goalchange").classList.add("hidden");
+  });
+  function closeGoal(){ $("se-goaledit").classList.add("hidden"); $("se-goalchange").classList.remove("hidden"); }
+  $("se-goalcancel").addEventListener("click", closeGoal);
+  $("se-goalsave").addEventListener("click", function(){ if (pending) Tracking.update({goal: pending}); closeGoal(); render(); });
+
+  /* Study features */
+  FEATURES.forEach(function(f){
+    var row = TrackingUI.el("div", "tp-feature");
+    var text = TrackingUI.el("div", "tp-feature-text");
+    text.appendChild(TrackingUI.el("span", "tp-feature-name", f[1]));
+    text.appendChild(TrackingUI.el("span", "tp-hint", f[2]));
+    var sw = TrackingUI.el("button", "tp-switch");
+    sw.type = "button";
+    sw.setAttribute("role", "switch");
+    sw.setAttribute("aria-label", f[1]);
+    sw.appendChild(TrackingUI.el("span"));
+    function sync(){
+      var on = Tracking.feature(f[0]);
+      sw.setAttribute("aria-checked", on ? "true" : "false");
+      sw.classList.toggle("is-on", on);
+    }
+    sw.addEventListener("click", function(){ Tracking.setFeature(f[0], !Tracking.feature(f[0])); sync(); });
+    sync();
+    row.appendChild(text); row.appendChild(sw);
+    $("se-features").appendChild(row);
+  });
+
+  /* Delete my data: confirm once, clear this device, back to the guest view */
+  $("se-delete").addEventListener("click", function(){
+    if (!confirm("Delete your progress, notes, nickname and code on this device? This can't be undone.")) return;
+    Tracking.deleteAll();
+    location.href = "./";
+  });
+})();
+</script>
+</body>
+</html>

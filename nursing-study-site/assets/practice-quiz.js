@@ -44,6 +44,9 @@ function loadPracticeQuiz(opts){
 function initPracticeQuiz(bank, catLabels, opts){
   /* Progress tracking only runs when the tracking flag is on (js/progress.js) */
   var tracking = typeof Progress !== "undefined" && Progress.enabled() && !!(opts && opts.data);
+  /* Study features a tracked student can switch off in Settings */
+  var useSure = tracking && Tracking.feature("sure");
+  var useNotes = tracking && Tracking.feature("notes");
   var ready = Promise.resolve(Array.isArray(bank) ? {bank: bank, catLabels: catLabels} : bank).then(function(d){
     bank = d.bank; catLabels = d.catLabels; masteryLabel = d.masteryLabel || "";
     normalizeBank(bank);
@@ -231,7 +234,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       if (document.getElementById("pq-setup-screen").classList.contains("hidden")) return;
       pool = mixedSample(bank, chosenCount);
       missedMap = {};
-      if (tracking) startTrackedSession();
+      startSessionTracking();
       hide("pq-setup-screen");
       if (mode === "single") startSingle(); else startRounds();
     });
@@ -360,7 +363,8 @@ function initPracticeQuiz(bank, catLabels, opts){
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
     document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
-    if (tracking){ syncBookmark(q); hideNote(); }
+    if (tracking) syncBookmark(q);
+    if (useNotes) hideNote();
 
     if (q.type === "dragdrop"){ renderDragDrop(q); return; }
 
@@ -623,11 +627,13 @@ function initPracticeQuiz(bank, catLabels, opts){
     var graded = gradeQuestion(q, userSelection);
     var isCorrect = graded.correct;
     /* "Check · I'm sure" / "Check · I guessed" (tracking on); Enter counts as sure */
-    var sure = tracking ? pendingSure : null;
+    var sure = useSure ? pendingSure : null;
     pendingSure = true;
     if (tracking){
-      noteProgress(q, Progress.record(q, isCorrect, sure));
-      showNote(q);
+      noteProgress(q, Progress.record(q, isCorrect, sure, userSelection.slice()));
+      if (useNotes) showNote(q);
+    } else {
+      guestAnswers.push({id: q.id, unit: q.unit, correct: isCorrect, picked: userSelection.slice()});
     }
 
     if (mode === "single"){
@@ -663,7 +669,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     var head = document.createElement("p");
     head.className = "pq-fb-head";
     head.textContent = isCorrect ? "✓ Correct" : "✕ Not quite";
-    if (tracking){
+    if (useSure){
       var sureTag = document.createElement("span");
       sureTag.className = "pq-sure-tag";
       sureTag.textContent = sure ? "You were sure" : "You guessed";
@@ -826,6 +832,82 @@ function initPracticeQuiz(bank, catLabels, opts){
     });
   }
 
+  /* ---------- Session start: tracked students get a mastery snapshot; guests a fresh
+     answer list, kept only in this page unless they tap "Start tracking" ---------- */
+  var guestAnswers = [];
+  function startSessionTracking(){
+    if (tracking) startTrackedSession();
+    else { guestAnswers = []; removeHeaderCta(); }
+  }
+
+  /* Guest results: "Start tracking to save this score" with this session's real numbers,
+     plus a Start tracking button in the header. Tapping either carries this session's answers
+     (this tab only) to Start tracking, which saves them once tracking starts. */
+  function startTrackingHref(){
+    var ret = location.pathname + location.search;
+    return Tracking.ROOT + "start-tracking.html?from=results&return=" + encodeURIComponent(ret);
+  }
+  function carryAndGo(e){
+    e.preventDefault();
+    Tracking.carrySession(guestAnswers);
+    location.href = startTrackingHref();
+  }
+  function guestBanner(){
+    var old = document.getElementById("pq-guest-banner");
+    if (old) old.remove();
+    if (typeof Tracking === "undefined" || !guestAnswers.length) return;
+    var n = guestAnswers.length;
+    var missed = {};
+    guestAnswers.forEach(function(a){ if (!a.correct) missed[a.id] = true; });
+    var m = Object.keys(missed).length;
+    var area = masteryLabel === "Overall" ? "overall mastery" : masteryLabel + " mastery";
+    var text = (n === 1 ? "This answer" : "These " + n + " answers") + " would count toward your " + area +
+      (m ? ", and the " + m + " you missed would go into your Mistake journal." : ".");
+    var a = document.createElement("a");
+    a.id = "pq-guest-banner";
+    a.className = "pq-guest-banner";
+    a.href = startTrackingHref();
+    a.innerHTML = "<span class='pq-gb-text'><span class='pq-gb-title'>Start tracking to save this score</span><span class='pq-gb-sub'></span></span>" +
+      "<span class='pq-gb-btn'>Start tracking &rarr;</span>";
+    a.querySelector(".pq-gb-sub").textContent = text;
+    a.addEventListener("click", carryAndGo);
+    var center = document.querySelector("#pq-end-screen .pq-center");
+    center.parentNode.insertBefore(a, center.nextSibling);
+
+    removeHeaderCta();
+    var right = document.querySelector(".cbar-right");
+    if (right){
+      var cta = document.createElement("a");
+      cta.id = "hdr-start-tracking";
+      cta.className = "hdr-cta";
+      cta.href = startTrackingHref();
+      cta.textContent = "Start tracking";
+      cta.addEventListener("click", carryAndGo);
+      right.insertBefore(cta, right.firstChild);
+    }
+  }
+  function removeHeaderCta(){
+    var c = document.getElementById("hdr-start-tracking");
+    if (c) c.remove();
+  }
+
+  /* After a tracked student's third finished session: a one-time reminder to save their code */
+  function codeReminder(){
+    var old = document.getElementById("pq-code-reminder");
+    if (old) old.remove();
+    var count = Tracking.noteFinishedSession();
+    var st = Tracking.state();
+    if (count < 3 || !st || st.codeReminderDone) return;
+    Tracking.update({codeReminderDone: true});
+    var box = document.createElement("div");
+    box.id = "pq-code-reminder";
+    box.className = "pq-code-reminder";
+    box.innerHTML = "<span>Have you saved your code? Nobody can recover a lost code, not even the site owner.</span>" +
+      "<a class='btn btn-secondary' href='" + Tracking.ROOT + "settings.html'>Save my code</a>";
+    var center = document.querySelector("#pq-end-screen .pq-center");
+    center.parentNode.insertBefore(box, center.nextSibling);
+  }
+
   /* ---------- Progress tracking (flag on only) ---------- */
   /* At the start of each session, note which of this quiz's questions are already mastered,
      so the results can show the before -> after change */
@@ -865,6 +947,8 @@ function initPracticeQuiz(bank, catLabels, opts){
       if (e.detail > 0) bookmarkBtn.blur();
     });
 
+  }
+  if (useSure){
     /* Two check buttons stand in for "Check answer". The original button stays in the page
        (hidden) so everything that enables, disables or presses it keeps working. */
     var submitBtn = document.getElementById("pq-submit");
@@ -885,7 +969,9 @@ function initPracticeQuiz(bank, catLabels, opts){
     };
     new MutationObserver(syncChecks).observe(submitBtn, {attributes: true, attributeFilter: ["class", "disabled"]});
     syncChecks();
-
+  }
+  if (useNotes){
+    var btnRow = document.getElementById("pq-next").parentNode;
     /* After checking: "+ Add note" on its own line above "Next question". The note box opens only
        when it's tapped (Cancel / Save note); a saved note shows with an Edit button. */
     addNoteBtn = makeButton("pq-add-note", "btn btn-secondary pq-addnote hidden", "+ Add note");
@@ -911,7 +997,10 @@ function initPracticeQuiz(bank, catLabels, opts){
     var noteCancel = makeButton("pq-note-cancel", "btn btn-secondary pq-note-btn", "Cancel");
     var noteSave = makeButton("pq-note-save", "btn btn-primary pq-note-btn", "Save note");
     noteActions.appendChild(noteCancel); noteActions.appendChild(noteSave);
-    noteBox.appendChild(noteHead); noteBox.appendChild(noteText); noteBox.appendChild(noteInput); noteBox.appendChild(noteActions);
+    var noteWarn = document.createElement("p");
+    noteWarn.className = "pq-note-warn hidden";
+    noteWarn.textContent = "Keep notes about the content only. Never include client names, room numbers or anything from clinicals that could identify a real person.";
+    noteBox.appendChild(noteHead); noteBox.appendChild(noteWarn); noteBox.appendChild(noteText); noteBox.appendChild(noteInput); noteBox.appendChild(noteActions);
     optsEl.parentNode.insertBefore(noteBox, optsEl.nextSibling);
 
     addNoteBtn.addEventListener("click", function(){ editNote(); });
@@ -926,7 +1015,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   }
   /* Keyboard hint: with tracking on, Enter checks as "I'm sure" and Shift+Enter as "I guessed" */
   function checkHint(){
-    return tracking ? "<span>Enter &middot; I'm sure / next</span><span>Shift+Enter &middot; I guessed</span>" : "<span>Enter &middot; check / next</span>";
+    return useSure ? "<span>Enter &middot; I'm sure / next</span><span>Shift+Enter &middot; I guessed</span>" : "<span>Enter &middot; check / next</span>";
   }
   function makeButton(id, cls, text){
     var b = document.createElement("button");
@@ -947,6 +1036,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     addNoteBtn.classList.add("hidden");
   }
   function showNote(q){
+    noteBox.querySelector(".pq-note-warn").classList.add("hidden");
     var r = Progress.get(q.id);
     var note = (r && r.note) || "";
     noteBox.classList.remove("is-editing");
@@ -955,6 +1045,13 @@ function initPracticeQuiz(bank, catLabels, opts){
     noteText.textContent = note;
   }
   function editNote(){
+    /* Shown once, the first time someone adds a note */
+    var warn = noteBox.querySelector(".pq-note-warn");
+    var st = Tracking.state();
+    if (st && !st.noteReminderDone){
+      warn.classList.remove("hidden");
+      Tracking.update({noteReminderDone: true});
+    }
     var r = Progress.get(currentQuestion().id);
     noteInput.value = (r && r.note) || "";
     noteBox.classList.add("is-editing");
@@ -1035,7 +1132,10 @@ function initPracticeQuiz(bank, catLabels, opts){
 
   function finishSession(){
     hide("pq-quiz-screen"); hide("pq-round-complete-screen"); show("pq-end-screen");
-    if (tracking) buildMasteryBox();
+    if (tracking){
+      buildMasteryBox();
+      codeReminder();
+    } else guestBanner();
     document.getElementById("category-heading").textContent = "by category";
 
     if (mode === "single"){
@@ -1091,6 +1191,7 @@ function initPracticeQuiz(bank, catLabels, opts){
 
   document.getElementById("end-restart").addEventListener("click", function(){
     hide("pq-end-screen"); show("end-missed"); show("pq-setup-screen");
+    removeHeaderCta();
   });
 
   /* Keyboard: letters or 1-9 pick (or, for drag and drop, move) an option; Enter checks / goes next */
@@ -1108,7 +1209,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       var submit = document.getElementById("pq-submit");
       if (answered) document.getElementById("pq-next").click();
       else if (!submit.disabled){
-        if (tracking && e.shiftKey) pendingSure = false;
+        if (useSure && e.shiftKey) pendingSure = false;
         submit.click();
         pendingSure = true;
       }
@@ -1137,7 +1238,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     mode = "single";
     pool = list;
     missedMap = {};
-    startTrackedSession();
+    startSessionTracking();
     startSingle();
   });
 }

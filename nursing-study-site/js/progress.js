@@ -1,25 +1,28 @@
 /* Progress tracking on this device. All progress code lives here so it can be
    encrypted and synced later.
 
-   Off unless localStorage "pinkprint-track" is "on". Visit any page with
-   ?track=on or ?track=off to switch it. ?today=YYYY-MM-DD pretends it's another
-   day (handy for testing exam windows); ?today=off goes back to the real date.
+   On only while tracking is on (a code saved on this device, see js/tracking.js); nothing is
+   written for guests. ?today=YYYY-MM-DD pretends it's another day (handy for testing exam
+   windows, tracked devices only); ?today=off goes back to the real date.
 
    Progress is one object in localStorage "pinkprint-progress", keyed by question ID:
-     seen, correct          times answered / times fully correct
+     seen, correct, wrong   times answered / fully correct / not fully correct
      streak                 correct in a row (a wrong answer resets it to 0)
      missStreak             wrong in a row
      lastAnswered           "YYYY-MM-DD", the day it was last answered
-     lastCorrect, lastSure  how the latest answer went, and whether it was "I'm sure" or "I guessed"
+     lastCorrect, lastSure  how the latest answer went, and whether it was "I'm sure" (true),
+                            "I guessed" (false) or not marked (null: the Sure / Guessed tap was off,
+                            or the answer came from a guest session)
                             (wrong + sure = blind spot, right + guessed = lucky guess)
+     lastWrong              {date, picked: [option ids], sure} for the latest wrong answer
      mastered, masteredOn   2 correct in a row; a wrong answer un-masters it
      bookmarked
      journal                in the mistake journal: added on a miss, leaves after 2 correct in a row
+     resolved               left the mistake journal by being mastered (shown under Resolved)
      note                   the "My note" text, if any
      examReady              {examId: {base, streak, ready}} for the last 3 days before each exam */
 (function(){
   var STORE_KEY = "pinkprint-progress";
-  var FLAG_KEY = "pinkprint-track";
   var TODAY_KEY = "pinkprint-today";
   var MASTER_STREAK = 2;        // correct in a row to master a question
   var JOURNAL_EXIT_STREAK = 2;  // correct in a row to leave the mistake journal
@@ -59,14 +62,15 @@
 
   /* ---------- Records ---------- */
   function blankRecord(){
-    return {seen: 0, correct: 0, streak: 0, missStreak: 0, lastAnswered: null,
+    return {seen: 0, correct: 0, wrong: 0, streak: 0, missStreak: 0, lastAnswered: null,
             mastered: false, masteredOn: null, bookmarked: false, journal: false, examReady: {}};
   }
 
   /* Apply one answer. `correct` means fully correct (SATA and drag-drop are all-or-nothing);
-     `sure` is false for "I guessed" (a lucky guess still counts toward mastery).
+     `sure` is true for "I'm sure", false for "I guessed" (a lucky guess still counts toward
+     mastery) and null when not marked. `picked` is the chosen option ids, kept for wrong answers.
      Returns the updated record and what changed: {mastered, journaled, ready: [examIds]}. */
-  function applyAnswer(rec, correct, today, unit, exams, sure){
+  function applyAnswer(rec, correct, today, unit, exams, sure, picked){
     var r = JSON.parse(JSON.stringify(rec || blankRecord()));
     if (!r.examReady) r.examReady = {};
     var events = {mastered: false, journaled: false, ready: []};
@@ -81,7 +85,7 @@
     r.seen++;
     r.lastAnswered = today;
     r.lastCorrect = !!correct;
-    r.lastSure = sure !== false;
+    r.lastSure = sure === true || sure === false ? sure : null;
     if (correct){
       r.correct++;
       r.streak++;
@@ -89,11 +93,14 @@
       if (!r.mastered && r.streak >= MASTER_STREAK){
         r.mastered = true; r.masteredOn = today; events.mastered = true;
       }
-      if (r.journal && r.streak >= JOURNAL_EXIT_STREAK) r.journal = false;
+      if (r.journal && r.streak >= JOURNAL_EXIT_STREAK){ r.journal = false; r.resolved = true; }
     } else {
+      r.wrong = (r.wrong || 0) + 1;
       r.streak = 0;
       r.missStreak++;
       r.mastered = false; r.masteredOn = null;
+      r.lastWrong = {date: today, picked: picked || [], sure: r.lastSure};
+      r.resolved = false;
       if (!r.journal){ r.journal = true; events.journaled = true; }
     }
 
@@ -176,18 +183,18 @@
   function lsGet(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
   function lsSet(k, v){ try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
 
-  var params = new URLSearchParams(location.search);
-  if (params.get("track") === "on") lsSet(FLAG_KEY, "on");
-  if (params.get("track") === "off") lsSet(FLAG_KEY, null);
-  if (params.has("today")) lsSet(TODAY_KEY, /^\d{4}-\d{2}-\d{2}$/.test(params.get("today")) ? params.get("today") : null);
+  api.enabled = function(){ return typeof Tracking !== "undefined" && Tracking.isOn(); };
 
-  api.enabled = function(){ return lsGet(FLAG_KEY) === "on"; };
+  var params = new URLSearchParams(location.search);
+  if (params.has("today") && api.enabled()) lsSet(TODAY_KEY, /^\d{4}-\d{2}-\d{2}$/.test(params.get("today")) ? params.get("today") : null);
+
   api.today = function(){ return lsGet(TODAY_KEY) || localToday(); };
 
   api.load = function(){
     try { return JSON.parse(lsGet(STORE_KEY)) || {}; } catch (e) { return {}; }
   };
-  api.save = function(store){ lsSet(STORE_KEY, JSON.stringify(store)); };
+  /* Guests never get anything written */
+  api.save = function(store){ if (api.enabled()) lsSet(STORE_KEY, JSON.stringify(store)); };
   api.get = function(id){ return api.load()[id] || null; };
 
   /* Exams and the list of unit files, fetched once per page */
@@ -205,9 +212,9 @@
     return dataCache;
   };
 
-  api.record = function(q, correct, sure){
+  api.record = function(q, correct, sure, picked){
     var store = api.load();
-    var res = applyAnswer(store[q.id], correct, api.today(), q.unit, api.exams || [], sure);
+    var res = applyAnswer(store[q.id], correct, api.today(), q.unit, api.exams || [], sure, picked);
     store[q.id] = res.record;
     api.save(store);
     return res.events;

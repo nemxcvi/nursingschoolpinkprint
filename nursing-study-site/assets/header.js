@@ -19,6 +19,10 @@
   function isBlue(){ return document.documentElement.getAttribute("data-palette") === "blue"; }
 
   var ARROW = "<span class='nav-arrow' aria-hidden='true'>&rarr;</span>";
+  var LOCK = "<svg width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' aria-hidden='true'><rect x='5' y='11' width='14' height='10'/><path d='M8 11V7a4 4 0 0 1 8 0v4'/></svg>";
+  var SLIDERS = "<svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.75' aria-hidden='true'><path d='M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12'/><circle cx='16' cy='6' r='2'/><circle cx='10' cy='12' r='2'/><circle cx='18' cy='18' r='2'/></svg>";
+  /* Tracking (js/tracking.js): on when this device has a code saved */
+  var tracked = typeof Tracking !== "undefined" ? Tracking.state() : null;
   var DRAFT = "<span class='nav-tag'>In draft</span>";
 
   function themeBtn(extra){
@@ -67,6 +71,23 @@
     return html;
   }
 
+  /* My study, always the last section. Guests: locked, opens Start tracking. */
+  function myStudy(){
+    if (!tracked){
+      return "<a class='nav-row nav-locked' href='" + ROOT + "start-tracking.html?from=menu' data-cur='mystudy'>" +
+        "<span class='nav-name'>My study</span><span class='nav-lock'>" + LOCK + "Locked</span></a>";
+    }
+    return section("mystudy", "My study", row(ROOT + "settings.html", "<span class='nav-name'>Settings</span>", "mystudy:settings", "nav-sub"));
+  }
+
+  /* Nickname button (tracking on): opens Settings. Not on the home page. */
+  function nicknameBtn(){
+    var isHome = mode === "full" && !unit && new URL(ROOT).pathname === location.pathname;
+    if (!tracked || isHome) return "";
+    return "<a class='hdr-nick' href='" + ROOT + "settings.html' aria-label='Settings for " + esc(tracked.nickname) + "'>" +
+      "<span>" + esc(tracked.nickname) + "</span>" + SLIDERS + "</a>";
+  }
+
   var panelHtml =
     "<div class='nav-backdrop' id='navbackdrop' hidden></div>" +
     "<div class='navpanel' id='sitenav' role='navigation' aria-label='Site menu' hidden>" +
@@ -76,6 +97,7 @@
       row(ROOT, "<span class='nav-name'>Home</span>", "home") +
       section("sheets", "Semester sheets", sheetsBody()) +
       SITE.types.map(function(t){ return section(t.key, t.label, typeBody(t)); }).join("") +
+      myStudy() +
     "</div>";
 
   /* ---------- Header markup ---------- */
@@ -88,7 +110,7 @@
       "<div class='pp-header-title'>" + brand + "<span class='accent'><span class='palette-word-wrap'>" +
         "<button class='palette-word' id='paletteWord' onclick='togglePalette()' aria-label='Switch to Blueprint palette' title='Switch to Blueprint'>" + (isBlue() ? "Blue" : "Pink") + "</button>" +
         "<span class='palette-hint' id='paletteHint' aria-hidden='true'>switch to blueprint</span></span>print</span></div>" +
-      "<div class='hdr-right'>" + themeBtn() + "</div>" +
+      "<div class='hdr-right'>" + nicknameBtn() + themeBtn() + "</div>" +
       panelHtml;
   } else {
     var back = unit ? ROOT + unit.slug : ROOT;
@@ -107,7 +129,7 @@
         "<div class='cbar-left'>" + menuBtn + "<span class='cbar-div' aria-hidden='true'></span>" +
           "<a class='cbar-back' href='" + esc(back) + "'><i class='ti ti-arrow-left' aria-hidden='true'></i> Back</a></div>" +
         "<div class='cbar-label'><span class='cbar-code'>" + labelCode + "</span><span class='cbar-rest'>" + labelRest + "</span></div>" +
-        "<div class='cbar-right'>" + themeBtn(" iconbtn-sm") + "</div>" +
+        "<div class='cbar-right'>" + nicknameBtn() + themeBtn(" iconbtn-sm") + "</div>" +
         panelHtml +
       "</div>";
   }

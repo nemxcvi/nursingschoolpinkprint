@@ -52,10 +52,13 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 - `data/nur114/exams.json` holds the exam schedule and grading points. `data/nur114/index.json` lists which unit files exist; add a unit there when its JSON is added.
 - Quizzes load their data with `fetch`, so test locally with a server (`python3 -m http.server` in `nursing-study-site/`), not by opening the file directly.
 
-## Progress tracking (testing only)
+## Progress tracking
 
-- All progress code is in `nursing-study-site/js/progress.js` (loaded on every page). It does nothing unless localStorage `pinkprint-track` is `on`: visit any page with `?track=on` / `?track=off`. `?today=YYYY-MM-DD` fakes the date, `?today=off` undoes it.
-- Progress is stored in localStorage `pinkprint-progress`, keyed by question ID. With the flag off, pages must look and behave exactly as before.
-- The approved tracking designs are in the design zip's `design/` folder (README + screens), as corrected by the owner. Quiz pages keep their live layout; with tracking on they add the Bookmark button, the "Check · I'm sure" / "Check · I guessed" buttons (in place of "Check answer"), a "You were sure" / "You guessed" tag, "+ Add note" above "Next question" (note box with Cancel / Save note, or a saved note with Edit); Enter = I'm sure, Shift+Enter = I guessed, the Mastery box on results, and Sure / Lucky guess / Blind spot review tags. Smart session (`Progress.pick`) has no button on quiz pages; it starts from My dashboard in a later phase.
+- The full plan is `design/TRACKING-PLAN.md` in the owner's design zip (with screens). Build in its phase order on the `tracking` branch (preview: https://tracking.nursingschoolprep.pages.dev/) and stop at each check-in. Where the plan conflicts with something already agreed with the owner, keep what was agreed.
+- Tracking is on only when the device has a code saved (`js/tracking.js`: code, nickname, weekly goal, study feature switches; localStorage `pinkprint-tracking`). Guests: nothing is saved anywhere, and the site looks exactly as before apart from the locked "My study" box and menu row, and the "Start tracking" banner/button on guest quiz results.
+- Progress (answers, mastery, journal, notes, bookmarks) is in `js/progress.js` (localStorage `pinkprint-progress`, keyed by question ID). `?today=YYYY-MM-DD` fakes the date on tracked devices for testing; `?today=off` undoes it.
+- Pages: `start-tracking.html`, `settings.html`, `print-code.html` (QR + code, code passed in the `#` part), `link.html` (device linking, phase 4). Shared page controls in `js/tracking-ui.js`; QR library vendored at `assets/vendor/qrcode.js` (qrcode-generator 1.4.4, MIT).
+- Data: `data/wordlist.json` (code words; never remove a word once codes exist), `data/nicknames.json` ("Miss Pinkprint" is reserved and never listed; the owner sets it with `#owner=<phrase>`, checked against `OWNER_HASH` in `js/tracking.js`).
+- Quiz pages keep their live layout; with tracking on they add the Bookmark button, "Check · I'm sure" / "Check · I guessed" (Enter / Shift+Enter), the "You were sure" / "You guessed" tag, "+ Add note" above "Next question", the Mastery box and Sure / Lucky guess / Blind spot review tags. Settings switches can turn off the Sure / Guessed tap and notes.
 - Rules: blind spot = latest answer wrong while sure; lucky guess = latest answer right but guessed (still counts toward mastery). Priority: blind spot → mistake journal → bookmarked → mastered and due for review → lucky guess → never seen → still learning → mastered.
-- Rule tests: `node tests/progress.test.js` from the repo root (Node 18+).
+- Tests: `node tests/progress.test.js` and `node tests/tracking.test.js` from the repo root (Node 18+).

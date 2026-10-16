@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your code &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Your code &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/print-code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your code &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/style.css?v=54">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div class="tp-print">
+  <div class="tp-brand tp-brand-print">Nursing School <span>Pinkprint</span></div>
+  <h1 class="tp-h1">Your tracking code</h1>
+  <div class="tp-print-qr" id="pc-qr" role="img" aria-label="QR code for your progress code"></div>
+  <div class="tp-code tp-print-code" id="pc-code"></div>
+  <p class="tp-hint">Keep this private. To see your progress on another device, open nursingschoolpinkprint.com and type this code, or scan the QR code.</p>
+  <p class="tp-hint">Nobody can recover a lost code, not even the site owner.</p>
+  <button type="button" class="tp-btn tp-noprint" onclick="window.print()">Print</button>
+</div>
+<script src="assets/vendor/qrcode.js?v=1"></script>
+<script src="js/tracking.js?v=1"></script>
+<script>
+(function(){
+  /* The code arrives in the #part (never sent to the server) and is cleared from the address bar */
+  var m = location.hash.match(/^#code=([a-z0-9-]+)$/i);
+  history.replaceState(null, "", location.pathname);
+  if (!m){ document.getElementById("pc-code").textContent = "No code to show."; return; }
+  var code = m[1].split("-").join(" ");
+  document.getElementById("pc-code").textContent = code;
+  document.getElementById("pc-qr").innerHTML = Tracking.qrSvg(Tracking.linkUrl(code), 6);
+  setTimeout(function(){ window.print(); }, 400);
+})();
+</script>
+</body>
+</html>

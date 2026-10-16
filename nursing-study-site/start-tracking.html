@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start tracking &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Start tracking &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/start-tracking">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Start tracking &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/style.css?v=54">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div class="tp-wrap">
+  <header class="tp-header">
+    <a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a>
+    <span class="tp-status">Guest &middot; nothing is saved until you start tracking</span>
+  </header>
+
+  <section class="tp-intro">
+    <div class="tp-eyebrow">Optional &middot; takes a minute</div>
+    <h1 class="tp-h1">Start tracking</h1>
+    <p class="tp-lede">Save your progress, use it on all your devices, and unlock the study tools. No account, no email, no password.</p>
+  </section>
+
+  <section class="tp-cols">
+    <div class="tp-main">
+      <div class="tp-card">
+        <div class="tp-step"><span>1</span><h2>Your nickname</h2></div>
+        <div class="tp-row">
+          <div class="tp-nick" id="st-nick" aria-live="polite">&nbsp;</div>
+          <button type="button" class="tp-btn tp-btn-tall" id="st-reroll"></button>
+        </div>
+        <span class="tp-hint">Only names nobody else has are offered. You can switch anytime in Settings.</span>
+      </div>
+
+      <div class="tp-card">
+        <div class="tp-step"><span>2</span><h2>Save your code</h2></div>
+        <div class="tp-coderow">
+          <div class="tp-codecol">
+            <div class="tp-code" id="st-code" aria-live="polite"></div>
+            <button type="button" class="tp-btn tp-create hidden" id="st-create">Create my code</button>
+            <div class="tp-btns">
+              <button type="button" class="tp-btn" id="st-email" disabled>Email it to myself</button>
+              <button type="button" class="tp-btn" id="st-manager" disabled>Save to password manager</button>
+              <button type="button" class="tp-btn" id="st-print" disabled>Print QR code</button>
+            </div>
+          </div>
+          <div class="tp-qr" id="st-qr" role="img" aria-label="QR code for this progress code"><span>QR code</span></div>
+        </div>
+        <div class="tp-warn">Save it now. Nobody can recover a lost code, not even the site owner. That's what keeps your progress private.</div>
+      </div>
+
+      <div class="tp-card">
+        <div class="tp-step"><span>3</span><h2>Pick a weekly goal</h2></div>
+        <div id="st-goal" class="tp-goal"></div>
+      </div>
+
+      <button type="button" class="tp-start" id="st-start" disabled>Start tracking &rarr;</button>
+      <button type="button" class="tp-textlink" id="st-link">Already have a code? Link this device</button>
+      <p class="tp-soon hidden" id="st-soon" role="status">Linking devices is coming soon. For now, start tracking here and keep your code somewhere safe.</p>
+    </div>
+
+    <aside class="tp-aside">
+      <div class="tp-card tp-unlock">
+        <h2 class="tp-h2">What you unlock</h2>
+        <div class="tp-sample">
+          <div class="tp-sample-top"><span>Cardiac</span><span class="tp-muted">Sample</span></div>
+          <div class="tp-sample-bar"><div style="width:72%" class="is-mastered"></div><div style="width:14%" class="is-learning"></div></div>
+          <div class="tp-muted tp-small">72% mastered</div>
+        </div>
+        <ul class="tp-list">
+          <li>Quizzes that show new and missed questions first</li>
+          <li>Mastery bars for every unit and topic</li>
+          <li>Exam countdowns and study plans</li>
+          <li>Weak spots quiz and Mistake journal</li>
+          <li>Bookmarks with your own notes</li>
+          <li>Weekly goals and streaks</li>
+          <li>Challenges with classmates</li>
+        </ul>
+      </div>
+      <div class="tp-privacy">
+        <span class="tp-label">Your privacy</span>
+        <span>Your progress is encrypted on your device before it's saved. Only devices with your code can read it.</span>
+      </div>
+    </aside>
+  </section>
+</div>
+<script src="assets/vendor/qrcode.js?v=1"></script>
+<script src="js/tracking.js?v=1"></script>
+<script src="js/progress.js?v=4"></script>
+<script src="js/tracking-ui.js?v=1"></script>
+<script>
+(function(){
+  var params = new URLSearchParams(location.search);
+  if (Tracking.isOn()){ location.replace("settings.html"); return; }
+  var names = [], words = [], nickname = "", code = null, goal = Tracking.DEFAULT_GOAL;
+  var $ = function(id){ return document.getElementById(id); };
+  $("st-reroll").innerHTML = TrackingUI.DICE + "Reroll";
+
+  function showNick(){ $("st-nick").textContent = nickname; }
+  /* The code is only made after a Start tracking tap: arriving from a tap (?from=...) or the Create button */
+  function createCode(){
+    code = Tracking.generateCode(words);
+    $("st-code").textContent = code;
+    $("st-code").classList.remove("hidden");
+    $("st-create").classList.add("hidden");
+    $("st-qr").innerHTML = Tracking.qrSvg(Tracking.linkUrl(code), 4);
+    ["st-email", "st-manager", "st-print", "st-start"].forEach(function(id){ $(id).disabled = false; });
+  }
+
+  Promise.all([Tracking.loadNicknames(), Tracking.loadWords()]).then(function(r){
+    names = r[0]; words = r[1];
+    nickname = Tracking.pickNickname(names);
+    showNick();
+    if (params.get("from")) createCode();
+    else { $("st-code").classList.add("hidden"); $("st-create").classList.remove("hidden"); }
+  });
+  $("st-reroll").addEventListener("click", function(){ nickname = Tracking.pickNickname(names, nickname); showNick(); });
+  $("st-create").addEventListener("click", createCode);
+  TrackingUI.wireBackups({email: $("st-email"), manager: $("st-manager"), print: $("st-print")},
+    function(){ return code; }, function(){ return nickname; });
+  TrackingUI.goalPicker($("st-goal"), goal, function(g){ goal = g; });
+  $("st-link").addEventListener("click", function(){ $("st-soon").classList.remove("hidden"); });
+
+  /* Saves the code, nickname and goal on this device. Progress already here is kept, and
+     answers from the quiz session that sent them here (if any) are saved too. */
+  $("st-start").addEventListener("click", function(){
+    if (!code) return;
+    $("st-start").disabled = true;
+    Tracking.start({code: code, nickname: nickname, goal: goal});
+    var carried = params.get("from") === "results" ? Tracking.takeCarry() : (Tracking.dropCarry(), []);
+    var ret = params.get("return") || "";
+    var dest = /^\/(?!\/)/.test(ret) ? ret : "./";
+    if (!carried.length){ location.href = dest; return; }
+    Progress.init(Tracking.ROOT + "data/nur114/").catch(function(){}).then(function(){
+      carried.forEach(function(a){ Progress.record({id: a.id, unit: a.unit}, a.correct, null, a.picked); });
+      location.href = dest;
+    });
+  });
+})();
+</script>
+</body>
+</html>
