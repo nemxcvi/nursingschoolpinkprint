@@ -1,4 +1,48 @@
+/* ---------- Load questions from data/<course>/unit-N.json ----------
+   Topic quiz: loadPracticeQuiz({data: "../data/nur114/", units: [3], topic: "Safety"})
+     groups results by each question's category, in the order the topic lists them.
+   Mix quiz:   loadPracticeQuiz({data: "../data/nur114/", units: [1, 2, 3]})
+     takes every topic in those units and groups results by topic. */
+function loadPracticeQuiz(opts){
+  var ready = Promise.all(opts.units.map(function(n){
+    return fetch(opts.data + "unit-" + n + ".json").then(function(r){
+      if (!r.ok) throw new Error("unit-" + n + ".json: HTTP " + r.status);
+      return r.json();
+    });
+  })).then(function(units){
+    var bank = [], catLabels = {};
+    units.forEach(function(u){
+      u.topics.forEach(function(t){
+        if (opts.topic && t.topic !== opts.topic) return;
+        var mixKey = u.unit + ":" + t.topic;
+        if (opts.topic) t.categories.forEach(function(c){ catLabels[c] = c; });
+        else catLabels[mixKey] = t.mixLabel;
+        u.questions.forEach(function(q){
+          if (q.topic !== t.topic) return;
+          q.cat = opts.topic ? q.category : mixKey;
+          bank.push(q);
+        });
+      });
+    });
+    return {bank: bank, catLabels: catLabels};
+  });
+  initPracticeQuiz(ready);
+}
+
+/* Takes a bank and its category labels, or a promise of {bank, catLabels} */
 function initPracticeQuiz(bank, catLabels){
+  var ready = Promise.resolve(Array.isArray(bank) ? {bank: bank, catLabels: catLabels} : bank).then(function(d){
+    bank = d.bank; catLabels = d.catLabels;
+    normalizeBank();
+  });
+  ready.catch(function(err){
+    console.error("[quiz] couldn't load questions", err);
+    var msg = document.createElement("p");
+    msg.className = "pq-error";
+    msg.style.display = "block";
+    msg.textContent = "Couldn't load the questions. Refresh the page to try again.";
+    document.getElementById("pq-setup-screen").appendChild(msg);
+  });
   var ROUND_SIZE = 5;
   var mode = null, pool = [], missedMap = {};
   var singleQuestions = [], singleResults = [];
@@ -15,33 +59,35 @@ function initPracticeQuiz(bank, catLabels){
        id, prompt, options [{id, text, correct, rationale}], correct [ids],
        multi (more than one correct answer), summary, explanation (older question-level text)
      and type is "dragdrop", or else "sata"/"mc" decided by how many answers are correct. */
-  var missingRationale = [];
-  bank.forEach(function(q, qi){
-    if (q.id == null) q.id = "q" + (qi + 1);
-    if (q.prompt == null) q.prompt = q.stem || "";
-    var qText = q.explanation != null ? q.explanation : q.rationale;
-    q.explanation = qText ? String(qText).replace(PREFIX_RE, "") : "";
-    q.summary = q.summary ? String(q.summary) : "";
-    var listed = Array.isArray(q.correct) ? q.correct.map(String) : [];
-    var gaps = [];
-    q.options = (q.options || []).map(function(o, i){
-      var id = o.id != null ? String(o.id) : (i < LETTERS.length ? LETTERS.charAt(i).toLowerCase() : "o" + i);
-      var rationale = o.rationale ? String(o.rationale).replace(PREFIX_RE, "") : "";
-      if (!rationale) gaps.push(id);
-      return {id: id, text: o.text, correct: o.correct === true || listed.indexOf(id) !== -1, rationale: rationale};
+  function normalizeBank(){
+    var missingRationale = [];
+    bank.forEach(function(q, qi){
+      if (q.id == null) q.id = "q" + (qi + 1);
+      if (q.prompt == null) q.prompt = q.stem || "";
+      var qText = q.explanation != null ? q.explanation : q.rationale;
+      q.explanation = qText ? String(qText).replace(PREFIX_RE, "") : "";
+      q.summary = q.summary ? String(q.summary) : "";
+      var listed = Array.isArray(q.correct) ? q.correct.map(String) : [];
+      var gaps = [];
+      q.options = (q.options || []).map(function(o, i){
+        var id = o.id != null ? String(o.id) : (i < LETTERS.length ? LETTERS.charAt(i).toLowerCase() : "o" + i);
+        var rationale = o.rationale ? String(o.rationale).replace(PREFIX_RE, "") : "";
+        if (!rationale) gaps.push(id);
+        return {id: id, text: o.text, correct: o.correct === true || listed.indexOf(id) !== -1, rationale: rationale};
+      });
+      q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.id; });
+      q.multi = q.correct.length > 1;
+      if (q.type !== "dragdrop") q.type = q.multi ? "sata" : "mc";
+      if (q.correct.length === 0) console.warn("[quiz] question " + q.id + " has no correct option: " + q.prompt);
+      if (gaps.length) missingRationale.push({q: q, ids: gaps});
     });
-    q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.id; });
-    q.multi = q.correct.length > 1;
-    if (q.type !== "dragdrop") q.type = q.multi ? "sata" : "mc";
-    if (q.correct.length === 0) console.warn("[quiz] question " + q.id + " has no correct option: " + q.prompt);
-    if (gaps.length) missingRationale.push({q: q, ids: gaps});
-  });
-  if (missingRationale.length){
-    console.groupCollapsed("[quiz] " + missingRationale.length + " of " + bank.length + " questions have options without a rationale");
-    missingRationale.forEach(function(m){
-      console.warn("[quiz] question " + m.q.id + (m.q.cat ? " (" + m.q.cat + ")" : "") + ": option" + (m.ids.length === 1 ? " " : "s ") + m.ids.join(", ") + " missing a rationale — " + m.q.prompt.slice(0, 80));
-    });
-    console.groupEnd();
+    if (missingRationale.length){
+      console.groupCollapsed("[quiz] " + missingRationale.length + " of " + bank.length + " questions have options without a rationale");
+      missingRationale.forEach(function(m){
+        console.warn("[quiz] question " + m.q.id + (m.q.cat ? " (" + m.q.cat + ")" : "") + ": option" + (m.ids.length === 1 ? " " : "s ") + m.ids.join(", ") + " missing a rationale — " + m.q.prompt.slice(0, 80));
+      });
+      console.groupEnd();
+    }
   }
 
   /* ---------- Scoring: one place for every question type ----------
@@ -161,11 +207,15 @@ function initPracticeQuiz(bank, catLabels){
   document.querySelectorAll(".pq-count-btn").forEach(function(btn){
     btn.addEventListener("click", function(){ chosenCount = Number(btn.getAttribute("data-count")); syncSetup(); });
   });
+  /* The setup screen works right away; starting waits for the questions if they're still loading */
   document.getElementById("pq-start").addEventListener("click", function(){
-    pool = mixedSample(bank, chosenCount);
-    missedMap = {};
-    hide("pq-setup-screen");
-    if (mode === "single") startSingle(); else startRounds();
+    ready.then(function(){
+      if (document.getElementById("pq-setup-screen").classList.contains("hidden")) return;
+      pool = mixedSample(bank, chosenCount);
+      missedMap = {};
+      hide("pq-setup-screen");
+      if (mode === "single") startSingle(); else startRounds();
+    });
   });
   syncSetup();
 

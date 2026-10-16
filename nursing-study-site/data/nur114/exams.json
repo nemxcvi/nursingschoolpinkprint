@@ -1,0 +1,25 @@
+{
+  "course": "NUR 114",
+  "semester": {
+    "start": "2026-08-24",
+    "end": "2026-12-10",
+    "breaks": [
+      {"name": "Thanksgiving break", "start": "2026-11-24", "end": "2026-11-29"}
+    ]
+  },
+  "grading": {
+    "totalPoints": 900,
+    "passingPoints": 675,
+    "passingPercent": 75
+  },
+  "exams": [
+    {"id": "exam-1", "name": "Exam 1", "date": "2026-09-14", "units": [1], "points": 100, "graded": true},
+    {"id": "exam-2", "name": "Exam 2", "date": "2026-09-28", "units": [2], "points": 100, "graded": true},
+    {"id": "exam-3", "name": "Exam 3", "date": "2026-10-12", "units": [3], "points": 100, "graded": true},
+    {"id": "exam-4", "name": "Exam 4", "date": "2026-10-26", "units": [4], "points": 100, "graded": true},
+    {"id": "exam-5", "name": "Exam 5", "date": "2026-11-09", "units": [5], "points": 100, "graded": true},
+    {"id": "exam-6", "name": "Exam 6", "date": "2026-11-30", "units": [6], "points": 100, "graded": true},
+    {"id": "ati", "name": "ATI", "date": "2026-12-07", "units": [1, 2, 3, 4, 5, 6], "points": 0, "graded": false},
+    {"id": "final", "name": "Final", "date": "2026-12-08", "units": [1, 2, 3, 4, 5, 6], "points": 300, "graded": true}
+  ]
+}

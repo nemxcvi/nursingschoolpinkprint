@@ -39,6 +39,15 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 - Study guides are organized by week (`weekN-study-guide.html`) with mnemonics/memory hooks and quick checks. Material taken straight from lecture slides is tagged as slide content.
 - Spell out every abbreviation the first time it appears on a page, in parentheses: `ADLs (activities of daily living)`. Mnemonics that are already spelled out letter by letter don't need it.
 - Content is for adult clients. Leave out infant- and child-focused material (pediatric care, child specimen collection). Keep teen/adolescent content, passing mentions of infants or children, and infant or child rows in a table that covers every age group, so the table stays complete.
-- Every topic quiz has exactly 40 questions. The mix quizzes (`unit-N/mix-quiz.html`, `mix-all-quiz.html`) hold copies of the topic questions, so rebuild them whenever a topic quiz changes. Keep `count` in `site-data.js` and the card/question counts on each unit `index.html` in sync.
+- Every topic quiz has exactly 40 questions. Keep `count` in `site-data.js` and the card/question counts on each unit `index.html` in sync.
+
+## Quiz data
+
+- All quiz questions live in `nursing-study-site/data/nur114/unit-N.json`, one file per unit. Quiz pages hold no questions; they call `loadPracticeQuiz({data, units, topic})` from `practice-quiz.js`. Mix quizzes (`unit-N/mix-quiz.html`, `mix-all-quiz.html`) read the same files, so editing a question in the JSON updates every quiz that uses it.
+- Each unit file has `topics` (topic name as shown on the unit page, `slug`, quiz page, `mixLabel` used for the Mix-all results, and `categories` in display order) and `questions`.
+- Question IDs are `nur114-u{unit}-{topic-slug}-{NNN}`, e.g. `nur114-u3-safety-001`. **Never change or reuse an ID**, even when rewording a question. A new question gets the next unused number in its topic.
+- `category` must match one of the topic's `categories` to show up in the "by category" results.
+- `data/nur114/exams.json` holds the exam schedule and grading points.
+- Quizzes load their data with `fetch`, so test locally with a server (`python3 -m http.server` in `nursing-study-site/`), not by opening the file directly.
 - Quiz questions test the content, not where it came from. Never mark an answer wrong because it is "ATI only" or "not on the checklist"; every wrong option must be wrong on its own merits, and stems and rationales shouldn't cite the competency, slides, or ATI.
 - Keep wording plain and accurate. Prefer dropping a forced mnemonic to keeping a confusing one.

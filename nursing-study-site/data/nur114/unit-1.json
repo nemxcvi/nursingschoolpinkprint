@@ -1,0 +1,2648 @@
+{
+  "course": "NUR 114",
+  "unit": 1,
+  "name": "Intro to Nursing",
+  "topics": [
+    {
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "slug": "cbc-cmp",
+      "quiz": "unit-1-intro-to-nursing/cbc-cmp-quiz.html",
+      "mixLabel": "CBC/CMP lab values",
+      "categories": [
+        "CBC",
+        "CMP",
+        "CBC+CMP combined"
+      ]
+    },
+    {
+      "topic": "Nursing Fundamentals",
+      "slug": "nursing-fundamentals",
+      "quiz": "unit-1-intro-to-nursing/nursing-fundamentals-quiz.html",
+      "mixLabel": "Nursing fundamentals",
+      "categories": [
+        "Nursing process & priority",
+        "Vital signs & pain",
+        "Ethics & legal",
+        "Communication",
+        "EBP & documentation"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "nur114-u1-cbc-cmp-001",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which hematocrit value is WITHIN normal limits for an adult female client?",
+      "options": [
+        {
+          "text": "34%",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "41%",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "50%",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "30%",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult female Hct is 37–47%. 41% falls within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-002",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which hematocrit value is WITHIN normal limits for an adult male client?",
+      "options": [
+        {
+          "text": "38%",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "45%",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "55%",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "40%",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult male Hct is 42–52%. 45% falls within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-003",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which hemoglobin value is expected for an adult female client?",
+      "options": [
+        {
+          "text": "11.5 g/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "13 g/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "18 g/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "9.5 g/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult female Hgb is 12–16 g/dL. 13 g/dL falls within range; 11.5 and 9.5 are below range, and 18 is above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-004",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "A nurse reviews morning labs for a female client who reports fatigue and pallor: WBC 6,000/mm3, Hgb 9.5 g/dL, platelets 220,000/mm3. Which value should the nurse identify as the priority finding?",
+      "options": [
+        {
+          "text": "WBC",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Hemoglobin",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Platelets",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "None are abnormal",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Hgb 9.5 g/dL is below the normal female range of 12–16 g/dL, which lines up with the client's fatigue and pallor. WBC and platelets are within normal limits."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-005",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which hemoglobin value is WITHIN the normal range for ONLY an adult male client (not an adult female)?",
+      "options": [
+        {
+          "text": "14 g/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "18 g/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "16 g/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "19 g/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Male range is 14–18 g/dL; female range is 12–16 g/dL. 14 and 16 fall in both ranges. 19 is above the male range entirely. 18 falls within the male range but above the female range — making it male-only."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-006",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which RBC count is expected for an adult female client?",
+      "options": [
+        {
+          "text": "4.1 ×10⁶/µL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "5.2 ×10⁶/µL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "5.6 ×10⁶/µL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "3.5 ×10⁶/µL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult female RBC is 4.2–5.4 ×10⁶/µL. 5.2 falls within range; 4.1 and 3.5 are below, and 5.6 is above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-007",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which RBC count is expected for an adult male client?",
+      "options": [
+        {
+          "text": "4.6 ×10⁶/µL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "5.8 ×10⁶/µL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "6.2 ×10⁶/µL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "6.4 ×10⁶/µL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult male RBC is 4.7–6.1 ×10⁶/µL. 5.8 falls within range; 4.6 is below, and 6.2 and 6.4 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-008",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which MCV value falls WITHIN the normal adult range?",
+      "options": [
+        {
+          "text": "75 fL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "85 fL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "100 fL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "105 fL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult MCV is 80–95 fL. 85 fL falls within range; 75 is below, and 100 and 105 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-009",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "Select all red blood cell indices that are BELOW normal for this client: MCV 78 fL, MCH 26 pg, MCHC 30 g/dL, RDW 10.5%, MPV 11 fL.",
+      "options": [
+        {
+          "text": "MCV 78 fL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "MCH 26 pg",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "MCHC 30 g/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "RDW 10.5%",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "MPV 11 fL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "MCV (normal 80–95), MCH (normal 27–31), and MCHC (normal 32–36) are all below their ranges. RDW 10.5% is below ATI's normal adult range of 11–45%. MPV 11 fL is actually above the normal range of 7.4–10.4 fL — not below."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-010",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which RDW value is considered WITHIN the normal adult range?",
+      "options": [
+        {
+          "text": "10%",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "14%",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "46%",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "50%",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Per ATI, normal adult RDW is 11–45%. 14% falls within that range; 10% is just below it, and 46% and 50% are just above it."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-011",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which platelet count falls WITHIN the normal adult range?",
+      "options": [
+        {
+          "text": "140,000/mm3",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "160,000/mm3",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "420,000/mm3",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "110,000/mm3",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult platelet count is 150,000–400,000/mm3. 160,000 falls within range; 140,000 and 110,000 are below, and 420,000 is above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-012",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which MPV value is WITHIN the normal adult range?",
+      "options": [
+        {
+          "text": "5 fL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "9 fL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "11 fL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "15 fL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal MPV is 7.4–10.4 fL. 9 fL falls within range; 5 is below, and 11 and 15 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-013",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which WBC count is expected for an adult client?",
+      "options": [
+        {
+          "text": "4,000/mm3",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "7,500/mm3",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "12,000/mm3",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "15,000/mm3",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult WBC is 5,000–10,000/mm3. 7,500 falls within range; 4,000 is below, and 12,000 and 15,000 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-014",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which BUN value is expected for an adult client?",
+      "options": [
+        {
+          "text": "8 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "15 mg/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "25 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "30 mg/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult BUN is 10–20 mg/dL. 15 mg/dL falls within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-015",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which creatinine value is expected for a 30-year-old female client?",
+      "options": [
+        {
+          "text": "0.4 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "0.9 mg/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "1.1 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "1.2 mg/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "For females age 18 to under 41, normal creatinine is 0.5–1 mg/dL. 0.9 mg/dL fits within that; 0.4 is below, and 1.1 and 1.2 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-016",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "A client's hematocrit value is 36%. How should the nurse interpret this finding?",
+      "options": [
+        {
+          "text": "Within normal limits for both an adult male and an adult female",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Above normal for an adult female, within normal limits for an adult male",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Below normal for both an adult male and an adult female",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Below normal for an adult male, within normal limits for an adult female",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal female Hct is 37–47% and normal male Hct is 42–52%. 36% falls below both ranges."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-017",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which glucose value is WITHIN normal limits for an adult?",
+      "options": [
+        {
+          "text": "70 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "75 mg/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "120 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "110 mg/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult glucose is 74–106 mg/dL. 75 mg/dL falls within range; 70 is just below, and 120 and 110 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-018",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "A nurse reviews morning labs for a client with a history of poorly controlled diabetes: BUN 22 mg/dL, Creatinine (female client, age 64) 1.1 mg/dL, Glucose 210 mg/dL. Which value should the nurse identify as the priority finding?",
+      "options": [
+        {
+          "text": "BUN",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Creatinine",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Glucose",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "None are abnormal",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Glucose 210 mg/dL is markedly above the normal range of 74–106 mg/dL, consistent with hyperglycemia — the priority finding here. BUN 22 is only mildly elevated (normal 10–20). For a 64-year-old female, normal creatinine is 0.5–1.2 mg/dL, so 1.1 is actually within normal limits, not abnormal."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-019",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which ALT value is expected for an adult client?",
+      "options": [
+        {
+          "text": "2 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "10 units/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "38 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "40 units/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult ALT is 4–36 units/L. 10 units/L falls within range; 2 is below, and 38 and 40 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-020",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which AST value is expected for an adult client?",
+      "options": [
+        {
+          "text": "45 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "30 units/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "50 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "60 units/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult AST is 0–35 units/L. 30 units/L falls within range; 45, 50, and 60 are all above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-021",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which ALP value is expected for an adult client?",
+      "options": [
+        {
+          "text": "25 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "75 units/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "130 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "20 units/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult ALP is 30–120 units/L. 75 units/L falls within range; 25 and 20 are below, and 130 is above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-022",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which total bilirubin value is expected for an adult client?",
+      "options": [
+        {
+          "text": "0.1 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "0.6 mg/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "1.2 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "2.0 mg/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult total bilirubin is 0.3–1 mg/dL. 0.6 mg/dL falls within range; 0.1 is below, and 1.2 and 2.0 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-023",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which albumin value is expected for an adult client?",
+      "options": [
+        {
+          "text": "2.8 g/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "4.2 g/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "5.8 g/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "6.5 g/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult albumin is 3.5–5 g/dL. 4.2 g/dL falls within range; 2.8 is below, and 5.8 and 6.5 are above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-024",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "Select all liver/protein panel values that are BELOW normal: ALT 2 units/L, AST 5 units/L, ALP 25 units/L, Albumin 3.0 g/dL, Bilirubin 0.1 mg/dL.",
+      "options": [
+        {
+          "text": "ALT 2 units/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "AST 5 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "ALP 25 units/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Albumin 3.0 g/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Bilirubin 0.1 mg/dL",
+          "correct": true,
+          "rationale": ""
+        }
+      ],
+      "explanation": "ALT 2 (normal 4–36), ALP 25 (normal 30–120), albumin 3.0 (normal 3.5–5), and bilirubin 0.1 (normal 0.3–1) are all below range. AST 5 is still within its normal range of 0–35."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-025",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which sodium level is WITHIN normal limits for an adult?",
+      "options": [
+        {
+          "text": "128 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "140 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "150 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "160 mEq/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult sodium is 136–145 mEq/L. 140 mEq/L falls within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-026",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which chloride value falls WITHIN the expected adult range?",
+      "options": [
+        {
+          "text": "90 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "100 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "110 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "115 mEq/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult chloride is 98–106 mEq/L. 100 mEq/L falls within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-027",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which magnesium value is WITHIN the normal adult range?",
+      "options": [
+        {
+          "text": "0.9 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "1.6 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "2.5 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "3.0 mEq/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult magnesium is 1.3–2.1 mEq/L. 1.6 mEq/L falls within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-028",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "Select all electrolyte values that are WITHIN normal limits for an adult client: Sodium 138 mEq/L, Potassium 5.8 mEq/L, Chloride 102 mEq/L, Magnesium 2.6 mEq/L, Calcium 9.8 mg/dL.",
+      "options": [
+        {
+          "text": "Sodium 138 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Potassium 5.8 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Chloride 102 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Magnesium 2.6 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Calcium 9.8 mg/dL",
+          "correct": true,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Sodium, chloride, and calcium fall within their normal adult ranges. Potassium 5.8 (normal 3.5–5) and magnesium 2.6 (normal 1.3–2.1) are both elevated."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-029",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which MCH value is WITHIN the normal adult range?",
+      "options": [
+        {
+          "text": "20 pg",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "29 pg",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "35 pg",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "40 pg",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult MCH is 27–31 pg. 29 pg falls within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-030",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "The nurse is reviewing red blood cell indices for a client: MCH 34 pg, MCHC 30 g/dL. How should the nurse interpret these findings?",
+      "options": [
+        {
+          "text": "Within normal limits for both",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Below normal range for MCH, above normal for MCHC",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Above normal range for MCH, below normal for MCHC",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Below normal range for both",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "MCH 34 pg exceeds the normal range of 27–31 pg. MCHC 30 g/dL falls below the normal range of 32–36 g/dL."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-031",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "Select all CBC values that are WITHIN normal limits for an adult male client: Hct 46%, Hgb 17 g/dL, RBC 4.5 ×10⁶/µL, Platelets 380,000/mm3, WBC 8,500/mm3.",
+      "options": [
+        {
+          "text": "Hct 46%",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Hgb 17 g/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "RBC 4.5 ×10⁶/µL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Platelets 380,000/mm3",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "WBC 8,500/mm3",
+          "correct": true,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Hct, Hgb, platelets, and WBC are all within normal adult male ranges. RBC 4.5 ×10⁶/µL is below the normal male range of 4.7–6.1."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-032",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "A client's serum creatinine is 1.2 mg/dL. How should the nurse interpret this finding?",
+      "options": [
+        {
+          "text": "Within normal limits for a 65-year-old male",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Above normal range for a 45-year-old male",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Within normal limits for a 20-year-old female",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Above normal range for a 65-year-old female",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "For males age 60 and older, normal creatinine is 0.7–1.3 mg/dL, so 1.2 is normal. For a 45-year-old male (normal 0.6–1.3), 1.2 is also normal, not above. For a 20-year-old female (normal 0.5–1), 1.2 is above normal, not within. For a 65-year-old female (normal 0.5–1.2), 1.2 is at the upper limit, so it's normal, not above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-033",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which bicarbonate value is WITHIN normal adult limits?",
+      "options": [
+        {
+          "text": "18 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "25 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "32 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "15 mEq/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal adult bicarbonate is 23–30 mEq/L. 25 mEq/L falls within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-034",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "Select all values that are ABOVE normal for an adult client: Potassium 5.6 mEq/L, Sodium 148 mEq/L, Magnesium 2.5 mEq/L, Calcium 11.5 mg/dL.",
+      "options": [
+        {
+          "text": "Potassium 5.6 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Sodium 148 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Magnesium 2.5 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Calcium 11.5 mg/dL",
+          "correct": true,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Potassium (normal 3.5–5), sodium (normal 136–145), magnesium (normal 1.3–2.1), and calcium (normal 9.0–10.5) are all elevated here."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-035",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which creatinine value best reflects an expected finding for an 18-year-old female client?",
+      "options": [
+        {
+          "text": "0.4 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "0.8 mg/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "1.1 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "0.3 mg/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "For females age 18 to under 41, normal creatinine is 0.5–1 mg/dL. 0.8 mg/dL falls within that; 0.4 and 0.3 are below, and 1.1 is above."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-036",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "mc",
+      "prompt": "Which ALT and AST pairing would the nurse expect to see both WITHIN normal limits?",
+      "options": [
+        {
+          "text": "ALT 50 units/L, AST 45 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "ALT 20 units/L, AST 15 units/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "ALT 40 units/L, AST 40 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "ALT 60 units/L, AST 10 units/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Normal ALT is 4–36 units/L and AST is 0–35 units/L. Only option b has both values within range."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-037",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "You are assigned 5 clients at the start of your shift. Which of the following morning lab results should be reported to the provider? Select all that apply.",
+      "options": [
+        {
+          "text": "A client's total protein of 9.6 g/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's potassium level of 2.8 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's platelet count of 410,000/mm3",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's glucose level of 92 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A client's sodium level of 140 mEq/L",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Total protein 9.6 (normal 6.4–8.3) is elevated. Potassium 2.8 (normal 3.5–5) is low. Platelets 410,000 (normal 150,000–400,000) is elevated. Glucose 92 and sodium 140 are both within normal limits."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-038",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "Which of the following morning lab results should be reported to the provider? Select all that apply.",
+      "options": [
+        {
+          "text": "A client's bicarbonate level of 19 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's chloride level of 92 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's magnesium level of 1.7 mEq/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A client's calcium level of 9.9 mg/dL",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A client's WBC of 7,200/mm3",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Bicarbonate 19 (normal 23–30) is low. Chloride 92 (normal 98–106) is low. Magnesium 1.7, calcium 9.9, and WBC 7,200 are all within normal limits."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-039",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "Which of the following morning lab results should be reported to the provider? Select all that apply.",
+      "options": [
+        {
+          "text": "A client's total protein of 5.9 g/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's hematocrit of 55% (male client)",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's ALT of 30 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A client's total bilirubin of 1.8 mg/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's BUN of 16 mg/dL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Total protein 5.9 (normal 6.4–8.3) is low. Male hematocrit 55% (normal 42–52) is elevated. Total bilirubin 1.8 (normal 0.3–1) is elevated. ALT 30 and BUN 16 are both within normal limits."
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-040",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": null,
+      "type": "sata",
+      "prompt": "Which of the following morning lab results should be reported to the provider? Select all that apply.",
+      "options": [
+        {
+          "text": "A client's glucose level of 58 mg/dL",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's RBC count of 3.6 ×10⁶/µL (female client)",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's ALP of 95 units/L",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A client's magnesium level of 2.3 mEq/L",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A client's creatinine of 0.9 mg/dL (35-year-old male client)",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Glucose 58 (normal 74–106) is low. Female RBC 3.6 (normal 4.2–5.4) is low. Magnesium 2.3 (normal 1.3–2.1) is elevated. ALP 95 and creatinine 0.9 (normal 0.6–1.2 for this age) are both within normal limits."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-001",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A nurse is giving an opioid analgesic for a pain score of 6/10. The vital sign most directly affected by this medication will be:",
+      "options": [
+        {
+          "text": "Temperature",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Respiratory rate",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Pulse oximetry",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Blood pressure",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Opioids depress the central respiratory drive, making respiratory rate the vital sign most directly affected."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-002",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A client asks the nurse what the normal range is for blood pressure. The nurse knows the expected range for an adult is:",
+      "options": [
+        {
+          "text": "Greater than 140/90 mmHg",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Less than 120/80 mmHg",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Between 110/60 and 150/100 mmHg",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Less than 90/60 mmHg",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Less than 120/80 mmHg is the expected normal adult blood pressure."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-003",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "The nurse delegates obtaining an oxygen saturation reading to the UAP. Which equipment will the UAP take into the room?",
+      "options": [
+        {
+          "text": "Pulse oximeter",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Sphygmomanometer",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Thermometer",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Stethoscope",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "A pulse oximeter measures SpO2, the oxygen saturation reading."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-004",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "mc",
+      "prompt": "Which step of the nursing process involves identifying expected outcomes and defining the interventions needed to reach them?",
+      "options": [
+        {
+          "text": "Assessment",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Planning",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Implementation",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Evaluation",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Planning generates potential solutions and goals, and identifies interventions to reach the desired outcome."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-005",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "mc",
+      "prompt": "Which nursing diagnosis is written correctly as a 'risk for' diagnosis?",
+      "options": [
+        {
+          "text": "Impaired physical mobility r/t pain AEB reluctance to walk",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Risk for infection r/t surgical incision and compromised immune system",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Acute pain r/t surgical incision AEB pain rating of 8/10",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Risk for infection AEB elevated WBC count",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "A 'risk for' diagnosis has no AEB, since the problem hasn't happened yet — only risk factors are listed."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-006",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Ethics & legal",
+      "type": "mc",
+      "prompt": "According to ATI, accountability is best defined as:",
+      "options": [
+        {
+          "text": "Delegating tasks appropriately to the care team",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A legal obligation with a moral and ethical commitment to do the right thing every time",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Completing all assigned tasks on time",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Following the chain of command",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "ATI defines accountability as a legal obligation with a moral and ethical commitment to do the right thing every time and in every situation."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-007",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A client's heart rate is 110 bpm with a regular rhythm. The nurse documents this as:",
+      "options": [
+        {
+          "text": "Bradycardia",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Tachycardia",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Dysrhythmia",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Normal sinus rhythm",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "A heart rate over 100 bpm is tachycardia."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-008",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A client's respiratory rate is 8 breaths/min. This is best described as:",
+      "options": [
+        {
+          "text": "Tachypnea",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Apnea",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Bradypnea",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Dyspnea",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Bradypnea is a regular breathing pattern under 12 breaths per minute."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-009",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "Which of the following is an example of primary prevention?",
+      "options": [
+        {
+          "text": "Colonoscopy screening",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Cardiac rehabilitation",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Vaccination",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Mammogram",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Primary prevention decreases the risk of developing a disease before it occurs, as with vaccines. Colonoscopy and mammogram are secondary prevention; cardiac rehab is tertiary."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-010",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A client's blood pressure drops from 128/78 to 100/70 with a compensatory increase in heart rate within two minutes of standing, and they report dizziness. The nurse suspects:",
+      "options": [
+        {
+          "text": "Hypertensive crisis",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Orthostatic hypotension",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Shock",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Bradycardia",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "A systolic drop of 20+ mmHg with reflex tachycardia within 1-3 minutes of a position change is orthostatic hypotension."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-011",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "mc",
+      "prompt": "Why does the nurse assess the ABCs before completing a neurological exam on an acutely ill client?",
+      "options": [
+        {
+          "text": "Neuro exams take longer to complete",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Airway, breathing, and circulation problems can affect neurological findings",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "It is hospital policy to always start with vital signs",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "The client is more cooperative early in the assessment",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "ABCs are assessed first because compromise in any of them can directly impact neurological status."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-012",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Communication",
+      "type": "mc",
+      "prompt": "Which communication model includes the concepts of sender, encoder, channel, decoder, receiver, and noise?",
+      "options": [
+        {
+          "text": "Shannon-Weaver model",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "TeamSTEPPS model",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "SBAR model",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Health Belief Model",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "The Shannon-Weaver model's six concepts are sender, encoder, channel, decoder, receiver, and noise."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-013",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Ethics & legal",
+      "type": "mc",
+      "prompt": "A nurse reports a colleague's unsafe medication practices to hospital administration. This is an example of:",
+      "options": [
+        {
+          "text": "Mandatory reporting",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Whistleblowing",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Good Samaritan action",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Informed consent",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Whistleblowing is reporting unethical, illegal, or unsafe practices."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-014",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Communication",
+      "type": "mc",
+      "prompt": "During a client interview, the nurse says, 'So what I'm hearing is that the pain gets worse at night and eases with rest.' This is an example of:",
+      "options": [
+        {
+          "text": "Giving advice",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Restating/paraphrasing",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "False reassurance",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A closed-ended question",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Restating/paraphrasing reflects back what the client said to confirm understanding — a therapeutic technique."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-015",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Ethics & legal",
+      "type": "mc",
+      "prompt": "HIPAA primarily protects which of the following?",
+      "options": [
+        {
+          "text": "A client's right to refuse treatment",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A client's protected health information (PHI)",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A nurse's scope of practice",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A client's right to informed consent",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "HIPAA (the Health Insurance Portability and Accountability Act) protects a client's protected health information."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-016",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Communication",
+      "type": "mc",
+      "prompt": "In the ISBARR communication tool, what does the second 'R' stand for?",
+      "options": [
+        {
+          "text": "Response",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Read-back",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Referral",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Reassessment",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "ISBARR stands for Introduction, Situation, Background, Assessment, Recommendation, Read-back — confirming the receiver understood correctly."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-017",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "EBP & documentation",
+      "type": "mc",
+      "prompt": "In a PICOT question, the 'T' stands for:",
+      "options": [
+        {
+          "text": "Type of study",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Treatment",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Time",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Team",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "PICOT = Population, Intervention, Comparison, Outcome, Time."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-018",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "EBP & documentation",
+      "type": "mc",
+      "prompt": "Which documentation method charts only significant findings or deviations from the norm?",
+      "options": [
+        {
+          "text": "SOAP charting",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Problem-oriented medical record",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Charting by exception (CBE)",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Focus charting",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Charting by exception (CBE) only documents findings that deviate from the expected norm."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-019",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "mc",
+      "prompt": "Which of the following best demonstrates the 'least restrictive, least invasive' principle in priority setting?",
+      "options": [
+        {
+          "text": "Restraining a confused client immediately",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Trying reorientation and a sitter before considering restraints",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Sedating an agitated client right away",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Notifying security before attempting redirection",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "The least restrictive/least invasive approach means trying gentler interventions before more restrictive ones like restraints."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-020",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A nursing student asks about the difference between nociceptive and neuropathic pain. Which statement is correct?",
+      "options": [
+        {
+          "text": "Nociceptive pain is related to nerve damage; neuropathic pain is related to tissue damage",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Nociceptive pain is related to tissue damage; neuropathic pain is related to nerve damage",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Both types are related to psychological distress only",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Neuropathic pain always resolves within 6 months",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Nociceptive pain relates to tissue damage; neuropathic pain relates to nerve damage."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-021",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A client just finished a cup of ice water. How long should the nurse wait before taking an oral temperature?",
+      "options": [
+        {
+          "text": "No wait is needed",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "2 to 5 minutes",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "15 to 30 minutes",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "2 hours",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Hot or cold drinks, food, gum, and smoking change mouth temperature. Wait 15 to 30 minutes before taking an oral temperature."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-022",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A nurse uses a blood pressure cuff that is too small for the client's arm. How will this affect the reading?",
+      "options": [
+        {
+          "text": "It will be falsely high",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "It will be falsely low",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "It will not change the reading",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "It will only change the diastolic reading",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "A cuff that is too small or too narrow gives a falsely high reading. A cuff that is too large gives a falsely low reading."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-023",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "mc",
+      "prompt": "A client's blood pressure is 140/90 mmHg. What is the client's pulse pressure?",
+      "options": [
+        {
+          "text": "230 mmHg",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "90 mmHg",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "70 mmHg",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "50 mmHg",
+          "correct": true,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Pulse pressure is the systolic pressure minus the diastolic pressure: 140 − 90 = 50 mmHg."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-024",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Vital signs & pain",
+      "type": "sata",
+      "prompt": "A nurse is reviewing an adult client's vital signs. Which findings are outside the expected range? Select all that apply.",
+      "options": [
+        {
+          "text": "Heart rate 52/min",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Respiratory rate 24/min",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "SpO2 97%",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Temperature 38.4 °C (101.1 °F)",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Blood pressure 116/74 mmHg",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Expected adult ranges: heart rate 60–100/min, respiratory rate 12–20/min, SpO2 95–100%, and blood pressure under 120/80. A temperature of 38.4 °C is a fever."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-025",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "mc",
+      "prompt": "A nurse is collecting data during an admission assessment. Which finding is subjective data?",
+      "options": [
+        {
+          "text": "The client says, \"I feel sick to my stomach.\"",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Blood pressure is 132/84 mmHg",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A 3 cm wound on the left heel",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "The client vomited 200 mL",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Subjective data is what the client reports and only the client can describe, such as nausea or pain. Objective data is what the nurse can observe or measure."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-026",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "mc",
+      "prompt": "A nurse is planning care for a client after surgery. Using Maslow's hierarchy of needs, which client need should the nurse address first?",
+      "options": [
+        {
+          "text": "Anxiety about the surgery results",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Airway clearance",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Learning about the new diet",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Feeling isolated from family",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Physiological needs come first in Maslow's hierarchy, and airway comes first among them. Safety, love and belonging, and esteem needs follow."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-027",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "mc",
+      "prompt": "A client's goal was to walk 50 feet with a walker by day 3. On day 3, the nurse watches the client walk 50 feet with the walker. Which step of the nursing process is the nurse performing?",
+      "options": [
+        {
+          "text": "Assessment",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Planning",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Implementation",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Evaluation",
+          "correct": true,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Evaluation compares the client's response to the expected outcome to decide whether the goal was met."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-028",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "mc",
+      "prompt": "Which client outcome is written so the nurse can measure it?",
+      "options": [
+        {
+          "text": "The client will understand the new diet",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "The client will feel less anxious",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "The client will walk 100 feet in the hallway with a walker by the end of the shift",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "The client will tolerate activity better",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "A measurable outcome names a specific, observable behavior and a time frame. \"Understand,\" \"feel,\" and \"tolerate better\" can't be measured as written."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-029",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Nursing process & priority",
+      "type": "sata",
+      "prompt": "A nurse is caring for a client. Which nursing actions belong to the implementation step of the nursing process? Select all that apply.",
+      "options": [
+        {
+          "text": "Giving a prescribed medication",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Reinforcing teaching about the medication",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Repositioning the client every 2 hours",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Writing a goal for the plan of care",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Deciding whether the client met the goal",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Implementation is carrying out the planned interventions. Writing goals is planning, and deciding whether a goal was met is evaluation."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-030",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Ethics & legal",
+      "type": "mc",
+      "prompt": "After the provider explains the risks and benefits, a client decides not to have a recommended surgery. The nurse supports the client's decision. Which ethical principle is the nurse upholding?",
+      "options": [
+        {
+          "text": "Autonomy",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Beneficence",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Justice",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Fidelity",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Autonomy is the client's right to make their own decisions about their care, including refusing treatment."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-031",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Ethics & legal",
+      "type": "mc",
+      "prompt": "A nurse checks a client's allergies before giving a new medication. Which ethical principle does this action reflect?",
+      "options": [
+        {
+          "text": "Veracity",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Nonmaleficence",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Justice",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Autonomy",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Nonmaleficence is the duty to do no harm. Checking allergies prevents harm from the medication."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-032",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Ethics & legal",
+      "type": "mc",
+      "prompt": "A client is about to sign a consent form for surgery. What is the nurse's role in informed consent?",
+      "options": [
+        {
+          "text": "Explain the risks and benefits of the surgery",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Witness the client's signature and confirm the client understands",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Decide whether the client needs the surgery",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Sign the form for the client if the client is anxious",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "The provider explains the procedure, risks, benefits, and alternatives. The nurse witnesses the signature and confirms understanding. If the client has questions, the nurse notifies the provider before the form is signed."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-033",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Ethics & legal",
+      "type": "sata",
+      "prompt": "Which actions by a nurse violate a client's privacy under HIPAA? Select all that apply.",
+      "options": [
+        {
+          "text": "Discussing a client's diagnosis in the elevator",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Posting a photo of a client's wound on social media",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Opening the chart of a client the nurse isn't caring for",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Giving report to the oncoming nurse at shift change",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Reviewing the chart of an assigned client",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Protected health information is shared only with people involved in the client's care, in private. Handoff report and reviewing an assigned client's chart are part of care."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-034",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Communication",
+      "type": "mc",
+      "prompt": "A client says, \"I'm scared about my surgery tomorrow.\" Which response by the nurse is therapeutic?",
+      "options": [
+        {
+          "text": "\"Don't worry, everything will be fine.\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"Tell me more about what's worrying you.\"",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "\"Your surgeon is the best in the hospital.\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"Why are you scared?\"",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "An open-ended invitation lets the client share their feelings. \"Don't worry\" and praising the surgeon are false reassurance, and \"why\" questions can make clients feel defensive."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-035",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Communication",
+      "type": "mc",
+      "prompt": "A nurse wants to learn more about a client's pain. Which question is open-ended?",
+      "options": [
+        {
+          "text": "\"Is your pain worse today?\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"Did the medication help?\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"How would you describe your pain?\"",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "\"Is the pain sharp?\"",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Open-ended questions can't be answered with yes or no, so the client gives more detail. The other choices are closed-ended."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-036",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Communication",
+      "type": "mc",
+      "prompt": "Which statement by a nurse is nontherapeutic?",
+      "options": [
+        {
+          "text": "\"Why didn't you take your medication?\"",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "\"You seem upset. I'm here to listen.\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"Go on, I'm listening.\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"What happened when you stopped the medication?\"",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "\"Why\" questions sound like a demand for justification and can make the client defensive. The other statements are therapeutic: offering self, a general lead, and an open-ended question."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-037",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "Communication",
+      "type": "mc",
+      "prompt": "A nurse is calling the provider using ISBARR. Which statement belongs in the Background section?",
+      "options": [
+        {
+          "text": "\"This is Sam, the nurse caring for Ms. Lee in room 12.\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"She was admitted 2 days ago for pneumonia and has a history of heart failure.\"",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "\"I think she may be developing fluid overload.\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"I'd like you to come see her and consider a diuretic.\"",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Background gives the admitting diagnosis and relevant history. The other choices are Introduction, Assessment, and Recommendation."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-038",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "EBP & documentation",
+      "type": "mc",
+      "prompt": "A nurse makes an error while documenting in a paper chart. Which action should the nurse take?",
+      "options": [
+        {
+          "text": "Use correction fluid and rewrite the entry",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Erase the entry completely",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "Draw a single line through the error, label it as an error, and add initials and the date",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "Tear out the page and start over",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "The original entry must stay readable. A single line, a note that it was an error, and the nurse's initials and date keep the record legal and accurate."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-039",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "EBP & documentation",
+      "type": "mc",
+      "prompt": "A nurse is looking for the strongest evidence to support a change in practice. Which source gives the highest level of evidence?",
+      "options": [
+        {
+          "text": "An expert's opinion",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A single case study",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "A systematic review of randomized controlled trials",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "A descriptive study",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "A systematic review or meta-analysis of randomized controlled trials is the highest level of evidence. Expert opinion is the lowest."
+    },
+    {
+      "id": "nur114-u1-nursing-fundamentals-040",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Nursing Fundamentals",
+      "category": "EBP & documentation",
+      "type": "mc",
+      "prompt": "Which documentation entry is written correctly?",
+      "options": [
+        {
+          "text": "\"Client ate 50% of breakfast.\"",
+          "correct": true,
+          "rationale": ""
+        },
+        {
+          "text": "\"Client has a good appetite.\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"Client seems to be in a bad mood.\"",
+          "correct": false,
+          "rationale": ""
+        },
+        {
+          "text": "\"Client slept well.\"",
+          "correct": false,
+          "rationale": ""
+        }
+      ],
+      "explanation": "Documentation should be objective and specific. \"Good,\" \"bad mood,\" and \"slept well\" are vague judgments."
+    }
+  ]
+}
