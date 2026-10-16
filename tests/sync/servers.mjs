@@ -107,6 +107,7 @@ const env = {
   SUPABASE_KEY: KEY,
   ACCESS_TEAM, ACCESS_AUD,
   STATS_KEY: process.env.NO_STATS_KEY ? "" : STATS_KEY,
+  CLASS_CODE: process.env.CLASS_CODE || "",           /* set to try the class-code gate (e2e-gate.js) */
   ASSETS: {fetch: req => staticFile(new URL(req.url).pathname)}
 };
 const matches = (p, pat) => pat.endsWith("/*") ? p.startsWith(pat.slice(0, -1)) : p === pat;

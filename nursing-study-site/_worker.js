@@ -1,6 +1,7 @@
-/* The site's only door to Supabase (Cloudflare Pages advanced mode). _routes.json sends only
-   /api/* (and the short challenge links /c/*) here; every other request is a normal static file
-   and never runs this code.
+/* The site's only door to Supabase (Cloudflare Pages advanced mode), and the class-code gate.
+   _routes.json sends everything here except /assets/* and /js/* (styles, scripts, images), which
+   are plain static files. Pages and data files pass straight through to env.ASSETS once the
+   class code is OK (see classGate).
 
    The Supabase URL and publishable key are Cloudflare variables (SUPABASE_URL, SUPABASE_KEY),
    never in the repo, so browsers can't reach Supabase directly and the /api/ rate limit can't
@@ -234,9 +235,107 @@ async function handleApi(request, env, url) {
   return reply(200, {result: flatten(fn, data)});
 }
 
+/* ---------- Class code ----------
+   With the Cloudflare secret CLASS_CODE set, every page, data file and /api call needs a cookie
+   from entering the code once (styles, scripts and images under /assets and /js stay open; see
+   _routes.json). The cookie holds a fingerprint of the code, never the code, so changing
+   CLASS_CODE asks everyone again. Without CLASS_CODE (e.g. preview deploys) the site is open. */
+const CLASS_COOKIE = "pp_class";
+const CLASS_PATH = "/class-code";
+function normCode(s) { return String(s || "").trim().toLowerCase().replace(/\s+/g, " "); }
+async function classToken(code) {
+  const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("pinkprint-class-v1:" + normCode(code)));
+  return [...new Uint8Array(d)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+function cookieValue(request, name) {
+  const m = (request.headers.get("Cookie") || "").match(new RegExp("(?:^|;\\s*)" + name + "=([^;]+)"));
+  return m ? m[1] : null;
+}
+/* Only paths on this site, so the form can't send people elsewhere */
+function safeNext(next) {
+  return typeof next === "string" && /^\/(?![\/\\])/.test(next) && !next.startsWith(CLASS_PATH) ? next : "/";
+}
+function escHtml(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+const TAGLINE = "Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material";
+function classPage(next, wrong) {
+  /* Same title and link-preview tags as the site, so shared links still preview */
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nursing School Pinkprint</title>
+<meta name="description" content="${TAGLINE}">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Nursing School Pinkprint">
+<meta property="og:description" content="${TAGLINE}">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nursing School Pinkprint">
+<meta name="twitter:description" content="${TAGLINE}">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="/assets/style.css">
+<script>(function(){try{var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");if(localStorage.getItem("palette")==="blue")document.documentElement.setAttribute("data-palette","blue");}catch(e){}})();</script>
+<style>
+.cc-wrap{min-height:100vh;box-sizing:border-box;display:flex;align-items:center;justify-content:center;padding:24px 16px;}
+.cc-card{width:100%;max-width:420px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;padding:32px 28px;border:1.5px solid var(--border);background:var(--card);}
+.cc-brand{font-family:'Young Serif',Georgia,serif;font-size:20px;color:var(--text);margin:0;}
+.cc-brand span{color:var(--label);}
+.cc-h1{margin:6px 0 0;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:30px;line-height:1.15;color:var(--heading);}
+.cc-hint{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;color:var(--text2);}
+.cc-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);}
+.cc-row{display:flex;gap:8px;}
+.cc-input{flex:1 1 auto;min-width:0;min-height:48px;box-sizing:border-box;padding:0 14px;border:1.5px solid var(--border);border-radius:0;background:var(--page);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:16px;letter-spacing:.06em;}
+.cc-btn{min-height:48px;padding:0 20px;border:0;border-radius:0;background:var(--border);color:var(--fill-text);font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}
+.cc-wrong{margin:0;padding:10px 14px;border:1.5px dashed var(--danger-border);color:var(--danger-text);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;}
+</style>
+</head>
+<body>
+<main class="cc-wrap">
+<form class="cc-card" method="post" action="${CLASS_PATH}">
+<p class="cc-brand">Nursing School <span>Pinkprint</span></p>
+<h1 class="cc-h1">Enter class code</h1>
+<p class="cc-hint">This site is for our class. Enter the class code once and this browser will remember it.</p>
+${wrong ? '<p class="cc-wrong" role="alert">That code isn\'t right. Check it and try again.</p>' : ""}
+<label class="cc-label" for="cc-code">Class code</label>
+<div class="cc-row"><input class="cc-input" id="cc-code" name="code" autocomplete="off" autocapitalize="none" spellcheck="false" required autofocus><button class="cc-btn" type="submit">Enter</button></div>
+<input type="hidden" name="next" value="${escHtml(next)}">
+</form>
+</main>
+</body>
+</html>`;
+  return new Response(html, {status: wrong ? 401 : 200, headers: {"Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"}});
+}
+/* Returns a response when the class code stops the request, or null to carry on */
+async function classGate(request, env, url) {
+  if (!env.CLASS_CODE) return null;
+  const token = await classToken(env.CLASS_CODE);
+  if (url.pathname === CLASS_PATH && request.method === "POST") {
+    const form = await request.formData().catch(() => null);
+    const next = safeNext(form && form.get("next"));
+    if (form && (await classToken(form.get("code"))) === token) {
+      return new Response(null, {status: 303, headers: {
+        "Location": next, "Cache-Control": "no-store",
+        "Set-Cookie": CLASS_COOKIE + "=" + token + "; Max-Age=31536000; Path=/; Secure; HttpOnly; SameSite=Lax"
+      }});
+    }
+    return classPage(next, true);
+  }
+  if (cookieValue(request, CLASS_COOKIE) === token) return null;
+  if (url.pathname.startsWith("/api/")) return reply(401, {error: "class code needed"});
+  if (request.method !== "GET" && request.method !== "HEAD") return new Response("Class code needed", {status: 401});
+  return classPage(safeNext(url.pathname + url.search), false);
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const gated = await classGate(request, env, url);
+    if (gated) return gated;
     if (url.pathname.startsWith("/api/")) return handleApi(request, env, url);
     /* Challenge links: /c/<ID> opens the Challenges page for that challenge */
     const c = url.pathname.match(/^\/c\/([^/]+)\/?$/);
