@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=55">
+<link rel="stylesheet" href="assets/style.css?v=56">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -26,9 +26,11 @@
 
   <div id="site-header" data-mode="full" data-sheet="nur114"></div>
   <script src="assets/site-data.js?v=10"></script>
-  <script src="js/tracking.js?v=3"></script>
-  <script src="assets/header.js?v=8"></script>
-  <script src="js/progress.js?v=5"></script>
+  <script src="js/tracking.js?v=4"></script>
+  <script src="assets/header.js?v=9"></script>
+  <script src="js/progress.js?v=6"></script>
+  <script src="js/study.js?v=1"></script>
+  <script src="js/my-study.js?v=1"></script>
 
   <div class="pp-searchrow">
     <div class="pp-filters">
@@ -307,13 +309,18 @@ function renderHome(){
   if (typeof Tracking === "undefined" || !Tracking.isOn()) return;
   var a = document.getElementById("tag-mystudy");
   a.classList.add("is-on");
-  a.href = "settings.html";
+  a.href = "dashboard.html";
   a.removeAttribute("aria-label");
   a.querySelector("svg").remove();
 })();
 
 syncTags();
 renderHome();
+
+/* Tracker homepage: countdown strip under the quote and unit mastery bars (tracking on only) */
+if (typeof Tracking !== "undefined" && Tracking.isOn() && !state.tag){
+  MyStudy.load().then(MyStudy.home, function(err){ if (window.console) console.warn("[pinkprint]", err); });
+}
 </script>
 </body>
 </html>

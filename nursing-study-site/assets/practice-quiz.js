@@ -35,8 +35,42 @@ function loadPracticeQuiz(opts){
     var d = buildQuizBank(units, opts.topic);
     /* Name for the Mastery box on the results page: the topic, the unit, or every unit */
     d.masteryLabel = opts.topic || (units.length === 1 ? units[0].name : "Overall");
+    if (opts.topic) noteTopicSeen(units[0], opts.topic);
     return d;
   }), null, opts);
+}
+
+/* Opening a topic quiz clears its "N new questions" label (tracked students only) */
+function noteTopicSeen(unit, topicName){
+  if (typeof Tracking === "undefined" || !Tracking.isOn()) return;
+  var t = unit.topics.filter(function(x){ return x.topic === topicName; })[0];
+  if (!t) return;
+  var key = unit.unit + ":" + t.slug;
+  var count = unit.questions.filter(function(q){ return q.topic === topicName; }).length;
+  var known = Tracking.state().knownCounts || {};
+  if (known[key] === count) return;
+  var next = {};
+  Object.keys(known).forEach(function(k){ next[k] = known[k]; });
+  next[key] = count;
+  Tracking.update({knownCounts: next});
+}
+
+/* My study sessions (Today's plan, Weak spots, Mistake journal, Review, ...): every unit's
+   questions are loaded, opts.pick(questions, store) chooses which ones, and the session starts
+   straight away. Results group by topic. */
+function loadSessionQuiz(opts){
+  var ready = Progress.init(opts.data).then(function(){
+    return fetchQuizUnits(opts.data, Progress.units);
+  }).then(function(units){
+    var d = buildQuizBank(units, null);
+    var byId = {};
+    d.bank.forEach(function(q){ byId[q.id] = q; });
+    var ids = opts.pick(d.bank, Progress.load());
+    d.bank = ids.map(function(q){ return byId[q.id || q]; }).filter(Boolean);
+    d.masteryLabel = opts.title;
+    return d;
+  });
+  initPracticeQuiz(ready, null, {data: opts.data, autoStart: true});
 }
 
 /* Takes a bank and its category labels, or a promise of {bank, catLabels, masteryLabel}.
@@ -55,6 +89,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       tracking = false;
     });
   });
+  var autoStart = !!(opts && opts.autoStart);
   ready.catch(function(err){
     console.error("[quiz] couldn't load questions", err);
     var msg = document.createElement("p");
@@ -240,6 +275,19 @@ function initPracticeQuiz(bank, catLabels, opts){
     });
   });
   syncSetup();
+
+  /* Sessions from My study start straight away with every chosen question */
+  if (autoStart){
+    ready.then(function(){
+      hide("pq-setup-screen");
+      if (!bank.length){ show("pq-empty"); return; }
+      pool = bank.slice();
+      mode = "single";
+      missedMap = {};
+      startSessionTracking();
+      startSingle();
+    });
+  }
 
   function startSingle(){
     singleQuestions = shuffle(pool);
@@ -916,11 +964,14 @@ function initPracticeQuiz(bank, catLabels, opts){
     var store = Progress.load();
     masteredAtStart = {};
     journaledThisSession = {};
+    celebrateThisSession = false;
     bank.forEach(function(q){ if (store[q.id] && store[q.id].mastered) masteredAtStart[q.id] = true; });
   }
 
+  var celebrateThisSession = false;
   function noteProgress(q, ev){
     if (ev.journaled) journaledThisSession[q.id] = true;
+    if (ev.mastered || (ev.ready && ev.ready.length)) celebrateThisSession = true;
   }
 
   var BOOKMARK_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>';
@@ -1135,6 +1186,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (tracking){
       buildMasteryBox();
       codeReminder();
+      if (celebrateThisSession) Tracking.celebrate();
     } else guestBanner();
     document.getElementById("category-heading").textContent = "by category";
 
@@ -1190,8 +1242,16 @@ function initPracticeQuiz(bank, catLabels, opts){
   }
 
   document.getElementById("end-restart").addEventListener("click", function(){
-    hide("pq-end-screen"); show("end-missed"); show("pq-setup-screen");
+    hide("pq-end-screen"); show("end-missed");
     removeHeaderCta();
+    if (autoStart){
+      /* Practice the same session again */
+      pool = bank.slice(); mode = "single"; missedMap = {};
+      startSessionTracking();
+      startSingle();
+      return;
+    }
+    show("pq-setup-screen");
   });
 
   /* Keyboard: letters or 1-9 pick (or, for drag and drop, move) an option; Enter checks / goes next */

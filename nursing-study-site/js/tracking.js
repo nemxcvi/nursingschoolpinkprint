@@ -12,6 +12,11 @@
      codeReminderDone, noteReminderDone
      startedOn          "YYYY-MM-DD"
      nicknameTicket     random claim ticket for the nickname (never the lookup ID)
+     scores             {examId: points} logged with Edit scores (private)
+     busyWeeks          Mondays ("YYYY-MM-DD") of weeks a busy week pass was used
+     breakGoal          optional goal for breaks after the semester ({type, value} or null)
+     knownCounts        {topicKey: questions} seen last time, for "12 new questions" labels
+     activity           {deviceId: {date: answers}}: each device counts its own answers (goals, streaks)
      settingsAt         when any of the settings above last changed (for merging devices)
      sync               {lookup, key, version, dirty, seq, claimedOn}: this device's sync state
 
@@ -100,7 +105,8 @@
   var PBKDF2_ITERATIONS = 600000;
   var LOOKUP_SALT = "pinkprint-lookup-v1", KEY_SALT = "pinkprint-key-v1";
   /* Settings that travel between devices (everything else in the saved state stays on the device) */
-  var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn"];
+  var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn",
+                "scores", "busyWeeks", "breakGoal", "knownCounts"];
 
   function subtle(){ return cryptoObj().subtle; }
   function utf8(s){ return new TextEncoder().encode(s); }
@@ -172,6 +178,17 @@
     out.settingsAt = state.settingsAt || 0;
     return out;
   }
+  /* Each device's daily answer counts only ever grow, so the larger number wins */
+  function mergeActivity(a, b){
+    var out = {};
+    [a || {}, b || {}].forEach(function(act){
+      Object.keys(act).forEach(function(dev){
+        out[dev] = out[dev] || {};
+        Object.keys(act[dev] || {}).forEach(function(d){ out[dev][d] = Math.max(out[dev][d] || 0, act[dev][d]); });
+      });
+    });
+    return out;
+  }
   function mergeSettings(local, remote){
     return (remote && (remote.settingsAt || 0) > (local.settingsAt || 0)) ? remote : local;
   }
@@ -181,7 +198,7 @@
     generateCode: generateCode, normalizeCode: normalizeCode, parseCode: parseCode, maskCode: maskCode,
     pickNickname: pickNickname, goalLabel: goalLabel, normalizePhrase: normalizePhrase,
     deriveKeys: deriveKeys, encryptJSON: encryptJSON, decryptJSON: decryptJSON,
-    mergeProgress: mergeProgress, mergeSettings: mergeSettings, pickSettings: pickSettings,
+    mergeProgress: mergeProgress, mergeSettings: mergeSettings, pickSettings: pickSettings, mergeActivity: mergeActivity,
     PBKDF2_ITERATIONS: PBKDF2_ITERATIONS
   };
 
@@ -261,6 +278,20 @@
   api.deleteAll = function(){
     ALL_KEYS.forEach(lsRemove);
     try { sessionStorage.removeItem(CARRY_KEY); } catch (e) {}
+  };
+
+  /* Counts one answer for today on this device (weekly goal and streaks) */
+  api.logAnswer = function(date){
+    var s = api.state();
+    if (!s) return;
+    s.sync = s.sync || {};
+    if (!s.sync.device) s.sync.device = randomHex(8);
+    var act = s.activity || {}, mine = act[s.sync.device] || {};
+    mine[date] = (mine[date] || 0) + 1;
+    act[s.sync.device] = mine;
+    s.activity = act;
+    lsSet(KEY, JSON.stringify(s));
+    api.changed();
   };
 
   /* Counts quiz sessions that reached the results page; returns the new count */
@@ -391,6 +422,7 @@
     var s = api.state();
     var merged = mergeSettings(pickSettings(s), remote.settings || {});
     Object.keys(merged).forEach(function(k){ s[k] = merged[k]; });
+    s.activity = mergeActivity(s.activity, remote.activity);
     lsSet(KEY, JSON.stringify(s));
     lsSet(PROGRESS_KEY, JSON.stringify(mergeProgress(loadLocalProgress(), remote.progress || {})));
     document.dispatchEvent(new CustomEvent("pinkprint-synced"));
@@ -441,7 +473,7 @@
     var s = api.state();
     if (!s || !s.sync || !s.sync.dirty) return Promise.resolve();
     var seq = s.sync.seq;
-    var payload = {v: 1, settings: pickSettings(s), progress: loadLocalProgress()};
+    var payload = {v: 1, settings: pickSettings(s), progress: loadLocalProgress(), activity: s.activity || {}};
     return encryptJSON(k.key, payload).then(function(data){
       return call("vault/save", {lookup: k.lookup, data: data, version: version});
     }).then(function(rows){
@@ -535,6 +567,7 @@
             var s = {code: code, sync: {lookup: k.lookup, key: k.key, version: row.version, dirty: false, seq: 0}};
             var settings = remote.settings || {};
             Object.keys(settings).forEach(function(key){ s[key] = settings[key]; });
+            s.activity = mergeActivity(sameCode ? cur.activity : {}, remote.activity);
             if (!s.features){ s.features = {}; FEATURES.forEach(function(f){ s.features[f] = true; }); }
             lsSet(KEY, JSON.stringify(s));
             lsSet(PROGRESS_KEY, JSON.stringify(mergeProgress(keep, remote.progress || {})));
@@ -571,6 +604,27 @@
       } else if (Date.now() - lastPull > 30000) kick();
     });
   }
+
+  /* ---------- Celebrations ----------
+     A short burst of pink squares for newly mastered questions, exam ready and streaks.
+     Off when the Celebration animations switch is off or the device asks for reduced motion. */
+  api.celebrate = function(){
+    if (!api.feature("celebrations")) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var box = document.createElement("div");
+    box.className = "pp-confetti";
+    box.setAttribute("aria-hidden", "true");
+    for (var i = 0; i < 28; i++){
+      var p = document.createElement("span");
+      p.style.left = (Math.random() * 100) + "%";
+      p.style.animationDelay = (Math.random() * 0.4) + "s";
+      p.style.setProperty("--drift", ((Math.random() - 0.5) * 160) + "px");
+      p.className = "c" + (i % 3);
+      box.appendChild(p);
+    }
+    document.body.appendChild(box);
+    setTimeout(function(){ box.remove(); }, 2200);
+  };
 
   /* ---------- Owner nickname ----------
      Opening any page with #owner=<phrase> on a tracked device sets "Miss Pinkprint" when the

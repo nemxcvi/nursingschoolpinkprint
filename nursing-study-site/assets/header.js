@@ -77,7 +77,12 @@
       return "<a class='nav-row nav-locked' href='" + ROOT + "start-tracking.html?from=menu' data-cur='mystudy'>" +
         "<span class='nav-name'>My study</span><span class='nav-lock'>" + LOCK + "Locked</span></a>";
     }
-    return section("mystudy", "My study", row(ROOT + "settings.html", "<span class='nav-name'>Settings</span>", "mystudy:settings", "nav-sub"));
+    var items = [["dashboard.html", "Dashboard"], ["progress.html", "Progress"], ["journal.html", "Journal"]];
+    if (Tracking.feature("challenges")) items.push(["challenges.html", "Challenges"]);
+    items.push(["settings.html", "Settings"]);
+    return section("mystudy", "My study", items.map(function(i){
+      return row(ROOT + i[0], "<span class='nav-name'>" + i[1] + "</span>", "mystudy:" + i[0], "nav-sub");
+    }).join(""));
   }
 
   /* Nickname button (tracking on): opens Settings. Not on the home page. */

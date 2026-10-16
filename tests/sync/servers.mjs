@@ -7,12 +7,14 @@
 
    How to run (see e2e-sync.js): a local Postgres 16 on 127.0.0.1:54329 with a database "pp"
    set up like Supabase (roles anon/authenticated, schema extensions) and supabase/setup.sql
-   applied; the "pg" package installed somewhere on NODE_PATH; Playwright for the browser test. */
+   applied; the "pg" package installed in a folder you pass as PG_MODULES (e.g. PG_MODULES=/tmp/pg node servers.mjs); Playwright for the browser test. */
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
-import pg from "pg";
+import {createRequire} from "node:module";
+/* "pg" from wherever it is installed: PG_MODULES=<folder containing node_modules> */
+const pg = createRequire(process.env.PG_MODULES ? path.join(process.env.PG_MODULES, "x.js") : import.meta.url)("pg");
 
 const SITE = new URL("../../nursing-study-site/", import.meta.url).pathname.replace(/\/$/, "");
 const KEY = "sb_publishable_localtest";

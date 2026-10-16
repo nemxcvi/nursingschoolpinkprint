@@ -18,15 +18,12 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=55">
+<link rel="stylesheet" href="assets/style.css?v=56">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div class="tp-wrap">
-  <header class="tp-header">
-    <a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a>
-    <a class="tp-nickbtn is-current" id="se-nickbtn" href="settings.html" aria-current="page"></a>
-  </header>
+  <header id="ms-header"></header>
 
   <section class="tp-intro tp-intro-tight">
     <div class="tp-eyebrow">Saved on your linked devices</div>
@@ -88,6 +85,17 @@
       <span class="tp-big tp-big-22" id="se-goal"></span>
     </div>
     <button type="button" class="tp-btn" id="se-goalchange">Change goal</button>
+    <div class="tp-breakgoal">
+      <label for="se-breakgoal" class="tp-hint">During breaks after the semester (winter break and later), for ATI or NCLEX review:</label>
+      <select id="se-breakgoal" class="tp-select">
+        <option value="">No break goal (streak pauses)</option>
+        <option value="questions:25">25 questions per week</option>
+        <option value="questions:50">50 questions per week</option>
+        <option value="questions:100">100 questions per week</option>
+        <option value="days:2">2 study days per week</option>
+        <option value="days:3">3 study days per week</option>
+      </select>
+    </div>
     <div class="tp-editor hidden" id="se-goaledit">
       <div id="se-goalpicker" class="tp-goal"></div>
       <div class="tp-actions">
@@ -113,9 +121,12 @@
   </section>
 </div>
 <script src="assets/vendor/qrcode.js?v=1"></script>
-<script src="js/tracking.js?v=3"></script>
-<script src="js/progress.js?v=5"></script>
+<script src="js/tracking.js?v=4"></script>
+<script src="js/progress.js?v=6"></script>
 <script src="js/tracking-ui.js?v=1"></script>
+<script src="assets/site-data.js?v=10"></script>
+<script src="js/study.js?v=1"></script>
+<script src="js/my-study.js?v=1"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -136,9 +147,7 @@
   function render(){
     var s = st();
     $("se-nick").textContent = s.nickname;
-    $("se-nickbtn").innerHTML = "<span></span>" + SLIDERS;
-    $("se-nickbtn").firstChild.textContent = s.nickname;
-    $("se-nickbtn").setAttribute("aria-label", "Settings for " + s.nickname);
+    MyStudy.header("settings");
     $("se-code").textContent = codeShown ? s.code : Tracking.maskCode(s.code);
     $("se-show").textContent = codeShown ? "Hide code" : "Show code";
     $("se-goal").textContent = Tracking.goalLabel(s.goal);
@@ -222,6 +231,14 @@
   function closeGoal(){ $("se-goaledit").classList.add("hidden"); $("se-goalchange").classList.remove("hidden"); }
   $("se-goalcancel").addEventListener("click", closeGoal);
   $("se-goalsave").addEventListener("click", function(){ if (pending) Tracking.update({goal: pending}); closeGoal(); render(); });
+
+  /* Break goal (Thanksgiving is already a bonus week, so this is for winter break and later) */
+  var bg = st().breakGoal;
+  $("se-breakgoal").value = bg ? bg.type + ":" + bg.value : "";
+  $("se-breakgoal").addEventListener("change", function(e){
+    var v = e.target.value.split(":");
+    Tracking.update({breakGoal: v[0] ? {type: v[0], value: +v[1]} : null});
+  });
 
   /* Study features */
   FEATURES.forEach(function(f){
