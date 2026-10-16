@@ -76,7 +76,9 @@ function page(opts = {}){
     console: {log(){}, warn(){}, error: console.error},
     setTimeout: (f, ms) => setTimeout(f, ms).unref(), clearTimeout,
     crypto: globalThis.crypto || require("crypto").webcrypto,
-    CustomEvent: class {}, fetch: () => Promise.reject(new Error("offline"))
+    CustomEvent: class {}, fetch: () => Promise.reject(new Error("offline")),
+    alert: msg => { ctx.alerts.push(msg); }, alerts: [],
+    addEventListener: (type, fn) => { if (type === "hashchange") ctx.onHash = fn; }
   };
   ctx.window = ctx; ctx.globalThis = ctx;
   vm.createContext(ctx);
@@ -172,9 +174,19 @@ test("owner phrase: lowercased, trimmed and extra spaces collapsed before checki
   assert.ok(wrong.ctx.cleared, "even a wrong phrase is cleared from the address bar");
 
   const guest = page({hash: "#owner=velvet otter caramel lantern", ownerHash});
-  await wait();
+  await until(() => guest.ctx.alerts.length);
   assert.equal(guest.local.size, 0, "guests: nothing saved");
   assert.ok(guest.ctx.cleared);
+  assert.match(guest.ctx.alerts[0] || "", /isn't tracking yet/, "a guest with the right phrase is told to start tracking first");
+  assert.equal(wrong.ctx.alerts.length, 0, "a wrong phrase gets no message");
+
+  /* Typed onto a page that's already open: no reload, just a hash change */
+  const open = page({local: tracked, ownerHash});
+  open.ctx.location.hash = "#owner=velvet otter caramel lantern";
+  open.ctx.onHash();
+  await until(() => open.T.state().nickname === "Miss Pinkprint");
+  assert.equal(open.T.state().nickname, "Miss Pinkprint", "works without a reload");
+  assert.equal(open.T.state().ownerProof, "velvet otter caramel lantern", "phrase kept for challenges");
 });
 
 /* ---------- Sync (phase 4): keys, encryption, merging ---------- */

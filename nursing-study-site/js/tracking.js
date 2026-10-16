@@ -699,22 +699,27 @@
       return Array.prototype.map.call(new Uint8Array(buf), function(b){ return b.toString(16).padStart(2, "0"); }).join("");
     });
   };
-  if (/^#owner=/.test(location.hash)){
+  function ownerFromHash(){
+    if (!/^#owner=/.test(location.hash)) return;
     var phrase = location.hash.slice(7);
     try { phrase = decodeURIComponent(phrase.replace(/\+/g, " ")); } catch (e) {}
     history.replaceState(null, "", location.pathname + location.search);
-    if (OWNER_HASH && api.isOn()){
-      api.ownerHash(phrase).then(function(h){
-        if (h === OWNER_HASH){
-          var old = api.state().nickname;
-          /* Kept (encrypted when synced) so challenges can check the name is really the owner's */
-          api.update({nickname: OWNER_NAME, nicknameTaken: false, ownerProof: normalizePhrase(phrase)});
-          releaseNickname(old);
-          document.dispatchEvent(new CustomEvent("pinkprint-nickname"));
-        }
-      });
-    }
+    if (!OWNER_HASH) return;
+    api.ownerHash(phrase).then(function(h){
+      if (h !== OWNER_HASH) return;
+      /* Only says anything when the phrase is right */
+      if (!api.isOn()){ alert("That's the owner phrase, but this device isn't tracking yet. Start tracking (or link this device with your code), then open the link again."); return; }
+      var old = api.state().nickname;
+      /* Kept (encrypted when synced) so challenges can check the name is really the owner's */
+      api.update({nickname: OWNER_NAME, nicknameTaken: false, ownerProof: normalizePhrase(phrase)});
+      if (old !== OWNER_NAME) releaseNickname(old);
+      document.dispatchEvent(new CustomEvent("pinkprint-nickname"));
+      alert("You're Miss Pinkprint on this device. It syncs to your other devices.");
+    });
   }
+  /* On page load, and when #owner= is typed onto a page that's already open */
+  ownerFromHash();
+  window.addEventListener("hashchange", ownerFromHash);
 
   window.Tracking = api;
 })();
