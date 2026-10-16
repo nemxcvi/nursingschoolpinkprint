@@ -662,7 +662,7 @@
   /* ---------- Challenges (phase 6) ----------
      Each challenge this person made or joined is saved with its own random ticket, which is the
      only way to submit a score, see scores or delete it. */
-  /* Keep my goal during holiday breaks (older saves with a break goal count as on) */
+  /* Weekly goals during semester or holiday breaks (older saves with a break goal count as on) */
   api.goalOnBreaks = function(){
     var s = api.state();
     if (!s) return false;

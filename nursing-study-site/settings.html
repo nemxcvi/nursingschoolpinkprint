@@ -91,8 +91,8 @@
     </div>
     <div class="tp-feature tp-breakgoal">
       <div class="tp-feature-text">
-        <span class="tp-feature-name" id="se-breaklabel">Keep my goal during holiday breaks</span>
-        <span class="tp-hint">Off: break weeks don't count, so your streak just waits for classes to start again. On: hitting your goal during a break grows your streak, and missing it only pauses it.</span>
+        <span class="tp-feature-name" id="se-breaklabel">Weekly goals during semester or holiday breaks</span>
+        <span class="tp-hint">Off by default. You can choose to turn it on so hitting your goal during a break grows your streak, and missing it only pauses it.</span>
       </div>
       <button type="button" class="tp-switch" id="se-breakswitch" role="switch" aria-labelledby="se-breaklabel"><span></span></button>
     </div>
@@ -224,7 +224,7 @@
     });
   });
 
-  /* Keep my goal during holiday breaks */
+  /* Weekly goals during semester or holiday breaks */
   function syncBreak(){
     var on = Tracking.goalOnBreaks();
     $("se-breakswitch").setAttribute("aria-checked", on ? "true" : "false");
