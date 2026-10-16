@@ -154,7 +154,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
 
   // ---- Semester recap and break week ----
   await go("dashboard.html", "2026-12-15");
-  check(/Semester recap/.test(await text(".ms-main")) && /Holiday break: this week doesn.t count/.test(await text(".ms-week")), "after Dec 10: recap, and the holiday break week is skipped");
+  check(/Semester recap/.test(await text(".ms-main")) && /Holiday break: hitting your goal grows your streak; missing it only pauses it/.test(await text(".ms-week")), "after Dec 10: recap, and the weekly goal still counts during the break (on by default)");
   await shot("dashboard-recap");
 
   // ---- Settings switches hide features ----

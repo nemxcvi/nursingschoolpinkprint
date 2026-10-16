@@ -14,9 +14,8 @@
      nicknameTicket     random claim ticket for the nickname (never the lookup ID)
      scores             {examId: points} logged with Edit scores (private)
      busyWeeks          Mondays ("YYYY-MM-DD") of weeks a busy week pass was used
-     goalOnBreaks       true = the weekly goal still counts during holiday breaks (hit grows the
-                        streak, miss pauses); off/missing = break weeks are skipped. (Older saves may
-                        have breakGoal {type, value} instead, which counts as on.)
+     goalOnBreaks       the weekly goal still counts during holiday breaks (hit grows the streak, miss
+                        only pauses). On unless set to false; false = break weeks are skipped.
      knownCounts        {topicKey: questions} seen last time, for "12 new questions" labels
      activity           {deviceId: {date: answers}}: each device counts its own answers (goals, streaks)
      settingsAt         when any of the settings above last changed (for merging devices)
@@ -662,11 +661,11 @@
   /* ---------- Challenges (phase 6) ----------
      Each challenge this person made or joined is saved with its own random ticket, which is the
      only way to submit a score, see scores or delete it. */
-  /* Weekly goals during semester or holiday breaks (older saves with a break goal count as on) */
+  /* Weekly goals during semester or holiday breaks: on unless they turned it off */
   api.goalOnBreaks = function(){
     var s = api.state();
     if (!s) return false;
-    return typeof s.goalOnBreaks === "boolean" ? s.goalOnBreaks : !!s.breakGoal;
+    return typeof s.goalOnBreaks === "boolean" ? s.goalOnBreaks : true;
   };
 
   api.challenges = function(){

@@ -185,7 +185,7 @@ var MyStudy = (function(){
     var body;
     if (!w){
       var q = S.weekProgress(totals, {type: "questions", value: 1}, thisWeek).questions;
-      body = '<div class="ms-weeknum"><span class="ms-bignum">' + q + '</span><span class="ms-sub">' + (q === 1 ? "question" : "questions") + ' this week</span></div><p class="tp-hint">Holiday break: this week doesn\'t count toward your streak. To keep your goal going during breaks, turn it on in Settings.</p>';
+      body = '<div class="ms-weeknum"><span class="ms-bignum">' + q + '</span><span class="ms-sub">' + (q === 1 ? "question" : "questions") + ' this week</span></div><p class="tp-hint">Holiday break: your streak is paused this week. You turned off weekly goals during breaks in Settings.</p>';
     } else {
       var unit = goal.type === "days" ? (w.target === 1 ? "study day" : "study days") : "questions";
       body = '<div class="ms-weeknum"><span class="ms-bignum">' + w.done + '</span><span class="ms-sub">of ' + w.target + " " + unit + "</span></div>" +
