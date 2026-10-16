@@ -868,7 +868,8 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-empty-box{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:18px 20px;margin-bottom:18px;border:1.5px dashed var(--border);}
 .ms-empty-box.hidden{display:none;}
 .ms-empty-box .btn{flex:0 0 auto;padding:0 18px;text-decoration:none;}
-.tp-breakgoal{flex:1 1 100%;display:flex;flex-direction:column;gap:8px;}
+.tp-breakgoal{flex:1 1 100%;display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:1.5px dashed var(--soft);}
+.tp-breakgoal .tp-select{flex:none;max-width:360px;}
 /* Tracker homepage: countdown strip and unit mastery bars */
 .pp-strip{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;margin:0 0 28px;text-decoration:none;color:var(--text);}
 .pp-strip-main{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:8px;}

@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=74">
+<link rel="stylesheet" href="assets/style.css?v=75">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -83,25 +83,27 @@
     <div class="tp-stack">
       <span class="tp-label">Weekly goal</span>
       <span class="tp-big tp-big-22" id="se-goal"></span>
+      <span class="tp-hint">Reach it each week to grow your streak on My dashboard.</span>
     </div>
     <button type="button" class="tp-btn" id="se-goalchange">Change goal</button>
-    <div class="tp-breakgoal">
-      <label for="se-breakgoal" class="tp-hint">During breaks after the semester (winter break and later), for ATI or NCLEX review:</label>
-      <select id="se-breakgoal" class="tp-select">
-        <option value="">No break goal (streak pauses)</option>
-        <option value="questions:25">25 questions per week</option>
-        <option value="questions:50">50 questions per week</option>
-        <option value="questions:100">100 questions per week</option>
-        <option value="days:2">2 study days per week</option>
-        <option value="days:3">3 study days per week</option>
-      </select>
-    </div>
     <div class="tp-editor hidden" id="se-goaledit">
       <div id="se-goalpicker" class="tp-goal"></div>
       <div class="tp-actions">
         <button type="button" class="tp-btn" id="se-goalcancel">Cancel</button>
         <button type="button" class="tp-btn tp-btn-primary" id="se-goalsave">Save goal</button>
       </div>
+    </div>
+    <div class="tp-breakgoal">
+      <label for="se-breakgoal" class="tp-label">Break goal</label>
+      <span class="tp-hint">For winter break and after the semester ends. Pick a lighter goal to keep your streak growing while you review for ATI or NCLEX, or leave it off and your streak just pauses until classes start. Thanksgiving week never breaks a streak.</span>
+      <select id="se-breakgoal" class="tp-select">
+        <option value="">Off: streak pauses during breaks</option>
+        <option value="questions:25">25 questions per week</option>
+        <option value="questions:50">50 questions per week</option>
+        <option value="questions:100">100 questions per week</option>
+        <option value="days:2">2 study days per week</option>
+        <option value="days:3">3 study days per week</option>
+      </select>
     </div>
   </section>
 
