@@ -14,8 +14,9 @@
      nicknameTicket     random claim ticket for the nickname (never the lookup ID)
      scores             {examId: points} logged with Edit scores (private)
      busyWeeks          Mondays ("YYYY-MM-DD") of weeks a busy week pass was used
-     goalOnBreaks       the weekly goal still counts during holiday breaks (hit grows the streak, miss
-                        only pauses). On unless set to false; false = break weeks are skipped.
+     breaksOff          true = holiday break weeks are skipped. Missing/false = the weekly goal still
+                        counts during breaks (hit grows the streak, miss only pauses): on by default.
+                        (Replaces the old break goal menu; any saved breakGoal is ignored.)
      knownCounts        {topicKey: questions} seen last time, for "12 new questions" labels
      activity           {deviceId: {date: answers}}: each device counts its own answers (goals, streaks)
      settingsAt         when any of the settings above last changed (for merging devices)
@@ -107,7 +108,7 @@
   var LOOKUP_SALT = "pinkprint-lookup-v1", KEY_SALT = "pinkprint-key-v1";
   /* Settings that travel between devices (everything else in the saved state stays on the device) */
   var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn",
-                "scores", "busyWeeks", "breakGoal", "goalOnBreaks", "knownCounts", "challenges", "ownerProof"];
+                "scores", "busyWeeks", "breaksOff", "knownCounts", "challenges", "ownerProof"];
 
   function subtle(){ return cryptoObj().subtle; }
   function utf8(s){ return new TextEncoder().encode(s); }
@@ -665,7 +666,7 @@
   api.goalOnBreaks = function(){
     var s = api.state();
     if (!s) return false;
-    return typeof s.goalOnBreaks === "boolean" ? s.goalOnBreaks : true;
+    return s.breaksOff !== true;
   };
 
   api.challenges = function(){
