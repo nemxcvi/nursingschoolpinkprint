@@ -904,7 +904,8 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 
 /* ---------- Challenges (phase 6; design/source Challenges) ---------- */
 .ch-layout{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;}
-.ch-new{flex:1 1 340px;}
+.ch-col{flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:10px;}
+.ch-col .ch-joinform{margin-top:6px;}
 .ch-list{flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:16px;}
 .ms-card .ch-h2{font-size:22px;}
 .ch-field{display:flex;flex-direction:column;gap:6px;border:0;margin:0;padding:0;min-width:0;}
@@ -955,9 +956,10 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ch-banner{margin-bottom:-8px;}
 .pq-challenge-link{display:block;margin-top:14px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);}
 .ss-challenge{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0 0 20px;padding:18px;border:1.5px dashed var(--border);text-align:center;}
-.ch-side{flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:16px;}
+.ch-side{flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:10px;}
 .ch-side .ch-list{flex:none;}
-.ch-joinform{padding:20px 28px;gap:10px;}
+.ch-listhead{margin:0;}
+.ch-joinform .ch-link{background:var(--card);}
 .ch-codein{text-transform:uppercase;letter-spacing:.12em;}
 .ch-codein::placeholder{letter-spacing:.12em;color:var(--text2);opacity:.6;}
 .ch-coderow{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}

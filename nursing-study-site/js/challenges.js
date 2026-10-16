@@ -23,9 +23,10 @@ var Challenges = (function(){
   }
   var BAD_CODE = "That doesn't look like a challenge code. It's 4 letters and numbers, like 7KQ2.";
   function joinFormHtml(){
-    return '<form class="ms-card ch-joinform" novalidate><label for="ch-code" class="ch-eyebrow">Join with a code</label>' +
+    return '<form class="ms-card ch-joinform" novalidate><h2 class="ms-h2 ch-h2">Join a challenge</h2>' +
+      '<div class="ch-field"><label for="ch-code">Code from a friend</label>' +
       '<div class="ch-linkrow"><input id="ch-code" class="ch-link ch-codein" placeholder="7KQ2" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="80">' +
-      '<button type="submit" class="ch-copy">Join</button></div><p class="tp-note ch-joinmsg hidden" role="alert"></p></form>';
+      '<button type="submit" class="ch-copy">Join</button></div></div><p class="tp-note ch-joinmsg hidden" role="alert"></p></form>';
   }
   function shuffle(a){
     a = a.slice();
@@ -303,7 +304,8 @@ var Challenges = (function(){
       pick.topic = "";
     }
     host.innerHTML = intro() + '<div class="tp-note ch-banner hidden" role="status"></div>' +
-      '<section class="ch-layout">' + formHtml(d, pick) + '<div class="ch-side">' + joinFormHtml() + '<div class="ch-list"></div></div></section>';
+      '<section class="ch-layout"><div class="ch-col"><h2 class="ch-eyebrow ch-listhead">Start or join</h2>' + formHtml(d, pick) + joinFormHtml() + "</div>" +
+      '<div class="ch-side"><h2 class="ch-eyebrow ch-listhead">Your challenges</h2><div class="ch-list"></div></div></section>';
     listEl = host.querySelector(".ch-list");
     wireForm(d, host, pick, function(entry){ addCard(entry, true); });
     T.challenges().forEach(function(entry){ addCard(entry, false); });
