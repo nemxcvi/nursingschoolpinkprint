@@ -7,7 +7,7 @@
    be bypassed. Each route checks its input and calls one database function. */
 
 const HEX64 = /^[0-9a-f]{64}$/;
-const SHORT_ID = /^[2-9A-HJ-NP-Za-hj-np-z]{8}$/;   /* challenge IDs (no 0/O, 1/I/L) */
+const SHORT_ID = /^(?:[2-9A-HJ-NP-Za-hj-np-z]{4}|[2-9A-HJ-NP-Za-hj-np-z]{8})$/;   /* challenge codes: 4 characters (8 for early ones), no 0/O, 1/I/L */
 const MAX_BODY = 1600000;
 
 function hex64(v) {

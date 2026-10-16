@@ -58,10 +58,10 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pa.click(".ch-create");
   await pa.waitForSelector(".ch-ready:not(.hidden)");
   const url = await pa.$eval(".ch-link", i => i.value);
-  const id = (url.match(/\/c\/([2-9A-HJ-NP-Z]{8})$/) || [])[1];
-  check(!!id, "link ready with an 8-character ID", url);
+  const id = (url.match(/\/c\/([2-9A-HJ-NP-Z]{4})$/) || [])[1];
+  check(!!id, "link ready with a 4-character code", url);
   check(/Ready · Safety · 10 questions/.test(await text(pa, ".ch-ready-label")), "ready label", await text(pa, ".ch-ready-label"));
-  check(await text(pa, ".ch-bigcode") === id.slice(0, 4) + " " + id.slice(4), "short code shown in big letters", await text(pa, ".ch-bigcode"));
+  check(await text(pa, ".ch-bigcode") === id, "short code shown in big letters", await text(pa, ".ch-bigcode"));
   let rows = await q("select id, title, creator_name, questions, creator_hash from public.challenges");
   check(rows.length === 1 && rows[0].id === id && rows[0].creator_name === nickA && rows[0].title === "Safety", "saved: title and sender's nickname", JSON.stringify(rows.map(r => [r.id, r.title, r.creator_name])));
   check(rows[0].questions.length === 10 && rows[0].questions.every(x => /^nur114-u3-safety-\d{3}$/.test(x)) && new Set(rows[0].questions).size === 10, "10 different Safety questions drawn before anyone takes it");
@@ -164,12 +164,12 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   const pc = await C.newPage();
   await pc.goto(BASE + "challenges.html");
   await pc.waitForSelector(".ch-guest .ch-start");
-  await pc.fill("#ch-code", " " + (id.slice(0, 4) + "-" + id.slice(4)).toLowerCase() + " ");
+  await pc.fill("#ch-code", " " + (id.slice(0, 2) + " " + id.slice(2)).toLowerCase() + " ");
   await pc.click(".ch-joinform button");
   await startTracking(pc);
   await pc.waitForURL(/challenges\.html/);
   await pc.waitForSelector(`#c-${id} .ch-head`);
-  check(new RegExp("From " + nickA).test(await text(pc, `#c-${id}`)), "guest typed the code (any case, with a dash), started tracking and got the challenge");
+  check(new RegExp("From " + nickA).test(await text(pc, `#c-${id}`)), "guest typed the code (lowercase, with a space), started tracking and got the challenge");
   const pc2 = await (await device("C2")).newPage();
   await pc2.goto(BASE + "start-tracking.html?from=home");
   await startTracking(pc2);
@@ -180,7 +180,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pc2.click(".ch-joinform button");
   await pc2.waitForSelector(`#c-${id} .ch-head`);
   check(await pc2.$eval(`#c-${id}`, e => e.classList.contains("is-new")) && /Take challenge/.test(await text(pc2, `#c-${id}`)), "tracked student pasted the whole link into the code box");
-  check(await text(pc2, `#c-${id} .ch-cardcode`) === id.slice(0, 4) + " " + id.slice(4), "each card shows its code");
+  check(await text(pc2, `#c-${id} .ch-cardcode`) === id, "each card shows its code");
   await pc2.screenshot({path: OUT + "/ch-joined-by-code.png", fullPage: true});
 
   // ---- A guest answering a quiz adds to the tally too, and nothing else is saved ----

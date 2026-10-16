@@ -84,7 +84,7 @@ begin
   exception when raise_exception then if sqlerrm <> 'not your nickname' then raise; end if; end;
   cid := public.create_challenge('Safety', qs, creator, 'Quiz Queen', creator);
   assert public.load_challenge(cid)->>'from' = 'Quiz Queen', 'shows who sent it';
-  assert cid ~ '^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{8}$', 'random 8-character ID: ' || cid;
+  assert cid ~ '^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{4}$', 'random 4-character code: ' || cid;
   begin perform public.create_challenge('x', qs - 0, creator, 'Quiz Queen', creator); raise exception 'odd count accepted';
   exception when raise_exception then if sqlerrm <> 'bad question count' then raise; end if; end;
   begin perform public.create_challenge('x', (qs - 0) || '["nur114-u3-safety-002"]'::jsonb, creator, 'Quiz Queen', creator); raise exception 'repeat question accepted';

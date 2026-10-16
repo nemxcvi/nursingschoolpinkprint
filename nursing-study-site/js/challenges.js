@@ -9,9 +9,10 @@ var Challenges = (function(){
   function esc(s){ return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function day(iso){ return new Date(iso).toLocaleDateString("en-US", {month: "short", day: "numeric"}); }
   function link(id){ return location.origin + "/c/" + id; }
-  /* Challenge codes: 8 letters and numbers with no look-alikes (no 0/O, 1/I/L), shown as "7KQ2 XM4P" */
-  var CODE_RE = /^[2-9A-HJ-NP-Z]{8}$/;
-  function showCode(id){ return id.slice(0, 4) + " " + id.slice(4); }
+  /* Challenge codes: 4 letters and numbers with no look-alikes (no 0/O, 1/I/L), like "7KQ2".
+     The first challenges had 8 (shown as "7KQ2 XM4P"); those still work. */
+  var CODE_RE = /^(?:[2-9A-HJ-NP-Z]{4}|[2-9A-HJ-NP-Z]{8})$/;
+  function showCode(id){ return id.length === 8 ? id.slice(0, 4) + " " + id.slice(4) : id; }
   /* Takes a typed code (any case, spaces or dashes) or a pasted link; returns the code or null */
   function parseCode(s){
     s = String(s || "").trim();
@@ -20,10 +21,10 @@ var Challenges = (function(){
     s = s.replace(/[\s-]/g, "").toUpperCase();
     return CODE_RE.test(s) ? s : null;
   }
-  var BAD_CODE = "That doesn't look like a challenge code. It's 8 letters and numbers, like 7KQ2 XM4P.";
+  var BAD_CODE = "That doesn't look like a challenge code. It's 4 letters and numbers, like 7KQ2.";
   function joinFormHtml(){
     return '<form class="ms-card ch-joinform" novalidate><label for="ch-code" class="ch-eyebrow">Join with a code</label>' +
-      '<div class="ch-linkrow"><input id="ch-code" class="ch-link ch-codein" placeholder="7KQ2 XM4P" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="80">' +
+      '<div class="ch-linkrow"><input id="ch-code" class="ch-link ch-codein" placeholder="7KQ2" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="80">' +
       '<button type="submit" class="ch-copy">Join</button></div><p class="tp-note ch-joinmsg hidden" role="alert"></p></form>';
   }
   function shuffle(a){

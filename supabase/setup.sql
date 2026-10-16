@@ -31,7 +31,8 @@ language sql immutable set search_path = '' as $$
   select coalesce(p ~ '^[0-9a-f]{64}$', false)
 $$;
 
--- Random, hard-to-guess challenge ID: 8 characters, no look-alikes (0/O, 1/I/L)
+-- Random challenge code: 4 characters, no look-alikes (0/O, 1/I/L). Codes in use are never reused
+-- (create_challenge draws again); older challenges may still have 8-character codes.
 create or replace function public.pp_short_id() returns text
 language plpgsql volatile set search_path = '' as $$
 declare
@@ -39,7 +40,7 @@ declare
   s text := '';
   b int;
 begin
-  while length(s) < 8 loop
+  while length(s) < 4 loop
     b := get_byte(extensions.gen_random_bytes(1), 0);
     if b < 248 then                              -- 248 = 8 × 31: no bias toward any letter
       s := s || substr(alphabet, (b % 31) + 1, 1);
