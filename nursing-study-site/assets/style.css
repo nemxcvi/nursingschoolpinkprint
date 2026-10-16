@@ -716,6 +716,9 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-tile-title{font-family:'Young Serif',Georgia,serif;font-size:18px;}
 .ms-tile-sub{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--text2);}
 .ms-current-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+.ms-toplink{flex:0 0 auto;align-self:auto;padding:12px 0;margin:-12px 0;}
+.ms-grade-top .tp-eyebrow{min-width:0;}
+@media(max-width:560px){.ms-wide{display:none;}}
 .ms-unitbar{display:flex;flex-direction:column;gap:8px;}
 .ms-unitbar-top{display:flex;justify-content:space-between;font-size:13px;}
 .ms-bar{display:flex;flex:1 1 auto;height:14px;border:1.5px solid var(--border);background:#FFFFFF;min-width:0;}

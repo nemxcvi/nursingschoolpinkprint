@@ -236,7 +236,9 @@ var MyStudy = (function(){
                   ready: plan.inWindow ? S.examReady(u.questions, d.store, exam).ready : 0};
         }), {first: "Unit"});
     }
-    return '<section class="ms-card ms-current"><div class="ms-current-head"><div class="tp-stack">' + head + '</div><a class="ms-btn" href="progress.html">All units in Progress →</a></div>' + body + "</section>";
+    /* The link sits on the eyebrow line (like Edit scores) so the title keeps the full width */
+    head = head.replace("</span>", '</span><a class="ms-linkbtn ms-toplink" href="progress.html">All units<span class="ms-wide"> in Progress</span></a></div>');
+    return '<section class="ms-card ms-current"><div class="tp-stack"><div class="ms-grade-top">' + head + "</div>" + body + "</section>";
   }
 
   /* Exam average (only on this person's devices) */
