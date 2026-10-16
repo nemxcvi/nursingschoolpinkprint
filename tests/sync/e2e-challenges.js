@@ -288,8 +288,8 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pa.waitForSelector(".ch-new");
   check(true, "turning it back on shows the page");
 
-  // ---- All units ----
-  await pa.selectOption("#ch-unit", "all");
+  // ---- All units (the default when no unit is passed in) ----
+  check(await pa.$eval("#ch-unit", s => s.value) === "all", "New challenge starts on All units");
   check(await pa.$eval("#ch-topic", s => s.disabled && s.textContent.trim() === "All topics"), "All units: no topic to pick");
   await pa.click('.ch-counts button[data-n="40"]');
   await pa.click(".ch-create");

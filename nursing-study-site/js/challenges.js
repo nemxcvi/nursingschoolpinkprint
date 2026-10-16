@@ -427,7 +427,8 @@ var Challenges = (function(){
   function mainPage(d, host, params){
     var exam = Progress.nextExam(d.exams, d.today);
     var withQs = d.units.filter(function(u){ return u.questions.length; });
-    var pick = {unit: +params.get("unit") || 0, topic: params.get("topic") || "", all: params.get("unit") === "all"};
+    /* All units unless a unit was passed in (e.g. Challenge a friend from a topic quiz) */
+    var pick = {unit: +params.get("unit") || 0, topic: params.get("topic") || "", all: !params.get("unit") || params.get("unit") === "all"};
     if (!pick.all && !withQs.some(function(u){ return u.unit === pick.unit; })){
       var cur = exam && withQs.filter(function(u){ return exam.units.indexOf(u.unit) !== -1; })[0];
       pick.unit = (cur || withQs[withQs.length - 1]).unit;

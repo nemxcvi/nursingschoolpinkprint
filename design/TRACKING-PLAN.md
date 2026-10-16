@@ -82,8 +82,9 @@ only, never who missed what.", then:
   questions.", then four numbered steps in one boxed row (two by two on phones): Create, Send
   (expires in 7 days), Study (Group focus shows which units or topics the group should review), Progress (answers
   count toward your own progress).
-- New challenge: **All units** is an option under Unit (questions drawn from every unit that has
-  them; no topic choice). Group focus then labels topics "Unit N · Topic".
+- New challenge: **All units** is an option under Unit and the default (questions drawn from every
+  unit that has them; no topic choice). "Challenge a friend" from a topic quiz still opens with
+  that unit and topic picked. Group focus then labels topics "Unit N · Topic".
 - Join moved into the New challenge box: a small underlined "Join a challenge with a code" under
   Create challenge opens the code box.
 - Scores list in the order people finished (no ranking), each as `8/10` and `80%`.
