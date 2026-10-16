@@ -34,6 +34,7 @@ const FNS = {
   create_challenge: [[["p_title", "text"], ["p_questions", "jsonb"], ["p_creator_ticket", "text"], ["p_nickname", "text"], ["p_proof", "text"]], "scalar"],
   join_challenge: [[["p_id", "text"], ["p_ticket", "text"], ["p_nickname", "text"], ["p_proof", "text"]], "rows"],
   submit_score: [[["p_id", "text"], ["p_ticket", "text"], ["p_score", "int"]], "scalar"],
+  submit_answers: [[["p_id", "text"], ["p_ticket", "text"], ["p_answers", "jsonb"]], "scalar"],
   load_challenge: [[["p_id", "text"], ["p_ticket", "text"]], "scalar"],
   delete_challenge: [[["p_id", "text"], ["p_creator_ticket", "text"]], "scalar"],
   increment_tally: [[["p_answers", "jsonb"]], "scalar"],

@@ -1256,7 +1256,8 @@ function initPracticeQuiz(bank, catLabels, opts){
       buildReviewListSingle(singleResults);
       QuizTally.flush(false);
       /* Challenges save the score here (only the first finish counts) */
-      if (opts && opts.onFinish) opts.onFinish({correct: correctCount, answered: totalAnswered, total: bank.length});
+      if (opts && opts.onFinish) opts.onFinish({correct: correctCount, answered: totalAnswered, total: bank.length,
+        answers: singleResults.map(function(r){ return {q: r.question.id, ok: !!r.correct}; })});
 
       var missedCount = Object.keys(missedMap).length;
       var missedBtn = document.getElementById("end-missed");

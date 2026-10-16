@@ -9,6 +9,9 @@
 --                      never the lookup ID, so a nickname can't be tied to progress.
 --   challenges,        challenge links: question list, expiry, the creator's ticket hash, and
 --   challenge_players  nickname + score per player (with that player's ticket hash).
+--   challenge_answers  right/wrong per question per finished player, only to build the group's
+--                      combined totals (Group focus). Never returned per player; deleted with
+--                      the challenge (7 days after it expires).
 --                      No codes, lookup IDs or device info.
 --   class_tally        (phase 6) per question: times answered and times wrong. Nothing else:
 --                      no code, lookup ID, device or time. Only the owner's stats page reads it.
@@ -89,6 +92,17 @@ create table if not exists public.challenge_players (
   primary key (challenge_id, ticket_hash)
 );
 
+-- Right/wrong per question for each player who finished (Group focus). Only combined counts
+-- ever leave the database. Deleted with the player row, so with the challenge.
+create table if not exists public.challenge_answers (
+  challenge_id text not null,
+  ticket_hash text not null,
+  question_id text not null,
+  correct boolean not null,
+  primary key (challenge_id, ticket_hash, question_id),
+  foreign key (challenge_id, ticket_hash) references public.challenge_players (challenge_id, ticket_hash) on delete cascade
+);
+
 create table if not exists public.class_tally (
   question_id text primary key check (question_id ~ '^nur[0-9]+-u[0-9]+-[a-z0-9-]+-[0-9]{3}$'),
   times_answered integer not null default 0,
@@ -105,10 +119,11 @@ alter table public.vault enable row level security;
 alter table public.nickname_claims enable row level security;
 alter table public.challenges enable row level security;
 alter table public.challenge_players enable row level security;
+alter table public.challenge_answers enable row level security;
 alter table public.class_tally enable row level security;
 alter table public.pp_settings enable row level security;
 revoke all on table public.vault, public.nickname_claims, public.challenges, public.challenge_players,
-  public.class_tally, public.pp_settings from public, anon, authenticated;
+  public.challenge_answers, public.class_tally, public.pp_settings from public, anon, authenticated;
 
 -- ---------- Vault: load and save by lookup ID ----------
 create or replace function public.load_vault(p_lookup text)
@@ -291,8 +306,46 @@ begin
   return found;
 end $$;
 
+-- Saves your score from your answers: [{"q": "<question id>", "ok": true|false}, ...], one per
+-- question in the challenge (unanswered = false). The score is the number right. Replaces any
+-- answers saved before. Only the player holding the ticket can.
+create or replace function public.submit_answers(p_id text, p_ticket text, p_answers jsonb) returns boolean
+language plpgsql security definer set search_path = '' as $$
+declare
+  ch public.challenges%rowtype;
+  h text;
+  n int;
+begin
+  if not public.pp_is_hex64(p_ticket) then raise exception 'bad ticket'; end if;
+  if jsonb_typeof(p_answers) is distinct from 'array' then raise exception 'bad answers'; end if;
+  select * into ch from public.challenges c where c.id = upper(p_id);
+  if not found or ch.expires_at < now() then return false; end if;
+  h := public.pp_hash(p_ticket);
+  if not exists (select 1 from public.challenge_players p where p.challenge_id = ch.id and p.ticket_hash = h) then
+    return false;
+  end if;
+  n := jsonb_array_length(ch.questions);
+  if exists (select 1 from jsonb_array_elements(p_answers) a
+             where jsonb_typeof(a) <> 'object' or jsonb_typeof(a->'ok') is distinct from 'boolean'
+                or not (ch.questions ? coalesce(a->>'q', ''))) then
+    raise exception 'bad answers';
+  end if;
+  if jsonb_array_length(p_answers) <> n or (select count(distinct a->>'q') from jsonb_array_elements(p_answers) a) <> n then
+    raise exception 'bad answers';
+  end if;
+  delete from public.challenge_answers a where a.challenge_id = ch.id and a.ticket_hash = h;
+  insert into public.challenge_answers (challenge_id, ticket_hash, question_id, correct)
+    select ch.id, h, a->>'q', (a->>'ok')::boolean from jsonb_array_elements(p_answers) a;
+  update public.challenge_players p
+    set score = (select count(*) from jsonb_array_elements(p_answers) a where (a->>'ok')::boolean), finished_at = now()
+    where p.challenge_id = ch.id and p.ticket_hash = h;
+  return true;
+end $$;
+
 -- One challenge by its short ID. Everyone sees the title, size, expiry and how many joined.
--- Scores are shown only to players who have finished, and to the creator.
+-- Scores are shown only to players who have finished, and to the creator, in the order people
+-- finished. Group focus (also only for them): once 3 or more players have finished with their
+-- answers saved, how many of those players missed each question. Combined counts only.
 create or replace function public.load_challenge(p_id text, p_ticket text default null) returns jsonb
 language plpgsql security definer set search_path = '' as $$
 declare
@@ -301,6 +354,7 @@ declare
   me public.challenge_players%rowtype;
   is_creator boolean;
   can_see boolean;
+  focus_n int;
 begin
   select * into ch from public.challenges c where c.id = upper(p_id);
   if not found or ch.expires_at < now() then return null; end if;
@@ -308,6 +362,7 @@ begin
   is_creator := h is not null and h = ch.creator_hash;
   select * into me from public.challenge_players p where p.challenge_id = ch.id and p.ticket_hash = h;
   can_see := is_creator or me.finished_at is not null;
+  select count(distinct a.ticket_hash) into focus_n from public.challenge_answers a where a.challenge_id = ch.id;
   return jsonb_build_object(
     'id', ch.id,
     'title', ch.title,
@@ -322,8 +377,13 @@ begin
     'players', case when not can_see then '[]'::jsonb else coalesce((
       select jsonb_agg(jsonb_build_object('nickname', p.nickname, 'score', p.score, 'total', p.total,
                                           'finished', p.finished_at is not null, 'me', p.ticket_hash = h)
-                       order by p.score desc nulls last, p.finished_at, p.joined_at)
-      from public.challenge_players p where p.challenge_id = ch.id), '[]'::jsonb) end
+                       order by p.finished_at nulls last, p.joined_at)
+      from public.challenge_players p where p.challenge_id = ch.id), '[]'::jsonb) end,
+    'focus', case when not can_see or focus_n < 3 then null else jsonb_build_object(
+      'players', focus_n,
+      'missed', (select jsonb_object_agg(q.id, (select count(*) from public.challenge_answers a
+                                                  where a.challenge_id = ch.id and a.question_id = q.id and not a.correct))
+                 from jsonb_array_elements_text(ch.questions) q(id))) end
   );
 end $$;
 
@@ -409,6 +469,6 @@ grant execute on function
   public.load_vault(text), public.save_vault(text, text, integer), public.delete_vault(text),
   public.taken_nicknames(), public.claim_nickname(text, text), public.release_nickname(text, text),
   public.create_challenge(text, jsonb, text, text, text), public.join_challenge(text, text, text, text),
-  public.submit_score(text, text, integer), public.load_challenge(text, text),
+  public.submit_score(text, text, integer), public.submit_answers(text, text, jsonb), public.load_challenge(text, text),
   public.delete_challenge(text, text), public.increment_tally(jsonb), public.class_stats(text), public.ping()
   to anon;

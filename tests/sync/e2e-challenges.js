@@ -146,14 +146,15 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pb.waitForSelector(`#c-${id} .ch-scores`);
   const rowsText = (pg, sel) => pg.$$eval(sel + " li", ls => ls.map(l => Array.from(l.children).map(c => c.textContent.trim()).join(" ")).join(" | "));
   const board = await rowsText(pb, `#c-${id} .ch-scores`);
-  check(new RegExp("1 " + nickB + " \\(you\\) " + score + "/10").test(board), "B sees the scoreboard after finishing", board);
+  check(new RegExp(nickB + " \\(you\\) " + score + "/10 " + score * 10 + "%").test(board), "B sees the scoreboard after finishing (score and percent)", board);
+  check(await pb.$(`.ch-done #c-${id}`) !== null, "B's finished challenge moves under Finished");
   check(!(await pb.isVisible(`#c-${id} .ch-take`)), "no Take challenge button once finished");
 
   // ---- A sees B's score and that they joined ----
   await pa.goto(BASE + "challenges.html");
   await pa.waitForSelector(`#c-${id} .ch-scores`);
   const cardA2 = await text(pa, `#c-${id}`), boardA = await rowsText(pa, `#c-${id} .ch-scores`);
-  check(/1 of 10 joined/.test(cardA2) && boardA === "1 " + nickB + " " + score + "/10" && /Take challenge/.test(cardA2), "A sees B's score and can still take it", boardA);
+  check(/1 of 10 joined/.test(cardA2) && boardA === nickB + " " + score + "/10 " + score * 10 + "%" && /Take challenge/.test(cardA2), "A sees B's score and can still take it", boardA);
   await pa.screenshot({path: OUT + "/ch-scores.png", fullPage: true});
 
   // ---- Joining with a short code ----
@@ -183,6 +184,54 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(await text(pc2, `#c-${id} .ch-cardcode`) === id, "each card shows its code");
   await pc2.screenshot({path: OUT + "/ch-joined-by-code.png", fullPage: true});
 
+  // ---- Group focus: once 3 people finish with their answers saved ----
+  const takeAndEnd = async pg => {
+    await pg.click(`#c-${id} .ch-take`);
+    await pg.waitForSelector("#pq-quiz-screen:not(.hidden)");
+    await pg.keyboard.press("a");
+    await pg.click("#pq-check-sure");
+    await pg.click("#pq-end-test");
+    await pg.waitForFunction(() => /Challenge score saved/.test((document.getElementById("ss-challenge") || {}).textContent || ""));
+  };
+  await pc2.goto(BASE + "challenges.html");
+  await pc2.waitForSelector(`#c-${id} .ch-take`);
+  await takeAndEnd(pc2);
+  await pc2.goto(BASE + "challenges.html");
+  await pc2.waitForSelector(`#c-${id} .ch-scores`);
+  check(!(await pc2.$(`#c-${id} .ch-focus`)), "no Group focus with 2 finished");
+  await pa.goto(BASE + "challenges.html");
+  await pa.waitForSelector(`#c-${id} .ch-take`);
+  await takeAndEnd(pa);
+  const ans = await q("select ticket_hash, count(*)::int n, count(*) filter (where correct)::int ok from public.challenge_answers group by ticket_hash");
+  const scores = await q("select ticket_hash, score from public.challenge_players where finished_at is not null");
+  check(ans.length === 3 && ans.every(a => a.n === 10) && ans.every(a => scores.find(s => s.ticket_hash === a.ticket_hash).score === a.ok),
+    "3 players' right/wrong saved (10 each); each score is the number right", JSON.stringify(ans.map(a => a.ok)));
+  const missedIds = (await q("select distinct question_id from public.challenge_answers where not correct")).length;
+  await pa.goto(BASE + "challenges.html");
+  await pa.waitForSelector(`.ch-done #c-${id} .ch-focus`);
+  const focus = await text(pa, `#c-${id} .ch-focus`);
+  check(/Group focus/.test(focus) && /3 finished/.test(focus) && /Topics, weakest first/.test(focus) && /Safety/.test(focus), "Group focus shows for 3 finishers, by topic", focus.slice(0, 120));
+  check(!new RegExp(nickB + "|" + nickA).test(focus), "Group focus names nobody");
+  const missedRows = await pa.$$eval(`#c-${id} .ch-fmissed li`, l => l.map(x => x.textContent));
+  check(missedRows.length === Math.min(5, missedIds) && missedRows.every(r => /Missed by [1-3] of 3/.test(r)), "most-missed questions: missed by N of 3", missedRows.length);
+  await pa.click(`#c-${id} .ch-fmissed summary`);
+  check(/Correct answer/i.test(await text(pa, `#c-${id} .ch-fmissed details[open]`)), "a missed question opens to its answer and rationale");
+  await pa.screenshot({path: OUT + "/ch-group-focus.png", fullPage: true});
+  const quizUs = await text(pa, `#c-${id} .ch-quizus`);
+  check(new RegExp("Quiz us on these · " + missedIds).test(quizUs), "Quiz us on these: every question someone missed", quizUs);
+  const progressBefore = await pa.evaluate(() => Object.keys(JSON.parse(localStorage.getItem("pinkprint-progress") || "{}")).length);
+  await pa.click(`#c-${id} .ch-quizus`);
+  await pa.waitForSelector("#pq-quiz-screen:not(.hidden)");
+  check(/Group focus: Safety/.test(await text(pa, "#ss-title")) && new RegExp("of " + missedIds).test(await text(pa, "#pq-progress")), "group quiz has the missed questions", await text(pa, "#pq-progress"));
+  await pa.keyboard.press("a");
+  await pa.click("#pq-check-sure");
+  const playersBefore = JSON.stringify(await q("select score, finished_at from public.challenge_players order by ticket_hash"));
+  check(await pa.evaluate(() => Object.keys(JSON.parse(localStorage.getItem("pinkprint-progress") || "{}")).length) >= progressBefore, "group quiz answers count toward A's own progress");
+  await pa.click("#pq-end-test");
+  await pa.waitForSelector("#pq-end-screen:not(.hidden)");
+  check(JSON.stringify(await q("select score, finished_at from public.challenge_players order by ticket_hash")) === playersBefore, "the group quiz doesn't change challenge scores");
+  await pa.goto(BASE + "challenges.html");
+
   // ---- A guest answering a quiz adds to the tally too, and nothing else is saved ----
   const G = await device("guest");
   const pgG = await G.newPage();
@@ -198,8 +247,9 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   // ---- A deletes it; B's list drops it ----
   await pa.click(`#c-${id} .ch-delete`);
   await waitFor(async () => !(await pa.$(`#c-${id}`)));
-  check((await q("select count(*)::int n from public.challenges"))[0].n === 0 && (await q("select count(*)::int n from public.challenge_players"))[0].n === 0, "deleted for everyone (scores too)");
-  check(await pa.isVisible(".ch-empty"), "A's list is empty again");
+  check((await q("select count(*)::int n from public.challenges"))[0].n === 0 && (await q("select count(*)::int n from public.challenge_players"))[0].n === 0 &&
+        (await q("select count(*)::int n from public.challenge_answers"))[0].n === 0, "deleted for everyone (scores and answers too)");
+  check(await pa.isVisible(".ch-empty") && !(await pa.isVisible(".ch-donehead")), "A's list is empty again");
   await pb.goto(BASE + "challenges.html");
   await pb.waitForSelector(".ch-empty");
   check(!(await pb.$(`#c-${id}`)), "B's list drops a deleted challenge");

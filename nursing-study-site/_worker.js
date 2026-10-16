@@ -26,6 +26,13 @@ function shortId(v) {
   if (typeof v !== "string" || !SHORT_ID.test(v)) throw new BadRequest("bad challenge id");
   return v.toUpperCase();
 }
+/* Challenge answers: [{q: question id, ok: true|false}, ...], one per question (10, 20 or 40) */
+const QUESTION_ID = /^nur[0-9]+-u[0-9]+-[a-z0-9-]+-[0-9]{3}$/;
+function answers(v) {
+  if (!Array.isArray(v) || ![10, 20, 40].includes(v.length) ||
+      !v.every(a => a && typeof a.q === "string" && QUESTION_ID.test(a.q) && typeof a.ok === "boolean")) throw new BadRequest("bad answers");
+  return v.map(a => ({q: a.q, ok: a.ok}));
+}
 class BadRequest extends Error {}
 
 /* Nicknames must come from the site's own list (data/nicknames.json) */
@@ -124,7 +131,13 @@ const ROUTES = {
                                   p_nickname: text(b.nickname, 40), p_proof: text(b.proof, 200)};
                         }},
   "challenges/join":   {fn: "join_challenge",    args: b => ({p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_nickname: text(b.nickname, 40), p_proof: text(b.proof, 200)})},
-  "challenges/score":  {fn: "submit_score",      args: b => ({p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_score: int(b.score)})},
+  /* With answers (Group focus) the score is counted from them; pages from before send a score only */
+  "challenges/score":  {fn: b => Array.isArray(b.answers) ? "submit_answers" : "submit_score",
+                        args: b => Array.isArray(b.answers)
+                          ? {p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_answers: answers(b.answers)}
+                          : {p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_score: int(b.score)},
+                        /* Until the Supabase update is run, save the score the old way */
+                        fallback: a => a.p_answers && {fn: "submit_score", args: {p_id: a.p_id, p_ticket: a.p_ticket, p_score: a.p_answers.filter(x => x.ok).length}}},
   "challenges/load":   {fn: "load_challenge",    args: b => ({p_id: shortId(b.id), p_ticket: b.ticket == null ? null : hex64(b.ticket)})},
   "challenges/delete": {fn: "delete_challenge",  args: b => ({p_id: shortId(b.id), p_creator_ticket: hex64(b.ticket)})},
 
@@ -197,11 +210,16 @@ async function handleApi(request, env, url) {
   const key = env.SUPABASE_KEY;
   const headers = {"Content-Type": "application/json", apikey: key};
   if (!key.startsWith("sb_")) headers.Authorization = "Bearer " + key;   /* older JWT-style anon keys */
+  let fn = typeof route.fn === "function" ? route.fn(JSON.parse(raw || "{}") || {}) : route.fn;
+  const rpc = (name, body) => fetch(env.SUPABASE_URL.replace(/\/+$/, "") + "/rest/v1/rpc/" + name, {
+    method: "POST", headers, body: JSON.stringify(body)
+  });
   let res;
   try {
-    res = await fetch(env.SUPABASE_URL.replace(/\/+$/, "") + "/rest/v1/rpc/" + route.fn, {
-      method: "POST", headers, body: JSON.stringify(args)
-    });
+    res = await rpc(fn, args);
+    /* 404 = the database function doesn't exist yet */
+    const fb = res.status === 404 && route.fallback && route.fallback(args);
+    if (fb) { fn = fb.fn; res = await rpc(fn, fb.args); }
   } catch (err) {
     return reply(502, {error: "storage unreachable"});
   }
@@ -212,7 +230,7 @@ async function handleApi(request, env, url) {
     const msg = data && data.message;
     return reply(res.status >= 500 ? 502 : 400, {error: typeof msg === "string" ? msg.slice(0, 120) : "storage error"});
   }
-  return reply(200, {result: flatten(route.fn, data)});
+  return reply(200, {result: flatten(fn, data)});
 }
 
 export default {

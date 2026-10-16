@@ -9,6 +9,13 @@ var Challenges = (function(){
   function esc(s){ return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function day(iso){ return new Date(iso).toLocaleDateString("en-US", {month: "short", day: "numeric"}); }
   function link(id){ return location.origin + "/c/" + id; }
+  function pct(n, total){ return total ? Math.round(n / total * 100) : 0; }
+  /* "expires in 3 days"; on the last day it says so in red */
+  function expiry(iso){
+    var days = Math.ceil((new Date(iso) - Date.now()) / 86400000);
+    if (days <= 1) return '<span class="ch-lastday">Last day to play</span>';
+    return "expires in " + days + " days";
+  }
   /* Challenge codes: 4 letters and numbers with no look-alikes (no 0/O, 1/I/L), like "7KQ2".
      The first challenges had 8 (shown as "7KQ2 XM4P"); those still work. */
   var CODE_RE = /^(?:[2-9A-HJ-NP-Z]{4}|[2-9A-HJ-NP-Z]{8})$/;
@@ -81,12 +88,15 @@ var Challenges = (function(){
     var entry = T.challenge(id);
     return T.call("challenges/load", {id: id, ticket: entry ? entry.ticket : null});
   }
-  /* Saves the first finished score only */
-  function submit(id, score){
+  /* Saves the first finished score only. answers: [{q, ok}] for every question in the challenge
+     (unanswered = wrong); the score is counted from them, and they feed the group's Group focus. */
+  function submit(id, score, answers){
     var entry = T.challenge(id);
     if (!entry) return Promise.resolve(null);
     if (entry.done) return Promise.resolve(entry);
-    return T.call("challenges/score", {id: entry.id, ticket: entry.ticket, score: score}).then(function(ok){
+    var body = {id: entry.id, ticket: entry.ticket, score: score};
+    if (answers) body.answers = answers;
+    return T.call("challenges/score", body).then(function(ok){
       return ok ? T.saveChallenge({id: entry.id, done: true, score: score}) : entry;
     });
   }
@@ -112,7 +122,11 @@ var Challenges = (function(){
   /* ---------- Challenges page ---------- */
   function intro(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Study buddy</div><h1 class="tp-h1">Challenges</h1>' +
-      '<p class="tp-lede">Send a friend the same questions before anyone takes them, then compare scores. Up to 10 people per challenge. Challenges expire after 7 days.</p></section>';
+      '<p class="tp-lede">Pick a unit or topic and send friends the same questions. Everyone takes them on their own, then you compare scores.</p>' +
+      '<ul class="ch-how"><li><strong>Share</strong> a 4-character code or link. Up to 10 people, open for 7 days.</li>' +
+      "<li><strong>Compare</strong> scores once you finish, so nobody sees answers early.</li>" +
+      "<li><strong>Group focus</strong> appears once 3 people finish: the group's weakest topics and most-missed questions, never who missed what.</li>" +
+      "<li><strong>Counts for you</strong>: every challenge answer adds to your own progress.</li></ul></section>";
   }
 
   /* Someone without tracking opened a challenge link */
@@ -219,6 +233,71 @@ var Challenges = (function(){
     form.querySelector(".ch-copycode").addEventListener("click", function(e){ copy(form.querySelector(".ch-bigcode").textContent, e.currentTarget); });
   }
 
+  /* ---------- Group focus ----------
+     load_challenge sends {players, missed: {question id: how many missed it}} once 3 or more
+     people have finished. Only combined numbers: never who missed which question. */
+  var data = null;   /* this page's study data (questions and units), set by mainPage */
+  function byId(){
+    if (!data) return {};
+    if (!data.byId){ data.byId = {}; data.questions.forEach(function(q){ data.byId[q.id] = q; }); }
+    return data.byId;
+  }
+  /* Question IDs anyone in the group missed, most missed first (for "Quiz us on these") */
+  function groupMissed(c){
+    if (!c || !c.focus) return null;
+    var m = c.focus.missed || {};
+    return Object.keys(m).filter(function(id){ return m[id] > 0; })
+      .sort(function(a, b){ return m[b] - m[a] || (a < b ? -1 : 1); });
+  }
+  /* Each unit/topic in the challenge, weakest first by the group's combined accuracy */
+  function focusTopics(c){
+    var qs = byId(), m = c.focus.missed || {}, n = c.focus.players, groups = {}, units = {};
+    Object.keys(m).forEach(function(id){
+      var q = qs[id];
+      var key = q ? q.unit + "|" + q.topic : "?";
+      if (!groups[key]) groups[key] = {unit: q ? q.unit : 0, topic: q ? q.topic : "Other questions", count: 0, missed: 0};
+      groups[key].count++;
+      groups[key].missed += m[id];
+      if (q) units[q.unit] = true;
+    });
+    var many = Object.keys(units).length > 1;
+    return Object.keys(groups).map(function(k){
+      var g = groups[k];
+      g.label = (many && g.unit ? "Unit " + g.unit + " · " : "") + g.topic;
+      g.acc = Math.round((1 - g.missed / (g.count * n)) * 100);
+      return g;
+    }).sort(function(a, b){ return a.acc - b.acc || b.count - a.count; });
+  }
+  function rationaleHtml(q){
+    var right = (q.options || []).filter(function(o){ return o.correct; });
+    var strip = function(t){ return String(t || "").replace(/^\s*(Correct|Incorrect)[.:!]?\s*/i, ""); };
+    return '<div class="ch-answer"><span class="ch-eyebrow">' + (right.length > 1 ? "Correct answers" : "Correct answer") + "</span>" +
+      right.map(function(o){ return "<p><strong>" + esc(o.text) + "</strong>" + (o.rationale ? " " + esc(strip(o.rationale)) : "") + "</p>"; }).join("") +
+      (q.explanation ? '<p class="ch-expl">' + esc(q.explanation) + "</p>" : "") + "</div>";
+  }
+  function focusHtml(c){
+    if (!c.focus) return "";
+    var n = c.focus.players, m = c.focus.missed || {}, qs = byId();
+    var topics = focusTopics(c);
+    var rows = topics.map(function(g){
+      return '<li><span class="ch-ftopic">' + esc(g.label) +
+        (g.count < 3 ? ' <span class="ch-few">Only ' + g.count + (g.count === 1 ? " question" : " questions") + "</span>" : "") + "</span>" +
+        '<span class="ch-fbar" role="img" aria-label="' + g.acc + ' percent right"><span style="width:' + g.acc + '%"></span></span>' +
+        '<span class="ch-facc">' + g.acc + "%</span></li>";
+    }).join("");
+    var missed = (groupMissed(c) || []).filter(function(id){ return qs[id]; });
+    var top = missed.slice(0, 5).map(function(id){
+      var q = qs[id];
+      return '<li><details><summary><span class="ch-qtext">' + esc(q.prompt) + '</span><span class="ch-missed">Missed by ' + m[id] + " of " + n + "</span></summary>" +
+        rationaleHtml(q) + "</details></li>";
+    }).join("");
+    return '<section class="ch-focus" aria-label="Group focus"><div class="ch-focus-head"><h3 class="ch-eyebrow">Group focus</h3>' +
+      '<span class="ch-meta">' + n + " finished · combined results only</span></div>" +
+      '<div class="ch-fpart"><h4 class="ch-fh">Topics, weakest first</h4><ol class="ch-ftopics">' + rows + "</ol></div>" +
+      '<div class="ch-fpart"><h4 class="ch-fh">Most missed</h4>' +
+      (top ? '<ol class="ch-fmissed">' + top + "</ol>" : '<p class="tp-hint">Nobody missed a question. Nice work, everyone!</p>') + "</div></section>";
+  }
+
   /* One challenge card, from load_challenge */
   function cardHtml(entry, c){
     var drop = c.is_creator ? '<button type="button" class="ms-linkbtn is-danger ch-delete">Delete<span class="ch-wide"> challenge</span></button>'
@@ -226,27 +305,30 @@ var Challenges = (function(){
     var head = '<div class="ch-head"><div class="tp-stack"><div class="ch-top"><span class="ch-eyebrow">' +
       (c.is_creator ? "Sent by you" : c.from ? "From " + esc(c.from) : "Shared with you") + " · " + day(c.created_at) + "</span>" + drop + "</div>" +
       '<h2 class="ms-h2 ch-h2">' + esc(c.title) + " · " + c.count + " questions</h2>" +
-      '<span class="ch-meta">' + c.joined + " of " + MAX_PLAYERS + " joined · expires " + day(c.expires_at) + "</span></div></div>";
+      '<span class="ch-meta">' + c.joined + " of " + MAX_PLAYERS + " joined · " + expiry(c.expires_at) + "</span></div></div>";
     var finished = c.me && c.me.finished;
     var body = "";
     if (c.players.length){
-      var rank = 0;
+      /* In the order people finished */
       body += '<ol class="ch-scores">' + c.players.map(function(p){
         var done = p.finished;
-        if (done) rank++;
-        return '<li class="' + (p.me ? "is-me" : "") + (done ? "" : " is-taking") + '"><span class="ch-rank">' + (done ? rank : "·") + "</span>" +
+        return '<li class="' + (p.me ? "is-me" : "") + (done ? "" : " is-taking") + '">' +
           '<span class="ch-name">' + esc(p.nickname) + (p.me ? " (you)" : "") + "</span>" +
-          '<span class="ch-score">' + (done ? p.score + "/" + p.total : "Taking it now") + "</span></li>";
+          (done ? '<span class="ch-score">' + p.score + "/" + p.total + '</span><span class="ch-pct">' + pct(p.score, p.total) + "%</span>"
+                : '<span class="ch-score">Taking it now</span>') + "</li>";
       }).join("") + "</ol>";
     } else if (c.is_creator){
       body += '<p class="ch-note">Nobody has taken it yet. Send friends the code or the link, then take it yourself.</p>';
     }
     if (!finished && !c.is_creator) body += '<p class="ch-note">Scores show after you finish, so nobody sees answers early.</p>';
+    body += focusHtml(c);
     var btns = [];
     if (!finished){
       if (!c.me && c.joined >= MAX_PLAYERS) btns.push('<span class="ch-meta">This challenge is full.</span>');
       else btns.push('<a class="ms-btn is-primary ch-take" href="session.html?mode=challenge&amp;id=' + c.id + '">' + (c.me ? "Finish challenge" : "Take challenge") + " &rarr;</a>");
     }
+    var groupQs = groupMissed(c);
+    if (groupQs && groupQs.length) btns.push('<a class="ms-btn is-primary ch-take ch-quizus" href="session.html?mode=group&amp;id=' + c.id + '">Quiz us on these · ' + groupQs.length + " &rarr;</a>");
     btns.push('<div class="ch-share"><span class="ch-cardcode" title="Challenge code">' + showCode(c.id) + "</span>" +
       '<button type="button" class="ch-btn ch-copycode">Copy code</button><button type="button" class="ch-btn ch-copylink">Copy link</button></div>');
     return head + body + '<div class="ch-btns">' + btns.join("") + "</div>";
@@ -263,6 +345,12 @@ var Challenges = (function(){
       }
       if (c.title && (!entry.title || !entry.count)) T.saveChallenge({id: entry.id, title: c.title, count: c.count});
       card.innerHTML = cardHtml(entry, c);
+      /* Finished ones move under "Finished", newest first */
+      if (c.me && c.me.finished && doneEl && card.parentNode !== doneEl){
+        var after = [].filter.call(doneEl.children, function(x){ return +x.getAttribute("data-at") < (entry.at || 0); })[0];
+        doneEl.insertBefore(card, after || null);
+        emptyCheck();
+      }
       if (location.hash === "#c-" + entry.id){ card.classList.add("is-new"); card.scrollIntoView({block: "center"}); }
       card.querySelector(".ch-copylink").addEventListener("click", function(e){ copy(link(c.id), e.currentTarget); });
       card.querySelector(".ch-copycode").addEventListener("click", function(e){ copy(showCode(c.id), e.currentTarget); });
@@ -277,9 +365,13 @@ var Challenges = (function(){
     });
   }
 
-  var listEl = null;
+  var listEl = null, doneEl = null;
   function emptyCheck(){
-    if (!listEl || listEl.querySelector(".ch-card")) return;
+    if (!listEl) return;
+    var done = doneEl && doneEl.querySelector(".ch-card");
+    if (doneEl) doneEl.previousElementSibling.classList.toggle("hidden", !done);
+    if (listEl.querySelector(".ch-card")){ var e = listEl.querySelector(".ch-empty"); if (e) e.remove(); return; }
+    if (done){ if (!listEl.querySelector(".ch-empty")) listEl.innerHTML = '<p class="ch-note ch-empty">Nothing left to take. Make a new challenge or join one with a code.</p>'; return; }
     listEl.innerHTML = '<div class="ms-card ch-empty"><h2 class="ms-h2 ch-h2">No challenges yet</h2><p class="tp-hint">Make one, send the link to a friend, and compare scores when you both finish. Challenge answers count toward your own progress too.</p></div>';
   }
   function addCard(entry, first){
@@ -288,6 +380,7 @@ var Challenges = (function(){
     var card = document.createElement("article");
     card.className = "ms-card ch-card";
     card.id = "c-" + entry.id;
+    card.setAttribute("data-at", entry.at || 0);
     card.innerHTML = '<p class="tp-hint">Loading&hellip;</p>';
     if (first) listEl.insertBefore(card, listEl.firstChild); else listEl.appendChild(card);
     drawCard(card, entry);
@@ -305,8 +398,11 @@ var Challenges = (function(){
     }
     host.innerHTML = intro() + '<div class="tp-note ch-banner hidden" role="status"></div>' +
       '<section class="ch-layout"><div class="ch-col"><h2 class="ch-eyebrow ch-listhead">Start or join</h2>' + formHtml(d, pick) + joinFormHtml() + "</div>" +
-      '<div class="ch-side"><h2 class="ch-eyebrow ch-listhead">Your challenges</h2><div class="ch-list"></div></div></section>';
+      '<div class="ch-side"><h2 class="ch-eyebrow ch-listhead">Your challenges</h2><div class="ch-list"></div>' +
+      '<h2 class="ch-eyebrow ch-listhead ch-donehead hidden">Finished</h2><div class="ch-list ch-done"></div></div></section>';
+    data = d;
     listEl = host.querySelector(".ch-list");
+    doneEl = host.querySelector(".ch-done");
     wireForm(d, host, pick, function(entry){ addCard(entry, true); });
     T.challenges().forEach(function(entry){ addCard(entry, false); });
     emptyCheck();
@@ -353,5 +449,5 @@ var Challenges = (function(){
     });
   }
 
-  return {page: page, parseCode: parseCode, create: create, join: join, load: load, submit: submit, remove: remove, link: link, friendly: friendly};
+  return {page: page, parseCode: parseCode, create: create, join: join, load: load, submit: submit, groupMissed: groupMissed, remove: remove, link: link, friendly: friendly};
 })();

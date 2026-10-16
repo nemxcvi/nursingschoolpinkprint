@@ -7,7 +7,7 @@ set role anon;
 do $$
 declare t text;
 begin
-  foreach t in array array['vault','nickname_claims','challenges','challenge_players','class_tally','pp_settings'] loop
+  foreach t in array array['vault','nickname_claims','challenges','challenge_players','challenge_answers','class_tally','pp_settings'] loop
     begin execute format('select count(*) from public.%I', t); raise exception 'READ ALLOWED on %', t;
     exception when insufficient_privilege then null; end;
     begin execute format('delete from public.%I', t); raise exception 'DELETE ALLOWED on %', t;
@@ -126,6 +126,57 @@ begin
   raise notice 'ok 4 - challenges: create and join (own nickname only, max 10), scores, privacy, delete';
 end $$;
 
+-- 4b. Group focus: answers give the score; combined misses only, and only from 3 finishers
+do $$
+declare
+  creator text := encode(extensions.gen_random_bytes(32), 'hex');
+  qs jsonb;
+  cid text;
+  t text[] := array[]::text[];
+  i int;
+  j jsonb;
+  ans jsonb;
+begin
+  select jsonb_agg('nur114-u3-safety-' || lpad(g::text, 3, '0')) into qs from generate_series(1, 10) g;
+  perform public.claim_nickname('Focus Host', creator);
+  cid := public.create_challenge('Focus', qs, creator, 'Focus Host', creator);
+  for i in 1..4 loop
+    t := t || encode(extensions.gen_random_bytes(32), 'hex');
+    perform public.claim_nickname('Focus ' || i, t[i]);
+    perform public.join_challenge(cid, t[i], 'Focus ' || i, t[i]);
+  end loop;
+  -- Player i misses the first i questions
+  for i in 1..2 loop
+    select jsonb_agg(jsonb_build_object('q', q, 'ok', n > i)) into ans from jsonb_array_elements_text(qs) with ordinality x(q, n);
+    assert public.submit_answers(cid, t[i], ans), 'answers saved';
+  end loop;
+  j := public.load_challenge(cid, t[1]);
+  assert (j->'players'->0->>'score')::int = 9 and (j->'players'->1->>'score')::int = 8, 'score is the number right; listed in finishing order';
+  assert j->'focus' = 'null'::jsonb, 'no group focus with only 2 finished';
+  -- Wrong input is refused
+  begin perform public.submit_answers(cid, t[3], ans - 0); raise exception 'missing answer accepted';
+  exception when raise_exception then if sqlerrm <> 'bad answers' then raise; end if; end;
+  begin perform public.submit_answers(cid, t[3], (ans - 0) || '[{"q": "nur114-u3-safety-099", "ok": true}]'::jsonb); raise exception 'outside question accepted';
+  exception when raise_exception then if sqlerrm <> 'bad answers' then raise; end if; end;
+  begin perform public.submit_answers(cid, t[3], (ans - 0) || jsonb_build_array(ans->1)); raise exception 'repeat answer accepted';
+  exception when raise_exception then if sqlerrm <> 'bad answers' then raise; end if; end;
+  assert not public.submit_answers(cid, encode(extensions.gen_random_bytes(32), 'hex'), ans), 'only players can submit';
+  select jsonb_agg(jsonb_build_object('q', q, 'ok', n > 3)) into ans from jsonb_array_elements_text(qs) with ordinality x(q, n);
+  assert public.submit_answers(cid, t[3], ans), 'third player';
+  -- An old-style score (no answers) doesn't count toward Group focus
+  assert public.submit_score(cid, t[4], 5), 'old-style score still works';
+  j := public.load_challenge(cid, t[1]);
+  assert (j->'focus'->>'players')::int = 3, 'group focus from 3 finishers with answers';
+  assert (j->'focus'->'missed'->>'nur114-u3-safety-001')::int = 3 and (j->'focus'->'missed'->>'nur114-u3-safety-003')::int = 1
+     and (j->'focus'->'missed'->>'nur114-u3-safety-010')::int = 0, 'missed counts per question';
+  assert jsonb_typeof(j->'focus'->'missed') = 'object' and (select count(*) from jsonb_object_keys(j->'focus'->'missed')) = 10, 'counts only, one per question';
+  assert (j->'focus')::text !~ 'Focus [0-9]', 'no nicknames in group focus';
+  assert public.load_challenge(cid)->'focus' = 'null'::jsonb, 'outsiders see no group focus';
+  assert public.load_challenge(cid, creator)->'focus' <> 'null'::jsonb, 'the creator does';
+  assert public.delete_challenge(cid, creator), 'creator deletes';
+  raise notice 'ok 4b - group focus: scores from answers, input checked, 3+ finishers, combined counts only';
+end $$;
+
 -- 6. Class tally: totals only, input checked
 do $$
 begin
@@ -183,6 +234,9 @@ begin
   perform public.claim_nickname('Scrub Star', creator);
   cid := public.create_challenge('Expired', qs, creator, 'Scrub Star', creator);
   old_cid := public.create_challenge('Long gone', qs, creator, 'Scrub Star', creator);
+  perform public.join_challenge(old_cid, creator, 'Scrub Star', creator);
+  assert public.submit_answers(old_cid, creator, (select jsonb_agg(jsonb_build_object('q', q, 'ok', true)) from jsonb_array_elements_text(qs) q)), 'answers saved';
+  assert exists (select 1 from public.challenge_answers where challenge_id = old_cid), 'answers stored';
   update public.challenges set expires_at = now() - interval '1 day' where id = cid;
   update public.challenges set expires_at = now() - interval '8 days' where id = old_cid;
   assert public.load_challenge(cid) is null, 'expired challenges are not shown';
@@ -191,6 +245,7 @@ begin
   perform public.ping();
   assert exists (select 1 from public.challenges where id = cid), 'kept until 7 days after expiry';
   assert not exists (select 1 from public.challenges where id = old_cid), 'deleted 7 days after expiry';
+  assert not exists (select 1 from public.challenge_answers where challenge_id = old_cid), 'its answers are deleted with it';
 
   perform public.claim_nickname('Pharm Fairy', p);
   update public.nickname_claims set last_seen = now() - interval '13 months' where nickname = 'Pharm Fairy';

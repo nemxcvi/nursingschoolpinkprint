@@ -19,7 +19,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=68">
+<link rel="stylesheet" href="assets/style.css?v=69">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -97,9 +97,9 @@
 
 <script src="assets/theme.js?v=6"></script>
 <script src="js/study.js?v=1"></script>
-<script src="assets/practice-quiz.js?v=17"></script>
+<script src="assets/practice-quiz.js?v=18"></script>
 <script src="js/my-study.js?v=6"></script>
-<script src="js/challenges.js?v=5"></script>
+<script src="js/challenges.js?v=6"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -133,8 +133,28 @@
     return [];
   }
   if (mode === "challenge") return challenge(p.get("id") || "");
+  if (mode === "group") return groupFocus(p.get("id") || "");
   loadSessionQuiz({data: Tracking.ROOT + "data/nur114/", title: title, pick: pick});
 
+  /* Quiz us on these: every question someone in the group missed (most missed first). Counts
+     toward this person's progress like any session; nothing goes back to the challenge. */
+  function groupFocus(id){
+    var setTitle = function(t){ document.getElementById("ss-title").textContent = t; document.title = t + " \u2014 Nursing School Pinkprint"; };
+    setTitle("Group focus");
+    var fail = function(text){
+      document.getElementById("ss-empty").textContent = text;
+      document.querySelector("#pq-empty a").setAttribute("href", "challenges.html");
+      document.querySelector("#pq-empty a").textContent = "Back to Challenges";
+      document.getElementById("pq-empty").classList.remove("hidden");
+    };
+    Challenges.load(id).then(function(c){
+      var ids = c && Challenges.groupMissed(c);
+      if (!ids || !ids.length) return fail(c && c.focus ? "Nobody in the group missed a question. Nice work!" : "Group focus shows once 3 or more people finish this challenge.");
+      var t = "Group focus: " + c.title;
+      setTitle(t);
+      loadSessionQuiz({data: Tracking.ROOT + "data/nur114/", title: t, pick: function(){ return ids; }});
+    }, function(err){ fail(Challenges.friendly(err)); });
+  }
   /* A challenge: join it, take its questions once, save the first score */
   function challenge(id){
     var setTitle = function(t){ document.getElementById("ss-title").textContent = t; document.title = t + " \u2014 Nursing School Pinkprint"; };
@@ -161,7 +181,11 @@
         box.innerHTML = '<p class="tp-hint">' + (first ? "Saving your challenge score\u2026" : "Practice round: your first score is the one that counts.") + "</p>" +
           '<a class="ms-btn is-primary" href="challenges.html#c-' + r.entry.id + '">See how you compare &rarr;</a>';
         if (!first) return;
-        Challenges.submit(r.entry.id, res.correct).then(function(e){
+        /* Every challenge question once, in the challenge's order; unanswered ones count as wrong */
+        var got = {};
+        (res.answers || []).forEach(function(x){ got[x.q] = x.ok; });
+        var answers = r.questions.map(function(q){ return {q: q, ok: got[q] === true}; });
+        Challenges.submit(r.entry.id, res.correct, answers).then(function(e){
           r.entry = e || r.entry;
           box.querySelector("p").textContent = e && e.done ? "Challenge score saved: " + res.correct + "/" + res.total + "." : "Couldn't save your score (the challenge may have expired).";
         }, function(err){
