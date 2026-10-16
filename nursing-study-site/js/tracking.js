@@ -23,7 +23,7 @@
 
   var OWNER_NAME = "Miss Pinkprint";
   /* SHA-256 of the owner phrase (never the phrase itself). Empty until the owner picks one. */
-  var OWNER_HASH = "";
+  var OWNER_HASH = "cb84dd2509deb1db5485dbd495bc23928cd3cd90d2b6c2741539a3ff474793c5";
 
   var FEATURES = ["sure", "goal", "countdown", "review", "notes", "challenges", "celebrations"];
   var GOALS = {questions: [25, 50, 100, 150], days: [2, 3, 4, 5]};
@@ -80,6 +80,9 @@
     return pool.length ? pool[randomInt(pool.length)] : avoid;
   }
 
+  /* The owner phrase is checked lowercased, trimmed, with runs of spaces collapsed to one */
+  function normalizePhrase(s){ return String(s || "").toLowerCase().trim().replace(/\s+/g, " "); }
+
   function goalLabel(goal){
     goal = goal || DEFAULT_GOAL;
     return goal.type === "days" ? goal.value + " study days per week" : goal.value + " questions per week";
@@ -88,7 +91,7 @@
   var api = {
     OWNER_NAME: OWNER_NAME, FEATURES: FEATURES, GOALS: GOALS, DEFAULT_GOAL: DEFAULT_GOAL, ALL_KEYS: ALL_KEYS,
     generateCode: generateCode, normalizeCode: normalizeCode, parseCode: parseCode, maskCode: maskCode,
-    pickNickname: pickNickname, goalLabel: goalLabel
+    pickNickname: pickNickname, goalLabel: goalLabel, normalizePhrase: normalizePhrase
   };
 
   if (typeof window === "undefined"){ module.exports = api; return; }
@@ -243,13 +246,14 @@
      Opening any page with #owner=<phrase> on a tracked device sets "Miss Pinkprint" when the
      phrase matches. The phrase is cleared from the address bar right away. */
   api.ownerHash = function(phrase){
-    var bytes = new TextEncoder().encode(String(phrase).trim());
+    var bytes = new TextEncoder().encode(normalizePhrase(phrase));
     return crypto.subtle.digest("SHA-256", bytes).then(function(buf){
       return Array.prototype.map.call(new Uint8Array(buf), function(b){ return b.toString(16).padStart(2, "0"); }).join("");
     });
   };
   if (/^#owner=/.test(location.hash)){
-    var phrase = decodeURIComponent(location.hash.slice(7));
+    var phrase = location.hash.slice(7);
+    try { phrase = decodeURIComponent(phrase.replace(/\+/g, " ")); } catch (e) {}
     history.replaceState(null, "", location.pathname + location.search);
     if (OWNER_HASH && api.isOn()){
       api.ownerHash(phrase).then(function(h){

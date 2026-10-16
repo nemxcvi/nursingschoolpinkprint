@@ -70,7 +70,7 @@ function page(opts = {}){
   const ctx = {
     localStorage: mk(local), sessionStorage: mk(session),
     location: {search: opts.search || "", hash: opts.hash || "", pathname: "/unit-3-skin-wounds-diagnostics/safety-quiz.html"},
-    history: {replaceState(){}},
+    history: {replaceState(){ ctx.cleared = true; }},
     document: {currentScript: {src: "https://example.test/js/tracking.js"}, dispatchEvent(){}},
     URL, URLSearchParams, TextEncoder, Uint8Array, Uint32Array, console,
     crypto: globalThis.crypto || require("crypto").webcrypto,
@@ -78,7 +78,11 @@ function page(opts = {}){
   };
   ctx.window = ctx; ctx.globalThis = ctx;
   vm.createContext(ctx);
-  for (const f of ["js/tracking.js", "js/progress.js"]) vm.runInContext(fs.readFileSync(path.join(SITE, f), "utf8"), ctx, {filename: f});
+  for (const f of ["js/tracking.js", "js/progress.js"]){
+    let code = fs.readFileSync(path.join(SITE, f), "utf8");
+    if (opts.ownerHash) code = code.replace(/var OWNER_HASH = "[0-9a-f]*";/, 'var OWNER_HASH = "' + opts.ownerHash + '";');
+    vm.runInContext(code, ctx, {filename: f});
+  }
   return {ctx, local, session, T: ctx.Tracking, P: ctx.Progress};
 }
 
@@ -142,4 +146,29 @@ test("Delete my data clears everything tracking saved", () => {
   assert.equal(p.session.size, 0, "carried session cleared too");
   assert.deepEqual([...p.local.keys()].sort(), ["palette", "theme"], "only the site's theme choices remain (not tracking data)");
   assert.deepEqual(JSON.parse(JSON.stringify(p.P.load())), {}, "no progress left");
+});
+
+test("owner phrase: lowercased, trimmed and extra spaces collapsed before checking", async () => {
+  assert.equal(T.normalizePhrase("  Velvet   Otter\tCaramel  Lantern "), "velvet otter caramel lantern");
+  // A stand-in phrase; the real one is never in the repo
+  const sha = s => require("crypto").createHash("sha256").update(s).digest("hex");
+  const ownerHash = sha("velvet otter caramel lantern");
+  const tracked = {"pinkprint-tracking": JSON.stringify({code: "flashcard pulse coffee 4821", nickname: "Lab Legend"})};
+  const wait = () => new Promise(r => setTimeout(r, 50));
+
+  for (const typed of ["velvet otter caramel lantern", "%20Velvet%20%20OTTER%20caramel%20Lantern%20", "Velvet+Otter+Caramel+Lantern"]){
+    const p = page({local: tracked, hash: "#owner=" + typed, ownerHash});
+    await wait();
+    assert.equal(p.T.state().nickname, "Miss Pinkprint", typed);
+    assert.ok(p.ctx.cleared, "phrase cleared from the address bar");
+  }
+  const wrong = page({local: tracked, hash: "#owner=velvet otter caramel", ownerHash});
+  await wait();
+  assert.equal(wrong.T.state().nickname, "Lab Legend", "a wrong phrase changes nothing");
+  assert.ok(wrong.ctx.cleared, "even a wrong phrase is cleared from the address bar");
+
+  const guest = page({hash: "#owner=velvet otter caramel lantern", ownerHash});
+  await wait();
+  assert.equal(guest.local.size, 0, "guests: nothing saved");
+  assert.ok(guest.ctx.cleared);
 });
