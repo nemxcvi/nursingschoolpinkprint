@@ -153,7 +153,7 @@ var MyStudy = (function(){
     if (top) html += '<section class="ms-toprow">' + top + "</section>";
     html += tiles(d);
     html += currentUnitCard(d, plan);
-    html += gradeCard(d);
+    if (T.feature("grade")) html += gradeCard(d);
     host.innerHTML = html;
     wireDashboard(d, host);
   }
@@ -209,7 +209,7 @@ var MyStudy = (function(){
       '<div class="ms-recap"><div><span class="ms-bignum">' + r.answered + '</span><span class="ms-sub">questions answered</span></div>' +
       '<div><span class="ms-bignum">' + r.mastered + '</span><span class="ms-sub">questions mastered</span></div>' +
       '<div><span class="ms-bignum">' + r.best + '</span><span class="ms-sub">best streak (weeks)</span></div>' +
-      '<div><span class="ms-bignum">' + (r.examPct === null ? "—" : r.examPct + "%") + '</span><span class="ms-sub">exam average</span></div></div></div>';
+      (T.feature("grade") ? '<div><span class="ms-bignum">' + (r.examPct === null ? "—" : r.examPct + "%") + '</span><span class="ms-sub">exam average</span></div>' : "") + "</div></div>";
   }
 
   function currentUnitCard(d, plan){
@@ -502,7 +502,7 @@ var MyStudy = (function(){
     if (rb) rb.addEventListener("click", function(){ js.showResolved = !js.showResolved; journalPage(d, host); });
   }
 
-  /* ---------- Tracker homepage: countdown strip and unit mastery bars ---------- */
+  /* ---------- Tracker homepage: countdown strip and the current unit ---------- */
   function home(d){
     var plan = S.planToday(d.questions, d.store, d.today, d.exams);
     var currentUnits = plan.exam ? plan.exam.units : [];
@@ -529,11 +529,11 @@ var MyStudy = (function(){
         quote.parentNode.insertBefore(a, quote.nextSibling);
       }
     }
-    /* Unit cards: a thin mastery bar (opens Progress); the current unit opens My dashboard */
+    /* Unit cards: the current unit is marked and opens My dashboard (no mastery bars here) */
     document.querySelectorAll("#unitgrid .pp-card").forEach(function(card){
       var m = (card.getAttribute("href") || "").match(/unit-(\d+)-/);
       if (!m) return;
-      var n = +m[1], u = unitData(d, n);
+      var n = +m[1];
       var isCurrent = currentUnits.length === 1 && currentUnits[0] === n;
       if (isCurrent){
         card.classList.add("is-current");
@@ -541,18 +541,6 @@ var MyStudy = (function(){
         var label = card.querySelector(".pp-card-top span:last-child");
         if (label) label.textContent = "Current unit";
       }
-      if (!u) return;
-      var st = S.stats(u.questions, d.store, d.today, d.exams);
-      var bottom = card.querySelector(".pp-card-bottom");
-      if (!bottom) return;
-      bottom.className = "pp-card-bottom pp-card-mastery";
-      bottom.setAttribute("role", "link");
-      bottom.setAttribute("tabindex", "0");
-      bottom.setAttribute("aria-label", "Unit " + n + ": " + st.masteryPct + " percent mastered. Open Progress.");
-      bottom.innerHTML = bar(st, {thin: true}) + '<span class="pp-mastered">' + st.masteryPct + "% mastered <b>→</b></span>";
-      var go = function(e){ e.preventDefault(); e.stopPropagation(); location.href = "progress.html#unit-" + n; };
-      bottom.addEventListener("click", go);
-      bottom.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") go(e); });
     });
   }
 

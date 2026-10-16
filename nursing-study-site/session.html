@@ -19,13 +19,13 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=76">
+<link rel="stylesheet" href="assets/style.css?v=77">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-type="quizzes"></div>
 <script src="assets/site-data.js?v=10"></script>
-<script src="js/tracking.js?v=9"></script>
+<script src="js/tracking.js?v=10"></script>
 <script src="assets/header.js?v=9"></script>
 <script src="js/progress.js?v=6"></script>
 <div class="wrap">
@@ -98,8 +98,8 @@
 <script src="assets/theme.js?v=6"></script>
 <script src="js/study.js?v=2"></script>
 <script src="assets/practice-quiz.js?v=18"></script>
-<script src="js/my-study.js?v=9"></script>
-<script src="js/challenges.js?v=10"></script>
+<script src="js/my-study.js?v=10"></script>
+<script src="js/challenges.js?v=11"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -168,32 +168,18 @@
         e.stopImmediatePropagation(); e.preventDefault();
       }
     }, true);
-    /* Before starting (first time only): share answers for Group focus? Chosen up front and locked
-       once finished, so nobody decides after seeing their score. */
+    /* Before starting (first time only): challenges are for studying together, so your answers
+       join the group's combined numbers in Group focus. Say so before the first question. */
     function askShare(r, start){
       if (r.entry.done) return start();
       var box = document.createElement("section");
       box.className = "ms-card ss-share";
-      box.innerHTML = '<span class="ch-eyebrow">Before you start</span><h3 class="ms-h2 ch-h2">Study this one together?</h3>' +
-        '<p class="ss-share-text">Share your answers with the group to unlock Group focus: the topics you all found hardest, the questions you missed most, and a quiz built from them.</p>' +
-        '<p class="ch-note">Only combined numbers are shown, never who missed what, and only to people who share. With just two people sharing, each of you could tell which questions the other missed. You can\'t change this once you start, so nobody decides after seeing their score.</p>' +
-        '<div class="ms-btns"><button type="button" class="ms-btn is-primary" data-share="1">Share my answers</button><button type="button" class="ms-btn" data-share="0">Just my score</button></div>' +
-        '<p class="tp-note hidden" role="alert"></p>';
-      var wrap = document.querySelector(".wrap");
-      wrap.insertBefore(box, document.getElementById("pq-setup-screen"));
-      [].forEach.call(box.querySelectorAll("[data-share]"), function(b){
-        b.addEventListener("click", function(){
-          [].forEach.call(box.querySelectorAll("button"), function(x){ x.disabled = true; });
-          var yes = b.getAttribute("data-share") === "1";
-          Challenges.share(r.entry.id, yes).then(function(){ box.remove(); start(); }, function(err){
-            if (!yes){ box.remove(); start(); return; }
-            var msg = box.querySelector(".tp-note");
-            msg.textContent = "Couldn't save your choice: " + Challenges.friendly(err);
-            msg.classList.remove("hidden");
-            [].forEach.call(box.querySelectorAll("button"), function(x){ x.disabled = false; });
-          });
-        });
-      });
+      box.innerHTML = '<span class="ch-eyebrow">Before you start</span><h3 class="ms-h2 ch-h2">This challenge is for studying together</h3>' +
+        '<p class="ss-share-text">When you finish, your answers are combined with everyone else\'s to make Group focus: the topics you all found hardest, the questions you missed most, and a quiz built from them.</p>' +
+        '<p class="ch-note">Only combined numbers are shown, never who missed what, and only to people who finished. With just two people, each of you could tell which questions the other missed.</p>' +
+        '<div class="ms-btns"><button type="button" class="ms-btn is-primary" id="ss-start">Start challenge &rarr;</button></div>';
+      document.querySelector(".wrap").insertBefore(box, document.getElementById("pq-setup-screen"));
+      box.querySelector("#ss-start").addEventListener("click", function(){ box.remove(); start(); });
     }
     Challenges.join(id).then(function(r){
       var t = "Challenge: " + r.title;

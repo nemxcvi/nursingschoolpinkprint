@@ -126,8 +126,7 @@ begin
   raise notice 'ok 4 - challenges: create and join (own nickname only, max 10), scores, privacy, delete';
 end $$;
 
--- 4b. Group focus: answers give the score; sharing chosen before finishing; combined misses
---     from sharers only, once 2 share
+-- 4b. Group focus: answers give the score; combined misses from everyone who finished, once 2 have
 do $$
 declare
   creator text := encode(extensions.gen_random_bytes(32), 'hex');
@@ -146,24 +145,16 @@ begin
     perform public.claim_nickname('Focus ' || i, t[i]);
     perform public.join_challenge(cid, t[i], 'Focus ' || i, t[i]);
   end loop;
-  assert public.load_challenge(cid, t[1])->'share' = '{"me": false, "sharing": 0}'::jsonb, 'a player who joined is not sharing until they choose';
-  assert not public.share_focus(cid, encode(extensions.gen_random_bytes(32), 'hex'), true), 'only players can choose';
-  -- Players 1 and 3 choose to share before starting; 2 doesn't
-  assert public.share_focus(cid, t[1], true) and public.share_focus(cid, t[3], true), 'chosen before starting';
   -- Player i misses the first i questions
-  for i in 1..3 loop
+  select jsonb_agg(jsonb_build_object('q', q, 'ok', n > 1)) into ans from jsonb_array_elements_text(qs) with ordinality x(q, n);
+  assert public.submit_answers(cid, t[1], ans), 'answers saved';
+  assert public.load_challenge(cid, t[1])->'focus' = 'null'::jsonb, 'one finished: nothing to show yet';
+  for i in 2..3 loop
     select jsonb_agg(jsonb_build_object('q', q, 'ok', n > i)) into ans from jsonb_array_elements_text(qs) with ordinality x(q, n);
     assert public.submit_answers(cid, t[i], ans), 'answers saved';
-    if i = 1 then
-      j := public.load_challenge(cid, t[1]);
-      assert j->'focus' = 'null'::jsonb and j->'share' = '{"me": true, "sharing": 1}'::jsonb, 'one sharer finished: nothing to show yet';
-    end if;
   end loop;
   j := public.load_challenge(cid, t[1]);
   assert (j->'players'->0->>'score')::int = 9 and (j->'players'->1->>'score')::int = 8, 'score is the number right; listed in finishing order';
-  -- Locked once finished, both ways
-  assert not public.share_focus(cid, t[2], true), 'cannot start sharing after seeing your score';
-  assert not public.share_focus(cid, t[1], false), 'cannot stop sharing after finishing';
   -- Wrong input is refused
   begin perform public.submit_answers(cid, t[4], ans - 0); raise exception 'missing answer accepted';
   exception when raise_exception then if sqlerrm <> 'bad answers' then raise; end if; end;
@@ -172,23 +163,19 @@ begin
   begin perform public.submit_answers(cid, t[4], (ans - 0) || jsonb_build_array(ans->1)); raise exception 'repeat answer accepted';
   exception when raise_exception then if sqlerrm <> 'bad answers' then raise; end if; end;
   assert not public.submit_answers(cid, encode(extensions.gen_random_bytes(32), 'hex'), ans), 'only players can submit';
-  -- Player 4 chose to share but finished the old way (no answers): not counted
-  assert public.share_focus(cid, t[4], true), 'player 4 chooses to share';
+  -- Player 4 finishes the old way (no answers): not counted, and sees no group focus
   assert public.submit_score(cid, t[4], 5), 'old-style score still works';
 
   j := public.load_challenge(cid, t[3]);
-  assert (j->'focus'->>'players')::int = 2, 'two sharers finished: they see group focus';
-  assert (j->'focus'->'missed'->>'nur114-u3-safety-001')::int = 2 and (j->'focus'->'missed'->>'nur114-u3-safety-002')::int = 1
-     and (j->'focus'->'missed'->>'nur114-u3-safety-004')::int = 0, 'counts only the sharers with answers (not player 2 or 4)';
+  assert (j->'focus'->>'players')::int = 3, 'everyone who finished with answers counts';
+  assert (j->'focus'->'missed'->>'nur114-u3-safety-001')::int = 3 and (j->'focus'->'missed'->>'nur114-u3-safety-002')::int = 2
+     and (j->'focus'->'missed'->>'nur114-u3-safety-004')::int = 0, 'missed counts per question';
   assert (select count(*) from jsonb_object_keys(j->'focus'->'missed')) = 10, 'counts only, one per question';
   assert (j->'focus')::text !~ 'Focus [0-9]', 'no nicknames in group focus';
-  assert public.load_challenge(cid, t[2])->'focus' = 'null'::jsonb and public.load_challenge(cid, t[2])->'share' = '{"me": false, "sharing": 2}'::jsonb,
-    'a player who chose not to share sees nothing';
-  assert public.load_challenge(cid, t[4])->'focus' = 'null'::jsonb, 'nor does a sharer without saved answers';
-  assert public.load_challenge(cid)->'focus' = 'null'::jsonb and public.load_challenge(cid, creator)->'focus' = 'null'::jsonb
-     and public.load_challenge(cid, creator)->'share' = 'null'::jsonb, 'outsiders and the creator see nothing';
+  assert public.load_challenge(cid, t[4])->'focus' = 'null'::jsonb, 'a finisher without saved answers sees none';
+  assert public.load_challenge(cid)->'focus' = 'null'::jsonb and public.load_challenge(cid, creator)->'focus' = 'null'::jsonb, 'outsiders and the creator see none';
   assert public.delete_challenge(cid, creator), 'creator deletes';
-  raise notice 'ok 4b - group focus: scores from answers, input checked, sharing chosen before finishing, combined counts only';
+  raise notice 'ok 4b - group focus: scores from answers, input checked, everyone who finished, combined counts only';
 end $$;
 
 -- 6. Class tally: totals only, input checked

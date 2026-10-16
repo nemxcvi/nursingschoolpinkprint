@@ -92,7 +92,8 @@ create table if not exists public.challenge_players (
   primary key (challenge_id, ticket_hash)
 );
 
--- Group focus is opt-in: each player chooses before they start whether their answers count
+-- (Previews let players choose whether to share; Group focus now counts everyone who finishes.
+-- The column is kept so re-running this file never fails.)
 alter table public.challenge_players add column if not exists share_focus boolean not null default false;
 
 -- Right/wrong per question for each player who finished (Group focus). Only combined counts
@@ -345,8 +346,8 @@ begin
   return true;
 end $$;
 
--- Group focus: a player chooses, before they finish, whether to share their answers with the group.
--- Locked once they finish, so nobody decides after seeing their score (that would skew the totals).
+-- No longer used by the site (Group focus counts everyone who finishes); kept so older pages don't
+-- fail. Sets the old share choice before finishing.
 create or replace function public.share_focus(p_id text, p_ticket text, p_share boolean) returns boolean
 language plpgsql security definer set search_path = '' as $$
 begin
@@ -362,10 +363,9 @@ end $$;
 
 -- One challenge by its short ID. Everyone sees the title, size, expiry and how many joined.
 -- Scores are shown only to players who have finished, and to the creator, in the order people
--- finished. Group focus is opt-in, chosen before starting: it counts only players who finished
--- and chose to share (share_focus), and shows only to them, once 2 or more are sharing: how many
--- of the sharers missed each question. Combined counts only. 'share' tells a player whether
--- they chose to share and how many finished players are sharing.
+-- finished. Group focus (challenges are for studying together, and players are told before they
+-- start): once 2 or more players have finished with their answers saved, each of them sees how
+-- many of those players missed each question. Combined counts only, never who missed what.
 create or replace function public.load_challenge(p_id text, p_ticket text default null) returns jsonb
 language plpgsql security definer set search_path = '' as $$
 declare
@@ -375,7 +375,7 @@ declare
   is_creator boolean;
   can_see boolean;
   me_answered boolean;
-  sharers int;
+  finishers int;
 begin
   select * into ch from public.challenges c where c.id = upper(p_id);
   if not found or ch.expires_at < now() then return null; end if;
@@ -384,9 +384,7 @@ begin
   select * into me from public.challenge_players p where p.challenge_id = ch.id and p.ticket_hash = h;
   can_see := is_creator or me.finished_at is not null;
   me_answered := h is not null and exists (select 1 from public.challenge_answers a where a.challenge_id = ch.id and a.ticket_hash = h);
-  select count(*) into sharers from public.challenge_players p
-    where p.challenge_id = ch.id and p.share_focus
-      and exists (select 1 from public.challenge_answers a where a.challenge_id = ch.id and a.ticket_hash = p.ticket_hash);
+  select count(distinct a.ticket_hash) into finishers from public.challenge_answers a where a.challenge_id = ch.id;
   return jsonb_build_object(
     'id', ch.id,
     'title', ch.title,
@@ -403,12 +401,10 @@ begin
                                           'finished', p.finished_at is not null, 'me', p.ticket_hash = h)
                        order by p.finished_at nulls last, p.joined_at)
       from public.challenge_players p where p.challenge_id = ch.id), '[]'::jsonb) end,
-    'share', case when me.ticket_hash is not null then jsonb_build_object('me', me.share_focus, 'sharing', sharers) end,
-    'focus', case when not (me_answered and me.share_focus and sharers >= 2) then null else jsonb_build_object(
-      'players', sharers,
+    'focus', case when not (me_answered and finishers >= 2) then null else jsonb_build_object(
+      'players', finishers,
       'missed', (select jsonb_object_agg(q.id, (select count(*) from public.challenge_answers a
-                                                  join public.challenge_players p on p.challenge_id = a.challenge_id and p.ticket_hash = a.ticket_hash
-                                                  where a.challenge_id = ch.id and a.question_id = q.id and not a.correct and p.share_focus))
+                                                  where a.challenge_id = ch.id and a.question_id = q.id and not a.correct))
                  from jsonb_array_elements_text(ch.questions) q(id))) end
   );
 end $$;

@@ -141,7 +141,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.waitForSelector("#pp-strip");
   check((await pg.$$eval(".pp-day", d => d.length)) === 14, "homepage: 14 squares Oct 13 - Oct 26");
   check(/11\s*days to Exam 4/.test(await text("#pp-strip")), "homepage: 11 days to Exam 4");
-  check((await pg.$$eval(".pp-card-mastery", c => c.length)) === 3 && await pg.$eval('.pp-card[href="dashboard.html"]', el => el.classList.contains("is-current")), "homepage: mastery bars on units 1-3, Unit 4 is the current unit");
+  check((await pg.$$eval(".pp-card-mastery", c => c.length)) === 0 && await pg.$eval('.pp-card[href="dashboard.html"]', el => el.classList.contains("is-current")), "homepage: no mastery bars; Unit 4 is the current unit");
   check(await pg.getAttribute("#tag-mystudy", "href") === "dashboard.html", "homepage: My study opens My dashboard");
   await shot("home-oct15");
   await go("", "2026-11-20");
@@ -163,6 +163,10 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(!(await pg.$(".ms-exam")) && !(await pg.$(".ms-week")) && (await pg.$$eval(".ms-tile", t => t.length)) === 3, "switches: countdown, goal and challenges hidden");
   await go("", "2026-10-15");
   check(!(await pg.$("#pp-strip")), "switches: no countdown strip on the homepage");
+  check(await pg.evaluate(() => Tracking.feature("grade")), "Exam average is on by default");
+  await pg.evaluate(() => Tracking.setFeature("grade", false));
+  await go("dashboard.html", "2026-10-01");
+  check(!(await pg.$(".ms-grade")), "switches: Exam average hidden");
 
   check(errors.length === 0, "no page errors", errors.join(" | "));
   console.log(failures ? failures + " FAILED" : "all My study checks passed");

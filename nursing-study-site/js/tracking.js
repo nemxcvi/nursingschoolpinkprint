@@ -40,7 +40,7 @@
   /* SHA-256 of the owner phrase (never the phrase itself). Empty until the owner picks one. */
   var OWNER_HASH = "cb84dd2509deb1db5485dbd495bc23928cd3cd90d2b6c2741539a3ff474793c5";
 
-  var FEATURES = ["sure", "goal", "countdown", "review", "notes", "challenges", "celebrations"];
+  var FEATURES = ["sure", "goal", "countdown", "grade", "review", "notes", "challenges", "celebrations"];
   var GOALS = {questions: [25, 50, 100, 150], days: [2, 3, 4, 5]};
   var DEFAULT_GOAL = {type: "questions", value: 50};
 
