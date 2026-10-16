@@ -67,7 +67,11 @@ async function handleApi(request, env, url) {
   if (origin && origin !== url.origin) return reply(403, {error: "wrong origin"});
   const route = ROUTES[url.pathname.slice(5)];
   if (!route) return reply(404, {error: "unknown"});
-  if (!env.SUPABASE_URL || !env.SUPABASE_KEY) return reply(503, {error: "sync is not set up"});
+  if (!env.SUPABASE_URL || !env.SUPABASE_KEY) {
+    /* Names only (never values), to help spot a missing Cloudflare variable */
+    const missing = ["SUPABASE_URL", "SUPABASE_KEY"].filter(k => !env[k]);
+    return reply(503, {error: "sync is not set up", missing});
+  }
 
   const raw = await request.text();
   if (raw.length > MAX_BODY) return reply(413, {error: "too large"});
