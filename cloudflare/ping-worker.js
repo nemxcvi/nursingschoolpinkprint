@@ -5,7 +5,7 @@
 
    Setup: paste this into a new Worker, add the variables SUPABASE_URL (text) and SUPABASE_KEY
    (secret: the publishable/anon key, never the secret/service_role key), then add the cron
-   trigger "0 15 * * 1,4". Free plan. */
+   trigger "0 15 * * MON,THU" (Cloudflare counts weekdays from 1 = Sunday, so use the names). Free plan. */
 export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil(ping(env));
