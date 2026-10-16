@@ -339,7 +339,7 @@ h2{font-size:20px;}
 #pq-check-guess:disabled{background:transparent;border-color:color-mix(in srgb,var(--muted) 45%,transparent);color:color-mix(in srgb,var(--muted) 70%,transparent);cursor:not-allowed;}
 .pq-sure-tag{display:inline-block;vertical-align:middle;margin-left:12px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--border);color:var(--label);padding:4px 10px;}
 /* My note: hidden behind "+ Add note"; shows a saved note with Edit, or the editor with Cancel / Save note */
-.pq-addnote{flex:0 0 auto;padding:0 20px;}
+.pq-addnote{display:inline-flex;width:auto;min-height:44px;padding:0 20px;margin:0 0 14px;}
 .pq-note-head{display:flex;justify-content:space-between;align-items:center;gap:12px;}
 .pq-note-text{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;color:var(--text);white-space:pre-wrap;}
 .pq-note-btn{flex:0 0 auto;min-height:40px;padding:0 16px;}

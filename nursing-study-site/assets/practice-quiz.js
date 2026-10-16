@@ -382,7 +382,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     });
 
     var last = LETTERS.charAt(Math.min(currentDisplayOptions.length, LETTERS.length) - 1);
-    document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; " + (q.multi ? "toggle" : "pick") + "</span><span>Enter &middot; check / next</span>";
+    document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; " + (q.multi ? "toggle" : "pick") + "</span>" + checkHint();
   }
 
   /* ---------- Drag and drop ----------
@@ -606,7 +606,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     errEl.textContent = "Move at least one option first";
     document.getElementById("pq-submit").disabled = false;
     var last = LETTERS.charAt(Math.min(currentDisplayOptions.length, LETTERS.length) - 1);
-    document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; move between boxes</span><span>Enter &middot; check / next</span>";
+    document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; move between boxes</span>" + checkHint();
   }
 
   /* ---------- Check answer (every type) ---------- */
@@ -886,10 +886,10 @@ function initPracticeQuiz(bank, catLabels, opts){
     new MutationObserver(syncChecks).observe(submitBtn, {attributes: true, attributeFilter: ["class", "disabled"]});
     syncChecks();
 
-    /* After checking: "+ Add note" on the left of "Next question". The note box opens only
+    /* After checking: "+ Add note" on its own line above "Next question". The note box opens only
        when it's tapped (Cancel / Save note); a saved note shows with an Edit button. */
     addNoteBtn = makeButton("pq-add-note", "btn btn-secondary pq-addnote hidden", "+ Add note");
-    btnRow.insertBefore(addNoteBtn, document.getElementById("pq-next"));
+    btnRow.parentNode.insertBefore(addNoteBtn, btnRow);
 
     noteBox = document.createElement("div");
     noteBox.className = "pq-note hidden";
@@ -923,6 +923,10 @@ function initPracticeQuiz(bank, catLabels, opts){
       Progress.setNote(q.id, noteInput.value);
       showNote(q);
     });
+  }
+  /* Keyboard hint: with tracking on, Enter checks as "I'm sure" and Shift+Enter as "I guessed" */
+  function checkHint(){
+    return tracking ? "<span>Enter &middot; I'm sure / next</span><span>Shift+Enter &middot; I guessed</span>" : "<span>Enter &middot; check / next</span>";
   }
   function makeButton(id, cls, text){
     var b = document.createElement("button");
@@ -1103,7 +1107,11 @@ function initPracticeQuiz(bank, catLabels, opts){
       e.preventDefault();
       var submit = document.getElementById("pq-submit");
       if (answered) document.getElementById("pq-next").click();
-      else if (!submit.disabled) submit.click();
+      else if (!submit.disabled){
+        if (tracking && e.shiftKey) pendingSure = false;
+        submit.click();
+        pendingSure = true;
+      }
       return;
     }
     if (answered) return;
