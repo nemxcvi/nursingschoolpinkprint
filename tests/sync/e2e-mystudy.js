@@ -157,10 +157,10 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(/Semester recap/.test(await text(".ms-main")) && /Holiday break: hitting your goal grows your streak; missing it only pauses it/.test(await text(".ms-week")), "after Dec 10: recap, and the weekly goal still counts during the break (on by default)");
   await shot("dashboard-recap");
 
-  // ---- My study header: the site menu at the left, night mode at the right ----
+  // ---- My study header: the site menu at the left; Settings and night mode at the right ----
   await go("dashboard.html", "2026-10-01");
-  check(await pg.$(".ms-header .ms-hdr-left #navbtn") && await pg.$(".ms-header .ms-hdr-right .ms-theme") && !(await pg.$(".ms-header .ms-settings")),
-    "My study header: menu on the left, night mode on the right, no Settings icon");
+  check(await pg.$(".ms-header .ms-hdr-left #navbtn") && await pg.$(".ms-header .ms-hdr-right .ms-settings[aria-label='Settings'] + .ms-theme"),
+    "My study header: menu on the left; Settings then night mode on the right");
   await pg.click(".ms-header #navbtn"); await pg.waitForTimeout(300);
   check(await pg.isVisible("#sitenav") && await pg.$eval('#sitenav .nav-row.is-current', a => a.textContent.includes("Dashboard")), "menu opens on My study pages with Dashboard marked");
   await pg.click(".ms-header #navbtn"); await pg.waitForTimeout(300);

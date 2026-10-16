@@ -676,8 +676,9 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-main{display:flex;flex-direction:column;gap:20px;}
 .ms-header{padding:20px 0;flex-wrap:nowrap;}
 .ms-hdr-left{display:flex;align-items:center;gap:10px;min-width:0;}
-.ms-hdr-right{display:flex;align-items:center;flex:0 0 auto;}
-.ms-hdr-right .iconbtn{color:var(--label);}
+.ms-hdr-right{display:flex;align-items:center;gap:2px;flex:0 0 auto;}
+.ms-hdr-right .iconbtn{color:var(--text);}
+.ms-hdr-right .ms-settings.is-current{background:var(--pill);}
 .hdr-menuonly{display:flex;align-items:center;}
 .hdr-menuonly .navpanel{position:fixed;}
 
