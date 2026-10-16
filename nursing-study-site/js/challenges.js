@@ -9,6 +9,23 @@ var Challenges = (function(){
   function esc(s){ return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function day(iso){ return new Date(iso).toLocaleDateString("en-US", {month: "short", day: "numeric"}); }
   function link(id){ return location.origin + "/c/" + id; }
+  /* Challenge codes: 8 letters and numbers with no look-alikes (no 0/O, 1/I/L), shown as "7KQ2 XM4P" */
+  var CODE_RE = /^[2-9A-HJ-NP-Z]{8}$/;
+  function showCode(id){ return id.slice(0, 4) + " " + id.slice(4); }
+  /* Takes a typed code (any case, spaces or dashes) or a pasted link; returns the code or null */
+  function parseCode(s){
+    s = String(s || "").trim();
+    var m = s.match(/(?:\/c\/|join=)([^\/?#&\s]+)/i);
+    if (m) s = m[1];
+    s = s.replace(/[\s-]/g, "").toUpperCase();
+    return CODE_RE.test(s) ? s : null;
+  }
+  var BAD_CODE = "That doesn't look like a challenge code. It's 8 letters and numbers, like 7KQ2 XM4P.";
+  function joinFormHtml(){
+    return '<form class="ms-card ch-joinform" novalidate><label for="ch-code" class="ch-eyebrow">Join with a code</label>' +
+      '<div class="ch-linkrow"><input id="ch-code" class="ch-link ch-codein" placeholder="7KQ2 XM4P" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="80">' +
+      '<button type="submit" class="ch-copy">Join</button></div><p class="tp-note ch-joinmsg hidden" role="alert"></p></form>';
+  }
   function shuffle(a){
     a = a.slice();
     for (var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; }
@@ -93,7 +110,7 @@ var Challenges = (function(){
   /* ---------- Challenges page ---------- */
   function intro(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Study buddy</div><h1 class="tp-h1">Challenges</h1>' +
-      '<p class="tp-lede">Send a friend the same questions before anyone takes them, then compare scores. Up to 10 people per challenge. Links expire after 7 days.</p></section>';
+      '<p class="tp-lede">Send a friend the same questions before anyone takes them, then compare scores. Up to 10 people per challenge. Challenges expire after 7 days.</p></section>';
   }
 
   /* Someone without tracking opened a challenge link */
@@ -103,7 +120,15 @@ var Challenges = (function(){
       '<section class="ms-card ch-guest"><h2 class="ms-h2">' + (joinId ? "A friend sent you a challenge" : "Challenges are part of tracking") + "</h2>" +
       '<p class="tp-hint">Challenges are for students who track their progress, so your score has a nickname next to it. Tracking is free, needs no account or email, and takes a minute.</p>' +
       '<a class="ms-btn is-primary is-big ch-start" href="start-tracking.html?from=challenge&amp;return=' + encodeURIComponent(ret) + '">Start tracking &rarr;</a>' +
-      '<p class="tp-hint">Already tracking on another device? Use <a href="start-tracking.html?return=' + encodeURIComponent(ret) + '">Already have a code?</a> on the same page.</p></section>';
+      '<p class="tp-hint">Already tracking on another device? Use <a href="start-tracking.html?return=' + encodeURIComponent(ret) + '">Already have a code?</a> on the same page.</p></section>' +
+      (joinId ? "" : joinFormHtml());
+    var form = host.querySelector(".ch-joinform");
+    if (form) form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var code = parseCode(form.querySelector(".ch-codein").value), msg = form.querySelector(".ch-joinmsg");
+      if (!code){ msg.textContent = BAD_CODE; msg.classList.remove("hidden"); return; }
+      location.href = "start-tracking.html?from=challenge&return=" + encodeURIComponent("/challenges.html?join=" + code);
+    });
   }
 
   function offPage(host){
@@ -124,10 +149,12 @@ var Challenges = (function(){
       '<fieldset class="ch-field ch-counts"><legend>Questions</legend><div>' +
       COUNTS.map(function(n){ return '<button type="button" data-n="' + n + '" aria-pressed="' + (n === 20) + '">' + n + "</button>"; }).join("") +
       "</div></fieldset>" +
-      '<button type="submit" class="ms-btn is-primary is-big ch-create">Create challenge link</button>' +
+      '<button type="submit" class="ms-btn is-primary is-big ch-create">Create challenge</button>' +
       '<p class="tp-note ch-msg hidden" role="alert"></p>' +
-      '<div class="ch-ready hidden"><span class="ch-ready-label"></span><div class="ch-linkrow"><input class="ch-link" aria-label="Challenge link" readonly>' +
-      '<button type="button" class="ch-copy">Copy</button></div><span class="tp-hint">Send it by text or group chat. Take it yourself from the list.</span></div>' +
+      '<div class="ch-ready hidden"><span class="ch-ready-label"></span>' +
+      '<div class="ch-coderow"><span class="ch-bigcode"></span><button type="button" class="ch-copy ch-copycode">Copy code</button></div>' +
+      '<div class="ch-linkrow"><input class="ch-link" aria-label="Challenge link" readonly><button type="button" class="ch-copy">Copy link</button></div>' +
+      '<span class="tp-hint">Friends type the code under Join with a code, or open the link. Take it yourself from the list.</span></div>' +
       "</form>";
   }
 
@@ -176,7 +203,8 @@ var Challenges = (function(){
         btn.disabled = false;
         var ready = form.querySelector(".ch-ready");
         ready.classList.remove("hidden");
-        ready.querySelector(".ch-ready-label").textContent = "Link ready · " + entry.title + " · " + entry.count + " questions";
+        ready.querySelector(".ch-ready-label").textContent = "Ready · " + entry.title + " · " + entry.count + " questions";
+        ready.querySelector(".ch-bigcode").textContent = showCode(entry.id);
         ready.querySelector(".ch-link").value = link(entry.id);
         onCreated(entry);
       }, function(err){
@@ -185,7 +213,8 @@ var Challenges = (function(){
         msg.classList.remove("hidden");
       });
     });
-    form.querySelector(".ch-copy").addEventListener("click", function(e){ copy(form.querySelector(".ch-link").value, e.currentTarget); });
+    form.querySelector(".ch-linkrow .ch-copy").addEventListener("click", function(e){ copy(form.querySelector(".ch-link").value, e.currentTarget); });
+    form.querySelector(".ch-copycode").addEventListener("click", function(e){ copy(form.querySelector(".ch-bigcode").textContent, e.currentTarget); });
   }
 
   /* One challenge card, from load_challenge */
@@ -206,7 +235,7 @@ var Challenges = (function(){
           '<span class="ch-score">' + (done ? p.score + "/" + p.total : "Taking it now") + "</span></li>";
       }).join("") + "</ol>";
     } else if (c.is_creator){
-      body += '<p class="ch-note">Nobody has taken it yet. Send the link by text or group chat, then take it yourself.</p>';
+      body += '<p class="ch-note">Nobody has taken it yet. Send friends the code or the link, then take it yourself.</p>';
     }
     if (!finished && !c.is_creator) body += '<p class="ch-note">Scores show after you finish, so nobody sees answers early.</p>';
     var btns = [];
@@ -214,6 +243,8 @@ var Challenges = (function(){
       if (!c.me && c.joined >= MAX_PLAYERS) btns.push('<span class="ch-meta">This challenge is full.</span>');
       else btns.push('<a class="ms-btn is-primary ch-take" href="session.html?mode=challenge&amp;id=' + c.id + '">' + (c.me ? "Finish challenge" : "Take challenge") + " &rarr;</a>");
     }
+    btns.push('<span class="ch-cardcode" title="Challenge code">' + showCode(c.id) + "</span>");
+    btns.push('<button type="button" class="ch-btn ch-copycode">Copy code</button>');
     btns.push('<button type="button" class="ch-btn ch-copylink">Copy link</button>');
     btns.push(c.is_creator ? '<button type="button" class="ch-btn is-danger ch-delete">Delete challenge</button>'
                            : '<button type="button" class="ms-linkbtn ch-remove">Remove from my list</button>');
@@ -233,9 +264,10 @@ var Challenges = (function(){
       card.innerHTML = cardHtml(entry, c);
       if (location.hash === "#c-" + entry.id){ card.classList.add("is-new"); card.scrollIntoView({block: "center"}); }
       card.querySelector(".ch-copylink").addEventListener("click", function(e){ copy(link(c.id), e.currentTarget); });
+      card.querySelector(".ch-copycode").addEventListener("click", function(e){ copy(showCode(c.id), e.currentTarget); });
       var del = card.querySelector(".ch-delete"), rm = card.querySelector(".ch-remove");
       if (del) del.addEventListener("click", function(){
-        if (!confirm("Delete this challenge for everyone? The link will stop working.")) return;
+        if (!confirm("Delete this challenge for everyone? Its code and link will stop working.")) return;
         remove(entry.id).then(function(){ card.remove(); emptyCheck(); }, function(err){ alert(friendly(err)); });
       });
       if (rm) rm.addEventListener("click", function(){ remove(entry.id).then(function(){ card.remove(); emptyCheck(); }); });
@@ -271,27 +303,39 @@ var Challenges = (function(){
       pick.topic = "";
     }
     host.innerHTML = intro() + '<div class="tp-note ch-banner hidden" role="status"></div>' +
-      '<section class="ch-layout">' + formHtml(d, pick) + '<div class="ch-list"></div></section>';
+      '<section class="ch-layout">' + formHtml(d, pick) + '<div class="ch-side">' + joinFormHtml() + '<div class="ch-list"></div></div></section>';
     listEl = host.querySelector(".ch-list");
     wireForm(d, host, pick, function(entry){ addCard(entry, true); });
     T.challenges().forEach(function(entry){ addCard(entry, false); });
     emptyCheck();
 
-    /* Opened from a challenge link: add it to the list (joining happens when they take it) */
-    var joinId = (params.get("join") || "").toUpperCase();
-    if (joinId){
-      history.replaceState(null, "", location.pathname);
-      var known = T.challenge(joinId);
-      var focus = function(card){ card.classList.add("is-new"); card.scrollIntoView({block: "center"}); };
-      if (known){ focus(document.getElementById("c-" + joinId)); return; }
-      T.call("challenges/load", {id: joinId}).then(function(c){
+    /* A code typed in, or a challenge link opened: add it to the list (joining happens when they take it) */
+    var focus = function(card){ if (!card) return; card.classList.add("is-new"); card.scrollIntoView({block: "center"}); };
+    function openCode(id, say){
+      var known = T.challenge(id);
+      if (known){ focus(document.getElementById("c-" + id)); return Promise.resolve(); }
+      return T.call("challenges/load", {id: id}).then(function(c){
         if (!c) throw new Error("expired");
         focus(addCard(T.saveChallenge({id: c.id, title: c.title, count: c.count}), true));
-      }).catch(function(err){
-        var b = host.querySelector(".ch-banner");
-        b.textContent = friendly(err);
-        b.classList.remove("hidden");
-      });
+      }).catch(function(err){ say(friendly(err)); });
+    }
+    var jf = host.querySelector(".ch-joinform"), jmsg = jf.querySelector(".ch-joinmsg");
+    var jsay = function(t){ jmsg.textContent = t; jmsg.classList.toggle("hidden", !t); };
+    jf.addEventListener("submit", function(e){
+      e.preventDefault();
+      var code = parseCode(jf.querySelector(".ch-codein").value);
+      if (!code) return jsay(BAD_CODE);
+      jsay("");
+      var btn = jf.querySelector("button");
+      btn.disabled = true;
+      openCode(code, jsay).then(function(){ btn.disabled = false; jf.querySelector(".ch-codein").value = ""; });
+    });
+    var joinId = parseCode(params.get("join"));
+    if (params.get("join")){
+      history.replaceState(null, "", location.pathname);
+      var banner = host.querySelector(".ch-banner");
+      if (!joinId){ banner.textContent = BAD_CODE; banner.classList.remove("hidden"); }
+      else openCode(joinId, function(t){ banner.textContent = t; banner.classList.remove("hidden"); });
     }
   }
 
@@ -307,5 +351,5 @@ var Challenges = (function(){
     });
   }
 
-  return {page: page, create: create, join: join, load: load, submit: submit, remove: remove, link: link, friendly: friendly};
+  return {page: page, parseCode: parseCode, create: create, join: join, load: load, submit: submit, remove: remove, link: link, friendly: friendly};
 })();
