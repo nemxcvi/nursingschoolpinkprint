@@ -71,8 +71,10 @@ function page(opts = {}){
     localStorage: mk(local), sessionStorage: mk(session),
     location: {search: opts.search || "", hash: opts.hash || "", pathname: "/unit-3-skin-wounds-diagnostics/safety-quiz.html"},
     history: {replaceState(){ ctx.cleared = true; }},
-    document: {currentScript: {src: "https://example.test/js/tracking.js"}, dispatchEvent(){}},
-    URL, URLSearchParams, TextEncoder, Uint8Array, Uint32Array, console,
+    document: {currentScript: {src: "https://example.test/js/tracking.js"}, readyState: "complete", dispatchEvent(){}, addEventListener(){}},
+    URL, URLSearchParams, TextEncoder, TextDecoder, Uint8Array, Uint32Array, btoa, atob,
+    console: {log(){}, warn(){}, error: console.error},
+    setTimeout: (f, ms) => setTimeout(f, ms).unref(), clearTimeout,
     crypto: globalThis.crypto || require("crypto").webcrypto,
     CustomEvent: class {}, fetch: () => Promise.reject(new Error("offline"))
   };
@@ -154,11 +156,13 @@ test("owner phrase: lowercased, trimmed and extra spaces collapsed before checki
   const sha = s => require("crypto").createHash("sha256").update(s).digest("hex");
   const ownerHash = sha("velvet otter caramel lantern");
   const tracked = {"pinkprint-tracking": JSON.stringify({code: "flashcard pulse coffee 4821", nickname: "Lab Legend"})};
-  const wait = () => new Promise(r => setTimeout(r, 50));
+  /* Wait until a check passes (the slow key derivation for syncing can keep the machine busy) */
+  const until = async (fn, ms = 5000) => { const end = Date.now() + ms; while (!fn() && Date.now() < end) await new Promise(r => setTimeout(r, 20)); };
+  const wait = () => new Promise(r => setTimeout(r, 300));
 
   for (const typed of ["velvet otter caramel lantern", "%20Velvet%20%20OTTER%20caramel%20Lantern%20", "Velvet+Otter+Caramel+Lantern"]){
     const p = page({local: tracked, hash: "#owner=" + typed, ownerHash});
-    await wait();
+    await until(() => p.T.state().nickname === "Miss Pinkprint");
     assert.equal(p.T.state().nickname, "Miss Pinkprint", typed);
     assert.ok(p.ctx.cleared, "phrase cleared from the address bar");
   }
@@ -171,4 +175,50 @@ test("owner phrase: lowercased, trimmed and extra spaces collapsed before checki
   await wait();
   assert.equal(guest.local.size, 0, "guests: nothing saved");
   assert.ok(guest.ctx.cleared);
+});
+
+/* ---------- Sync (phase 4): keys, encryption, merging ---------- */
+test("keys: the code gives a lookup ID and a separate key; spaces and capitals don't matter", async () => {
+  assert.ok(T.PBKDF2_ITERATIONS >= 600000, "slow on purpose");
+  const a = await T.deriveKeys("flashcard pulse coffee 4821");
+  const b = await T.deriveKeys("  Flashcard PULSE coffee4821 ");
+  const c = await T.deriveKeys("flashcard pulse coffee 4822");
+  assert.match(a.lookup, /^[0-9a-f]{64}$/);
+  assert.equal(Buffer.from(a.key, "base64").length, 32, "AES-256 key");
+  assert.deepEqual(a, b, "same code typed differently gives the same values");
+  assert.notEqual(a.lookup, c.lookup, "a different code gives a different lookup ID");
+  assert.notEqual(a.key, c.key);
+  assert.notEqual(a.lookup, Buffer.from(a.key, "base64").toString("hex"), "lookup ID and key are separate");
+  assert.ok(!a.lookup.includes("flashcard"), "the code isn't in the lookup ID");
+});
+
+test("encryption: only the right key opens it, and the saved text is scrambled", async () => {
+  const k = await T.deriveKeys("flashcard pulse coffee 4821");
+  const other = await T.deriveKeys("flashcard pulse coffee 4822");
+  const payload = {v: 1, settings: {nickname: "Lab Legend"}, progress: {"nur114-u3-safety-001": {seen: 2, note: "RACE = rescue first"}}};
+  const box1 = await T.encryptJSON(k.key, payload);
+  const box2 = await T.encryptJSON(k.key, payload);
+  assert.match(box1, /^v1\.[A-Za-z0-9+/=]+\.[A-Za-z0-9+/=]+$/);
+  assert.notEqual(box1, box2, "a fresh random IV every save");
+  ["Lab Legend", "RACE", "nur114", "flashcard"].forEach(w => assert.ok(!box1.includes(w), w + " not readable"));
+  assert.deepEqual(await T.decryptJSON(k.key, box1), payload);
+  await assert.rejects(T.decryptJSON(other.key, box1), "a different code can't open it");
+  await assert.rejects(T.decryptJSON(k.key, box1.slice(0, -4) + "AAAA"), "tampered text is rejected");
+});
+
+test("merging two devices: the most recent change to each question wins", () => {
+  const a = {q1: {seen: 3, t: 100}, q2: {seen: 1, t: 500, note: "mine"}, q3: {seen: 1, t: 50}};
+  const b = {q1: {seen: 4, t: 200}, q2: {seen: 1, t: 400}, q4: {seen: 2, t: 10}};
+  const m = T.mergeProgress(a, b);
+  assert.equal(m.q1.seen, 4, "b changed q1 later");
+  assert.equal(m.q2.note, "mine", "a changed q2 later");
+  assert.ok(m.q3 && m.q4, "questions from both devices are kept");
+  assert.equal(T.mergeProgress({q: {seen: 1}}, {}).q.seen, 1, "records without a time still merge");
+  const local = {nickname: "Lab Legend", settingsAt: 10}, remote = {nickname: "IV Icon", settingsAt: 20};
+  assert.equal(T.mergeSettings(local, remote).nickname, "IV Icon");
+  assert.equal(T.mergeSettings(remote, local).nickname, "IV Icon");
+  const picked = T.pickSettings({code: "flashcard pulse coffee 4821", nickname: "Lab Legend", sync: {key: "secret"}, goal: {type: "days", value: 3}, settingsAt: 5});
+  assert.equal(picked.code, undefined, "the code itself is never part of the saved copy");
+  assert.equal(picked.sync, undefined, "nor this device's keys");
+  assert.equal(picked.nickname, "Lab Legend");
 });

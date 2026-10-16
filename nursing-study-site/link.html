@@ -19,22 +19,60 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=54">
+<link rel="stylesheet" href="assets/style.css?v=55">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div class="tp-wrap">
-  <header class="tp-header"><a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a></header>
+  <header class="tp-header">
+    <a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a>
+  </header>
   <section class="tp-intro">
-    <div class="tp-eyebrow">Link this device</div>
-    <h1 class="tp-h1">Coming soon</h1>
-    <p class="tp-lede">Linking a second device with your code is on its way. Until then, your progress stays on the device where you started tracking. Keep your code somewhere safe.</p>
-    <p><a class="tp-btn tp-btn-inline" href="./">Back to the home page</a></p>
+    <div class="tp-eyebrow">Your code and devices</div>
+    <h1 class="tp-h1">Link this device</h1>
+    <p class="tp-lede">Type the code from your other device, or scan its QR code. Your progress shows up here too.</p>
   </section>
+  <form class="tp-card tp-linkpage" id="lk-form">
+    <label for="lk-code" class="tp-h3">Your code</label>
+    <span class="tp-hint">3 words and 4 numbers. Spaces and capitals don't matter.</span>
+    <div class="tp-row">
+      <input id="lk-code" class="tp-input" placeholder="flashcard pulse coffee 4821" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button type="submit" class="tp-btn tp-btn-primary tp-btn-flat" id="lk-go">Link</button>
+    </div>
+    <p class="tp-note hidden" id="lk-msg" role="status"></p>
+  </form>
+  <p><a class="tp-textlink" href="start-tracking.html">New here? Start tracking instead</a></p>
 </div>
+<script src="js/tracking.js?v=3"></script>
 <script>
-/* A scanned QR code puts the code in the #part; clear it so it doesn't stay in history */
-if (location.hash) history.replaceState(null, "", location.pathname);
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function say(text){ $("lk-msg").textContent = text; $("lk-msg").classList.toggle("hidden", !text); }
+  /* A scanned QR code brings the code in the #part (never sent to the server); clear it right away */
+  var m = location.hash.match(/^#code=([a-z0-9-]+)$/i);
+  if (location.hash) history.replaceState(null, "", location.pathname);
+  if (m) $("lk-code").value = m[1].split("-").join(" ");
+
+  var cur = Tracking.state();
+  $("lk-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    var typed = $("lk-code").value;
+    if (cur && Tracking.normalizeCode(typed) === Tracking.normalizeCode(cur.code)){
+      say("This device already uses that code.");
+      return;
+    }
+    if (cur && !confirm("This device is tracking with a different code. Switch to this one? Progress from the current code stays saved under that code.")) return;
+    $("lk-go").disabled = true;
+    say("Looking for your progress\u2026");
+    Tracking.link(typed).then(function(){
+      say("Linked. Taking you home\u2026");
+      location.href = "./";
+    }, function(err){
+      say(err.message);
+      $("lk-go").disabled = false;
+    });
+  });
+})();
 </script>
 </body>
 </html>

@@ -11,6 +11,14 @@
      finishedSessions   quiz sessions that reached the results page (for the one-time "save your code" reminder)
      codeReminderDone, noteReminderDone
      startedOn          "YYYY-MM-DD"
+     nicknameTicket     random claim ticket for the nickname (never the lookup ID)
+     settingsAt         when any of the settings above last changed (for merging devices)
+     sync               {lookup, key, version, dirty, seq, claimedOn}: this device's sync state
+
+   Sync (phase 4): from the code, PBKDF2 derives two separate values with separate salts: a
+   lookup ID (which row to load and save) and an AES-GCM key. The code itself is never sent.
+   Progress, notes, nickname and settings are encrypted in the browser before saving, and
+   the server only ever sees scrambled text. All requests go through /api/ (_worker.js).
 
    Code creation and storage stay in this file so encryption and sync can be added later
    without rewriting pages. */
@@ -88,10 +96,93 @@
     return goal.type === "days" ? goal.value + " study days per week" : goal.value + " questions per week";
   }
 
+  /* ---------- Sync helpers ---------- */
+  var PBKDF2_ITERATIONS = 600000;
+  var LOOKUP_SALT = "pinkprint-lookup-v1", KEY_SALT = "pinkprint-key-v1";
+  /* Settings that travel between devices (everything else in the saved state stays on the device) */
+  var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn"];
+
+  function subtle(){ return cryptoObj().subtle; }
+  function utf8(s){ return new TextEncoder().encode(s); }
+  function toHex(buf){
+    return Array.prototype.map.call(new Uint8Array(buf), function(b){ return b.toString(16).padStart(2, "0"); }).join("");
+  }
+  function toB64(buf){
+    var bytes = new Uint8Array(buf), bin = "";
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function fromB64(s){
+    var bin = atob(s), out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  function randomHex(bytes){
+    var b = new Uint8Array(bytes);
+    cryptoObj().getRandomValues(b);
+    return toHex(b);
+  }
+
+  function pbkdf2(code, salt){
+    return subtle().importKey("raw", utf8(normalizeCode(code)), "PBKDF2", false, ["deriveBits"]).then(function(k){
+      return subtle().deriveBits({name: "PBKDF2", hash: "SHA-256", salt: utf8(salt), iterations: PBKDF2_ITERATIONS}, k, 256);
+    });
+  }
+  /* {lookup: 64 hex characters, key: base64 AES-256 key}. Spaces and capitals in the code don't matter. */
+  function deriveKeys(code){
+    return Promise.all([pbkdf2(code, LOOKUP_SALT), pbkdf2(code, KEY_SALT)]).then(function(r){
+      return {lookup: toHex(r[0]), key: toB64(r[1])};
+    });
+  }
+
+  function aesKey(keyB64, use){
+    return subtle().importKey("raw", fromB64(keyB64), {name: "AES-GCM"}, false, [use]);
+  }
+  /* "v1.<iv>.<ciphertext>", both base64 */
+  function encryptJSON(keyB64, obj){
+    var iv = new Uint8Array(12);
+    cryptoObj().getRandomValues(iv);
+    return aesKey(keyB64, "encrypt").then(function(k){
+      return subtle().encrypt({name: "AES-GCM", iv: iv}, k, utf8(JSON.stringify(obj)));
+    }).then(function(ct){ return "v1." + toB64(iv) + "." + toB64(ct); });
+  }
+  function decryptJSON(keyB64, text){
+    var parts = String(text).split(".");
+    if (parts.length !== 3 || parts[0] !== "v1") return Promise.reject(new Error("unreadable"));
+    return aesKey(keyB64, "decrypt").then(function(k){
+      return subtle().decrypt({name: "AES-GCM", iv: fromB64(parts[1])}, k, fromB64(parts[2]));
+    }).then(function(pt){ return JSON.parse(new TextDecoder().decode(pt)); });
+  }
+
+  /* Merging two devices: per question, the more recently changed record wins (t = change time);
+     for settings, the more recently changed set wins. */
+  function mergeProgress(a, b){
+    var out = {};
+    [a || {}, b || {}].forEach(function(store){
+      Object.keys(store).forEach(function(id){
+        var r = store[id], cur = out[id];
+        if (!cur || (r.t || 0) > (cur.t || 0)) out[id] = r;
+      });
+    });
+    return out;
+  }
+  function pickSettings(state){
+    var out = {};
+    SYNCED.forEach(function(k){ if (state[k] !== undefined) out[k] = state[k]; });
+    out.settingsAt = state.settingsAt || 0;
+    return out;
+  }
+  function mergeSettings(local, remote){
+    return (remote && (remote.settingsAt || 0) > (local.settingsAt || 0)) ? remote : local;
+  }
+
   var api = {
     OWNER_NAME: OWNER_NAME, FEATURES: FEATURES, GOALS: GOALS, DEFAULT_GOAL: DEFAULT_GOAL, ALL_KEYS: ALL_KEYS,
     generateCode: generateCode, normalizeCode: normalizeCode, parseCode: parseCode, maskCode: maskCode,
-    pickNickname: pickNickname, goalLabel: goalLabel, normalizePhrase: normalizePhrase
+    pickNickname: pickNickname, goalLabel: goalLabel, normalizePhrase: normalizePhrase,
+    deriveKeys: deriveKeys, encryptJSON: encryptJSON, decryptJSON: decryptJSON,
+    mergeProgress: mergeProgress, mergeSettings: mergeSettings, pickSettings: pickSettings,
+    PBKDF2_ITERATIONS: PBKDF2_ITERATIONS
   };
 
   if (typeof window === "undefined"){ module.exports = api; return; }
@@ -109,14 +200,30 @@
   };
   api.isOn = function(){ return !!api.state(); };
 
-  /* Only ever writes while tracking is on */
+  /* Only ever writes while tracking is on. Changes to synced settings are sent to the
+     other devices. */
   api.update = function(patch){
     var s = api.state();
     if (!s) return null;
-    Object.keys(patch).forEach(function(k){ s[k] = patch[k]; });
+    var synced = false;
+    Object.keys(patch).forEach(function(k){
+      s[k] = patch[k];
+      if (SYNCED.indexOf(k) !== -1) synced = true;
+    });
+    if (synced) s.settingsAt = Date.now();
     lsSet(KEY, JSON.stringify(s));
+    if (synced) api.changed();
     return s;
   };
+  /* This device's sync bookkeeping; never sent anywhere */
+  function setSync(patch){
+    var s = api.state();
+    if (!s) return null;
+    s.sync = s.sync || {};
+    Object.keys(patch).forEach(function(k){ s.sync[k] = patch[k]; });
+    lsSet(KEY, JSON.stringify(s));
+    return s.sync;
+  }
 
   /* A study feature is on unless it was switched off in Settings (and only while tracking) */
   api.feature = function(name){
@@ -141,13 +248,16 @@
     var features = {};
     FEATURES.forEach(function(f){ features[f] = true; });
     var s = {code: opts.code, nickname: opts.nickname, goal: opts.goal || DEFAULT_GOAL, features: features,
-             finishedSessions: 0, codeReminderDone: false, noteReminderDone: false, startedOn: today()};
+             finishedSessions: 0, codeReminderDone: false, noteReminderDone: false, startedOn: today(),
+             nicknameTicket: opts.nicknameTicket || randomHex(32), settingsAt: Date.now(),
+             sync: {version: 0, dirty: true, seq: 1}};
     lsSet(KEY, JSON.stringify(s));
     lsRemove("pinkprint-track");
     return s;
   };
 
-  /* Delete my data: everything tracking saved on this device, back to the guest view */
+  /* Clears everything tracking saved on this device, back to the guest view
+     (Delete my data also removes the saved copy: see deleteEverywhere) */
   api.deleteAll = function(){
     ALL_KEYS.forEach(lsRemove);
     try { sessionStorage.removeItem(CARRY_KEY); } catch (e) {}
@@ -242,6 +352,226 @@
   };
   api.printUrl = function(code){ return ROOT + "print-code.html#code=" + String(code).trim().split(/\s+/).join("-"); };
 
+  /* ---------- Sync ---------- */
+  function call(action, body){
+    return fetch(ROOT + "api/" + action, {
+      method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body || {}),
+      credentials: "same-origin", cache: "no-store"
+    }).then(function(res){
+      return res.json().catch(function(){ return {}; }).then(function(j){
+        if (!res.ok){ var e = new Error(j.error || ("HTTP " + res.status)); e.status = res.status; throw e; }
+        return j.result;
+      });
+    });
+  }
+  api.call = call;
+  api.randomHex = randomHex;
+
+  /* The lookup ID and key are derived once (it takes a moment on purpose) and kept on this device */
+  var keysPromise = null;
+  function ensureKeys(){
+    var s = api.state();
+    if (!s) return Promise.reject(new Error("not tracking"));
+    if (s.sync && s.sync.lookup && s.sync.key) return Promise.resolve({lookup: s.sync.lookup, key: s.sync.key});
+    if (!keysPromise){
+      keysPromise = deriveKeys(s.code).then(function(k){
+        setSync({lookup: k.lookup, key: k.key});
+        keysPromise = null;
+        return k;
+      }, function(err){ keysPromise = null; throw err; });
+    }
+    return keysPromise;
+  }
+  api.ensureKeys = ensureKeys;
+
+  function loadLocalProgress(){ try { return JSON.parse(lsGet(PROGRESS_KEY)) || {}; } catch (e) { return {}; } }
+
+  /* Brings another device's copy into this one */
+  function absorb(remote){
+    var s = api.state();
+    var merged = mergeSettings(pickSettings(s), remote.settings || {});
+    Object.keys(merged).forEach(function(k){ s[k] = merged[k]; });
+    lsSet(KEY, JSON.stringify(s));
+    lsSet(PROGRESS_KEY, JSON.stringify(mergeProgress(loadLocalProgress(), remote.progress || {})));
+    document.dispatchEvent(new CustomEvent("pinkprint-synced"));
+  }
+
+  var pushTimer = null, busy = null;
+  /* Called after every change: saves to the other devices a moment later */
+  api.changed = function(){
+    var s = api.state();
+    if (!s) return;
+    var sync = s.sync || {};
+    setSync({dirty: true, seq: (sync.seq || 0) + 1});
+    clearTimeout(pushTimer);
+    pushTimer = setTimeout(function(){ api.sync(); }, 1500);
+  };
+
+  /* Another device deleted this code's data: clear this device too */
+  function remoteDeleted(){
+    api.deleteAll();
+    document.dispatchEvent(new CustomEvent("pinkprint-deleted"));
+    location.reload();
+  }
+
+  /* Load the saved copy, merge it in, then save this device's changes. Safe to call any time. */
+  api.sync = function(){
+    if (!api.isOn()) return Promise.resolve();
+    if (busy) return busy.then(function(){ return api.state() && api.state().sync && api.state().sync.dirty ? api.sync() : null; });
+    busy = ensureKeys().then(function(k){
+      return call("vault/load", {lookup: k.lookup}).then(function(rows){
+        var s = api.state(), sync = s.sync || {};
+        var row = rows && rows[0];
+        if (!row){
+          if ((sync.version || 0) > 0) return remoteDeleted();
+          return push(k, 0);
+        }
+        var p = row.version !== sync.version
+          ? decryptJSON(k.key, row.data).then(function(remote){ absorb(remote); setSync({version: row.version}); })
+          : Promise.resolve();
+        return p.then(function(){ return push(k, row.version); });
+      });
+    }).then(function(){ return refreshClaim(); }).catch(function(err){
+      if (window.console) console.warn("[pinkprint] sync paused:", err.message);
+    }).then(function(){ busy = null; });
+    return busy;
+  };
+
+  function push(k, version, tries){
+    var s = api.state();
+    if (!s || !s.sync || !s.sync.dirty) return Promise.resolve();
+    var seq = s.sync.seq;
+    var payload = {v: 1, settings: pickSettings(s), progress: loadLocalProgress()};
+    return encryptJSON(k.key, payload).then(function(data){
+      return call("vault/save", {lookup: k.lookup, data: data, version: version});
+    }).then(function(rows){
+      var r = rows && rows[0];
+      if (!r) throw new Error("no reply");
+      if (r.saved){
+        var now = api.state().sync;
+        setSync({version: r.version, dirty: now.seq !== seq});
+        return;
+      }
+      if (r.version === 0) return remoteDeleted();
+      /* Another device saved first: merge its copy and try again */
+      if ((tries || 0) >= 3) throw new Error("too many conflicts");
+      return decryptJSON(k.key, r.data).then(function(remote){
+        absorb(remote);
+        setSync({version: r.version});
+        return push(k, r.version, (tries || 0) + 1);
+      });
+    });
+  }
+
+  /* ---------- Nicknames (one person per name) ---------- */
+  api.takenNicknames = function(){
+    return call("nicknames/taken").then(function(list){ return Array.isArray(list) ? list : []; }, function(){ return []; });
+  };
+  /* Unclaimed names from the list (or the whole list if the server can't be reached) */
+  api.freeNicknames = function(keep){
+    return Promise.all([api.loadNicknames(), api.takenNicknames()]).then(function(r){
+      var taken = r[1];
+      return r[0].filter(function(n){ return n === keep || taken.indexOf(n) === -1; });
+    });
+  };
+  function ticket(){
+    var s = api.state();
+    if (s.nicknameTicket) return s.nicknameTicket;
+    return api.update({nicknameTicket: randomHex(32)}).nicknameTicket;
+  }
+  /* Claims a name with this person's ticket. Resolves true/false (false: someone else has it). */
+  api.claimNickname = function(name, ticketHex){
+    if (name === OWNER_NAME) return Promise.resolve(true);
+    return call("nicknames/claim", {nickname: name, ticket: ticketHex || ticket()});
+  };
+  function releaseNickname(name){
+    var s = api.state();
+    if (!name || name === OWNER_NAME || !s || !s.nicknameTicket) return Promise.resolve(false);
+    return call("nicknames/release", {nickname: name, ticket: s.nicknameTicket}).catch(function(){ return false; });
+  }
+  /* Switch nickname: claim the new one first, then free the old one */
+  api.switchNickname = function(name){
+    var s = api.state(), old = s.nickname;
+    if (name === old) return Promise.resolve(true);
+    return api.claimNickname(name).then(function(ok){
+      if (!ok) return false;
+      api.update({nickname: name, nicknameTaken: false});
+      setSync({claimedOn: today()});
+      releaseNickname(old);
+      return true;
+    });
+  };
+  /* Keeps the claim fresh (a name unused for a year is released); once a day at most */
+  function refreshClaim(){
+    var s = api.state();
+    if (!s || s.nickname === OWNER_NAME || (s.sync && s.sync.claimedOn === today())) return Promise.resolve();
+    return api.claimNickname(s.nickname).then(function(ok){
+      setSync({claimedOn: today()});
+      var st = api.state();
+      if (!!st.nicknameTaken !== !ok){ st.nicknameTaken = !ok; lsSet(KEY, JSON.stringify(st)); }
+    }, function(){});
+  }
+
+  /* ---------- Link this device ----------
+     Finds the saved copy for a typed or scanned code. Resolves with the parsed code, or rejects
+     with a message to show. */
+  var OFFLINE = "Couldn't reach the server. Check your connection and try again.";
+  api.link = function(typed){
+    return api.loadWords().catch(function(){ throw new Error(OFFLINE); }).then(function(words){
+      var code = parseCode(typed, words);
+      if (!code) throw new Error("That doesn't look like a code. It's 3 words and 4 numbers, like flashcard pulse coffee 4821.");
+      return deriveKeys(code).then(function(k){
+        return call("vault/load", {lookup: k.lookup}).catch(function(){ throw new Error(OFFLINE); }).then(function(rows){
+          var row = rows && rows[0];
+          if (!row) throw new Error("No saved progress was found for that code. Check the words and numbers.");
+          return decryptJSON(k.key, row.data).catch(function(){
+            throw new Error("That code's progress couldn't be unlocked.");
+          }).then(function(remote){
+            /* This device now uses that code: its settings and progress replace what's here */
+            var cur = api.state();
+            var sameCode = !!cur && cur.code === code;
+            var keep = sameCode ? loadLocalProgress() : {};
+            if (!sameCode) api.deleteAll();
+            var s = {code: code, sync: {lookup: k.lookup, key: k.key, version: row.version, dirty: false, seq: 0}};
+            var settings = remote.settings || {};
+            Object.keys(settings).forEach(function(key){ s[key] = settings[key]; });
+            if (!s.features){ s.features = {}; FEATURES.forEach(function(f){ s.features[f] = true; }); }
+            lsSet(KEY, JSON.stringify(s));
+            lsSet(PROGRESS_KEY, JSON.stringify(mergeProgress(keep, remote.progress || {})));
+            return code;
+          });
+        });
+      });
+    });
+  };
+
+  /* Delete my data: removes the saved copy and frees the nickname, then clears this device.
+     If the server can't be reached, nothing is deleted (so the saved copy isn't left behind). */
+  api.deleteEverywhere = function(){
+    var s = api.state();
+    if (!s) return Promise.resolve();
+    return ensureKeys().then(function(k){
+      return call("vault/delete", {lookup: k.lookup});
+    }).then(function(){
+      return releaseNickname(s.nickname);
+    }).then(function(){ api.deleteAll(); });
+  };
+
+  /* Sync when a page opens, when the tab comes back, and before it's hidden */
+  if (api.isOn()){
+    var lastPull = 0;
+    var kick = function(){ lastPull = Date.now(); api.sync(); };
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function(){ setTimeout(kick, 50); });
+    else setTimeout(kick, 50);
+    document.addEventListener("visibilitychange", function(){
+      if (!api.isOn()) return;
+      if (document.visibilityState === "hidden"){
+        var st = api.state();
+        if (st && st.sync && st.sync.dirty){ clearTimeout(pushTimer); api.sync(); }
+      } else if (Date.now() - lastPull > 30000) kick();
+    });
+  }
+
   /* ---------- Owner nickname ----------
      Opening any page with #owner=<phrase> on a tracked device sets "Miss Pinkprint" when the
      phrase matches. The phrase is cleared from the address bar right away. */
@@ -258,7 +588,9 @@
     if (OWNER_HASH && api.isOn()){
       api.ownerHash(phrase).then(function(h){
         if (h === OWNER_HASH){
-          api.update({nickname: OWNER_NAME});
+          var old = api.state().nickname;
+          api.update({nickname: OWNER_NAME, nicknameTaken: false});
+          releaseNickname(old);
           document.dispatchEvent(new CustomEvent("pinkprint-nickname"));
         }
       });

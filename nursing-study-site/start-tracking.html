@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=54">
+<link rel="stylesheet" href="assets/style.css?v=55">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -68,8 +68,17 @@
       </div>
 
       <button type="button" class="tp-start" id="st-start" disabled>Start tracking &rarr;</button>
+      <p class="tp-note hidden" id="st-msg" role="status"></p>
       <button type="button" class="tp-textlink" id="st-link">Already have a code? Link this device</button>
-      <p class="tp-soon hidden" id="st-soon" role="status">Linking devices is coming soon. For now, start tracking here and keep your code somewhere safe.</p>
+      <form class="tp-dashed tp-linkform hidden" id="st-linkform">
+        <label for="st-linkcode" class="tp-h3">Link this device</label>
+        <span class="tp-hint">Type the code from your other device. Spaces and capitals don't matter.</span>
+        <div class="tp-row">
+          <input id="st-linkcode" class="tp-input" placeholder="flashcard pulse coffee 4821" autocomplete="off" autocapitalize="off" spellcheck="false">
+          <button type="submit" class="tp-btn tp-btn-primary tp-btn-flat" id="st-linkgo">Link</button>
+        </div>
+        <p class="tp-note hidden" id="st-linkmsg" role="status"></p>
+      </form>
     </div>
 
     <aside class="tp-aside">
@@ -98,8 +107,8 @@
   </section>
 </div>
 <script src="assets/vendor/qrcode.js?v=1"></script>
-<script src="js/tracking.js?v=2"></script>
-<script src="js/progress.js?v=4"></script>
+<script src="js/tracking.js?v=3"></script>
+<script src="js/progress.js?v=5"></script>
 <script src="js/tracking-ui.js?v=1"></script>
 <script>
 (function(){
@@ -108,6 +117,7 @@
   var names = [], words = [], nickname = "", code = null, goal = Tracking.DEFAULT_GOAL;
   var $ = function(id){ return document.getElementById(id); };
   $("st-reroll").innerHTML = TrackingUI.DICE + "Reroll";
+  function say(id, text){ $(id).textContent = text; $(id).classList.toggle("hidden", !text); }
 
   function showNick(){ $("st-nick").textContent = nickname; }
   /* The code is only made after a Start tracking tap: arriving from a tap (?from=...) or the Create button */
@@ -120,7 +130,8 @@
     ["st-email", "st-manager", "st-print", "st-start"].forEach(function(id){ $(id).disabled = false; });
   }
 
-  Promise.all([Tracking.loadNicknames(), Tracking.loadWords()]).then(function(r){
+  /* Only names nobody else has are offered */
+  Promise.all([Tracking.freeNicknames(), Tracking.loadWords()]).then(function(r){
     names = r[0]; words = r[1];
     nickname = Tracking.pickNickname(names);
     showNick();
@@ -132,21 +143,59 @@
   TrackingUI.wireBackups({email: $("st-email"), manager: $("st-manager"), print: $("st-print")},
     function(){ return code; }, function(){ return nickname; });
   TrackingUI.goalPicker($("st-goal"), goal, function(g){ goal = g; });
-  $("st-link").addEventListener("click", function(){ $("st-soon").classList.remove("hidden"); });
 
-  /* Saves the code, nickname and goal on this device. Progress already here is kept, and
-     answers from the quiz session that sent them here (if any) are saved too. */
+  /* Already have a code? Link this device */
+  $("st-link").addEventListener("click", function(){
+    $("st-linkform").classList.remove("hidden");
+    $("st-linkcode").focus();
+  });
+  $("st-linkform").addEventListener("submit", function(e){
+    e.preventDefault();
+    $("st-linkgo").disabled = true;
+    say("st-linkmsg", "Looking for your progress\u2026");
+    Tracking.link($("st-linkcode").value).then(function(){
+      Tracking.dropCarry();
+      location.href = "./";
+    }, function(err){
+      say("st-linkmsg", err.message);
+      $("st-linkgo").disabled = false;
+    });
+  });
+
+  /* Claims the nickname, saves the code, nickname and goal on this device and makes the first
+     encrypted copy. Progress already here is kept, plus answers from the quiz session that sent
+     them here (if any). */
   $("st-start").addEventListener("click", function(){
     if (!code) return;
-    $("st-start").disabled = true;
-    Tracking.start({code: code, nickname: nickname, goal: goal});
-    var carried = params.get("from") === "results" ? Tracking.takeCarry() : (Tracking.dropCarry(), []);
-    var ret = params.get("return") || "";
-    var dest = /^\/(?!\/)/.test(ret) ? ret : "./";
-    if (!carried.length){ location.href = dest; return; }
-    Progress.init(Tracking.ROOT + "data/nur114/").catch(function(){}).then(function(){
-      carried.forEach(function(a){ Progress.record({id: a.id, unit: a.unit}, a.correct, null, a.picked); });
-      location.href = dest;
+    var btn = $("st-start");
+    btn.disabled = true;
+    btn.textContent = "Starting\u2026";
+    say("st-msg", "");
+    var ticket = Tracking.randomHex(32);
+    var wanted = nickname;
+    Tracking.claimNickname(wanted, ticket).catch(function(){ return true; /* offline: claimed on the next sync */ }).then(function(ok){
+      if (!ok){
+        /* Someone took it a moment ago: offer another free name */
+        names = names.filter(function(n){ return n !== wanted; });
+        nickname = Tracking.pickNickname(names);
+        showNick();
+        say("st-msg", wanted + " was just taken, so here's another name. Press Start tracking again, or reroll.");
+        btn.disabled = false;
+        btn.innerHTML = "Start tracking &rarr;";
+        return;
+      }
+      Tracking.start({code: code, nickname: wanted, goal: goal, nicknameTicket: ticket});
+      var carried = params.get("from") === "results" ? Tracking.takeCarry() : (Tracking.dropCarry(), []);
+      var ret = params.get("return") || "";
+      var dest = /^\/(?!\/)/.test(ret) ? ret : "./";
+      var saved = carried.length
+        ? Progress.init(Tracking.ROOT + "data/nur114/").catch(function(){}).then(function(){
+            carried.forEach(function(a){ Progress.record({id: a.id, unit: a.unit}, a.correct, null, a.picked); });
+          })
+        : Promise.resolve();
+      /* The first save makes the encrypted copy; if it can't finish, the next page tries again */
+      var timeout = new Promise(function(res){ setTimeout(res, 10000); });
+      saved.then(function(){ return Promise.race([Tracking.sync(), timeout]); }).then(function(){ location.href = dest; });
     });
   });
 })();

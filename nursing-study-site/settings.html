@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=54">
+<link rel="stylesheet" href="assets/style.css?v=55">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -38,6 +38,7 @@
       <span class="tp-label">Nickname</span>
       <span class="tp-big" id="se-nick"></span>
       <span class="tp-hint">Shows on your home page and in challenges.</span>
+      <span class="tp-warn-inline hidden" id="se-nicktaken">Someone else has this nickname now. Switch to a new one to keep yours unique.</span>
     </div>
     <button type="button" class="tp-btn" id="se-switch">Switch nickname</button>
     <div class="tp-editor hidden" id="se-nickedit">
@@ -45,6 +46,7 @@
         <select id="se-nickselect" class="tp-select" aria-label="Pick a nickname"></select>
         <button type="button" class="tp-btn" id="se-reroll"></button>
       </div>
+      <p class="tp-note hidden" id="se-nickmsg" role="status"></p>
       <div class="tp-actions">
         <button type="button" class="tp-btn" id="se-nickcancel">Cancel</button>
         <button type="button" class="tp-btn tp-btn-primary" id="se-nicksave">Save nickname</button>
@@ -64,18 +66,18 @@
       <div class="tp-dashed tp-linkqr">
         <div class="tp-qr tp-qr-120" id="se-qr" role="img" aria-label="QR code for linking a device"><span>QR code</span></div>
         <div class="tp-stack">
-          <span class="tp-h3">Link a new device <span class="tp-soontag">Coming soon</span></span>
+          <span class="tp-h3">Link a new device</span>
           <span class="tp-hint">On your phone or another computer, open the site, tap Link a device, and scan this.</span>
         </div>
       </div>
       <form class="tp-dashed tp-col tp-linkform" id="se-linkform">
-        <label for="se-linkcode" class="tp-h3">Link this device instead <span class="tp-soontag">Coming soon</span></label>
+        <label for="se-linkcode" class="tp-h3">Link this device instead</label>
         <span class="tp-hint">Type a code from your other device. Spaces and capitals don't matter.</span>
         <div class="tp-row">
           <input id="se-linkcode" class="tp-input" placeholder="flashcard pulse coffee 4821" autocomplete="off" autocapitalize="off" spellcheck="false">
-          <button type="submit" class="tp-btn tp-btn-primary tp-btn-flat">Link</button>
+          <button type="submit" class="tp-btn tp-btn-primary tp-btn-flat" id="se-linkgo">Link</button>
         </div>
-        <p class="tp-soon hidden" id="se-linksoon" role="status">Linking devices is coming soon.</p>
+        <p class="tp-note hidden" id="se-linkmsg" role="status"></p>
       </form>
     </div>
   </section>
@@ -107,11 +109,12 @@
       <span class="tp-hint">Erases your progress, notes and nickname on every linked device. This can't be undone.</span>
     </div>
     <button type="button" class="tp-btn tp-btn-danger" id="se-delete">Delete my data</button>
+    <p class="tp-note hidden" id="se-delmsg" role="status"></p>
   </section>
 </div>
 <script src="assets/vendor/qrcode.js?v=1"></script>
-<script src="js/tracking.js?v=2"></script>
-<script src="js/progress.js?v=4"></script>
+<script src="js/tracking.js?v=3"></script>
+<script src="js/progress.js?v=5"></script>
 <script src="js/tracking-ui.js?v=1"></script>
 <script>
 (function(){
@@ -139,14 +142,18 @@
     $("se-code").textContent = codeShown ? s.code : Tracking.maskCode(s.code);
     $("se-show").textContent = codeShown ? "Hide code" : "Show code";
     $("se-goal").textContent = Tracking.goalLabel(s.goal);
+    $("se-nicktaken").classList.toggle("hidden", !s.nicknameTaken);
   }
+  function say(id, text){ $(id).textContent = text; $(id).classList.toggle("hidden", !text); }
   render();
   document.addEventListener("pinkprint-nickname", render);
+  document.addEventListener("pinkprint-synced", render);
   $("se-qr").innerHTML = Tracking.qrSvg(Tracking.linkUrl(st().code), 4);
 
   /* Switch nickname: reroll or pick from the list */
   $("se-reroll").innerHTML = TrackingUI.DICE + "Reroll";
-  Tracking.loadNicknames().then(function(n){ names = n; });
+  /* Only names nobody else has (plus your own) */
+  function loadNames(){ return Tracking.freeNicknames(st().nickname).then(function(n){ names = n; }); }
   function fillSelect(selected){
     var sel = $("se-nickselect");
     sel.innerHTML = "";
@@ -160,20 +167,50 @@
     });
   }
   $("se-switch").addEventListener("click", function(){
-    fillSelect(st().nickname);
-    $("se-nickedit").classList.remove("hidden");
-    $("se-switch").classList.add("hidden");
+    say("se-nickmsg", "");
+    loadNames().then(function(){
+      fillSelect(st().nickname);
+      $("se-nickedit").classList.remove("hidden");
+      $("se-switch").classList.add("hidden");
+    });
   });
   $("se-reroll").addEventListener("click", function(){ fillSelect(Tracking.pickNickname(names, $("se-nickselect").value)); });
   function closeNick(){ $("se-nickedit").classList.add("hidden"); $("se-switch").classList.remove("hidden"); }
   $("se-nickcancel").addEventListener("click", closeNick);
-  $("se-nicksave").addEventListener("click", function(){ Tracking.update({nickname: $("se-nickselect").value}); closeNick(); render(); });
+  $("se-nicksave").addEventListener("click", function(){
+    var name = $("se-nickselect").value;
+    $("se-nicksave").disabled = true;
+    Tracking.switchNickname(name).then(function(ok){
+      if (ok){ closeNick(); render(); }
+      else {
+        say("se-nickmsg", "Someone just took " + name + ". Pick another.");
+        loadNames().then(function(){ fillSelect(st().nickname); });
+      }
+    }, function(){
+      say("se-nickmsg", "Couldn't reach the server, so your nickname didn't change. Try again when you're online.");
+    }).then(function(){ $("se-nicksave").disabled = false; });
+  });
 
   /* Code */
   $("se-show").addEventListener("click", function(){ codeShown = !codeShown; render(); });
   TrackingUI.wireBackups({email: $("se-email"), manager: $("se-manager")},
     function(){ return st().code; }, function(){ return st().nickname; });
-  $("se-linkform").addEventListener("submit", function(e){ e.preventDefault(); $("se-linksoon").classList.remove("hidden"); });
+  /* Link this device instead: switch this device to the code from another device */
+  $("se-linkform").addEventListener("submit", function(e){
+    e.preventDefault();
+    var typed = $("se-linkcode").value;
+    if (Tracking.normalizeCode(typed) === Tracking.normalizeCode(st().code)){
+      say("se-linkmsg", "This device already uses that code.");
+      return;
+    }
+    if (!confirm("Switch this device to the code you typed? Progress from this device's current code stays saved under that code.")) return;
+    $("se-linkgo").disabled = true;
+    say("se-linkmsg", "Looking for your progress\u2026");
+    Tracking.link(typed).then(function(){ location.reload(); }, function(err){
+      say("se-linkmsg", err.message);
+      $("se-linkgo").disabled = false;
+    });
+  });
 
   /* Weekly goal */
   var pending = null;
@@ -208,11 +245,16 @@
     $("se-features").appendChild(row);
   });
 
-  /* Delete my data: confirm once, clear this device, back to the guest view */
+  /* Delete my data: confirm once, remove the saved copy and free the nickname, clear this
+     device, back to the guest view. Other linked devices clear themselves when they next sync. */
   $("se-delete").addEventListener("click", function(){
-    if (!confirm("Delete your progress, notes, nickname and code on this device? This can't be undone.")) return;
-    Tracking.deleteAll();
-    location.href = "./";
+    if (!confirm("Delete your progress, notes, nickname and code on every linked device? This can't be undone.")) return;
+    $("se-delete").disabled = true;
+    say("se-delmsg", "Deleting\u2026");
+    Tracking.deleteEverywhere().then(function(){ location.href = "./"; }, function(){
+      say("se-delmsg", "Couldn't reach the server, so nothing was deleted. Try again when you're online.");
+      $("se-delete").disabled = false;
+    });
   });
 })();
 </script>

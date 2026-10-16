@@ -20,7 +20,8 @@
      journal                in the mistake journal: added on a miss, leaves after 2 correct in a row
      resolved               left the mistake journal by being mastered (shown under Resolved)
      note                   the "My note" text, if any
-     examReady              {examId: {base, streak, ready}} for the last 3 days before each exam */
+     examReady              {examId: {base, streak, ready}} for the last 3 days before each exam
+     t                      when this record last changed (ms), so two devices can be merged */
 (function(){
   var STORE_KEY = "pinkprint-progress";
   var TODAY_KEY = "pinkprint-today";
@@ -193,8 +194,12 @@
   api.load = function(){
     try { return JSON.parse(lsGet(STORE_KEY)) || {}; } catch (e) { return {}; }
   };
-  /* Guests never get anything written */
-  api.save = function(store){ if (api.enabled()) lsSet(STORE_KEY, JSON.stringify(store)); };
+  /* Guests never get anything written. Every save is sent on to the other devices. */
+  api.save = function(store){
+    if (!api.enabled()) return;
+    lsSet(STORE_KEY, JSON.stringify(store));
+    Tracking.changed();
+  };
   api.get = function(id){ return api.load()[id] || null; };
 
   /* Exams and the list of unit files, fetched once per page */
@@ -215,6 +220,7 @@
   api.record = function(q, correct, sure, picked){
     var store = api.load();
     var res = applyAnswer(store[q.id], correct, api.today(), q.unit, api.exams || [], sure, picked);
+    res.record.t = Date.now();
     store[q.id] = res.record;
     api.save(store);
     return res.events;
@@ -224,6 +230,7 @@
     var store = api.load();
     var r = store[id] || blankRecord();
     r.bookmarked = !r.bookmarked;
+    r.t = Date.now();
     store[id] = r;
     api.save(store);
     return r.bookmarked;
@@ -240,6 +247,7 @@
     var store = api.load();
     var r = store[id] || blankRecord();
     if (text.trim()) r.note = text; else delete r.note;
+    r.t = Date.now();
     store[id] = r;
     api.save(store);
   };

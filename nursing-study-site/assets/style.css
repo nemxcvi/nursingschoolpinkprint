@@ -665,3 +665,7 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .tp-print-qr svg{width:100%;height:100%;display:block;}
 .tp-print-code{width:100%;box-sizing:border-box;}
 @media print{body{background:#FFFFFF !important;}.tp-noprint{display:none !important;}}
+.tp-note{margin:0;padding:10px 14px;border:1.5px dashed var(--border);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;color:var(--text2);}
+.tp-warn-inline{margin-top:6px;padding:8px 12px;background:var(--missed-bg);border:1.5px solid var(--missed-border);color:var(--missed-text);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;}
+.tp-linkpage{gap:10px;max-width:640px;}
+.tp-danger .tp-note{flex:1 1 100%;}
