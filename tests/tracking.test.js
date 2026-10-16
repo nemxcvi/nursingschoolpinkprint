@@ -43,8 +43,9 @@ test("codes typed with extra spaces or capitals are the same code", () => {
   assert.equal(T.maskCode(code), "flashcard •••••• •••••• ••••");
 });
 
-test("word list: about 250 single, easy words with no repeats or awkward words", () => {
-  assert.ok(WORDS.length >= 240 && WORDS.length <= 260, WORDS.length + " words");
+test("word list: 250 single, easy words, none starting with another, with no repeats or awkward words", () => {
+  assert.equal(WORDS.length, 250);
+  WORDS.forEach(a => WORDS.forEach(b => assert.ok(a === b || !b.startsWith(a), b + " starts with " + a)));
   assert.equal(new Set(WORDS).size, WORDS.length, "no repeats");
   WORDS.forEach(w => assert.match(w, /^[a-z]{3,11}$/, w));
   ["code", "dnr", "morgue", "death", "dead", "blood"].forEach(w => assert.ok(!WORDS.includes(w), w));
