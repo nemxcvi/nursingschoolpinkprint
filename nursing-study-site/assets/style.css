@@ -754,6 +754,10 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-grade-top .ms-linkbtn{align-self:auto;padding:12px 0;margin:-12px 0;}
 .ms-grade-save{justify-content:flex-end;margin-top:16px;}
 .ms-grade-body{display:flex;gap:40px;flex-wrap:wrap;}
+.ms-grade-left{padding-top:10px;}
+.ms-grade-left .tp-hint{margin-top:10px;}
+.ms-grade{container-type:inline-size;}
+@container (min-width:860px){.ms-grade-right{margin-top:-44px;}}
 .ms-grade-left,.ms-grade-right{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:12px;}
 .ms-grade-right{gap:0;font-size:14px;font-variant-numeric:tabular-nums;}
 .ms-grade-big{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
