@@ -7,7 +7,7 @@
   var host = document.getElementById("site-header");
   if (!host) return;
 
-  /* "menu": only the menu button and panel (My study pages put it at their header's right edge) */
+  /* "menu": only the menu button and panel (My study pages put it at the left of their header) */
   var mode = host.getAttribute("data-mode") === "compact" ? "compact" : host.getAttribute("data-mode") === "menu" ? "menu" : "full";
   var sheet = SITE.getSheet(host.getAttribute("data-sheet") || SITE.currentSheet);
   var unit = host.getAttribute("data-unit") ? SITE.getUnit(sheet.id, host.getAttribute("data-unit")) : null;
@@ -223,10 +223,10 @@
   function position(){
     var b = btn.getBoundingClientRect();
     if (mode === "menu"){
-      /* Opens down and to the left from the button at the right edge */
+      /* Opens down from the button at the left of the My study header */
       panel.style.top = (b.bottom + 8) + "px";
       panel.style.maxHeight = Math.max(200, window.innerHeight - b.bottom - 20) + "px";
-      if (window.innerWidth > 600){ panel.style.left = "auto"; panel.style.right = Math.max(12, window.innerWidth - b.right) + "px"; }
+      if (window.innerWidth > 600){ panel.style.left = Math.max(12, b.left) + "px"; panel.style.right = "auto"; }
       else { panel.style.left = "12px"; panel.style.right = "12px"; }
       return;
     }

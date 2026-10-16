@@ -62,9 +62,10 @@ var MyStudy = (function(){
 
   /* ---------- Shared pieces ---------- */
   /* Top menu for My study pages: Dashboard, Progress, Journal, Challenges + nickname (Settings) */
-  /* My study header: brand, My study links, then night mode, Settings and the site menu at the
-     right edge (the menu is assets/header.js in "menu" mode, loaded after the page script).
-     Built once; later calls only refresh the links (e.g. after the Challenges switch changes). */
+  /* My study header: the site menu at the left (assets/header.js in "menu" mode, loaded after the
+     page script), brand, My study links, night mode at the right. Settings is in the menu and on
+     the dashboard. Built once; later calls only refresh the links (e.g. after the Challenges
+     switch changes). */
   var MOON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
   var SUN = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
   function isDark(){ return document.documentElement.getAttribute("data-theme") === "dark"; }
@@ -78,13 +79,10 @@ var MyStudy = (function(){
     var nav = host.querySelector(".ms-nav");
     if (nav && host.querySelector(".ms-hdr-right")){ nav.innerHTML = links; return; }
     host.className = "tp-header ms-header";
-    host.innerHTML = '<a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a>' +
+    host.innerHTML = '<div class="ms-hdr-left"><div id="site-header" data-mode="menu"></div>' +
+      '<a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a></div>' +
       '<nav class="ms-nav" aria-label="My study">' + links + "</nav>" +
-      '<div class="ms-hdr-right">' +
-      '<button type="button" class="iconbtn ms-theme" aria-label="Toggle dark mode">' + (isDark() ? SUN : MOON) + "</button>" +
-      '<a class="iconbtn ms-settings' + (active === "settings" ? " is-current" : "") + '" href="settings.html" aria-label="Settings" title="Settings"' +
-      (active === "settings" ? ' aria-current="page"' : "") + ">" + SLIDERS + "</a>" +
-      '<div id="site-header" data-mode="menu"></div></div>';
+      '<div class="ms-hdr-right"><button type="button" class="iconbtn ms-theme" aria-label="Toggle dark mode">' + (isDark() ? SUN : MOON) + "</button></div>";
     host.querySelector(".ms-theme").addEventListener("click", function(e){
       var dark = !isDark();
       if (dark) document.documentElement.setAttribute("data-theme", "dark"); else document.documentElement.removeAttribute("data-theme");
