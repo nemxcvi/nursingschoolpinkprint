@@ -295,6 +295,16 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pa.waitForSelector(".ch-new");
   check(true, "turning it back on shows the page");
 
+  // ---- All units ----
+  await pa.selectOption("#ch-unit", "all");
+  check(await pa.$eval("#ch-topic", s => s.disabled && s.textContent.trim() === "All topics"), "All units: no topic to pick");
+  await pa.click('.ch-counts button[data-n="40"]');
+  await pa.click(".ch-create");
+  await pa.waitForSelector(".ch-ready:not(.hidden)");
+  const all = (await q("select title, questions from public.challenges order by created_at desc limit 1"))[0];
+  const unitsUsed = new Set(all.questions.map(x => x.split("-")[1]));
+  check(all.title === "All units" && all.questions.length === 40 && unitsUsed.size > 1, "All units: 40 questions drawn from several units", [...unitsUsed].join(","));
+
   check(errors.length === 0, "no page errors", JSON.stringify(errors));
   await b.close();
   await db.end();

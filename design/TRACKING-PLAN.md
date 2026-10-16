@@ -80,9 +80,12 @@ only, never who missed what.", then:
 
 ### Other Challenges page changes made with it
 
-- New intro: "Challenges are for studying together: everyone answers the same questions, then
-  you see what the group should review.", then four numbered steps in one boxed row (two by two on
-  phones): Make one, Send it, Compare, Study together.
+- New intro: "Challenges are for studying together: everyone answers the same set of
+  questions.", then four numbered steps in one boxed row (two by two on phones): Create, Send
+  (expires in 7 days), Study (which units or topics the group should review), Progress (answers
+  count toward your own progress).
+- New challenge: **All units** is an option under Unit (questions drawn from every unit that has
+  them; no topic choice). Group focus then labels topics "Unit N · Topic".
 - Join moved into the New challenge box: a small underlined "Join a challenge with a code" under
   Create challenge opens the code box.
 - Scores list in the order people finished (no ranking), each as `8/10` and `80%`.

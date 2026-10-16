@@ -133,12 +133,12 @@ var Challenges = (function(){
   /* ---------- Challenges page ---------- */
   function intro(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Study buddy</div><h1 class="tp-h1">Challenges</h1>' +
-      '<p class="tp-lede">Challenges are for studying together: everyone answers the same questions, then you see what the group should review.</p>' +
+      '<p class="tp-lede">Challenges are for studying together: everyone answers the same set of questions.</p>' +
       '<ol class="ch-steps">' +
-      '<li><span class="ch-stepn">1</span><strong>Make one</strong><span>Pick a unit or topic and 10, 20 or 40 questions.</span></li>' +
-      '<li><span class="ch-stepn">2</span><strong>Send it</strong><span>Share the code or link. Up to 10 people, open 7 days.</span></li>' +
-      '<li><span class="ch-stepn">3</span><strong>Compare</strong><span>Scores show once you finish. Answers count toward your progress.</span></li>' +
-      '<li><span class="ch-stepn">4</span><strong>Study together</strong><span>Choose to share your answers to unlock Group focus.</span></li>' +
+      '<li><span class="ch-stepn">1</span><strong>Create</strong><span>Pick a unit or topic and 10, 20 or 40 questions.</span></li>' +
+      '<li><span class="ch-stepn">2</span><strong>Send</strong><span>Share the code or link with up to 10 people. Expires in 7 days.</span></li>' +
+      '<li><span class="ch-stepn">3</span><strong>Study</strong><span>See which units or topics your group should review.</span></li>' +
+      '<li><span class="ch-stepn">4</span><strong>Progress</strong><span>Your answers count toward your own progress.</span></li>' +
       "</ol></section>";
   }
 
@@ -173,7 +173,7 @@ var Challenges = (function(){
       '<div class="ch-field"><label for="ch-unit">Unit</label><select id="ch-unit" class="ch-select">' +
       units.map(function(u){
         return '<option value="' + u.unit + '"' + (u.unit === pick.unit ? " selected" : "") + ">Unit " + u.unit + " · " + esc(u.name) + "</option>";
-      }).join("") + "</select></div>" +
+      }).join("") + '<option value="all"' + (pick.all ? " selected" : "") + ">All units</option></select></div>" +
       '<div class="ch-field"><label for="ch-topic">Topic</label><select id="ch-topic" class="ch-select"></select></div>' +
       '<fieldset class="ch-field ch-counts"><legend>Questions</legend><div>' +
       COUNTS.map(function(n){ return '<button type="button" data-n="' + n + '" aria-pressed="' + (n === 20) + '">' + n + "</button>"; }).join("") +
@@ -192,15 +192,19 @@ var Challenges = (function(){
     var unitSel = form.querySelector("#ch-unit"), topicSel = form.querySelector("#ch-topic");
     var count = 20;
     function unit(){ return d.units.filter(function(u){ return u.unit === +unitSel.value; })[0]; }
+    /* "All units": questions drawn from every unit that has them; no topic choice */
     function fillTopics(slug){
       var u = unit();
-      topicSel.innerHTML = '<option value="">Whole unit</option>' + u.topics.map(function(t){
+      topicSel.disabled = !u;
+      topicSel.innerHTML = !u ? '<option value="">All topics</option>' : '<option value="">Whole unit</option>' + u.topics.map(function(t){
         return '<option value="' + esc(t.slug) + '"' + (t.slug === slug ? " selected" : "") + ">" + esc(t.topic) + "</option>";
       }).join("");
       syncCounts();
     }
     function pool(){
-      var u = unit(), t = u.topics.filter(function(x){ return x.slug === topicSel.value; })[0];
+      var u = unit();
+      if (!u) return {title: "All units", questions: [].concat.apply([], d.units.map(function(x){ return x.questions; }))};
+      var t = u.topics.filter(function(x){ return x.slug === topicSel.value; })[0];
       return {title: t ? t.topic : "Unit " + u.unit + " · " + u.name, questions: u.questions.filter(function(q){ return !t || q.topic === t.topic; })};
     }
     /* Sizes bigger than the topic are greyed out */
@@ -432,8 +436,8 @@ var Challenges = (function(){
   function mainPage(d, host, params){
     var exam = Progress.nextExam(d.exams, d.today);
     var withQs = d.units.filter(function(u){ return u.questions.length; });
-    var pick = {unit: +params.get("unit") || 0, topic: params.get("topic") || ""};
-    if (!withQs.some(function(u){ return u.unit === pick.unit; })){
+    var pick = {unit: +params.get("unit") || 0, topic: params.get("topic") || "", all: params.get("unit") === "all"};
+    if (!pick.all && !withQs.some(function(u){ return u.unit === pick.unit; })){
       var cur = exam && withQs.filter(function(u){ return exam.units.indexOf(u.unit) !== -1; })[0];
       pick.unit = (cur || withQs[withQs.length - 1]).unit;
       pick.topic = "";

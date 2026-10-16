@@ -917,6 +917,7 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ch-counts button[aria-pressed="true"]{background:var(--border);color:var(--fill-text);}
 .ch-counts button:disabled{opacity:.4;cursor:not-allowed;}
 .ch-create{border:0;}
+.ch-select:disabled{opacity:.6;}
 .ch-create:disabled{opacity:.6;cursor:wait;}
 .ch-ready{display:flex;flex-direction:column;gap:8px;border-top:1.5px dashed var(--border);padding-top:18px;}
 .ch-ready-label{color:var(--success-text);}
