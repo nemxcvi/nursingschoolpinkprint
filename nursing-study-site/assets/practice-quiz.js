@@ -3,37 +3,49 @@
      groups results by each question's category, in the order the topic lists them.
    Mix quiz:   loadPracticeQuiz({data: "../data/nur114/", units: [1, 2, 3]})
      takes every topic in those units and groups results by topic. */
-function loadPracticeQuiz(opts){
-  var ready = Promise.all(opts.units.map(function(n){
-    return fetch(opts.data + "unit-" + n + ".json").then(function(r){
+function fetchQuizUnits(data, units){
+  return Promise.all(units.map(function(n){
+    return fetch(data + "unit-" + n + ".json").then(function(r){
       if (!r.ok) throw new Error("unit-" + n + ".json: HTTP " + r.status);
       return r.json();
     });
-  })).then(function(units){
-    var bank = [], catLabels = {};
-    units.forEach(function(u){
-      u.topics.forEach(function(t){
-        if (opts.topic && t.topic !== opts.topic) return;
-        var mixKey = u.unit + ":" + t.topic;
-        if (opts.topic) t.categories.forEach(function(c){ catLabels[c] = c; });
-        else catLabels[mixKey] = t.mixLabel;
-        u.questions.forEach(function(q){
-          if (q.topic !== t.topic) return;
-          q.cat = opts.topic ? q.category : mixKey;
-          bank.push(q);
-        });
-      });
-    });
-    return {bank: bank, catLabels: catLabels};
-  });
-  initPracticeQuiz(ready);
+  }));
 }
 
-/* Takes a bank and its category labels, or a promise of {bank, catLabels} */
-function initPracticeQuiz(bank, catLabels){
+function buildQuizBank(units, topic){
+  var bank = [], catLabels = {};
+  units.forEach(function(u){
+    u.topics.forEach(function(t){
+      if (topic && t.topic !== topic) return;
+      var mixKey = u.unit + ":" + t.topic;
+      if (topic) t.categories.forEach(function(c){ catLabels[c] = c; });
+      else catLabels[mixKey] = t.mixLabel;
+      u.questions.forEach(function(q){
+        if (q.topic !== t.topic) return;
+        q.cat = topic ? q.category : mixKey;
+        bank.push(q);
+      });
+    });
+  });
+  return {bank: bank, catLabels: catLabels};
+}
+
+function loadPracticeQuiz(opts){
+  initPracticeQuiz(fetchQuizUnits(opts.data, opts.units).then(function(units){ return buildQuizBank(units, opts.topic); }), null, opts);
+}
+
+/* Takes a bank and its category labels, or a promise of {bank, catLabels}.
+   opts.data (from loadPracticeQuiz) is where Smart session finds every unit's questions. */
+function initPracticeQuiz(bank, catLabels, opts){
+  /* Progress tracking and Smart session only run when the tracking flag is on (js/progress.js) */
+  var tracking = typeof Progress !== "undefined" && Progress.enabled() && !!(opts && opts.data);
   var ready = Promise.resolve(Array.isArray(bank) ? {bank: bank, catLabels: catLabels} : bank).then(function(d){
     bank = d.bank; catLabels = d.catLabels;
-    normalizeBank();
+    normalizeBank(bank);
+    if (tracking) return Progress.init(opts.data).catch(function(err){
+      console.warn("[progress] tracking is off for this page: couldn't load exam data", err);
+      tracking = false;
+    });
   });
   ready.catch(function(err){
     console.error("[quiz] couldn't load questions", err);
@@ -59,7 +71,7 @@ function initPracticeQuiz(bank, catLabels){
        id, prompt, options [{id, text, correct, rationale}], correct [ids],
        multi (more than one correct answer), summary, explanation (older question-level text)
      and type is "dragdrop", or else "sata"/"mc" decided by how many answers are correct. */
-  function normalizeBank(){
+  function normalizeBank(bank){
     var missingRationale = [];
     bank.forEach(function(q, qi){
       if (q.id == null) q.id = "q" + (qi + 1);
@@ -182,16 +194,47 @@ function initPracticeQuiz(bank, catLabels){
     rounds: countRow.getAttribute("data-rounds").split(",").map(Number)
   };
   var chosenCount = 10;
+  /* setupMode is what's picked on the setup screen; mode is how the running session behaves
+     (a Smart session runs like One session) */
+  var setupMode = "single";
   mode = "single";
+  var sessionCatLabels = catLabels, sessionEvents = null, smartData = null;
+
+  /* Smart session: a third mode, only while tracking is on */
+  if (tracking){
+    var modes = document.querySelector(".pq-modes");
+    var smartBtn = document.createElement("button");
+    smartBtn.type = "button";
+    smartBtn.className = "pq-mode-btn";
+    smartBtn.setAttribute("data-mode", "smart");
+    smartBtn.setAttribute("aria-pressed", "false");
+    smartBtn.innerHTML = '<span class="pq-mode-title"><span class="pq-check" aria-hidden="true"></span>Smart session</span>' +
+      '<span class="pq-mode-sub">Blind spots and mistakes first, then bookmarks, reviews and new questions from your next exam.</span>';
+    modes.appendChild(smartBtn);
+    modes.classList.add("has-smart");
+    countsFor.smart = [10, 20, 30, 40];
+  }
+
+  /* Every unit's questions for Smart session, loaded the first time it's started */
+  function loadSmartData(){
+    if (!smartData){
+      smartData = fetchQuizUnits(opts.data, Progress.units).then(function(units){
+        var d = buildQuizBank(units, null);
+        normalizeBank(d.bank);
+        return d;
+      });
+    }
+    return smartData;
+  }
 
   /* Counts a mode doesn't offer (e.g. 5/15/25/35 for mastery rounds) are disabled */
   function syncSetup(){
     document.querySelectorAll(".pq-mode-btn").forEach(function(btn){
-      var on = btn.getAttribute("data-mode") === mode;
+      var on = btn.getAttribute("data-mode") === setupMode;
       btn.classList.toggle("is-selected", on);
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     });
-    var allowed = countsFor[mode];
+    var allowed = countsFor[setupMode];
     if (allowed.indexOf(chosenCount) === -1) chosenCount = allowed.indexOf(10) !== -1 ? 10 : allowed[0];
     document.querySelectorAll(".pq-count-btn").forEach(function(btn){
       var c = Number(btn.getAttribute("data-count"));
@@ -202,7 +245,7 @@ function initPracticeQuiz(bank, catLabels){
   }
 
   document.querySelectorAll(".pq-mode-btn").forEach(function(btn){
-    btn.addEventListener("click", function(){ mode = btn.getAttribute("data-mode"); syncSetup(); });
+    btn.addEventListener("click", function(){ setupMode = btn.getAttribute("data-mode"); syncSetup(); });
   });
   document.querySelectorAll(".pq-count-btn").forEach(function(btn){
     btn.addEventListener("click", function(){ chosenCount = Number(btn.getAttribute("data-count")); syncSetup(); });
@@ -210,9 +253,19 @@ function initPracticeQuiz(bank, catLabels){
   /* The setup screen works right away; starting waits for the questions if they're still loading */
   document.getElementById("pq-start").addEventListener("click", function(){
     ready.then(function(){
+      if (setupMode === "smart" && tracking){
+        return loadSmartData().then(function(d){
+          return {pool: Progress.pick(d.bank, chosenCount), catLabels: d.catLabels, mode: "single"};
+        });
+      }
+      return {pool: mixedSample(bank, chosenCount), catLabels: catLabels, mode: setupMode === "rounds" ? "rounds" : "single"};
+    }).then(function(s){
       if (document.getElementById("pq-setup-screen").classList.contains("hidden")) return;
-      pool = mixedSample(bank, chosenCount);
+      pool = s.pool;
+      sessionCatLabels = s.catLabels;
+      mode = s.mode;
       missedMap = {};
+      sessionEvents = newSessionEvents();
       hide("pq-setup-screen");
       if (mode === "single") startSingle(); else startRounds();
     });
@@ -341,6 +394,7 @@ function initPracticeQuiz(bank, catLabels){
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
     document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
+    if (tracking) syncBookmark(q);
 
     if (q.type === "dragdrop"){ renderDragDrop(q); return; }
 
@@ -602,6 +656,7 @@ function initPracticeQuiz(bank, catLabels){
     ddCancelDrag(); ddUnpick();
     var graded = gradeQuestion(q, userSelection);
     var isCorrect = graded.correct;
+    if (tracking) noteProgress(q, Progress.record(q, isCorrect));
 
     if (mode === "single"){
       singleResults.push({question: q, userSelection: userSelection.slice(), correct: isCorrect});
@@ -712,14 +767,14 @@ function initPracticeQuiz(bank, catLabels){
   function buildCategoryGrid(statsByCat){
     var gridEl = document.getElementById("category-grid");
     gridEl.innerHTML = "";
-    Object.keys(catLabels).forEach(function(cat){
+    Object.keys(sessionCatLabels).forEach(function(cat){
       var s = statsByCat[cat] || {correct:0, total:0};
       if (s.total === 0) return;
       var pct = Math.round((s.correct / s.total) * 100);
       var card = document.createElement("div");
       card.className = "pq-cat-card";
       var label = document.createElement("div");
-      label.className = "pq-cat-label"; label.textContent = catLabels[cat];
+      label.className = "pq-cat-label"; label.textContent = sessionCatLabels[cat];
       var val = document.createElement("div");
       val.className = "pq-cat-val"; val.textContent = pct + "%";
       card.appendChild(label); card.appendChild(val);
@@ -784,8 +839,91 @@ function initPracticeQuiz(bank, catLabels){
     });
   }
 
+  /* ---------- Progress tracking (flag on only) ---------- */
+  function newSessionEvents(){ return {mastered: {}, journaled: {}, ready: {}}; }
+
+  function noteProgress(q, ev){
+    if (!sessionEvents) sessionEvents = newSessionEvents();
+    if (ev.mastered) sessionEvents.mastered[q.id] = q;
+    if (ev.journaled) sessionEvents.journaled[q.id] = q;
+    ev.ready.forEach(function(examId){ sessionEvents.ready[q.id + "|" + examId] = {q: q, exam: examId}; });
+  }
+
+  /* Small bookmark toggle in the top row while answering */
+  var bookmarkBtn = null;
+  if (tracking){
+    bookmarkBtn = document.createElement("button");
+    bookmarkBtn.type = "button";
+    bookmarkBtn.id = "pq-bookmark";
+    bookmarkBtn.className = "pq-endlink pq-bookmark";
+    var endLink = document.getElementById("pq-end-test");
+    endLink.parentNode.insertBefore(bookmarkBtn, endLink);
+    bookmarkBtn.addEventListener("click", function(e){
+      var q = currentQuestion();
+      if (!q) return;
+      Progress.toggleBookmark(q.id);
+      syncBookmark(q);
+      /* After a mouse click, give Enter back to check / next */
+      if (e.detail > 0) bookmarkBtn.blur();
+    });
+  }
+  function syncBookmark(q){
+    var r = Progress.get(q.id);
+    var on = !!(r && r.bookmarked);
+    bookmarkBtn.innerHTML = '<i class="ti ' + (on ? "ti-bookmark-filled" : "ti-bookmark") + '" aria-hidden="true"></i> ' + (on ? "Bookmarked" : "Bookmark");
+    bookmarkBtn.setAttribute("aria-pressed", on ? "true" : "false");
+  }
+
+  /* "Mastery update" box: what changed this session. A question only counts if it's still in
+     that state at the end (e.g. mastered, then missed again, isn't listed as mastered). */
+  function buildMasteryUpdate(){
+    var old = document.getElementById("pq-mastery");
+    if (old) old.remove();
+    var ev = sessionEvents || newSessionEvents();
+    var box = document.createElement("div");
+    box.id = "pq-mastery";
+    box.className = "pq-mastery";
+    var title = document.createElement("p");
+    title.className = "pq-mastery-title";
+    title.textContent = "Mastery update";
+    box.appendChild(title);
+    function stillTrue(id, test){ var r = Progress.get(id); return !!(r && test(r)); }
+    var groups = [
+      ["Newly mastered", Object.keys(ev.mastered).filter(function(id){ return stillTrue(id, function(r){ return r.mastered; }); })
+        .map(function(id){ return {q: ev.mastered[id]}; })],
+      ["Added to mistake journal", Object.keys(ev.journaled).filter(function(id){ return stillTrue(id, function(r){ return r.journal; }); })
+        .map(function(id){ return {q: ev.journaled[id]}; })],
+      ["Newly exam ready", Object.keys(ev.ready).map(function(k){ return ev.ready[k]; })
+        .filter(function(x){ return Progress.isExamReady(Progress.get(x.q.id), x.exam); })
+        .map(function(x){ return {q: x.q, note: Progress.examName(x.exam)}; })]
+    ];
+    groups.forEach(function(g){
+      var label = document.createElement("p");
+      label.className = "pq-mastery-label";
+      label.textContent = g[0] + " (" + g[1].length + ")";
+      box.appendChild(label);
+      var list = document.createElement("ul");
+      list.className = "pq-mastery-list";
+      if (g[1].length === 0){
+        var none = document.createElement("li");
+        none.className = "muted";
+        none.textContent = "None this session";
+        list.appendChild(none);
+      }
+      g[1].forEach(function(item){
+        var li = document.createElement("li");
+        li.textContent = (item.note ? item.note + " \u00b7 " : "") + item.q.prompt;
+        list.appendChild(li);
+      });
+      box.appendChild(list);
+    });
+    var center = document.querySelector("#pq-end-screen .pq-center");
+    center.parentNode.insertBefore(box, center.nextSibling);
+  }
+
   function finishSession(){
     hide("pq-quiz-screen"); hide("pq-round-complete-screen"); show("pq-end-screen");
+    if (tracking) buildMasteryUpdate();
     document.getElementById("category-heading").textContent = "by category";
 
     if (mode === "single"){
@@ -852,7 +990,7 @@ function initPracticeQuiz(bank, catLabels){
     var nav = document.getElementById("navbtn");
     if (nav && nav.getAttribute("aria-expanded") === "true") return;
     if (e.key === "Enter"){
-      if (t && (t.id === "pq-end-test" || t.tagName === "A")) return;
+      if (t && (t.id === "pq-end-test" || t.id === "pq-bookmark" || t.tagName === "A")) return;
       e.preventDefault();
       var submit = document.getElementById("pq-submit");
       if (answered) document.getElementById("pq-next").click();
@@ -882,6 +1020,7 @@ function initPracticeQuiz(bank, catLabels){
     mode = "single";
     pool = list;
     missedMap = {};
+    sessionEvents = newSessionEvents();
     startSingle();
   });
 }

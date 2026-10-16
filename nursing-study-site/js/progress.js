@@ -1,0 +1,229 @@
+/* Progress tracking on this device. All progress code lives here so it can be
+   encrypted and synced later.
+
+   Off unless localStorage "pinkprint-track" is "on". Visit any page with
+   ?track=on or ?track=off to switch it. ?today=YYYY-MM-DD pretends it's another
+   day (handy for testing exam windows); ?today=off goes back to the real date.
+
+   Progress is one object in localStorage "pinkprint-progress", keyed by question ID:
+     seen, correct          times answered / times fully correct
+     streak                 correct in a row (a wrong answer resets it to 0)
+     missStreak             wrong in a row (2+ makes a blind spot)
+     lastAnswered           "YYYY-MM-DD", the day it was last answered
+     mastered, masteredOn   2 correct in a row; a wrong answer un-masters it
+     bookmarked
+     journal                in the mistake journal: added on a miss, leaves after 2 correct in a row
+     examReady              {examId: {base, streak, ready}} for the last 3 days before each exam */
+(function(){
+  var STORE_KEY = "pinkprint-progress";
+  var FLAG_KEY = "pinkprint-track";
+  var TODAY_KEY = "pinkprint-today";
+  var MASTER_STREAK = 2;        // correct in a row to master a question
+  var JOURNAL_EXIT_STREAK = 2;  // correct in a row to leave the mistake journal
+  var BLIND_SPOT_MISSES = 2;    // wrong in a row to count as a blind spot
+  var REVIEW_BEFORE_EXAM = 3;   // a mastered question comes due this many days before its exam
+  var REVIEW_EVERY = 28;        // ...and then every 4 weeks after it was last answered correctly
+  var READY_WINDOW = 3;         // exam ready window: the last 3 days before an exam (not the exam day)
+
+  /* Status priority, highest first. Review-due mastered questions sit right after bookmarked. */
+  var STATUS_ORDER = ["blindspot", "journal", "bookmarked", "reviewdue", "new", "learning", "mastered"];
+
+  /* ---------- Dates: plain "YYYY-MM-DD" strings, math done in UTC so DST never shifts a day ---------- */
+  function toUTC(d){ var p = d.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
+  function fromUTC(ms){ return new Date(ms).toISOString().slice(0, 10); }
+  function addDays(d, n){ return fromUTC(toUTC(d) + n * 86400000); }
+  function localToday(){
+    var n = new Date();
+    return n.getFullYear() + "-" + String(n.getMonth() + 1).padStart(2, "0") + "-" + String(n.getDate()).padStart(2, "0");
+  }
+
+  /* ---------- Exams ---------- */
+  function covers(exam, unit){ return exam.units.indexOf(unit) !== -1; }
+  function sortedExams(exams){ return exams.slice().sort(function(a, b){ return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; }); }
+
+  /* The next exam on or after today (an exam is still "next" on its own day) */
+  function nextExam(exams, today){
+    var list = sortedExams(exams);
+    for (var i = 0; i < list.length; i++) if (list[i].date >= today) return list[i];
+    return null;
+  }
+
+  /* Exams covering this unit whose exam ready window (the 3 days before) includes today */
+  function readyWindowExams(exams, unit, today){
+    return sortedExams(exams).filter(function(e){
+      return covers(e, unit) && today >= addDays(e.date, -READY_WINDOW) && today < e.date;
+    });
+  }
+
+  /* ---------- Records ---------- */
+  function blankRecord(){
+    return {seen: 0, correct: 0, streak: 0, missStreak: 0, lastAnswered: null,
+            mastered: false, masteredOn: null, bookmarked: false, journal: false, examReady: {}};
+  }
+
+  /* Apply one answer. `correct` means fully correct (SATA and drag-drop are all-or-nothing).
+     Returns the updated record and what changed: {mastered, journaled, ready: [examIds]}. */
+  function applyAnswer(rec, correct, today, unit, exams){
+    var r = JSON.parse(JSON.stringify(rec || blankRecord()));
+    if (!r.examReady) r.examReady = {};
+    var events = {mastered: false, journaled: false, ready: []};
+    var wasMastered = r.mastered;
+
+    /* Exam ready windows open with the state the question was in before this answer */
+    var windows = exams ? readyWindowExams(exams, unit, today) : [];
+    windows.forEach(function(e){
+      if (!r.examReady[e.id]) r.examReady[e.id] = {base: wasMastered ? "mastered" : "learning", streak: 0, ready: false};
+    });
+
+    r.seen++;
+    r.lastAnswered = today;
+    if (correct){
+      r.correct++;
+      r.streak++;
+      r.missStreak = 0;
+      if (!r.mastered && r.streak >= MASTER_STREAK){
+        r.mastered = true; r.masteredOn = today; events.mastered = true;
+      }
+      if (r.journal && r.streak >= JOURNAL_EXIT_STREAK) r.journal = false;
+    } else {
+      r.streak = 0;
+      r.missStreak++;
+      r.mastered = false; r.masteredOn = null;
+      if (!r.journal){ r.journal = true; events.journaled = true; }
+    }
+
+    /* Mastered going in: 1 correct in the window. Not mastered: 2 correct in a row in the window.
+       A wrong answer in the window clears it, and the question now needs 2 in a row. */
+    windows.forEach(function(e){
+      var w = r.examReady[e.id];
+      if (correct){
+        w.streak++;
+        var needed = w.base === "mastered" ? 1 : 2;
+        if (!w.ready && w.streak >= needed){ w.ready = true; events.ready.push(e.id); }
+      } else {
+        w.streak = 0; w.base = "learning"; w.ready = false;
+      }
+    });
+
+    /* Forget windows for exams that are over */
+    if (exams){
+      exams.forEach(function(e){ if (r.examReady[e.id] && e.date < today) delete r.examReady[e.id]; });
+    }
+    return {record: r, events: events};
+  }
+
+  /* A mastered question comes due 3 days before each exam covering its unit (the Final covers
+     all of them), unless it was answered correctly since then. Otherwise it comes due 4 weeks
+     after it was last answered correctly. A mastered question's last answer is always correct,
+     so lastAnswered is the last correct date. */
+  function isReviewDue(rec, unit, today, exams){
+    if (!rec || !rec.mastered || !rec.lastAnswered) return false;
+    var last = rec.lastAnswered;
+    var examDue = (exams || []).some(function(e){
+      var start = addDays(e.date, -REVIEW_BEFORE_EXAM);
+      return covers(e, unit) && today >= start && today <= e.date && last < start;
+    });
+    return examDue || today >= addDays(last, REVIEW_EVERY);
+  }
+
+  function statusOf(rec, unit, today, exams){
+    if (!rec) return "new";
+    if (rec.missStreak >= BLIND_SPOT_MISSES) return "blindspot";
+    if (rec.journal) return "journal";
+    if (rec.bookmarked) return "bookmarked";
+    if (isReviewDue(rec, unit, today, exams)) return "reviewdue";
+    if (!rec.seen) return "new";
+    if (!rec.mastered) return "learning";
+    return "mastered";
+  }
+
+  function isExamReady(rec, examId){
+    return !!(rec && rec.examReady && rec.examReady[examId] && rec.examReady[examId].ready);
+  }
+
+  /* Smart session: questions from the units of the next exam, in status priority order
+     (random within a status). Other units fill in only when there aren't enough. */
+  function pickSmart(questions, count, store, today, exams, random){
+    random = random || Math.random;
+    var exam = nextExam(exams, today);
+    var inUnit = function(q){ return !exam || covers(exam, q.unit); };
+    function ranked(list){
+      return list.map(function(q){
+        return {q: q, rank: STATUS_ORDER.indexOf(statusOf(store[q.id], q.unit, today, exams)), tie: random()};
+      }).sort(function(a, b){ return a.rank - b.rank || a.tie - b.tie; }).map(function(x){ return x.q; });
+    }
+    var first = ranked(questions.filter(inUnit));
+    var rest = first.length < count ? ranked(questions.filter(function(q){ return !inUnit(q); })) : [];
+    return first.concat(rest).slice(0, count);
+  }
+
+  var api = {
+    STATUS_ORDER: STATUS_ORDER,
+    addDays: addDays, nextExam: nextExam, readyWindowExams: readyWindowExams,
+    blankRecord: blankRecord, applyAnswer: applyAnswer, isReviewDue: isReviewDue,
+    statusOf: statusOf, isExamReady: isExamReady, pickSmart: pickSmart
+  };
+
+  if (typeof module !== "undefined" && module.exports){ module.exports = api; return; }
+
+  /* ---------- Browser: flag, storage and data loading ---------- */
+  function lsGet(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v){ try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+
+  var params = new URLSearchParams(location.search);
+  if (params.get("track") === "on") lsSet(FLAG_KEY, "on");
+  if (params.get("track") === "off") lsSet(FLAG_KEY, null);
+  if (params.has("today")) lsSet(TODAY_KEY, /^\d{4}-\d{2}-\d{2}$/.test(params.get("today")) ? params.get("today") : null);
+
+  api.enabled = function(){ return lsGet(FLAG_KEY) === "on"; };
+  api.today = function(){ return lsGet(TODAY_KEY) || localToday(); };
+
+  api.load = function(){
+    try { return JSON.parse(lsGet(STORE_KEY)) || {}; } catch (e) { return {}; }
+  };
+  api.save = function(store){ lsSet(STORE_KEY, JSON.stringify(store)); };
+  api.get = function(id){ return api.load()[id] || null; };
+
+  /* Exams and the list of unit files, fetched once per page */
+  var dataCache = null;
+  api.init = function(dataBase){
+    if (!dataCache){
+      var get = function(f){ return fetch(dataBase + f).then(function(r){ if (!r.ok) throw new Error(f + ": HTTP " + r.status); return r.json(); }); };
+      dataCache = Promise.all([get("exams.json"), get("index.json")]).then(function(res){
+        api.exams = res[0].exams;
+        api.dataBase = dataBase;
+        api.units = res[1].units;
+        return api;
+      });
+    }
+    return dataCache;
+  };
+
+  api.record = function(q, correct){
+    var store = api.load();
+    var res = applyAnswer(store[q.id], correct, api.today(), q.unit, api.exams || []);
+    store[q.id] = res.record;
+    api.save(store);
+    return res.events;
+  };
+
+  api.toggleBookmark = function(id){
+    var store = api.load();
+    var r = store[id] || blankRecord();
+    r.bookmarked = !r.bookmarked;
+    store[id] = r;
+    api.save(store);
+    return r.bookmarked;
+  };
+
+  api.pick = function(questions, count){
+    return pickSmart(questions, count, api.load(), api.today(), api.exams || []);
+  };
+
+  api.examName = function(id){
+    var e = (api.exams || []).filter(function(x){ return x.id === id; })[0];
+    return e ? e.name : id;
+  };
+
+  window.Progress = api;
+})();
