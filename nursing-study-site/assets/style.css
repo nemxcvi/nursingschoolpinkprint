@@ -868,8 +868,15 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-empty-box{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:18px 20px;margin-bottom:18px;border:1.5px dashed var(--border);}
 .ms-empty-box.hidden{display:none;}
 .ms-empty-box .btn{flex:0 0 auto;padding:0 18px;text-decoration:none;}
-.tp-breakgoal{flex:1 1 100%;display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:1.5px dashed var(--soft);}
-.tp-breakgoal .tp-select{flex:none;max-width:360px;}
+.tp-breakgoal{flex:1 1 100%;padding:16px 0 0;border-top:1.5px dashed var(--soft);}
+.tp-goalgrid{display:flex;flex-direction:column;gap:10px;}
+.tp-goalrow{display:grid;grid-template-columns:150px auto;align-items:center;gap:14px;justify-content:start;}
+.tp-goallabel{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);}
+.tp-seg{display:inline-flex;border:1.5px solid var(--border);background:var(--card);}
+.tp-seg button{min-width:58px;min-height:44px;padding:0 10px;border:0;border-left:1.5px solid var(--border);background:transparent;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:14px;cursor:pointer;}
+.tp-seg button:first-child{border-left:0;}
+.tp-seg button.is-on{background:var(--border);color:var(--fill-text);font-weight:600;}
+@media(max-width:560px){.tp-goalrow{grid-template-columns:1fr;gap:6px;}.tp-seg{display:flex;}.tp-seg button{flex:1 1 0;min-width:0;}}
 /* Tracker homepage: countdown strip and unit mastery bars */
 .pp-strip{display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;margin:0 0 28px;text-decoration:none;color:var(--text);}
 .pp-strip-main{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:8px;}

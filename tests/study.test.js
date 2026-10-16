@@ -119,17 +119,21 @@ test("streaks: weeks in a row hitting the goal (Mon-Sun), passes, Thanksgiving a
   const days = {type: "days", value: 3};
   const t2 = {"2026-10-05": 1, "2026-10-07": 2, "2026-10-09": 1};
   assert.deepEqual(S.weekProgress(t2, days, "2026-10-05"), {questions: 4, days: 3, done: 3, target: 3, met: true});
-  // Thanksgiving week (Nov 23-29) is a bonus week: missing it only pauses the streak
-  assert.equal(S.weekKind("2026-11-23", SEM), "bonus");
+  // Holiday breaks never count on their own. Thanksgiving week (Nov 23-29) is a break week:
+  // with "keep my goal during holiday breaks" off it's skipped (hit or miss); on, a hit grows it
+  assert.equal(S.weekKind("2026-11-23", SEM), "break");
   const t3 = {"2026-11-09": 50, "2026-11-16": 50, "2026-11-30": 50};
-  assert.equal(S.streaks(t3, goal, "2026-12-02", SEM, [], null).current, 3, "missed Thanksgiving week: paused, not reset");
+  assert.equal(S.streaks(t3, goal, "2026-12-02", SEM, [], false).current, 3, "missed Thanksgiving week: skipped, not reset");
+  assert.equal(S.streaks(t3, goal, "2026-12-02", SEM, [], true).current, 3, "goal on during breaks: missing only pauses");
   t3["2026-11-23"] = 50;
-  assert.equal(S.streaks(t3, goal, "2026-12-02", SEM, [], null).current, 4, "hit Thanksgiving week: grows");
-  // After the semester (Dec 10): without a break goal weeks pause; with one, hitting grows
-  const t4 = {"2026-11-30": 50, "2026-12-07": 50, "2026-12-21": 30};
+  assert.equal(S.streaks(t3, goal, "2026-12-02", SEM, [], false).current, 3, "hit Thanksgiving week with the goal off: doesn't count");
+  assert.equal(S.streaks(t3, goal, "2026-12-02", SEM, [], true).current, 4, "hit Thanksgiving week with the goal on: grows");
+  // After the semester (Dec 10): off, weeks are skipped; on, the weekly goal still counts
+  const t4 = {"2026-11-30": 50, "2026-12-07": 50, "2026-12-21": 50};
   assert.equal(S.weekKind("2026-12-14", SEM), "break");
-  assert.equal(S.streaks(t4, goal, "2027-01-06", SEM, [], null).current, 2);
-  assert.equal(S.streaks(t4, goal, "2027-01-06", SEM, [], {type: "questions", value: 25}).current, 3);
+  assert.equal(S.streaks(t4, goal, "2027-01-06", SEM, [], false).current, 2);
+  assert.equal(S.streaks(t4, goal, "2027-01-06", SEM, [], true).current, 3);
+  assert.equal(S.streaks(t4, goal, "2027-01-06", SEM, [], false).week, null, "this week during a break with the goal off: no goal bar");
   // One busy week pass per month
   assert.equal(S.passesLeft([], "2026-10-15"), 1);
   assert.equal(S.passesLeft(["2026-10-05"], "2026-10-15"), 0);

@@ -176,13 +176,14 @@
   }
   /* What kind of week starts on `start`:
        "semester": hit grows the streak, miss resets it
-       "bonus":    a break inside the semester (Thanksgiving): hit grows it, miss only pauses
-       "break":    after the semester: with a break goal, hit grows it and miss pauses; without one, it pauses */
+       "break":    a holiday break (inside the semester, like Thanksgiving, or after it ends). Never
+                   counts on its own: with "keep my goal during holiday breaks" off it's skipped;
+                   on, hitting the weekly goal grows the streak and missing it only pauses */
   function weekKind(start, semester){
     var end = addDays(start, 6);
     if (end < semester.start) return "before";
     if (start > semester.end) return "break";
-    for (var i = 0; i < 7; i++) if (inBreak(addDays(start, i), semester.breaks)) return "bonus";
+    for (var i = 0; i < 7; i++) if (inBreak(addDays(start, i), semester.breaks)) return "break";
     return "semester";
   }
   /* Busy week pass: one per month (by the week's Monday), keeps the streak without counting the week */
@@ -190,23 +191,21 @@
     var month = today.slice(0, 7);
     return (busyWeeks || []).some(function(w){ return w.slice(0, 7) === month; }) ? 0 : 1;
   }
-  function streaks(totals, goal, today, semester, busyWeeks, breakGoal){
+  function streaks(totals, goal, today, semester, busyWeeks, goalOnBreaks){
     var cur = 0, best = 0, thisWeek = weekStart(today);
     var start = weekStart(semester.start);
     for (var w = start; w < thisWeek; w = addDays(w, 7)){
       var kind = weekKind(w, semester);
       if (kind === "before") continue;
       if ((busyWeeks || []).indexOf(w) !== -1) continue;              // pass used: paused
-      var g = kind === "break" ? breakGoal : goal;
-      if (!g){ continue; }                                            // break without a goal: paused
-      var met = weekProgress(totals, g, w).met;
+      if (kind === "break" && !goalOnBreaks) continue;                // holiday break, goal off: skipped
+      var met = weekProgress(totals, goal, w).met;
       if (met){ cur++; best = Math.max(best, cur); }
-      else if (kind === "semester") cur = 0;                          // bonus/break weeks only pause
+      else if (kind === "semester") cur = 0;                          // break weeks only pause
     }
     /* This week counts as soon as the goal is met; until then it can't break the streak */
     var kindNow = weekKind(thisWeek, semester);
-    var gNow = kindNow === "break" ? breakGoal : goal;
-    var progress = gNow ? weekProgress(totals, gNow, thisWeek) : null;
+    var progress = kindNow === "break" && !goalOnBreaks ? null : weekProgress(totals, goal, thisWeek);
     var withThis = cur + (progress && progress.met && (busyWeeks || []).indexOf(thisWeek) === -1 ? 1 : 0);
     return {current: withThis, best: Math.max(best, withThis), week: progress, kind: kindNow};
   }

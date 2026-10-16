@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=75">
+<link rel="stylesheet" href="assets/style.css?v=76">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -88,22 +88,13 @@
     <button type="button" class="tp-btn" id="se-goalchange">Change goal</button>
     <div class="tp-editor hidden" id="se-goaledit">
       <div id="se-goalpicker" class="tp-goal"></div>
-      <div class="tp-actions">
-        <button type="button" class="tp-btn" id="se-goalcancel">Cancel</button>
-        <button type="button" class="tp-btn tp-btn-primary" id="se-goalsave">Save goal</button>
-      </div>
     </div>
-    <div class="tp-breakgoal">
-      <label for="se-breakgoal" class="tp-label">Break goal</label>
-      <span class="tp-hint">For winter break and after the semester ends. Pick a lighter goal to keep your streak growing while you review for ATI or NCLEX, or leave it off and your streak just pauses until classes start. Thanksgiving week never breaks a streak.</span>
-      <select id="se-breakgoal" class="tp-select">
-        <option value="">Off: streak pauses during breaks</option>
-        <option value="questions:25">25 questions per week</option>
-        <option value="questions:50">50 questions per week</option>
-        <option value="questions:100">100 questions per week</option>
-        <option value="days:2">2 study days per week</option>
-        <option value="days:3">3 study days per week</option>
-      </select>
+    <div class="tp-feature tp-breakgoal">
+      <div class="tp-feature-text">
+        <span class="tp-feature-name" id="se-breaklabel">Keep my goal during holiday breaks</span>
+        <span class="tp-hint">Off: break weeks don't count, so your streak just waits for classes to start again. On: hitting your goal during a break grows your streak, and missing it only pauses it.</span>
+      </div>
+      <button type="button" class="tp-switch" id="se-breakswitch" role="switch" aria-labelledby="se-breaklabel"><span></span></button>
     </div>
   </section>
 
@@ -123,12 +114,12 @@
   </section>
 </div>
 <script src="assets/vendor/qrcode.js?v=1"></script>
-<script src="js/tracking.js?v=6"></script>
+<script src="js/tracking.js?v=7"></script>
 <script src="js/progress.js?v=6"></script>
-<script src="js/tracking-ui.js?v=1"></script>
+<script src="js/tracking-ui.js?v=2"></script>
 <script src="assets/site-data.js?v=10"></script>
-<script src="js/study.js?v=1"></script>
-<script src="js/my-study.js?v=7"></script>
+<script src="js/study.js?v=2"></script>
+<script src="js/my-study.js?v=8"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -223,24 +214,25 @@
     });
   });
 
-  /* Weekly goal */
-  var pending = null;
+  /* Weekly goal: a tap saves it */
   $("se-goalchange").addEventListener("click", function(){
-    TrackingUI.goalPicker($("se-goalpicker"), st().goal || Tracking.DEFAULT_GOAL, function(g){ pending = g; });
-    $("se-goaledit").classList.remove("hidden");
-    $("se-goalchange").classList.add("hidden");
+    var open = $("se-goaledit").classList.toggle("hidden") === false;
+    $("se-goalchange").textContent = open ? "Done" : "Change goal";
+    if (open) TrackingUI.goalPicker($("se-goalpicker"), st().goal || Tracking.DEFAULT_GOAL, function(g){
+      var cur = st().goal || Tracking.DEFAULT_GOAL;
+      if (g.type !== cur.type || g.value !== cur.value){ Tracking.update({goal: g}); render(); }
+    });
   });
-  function closeGoal(){ $("se-goaledit").classList.add("hidden"); $("se-goalchange").classList.remove("hidden"); }
-  $("se-goalcancel").addEventListener("click", closeGoal);
-  $("se-goalsave").addEventListener("click", function(){ if (pending) Tracking.update({goal: pending}); closeGoal(); render(); });
 
-  /* Break goal (Thanksgiving is already a bonus week, so this is for winter break and later) */
-  var bg = st().breakGoal;
-  $("se-breakgoal").value = bg ? bg.type + ":" + bg.value : "";
-  $("se-breakgoal").addEventListener("change", function(e){
-    var v = e.target.value.split(":");
-    Tracking.update({breakGoal: v[0] ? {type: v[0], value: +v[1]} : null});
-  });
+  /* Keep my goal during holiday breaks */
+  function syncBreak(){
+    var on = Tracking.goalOnBreaks();
+    $("se-breakswitch").setAttribute("aria-checked", on ? "true" : "false");
+    $("se-breakswitch").classList.toggle("is-on", on);
+  }
+  $("se-breakswitch").addEventListener("click", function(){ Tracking.update({goalOnBreaks: !Tracking.goalOnBreaks(), breakGoal: null}); syncBreak(); });
+  syncBreak();
+  document.addEventListener("pinkprint-synced", syncBreak);
 
   /* Study features */
   FEATURES.forEach(function(f){

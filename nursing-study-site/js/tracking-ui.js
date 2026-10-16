@@ -10,48 +10,41 @@ var TrackingUI = (function(){
     return e;
   }
 
-  /* Weekly goal: questions per week (25/50/100/150) or study days per week (2/3/4/5) */
+  /* Weekly goal: questions per week (25/50/100/150) or study days per week (2/3/4/5), as two
+     labelled rows of joined buttons. One tap picks the goal (onChange gets it right away). */
   function goalPicker(host, goal, onChange){
     var state = {type: goal.type, value: goal.value};
     host.innerHTML = "";
-    var types = el("div", "tp-choice-row");
-    types.setAttribute("role", "radiogroup");
-    types.setAttribute("aria-label", "Goal type");
-    var values = el("div", "tp-value-row");
-    [["questions", "Questions per week"], ["days", "Study days per week"]].forEach(function(t){
-      var b = el("button", "tp-choice", t[1]);
-      b.type = "button";
-      b.setAttribute("role", "radio");
-      b.setAttribute("data-type", t[0]);
-      b.addEventListener("click", function(){
-        if (state.type === t[0]) return;
-        state.type = t[0];
-        state.value = t[0] === "days" ? 3 : 50;
-        sync();
+    var grid = el("div", "tp-goalgrid");
+    grid.setAttribute("role", "radiogroup");
+    grid.setAttribute("aria-label", "Weekly goal");
+    [["questions", "Questions a week"], ["days", "Study days a week"]].forEach(function(t){
+      var row = el("div", "tp-goalrow");
+      row.appendChild(el("span", "tp-goallabel", t[1]));
+      var seg = el("div", "tp-seg");
+      Tracking.GOALS[t[0]].forEach(function(v){
+        var b = el("button", "", String(v));
+        b.type = "button";
+        b.setAttribute("role", "radio");
+        b.setAttribute("data-type", t[0]);
+        b.setAttribute("data-value", v);
+        b.setAttribute("aria-label", Tracking.goalLabel({type: t[0], value: v}));
+        b.addEventListener("click", function(){ state = {type: t[0], value: v}; sync(); onChange({type: state.type, value: state.value}); });
+        seg.appendChild(b);
       });
-      types.appendChild(b);
+      row.appendChild(seg);
+      grid.appendChild(row);
     });
-    host.appendChild(types);
-    host.appendChild(values);
+    host.appendChild(grid);
     function sync(){
-      types.querySelectorAll(".tp-choice").forEach(function(b){
-        var on = b.getAttribute("data-type") === state.type;
+      grid.querySelectorAll("button").forEach(function(b){
+        var on = b.getAttribute("data-type") === state.type && +b.getAttribute("data-value") === state.value;
         b.classList.toggle("is-on", on);
         b.setAttribute("aria-checked", on ? "true" : "false");
       });
-      values.innerHTML = "";
-      Tracking.GOALS[state.type].forEach(function(v){
-        var b = el("button", "tp-value", String(v));
-        b.type = "button";
-        b.setAttribute("aria-pressed", v === state.value ? "true" : "false");
-        b.classList.toggle("is-on", v === state.value);
-        b.setAttribute("aria-label", Tracking.goalLabel({type: state.type, value: v}));
-        b.addEventListener("click", function(){ state.value = v; sync(); });
-        values.appendChild(b);
-      });
-      onChange({type: state.type, value: state.value});
     }
     sync();
+    onChange({type: state.type, value: state.value});
   }
 
   /* Email it to myself / Save to password manager / Print QR code */

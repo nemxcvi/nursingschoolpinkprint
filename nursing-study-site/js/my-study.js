@@ -176,7 +176,7 @@ var MyStudy = (function(){
   function weekCard(d){
     var st = d.state, goal = st.goal || T.DEFAULT_GOAL;
     var totals = S.dailyTotals(st.activity);
-    var s = S.streaks(totals, goal, d.today, d.semester, st.busyWeeks || [], st.breakGoal || null);
+    var s = S.streaks(totals, goal, d.today, d.semester, st.busyWeeks || [], T.goalOnBreaks());
     var w = s.week;
     var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][+d.today.slice(5, 7) - 1];
     var left = S.passesLeft(st.busyWeeks, d.today);
@@ -185,12 +185,12 @@ var MyStudy = (function(){
     var body;
     if (!w){
       var q = S.weekProgress(totals, {type: "questions", value: 1}, thisWeek).questions;
-      body = '<div class="ms-weeknum"><span class="ms-bignum">' + q + '</span><span class="ms-sub">' + (q === 1 ? "question" : "questions") + ' this week</span></div><p class="tp-hint">Break week: your streak is paused. You can set a break goal in Settings.</p>';
+      body = '<div class="ms-weeknum"><span class="ms-bignum">' + q + '</span><span class="ms-sub">' + (q === 1 ? "question" : "questions") + ' this week</span></div><p class="tp-hint">Holiday break: this week doesn\'t count toward your streak. To keep your goal going during breaks, turn it on in Settings.</p>';
     } else {
       var unit = goal.type === "days" ? (w.target === 1 ? "study day" : "study days") : "questions";
       body = '<div class="ms-weeknum"><span class="ms-bignum">' + w.done + '</span><span class="ms-sub">of ' + w.target + " " + unit + "</span></div>" +
         '<div class="ms-goalbar" role="img" aria-label="' + Math.min(100, Math.round(w.done / w.target * 100)) + ' percent of weekly goal"><span style="width:' + Math.min(100, w.done / w.target * 100) + '%"></span></div>' +
-        (s.kind === "bonus" ? '<p class="tp-hint">Bonus week: hitting your goal grows your streak; missing it only pauses it.</p>' : "");
+        (s.kind === "break" ? '<p class="tp-hint">Holiday break: hitting your goal grows your streak; missing it only pauses it.</p>' : "");
     }
     var canPass = w && !w.met && left > 0 && !passUsed && s.kind === "semester";
     if (w && w.met && st.celebratedWeek !== thisWeek){ T.update({celebratedWeek: thisWeek}); setTimeout(T.celebrate, 300); }
@@ -203,7 +203,7 @@ var MyStudy = (function(){
 
   function recapCard(d){
     var st = d.state, totals = S.dailyTotals(st.activity);
-    var s = S.streaks(totals, st.goal || T.DEFAULT_GOAL, d.today, d.semester, st.busyWeeks || [], st.breakGoal || null);
+    var s = S.streaks(totals, st.goal || T.DEFAULT_GOAL, d.today, d.semester, st.busyWeeks || [], T.goalOnBreaks());
     var r = S.recap(d.questions, d.store, totals, s, S.grade(d.exams, st.scores || {}, d.grading));
     return '<div class="ms-card ms-exam"><div class="tp-eyebrow">Semester recap · NUR 114</div><h2 class="ms-h2">You finished the semester</h2>' +
       '<div class="ms-recap"><div><span class="ms-bignum">' + r.answered + '</span><span class="ms-sub">questions answered</span></div>' +

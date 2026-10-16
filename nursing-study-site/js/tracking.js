@@ -14,7 +14,9 @@
      nicknameTicket     random claim ticket for the nickname (never the lookup ID)
      scores             {examId: points} logged with Edit scores (private)
      busyWeeks          Mondays ("YYYY-MM-DD") of weeks a busy week pass was used
-     breakGoal          optional goal for breaks after the semester ({type, value} or null)
+     goalOnBreaks       true = the weekly goal still counts during holiday breaks (hit grows the
+                        streak, miss pauses); off/missing = break weeks are skipped. (Older saves may
+                        have breakGoal {type, value} instead, which counts as on.)
      knownCounts        {topicKey: questions} seen last time, for "12 new questions" labels
      activity           {deviceId: {date: answers}}: each device counts its own answers (goals, streaks)
      settingsAt         when any of the settings above last changed (for merging devices)
@@ -106,7 +108,7 @@
   var LOOKUP_SALT = "pinkprint-lookup-v1", KEY_SALT = "pinkprint-key-v1";
   /* Settings that travel between devices (everything else in the saved state stays on the device) */
   var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn",
-                "scores", "busyWeeks", "breakGoal", "knownCounts", "challenges", "ownerProof"];
+                "scores", "busyWeeks", "breakGoal", "goalOnBreaks", "knownCounts", "challenges", "ownerProof"];
 
   function subtle(){ return cryptoObj().subtle; }
   function utf8(s){ return new TextEncoder().encode(s); }
@@ -660,6 +662,13 @@
   /* ---------- Challenges (phase 6) ----------
      Each challenge this person made or joined is saved with its own random ticket, which is the
      only way to submit a score, see scores or delete it. */
+  /* Keep my goal during holiday breaks (older saves with a break goal count as on) */
+  api.goalOnBreaks = function(){
+    var s = api.state();
+    if (!s) return false;
+    return typeof s.goalOnBreaks === "boolean" ? s.goalOnBreaks : !!s.breakGoal;
+  };
+
   api.challenges = function(){
     var s = api.state();
     return s ? (s.challenges || []).filter(function(c){ return !c.gone; }) : [];
