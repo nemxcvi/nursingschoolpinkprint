@@ -28,7 +28,7 @@ group sees what to review next.
 Under the scores, a **Group focus** section ("N sharing · combined results only · Stop sharing"):
 
 - **Topics, weakest first.** Each unit/topic in the challenge, ranked by the group's combined
-  accuracy (right answers from everyone who finished ÷ questions × players). A topic with fewer
+  accuracy (right answers from everyone sharing ÷ questions × sharers). A topic with fewer
   than 3 questions in the challenge gets a small "Only N questions" label so nobody over-reads it.
   When a challenge mixes units, topics are labelled "Unit N · Topic".
 - **Most missed.** Up to 5 questions, most missed first, each with "Missed by 4 of 6". Tapping one
@@ -50,10 +50,10 @@ Under the scores, a **Group focus** section ("N sharing · combined results only
 
 - New table `challenge_answers` (challenge, player's ticket hash, question ID, right/wrong). One
   row per question per player, saved once when they finish, only to build the group totals. It is
-  saved for everyone who finishes but only counted once that player shares.
+  saved for everyone who finishes but only counted once that player shares. No nickname, device
+  or time is stored with it. Direct access is blocked like every other table.
 - New column `challenge_players.share_focus` (default off) and function
   `share_focus(id, ticket, share)`: a player who finished turns sharing on or off.
-  No nickname, device or time is stored with it. Direct access is blocked like every other table.
 - Rows are tied to the player row (`on delete cascade`), so they are deleted with the challenge:
   when its maker deletes it, or 7 days after it expires (the existing clean-up in `ping()` and
   `create_challenge`).
@@ -63,7 +63,8 @@ Under the scores, a **Group focus** section ("N sharing · combined results only
   a player who finished, and `focus: {players, missed}` (sharers only) when they're sharing and 2+
   are.
 - Older pages still call `submit_score`, which keeps working; those players just don't count
-  toward Group focus and aren't asked to share. The site falls back to `submit_score` until the database update is run.
+  toward Group focus and aren't asked to share. The site falls back to `submit_score` until
+  the database update is run.
 
 ### Other Challenges page changes made with it
 
