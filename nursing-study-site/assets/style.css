@@ -703,6 +703,9 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-exam-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;}
 .ms-exam .ms-h2{font-size:28px;}
 .ms-days{text-align:right;}
+.ms-days .ms-bignum{font-size:128px;line-height:.76;margin-top:4px;}
+.ms-days .ms-sub{margin-top:10px;}
+@media(max-width:560px){.ms-days .ms-bignum{font-size:104px;}}
 .ms-exam-foot{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;border-top:1.5px dashed var(--border);padding-top:18px;margin-top:auto;}
 .ms-plan{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;font-weight:500;}
 .ms-btns{display:flex;gap:10px;flex-wrap:wrap;}
