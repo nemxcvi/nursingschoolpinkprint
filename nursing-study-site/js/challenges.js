@@ -133,11 +133,13 @@ var Challenges = (function(){
   /* ---------- Challenges page ---------- */
   function intro(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Study buddy</div><h1 class="tp-h1">Challenges</h1>' +
-      '<p class="tp-lede">Challenges are for studying together. Send friends the same questions, compare scores, then see what the group should review.</p>' +
-      '<ul class="ch-how"><li><strong>Share</strong> a 4-character code or link. Up to 10 people, open for 7 days.</li>' +
-      "<li><strong>Compare</strong> scores once you finish, so nobody sees answers early.</li>" +
-      "<li><strong>Group focus</strong>: choose to share your answers before you start, and everyone who shares sees the group's weakest topics and most-missed questions, never who missed what.</li>" +
-      "<li><strong>Counts for you</strong>: every challenge answer adds to your own progress.</li></ul></section>";
+      '<p class="tp-lede">Challenges are for studying together: everyone answers the same questions, then you see what the group should review.</p>' +
+      '<ol class="ch-steps">' +
+      '<li><span class="ch-stepn">1</span><strong>Make one</strong><span>Pick a unit or topic and 10, 20 or 40 questions.</span></li>' +
+      '<li><span class="ch-stepn">2</span><strong>Send it</strong><span>Share the code or link. Up to 10 people, open 7 days.</span></li>' +
+      '<li><span class="ch-stepn">3</span><strong>Compare</strong><span>Scores show once you finish. Answers count toward your progress.</span></li>' +
+      '<li><span class="ch-stepn">4</span><strong>Study together</strong><span>Choose to share your answers to unlock Group focus.</span></li>' +
+      "</ol></section>";
   }
 
   /* Someone without tracking opened a challenge link */

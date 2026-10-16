@@ -80,8 +80,9 @@ only, never who missed what.", then:
 
 ### Other Challenges page changes made with it
 
-- New intro: "Challenges are for studying together…", plus four short points (Share, Compare,
-  Group focus, Counts for you).
+- New intro: "Challenges are for studying together: everyone answers the same questions, then
+  you see what the group should review.", then four numbered steps in one boxed row (two by two on
+  phones): Make one, Send it, Compare, Study together.
 - Join moved into the New challenge box: a small underlined "Join a challenge with a code" under
   Create challenge opens the code box.
 - Scores list in the order people finished (no ranking), each as `8/10` and `80%`.
