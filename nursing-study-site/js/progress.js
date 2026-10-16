@@ -13,6 +13,7 @@
      mastered, masteredOn   2 correct in a row; a wrong answer un-masters it
      bookmarked
      journal                in the mistake journal: added on a miss, leaves after 2 correct in a row
+     note                   the "My note" text, if any
      examReady              {examId: {base, streak, ready}} for the last 3 days before each exam */
 (function(){
   var STORE_KEY = "pinkprint-progress";
@@ -216,6 +217,22 @@
     return r.bookmarked;
   };
 
+  /* Set by a later phase once the Mistake journal page exists; until then it's plain text */
+  api.JOURNAL_URL = null;
+
+  api.status = function(q){
+    return statusOf(api.get(q.id), q.unit, api.today(), api.exams || []);
+  };
+
+  api.setNote = function(id, text){
+    var store = api.load();
+    var r = store[id] || blankRecord();
+    if (text.trim()) r.note = text; else delete r.note;
+    store[id] = r;
+    api.save(store);
+  };
+
+  /* Smart session picking, kept for My dashboard in a later phase */
   api.pick = function(questions, count){
     return pickSmart(questions, count, api.load(), api.today(), api.exams || []);
   };

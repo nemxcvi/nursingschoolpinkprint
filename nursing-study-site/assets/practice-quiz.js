@@ -31,16 +31,21 @@ function buildQuizBank(units, topic){
 }
 
 function loadPracticeQuiz(opts){
-  initPracticeQuiz(fetchQuizUnits(opts.data, opts.units).then(function(units){ return buildQuizBank(units, opts.topic); }), null, opts);
+  initPracticeQuiz(fetchQuizUnits(opts.data, opts.units).then(function(units){
+    var d = buildQuizBank(units, opts.topic);
+    /* Name for the Mastery box on the results page: the topic, the unit, or every unit */
+    d.masteryLabel = opts.topic || (units.length === 1 ? units[0].name : "Overall");
+    return d;
+  }), null, opts);
 }
 
-/* Takes a bank and its category labels, or a promise of {bank, catLabels}.
-   opts.data (from loadPracticeQuiz) is where Smart session finds every unit's questions. */
+/* Takes a bank and its category labels, or a promise of {bank, catLabels, masteryLabel}.
+   opts.data (from loadPracticeQuiz) is where progress tracking finds exams.json. */
 function initPracticeQuiz(bank, catLabels, opts){
-  /* Progress tracking and Smart session only run when the tracking flag is on (js/progress.js) */
+  /* Progress tracking only runs when the tracking flag is on (js/progress.js) */
   var tracking = typeof Progress !== "undefined" && Progress.enabled() && !!(opts && opts.data);
   var ready = Promise.resolve(Array.isArray(bank) ? {bank: bank, catLabels: catLabels} : bank).then(function(d){
-    bank = d.bank; catLabels = d.catLabels;
+    bank = d.bank; catLabels = d.catLabels; masteryLabel = d.masteryLabel || "";
     normalizeBank(bank);
     if (tracking) return Progress.init(opts.data).catch(function(err){
       console.warn("[progress] tracking is off for this page: couldn't load exam data", err);
@@ -55,6 +60,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     msg.textContent = "Couldn't load the questions. Refresh the page to try again.";
     document.getElementById("pq-setup-screen").appendChild(msg);
   });
+  var masteryLabel = "";
   var ROUND_SIZE = 5;
   var mode = null, pool = [], missedMap = {};
   var singleQuestions = [], singleResults = [];
@@ -194,47 +200,16 @@ function initPracticeQuiz(bank, catLabels, opts){
     rounds: countRow.getAttribute("data-rounds").split(",").map(Number)
   };
   var chosenCount = 10;
-  /* setupMode is what's picked on the setup screen; mode is how the running session behaves
-     (a Smart session runs like One session) */
-  var setupMode = "single";
   mode = "single";
-  var sessionCatLabels = catLabels, sessionEvents = null, smartData = null;
-
-  /* Smart session: a third mode, only while tracking is on */
-  if (tracking){
-    var modes = document.querySelector(".pq-modes");
-    var smartBtn = document.createElement("button");
-    smartBtn.type = "button";
-    smartBtn.className = "pq-mode-btn";
-    smartBtn.setAttribute("data-mode", "smart");
-    smartBtn.setAttribute("aria-pressed", "false");
-    smartBtn.innerHTML = '<span class="pq-mode-title"><span class="pq-check" aria-hidden="true"></span>Smart session</span>' +
-      '<span class="pq-mode-sub">Blind spots and mistakes first, then bookmarks, reviews and new questions from your next exam.</span>';
-    modes.appendChild(smartBtn);
-    modes.classList.add("has-smart");
-    countsFor.smart = [10, 20, 30, 40];
-  }
-
-  /* Every unit's questions for Smart session, loaded the first time it's started */
-  function loadSmartData(){
-    if (!smartData){
-      smartData = fetchQuizUnits(opts.data, Progress.units).then(function(units){
-        var d = buildQuizBank(units, null);
-        normalizeBank(d.bank);
-        return d;
-      });
-    }
-    return smartData;
-  }
 
   /* Counts a mode doesn't offer (e.g. 5/15/25/35 for mastery rounds) are disabled */
   function syncSetup(){
     document.querySelectorAll(".pq-mode-btn").forEach(function(btn){
-      var on = btn.getAttribute("data-mode") === setupMode;
+      var on = btn.getAttribute("data-mode") === mode;
       btn.classList.toggle("is-selected", on);
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     });
-    var allowed = countsFor[setupMode];
+    var allowed = countsFor[mode];
     if (allowed.indexOf(chosenCount) === -1) chosenCount = allowed.indexOf(10) !== -1 ? 10 : allowed[0];
     document.querySelectorAll(".pq-count-btn").forEach(function(btn){
       var c = Number(btn.getAttribute("data-count"));
@@ -245,7 +220,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   }
 
   document.querySelectorAll(".pq-mode-btn").forEach(function(btn){
-    btn.addEventListener("click", function(){ setupMode = btn.getAttribute("data-mode"); syncSetup(); });
+    btn.addEventListener("click", function(){ mode = btn.getAttribute("data-mode"); syncSetup(); });
   });
   document.querySelectorAll(".pq-count-btn").forEach(function(btn){
     btn.addEventListener("click", function(){ chosenCount = Number(btn.getAttribute("data-count")); syncSetup(); });
@@ -253,19 +228,10 @@ function initPracticeQuiz(bank, catLabels, opts){
   /* The setup screen works right away; starting waits for the questions if they're still loading */
   document.getElementById("pq-start").addEventListener("click", function(){
     ready.then(function(){
-      if (setupMode === "smart" && tracking){
-        return loadSmartData().then(function(d){
-          return {pool: Progress.pick(d.bank, chosenCount), catLabels: d.catLabels, mode: "single"};
-        });
-      }
-      return {pool: mixedSample(bank, chosenCount), catLabels: catLabels, mode: setupMode === "rounds" ? "rounds" : "single"};
-    }).then(function(s){
       if (document.getElementById("pq-setup-screen").classList.contains("hidden")) return;
-      pool = s.pool;
-      sessionCatLabels = s.catLabels;
-      mode = s.mode;
+      pool = mixedSample(bank, chosenCount);
       missedMap = {};
-      sessionEvents = newSessionEvents();
+      if (tracking) startTrackedSession();
       hide("pq-setup-screen");
       if (mode === "single") startSingle(); else startRounds();
     });
@@ -394,7 +360,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
     document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
-    if (tracking) syncBookmark(q);
+    if (tracking){ syncBookmark(q); noteBox.classList.add("hidden"); }
 
     if (q.type === "dragdrop"){ renderDragDrop(q); return; }
 
@@ -656,7 +622,10 @@ function initPracticeQuiz(bank, catLabels, opts){
     ddCancelDrag(); ddUnpick();
     var graded = gradeQuestion(q, userSelection);
     var isCorrect = graded.correct;
-    if (tracking) noteProgress(q, Progress.record(q, isCorrect));
+    if (tracking){
+      noteProgress(q, Progress.record(q, isCorrect));
+      showNote(q);
+    }
 
     if (mode === "single"){
       singleResults.push({question: q, userSelection: userSelection.slice(), correct: isCorrect});
@@ -767,14 +736,14 @@ function initPracticeQuiz(bank, catLabels, opts){
   function buildCategoryGrid(statsByCat){
     var gridEl = document.getElementById("category-grid");
     gridEl.innerHTML = "";
-    Object.keys(sessionCatLabels).forEach(function(cat){
+    Object.keys(catLabels).forEach(function(cat){
       var s = statsByCat[cat] || {correct:0, total:0};
       if (s.total === 0) return;
       var pct = Math.round((s.correct / s.total) * 100);
       var card = document.createElement("div");
       card.className = "pq-cat-card";
       var label = document.createElement("div");
-      label.className = "pq-cat-label"; label.textContent = sessionCatLabels[cat];
+      label.className = "pq-cat-label"; label.textContent = catLabels[cat];
       var val = document.createElement("div");
       val.className = "pq-cat-val"; val.textContent = pct + "%";
       card.appendChild(label); card.appendChild(val);
@@ -791,7 +760,13 @@ function initPracticeQuiz(bank, catLabels, opts){
       var promptLine = document.createElement("div");
       promptLine.style.fontWeight = "600";
       promptLine.textContent = (r.correct ? "\u2713 " : "\u2717 ") + r.question.prompt;
-      item.appendChild(promptLine);
+      var tag = blindSpotTag(r.question);
+      if (tag){
+        var row = document.createElement("div");
+        row.className = "pq-review-top";
+        row.appendChild(promptLine); row.appendChild(tag);
+        item.appendChild(row);
+      } else item.appendChild(promptLine);
       var answerLine = document.createElement("div");
       answerLine.style.color = "var(--text2)"; answerLine.style.marginTop = "4px";
       answerLine.textContent = "your answer: " + optText(r.question, r.userSelection) + (r.correct ? "" : " | correct: " + optText(r.question, r.question.correct));
@@ -824,7 +799,10 @@ function initPracticeQuiz(bank, catLabels, opts){
       var triesEl = document.createElement("div");
       triesEl.style.whiteSpace = "nowrap"; triesEl.style.color = col.text;
       triesEl.textContent = isResolved ? (tries + (tries === 1 ? " try" : " tries")) : "not yet correct";
-      topRow.appendChild(promptEl); topRow.appendChild(triesEl);
+      topRow.appendChild(promptEl);
+      var tag = blindSpotTag(q);
+      if (tag) topRow.appendChild(tag);
+      topRow.appendChild(triesEl);
       item.appendChild(topRow);
       var answerLine = document.createElement("div");
       answerLine.style.color = "var(--text2)"; answerLine.style.marginTop = "4px";
@@ -840,24 +818,35 @@ function initPracticeQuiz(bank, catLabels, opts){
   }
 
   /* ---------- Progress tracking (flag on only) ---------- */
-  function newSessionEvents(){ return {mastered: {}, journaled: {}, ready: {}}; }
-
-  function noteProgress(q, ev){
-    if (!sessionEvents) sessionEvents = newSessionEvents();
-    if (ev.mastered) sessionEvents.mastered[q.id] = q;
-    if (ev.journaled) sessionEvents.journaled[q.id] = q;
-    ev.ready.forEach(function(examId){ sessionEvents.ready[q.id + "|" + examId] = {q: q, exam: examId}; });
+  /* At the start of each session, note which of this quiz's questions are already mastered,
+     so the results can show the before -> after change */
+  var masteredAtStart = {}, journaledThisSession = {};
+  function startTrackedSession(){
+    var store = Progress.load();
+    masteredAtStart = {};
+    journaledThisSession = {};
+    bank.forEach(function(q){ if (store[q.id] && store[q.id].mastered) masteredAtStart[q.id] = true; });
   }
 
-  /* Small bookmark toggle in the top row while answering */
-  var bookmarkBtn = null;
+  function noteProgress(q, ev){
+    if (ev.journaled) journaledThisSession[q.id] = true;
+  }
+
+  var BOOKMARK_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>';
+
+  /* Bookmark button at the top right of the question, and the "My note" box under the
+     rationales, shown once the answer is checked */
+  var bookmarkBtn = null, noteBox = null, noteInput = null;
   if (tracking){
+    var qhead = document.createElement("div");
+    qhead.className = "pq-qhead";
     bookmarkBtn = document.createElement("button");
     bookmarkBtn.type = "button";
     bookmarkBtn.id = "pq-bookmark";
-    bookmarkBtn.className = "pq-endlink pq-bookmark";
-    var endLink = document.getElementById("pq-end-test");
-    endLink.parentNode.insertBefore(bookmarkBtn, endLink);
+    bookmarkBtn.className = "pq-bookmark";
+    qhead.appendChild(bookmarkBtn);
+    var promptEl = document.getElementById("pq-prompt");
+    promptEl.parentNode.insertBefore(qhead, promptEl);
     bookmarkBtn.addEventListener("click", function(e){
       var q = currentQuestion();
       if (!q) return;
@@ -866,64 +855,109 @@ function initPracticeQuiz(bank, catLabels, opts){
       /* After a mouse click, give Enter back to check / next */
       if (e.detail > 0) bookmarkBtn.blur();
     });
+
+    noteBox = document.createElement("div");
+    noteBox.className = "pq-note hidden";
+    var noteLabel = document.createElement("label");
+    noteLabel.className = "pq-note-label";
+    noteLabel.setAttribute("for", "pq-note-input");
+    noteLabel.textContent = "My note \u00b7 shows every time this question comes back";
+    noteInput = document.createElement("textarea");
+    noteInput.id = "pq-note-input";
+    noteInput.rows = 2;
+    noteBox.appendChild(noteLabel);
+    noteBox.appendChild(noteInput);
+    optsEl.parentNode.insertBefore(noteBox, optsEl.nextSibling);
+    noteInput.addEventListener("input", function(){
+      var q = currentQuestion();
+      if (q) Progress.setNote(q.id, noteInput.value);
+    });
   }
   function syncBookmark(q){
     var r = Progress.get(q.id);
     var on = !!(r && r.bookmarked);
-    bookmarkBtn.innerHTML = '<i class="ti ' + (on ? "ti-bookmark-filled" : "ti-bookmark") + '" aria-hidden="true"></i> ' + (on ? "Bookmarked" : "Bookmark");
+    bookmarkBtn.innerHTML = BOOKMARK_ICON + (on ? "Bookmarked" : "Bookmark");
+    bookmarkBtn.classList.toggle("is-on", on);
     bookmarkBtn.setAttribute("aria-pressed", on ? "true" : "false");
   }
+  function showNote(q){
+    var r = Progress.get(q.id);
+    noteInput.value = (r && r.note) || "";
+    noteBox.classList.remove("hidden");
+  }
 
-  /* "Mastery update" box: what changed this session. A question only counts if it's still in
-     that state at the end (e.g. mastered, then missed again, isn't listed as mastered). */
-  function buildMasteryUpdate(){
+  /* Mastery box under the score: this quiz's questions mastered before -> after the session,
+     a bar (mastered / newly mastered / still learning / not seen) and a one-line summary */
+  function buildMasteryBox(){
     var old = document.getElementById("pq-mastery");
     if (old) old.remove();
-    var ev = sessionEvents || newSessionEvents();
-    var box = document.createElement("div");
+    var store = Progress.load();
+    var total = bank.length, kept = 0, fresh = 0, learning = 0, before = Object.keys(masteredAtStart).length;
+    bank.forEach(function(q){
+      var r = store[q.id];
+      if (r && r.mastered){ if (masteredAtStart[q.id]) kept++; else fresh++; }
+      else if (r && r.seen) learning++;
+    });
+    var pct = function(n){ return total ? Math.round(n / total * 100) : 0; };
+    var journaled = Object.keys(journaledThisSession).filter(function(id){ return store[id] && store[id].journal; }).length;
+
+    var box = document.createElement("section");
     box.id = "pq-mastery";
     box.className = "pq-mastery";
-    var title = document.createElement("p");
+    var head = document.createElement("div");
+    head.className = "pq-mastery-head";
+    var title = document.createElement("span");
     title.className = "pq-mastery-title";
-    title.textContent = "Mastery update";
-    box.appendChild(title);
-    function stillTrue(id, test){ var r = Progress.get(id); return !!(r && test(r)); }
-    var groups = [
-      ["Newly mastered", Object.keys(ev.mastered).filter(function(id){ return stillTrue(id, function(r){ return r.mastered; }); })
-        .map(function(id){ return {q: ev.mastered[id]}; })],
-      ["Added to mistake journal", Object.keys(ev.journaled).filter(function(id){ return stillTrue(id, function(r){ return r.journal; }); })
-        .map(function(id){ return {q: ev.journaled[id]}; })],
-      ["Newly exam ready", Object.keys(ev.ready).map(function(k){ return ev.ready[k]; })
-        .filter(function(x){ return Progress.isExamReady(Progress.get(x.q.id), x.exam); })
-        .map(function(x){ return {q: x.q, note: Progress.examName(x.exam)}; })]
-    ];
-    groups.forEach(function(g){
-      var label = document.createElement("p");
-      label.className = "pq-mastery-label";
-      label.textContent = g[0] + " (" + g[1].length + ")";
-      box.appendChild(label);
-      var list = document.createElement("ul");
-      list.className = "pq-mastery-list";
-      if (g[1].length === 0){
-        var none = document.createElement("li");
-        none.className = "muted";
-        none.textContent = "None this session";
-        list.appendChild(none);
-      }
-      g[1].forEach(function(item){
-        var li = document.createElement("li");
-        li.textContent = (item.note ? item.note + " \u00b7 " : "") + item.q.prompt;
-        list.appendChild(li);
-      });
-      box.appendChild(list);
+    title.textContent = masteryLabel + " mastery";
+    var change = document.createElement("span");
+    change.className = "pq-mastery-change";
+    change.appendChild(document.createTextNode(pct(before) + "% \u2192 "));
+    var after = document.createElement("strong");
+    after.textContent = pct(kept + fresh) + "%";
+    change.appendChild(after);
+    head.appendChild(title); head.appendChild(change);
+
+    var bar = document.createElement("div");
+    bar.className = "pq-mbar";
+    bar.setAttribute("role", "img");
+    bar.setAttribute("aria-label", "Mastery went from " + pct(before) + " to " + pct(kept + fresh) + " percent");
+    [["is-mastered", kept], ["is-new", fresh], ["is-learning", learning]].forEach(function(seg){
+      if (!seg[1]) return;
+      var el = document.createElement("div");
+      el.className = "pq-mbar-seg " + seg[0];
+      el.style.width = (seg[1] / total * 100) + "%";
+      bar.appendChild(el);
     });
+
+    var line = document.createElement("div");
+    line.className = "pq-mastery-line";
+    line.appendChild(document.createTextNode(fresh === 0 ? "No questions newly mastered." : fresh + (fresh === 1 ? " question" : " questions") + " newly mastered."));
+    if (journaled){
+      line.appendChild(document.createTextNode(" " + journaled + (journaled === 1 ? " missed question was" : " missed questions were") + " added to your "));
+      /* The Mistake journal page comes in a later phase; until then this is plain text */
+      var journal = document.createElement(Progress.JOURNAL_URL ? "a" : "span");
+      if (Progress.JOURNAL_URL) journal.href = Progress.JOURNAL_URL;
+      journal.textContent = "Mistake journal";
+      line.appendChild(journal);
+      line.appendChild(document.createTextNode("."));
+    }
+    box.appendChild(head); box.appendChild(bar); box.appendChild(line);
     var center = document.querySelector("#pq-end-screen .pq-center");
     center.parentNode.insertBefore(box, center.nextSibling);
   }
 
+  /* "Blind spot" tag on a review item: missed 2 or more times in a row */
+  function blindSpotTag(q){
+    if (!tracking || Progress.status(q) !== "blindspot") return null;
+    var tag = document.createElement("span");
+    tag.className = "pq-tag-blind";
+    tag.textContent = "Blind spot";
+    return tag;
+  }
+
   function finishSession(){
     hide("pq-quiz-screen"); hide("pq-round-complete-screen"); show("pq-end-screen");
-    if (tracking) buildMasteryUpdate();
+    if (tracking) buildMasteryBox();
     document.getElementById("category-heading").textContent = "by category";
 
     if (mode === "single"){
@@ -1020,7 +1054,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     mode = "single";
     pool = list;
     missedMap = {};
-    sessionEvents = newSessionEvents();
+    startTrackedSession();
     startSingle();
   });
 }

@@ -307,17 +307,29 @@ h2{font-size:20px;}
 .pq-top-right{display:flex;align-items:baseline;gap:16px;}
 .pq-endlink{padding:0;border:0;background:none;color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
 .pq-endlink:hover{color:var(--text);}
-.pq-bookmark{text-decoration:none;}
-.pq-bookmark .ti{font-size:14px;vertical-align:-2px;}
-/* Progress tracking (only shown while tracking is on): Smart session as a third mode, and the Mastery update box */
-.pq-modes.has-smart{grid-template-columns:repeat(3,minmax(0,1fr));}
-@media(max-width:720px){.pq-modes.has-smart{grid-template-columns:repeat(2,minmax(0,1fr));}.pq-modes.has-smart .pq-mode-btn[data-mode="smart"]{grid-column:1 / -1;}}
-@media(max-width:560px){.pq-modes.has-smart{grid-template-columns:1fr;}}
-.pq-mastery{border:1.5px solid var(--border);border-radius:0;padding:14px 16px;margin:0 0 18px;}
-.pq-mastery-title{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--label);text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px;}
-.pq-mastery-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--label);text-transform:uppercase;letter-spacing:.06em;margin:12px 0 4px;}
-.pq-mastery-list{margin:0;padding-left:18px;font-family:'IBM Plex Sans',sans-serif;font-size:13px;line-height:1.5;color:var(--text);}
-.pq-mastery-list li.muted{list-style:none;margin-left:-18px;}
+/* Progress tracking (only shown while tracking is on), styles from design/source Quiz, Answer and Results */
+.pq-qhead{display:flex;justify-content:flex-end;margin-bottom:12px;}
+.pq-bookmark{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.pq-bookmark svg{fill:none;}
+.pq-bookmark.is-on{background:var(--border);color:var(--fill-text);}
+.pq-bookmark.is-on svg{fill:currentColor;}
+.pq-note{display:flex;flex-direction:column;gap:8px;margin:6px 0 14px;background:color-mix(in srgb,var(--border) 10%,transparent);border:1.5px dashed var(--border);padding:16px 18px;}
+.pq-note-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);}
+.pq-note textarea{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;color:var(--text);border:1.5px solid var(--border);border-radius:0;background:var(--card);padding:10px 12px;resize:vertical;}
+.pq-mastery{background:var(--card);border:1.5px solid var(--border);border-radius:0;padding:18px 20px;margin:0 0 18px;display:flex;flex-direction:column;gap:12px;}
+.pq-mastery-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.pq-mastery-title{font-family:'Young Serif',Georgia,serif;font-size:18px;color:var(--heading);}
+.pq-mastery-change{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);font-variant-numeric:tabular-nums;}
+.pq-mbar{display:flex;height:14px;border:1.5px solid var(--border);background:#FFFFFF;}
+.pq-mbar-seg.is-mastered{background:var(--border);}
+.pq-mbar-seg.is-new{background:var(--label);}
+.pq-mbar-seg.is-learning{background:#F7C6DA;}
+[data-theme="dark"] .pq-mbar,[data-palette="blue"] .pq-mbar{background:var(--card);}
+[data-theme="dark"] .pq-mbar-seg.is-learning,[data-palette="blue"] .pq-mbar-seg.is-learning{background:color-mix(in srgb,var(--border) 35%,var(--page));}
+.pq-mastery-line{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;color:var(--text2);}
+.pq-mastery-line a{color:var(--label);}
+.pq-review-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;}
+.pq-tag-blind{flex:0 0 auto;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--missed-text);background:var(--missed-bg);border:1.5px solid var(--missed-border);padding:2px 6px;}
 .pq-progress-track{height:6px;background:var(--pill);overflow:hidden;margin-bottom:22px;}
 .pq-progress-fill{height:100%;width:0;background:var(--border);transition:width .25s ease;}
 .pq-prompt{font-family:'Young Serif',serif;font-size:22px;font-weight:400;line-height:1.4;color:var(--heading);margin-bottom:12px;}

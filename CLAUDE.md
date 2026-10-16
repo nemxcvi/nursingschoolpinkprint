@@ -56,4 +56,5 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 
 - All progress code is in `nursing-study-site/js/progress.js` (loaded on every page). It does nothing unless localStorage `pinkprint-track` is `on`: visit any page with `?track=on` / `?track=off`. `?today=YYYY-MM-DD` fakes the date, `?today=off` undoes it.
 - Progress is stored in localStorage `pinkprint-progress`, keyed by question ID. With the flag off, pages must look and behave exactly as before.
+- The approved tracking designs are in the design zip's `design/` folder (README + screens). Quiz pages keep their live layout; with tracking on they only add the Bookmark button, the "My note" box, the Mastery box on results and the "Blind spot" review tag. Smart session (`Progress.pick`) has no button on quiz pages; it starts from My dashboard in a later phase.
 - Rule tests: `node tests/progress.test.js` from the repo root (Node 18+).
