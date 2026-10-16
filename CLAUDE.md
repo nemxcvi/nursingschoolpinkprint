@@ -43,6 +43,10 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 - Quiz questions test the content, not where it came from. Never mark an answer wrong because it is "ATI only" or "not on the checklist"; every wrong option must be wrong on its own merits, and stems and rationales shouldn't cite the competency, slides, or ATI.
 - Keep wording plain and accurate. Prefer dropping a forced mnemonic to keeping a confusing one.
 
+## Reminders for next semester (NUR 121)
+
+- **When work starts on sheet 02 (NUR 121), put the unit mastery bars back on the homepage** for tracked visitors. They were taken off in October 2026 only because NUR 114 was already halfway through, so bars on the early units looked odd and unfinished. The code to restore is the unit-card part of `home()` in `nursing-study-site/js/my-study.js` as of commit `c4c0a7d` (the thin `bar(st, {thin: true})` plus "% mastered →" in each card's `.pp-card-bottom`, opening `progress.html#unit-N`), and the `e2e-mystudy.js` check "homepage: mastery bars on units 1-3".
+
 ## Quiz data
 
 - All quiz questions live in `nursing-study-site/data/nur114/unit-N.json`, one file per unit. Quiz pages hold no questions; they call `loadPracticeQuiz({data, units, topic})` from `practice-quiz.js`. Mix quizzes (`unit-N/mix-quiz.html`, `mix-all-quiz.html`) read the same files, so editing a question in the JSON updates every quiz that uses it.
