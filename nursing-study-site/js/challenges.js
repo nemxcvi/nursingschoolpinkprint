@@ -220,10 +220,12 @@ var Challenges = (function(){
 
   /* One challenge card, from load_challenge */
   function cardHtml(entry, c){
-    var head = '<div class="ch-head"><div class="tp-stack"><span class="ch-eyebrow">' +
-      (c.is_creator ? "Sent by you" : c.from ? "From " + esc(c.from) : "Shared with you") + " · " + day(c.created_at) + "</span>" +
-      '<h2 class="ms-h2 ch-h2">' + esc(c.title) + " · " + c.count + " questions</h2></div>" +
-      '<span class="ch-meta">' + c.joined + " of " + MAX_PLAYERS + " joined · expires " + day(c.expires_at) + "</span></div>";
+    var drop = c.is_creator ? '<button type="button" class="ms-linkbtn is-danger ch-delete">Delete<span class="ch-wide"> challenge</span></button>'
+                            : '<button type="button" class="ms-linkbtn ch-remove">Remove<span class="ch-wide"> from my list</span></button>';
+    var head = '<div class="ch-head"><div class="tp-stack"><div class="ch-top"><span class="ch-eyebrow">' +
+      (c.is_creator ? "Sent by you" : c.from ? "From " + esc(c.from) : "Shared with you") + " · " + day(c.created_at) + "</span>" + drop + "</div>" +
+      '<h2 class="ms-h2 ch-h2">' + esc(c.title) + " · " + c.count + " questions</h2>" +
+      '<span class="ch-meta">' + c.joined + " of " + MAX_PLAYERS + " joined · expires " + day(c.expires_at) + "</span></div></div>";
     var finished = c.me && c.me.finished;
     var body = "";
     if (c.players.length){
@@ -244,11 +246,8 @@ var Challenges = (function(){
       if (!c.me && c.joined >= MAX_PLAYERS) btns.push('<span class="ch-meta">This challenge is full.</span>');
       else btns.push('<a class="ms-btn is-primary ch-take" href="session.html?mode=challenge&amp;id=' + c.id + '">' + (c.me ? "Finish challenge" : "Take challenge") + " &rarr;</a>");
     }
-    btns.push('<span class="ch-cardcode" title="Challenge code">' + showCode(c.id) + "</span>");
-    btns.push('<button type="button" class="ch-btn ch-copycode">Copy code</button>');
-    btns.push('<button type="button" class="ch-btn ch-copylink">Copy link</button>');
-    btns.push(c.is_creator ? '<button type="button" class="ch-btn is-danger ch-delete">Delete challenge</button>'
-                           : '<button type="button" class="ms-linkbtn ch-remove">Remove from my list</button>');
+    btns.push('<div class="ch-share"><span class="ch-cardcode" title="Challenge code">' + showCode(c.id) + "</span>" +
+      '<button type="button" class="ch-btn ch-copycode">Copy code</button><button type="button" class="ch-btn ch-copylink">Copy link</button></div>');
     return head + body + '<div class="ch-btns">' + btns.join("") + "</div>";
   }
 
