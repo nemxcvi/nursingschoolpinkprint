@@ -144,7 +144,7 @@ var MyStudy = (function(){
   function dashboard(d, host){
     var st = d.state, plan = S.planToday(d.questions, d.store, d.today, d.exams);
     var html = '<section class="tp-intro tp-intro-tight"><div class="tp-eyebrow">NUR 114 · ' + esc(S.longDate(d.today)) + '</div>' +
-      '<h1 class="tp-h1">Welcome back, ' + esc(st.nickname) + "</h1></section>";
+      '<h1 class="tp-h1 ms-welcome">Welcome back, ' + esc(st.nickname) + "</h1></section>";
 
     var top = "";
     if (d.today > d.semester.end) top += recapCard(d);
@@ -244,23 +244,20 @@ var MyStudy = (function(){
   function gradeCard(d){
     var scores = d.state.scores || {}, g = S.grade(d.exams, scores, d.grading);
     var graded = d.exams.filter(function(e){ return e.graded; });
-    var rows = "", future = [];
+    var rows = "";
     graded.forEach(function(e){
       var has = typeof scores[e.id] === "number";
       var past = e.date <= d.today;
-      if (!has && !past && !editingScores){ future.push(e); return; }
       var name = '<span class="g-name">' + esc(e.name) + '</span><span class="g-date">' + esc(S.shortDate(e.date)) + "</span>";
       if ((editingScores && (has || past)) || (!has && past)){
-        rows += '<div class="g-row is-input">' + name + '<span class="g-pts"><input class="ms-score" data-exam="' + e.id + '" inputmode="decimal" placeholder="Score" aria-label="' + esc(e.name) + " points out of " + e.points + '" value="' + (has ? scores[e.id] : "") + '"><span class="g-of">/ ' + e.points + "</span></span>" +
+        rows += '<div class="g-row is-input">' + name + '<span class="g-pts"><input class="ms-score" data-exam="' + e.id + '" inputmode="decimal" placeholder="Score" aria-label="' + esc(e.name) + ' score in percent" value="' + (has ? scorePct(scores[e.id], e.points) : "") + '"><span class="g-of">%</span></span>' +
           '<span class="g-pct">' + (editingScores ? "" : '<button type="button" class="ms-logbtn" data-log="' + e.id + '">Log</button>') + "</span></div>";
       } else if (has){
-        rows += '<div class="g-row">' + name + '<span class="g-pts">' + scores[e.id] + " / " + e.points + '</span><span class="g-pct">' + Math.round(scores[e.id] / e.points * 100) + "%</span></div>";
-      } else future.push(e);
+        rows += '<div class="g-row">' + name + '<span class="g-pts">' + (+scores[e.id].toFixed(2)) + " / " + e.points + '</span><span class="g-pct">' + scorePct(scores[e.id], e.points) + "%</span></div>";
+      } else {
+        rows += '<div class="g-row is-future">' + name + '<span class="g-pts">— / ' + e.points + '</span><span class="g-pct">—</span></div>';
+      }
     });
-    if (future.length){
-      var pts = future.reduce(function(n, e){ return n + e.points; }, 0);
-      rows += '<div class="g-row is-future"><span class="g-rest">Still to come: ' + esc(futureLabel(future)) + '</span><span>— / ' + pts + "</span></div>";
-    }
     var above = g.pct !== null && g.pct >= g.passPct;
     var need;
     if (g.passed) need = "You've already earned the points to pass.";
@@ -275,20 +272,13 @@ var MyStudy = (function(){
       (need ? '<p class="ms-need">' + need + "</p>" : "") +
       '<p class="tp-hint">' + (g.passed ? "" : g.needPoints + " of the " + g.left + " points left · ") + "Exams 1–6 are 100 points each, the final is 300 · ATI not included</p></div>" +
       '<div class="ms-grade-right"><div class="g-row g-head"><span class="g-name">Exam</span><span class="g-date">Date</span><span class="g-pts">Points</span><span class="g-pct">Score</span></div>' + rows + "</div>";
-    return '<section class="ms-card ms-grade"><div class="ms-current-head"><div class="tp-stack"><span class="tp-eyebrow">Exam average · only you can see this</span><h2 class="ms-h2">Your grade so far</h2></div>' +
+    return '<section class="ms-card ms-grade"><div class="ms-current-head"><div class="tp-stack"><span class="tp-eyebrow">Exam average</span><h2 class="ms-h2">Your grade so far</h2><span class="tp-hint">Just a reminder that only you can see this.</span></div>' +
       (editingScores ? '<div class="ms-btns"><button type="button" class="ms-btn is-small" id="ms-cancelscores">Cancel</button><button type="button" class="ms-btn is-small is-primary" id="ms-savescores">Save</button></div>'
                      : '<button type="button" class="ms-btn is-small" id="ms-editscores">Edit scores</button>') +
       '</div><div class="ms-grade-body">' + parts + '</div><p class="tp-note hidden" id="ms-scoremsg" role="status"></p></section>';
   }
-  function futureLabel(list){
-    var exams = list.filter(function(e){ return /^exam-/.test(e.id); }).map(function(e){ return +e.id.slice(5); });
-    var final = list.some(function(e){ return e.id === "final"; });
-    var label = "";
-    if (exams.length === 1) label = "Exam " + exams[0];
-    else if (exams.length > 1) label = "Exams " + exams[0] + "–" + exams[exams.length - 1];
-    if (final) label += (label ? " and the final" : "The final");
-    return label;
-  }
+  /* Scores are saved as points; students type them as a percent */
+  function scorePct(points, total){ return Math.round(points / total * 1000) / 10; }
 
   function wireDashboard(d, host){
     var rerender = function(){ d.state = T.state(); dashboard(d, host); };
@@ -311,12 +301,12 @@ var MyStudy = (function(){
         var v = inp.value.trim();
         if (v === ""){ delete scores[id]; return; }
         var n = Number(v);
-        if (!isFinite(n) || n < 0 || n > exam.points) bad = exam;
-        else scores[id] = Math.round(n * 10) / 10;
+        if (!isFinite(n) || n < 0 || n > 100) bad = exam;
+        else scores[id] = Math.round(n * exam.points) / 100;
       });
       if (bad){
         var msg = document.getElementById("ms-scoremsg");
-        msg.textContent = "Enter " + bad.name + " as points from 0 to " + bad.points + ".";
+        msg.textContent = "Enter " + bad.name + " as a percent from 0 to 100.";
         msg.classList.remove("hidden");
         return null;
       }
