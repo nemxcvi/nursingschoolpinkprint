@@ -29,7 +29,12 @@ var Challenges = (function(){
     return CODE_RE.test(s) ? s : null;
   }
   var BAD_CODE = "That doesn't look like a challenge code. It's 4 letters and numbers, like 7KQ2.";
-  function joinFormHtml(){
+  /* inline: the small "Join a challenge" link under Create challenge opens it */
+  function joinFormHtml(inline){
+    if (inline) return '<div class="ch-joinwrap"><button type="button" class="ms-linkbtn ch-jointoggle" aria-expanded="false" aria-controls="ch-joinbox">Join a challenge with a code</button>' +
+      '<form class="ch-joinform hidden" id="ch-joinbox" novalidate><div class="ch-field"><label for="ch-code">Code from a friend</label>' +
+      '<div class="ch-linkrow"><input id="ch-code" class="ch-link ch-codein" placeholder="7KQ2" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="80">' +
+      '<button type="submit" class="ch-copy">Join</button></div></div><p class="tp-note ch-joinmsg hidden" role="alert"></p></form></div>';
     return '<form class="ms-card ch-joinform" novalidate><h2 class="ms-h2 ch-h2">Join a challenge</h2>' +
       '<div class="ch-field"><label for="ch-code">Code from a friend</label>' +
       '<div class="ch-linkrow"><input id="ch-code" class="ch-link ch-codein" placeholder="7KQ2" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="80">' +
@@ -100,6 +105,12 @@ var Challenges = (function(){
       return ok ? T.saveChallenge({id: entry.id, done: true, score: score}) : entry;
     });
   }
+  /* Group focus: share your answers with the group (or stop) */
+  function share(id, yes){
+    var entry = T.challenge(id);
+    if (!entry) return Promise.resolve(false);
+    return T.call("challenges/share", {id: entry.id, ticket: entry.ticket, share: !!yes});
+  }
   function remove(id){
     var entry = T.challenge(id);
     if (!entry) return Promise.resolve();
@@ -122,10 +133,10 @@ var Challenges = (function(){
   /* ---------- Challenges page ---------- */
   function intro(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Study buddy</div><h1 class="tp-h1">Challenges</h1>' +
-      '<p class="tp-lede">Pick a unit or topic and send friends the same questions. Everyone takes them on their own, then you compare scores.</p>' +
+      '<p class="tp-lede">Challenges are for studying together. Send friends the same questions, compare scores, then see what the group should review.</p>' +
       '<ul class="ch-how"><li><strong>Share</strong> a 4-character code or link. Up to 10 people, open for 7 days.</li>' +
       "<li><strong>Compare</strong> scores once you finish, so nobody sees answers early.</li>" +
-      "<li><strong>Group focus</strong> appears once 3 people finish: the group's weakest topics and most-missed questions, never who missed what.</li>" +
+      "<li><strong>Group focus</strong>: everyone who shares their answers sees the group's weakest topics and most-missed questions, never who missed what.</li>" +
       "<li><strong>Counts for you</strong>: every challenge answer adds to your own progress.</li></ul></section>";
   }
 
@@ -156,7 +167,7 @@ var Challenges = (function(){
 
   function formHtml(d, pick){
     var units = d.units.filter(function(u){ return u.questions.length; });
-    return '<form class="ms-card ch-new" novalidate><h2 class="ms-h2 ch-h2">New challenge</h2>' +
+    return '<div class="ms-card ch-newcard"><form class="ch-new" novalidate><h2 class="ms-h2 ch-h2">New challenge</h2>' +
       '<div class="ch-field"><label for="ch-unit">Unit</label><select id="ch-unit" class="ch-select">' +
       units.map(function(u){
         return '<option value="' + u.unit + '"' + (u.unit === pick.unit ? " selected" : "") + ">Unit " + u.unit + " · " + esc(u.name) + "</option>";
@@ -170,8 +181,8 @@ var Challenges = (function(){
       '<div class="ch-ready hidden"><span class="ch-ready-label"></span>' +
       '<div class="ch-coderow"><span class="ch-bigcode"></span><button type="button" class="ch-copy ch-copycode">Copy code</button></div>' +
       '<div class="ch-linkrow"><input class="ch-link" aria-label="Challenge link" readonly><button type="button" class="ch-copy">Copy link</button></div>' +
-      '<span class="tp-hint">Friends type the code under Join with a code, or open the link. Take it yourself from the list.</span></div>' +
-      "</form>";
+      '<span class="tp-hint">Friends tap Join a challenge and type the code, or open the link. Take it yourself from the list.</span></div>' +
+      "</form>" + joinFormHtml(true) + "</div>";
   }
 
   function wireForm(d, host, pick, onCreated){
@@ -234,8 +245,9 @@ var Challenges = (function(){
   }
 
   /* ---------- Group focus ----------
-     load_challenge sends {players, missed: {question id: how many missed it}} once 3 or more
-     people have finished. Only combined numbers: never who missed which question. */
+     Opt-in: load_challenge sends {players, missed: {question id: how many missed it}} to people
+     who chose to share, once 2 or more are sharing, counting only the sharers. Only combined
+     numbers: never who missed which question. */
   var data = null;   /* this page's study data (questions and units), set by mainPage */
   function byId(){
     if (!data) return {};
@@ -275,8 +287,21 @@ var Challenges = (function(){
       right.map(function(o){ return "<p><strong>" + esc(o.text) + "</strong>" + (o.rationale ? " " + esc(strip(o.rationale)) : "") + "</p>"; }).join("") +
       (q.explanation ? '<p class="ch-expl">' + esc(q.explanation) + "</p>" : "") + "</div>";
   }
+  /* Asked of everyone who finished: share your answers so the group can study together */
+  function shareHtml(c){
+    var me = c.share.me, n = c.share.sharing;
+    var others = me ? n - 1 : n;
+    return '<section class="ch-focus ch-invite" aria-label="Group focus"><div class="ch-focus-head"><h3 class="ch-eyebrow">Group focus</h3>' +
+      (others ? '<span class="ch-meta">' + others + (others === 1 ? " other person" : " others") + " sharing</span>" : "") + "</div>" +
+      (me ? '<p class="ch-note">You\'re sharing. Group focus appears here as soon as someone else shares too.</p>' +
+            '<button type="button" class="ms-linkbtn ch-sharebtn" data-share="0">Stop sharing</button>'
+          : '<p class="ch-sharetext">Study this one together: share your answers to see which topics the group found hardest, the questions you all missed most, and a quiz built from them.</p>' +
+            '<p class="ch-note">Only combined numbers are shown, never who missed what, and only to people who share. With just two people sharing, each of you could tell which questions the other missed. You can stop sharing any time.</p>' +
+            '<button type="button" class="ms-btn is-small is-primary ch-sharebtn" data-share="1">Share my answers</button>') +
+      "</section>";
+  }
   function focusHtml(c){
-    if (!c.focus) return "";
+    if (!c.focus) return c.share ? shareHtml(c) : "";
     var n = c.focus.players, m = c.focus.missed || {}, qs = byId();
     var topics = focusTopics(c);
     var rows = topics.map(function(g){
@@ -292,7 +317,8 @@ var Challenges = (function(){
         rationaleHtml(q) + "</details></li>";
     }).join("");
     return '<section class="ch-focus" aria-label="Group focus"><div class="ch-focus-head"><h3 class="ch-eyebrow">Group focus</h3>' +
-      '<span class="ch-meta">' + n + " finished · combined results only</span></div>" +
+      '<span class="ch-meta">' + n + " sharing · combined results only · " +
+      '<button type="button" class="ms-linkbtn ch-sharebtn" data-share="0">Stop sharing</button></span></div>' +
       '<div class="ch-fpart"><h4 class="ch-fh">Topics, weakest first</h4><ol class="ch-ftopics">' + rows + "</ol></div>" +
       '<div class="ch-fpart"><h4 class="ch-fh">Most missed</h4>' +
       (top ? '<ol class="ch-fmissed">' + top + "</ol>" : '<p class="tp-hint">Nobody missed a question. Nice work, everyone!</p>') + "</div></section>";
@@ -354,6 +380,12 @@ var Challenges = (function(){
       if (location.hash === "#c-" + entry.id){ card.classList.add("is-new"); card.scrollIntoView({block: "center"}); }
       card.querySelector(".ch-copylink").addEventListener("click", function(e){ copy(link(c.id), e.currentTarget); });
       card.querySelector(".ch-copycode").addEventListener("click", function(e){ copy(showCode(c.id), e.currentTarget); });
+      [].forEach.call(card.querySelectorAll(".ch-sharebtn"), function(b){
+        b.addEventListener("click", function(){
+          b.disabled = true;
+          share(entry.id, b.getAttribute("data-share") === "1").then(function(){ drawCard(card, entry); }, function(err){ b.disabled = false; alert(friendly(err)); });
+        });
+      });
       var del = card.querySelector(".ch-delete"), rm = card.querySelector(".ch-remove");
       if (del) del.addEventListener("click", function(){
         if (!confirm("Delete this challenge for everyone? Its code and link will stop working.")) return;
@@ -397,7 +429,7 @@ var Challenges = (function(){
       pick.topic = "";
     }
     host.innerHTML = intro() + '<div class="tp-note ch-banner hidden" role="status"></div>' +
-      '<section class="ch-layout"><div class="ch-col"><h2 class="ch-eyebrow ch-listhead">Start or join</h2>' + formHtml(d, pick) + joinFormHtml() + "</div>" +
+      '<section class="ch-layout"><div class="ch-col"><h2 class="ch-eyebrow ch-listhead">Start or join</h2>' + formHtml(d, pick) + "</div>" +
       '<div class="ch-side"><h2 class="ch-eyebrow ch-listhead">Your challenges</h2><div class="ch-list"></div>' +
       '<h2 class="ch-eyebrow ch-listhead ch-donehead hidden">Finished</h2><div class="ch-list ch-done"></div></div></section>';
     data = d;
@@ -418,6 +450,12 @@ var Challenges = (function(){
       }).catch(function(err){ say(friendly(err)); });
     }
     var jf = host.querySelector(".ch-joinform"), jmsg = jf.querySelector(".ch-joinmsg");
+    var jt = host.querySelector(".ch-jointoggle");
+    jt.addEventListener("click", function(){
+      var open = jf.classList.toggle("hidden") === false;
+      jt.setAttribute("aria-expanded", open);
+      if (open) jf.querySelector(".ch-codein").focus();
+    });
     var jsay = function(t){ jmsg.textContent = t; jmsg.classList.toggle("hidden", !t); };
     jf.addEventListener("submit", function(e){
       e.preventDefault();

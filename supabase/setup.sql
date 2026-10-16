@@ -92,6 +92,9 @@ create table if not exists public.challenge_players (
   primary key (challenge_id, ticket_hash)
 );
 
+-- Group focus is opt-in: each player who finished chooses whether their answers count
+alter table public.challenge_players add column if not exists share_focus boolean not null default false;
+
 -- Right/wrong per question for each player who finished (Group focus). Only combined counts
 -- ever leave the database. Deleted with the player row, so with the challenge.
 create table if not exists public.challenge_answers (
@@ -342,10 +345,26 @@ begin
   return true;
 end $$;
 
+-- Group focus: a player who finished (with answers) chooses to share them with the group, or stops.
+create or replace function public.share_focus(p_id text, p_ticket text, p_share boolean) returns boolean
+language plpgsql security definer set search_path = '' as $$
+begin
+  if not public.pp_is_hex64(p_ticket) then raise exception 'bad ticket'; end if;
+  update public.challenge_players p
+    set share_focus = coalesce(p_share, false)
+    from public.challenges c
+    where p.challenge_id = upper(p_id) and c.id = p.challenge_id and c.expires_at >= now()
+      and p.ticket_hash = public.pp_hash(p_ticket)
+      and exists (select 1 from public.challenge_answers a where a.challenge_id = p.challenge_id and a.ticket_hash = p.ticket_hash);
+  return found;
+end $$;
+
 -- One challenge by its short ID. Everyone sees the title, size, expiry and how many joined.
 -- Scores are shown only to players who have finished, and to the creator, in the order people
--- finished. Group focus (also only for them): once 3 or more players have finished with their
--- answers saved, how many of those players missed each question. Combined counts only.
+-- finished. Group focus is opt-in: it counts only players who finished and chose to share
+-- (share_focus), and shows only to them, once 2 or more are sharing: how many of the sharers
+-- missed each question. Combined counts only. 'share' tells a finished player whether they're
+-- sharing and how many are.
 create or replace function public.load_challenge(p_id text, p_ticket text default null) returns jsonb
 language plpgsql security definer set search_path = '' as $$
 declare
@@ -354,7 +373,8 @@ declare
   me public.challenge_players%rowtype;
   is_creator boolean;
   can_see boolean;
-  focus_n int;
+  me_answered boolean;
+  sharers int;
 begin
   select * into ch from public.challenges c where c.id = upper(p_id);
   if not found or ch.expires_at < now() then return null; end if;
@@ -362,7 +382,10 @@ begin
   is_creator := h is not null and h = ch.creator_hash;
   select * into me from public.challenge_players p where p.challenge_id = ch.id and p.ticket_hash = h;
   can_see := is_creator or me.finished_at is not null;
-  select count(distinct a.ticket_hash) into focus_n from public.challenge_answers a where a.challenge_id = ch.id;
+  me_answered := h is not null and exists (select 1 from public.challenge_answers a where a.challenge_id = ch.id and a.ticket_hash = h);
+  select count(*) into sharers from public.challenge_players p
+    where p.challenge_id = ch.id and p.share_focus
+      and exists (select 1 from public.challenge_answers a where a.challenge_id = ch.id and a.ticket_hash = p.ticket_hash);
   return jsonb_build_object(
     'id', ch.id,
     'title', ch.title,
@@ -379,10 +402,12 @@ begin
                                           'finished', p.finished_at is not null, 'me', p.ticket_hash = h)
                        order by p.finished_at nulls last, p.joined_at)
       from public.challenge_players p where p.challenge_id = ch.id), '[]'::jsonb) end,
-    'focus', case when not can_see or focus_n < 3 then null else jsonb_build_object(
-      'players', focus_n,
+    'share', case when me_answered then jsonb_build_object('me', me.share_focus, 'sharing', sharers) end,
+    'focus', case when not (me_answered and me.share_focus and sharers >= 2) then null else jsonb_build_object(
+      'players', sharers,
       'missed', (select jsonb_object_agg(q.id, (select count(*) from public.challenge_answers a
-                                                  where a.challenge_id = ch.id and a.question_id = q.id and not a.correct))
+                                                  join public.challenge_players p on p.challenge_id = a.challenge_id and p.ticket_hash = a.ticket_hash
+                                                  where a.challenge_id = ch.id and a.question_id = q.id and not a.correct and p.share_focus))
                  from jsonb_array_elements_text(ch.questions) q(id))) end
   );
 end $$;
@@ -469,6 +494,7 @@ grant execute on function
   public.load_vault(text), public.save_vault(text, text, integer), public.delete_vault(text),
   public.taken_nicknames(), public.claim_nickname(text, text), public.release_nickname(text, text),
   public.create_challenge(text, jsonb, text, text, text), public.join_challenge(text, text, text, text),
-  public.submit_score(text, text, integer), public.submit_answers(text, text, jsonb), public.load_challenge(text, text),
+  public.submit_score(text, text, integer), public.submit_answers(text, text, jsonb), public.share_focus(text, text, boolean),
+  public.load_challenge(text, text),
   public.delete_challenge(text, text), public.increment_tally(jsonb), public.class_stats(text), public.ping()
   to anon;

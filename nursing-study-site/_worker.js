@@ -138,6 +138,7 @@ const ROUTES = {
                           : {p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_score: int(b.score)},
                         /* Until the Supabase update is run, save the score the old way */
                         fallback: a => a.p_answers && {fn: "submit_score", args: {p_id: a.p_id, p_ticket: a.p_ticket, p_score: a.p_answers.filter(x => x.ok).length}}},
+  "challenges/share":  {fn: "share_focus",       args: b => ({p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_share: b.share === true})},
   "challenges/load":   {fn: "load_challenge",    args: b => ({p_id: shortId(b.id), p_ticket: b.ticket == null ? null : hex64(b.ticket)})},
   "challenges/delete": {fn: "delete_challenge",  args: b => ({p_id: shortId(b.id), p_creator_ticket: hex64(b.ticket)})},
 

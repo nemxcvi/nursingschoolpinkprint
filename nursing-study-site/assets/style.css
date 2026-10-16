@@ -960,6 +960,13 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 @media(max-width:560px){.ch-how{grid-template-columns:1fr;}}
 .ch-lastday{color:var(--danger-text);font-weight:600;}
 .ch-donehead{margin-top:14px;}
+.ch-newcard .ch-new{display:flex;flex-direction:column;gap:18px;}
+.ch-joinwrap{display:flex;flex-direction:column;gap:12px;margin-top:-4px;}
+.ch-jointoggle{align-self:center;padding:10px 0;}
+.ch-joinform:not(.ms-card){display:flex;flex-direction:column;gap:10px;}
+.ch-sharetext{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;color:var(--text);}
+.ch-invite .ms-btn,.ch-invite .ms-linkbtn{align-self:flex-start;}
+.ch-focus-head .ms-linkbtn{font-size:11px;}
 /* Group focus */
 .ch-focus{display:flex;flex-direction:column;gap:16px;padding-top:18px;border-top:1.5px dashed var(--border);}
 .ch-focus-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
