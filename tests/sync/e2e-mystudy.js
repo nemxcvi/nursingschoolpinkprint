@@ -167,7 +167,6 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.click(".ms-theme");
   check(await pg.evaluate(() => document.documentElement.getAttribute("data-theme") === "dark" && localStorage.getItem("theme") === "dark"), "night mode button switches to dark");
   await pg.click(".ms-theme");
-  check(/Settings/.test(await text(".tp-intro")), "dashboard has a Settings link");
 
   // ---- Settings switches hide features ----
   await pg.evaluate(() => { Tracking.setFeature("countdown", false); Tracking.setFeature("goal", false); Tracking.setFeature("challenges", false); });

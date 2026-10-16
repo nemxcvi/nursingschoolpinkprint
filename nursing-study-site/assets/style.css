@@ -543,13 +543,9 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 /* ---------- Tracking: entry points (homepage My study box, menu, header buttons) ---------- */
 .tag-mystudy{display:inline-flex;align-items:center;gap:8px;border-style:dashed;text-decoration:none;}
 .tag-mystudy.is-on{border-style:solid;background:var(--border);color:var(--fill-text);}
-/* Homepage tabs look like the My study tabs: no outline until hover, the selected one filled */
-.pp-filters .tag{border-color:transparent;}
-.pp-filters .tag:hover{background:transparent;border-color:var(--border);}
-.pp-filters .tag.active{background:var(--border);color:var(--fill-text);}
-.pp-filters .tag-mystudy{border-color:var(--border);}
-.pp-filters .tag-mystudy.is-on{border-color:transparent;background:transparent;color:var(--label);}
-.pp-filters .tag-mystudy.is-on:hover{border-color:var(--border);}
+/* My study has its own color (plum), so it never looks like a selected pink filter tab */
+.tag-mystudy.is-on{background:var(--heading);border-color:var(--heading);color:var(--page);}
+.tag-mystudy.is-on:hover{background:var(--heading);opacity:.88;}
 .nav-locked .nav-name{flex:1 1 auto;}
 .nav-lock{flex-shrink:0;display:inline-flex;align-items:center;gap:4px;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 5px;border:1px dashed var(--border);color:var(--muted);white-space:nowrap;}
 .hdr-nick,.hdr-cta{display:inline-flex;align-items:center;align-self:center;gap:10px;vertical-align:middle;min-height:40px;padding:0 12px;margin-right:8px;border:1.5px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;white-space:nowrap;}
@@ -693,7 +689,7 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-nav{display:flex;gap:6px;flex-wrap:wrap;}
 .ms-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--label);border:1.5px solid transparent;}
 .ms-nav a:hover{border-color:var(--border);}
-.ms-nav a.is-current{background:var(--border);color:var(--fill-text);}
+.ms-nav a.is-current{background:var(--heading);color:var(--page);}
 @media(max-width:760px){.ms-header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;row-gap:12px;column-gap:8px;}.ms-hdr-left{grid-column:1;grid-row:1;}.ms-hdr-right{grid-column:2;grid-row:1;}.ms-nav{grid-column:1 / -1;grid-row:2;flex-wrap:nowrap;justify-content:space-between;gap:4px;overflow-x:auto;}.ms-nav a{flex:0 0 auto;padding:0 10px;}}
 @media(max-width:420px){.ms-header .tp-brand{font-size:16px;white-space:nowrap;}.ms-hdr-left{gap:6px;}.ms-nav a{padding:0 8px;font-size:11px;letter-spacing:.05em;}}
 .ms-back{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);text-decoration:none;margin-bottom:4px;}
@@ -912,8 +908,8 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .pp-sq.is-break.is-past{background:repeating-linear-gradient(135deg,var(--border) 0 3px,transparent 3px 7px),color-mix(in srgb,var(--border) 40%,#FFFFFF);}
 .pp-dl{font-size:10.5px;color:var(--text2);}
 .pp-dl.is-strong{color:var(--text);font-weight:600;}
-.pp-strip-count{display:flex;align-items:center;gap:12px;}
-.pp-strip-num{font-family:'Young Serif',Georgia,serif;font-size:56px;line-height:1;}
+.pp-strip-count{display:flex;align-items:flex-end;gap:12px;}
+.pp-strip-num{font-family:'Young Serif',Georgia,serif;font-size:86px;line-height:.74;}
 .pp-strip-text{display:flex;flex-direction:column;gap:3px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
 .pp-strip-link{font-size:11px;letter-spacing:.06em;color:var(--label);}
 .pp-card.is-current{border:2px solid var(--label);}
@@ -921,7 +917,7 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .pp-card-mastery .ms-bar{flex:1 1 auto;}
 .pp-mastered{font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
 .pp-mastered b{font-weight:400;color:var(--label);}
-@media(max-width:600px){.pp-days{gap:2px;}.pp-dl{font-size:9px;}.pp-strip-num{font-size:44px;}}
+@media(max-width:600px){.pp-days{gap:2px;}.pp-dl{font-size:9px;}.pp-strip-num{font-size:72px;}}
 /* Celebration */
 .pp-confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:999;}
 .pp-confetti span{position:absolute;top:-16px;width:9px;height:9px;animation:pp-fall 1.7s ease-in forwards;}

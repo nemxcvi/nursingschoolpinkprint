@@ -64,7 +64,7 @@ var MyStudy = (function(){
   /* Top menu for My study pages: Dashboard, Progress, Journal, Challenges + nickname (Settings) */
   /* My study header: the site menu at the left (assets/header.js in "menu" mode, loaded after the
      page script), brand, My study links, then Settings and night mode at the right (icons; Settings
-     is also in the menu and on the dashboard). Built once; later calls only refresh the links (e.g. after the Challenges
+     is also in the menu). Built once; later calls only refresh the links (e.g. after the Challenges
      switch changes). */
   var MOON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
   var SUN = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
@@ -160,8 +160,7 @@ var MyStudy = (function(){
   /* ---------- My dashboard ---------- */
   function dashboard(d, host){
     var st = d.state, plan = S.planToday(d.questions, d.store, d.today, d.exams);
-    var html = '<section class="tp-intro tp-intro-tight"><div class="ms-grade-top"><div class="tp-eyebrow">NUR 114 · ' + esc(S.longDate(d.today)) + '</div>' +
-      '<a class="ms-linkbtn ms-toplink" href="settings.html">Settings</a></div>' +
+    var html = '<section class="tp-intro tp-intro-tight"><div class="tp-eyebrow">NUR 114 · ' + esc(S.longDate(d.today)) + '</div>' +
       '<h1 class="tp-h1 ms-welcome">Welcome back, ' + esc(st.nickname) + "</h1></section>";
 
     var top = "";
