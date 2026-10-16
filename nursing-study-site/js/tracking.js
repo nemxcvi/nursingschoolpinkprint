@@ -106,7 +106,7 @@
   var LOOKUP_SALT = "pinkprint-lookup-v1", KEY_SALT = "pinkprint-key-v1";
   /* Settings that travel between devices (everything else in the saved state stays on the device) */
   var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn",
-                "scores", "busyWeeks", "breakGoal", "knownCounts"];
+                "scores", "busyWeeks", "breakGoal", "knownCounts", "challenges", "ownerProof"];
 
   function subtle(){ return cryptoObj().subtle; }
   function utf8(s){ return new TextEncoder().encode(s); }
@@ -189,8 +189,33 @@
     });
     return out;
   }
+  /* Newest settings win, except challenge tickets, which are combined so none is lost */
   function mergeSettings(local, remote){
-    return (remote && (remote.settingsAt || 0) > (local.settingsAt || 0)) ? remote : local;
+    var win = (remote && (remote.settingsAt || 0) > (local.settingsAt || 0)) ? remote : local;
+    var list = mergeChallenges(local.challenges, remote && remote.challenges);
+    if (!list.length && !win.challenges) return win;
+    var out = {};
+    Object.keys(win).forEach(function(k){ out[k] = win[k]; });
+    out.challenges = list;
+    return out;
+  }
+  /* Challenge tickets saved on any device, by challenge ID. A removed one stays removed. Entries
+     are dropped 3 weeks after they were saved (challenges expire after 7 days). */
+  var CHALLENGE_KEEP = 21 * 24 * 3600 * 1000;
+  function mergeChallenges(a, b, now){
+    var by = {}, cutoff = (now || Date.now()) - CHALLENGE_KEEP;
+    (a || []).concat(b || []).forEach(function(c){
+      if (!c || !c.id || (c.at || 0) < cutoff) return;
+      var cur = by[c.id];
+      if (!cur) { by[c.id] = c; return; }
+      var m = {};
+      Object.keys(cur).forEach(function(k){ m[k] = cur[k]; });
+      Object.keys(c).forEach(function(k){ if (m[k] === undefined) m[k] = c[k]; });
+      m.gone = !!(cur.gone || c.gone);
+      m.done = !!(cur.done || c.done);
+      by[c.id] = m;
+    });
+    return Object.keys(by).map(function(id){ return by[id]; }).sort(function(x, y){ return (y.at || 0) - (x.at || 0); });
   }
 
   var api = {
@@ -199,6 +224,7 @@
     pickNickname: pickNickname, goalLabel: goalLabel, normalizePhrase: normalizePhrase,
     deriveKeys: deriveKeys, encryptJSON: encryptJSON, decryptJSON: decryptJSON,
     mergeProgress: mergeProgress, mergeSettings: mergeSettings, pickSettings: pickSettings, mergeActivity: mergeActivity,
+    mergeChallenges: mergeChallenges,
     PBKDF2_ITERATIONS: PBKDF2_ITERATIONS
   };
 
@@ -586,6 +612,11 @@
     return ensureKeys().then(function(k){
       return call("vault/delete", {lookup: k.lookup});
     }).then(function(){
+      /* Challenges this person made are deleted too (best effort; others expire in 7 days) */
+      return Promise.all((s.challenges || []).filter(function(c){ return c.mine && !c.gone; }).map(function(c){
+        return call("challenges/delete", {id: c.id, ticket: c.ticket}).catch(function(){});
+      }));
+    }).then(function(){
       return releaseNickname(s.nickname);
     }).then(function(){ api.deleteAll(); });
   };
@@ -626,6 +657,39 @@
     setTimeout(function(){ box.remove(); }, 2200);
   };
 
+  /* ---------- Challenges (phase 6) ----------
+     Each challenge this person made or joined is saved with its own random ticket, which is the
+     only way to submit a score, see scores or delete it. */
+  api.challenges = function(){
+    var s = api.state();
+    return s ? (s.challenges || []).filter(function(c){ return !c.gone; }) : [];
+  };
+  api.challenge = function(id){
+    id = String(id || "").toUpperCase();
+    return api.challenges().filter(function(c){ return c.id === id; })[0] || null;
+  };
+  /* Adds or changes one saved challenge */
+  api.saveChallenge = function(entry){
+    var s = api.state();
+    if (!s) return null;
+    var list = (s.challenges || []).filter(function(c){ return c.id !== entry.id; });
+    var old = (s.challenges || []).filter(function(c){ return c.id === entry.id; })[0] || {};
+    var next = {};
+    Object.keys(old).forEach(function(k){ next[k] = old[k]; });
+    Object.keys(entry).forEach(function(k){ next[k] = entry[k]; });
+    if (!next.at) next.at = Date.now();
+    if (!next.ticket) next.ticket = randomHex(32);
+    list.unshift(next);
+    api.update({challenges: mergeChallenges(list, [])});
+    return next;
+  };
+  /* Shows the nickname is this person's: their claim ticket, or the owner phrase */
+  api.nicknameProof = function(){
+    var s = api.state();
+    if (!s) return "";
+    return s.nickname === OWNER_NAME ? (s.ownerProof || "") : (s.nicknameTicket || "");
+  };
+
   /* ---------- Owner nickname ----------
      Opening any page with #owner=<phrase> on a tracked device sets "Miss Pinkprint" when the
      phrase matches. The phrase is cleared from the address bar right away. */
@@ -643,7 +707,8 @@
       api.ownerHash(phrase).then(function(h){
         if (h === OWNER_HASH){
           var old = api.state().nickname;
-          api.update({nickname: OWNER_NAME, nicknameTaken: false});
+          /* Kept (encrypted when synced) so challenges can check the name is really the owner's */
+          api.update({nickname: OWNER_NAME, nicknameTaken: false, ownerProof: normalizePhrase(phrase)});
           releaseNickname(old);
           document.dispatchEvent(new CustomEvent("pinkprint-nickname"));
         }

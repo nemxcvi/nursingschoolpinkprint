@@ -222,3 +222,22 @@ test("merging two devices: the most recent change to each question wins", () => 
   assert.equal(picked.sync, undefined, "nor this device's keys");
   assert.equal(picked.nickname, "Lab Legend");
 });
+
+test("challenge tickets from two devices are combined, removals stick, old ones drop off", () => {
+  const now = Date.now(), day = 24 * 3600 * 1000;
+  const local = {nickname: "Lab Legend", settingsAt: 100, challenges: [
+    {id: "AAAA2222", ticket: "a", mine: true, at: now - day},
+    {id: "CCCC4444", ticket: "c", at: now - 2 * day},
+    {id: "OLDD9999", ticket: "o", at: now - 30 * day}
+  ]};
+  const remote = {nickname: "IV Icon", settingsAt: 200, challenges: [
+    {id: "BBBB3333", ticket: "b", at: now},
+    {id: "CCCC4444", ticket: "c", at: now - 2 * day, gone: true, done: true}
+  ]};
+  const m = T.mergeSettings(local, remote);
+  assert.equal(m.nickname, "IV Icon", "newest settings still win");
+  assert.deepEqual(m.challenges.map(c => c.id), ["BBBB3333", "AAAA2222", "CCCC4444"], "union, newest first, 3-week-old one dropped");
+  assert.equal(m.challenges.find(c => c.id === "CCCC4444").gone, true, "removed on one device stays removed");
+  assert.equal(m.challenges.find(c => c.id === "AAAA2222").ticket, "a", "a ticket only one device had is kept");
+  assert.deepEqual(T.mergeSettings({settingsAt: 1}, {settingsAt: 2, goal: 1}), {settingsAt: 2, goal: 1}, "no challenges: unchanged");
+});

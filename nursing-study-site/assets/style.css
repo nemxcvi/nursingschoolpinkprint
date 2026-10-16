@@ -890,3 +890,48 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .pp-confetti .c1{background:var(--label);}
 .pp-confetti .c2{background:var(--soft);}
 @keyframes pp-fall{to{transform:translate(var(--drift),105vh) rotate(540deg);opacity:.9;}}
+
+/* ---------- Challenges (phase 6; design/source Challenges) ---------- */
+.ch-layout{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;}
+.ch-new{flex:1 1 340px;}
+.ch-list{flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:16px;}
+.ms-card .ch-h2{font-size:22px;}
+.ch-field{display:flex;flex-direction:column;gap:6px;border:0;margin:0;padding:0;min-width:0;}
+.ch-field label,.ch-field legend,.ch-eyebrow,.ch-ready-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);padding:0;}
+.ch-field legend{margin-bottom:6px;}
+.ch-select{min-height:44px;padding:0 12px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:13px;}
+.ch-counts div{display:flex;gap:8px;}
+.ch-counts button{flex:1 1 0;min-height:44px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:14px;cursor:pointer;}
+.ch-counts button[aria-pressed="true"]{background:var(--border);color:var(--fill-text);}
+.ch-counts button:disabled{opacity:.4;cursor:not-allowed;}
+.ch-create{border:0;}
+.ch-create:disabled{opacity:.6;cursor:wait;}
+.ch-ready{display:flex;flex-direction:column;gap:8px;border-top:1.5px dashed var(--border);padding-top:18px;}
+.ch-ready-label{color:var(--success-text);}
+.ch-linkrow{display:flex;gap:8px;}
+.ch-link{flex:1 1 auto;min-width:0;min-height:44px;padding:0 12px;border:1.5px solid var(--border);border-radius:0;background:var(--page);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:13px;}
+.ch-copy,.ch-btn{flex:0 0 auto;min-height:44px;padding:0 14px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.ch-btn.is-danger{border-color:var(--danger-border);color:var(--danger-text);}
+.ch-card{padding:24px 28px;gap:16px;}
+.ch-card.is-new{outline:3px solid var(--soft);outline-offset:2px;}
+.ch-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;}
+.ch-head .tp-stack{gap:4px;}
+.ch-meta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text2);}
+.ch-scores{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;font-family:'IBM Plex Mono',monospace;font-size:14px;font-variant-numeric:tabular-nums;}
+.ch-scores li{display:flex;gap:14px;align-items:baseline;padding:10px 0;border-top:1.5px solid var(--soft);}
+.ch-scores li:last-child{border-bottom:1.5px solid var(--soft);}
+.ch-scores li.is-me{background:color-mix(in srgb,var(--border) 10%,transparent);}
+.ch-scores li.is-me .ch-name{font-weight:600;}
+.ch-scores li.is-taking{color:var(--text2);}
+.ch-rank{flex:0 0 24px;color:var(--label);}
+.ch-scores li.is-taking .ch-rank{color:inherit;}
+.ch-name{flex:1 1 auto;min-width:0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;}
+.ch-score{font-weight:600;}
+.ch-scores li.is-taking .ch-score{font-weight:400;}
+.ch-note{margin:0;border:1.5px dashed var(--border);padding:16px;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:15px;color:var(--text2);}
+.ch-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.ch-guest{max-width:640px;}
+.ch-start{align-self:flex-start;}
+.ch-banner{margin-bottom:-8px;}
+.pq-challenge-link{display:block;margin-top:14px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);}
+.ss-challenge{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0 0 20px;padding:18px;border:1.5px dashed var(--border);text-align:center;}

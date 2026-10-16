@@ -35,10 +35,54 @@ function loadPracticeQuiz(opts){
     var d = buildQuizBank(units, opts.topic);
     /* Name for the Mastery box on the results page: the topic, the unit, or every unit */
     d.masteryLabel = opts.topic || (units.length === 1 ? units[0].name : "Overall");
-    if (opts.topic) noteTopicSeen(units[0], opts.topic);
+    if (opts.topic){ noteTopicSeen(units[0], opts.topic); challengeLink(units[0], opts.topic); }
     return d;
   }), null, opts);
 }
+
+/* "Challenge a friend" under Start on topic quizzes (tracked students with Challenges on) */
+function challengeLink(unit, topicName){
+  if (typeof Tracking === "undefined" || !Tracking.isOn() || !Tracking.feature("challenges")) return;
+  var t = unit.topics.filter(function(x){ return x.topic === topicName; })[0];
+  var start = document.getElementById("pq-start");
+  if (!t || !start || document.getElementById("pq-challenge")) return;
+  var a = document.createElement("a");
+  a.id = "pq-challenge";
+  a.className = "pq-challenge-link";
+  a.href = Tracking.ROOT + "challenges.html?unit=" + unit.unit + "&topic=" + encodeURIComponent(t.slug);
+  a.textContent = "Challenge a friend \u2192";
+  start.parentNode.insertBefore(a, start.nextSibling);
+}
+
+/* Class tally: every answer (tracked or not) sends only its question ID and right/wrong, in
+   small batches. No code, nickname, device or time. */
+var QuizTally = (function(){
+  var queue = [], timer = null;
+  function send(batch, beacon){
+    var body = JSON.stringify({answers: batch});
+    try {
+      if (beacon && navigator.sendBeacon && navigator.sendBeacon("/api/tally/add", new Blob([body], {type: "application/json"}))) return;
+      fetch("/api/tally/add", {method: "POST", headers: {"Content-Type": "application/json"}, body: body, keepalive: true}).catch(function(){});
+    } catch (e) {}
+  }
+  function flush(beacon){
+    clearTimeout(timer); timer = null;
+    while (queue.length) send(queue.splice(0, 50), beacon);
+  }
+  if (typeof window !== "undefined" && /^https?:$/.test(location.protocol)){
+    window.addEventListener("pagehide", function(){ flush(true); });
+    document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") flush(true); });
+  }
+  return {
+    add: function(id, correct){
+      if (!/^https?:$/.test(location.protocol)) return;
+      queue.push({q: id, ok: !!correct});
+      if (queue.length >= 10) flush(false);
+      else if (!timer) timer = setTimeout(function(){ flush(false); }, 30000);
+    },
+    flush: flush
+  };
+})();
 
 /* Opening a topic quiz clears its "N new questions" label (tracked students only) */
 function noteTopicSeen(unit, topicName){
@@ -70,7 +114,7 @@ function loadSessionQuiz(opts){
     d.masteryLabel = opts.title;
     return d;
   });
-  initPracticeQuiz(ready, null, {data: opts.data, autoStart: true});
+  initPracticeQuiz(ready, null, {data: opts.data, autoStart: true, onFinish: opts.onFinish});
 }
 
 /* Takes a bank and its category labels, or a promise of {bank, catLabels, masteryLabel}.
@@ -677,6 +721,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     /* "Check · I'm sure" / "Check · I guessed" (tracking on); Enter counts as sure */
     var sure = useSure ? pendingSure : null;
     pendingSure = true;
+    QuizTally.add(q.id, isCorrect);
     if (tracking){
       noteProgress(q, Progress.record(q, isCorrect, sure, userSelection.slice()));
       if (useNotes) showNote(q);
@@ -1209,6 +1254,9 @@ function initPracticeQuiz(bank, catLabels, opts){
       });
       buildCategoryGrid(statsByCat);
       buildReviewListSingle(singleResults);
+      QuizTally.flush(false);
+      /* Challenges save the score here (only the first finish counts) */
+      if (opts && opts.onFinish) opts.onFinish({correct: correctCount, answered: totalAnswered, total: bank.length});
 
       var missedCount = Object.keys(missedMap).length;
       var missedBtn = document.getElementById("end-missed");

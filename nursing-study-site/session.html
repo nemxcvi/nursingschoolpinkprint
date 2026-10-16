@@ -19,13 +19,13 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=56">
+<link rel="stylesheet" href="assets/style.css?v=57">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-type="quizzes"></div>
 <script src="assets/site-data.js?v=10"></script>
-<script src="js/tracking.js?v=4"></script>
+<script src="js/tracking.js?v=5"></script>
 <script src="assets/header.js?v=9"></script>
 <script src="js/progress.js?v=6"></script>
 <div class="wrap">
@@ -97,7 +97,9 @@
 
 <script src="assets/theme.js?v=6"></script>
 <script src="js/study.js?v=1"></script>
-<script src="assets/practice-quiz.js?v=16"></script>
+<script src="assets/practice-quiz.js?v=17"></script>
+<script src="js/my-study.js?v=1"></script>
+<script src="js/challenges.js?v=1"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -105,7 +107,7 @@
   var p = new URLSearchParams(location.search), mode = p.get("mode") || "today";
   var unit = +p.get("unit") || 0, topic = p.get("topic") || "";
   var TITLES = {today: "Today's plan", examready: "Exam ready session", weak: "Weak spots quiz", journal: "Mistake journal",
-                bookmarks: "Bookmarks", blind: "Blind spots", review: "Review" + (unit ? ": Unit " + unit : "")};
+                bookmarks: "Bookmarks", blind: "Blind spots", review: "Review" + (unit ? ": Unit " + unit : ""), challenge: "Challenge"};
   var title = TITLES[mode] || "Practice session";
   document.getElementById("ss-title").textContent = title;
   document.title = title + " \u2014 Nursing School Pinkprint";
@@ -130,7 +132,49 @@
     if (mode === "review") return rank(scoped.filter(function(q){ return Progress.isReviewDue(store[q.id], q.unit, today, exams); }), 40);
     return [];
   }
+  if (mode === "challenge") return challenge(p.get("id") || "");
   loadSessionQuiz({data: Tracking.ROOT + "data/nur114/", title: title, pick: pick});
+
+  /* A challenge: join it, take its questions once, save the first score */
+  function challenge(id){
+    var setTitle = function(t){ document.getElementById("ss-title").textContent = t; document.title = t + " \u2014 Nursing School Pinkprint"; };
+    setTitle("Challenge");
+    /* Ending early saves the score, so check first */
+    document.addEventListener("click", function(e){
+      if (!e.target.closest || !e.target.closest("#pq-end-test")) return;
+      var m = /question (\d+) of (\d+)/.exec(document.getElementById("pq-progress").textContent);
+      var answered = !document.getElementById("pq-next").classList.contains("hidden");
+      if (m && (+m[1] < +m[2] || !answered) && !confirm("End the challenge now? Questions you haven't answered count as wrong.")){
+        e.stopImmediatePropagation(); e.preventDefault();
+      }
+    }, true);
+    Challenges.join(id).then(function(r){
+      var t = "Challenge: " + r.title;
+      setTitle(t);
+      loadSessionQuiz({data: Tracking.ROOT + "data/nur114/", title: t, pick: function(){ return r.questions; }, onFinish: function(res){
+        var box = document.getElementById("ss-challenge") || document.createElement("div");
+        box.id = "ss-challenge";
+        box.className = "ss-challenge";
+        var center = document.querySelector("#pq-end-screen .pq-center");
+        center.parentNode.insertBefore(box, center.nextSibling);
+        var first = !r.entry.done;
+        box.innerHTML = '<p class="tp-hint">' + (first ? "Saving your challenge score\u2026" : "Practice round: your first score is the one that counts.") + "</p>" +
+          '<a class="ms-btn is-primary" href="challenges.html#c-' + r.entry.id + '">See how you compare &rarr;</a>';
+        if (!first) return;
+        Challenges.submit(r.entry.id, res.correct).then(function(e){
+          r.entry = e || r.entry;
+          box.querySelector("p").textContent = e && e.done ? "Challenge score saved: " + res.correct + "/" + res.total + "." : "Couldn't save your score (the challenge may have expired).";
+        }, function(err){
+          box.querySelector("p").textContent = "Couldn't save your score: " + Challenges.friendly(err);
+        });
+      }});
+    }, function(err){
+      document.getElementById("ss-empty").textContent = Challenges.friendly(err);
+      document.querySelector("#pq-empty a").setAttribute("href", "challenges.html");
+      document.querySelector("#pq-empty a").textContent = "Back to Challenges";
+      document.getElementById("pq-empty").classList.remove("hidden");
+    });
+  }
 })();
 </script>
 </body>

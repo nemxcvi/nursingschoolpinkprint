@@ -30,6 +30,12 @@ const FNS = {
   taken_nicknames: [[], "setof"],
   claim_nickname: [[["p_nickname", "text"], ["p_ticket", "text"]], "scalar"],
   release_nickname: [[["p_nickname", "text"], ["p_ticket", "text"]], "scalar"],
+  create_challenge: [[["p_title", "text"], ["p_questions", "jsonb"], ["p_creator_ticket", "text"], ["p_nickname", "text"], ["p_proof", "text"]], "scalar"],
+  join_challenge: [[["p_id", "text"], ["p_ticket", "text"], ["p_nickname", "text"], ["p_proof", "text"]], "rows"],
+  submit_score: [[["p_id", "text"], ["p_ticket", "text"], ["p_score", "int"]], "scalar"],
+  load_challenge: [[["p_id", "text"], ["p_ticket", "text"]], "scalar"],
+  delete_challenge: [[["p_id", "text"], ["p_creator_ticket", "text"]], "scalar"],
+  increment_tally: [[["p_answers", "jsonb"]], "scalar"],
   ping: [[], "scalar"]
 };
 
@@ -43,7 +49,7 @@ http.createServer(async (req, res) => {
   if (!FNS[fn]) return send(404, {message: "Could not find the function"});
   const [args, kind] = FNS[fn];
   const input = JSON.parse(body || "{}");
-  const params = args.map(([n]) => input[n]);
+  const params = args.map(([n, t]) => t === "jsonb" && input[n] != null ? JSON.stringify(input[n]) : input[n]);
   const call = `public.${fn}(${args.map(([n, t], i) => `${n} => $${i + 1}::${t}`).join(", ")})`;
   const sql = kind === "rows" ? `select * from ${call}` : kind === "setof" ? `select v as ${fn} from ${call} v` : `select ${call} as v`;
   const client = await pool.connect();

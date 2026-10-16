@@ -1,4 +1,4 @@
--- Nursing School Pinkprint: tracking storage (phase 4).
+-- Nursing School Pinkprint: tracking storage (phases 4 and 6).
 -- Paste all of this into Supabase → SQL Editor → New query, then Run. Safe to run again.
 --
 -- What it makes:
@@ -10,6 +10,8 @@
 --   challenges,        challenge links: question list, expiry, the creator's ticket hash, and
 --   challenge_players  nickname + score per player (with that player's ticket hash).
 --                      No codes, lookup IDs or device info.
+--   class_tally        (phase 6) per question: times answered and times wrong. Nothing else:
+--                      no code, lookup ID, device or time. Only the owner's stats page reads it.
 --
 -- Nothing can read or write these tables directly. The site can only call the functions at
 -- the bottom, and only through the Cloudflare function in front of Supabase.
@@ -45,6 +47,17 @@ begin
   return s;
 end $$;
 
+-- True when p_proof shows the nickname belongs to the caller: their nickname claim ticket, or
+-- for "Miss Pinkprint" the owner phrase (same SHA-256 fingerprint as OWNER_HASH in the site).
+create or replace function public.pp_owns_nickname(p_nickname text, p_proof text) returns boolean
+language sql stable security definer set search_path = '' as $$
+  select case when p_nickname = 'Miss Pinkprint'
+    then public.pp_hash(coalesce(p_proof, '')) = 'cb84dd2509deb1db5485dbd495bc23928cd3cd90d2b6c2741539a3ff474793c5'
+    else exists (select 1 from public.nickname_claims c
+                 where c.nickname = p_nickname and c.ticket_hash = public.pp_hash(coalesce(p_proof, '')))
+  end
+$$;
+
 -- ---------- Tables ----------
 create table if not exists public.vault (
   lookup_hash text primary key,
@@ -67,9 +80,12 @@ create table if not exists public.challenges (
   title text not null check (length(title) between 1 and 120),
   questions jsonb not null,
   creator_hash text not null,
+  creator_name text,
   created_at timestamptz not null default now(),
   expires_at timestamptz not null default now() + interval '7 days'
 );
+
+alter table public.challenges add column if not exists creator_name text;
 
 create table if not exists public.challenge_players (
   challenge_id text not null references public.challenges(id) on delete cascade,
@@ -82,13 +98,20 @@ create table if not exists public.challenge_players (
   primary key (challenge_id, ticket_hash)
 );
 
+create table if not exists public.class_tally (
+  question_id text primary key check (question_id ~ '^nur[0-9]+-u[0-9]+-[a-z0-9-]+-[0-9]{3}$'),
+  times_answered integer not null default 0,
+  times_wrong integer not null default 0
+);
+
 -- Block all direct access: row level security on with no policies, and no table privileges
 alter table public.vault enable row level security;
 alter table public.nickname_claims enable row level security;
 alter table public.challenges enable row level security;
 alter table public.challenge_players enable row level security;
-revoke all on table public.vault, public.nickname_claims, public.challenges, public.challenge_players
-  from public, anon, authenticated;
+alter table public.class_tally enable row level security;
+revoke all on table public.vault, public.nickname_claims, public.challenges, public.challenge_players,
+  public.class_tally from public, anon, authenticated;
 
 -- ---------- Vault: load and save by lookup ID ----------
 create or replace function public.load_vault(p_lookup text)
@@ -184,8 +207,11 @@ begin
 end $$;
 
 -- ---------- Challenges ----------
--- Makes a challenge from 10, 20 or 40 question IDs and returns its short ID.
-create or replace function public.create_challenge(p_title text, p_questions jsonb, p_creator_ticket text)
+-- Makes a challenge from 10, 20 or 40 question IDs and returns its short ID. The sender's
+-- nickname is shown to the people they send it to (p_proof as for join_challenge).
+drop function if exists public.create_challenge(text, jsonb, text);
+create or replace function public.create_challenge(p_title text, p_questions jsonb, p_creator_ticket text,
+                                                   p_nickname text, p_proof text)
 returns text
 language plpgsql security definer set search_path = '' as $$
 declare
@@ -201,13 +227,14 @@ begin
         where q ~ '^nur[0-9]+-u[0-9]+-[a-z0-9-]+-[0-9]{3}$') <> n then
     raise exception 'bad question ids';
   end if;
+  if not public.pp_owns_nickname(p_nickname, p_proof) then raise exception 'not your nickname'; end if;
   -- Old challenges are deleted 7 days after they expire
   delete from public.challenges c where c.expires_at < now() - interval '7 days';
   loop
     new_id := public.pp_short_id();
     begin
-      insert into public.challenges (id, title, questions, creator_hash)
-        values (new_id, p_title, p_questions, public.pp_hash(p_creator_ticket));
+      insert into public.challenges (id, title, questions, creator_hash, creator_name)
+        values (new_id, p_title, p_questions, public.pp_hash(p_creator_ticket), p_nickname);
       return new_id;
     exception when unique_violation then
       -- that ID is taken; draw another
@@ -216,7 +243,9 @@ begin
 end $$;
 
 -- Joins (or rejoins) a challenge and returns its questions. Up to 10 players; not after it expires.
-create or replace function public.join_challenge(p_id text, p_ticket text, p_nickname text)
+-- p_proof shows the nickname is yours (see pp_owns_nickname).
+drop function if exists public.join_challenge(text, text, text);
+create or replace function public.join_challenge(p_id text, p_ticket text, p_nickname text, p_proof text)
 returns table (title text, questions jsonb, expires_at timestamptz)
 language plpgsql security definer set search_path = '' as $$
 #variable_conflict use_column
@@ -228,6 +257,7 @@ begin
   if p_nickname is null or length(p_nickname) not between 1 and 40 then raise exception 'bad nickname'; end if;
   select * into ch from public.challenges c where c.id = upper(p_id) for update;
   if not found or ch.expires_at < now() then raise exception 'challenge not found or expired'; end if;
+  if not public.pp_owns_nickname(p_nickname, p_proof) then raise exception 'not your nickname'; end if;
   h := public.pp_hash(p_ticket);
   if not exists (select 1 from public.challenge_players p where p.challenge_id = ch.id and p.ticket_hash = h) then
     if (select count(*) from public.challenge_players p where p.challenge_id = ch.id) >= 10 then
@@ -273,6 +303,7 @@ begin
   return jsonb_build_object(
     'id', ch.id,
     'title', ch.title,
+    'from', ch.creator_name,
     'count', jsonb_array_length(ch.questions),
     'created_at', ch.created_at,
     'expires_at', ch.expires_at,
@@ -297,6 +328,31 @@ begin
   return found;
 end $$;
 
+-- ---------- Class tally (phase 6) ----------
+-- Adds a batch of answers: [{"q": "<question id>", "ok": true|false}, ...], up to 50 at a time.
+-- Only question IDs and right/wrong are stored, added into running totals.
+create or replace function public.increment_tally(p_answers jsonb) returns integer
+language plpgsql security definer set search_path = '' as $$
+declare n int;
+begin
+  if jsonb_typeof(p_answers) is distinct from 'array' then raise exception 'bad answers'; end if;
+  n := jsonb_array_length(p_answers);
+  if n < 1 or n > 50 then raise exception 'bad answer count'; end if;
+  if exists (select 1 from jsonb_array_elements(p_answers) a
+             where jsonb_typeof(a) <> 'object'
+                or coalesce(a->>'q', '') !~ '^nur[0-9]+-u[0-9]+-[a-z0-9-]+-[0-9]{3}$'
+                or jsonb_typeof(a->'ok') is distinct from 'boolean') then
+    raise exception 'bad answers';
+  end if;
+  insert into public.class_tally as t (question_id, times_answered, times_wrong)
+    select a->>'q', count(*), count(*) filter (where not (a->>'ok')::boolean)
+    from jsonb_array_elements(p_answers) a group by a->>'q'
+  on conflict (question_id) do update
+    set times_answered = t.times_answered + excluded.times_answered,
+        times_wrong = t.times_wrong + excluded.times_wrong;
+  return n;
+end $$;
+
 -- ---------- Keep-alive ----------
 -- Called by the scheduled Cloudflare Worker so the free project doesn't pause. Also tidies up.
 create or replace function public.ping() returns timestamptz
@@ -313,7 +369,7 @@ revoke execute on all functions in schema public from public, anon, authenticate
 grant execute on function
   public.load_vault(text), public.save_vault(text, text, integer), public.delete_vault(text),
   public.taken_nicknames(), public.claim_nickname(text, text), public.release_nickname(text, text),
-  public.create_challenge(text, jsonb, text), public.join_challenge(text, text, text),
+  public.create_challenge(text, jsonb, text, text, text), public.join_challenge(text, text, text, text),
   public.submit_score(text, text, integer), public.load_challenge(text, text),
-  public.delete_challenge(text, text), public.ping()
+  public.delete_challenge(text, text), public.increment_tally(jsonb), public.ping()
   to anon;

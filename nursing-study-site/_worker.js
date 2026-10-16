@@ -1,11 +1,13 @@
 /* The site's only door to Supabase (Cloudflare Pages advanced mode). _routes.json sends only
-   /api/* here; every other request is a normal static file and never runs this code.
+   /api/* (and the short challenge links /c/*) here; every other request is a normal static file
+   and never runs this code.
 
    The Supabase URL and publishable key are Cloudflare variables (SUPABASE_URL, SUPABASE_KEY),
    never in the repo, so browsers can't reach Supabase directly and the /api/ rate limit can't
    be bypassed. Each route checks its input and calls one database function. */
 
 const HEX64 = /^[0-9a-f]{64}$/;
+const SHORT_ID = /^[2-9A-HJ-NP-Za-hj-np-z]{8}$/;   /* challenge IDs (no 0/O, 1/I/L) */
 const MAX_BODY = 1600000;
 
 function hex64(v) {
@@ -20,6 +22,10 @@ function int(v) {
   if (!Number.isInteger(v) || v < 0) throw new BadRequest("bad version");
   return v;
 }
+function shortId(v) {
+  if (typeof v !== "string" || !SHORT_ID.test(v)) throw new BadRequest("bad challenge id");
+  return v.toUpperCase();
+}
 class BadRequest extends Error {}
 
 /* Nicknames must come from the site's own list (data/nicknames.json) */
@@ -33,6 +39,24 @@ async function listedNames(env, origin) {
   return namesCache.names;
 }
 
+/* Question IDs must exist on the site (data/nur114/index.json and its unit files) */
+let questionsCache = null;
+async function listedQuestions(env, origin) {
+  if (!questionsCache || Date.now() - questionsCache.at > 10 * 60 * 1000) {
+    const get = async p => {
+      const res = await env.ASSETS.fetch(new Request(origin + p));
+      if (!res.ok) throw new Error("question list unavailable");
+      return res.json();
+    };
+    const index = await get("/data/nur114/index.json");
+    const units = await Promise.all(index.units.map(n => get("/data/nur114/unit-" + n + ".json")));
+    const ids = new Set();
+    units.forEach(u => u.questions.forEach(q => ids.add(q.id)));
+    questionsCache = {at: Date.now(), ids};
+  }
+  return questionsCache.ids;
+}
+
 const ROUTES = {
   "vault/load":        {fn: "load_vault",       args: b => ({p_lookup: hex64(b.lookup)})},
   "vault/save":        {fn: "save_vault",       args: b => ({p_lookup: hex64(b.lookup), p_data: text(b.data, 1500000), p_version: int(b.version)})},
@@ -43,8 +67,34 @@ const ROUTES = {
                           if (!names.has(b.nickname)) throw new BadRequest("not a listed nickname");
                           return {p_nickname: b.nickname, p_ticket: hex64(b.ticket)};
                         }},
-  "nicknames/release": {fn: "release_nickname", args: b => ({p_nickname: text(b.nickname, 40), p_ticket: hex64(b.ticket)})}
+  "nicknames/release": {fn: "release_nickname", args: b => ({p_nickname: text(b.nickname, 40), p_ticket: hex64(b.ticket)})},
+
+  /* Challenges (phase 6) */
+  "challenges/create": {fn: "create_challenge",  questions: true,
+                        args: (b, ctx) => {
+                          const qs = b.questions;
+                          if (!Array.isArray(qs) || ![10, 20, 40].includes(qs.length) || new Set(qs).size !== qs.length ||
+                              !qs.every(q => ctx.questions.has(q))) throw new BadRequest("bad questions");
+                          return {p_title: text(b.title, 120), p_questions: qs, p_creator_ticket: hex64(b.ticket),
+                                  p_nickname: text(b.nickname, 40), p_proof: text(b.proof, 200)};
+                        }},
+  "challenges/join":   {fn: "join_challenge",    args: b => ({p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_nickname: text(b.nickname, 40), p_proof: text(b.proof, 200)})},
+  "challenges/score":  {fn: "submit_score",      args: b => ({p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_score: int(b.score)})},
+  "challenges/load":   {fn: "load_challenge",    args: b => ({p_id: shortId(b.id), p_ticket: b.ticket == null ? null : hex64(b.ticket)})},
+  "challenges/delete": {fn: "delete_challenge",  args: b => ({p_id: shortId(b.id), p_creator_ticket: hex64(b.ticket)})},
+
+  /* Class tally: question IDs and right/wrong only. Unknown IDs are dropped. */
+  "tally/add":         {fn: "increment_tally",   questions: true,
+                        args: (b, ctx) => {
+                          if (!Array.isArray(b.answers) || b.answers.length < 1 || b.answers.length > 50) throw new BadRequest("bad answers");
+                          const answers = b.answers
+                            .filter(a => a && ctx.questions.has(a.q) && typeof a.ok === "boolean")
+                            .map(a => ({q: a.q, ok: a.ok}));
+                          if (!answers.length) throw new Skip(0);
+                          return {p_answers: answers};
+                        }}
 };
+class Skip { constructor(result) { this.result = result; } }
 
 function reply(status, body) {
   return new Response(JSON.stringify(body), {
@@ -78,8 +128,13 @@ async function handleApi(request, env, url) {
   let args;
   try {
     const body = raw ? JSON.parse(raw) : {};
-    args = route.args(body || {}, route.names ? await listedNames(env, url.origin) : null);
+    const ctx = {
+      names: route.names ? await listedNames(env, url.origin) : null,
+      questions: route.questions ? await listedQuestions(env, url.origin) : null
+    };
+    args = route.args(body || {}, route.names ? ctx.names : ctx);
   } catch (err) {
+    if (err instanceof Skip) return reply(200, {result: err.result});
     return reply(400, {error: err instanceof BadRequest ? err.message : "bad request"});
   }
 
@@ -108,6 +163,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname.startsWith("/api/")) return handleApi(request, env, url);
+    /* Challenge links: /c/<ID> opens the Challenges page for that challenge */
+    const c = url.pathname.match(/^\/c\/([^/]+)\/?$/);
+    if (c && SHORT_ID.test(c[1])) return Response.redirect(url.origin + "/challenges.html?join=" + c[1].toUpperCase(), 302);
     return env.ASSETS.fetch(request);
   }
 };

@@ -7,7 +7,7 @@ set role anon;
 do $$
 declare t text;
 begin
-  foreach t in array array['vault','nickname_claims','challenges','challenge_players'] loop
+  foreach t in array array['vault','nickname_claims','challenges','challenge_players','class_tally'] loop
     begin execute format('select count(*) from public.%I', t); raise exception 'READ ALLOWED on %', t;
     exception when insufficient_privilege then null; end;
     begin execute format('delete from public.%I', t); raise exception 'DELETE ALLOWED on %', t;
@@ -69,6 +69,7 @@ end $$;
 do $$
 declare
   creator text := encode(extensions.gen_random_bytes(32), 'hex');
+  t0 text := encode(extensions.gen_random_bytes(32), 'hex');
   qs jsonb;
   cid text;
   t text[] := array[]::text[];
@@ -76,23 +77,33 @@ declare
   j jsonb;
 begin
   select jsonb_agg('nur114-u3-safety-' || lpad(g::text, 3, '0')) into qs from generate_series(1, 20) g;
-  cid := public.create_challenge('Safety · 20 questions', qs, creator);
+  perform public.claim_nickname('Quiz Queen', creator);
+  begin perform public.create_challenge('Safety', qs, creator, 'Quiz Queen', t0); raise exception 'created under someone else''s nickname';
+  exception when raise_exception then if sqlerrm <> 'not your nickname' then raise; end if; end;
+  cid := public.create_challenge('Safety', qs, creator, 'Quiz Queen', creator);
+  assert public.load_challenge(cid)->>'from' = 'Quiz Queen', 'shows who sent it';
   assert cid ~ '^[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{8}$', 'random 8-character ID: ' || cid;
-  begin perform public.create_challenge('x', qs - 0, creator); raise exception 'odd count accepted';
+  begin perform public.create_challenge('x', qs - 0, creator, 'Quiz Queen', creator); raise exception 'odd count accepted';
   exception when raise_exception then if sqlerrm <> 'bad question count' then raise; end if; end;
-  begin perform public.create_challenge('x', (qs - 0) || '["nur114-u3-safety-002"]'::jsonb, creator); raise exception 'repeat question accepted';
+  begin perform public.create_challenge('x', (qs - 0) || '["nur114-u3-safety-002"]'::jsonb, creator, 'Quiz Queen', creator); raise exception 'repeat question accepted';
   exception when raise_exception then if sqlerrm <> 'bad question ids' then raise; end if; end;
-  begin perform public.create_challenge('x', (qs - 0) || '["drop table vault"]'::jsonb, creator); raise exception 'junk question accepted';
+  begin perform public.create_challenge('x', (qs - 0) || '["drop table vault"]'::jsonb, creator, 'Quiz Queen', creator); raise exception 'junk question accepted';
   exception when raise_exception then if sqlerrm <> 'bad question ids' then raise; end if; end;
 
   for i in 1..10 loop
     t := t || encode(extensions.gen_random_bytes(32), 'hex');
-    perform public.join_challenge(lower(cid), t[i], 'Player ' || i);
+    perform public.claim_nickname('Player ' || i, t[i]);           -- (tests reuse the ticket as the name ticket)
+    perform public.join_challenge(lower(cid), t[i], 'Player ' || i, t[i]);
   end loop;
-  perform public.join_challenge(cid, t[1], 'Player 1');            -- rejoining is fine
-  begin perform public.join_challenge(cid, encode(extensions.gen_random_bytes(32), 'hex'), 'Player 11'); raise exception '11th player accepted';
+  perform public.join_challenge(cid, t[1], 'Player 1', t[1]);      -- rejoining is fine
+  perform public.claim_nickname('Player 11', creator);
+  begin perform public.join_challenge(cid, encode(extensions.gen_random_bytes(32), 'hex'), 'Player 11', creator); raise exception '11th player accepted';
   exception when raise_exception then if sqlerrm <> 'challenge is full' then raise; end if; end;
-  assert (select count(*) from public.join_challenge(cid, t[2], 'Player 2') where jsonb_array_length(questions) = 20) = 1, 'join returns the questions';
+  assert (select count(*) from public.join_challenge(cid, t[2], 'Player 2', t[2]) where jsonb_array_length(questions) = 20) = 1, 'join returns the questions';
+  begin perform public.join_challenge(cid, t[3], 'Player 4', t[3]); raise exception 'joined with someone else''s nickname';
+  exception when raise_exception then if sqlerrm <> 'not your nickname' then raise; end if; end;
+  begin perform public.join_challenge(cid, t[3], 'Miss Pinkprint', 'wrong phrase'); raise exception 'joined as the owner without the phrase';
+  exception when raise_exception then if sqlerrm <> 'not your nickname' then raise; end if; end;
 
   j := public.load_challenge(cid);
   assert (j->>'joined')::int = 10 and jsonb_array_length(j->'players') = 0, 'outsiders see the count, not scores';
@@ -110,10 +121,29 @@ begin
   assert not public.delete_challenge(cid, t[1]), 'only the creator can delete';
   assert public.delete_challenge(cid, creator), 'creator deletes';
   assert public.load_challenge(cid) is null, 'gone';
-  raise notice 'ok 4 - challenges: create, join (max 10), scores, privacy, delete';
+  raise notice 'ok 4 - challenges: create and join (own nickname only, max 10), scores, privacy, delete';
+end $$;
+
+-- 6. Class tally: totals only, input checked
+do $$
+begin
+  assert public.increment_tally('[{"q":"nur114-u3-safety-001","ok":true},{"q":"nur114-u3-safety-001","ok":false},{"q":"nur114-u3-safety-002","ok":false}]') = 3, 'batch counted';
+  begin perform public.increment_tally('[{"q":"drop table vault","ok":true}]'); raise exception 'junk id accepted';
+  exception when raise_exception then if sqlerrm <> 'bad answers' then raise; end if; end;
+  begin perform public.increment_tally('[{"q":"nur114-u3-safety-001","ok":"yes"}]'); raise exception 'non-boolean accepted';
+  exception when raise_exception then if sqlerrm <> 'bad answers' then raise; end if; end;
+  begin perform public.increment_tally((select jsonb_agg('{"q":"nur114-u3-safety-001","ok":true}'::jsonb) from generate_series(1, 51))); raise exception '51 accepted';
+  exception when raise_exception then if sqlerrm <> 'bad answer count' then raise; end if; end;
+  raise notice 'ok 6 - class tally: batches of up to 50, checked';
 end $$;
 
 reset role;
+
+do $$
+begin
+  assert (select times_answered = 2 and times_wrong = 1 from public.class_tally where question_id = 'nur114-u3-safety-001'), 'tally totals';
+  assert (select count(*) from information_schema.columns where table_schema = 'public' and table_name = 'class_tally') = 3, 'tally stores nothing else';
+end $$;
 
 -- 5. Expiry and clean-up (setting dates needs the owner role)
 do $$
@@ -125,12 +155,13 @@ declare
   old_cid text;
 begin
   select jsonb_agg('nur114-u3-safety-' || lpad(g::text, 3, '0')) into qs from generate_series(1, 10) g;
-  cid := public.create_challenge('Expired', qs, creator);
-  old_cid := public.create_challenge('Long gone', qs, creator);
+  perform public.claim_nickname('Scrub Star', creator);
+  cid := public.create_challenge('Expired', qs, creator, 'Scrub Star', creator);
+  old_cid := public.create_challenge('Long gone', qs, creator, 'Scrub Star', creator);
   update public.challenges set expires_at = now() - interval '1 day' where id = cid;
   update public.challenges set expires_at = now() - interval '8 days' where id = old_cid;
   assert public.load_challenge(cid) is null, 'expired challenges are not shown';
-  begin perform public.join_challenge(cid, p, 'Late'); raise exception 'joined an expired challenge';
+  begin perform public.join_challenge(cid, p, 'Late', p); raise exception 'joined an expired challenge';
   exception when raise_exception then if sqlerrm <> 'challenge not found or expired' then raise; end if; end;
   perform public.ping();
   assert exists (select 1 from public.challenges where id = cid), 'kept until 7 days after expiry';
