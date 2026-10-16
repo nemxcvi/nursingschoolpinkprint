@@ -57,6 +57,51 @@ async function listedQuestions(env, origin) {
   return questionsCache.ids;
 }
 
+/* ---------- Owner sign-in for the stats page ----------
+   Cloudflare Access (team pinkprint, app "Pinkprint stats") guards /stats* and /api/stats/* on
+   nursingschoolpinkprint.com. Access sends a signed token with each request; it's checked again
+   here so the stats can't be read any other way (for example through *.pages.dev). Neither
+   value is secret. Tests point them at a local stand-in. */
+const ACCESS_TEAM = "https://pinkprint.cloudflareaccess.com";
+const ACCESS_AUD = "84b4d833d008997b65e5bf553d01d860920968230bad0c36b99b4f14bf736a24";
+let certsCache = null;
+function b64urlBytes(s) {
+  const bin = atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4));
+  return Uint8Array.from(bin, c => c.charCodeAt(0));
+}
+async function accessKeys(team) {
+  if (!certsCache || certsCache.team !== team || Date.now() - certsCache.at > 60 * 60 * 1000) {
+    const res = await fetch(team + "/cdn-cgi/access/certs");
+    if (!res.ok) throw new Error("certs unavailable");
+    certsCache = {team, at: Date.now(), keys: (await res.json()).keys || []};
+  }
+  return certsCache.keys;
+}
+/* Resolves with the signed-in email, or null */
+async function accessUser(request, env) {
+  const team = env.ACCESS_TEAM || ACCESS_TEAM, aud = (env.ACCESS_AUD || ACCESS_AUD).split(",");
+  const cookie = (request.headers.get("Cookie") || "").match(/(?:^|;\s*)CF_Authorization=([^;]+)/);
+  const token = request.headers.get("Cf-Access-Jwt-Assertion") || (cookie && cookie[1]);
+  if (!token) return null;
+  const parts = token.split(".");
+  if (parts.length !== 3) return null;
+  try {
+    const header = JSON.parse(new TextDecoder().decode(b64urlBytes(parts[0])));
+    const claims = JSON.parse(new TextDecoder().decode(b64urlBytes(parts[1])));
+    if (header.alg !== "RS256") return null;
+    const jwk = (await accessKeys(team)).find(k => k.kid === header.kid);
+    if (!jwk) return null;
+    const key = await crypto.subtle.importKey("jwk", jwk, {name: "RSASSA-PKCS1-v1_5", hash: "SHA-256"}, false, ["verify"]);
+    const ok = await crypto.subtle.verify("RSASSA-PKCS1-v1_5", key, b64urlBytes(parts[2]), new TextEncoder().encode(parts[0] + "." + parts[1]));
+    const auds = [].concat(claims.aud || []);
+    const now = Date.now() / 1000;
+    if (!ok || claims.iss !== team || !auds.some(a => aud.includes(a)) || !(claims.exp > now) || (claims.nbf && claims.nbf > now + 60)) return null;
+    return claims.email || "signed in";
+  } catch (e) {
+    return null;
+  }
+}
+
 const ROUTES = {
   "vault/load":        {fn: "load_vault",       args: b => ({p_lookup: hex64(b.lookup)})},
   "vault/save":        {fn: "save_vault",       args: b => ({p_lookup: hex64(b.lookup), p_data: text(b.data, 1500000), p_version: int(b.version)})},
@@ -82,6 +127,9 @@ const ROUTES = {
   "challenges/score":  {fn: "submit_score",      args: b => ({p_id: shortId(b.id), p_ticket: hex64(b.ticket), p_score: int(b.score)})},
   "challenges/load":   {fn: "load_challenge",    args: b => ({p_id: shortId(b.id), p_ticket: b.ticket == null ? null : hex64(b.ticket)})},
   "challenges/delete": {fn: "delete_challenge",  args: b => ({p_id: shortId(b.id), p_creator_ticket: hex64(b.ticket)})},
+
+  /* Owner's stats page: only after the Access sign-in, and only with the STATS_KEY secret */
+  "stats/load":        {fn: "class_stats",       owner: true, args: (b, ctx) => ({p_key: ctx.statsKey})},
 
   /* Class tally: question IDs and right/wrong only. Unknown IDs are dropped. */
   "tally/add":         {fn: "increment_tally",   questions: true,
@@ -123,12 +171,20 @@ async function handleApi(request, env, url) {
     return reply(503, {error: "sync is not set up", missing});
   }
 
+  let statsKey = null;
+  if (route.owner) {
+    if (!(await accessUser(request, env))) return reply(403, {error: "sign in at nursingschoolpinkprint.com/stats"});
+    if (!env.STATS_KEY) return reply(503, {error: "stats key is not set up", missing: ["STATS_KEY"]});
+    statsKey = env.STATS_KEY;
+  }
+
   const raw = await request.text();
   if (raw.length > MAX_BODY) return reply(413, {error: "too large"});
   let args;
   try {
     const body = raw ? JSON.parse(raw) : {};
     const ctx = {
+      statsKey,
       names: route.names ? await listedNames(env, url.origin) : null,
       questions: route.questions ? await listedQuestions(env, url.origin) : null
     };

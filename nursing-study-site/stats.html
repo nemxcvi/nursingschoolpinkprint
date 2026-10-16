@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class stats &mdash; Nursing School Pinkprint</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css?v=57">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue")document.documentElement.setAttribute("data-palette","blue");})();</script>
+<style>
+/* Owner-only page: its few styles stay here */
+.st-tiles{display:flex;gap:14px;flex-wrap:wrap;}
+.st-tiles .ms-tile{flex:1 1 170px;}
+.st-big{font-family:'Young Serif',Georgia,serif;font-size:30px;color:var(--heading);}
+.st-warn{border-color:var(--danger-border);}
+.st-warn .st-big{color:var(--danger-text);}
+.st-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:13px;font-variant-numeric:tabular-nums;}
+.st-table th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);font-weight:400;padding:0 8px 8px 0;}
+.st-table td{padding:10px 8px 10px 0;border-top:1.5px solid var(--soft);vertical-align:top;}
+.st-table td.st-n{white-space:nowrap;text-align:right;}
+.st-table th.st-n{text-align:right;}
+.st-q{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;color:var(--text);}
+.st-where{display:block;margin-top:4px;font-size:11px;color:var(--text2);}
+.st-bar{position:relative;height:8px;min-width:80px;border:1.5px solid var(--border);background:var(--card);}
+.st-bar span{position:absolute;inset:0 auto 0 0;background:var(--border);}
+.st-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;}
+.st-wide{overflow-x:auto;}
+</style>
+</head>
+<body>
+<div class="tp-wrap ms-wrap">
+  <header class="tp-header ms-header"><a class="tp-brand" href="./">Nursing School <span>Pinkprint</span></a><span class="tp-status">Private &middot; only you can see this</span></header>
+  <main id="st-main" class="ms-main">
+    <section class="tp-intro"><div class="tp-eyebrow">Owner</div><h1 class="tp-h1">Class stats</h1>
+      <p class="tp-lede">Every quiz answer on the site, counted by question: right or wrong only, with nothing about who answered. A question is listed once it has 5 or more answers.</p></section>
+    <p class="tp-hint" id="st-loading">Loading&hellip;</p>
+  </main>
+</div>
+<script>
+(function(){
+  var MIN = 5;
+  var main = document.getElementById("st-main");
+  function esc(s){ return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function pct(a, b){ return b ? Math.round(a / b * 100) + "%" : "—"; }
+  function getJSON(u){ return fetch(u).then(function(r){ if (!r.ok) throw new Error(u); return r.json(); }); }
+  function fail(msg){ document.getElementById("st-loading").outerHTML = '<p class="tp-note">' + esc(msg) + "</p>"; }
+
+  var stats = fetch("api/stats/load", {method: "POST", headers: {"Content-Type": "application/json"}, body: "{}", credentials: "same-origin"})
+    .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok) throw new Error(j.error || "HTTP " + r.status); return j.result; }); });
+  var data = getJSON("data/nur114/index.json").then(function(ix){
+    return Promise.all(ix.units.map(function(n){ return getJSON("data/nur114/unit-" + n + ".json"); }));
+  });
+  Promise.all([stats, data, getJSON("data/nicknames.json")]).then(function(r){ draw(r[0], r[1], r[2].names); }, function(err){
+    var m = String(err.message);
+    if (/sign in/.test(m)) fail("Open this page at nursingschoolpinkprint.com/stats and sign in with your email code.");
+    else if (/stats key/.test(m)) fail("Almost there: the STATS_KEY secret isn't set in Cloudflare yet (see the setup steps).");
+    else if (/not allowed/.test(m)) fail("The stats key in Cloudflare doesn't match the one saved in Supabase. Run set_stats_key again with the same key.");
+    else fail("Couldn't load the stats: " + m);
+  });
+
+  function draw(s, units, listed){
+    var byId = {}, topics = {}, unitRows = {};
+    units.forEach(function(u){
+      unitRows[u.unit] = {name: "Unit " + u.unit + " · " + u.name, n: 0, wrong: 0, qs: 0};
+      u.topics.forEach(function(t){ topics[u.unit + ":" + t.topic] = {name: t.topic, unit: u.unit, n: 0, wrong: 0}; });
+      u.questions.forEach(function(q){ byId[q.id] = q; });
+    });
+    var total = 0, wrong = 0, listedQs = [];
+    s.tally.forEach(function(row){
+      var q = byId[row[0]];
+      if (!q) return;                        /* removed from the site since */
+      var n = row[1], w = row[2];
+      total += n; wrong += w;
+      var u = unitRows[q.unit], t = topics[q.unit + ":" + q.topic];
+      if (u){ u.n += n; u.wrong += w; u.qs++; }
+      if (t){ t.n += n; t.wrong += w; }
+      if (n >= MIN) listedQs.push({q: q, n: n, w: w});
+    });
+    var free = listed.filter(function(name){ return s.taken.indexOf(name) === -1; }).length;
+
+    var html = '<section class="st-tiles">' +
+      tile("Answers counted", total.toLocaleString()) +
+      tile("Overall accuracy", pct(total - wrong, total)) +
+      tile("Questions with " + MIN + "+ answers", listedQs.length + " of " + Object.keys(byId).length) +
+      tile("Open challenges", s.open_challenges) +
+      tile("Nicknames left", free + " of " + listed.length, free <= 5 ? "Add more names to data/nicknames.json soon" : "", free <= 5) +
+      "</section>";
+
+    html += '<section class="ms-card" id="st-units"><h2 class="ms-h2">Accuracy by unit</h2><div class="st-wide"><table class="st-table"><thead><tr><th>Unit</th><th class="st-n">Answers</th><th class="st-n">Accuracy</th><th></th></tr></thead><tbody>' +
+      Object.keys(unitRows).map(function(k){
+        var u = unitRows[k];
+        return "<tr><td>" + esc(u.name) + '</td><td class="st-n">' + u.n + '</td><td class="st-n">' + pct(u.n - u.wrong, u.n) + "</td><td>" + bar(u.n ? (u.n - u.wrong) / u.n : 0) + "</td></tr>";
+      }).join("") + "</tbody></table></div></section>";
+
+    var hard = Object.keys(topics).map(function(k){ return topics[k]; }).filter(function(t){ return t.n >= MIN; })
+      .sort(function(a, b){ return (b.wrong / b.n) - (a.wrong / a.n) || b.n - a.n; });
+    html += '<section class="ms-card" id="st-hard"><h2 class="ms-h2">Hardest topics</h2>' + (hard.length ?
+      '<div class="st-wide"><table class="st-table"><thead><tr><th>Topic</th><th class="st-n">Answers</th><th class="st-n">Missed</th><th></th></tr></thead><tbody>' +
+      hard.map(function(t){
+        return "<tr><td>" + esc(t.name) + '<span class="st-where">Unit ' + t.unit + '</span></td><td class="st-n">' + t.n + '</td><td class="st-n">' + pct(t.wrong, t.n) + "</td><td>" + bar(t.wrong / t.n) + "</td></tr>";
+      }).join("") + "</tbody></table></div>" : '<p class="tp-hint">No topic has ' + MIN + " answers yet.</p>") + "</section>";
+
+    html += '<section class="ms-card"><div class="st-head"><h2 class="ms-h2">Most-missed questions</h2>' +
+      '<select id="st-unit" class="ch-select" aria-label="Unit"><option value="">All units</option>' +
+      units.map(function(u){ return '<option value="' + u.unit + '">Unit ' + u.unit + "</option>"; }).join("") + "</select></div>" +
+      '<div id="st-missed"></div></section>';
+    document.getElementById("st-loading").remove();
+    main.insertAdjacentHTML("beforeend", html);
+
+    var sel = document.getElementById("st-unit");
+    function missed(){
+      var list = listedQs.filter(function(x){ return !sel.value || x.q.unit === +sel.value; })
+        .sort(function(a, b){ return (b.w / b.n) - (a.w / a.n) || b.n - a.n; }).slice(0, 25);
+      document.getElementById("st-missed").innerHTML = list.length ?
+        '<div class="st-wide"><table class="st-table"><thead><tr><th>Question</th><th class="st-n">Missed</th><th class="st-n">Answers</th></tr></thead><tbody>' +
+        list.map(function(x){
+          return '<tr><td><span class="st-q">' + esc(x.q.prompt) + '</span><span class="st-where">Unit ' + x.q.unit + " · " + esc(x.q.topic) + " · " + esc(x.q.id) + "</span></td>" +
+            '<td class="st-n">' + pct(x.w, x.n) + '</td><td class="st-n">' + x.n + "</td></tr>";
+        }).join("") + "</tbody></table></div>" :
+        '<p class="tp-hint">No question has ' + MIN + " answers yet.</p>";
+    }
+    sel.addEventListener("change", missed);
+    missed();
+  }
+  function tile(title, big, sub, warn){
+    return '<div class="ms-tile' + (warn ? " st-warn" : "") + '"><span class="ms-tile-title">' + esc(title) + '</span><span class="st-big">' + esc(big) + "</span>" +
+      (sub ? '<span class="ms-tile-sub">' + esc(sub) + "</span>" : "") + "</div>";
+  }
+  function bar(f){ return '<div class="st-bar"><span style="width:' + Math.round(f * 100) + '%"></span></div>'; }
+})();
+</script>
+</body>
+</html>

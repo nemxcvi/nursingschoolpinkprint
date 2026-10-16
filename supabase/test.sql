@@ -7,13 +7,15 @@ set role anon;
 do $$
 declare t text;
 begin
-  foreach t in array array['vault','nickname_claims','challenges','challenge_players','class_tally'] loop
+  foreach t in array array['vault','nickname_claims','challenges','challenge_players','class_tally','pp_settings'] loop
     begin execute format('select count(*) from public.%I', t); raise exception 'READ ALLOWED on %', t;
     exception when insufficient_privilege then null; end;
     begin execute format('delete from public.%I', t); raise exception 'DELETE ALLOWED on %', t;
     exception when insufficient_privilege then null; end;
   end loop;
   begin perform public.pp_hash('x'); raise exception 'helper callable';
+  exception when insufficient_privilege then null; end;
+  begin perform public.set_stats_key(repeat('k', 40)); raise exception 'set_stats_key callable from the site';
   exception when insufficient_privilege then null; end;
   raise notice 'ok 1 - tables and helpers are blocked';
 end $$;
@@ -144,6 +146,29 @@ begin
   assert (select times_answered = 2 and times_wrong = 1 from public.class_tally where question_id = 'nur114-u3-safety-001'), 'tally totals';
   assert (select count(*) from information_schema.columns where table_schema = 'public' and table_name = 'class_tally') = 3, 'tally stores nothing else';
 end $$;
+
+-- 7. Stats: only with the owner's key (set as the owner, read as the site)
+do $$
+begin
+  begin perform public.set_stats_key('short'); raise exception 'short key accepted';
+  exception when raise_exception then if sqlerrm <> 'use a key of at least 32 characters' then raise; end if; end;
+  perform public.set_stats_key('test-stats-key-0123456789-abcdefghijkl');
+  assert not exists (select 1 from public.pp_settings where value like '%test-stats-key%'), 'only the hash is stored';
+end $$;
+set role anon;
+do $$
+declare j jsonb;
+begin
+  begin perform public.class_stats('wrong key'); raise exception 'stats with a wrong key';
+  exception when raise_exception then if sqlerrm <> 'not allowed' then raise; end if; end;
+  begin perform public.class_stats(null); raise exception 'stats with no key';
+  exception when raise_exception then if sqlerrm <> 'not allowed' then raise; end if; end;
+  j := public.class_stats('test-stats-key-0123456789-abcdefghijkl');
+  assert j->'tally' @> '[["nur114-u3-safety-001", 2, 1]]'::jsonb, 'tally rows';
+  assert jsonb_typeof(j->'taken') = 'array' and not (j->'taken' ? 'Miss Pinkprint'), 'nicknames in use, without the reserved one';
+  raise notice 'ok 7 - stats only with the owner''s key';
+end $$;
+reset role;
 
 -- 5. Expiry and clean-up (setting dates needs the owner role)
 do $$

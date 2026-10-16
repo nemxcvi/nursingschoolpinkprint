@@ -12,6 +12,7 @@
 --                      No codes, lookup IDs or device info.
 --   class_tally        (phase 6) per question: times answered and times wrong. Nothing else:
 --                      no code, lookup ID, device or time. Only the owner's stats page reads it.
+--   pp_settings        the hash of the owner's stats key (set once with set_stats_key, below).
 --
 -- Nothing can read or write these tables directly. The site can only call the functions at
 -- the bottom, and only through the Cloudflare function in front of Supabase.
@@ -46,17 +47,6 @@ begin
   end loop;
   return s;
 end $$;
-
--- True when p_proof shows the nickname belongs to the caller: their nickname claim ticket, or
--- for "Miss Pinkprint" the owner phrase (same SHA-256 fingerprint as OWNER_HASH in the site).
-create or replace function public.pp_owns_nickname(p_nickname text, p_proof text) returns boolean
-language sql stable security definer set search_path = '' as $$
-  select case when p_nickname = 'Miss Pinkprint'
-    then public.pp_hash(coalesce(p_proof, '')) = 'cb84dd2509deb1db5485dbd495bc23928cd3cd90d2b6c2741539a3ff474793c5'
-    else exists (select 1 from public.nickname_claims c
-                 where c.nickname = p_nickname and c.ticket_hash = public.pp_hash(coalesce(p_proof, '')))
-  end
-$$;
 
 -- ---------- Tables ----------
 create table if not exists public.vault (
@@ -104,14 +94,20 @@ create table if not exists public.class_tally (
   times_wrong integer not null default 0
 );
 
+create table if not exists public.pp_settings (
+  key text primary key,
+  value text not null
+);
+
 -- Block all direct access: row level security on with no policies, and no table privileges
 alter table public.vault enable row level security;
 alter table public.nickname_claims enable row level security;
 alter table public.challenges enable row level security;
 alter table public.challenge_players enable row level security;
 alter table public.class_tally enable row level security;
+alter table public.pp_settings enable row level security;
 revoke all on table public.vault, public.nickname_claims, public.challenges, public.challenge_players,
-  public.class_tally from public, anon, authenticated;
+  public.class_tally, public.pp_settings from public, anon, authenticated;
 
 -- ---------- Vault: load and save by lookup ID ----------
 create or replace function public.load_vault(p_lookup text)
@@ -207,6 +203,17 @@ begin
 end $$;
 
 -- ---------- Challenges ----------
+-- True when p_proof shows the nickname belongs to the caller: their nickname claim ticket, or
+-- for "Miss Pinkprint" the owner phrase (same SHA-256 fingerprint as OWNER_HASH in the site).
+create or replace function public.pp_owns_nickname(p_nickname text, p_proof text) returns boolean
+language sql stable security definer set search_path = '' as $$
+  select case when p_nickname = 'Miss Pinkprint'
+    then public.pp_hash(coalesce(p_proof, '')) = 'cb84dd2509deb1db5485dbd495bc23928cd3cd90d2b6c2741539a3ff474793c5'
+    else exists (select 1 from public.nickname_claims c
+                 where c.nickname = p_nickname and c.ticket_hash = public.pp_hash(coalesce(p_proof, '')))
+  end
+$$;
+
 -- Makes a challenge from 10, 20 or 40 question IDs and returns its short ID. The sender's
 -- nickname is shown to the people they send it to (p_proof as for join_challenge).
 drop function if exists public.create_challenge(text, jsonb, text);
@@ -353,6 +360,37 @@ begin
   return n;
 end $$;
 
+-- ---------- Owner's stats page (phase 6) ----------
+-- Run once in the SQL Editor (it can't be called from the site), with the same key you saved as
+-- the Cloudflare secret STATS_KEY:   select public.set_stats_key('<your key>');
+-- Only a hash of the key is stored. Run it again with a new key to change it.
+create or replace function public.set_stats_key(p_key text) returns text
+language plpgsql security definer set search_path = '' as $$
+begin
+  if p_key is null or length(p_key) < 32 then raise exception 'use a key of at least 32 characters'; end if;
+  insert into public.pp_settings (key, value) values ('stats_key_hash', public.pp_hash(p_key))
+    on conflict (key) do update set value = excluded.value;
+  return 'stats key saved';
+end $$;
+
+-- Everything the stats page shows, only with the right key: the tally ([question id, answered,
+-- wrong]), nicknames in use, and how many challenges are open.
+create or replace function public.class_stats(p_key text) returns jsonb
+language plpgsql stable security definer set search_path = '' as $$
+begin
+  if not exists (select 1 from public.pp_settings s
+                 where s.key = 'stats_key_hash' and s.value = public.pp_hash(coalesce(p_key, ''))) then
+    raise exception 'not allowed';
+  end if;
+  return jsonb_build_object(
+    'tally', coalesce((select jsonb_agg(jsonb_build_array(t.question_id, t.times_answered, t.times_wrong) order by t.question_id)
+                       from public.class_tally t), '[]'::jsonb),
+    'taken', coalesce((select jsonb_agg(c.nickname order by c.nickname) from public.nickname_claims c
+                       where c.ticket_hash is not null and c.last_seen > now() - interval '1 year'), '[]'::jsonb),
+    'open_challenges', (select count(*) from public.challenges c where c.expires_at >= now())
+  );
+end $$;
+
 -- ---------- Keep-alive ----------
 -- Called by the scheduled Cloudflare Worker so the free project doesn't pause. Also tidies up.
 create or replace function public.ping() returns timestamptz
@@ -371,5 +409,5 @@ grant execute on function
   public.taken_nicknames(), public.claim_nickname(text, text), public.release_nickname(text, text),
   public.create_challenge(text, jsonb, text, text, text), public.join_challenge(text, text, text, text),
   public.submit_score(text, text, integer), public.load_challenge(text, text),
-  public.delete_challenge(text, text), public.increment_tally(jsonb), public.ping()
+  public.delete_challenge(text, text), public.increment_tally(jsonb), public.class_stats(text), public.ping()
   to anon;

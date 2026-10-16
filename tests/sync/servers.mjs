@@ -13,6 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import {createRequire} from "node:module";
+import crypto from "node:crypto";
 /* "pg" from wherever it is installed: PG_MODULES=<folder containing node_modules> */
 const pg = createRequire(process.env.PG_MODULES ? path.join(process.env.PG_MODULES, "x.js") : import.meta.url)("pg");
 
@@ -36,10 +37,32 @@ const FNS = {
   load_challenge: [[["p_id", "text"], ["p_ticket", "text"]], "scalar"],
   delete_challenge: [[["p_id", "text"], ["p_creator_ticket", "text"]], "scalar"],
   increment_tally: [[["p_answers", "jsonb"]], "scalar"],
+  class_stats: [[["p_key", "text"]], "scalar"],
   ping: [[], "scalar"]
 };
 
+/* Stand-in for Cloudflare Access: its signing keys, and a test-only way to get a signed token
+   (GET /test/access-token?aud=...&email=...). The worker is pointed here with ACCESS_TEAM. */
+const ACCESS_TEAM = "http://127.0.0.1:54400", ACCESS_AUD = "test-aud", STATS_KEY = "test-stats-key-0123456789-abcdefghijkl";
+const {privateKey, publicKey} = crypto.generateKeyPairSync("rsa", {modulusLength: 2048});
+const KID = "test-kid";
+const b64url = b => Buffer.from(b).toString("base64url");
+function accessToken({aud = ACCESS_AUD, email = "owner@example.com", iss = ACCESS_TEAM, exp = Math.floor(Date.now() / 1000) + 3600} = {}) {
+  const head = b64url(JSON.stringify({alg: "RS256", kid: KID, typ: "JWT"}));
+  const claims = b64url(JSON.stringify({aud: [aud], email, iss, exp, iat: Math.floor(Date.now() / 1000), type: "app"}));
+  return head + "." + claims + "." + b64url(crypto.sign("sha256", Buffer.from(head + "." + claims), privateKey));
+}
+
 http.createServer(async (req, res) => {
+  if (req.url === "/cdn-cgi/access/certs") {
+    res.writeHead(200, {"Content-Type": "application/json"});
+    return res.end(JSON.stringify({keys: [{...publicKey.export({format: "jwk"}), kid: KID, alg: "RS256", use: "sig"}]}));
+  }
+  if (req.url.startsWith("/test/access-token")) {
+    const q = new URL(req.url, ACCESS_TEAM).searchParams;
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    return res.end(accessToken({aud: q.get("aud") || undefined, iss: q.get("iss") || undefined, exp: q.get("exp") ? +q.get("exp") : undefined}));
+  }
   let body = "";
   for await (const c of req) body += c;
   fs.appendFileSync(LOG, JSON.stringify({url: req.url, headers: req.headers, body}) + "\n");
@@ -80,6 +103,8 @@ function staticFile(urlPath) {
 const env = {
   SUPABASE_URL: process.env.NO_SUPABASE ? "" : "http://127.0.0.1:54400",
   SUPABASE_KEY: KEY,
+  ACCESS_TEAM, ACCESS_AUD,
+  STATS_KEY: process.env.NO_STATS_KEY ? "" : STATS_KEY,
   ASSETS: {fetch: req => staticFile(new URL(req.url).pathname)}
 };
 const matches = (p, pat) => pat.endsWith("/*") ? p.startsWith(pat.slice(0, -1)) : p === pat;
