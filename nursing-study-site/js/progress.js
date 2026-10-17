@@ -238,7 +238,7 @@
   };
 
   /* The Mistake journal page (linked from the Mastery box on quiz results) */
-  api.JOURNAL_URL = typeof Tracking !== "undefined" ? Tracking.ROOT + "journal.html" : null;
+  api.JOURNAL_URL = typeof Tracking !== "undefined" ? Tracking.ROOT + "journal.html?tab=mistakes" : null;
 
   api.status = function(q){
     return statusOf(api.get(q.id), q.unit, api.today(), api.exams || []);

@@ -77,7 +77,7 @@
       return "<a class='nav-row nav-locked' href='" + ROOT + "start-tracking.html?from=menu' data-cur='mystudy'>" +
         "<span class='nav-name'>My study</span><span class='nav-lock'>" + LOCK + "Locked</span></a>";
     }
-    var items = [["dashboard.html", "Dashboard"], ["progress.html", "Progress"], ["journal.html", "Journal"]];
+    var items = [["dashboard.html", "Dashboard"], ["journal.html", "Journal"]];
     if (Tracking.feature("challenges")) items.push(["challenges.html", "Challenges"]);
     items.push(["library.html", "Library"]);
     items.push(["settings.html", "Settings"]);

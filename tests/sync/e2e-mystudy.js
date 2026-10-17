@@ -92,7 +92,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await go("exam.html", "2026-10-01");
   check(/of 280 mastered/.test(await text(".ms-examtop")) && (await pg.$$eval(".ms-groups li", l => l.length)) === 8, "exam page outside the window: mastered + 8 groups");
 
-  // ---- Progress ----
+  // ---- Journal: Progress tab (old progress.html links redirect here) ----
   await go("progress.html", "2026-10-01");
   await pg.waitForSelector(".ms-units");
   check((await pg.$$eval(".ms-unit", u => u.length)) === 3, "progress: 3 units with questions");
@@ -102,13 +102,16 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.waitForSelector(".ms-topics");
   check((await pg.$$eval(".ms-topics .ms-row", r => r.length)) === 7, "progress: Unit 3 topics open");
   check(/Quiz my \d+ blind spots?/.test(await text(".ms-blind")), "progress: blind spots box", (await text(".ms-blind .ms-btn")));
+  check(/journal\.html/.test(pg.url()), "progress.html redirects to the Journal", pg.url());
+  check(!(await pg.$$eval(".ms-nav a", a => a.map(x => x.textContent))).includes("Progress"), "header: no separate Progress link");
   await shot("progress");
 
   // ---- Journal ----
   await go("journal.html", "2026-10-01");
   await pg.waitForSelector(".ms-tabs");
   const tabs = await text(".ms-tabs");
-  check(/Mistake journal · 34/.test(tabs), "journal: 28 unit-3 + 6 unit-2 mistakes", tabs);
+  check(/Progress/.test(tabs) && /Mistakes · 34/.test(tabs), "journal: Progress tab + 28 unit-3 + 6 unit-2 mistakes", tabs);
+  await pg.click('[data-tab="journal"]');
   check(/Your answer/.test(await text(".ms-jcard")) && /Correct answer/.test(await text(".ms-jcard")), "journal: your answer and correct answer");
   check(/Resolved · 3/.test(await text(".ms-resolved")), "journal: resolved section");
   await pg.selectOption("#j-unit", "2");
@@ -150,7 +153,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await shot("home-break");
   await pg.click("#navbtn"); await pg.waitForTimeout(250);
   await pg.click('.nav-sec[data-sec="mystudy"] > .nav-sechead'); await pg.waitForTimeout(300);
-  check(JSON.stringify(await pg.$$eval('.nav-sec[data-sec="mystudy"] .nav-secbody a', a => a.map(x => x.textContent.replace("→", "").trim()))) === JSON.stringify(["Dashboard", "Progress", "Journal", "Challenges", "Library", "Settings"]), "menu: Dashboard, Progress, Journal, Challenges, Library, Settings");
+  check(JSON.stringify(await pg.$$eval('.nav-sec[data-sec="mystudy"] .nav-secbody a', a => a.map(x => x.textContent.replace("→", "").trim()))) === JSON.stringify(["Dashboard", "Journal", "Challenges", "Library", "Settings"]), "menu: Dashboard, Journal, Challenges, Library, Settings");
 
   // ---- Semester recap and break week ----
   await go("dashboard.html", "2026-12-15");
