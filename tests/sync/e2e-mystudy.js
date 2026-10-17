@@ -150,7 +150,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await shot("home-break");
   await pg.click("#navbtn"); await pg.waitForTimeout(250);
   await pg.click('.nav-sec[data-sec="mystudy"] > .nav-sechead'); await pg.waitForTimeout(300);
-  check(JSON.stringify(await pg.$$eval('.nav-sec[data-sec="mystudy"] .nav-secbody a', a => a.map(x => x.textContent.replace("→", "").trim()))) === JSON.stringify(["Dashboard", "Progress", "Journal", "Challenges", "Settings"]), "menu: Dashboard, Progress, Journal, Challenges, Settings");
+  check(JSON.stringify(await pg.$$eval('.nav-sec[data-sec="mystudy"] .nav-secbody a', a => a.map(x => x.textContent.replace("→", "").trim()))) === JSON.stringify(["Dashboard", "Progress", "Journal", "Challenges", "Library", "Settings"]), "menu: Dashboard, Progress, Journal, Challenges, Library, Settings");
 
   // ---- Semester recap and break week ----
   await go("dashboard.html", "2026-12-15");

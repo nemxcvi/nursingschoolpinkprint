@@ -40,7 +40,14 @@ const FNS = {
   delete_challenge: [[["p_id", "text"], ["p_creator_ticket", "text"]], "scalar"],
   increment_tally: [[["p_answers", "jsonb"]], "scalar"],
   class_stats: [[["p_key", "text"]], "scalar"],
-  ping: [[], "scalar"]
+  ping: [[], "scalar"],
+  lib_add: [[["p_lookup", "text"], ["p_title", "text"], ["p_description", "text"], ["p_units", "jsonb"], ["p_topics", "jsonb"],
+             ["p_display_name", "text"], ["p_file_name", "text"], ["p_mime", "text"], ["p_size", "int"]], "scalar"],
+  lib_list: [[["p_lookup", "text"]], "scalar"],
+  lib_get: [[["p_lookup", "text"], ["p_id", "uuid"]], "scalar"],
+  lib_delete: [[["p_lookup", "text"], ["p_id", "uuid"]], "scalar"],
+  lib_admin_list: [[["p_key", "text"]], "scalar"],
+  lib_admin_delete: [[["p_key", "text"], ["p_id", "uuid"]], "scalar"]
 };
 
 /* Stand-in for Cloudflare Access: its signing keys, and a test-only way to get a signed token
@@ -107,16 +114,29 @@ const env = {
   SUPABASE_KEY: KEY,
   ACCESS_TEAM, ACCESS_AUD,
   STATS_KEY: process.env.NO_STATS_KEY ? "" : STATS_KEY,
+  CLASS_CODE: process.env.CLASS_CODE || "",               /* e2e-library.js starts this with a class code */
+  LIBRARY_ADMIN_KEY: process.env.LIBRARY_ADMIN_KEY || "",
+  /* Stand-in for the R2 bucket binding: just enough of put/get/delete. R2_FILES (folder) shows what's stored. */
+  LIBRARY: {
+    files: new Map(),
+    async put(key, buf, opts) { this.files.set(key, {bytes: Buffer.from(buf), type: opts && opts.httpMetadata && opts.httpMetadata.contentType}); writeR2(this); },
+    async get(key) { const f = this.files.get(key); return f ? {body: f.bytes, size: f.bytes.length, httpMetadata: {contentType: f.type}} : null; },
+    async delete(key) { this.files.delete(key); writeR2(this); }
+  },
   ASSETS: {fetch: req => staticFile(new URL(req.url).pathname)}
 };
+const R2_LIST = path.join(os.tmpdir(), "pinkprint-r2.json");
+function writeR2(b) { fs.writeFileSync(R2_LIST, JSON.stringify([...b.files.keys()])); }
+writeR2(env.LIBRARY);
 const matches = (p, pat) => pat.endsWith("/*") ? p.startsWith(pat.slice(0, -1)) : p === pat;
 
 http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost:8790");
   let response;
   if (routes.include.some(pat => matches(url.pathname, pat)) && !routes.exclude.some(pat => matches(url.pathname, pat))) {
-    let body = "";
-    for await (const c of req) body += c;
+    const chunks = [];
+    for await (const c of req) chunks.push(c);
+    const body = Buffer.concat(chunks);
     const request = new Request(url, {method: req.method, headers: req.headers, body: ["GET", "HEAD"].includes(req.method) ? undefined : body});
     response = await worker.fetch(request, env);
   } else {

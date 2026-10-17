@@ -15,7 +15,12 @@
 --                      No codes, lookup IDs or device info.
 --   class_tally        (phase 6) per question: times answered and times wrong. Nothing else:
 --                      no code, lookup ID, device or time. Only the owner's stats page reads it.
---   pp_settings        the hash of the owner's stats key (set once with set_stats_key, below).
+--   shared_files       Library uploads: title, description, unit/topic tags, display name (or
+--                      none = Anonymous), file name, type and size. The file itself is in the
+--                      Cloudflare R2 bucket under the row's id. The uploader is a hash of their
+--                      lookup ID made only for this table, so it can't be matched to the vault.
+--   pp_settings        hashes of the owner's stats key and Library admin key (set once with
+--                      set_stats_key / set_library_admin_key, below).
 --
 -- Nothing can read or write these tables directly. The site can only call the functions at
 -- the bottom, and only through the Cloudflare function in front of Supabase.
@@ -113,6 +118,21 @@ create table if not exists public.class_tally (
   times_wrong integer not null default 0
 );
 
+create table if not exists public.shared_files (
+  id uuid primary key default gen_random_uuid(),
+  owner_hash text not null,
+  title text not null check (length(title) between 1 and 120),
+  description text check (description is null or length(description) <= 500),
+  units jsonb not null,
+  topics jsonb not null,
+  display_name text check (display_name is null or length(display_name) between 1 and 40),
+  file_name text not null check (length(file_name) between 1 and 160),
+  mime text not null,
+  size integer not null check (size between 1 and 20971520),
+  created_at timestamptz not null default clock_timestamp()
+);
+create index if not exists shared_files_owner on public.shared_files (owner_hash, created_at);
+
 create table if not exists public.pp_settings (
   key text primary key,
   value text not null
@@ -126,8 +146,9 @@ alter table public.challenge_players enable row level security;
 alter table public.challenge_answers enable row level security;
 alter table public.class_tally enable row level security;
 alter table public.pp_settings enable row level security;
+alter table public.shared_files enable row level security;
 revoke all on table public.vault, public.nickname_claims, public.challenges, public.challenge_players,
-  public.challenge_answers, public.class_tally, public.pp_settings from public, anon, authenticated;
+  public.challenge_answers, public.class_tally, public.pp_settings, public.shared_files from public, anon, authenticated;
 
 -- ---------- Vault: load and save by lookup ID ----------
 create or replace function public.load_vault(p_lookup text)
@@ -443,6 +464,117 @@ begin
   return n;
 end $$;
 
+-- ---------- Library (shared resources) ----------
+-- Every call needs the caller's lookup ID, and only works if that code has a saved copy (a real
+-- tracking code). Ownership is a hash of the lookup ID made only for this table.
+create or replace function public.pp_lib_owner(p_lookup text) returns text
+language sql stable security definer set search_path = '' as $$
+  select case when public.pp_is_hex64(p_lookup)
+               and exists (select 1 from public.vault v where v.lookup_hash = public.pp_hash(p_lookup))
+         then public.pp_hash('library:' || p_lookup) end
+$$;
+
+-- Tags: ["all"] or course:unit codes like "nur114:U-03"; topics ["all"] or "nur114:U-03:safety"
+create or replace function public.pp_lib_tags_ok(p jsonb, p_topics boolean) returns boolean
+language sql immutable set search_path = '' as $$
+  select jsonb_typeof(p) = 'array' and jsonb_array_length(p) between 1 and 30
+     and not exists (select 1 from jsonb_array_elements(p) t
+                     where jsonb_typeof(t) <> 'string'
+                        or not ((t #>> '{}') = 'all' or (t #>> '{}') ~ (case when p_topics
+                              then '^[a-z0-9]{2,12}:U-[0-9]{2}:[a-z0-9-]{1,60}$' else '^[a-z0-9]{2,12}:U-[0-9]{2}$' end)))
+$$;
+
+-- Adds a file's details (the worker then stores the file in R2 under the returned id).
+-- At most 10 uploads an hour and 30 a day per tracking code, so a slip can't flood the list.
+create or replace function public.lib_add(p_lookup text, p_title text, p_description text, p_units jsonb, p_topics jsonb,
+                                          p_display_name text, p_file_name text, p_mime text, p_size integer)
+returns uuid
+language plpgsql security definer set search_path = '' as $$
+declare
+  owner text := public.pp_lib_owner(p_lookup);
+  new_id uuid;
+begin
+  if owner is null then raise exception 'not tracking'; end if;
+  if not public.pp_lib_tags_ok(p_units, false) or not public.pp_lib_tags_ok(p_topics, true) then raise exception 'bad tags'; end if;
+  if p_mime not in ('application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/heic', 'application/msword',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document') then
+    raise exception 'bad file type';
+  end if;
+  if (select count(*) from public.shared_files f where f.owner_hash = owner and f.created_at > now() - interval '1 hour') >= 10
+     or (select count(*) from public.shared_files f where f.owner_hash = owner and f.created_at > now() - interval '1 day') >= 30 then
+    raise exception 'upload limit';
+  end if;
+  insert into public.shared_files (owner_hash, title, description, units, topics, display_name, file_name, mime, size)
+    values (owner, trim(p_title), nullif(trim(coalesce(p_description, '')), ''), p_units, p_topics,
+            nullif(trim(coalesce(p_display_name, '')), ''), p_file_name, p_mime, p_size)
+    returning id into new_id;
+  return new_id;
+end $$;
+
+-- Every file, newest first, with 'mine' for the caller's own uploads. Never the owner hash.
+create or replace function public.lib_list(p_lookup text) returns jsonb
+language plpgsql stable security definer set search_path = '' as $$
+declare owner text := public.pp_lib_owner(p_lookup);
+begin
+  if owner is null then raise exception 'not tracking'; end if;
+  return coalesce((select jsonb_agg(jsonb_build_object(
+      'id', f.id, 'title', f.title, 'description', f.description, 'units', f.units, 'topics', f.topics,
+      'name', f.display_name, 'file_name', f.file_name, 'mime', f.mime, 'size', f.size,
+      'created_at', f.created_at, 'mine', f.owner_hash = owner) order by f.created_at desc)
+    from public.shared_files f), '[]'::jsonb);
+end $$;
+
+-- One file's name and type, for a download link (tracking codes only)
+create or replace function public.lib_get(p_lookup text, p_id uuid) returns jsonb
+language plpgsql stable security definer set search_path = '' as $$
+begin
+  if public.pp_lib_owner(p_lookup) is null then raise exception 'not tracking'; end if;
+  return (select jsonb_build_object('id', f.id, 'file_name', f.file_name, 'mime', f.mime, 'size', f.size)
+          from public.shared_files f where f.id = p_id);
+end $$;
+
+-- Deletes your own file's details (the worker then removes the file from R2)
+create or replace function public.lib_delete(p_lookup text, p_id uuid) returns boolean
+language plpgsql security definer set search_path = '' as $$
+declare owner text := public.pp_lib_owner(p_lookup);
+begin
+  if owner is null then raise exception 'not tracking'; end if;
+  delete from public.shared_files f where f.id = p_id and f.owner_hash = owner;
+  return found;
+end $$;
+
+-- Owner's Library admin key: run once in the SQL Editor with the same key as the Cloudflare secret
+-- LIBRARY_ADMIN_KEY:   select public.set_library_admin_key('<your key>');   (only its hash is kept)
+create or replace function public.set_library_admin_key(p_key text) returns text
+language plpgsql security definer set search_path = '' as $$
+begin
+  if p_key is null or length(p_key) < 32 then raise exception 'use a key of at least 32 characters'; end if;
+  insert into public.pp_settings (key, value) values ('library_admin_hash', public.pp_hash(p_key))
+    on conflict (key) do update set value = excluded.value;
+  return 'library admin key saved';
+end $$;
+create or replace function public.pp_lib_admin_ok(p_key text) returns boolean
+language sql stable security definer set search_path = '' as $$
+  select exists (select 1 from public.pp_settings s
+                 where s.key = 'library_admin_hash' and s.value = public.pp_hash(coalesce(p_key, '')))
+$$;
+create or replace function public.lib_admin_list(p_key text) returns jsonb
+language plpgsql stable security definer set search_path = '' as $$
+begin
+  if not public.pp_lib_admin_ok(p_key) then raise exception 'not allowed'; end if;
+  return coalesce((select jsonb_agg(jsonb_build_object(
+      'id', f.id, 'title', f.title, 'name', f.display_name, 'file_name', f.file_name, 'mime', f.mime,
+      'size', f.size, 'created_at', f.created_at) order by f.created_at desc)
+    from public.shared_files f), '[]'::jsonb);
+end $$;
+create or replace function public.lib_admin_delete(p_key text, p_id uuid) returns boolean
+language plpgsql security definer set search_path = '' as $$
+begin
+  if not public.pp_lib_admin_ok(p_key) then raise exception 'not allowed'; end if;
+  delete from public.shared_files f where f.id = p_id;
+  return found;
+end $$;
+
 -- ---------- Owner's stats page (phase 6) ----------
 -- Run once in the SQL Editor (it can't be called from the site), with the same key you saved as
 -- the Cloudflare secret STATS_KEY:   select public.set_stats_key('<your key>');
@@ -493,5 +625,7 @@ grant execute on function
   public.create_challenge(text, jsonb, text, text, text), public.join_challenge(text, text, text, text),
   public.submit_score(text, text, integer), public.submit_answers(text, text, jsonb), public.share_focus(text, text, boolean),
   public.load_challenge(text, text),
-  public.delete_challenge(text, text), public.increment_tally(jsonb), public.class_stats(text), public.ping()
+  public.delete_challenge(text, text), public.increment_tally(jsonb), public.class_stats(text), public.ping(),
+  public.lib_add(text, text, text, jsonb, jsonb, text, text, text, integer), public.lib_list(text),
+  public.lib_get(text, uuid), public.lib_delete(text, uuid), public.lib_admin_list(text), public.lib_admin_delete(text, uuid)
   to anon;

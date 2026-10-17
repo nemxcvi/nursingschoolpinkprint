@@ -79,6 +79,7 @@
     }
     var items = [["dashboard.html", "Dashboard"], ["progress.html", "Progress"], ["journal.html", "Journal"]];
     if (Tracking.feature("challenges")) items.push(["challenges.html", "Challenges"]);
+    items.push(["library.html", "Library"]);
     items.push(["settings.html", "Settings"]);
     return section("mystudy", "My study", items.map(function(i){
       return row(ROOT + i[0], "<span class='nav-name'>" + i[1] + "</span>", "mystudy:" + i[0], "nav-sub");

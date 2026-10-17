@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=87">
+<link rel="stylesheet" href="assets/style.css?v=89">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -36,6 +36,16 @@
 
   <section class="tp-cols">
     <div class="tp-main">
+      <form class="tp-card hidden" id="st-classcard" novalidate>
+        <div class="tp-step"><h2>Class code</h2></div>
+        <span class="tp-hint">Tracking is for our class. Enter the class code to make your tracking code. Already have a code? Link this device below, no class code needed.</span>
+        <div class="tp-row">
+          <input id="st-class" class="tp-input" aria-label="Class code" autocomplete="off" autocapitalize="off" spellcheck="false">
+          <button type="submit" class="tp-btn tp-btn-primary tp-btn-flat" id="st-classgo">Continue</button>
+        </div>
+        <p class="tp-note hidden" id="st-classmsg" role="alert"></p>
+      </form>
+      <div class="st-new" id="st-new">
       <div class="tp-card">
         <div class="tp-step"><span>1</span><h2>Your nickname</h2></div>
         <div class="tp-row">
@@ -69,6 +79,7 @@
 
       <button type="button" class="tp-start" id="st-start" disabled>Start tracking &rarr;</button>
       <p class="tp-note hidden" id="st-msg" role="status"></p>
+      </div>
       <button type="button" class="tp-textlink" id="st-link">Already have a code? Link this device</button>
       <form class="tp-dashed tp-linkform hidden" id="st-linkform">
         <label for="st-linkcode" class="tp-h3">Link this device</label>
@@ -97,6 +108,7 @@
           <li>Bookmarks with your own notes</li>
           <li>Weekly goals and streaks</li>
           <li>Challenges with classmates</li>
+          <li>A Library of study files shared by classmates</li>
         </ul>
       </div>
       <div class="tp-privacy">
@@ -107,7 +119,7 @@
   </section>
 </div>
 <script src="assets/vendor/qrcode.js?v=1"></script>
-<script src="js/tracking.js?v=10"></script>
+<script src="js/tracking.js?v=11"></script>
 <script src="js/progress.js?v=6"></script>
 <script src="js/tracking-ui.js?v=2"></script>
 <script>
@@ -138,6 +150,30 @@
     if (params.get("from")) createCode();
     else { $("st-code").classList.add("hidden"); $("st-create").classList.remove("hidden"); }
   });
+  /* Class code: needed to make a new tracking code (the server checks it again on the first save).
+     Not needed to link a code from another device. Skipped when the site has no class code set. */
+  var classCode = "";
+  Tracking.call("class/check", {code: ""}).then(function(r){
+    if (r && r.required){ $("st-classcard").classList.remove("hidden"); $("st-new").classList.add("hidden"); }
+  }, function(){});
+  $("st-classcard").addEventListener("submit", function(e){
+    e.preventDefault();
+    var typed = $("st-class").value;
+    if (!typed.trim()) return say("st-classmsg", "Enter the class code.");
+    $("st-classgo").disabled = true;
+    Tracking.call("class/check", {code: typed}).then(function(r){
+      $("st-classgo").disabled = false;
+      if (!r || !r.ok) return say("st-classmsg", "That class code isn't right. Check it and try again.");
+      classCode = typed;
+      say("st-classmsg", "");
+      $("st-classcard").classList.add("hidden");
+      $("st-new").classList.remove("hidden");
+    }, function(){
+      $("st-classgo").disabled = false;
+      say("st-classmsg", "Couldn't reach the server. Check your connection and try again.");
+    });
+  });
+
   $("st-reroll").addEventListener("click", function(){ nickname = Tracking.pickNickname(names, nickname); showNick(); });
   $("st-create").addEventListener("click", createCode);
   TrackingUI.wireBackups({email: $("st-email"), manager: $("st-manager"), print: $("st-print")},
@@ -185,7 +221,7 @@
         btn.innerHTML = "Start tracking &rarr;";
         return;
       }
-      Tracking.start({code: code, nickname: wanted, goal: goal, nicknameTicket: ticket});
+      Tracking.start({code: code, nickname: wanted, goal: goal, nicknameTicket: ticket, classCode: classCode});
       var carried = params.get("from") === "results" ? Tracking.takeCarry() : (Tracking.dropCarry(), []);
       var ret = params.get("return") || "";
       var dest = /^\/(?!\/)/.test(ret) ? ret : "./";

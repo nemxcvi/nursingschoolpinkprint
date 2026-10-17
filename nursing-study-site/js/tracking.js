@@ -296,6 +296,8 @@
              finishedSessions: 0, codeReminderDone: false, noteReminderDone: false, startedOn: today(),
              nicknameTicket: opts.nicknameTicket || randomHex(32), settingsAt: Date.now(),
              sync: {version: 0, dirty: true, seq: 1}};
+    /* Kept on this device only until the first save (the server checks it before making the copy) */
+    if (opts.classCode) s.classCode = opts.classCode;
     lsSet(KEY, JSON.stringify(s));
     lsRemove("pinkprint-track");
     return s;
@@ -503,13 +505,17 @@
     var seq = s.sync.seq;
     var payload = {v: 1, settings: pickSettings(s), progress: loadLocalProgress(), activity: s.activity || {}};
     return encryptJSON(k.key, payload).then(function(data){
-      return call("vault/save", {lookup: k.lookup, data: data, version: version});
+      var body = {lookup: k.lookup, data: data, version: version};
+      if (version === 0 && s.classCode) body.classCode = s.classCode;
+      return call("vault/save", body);
     }).then(function(rows){
       var r = rows && rows[0];
       if (!r) throw new Error("no reply");
       if (r.saved){
         var now = api.state().sync;
         setSync({version: r.version, dirty: now.seq !== seq});
+        var st = api.state();
+        if (st.classCode){ delete st.classCode; lsSet(KEY, JSON.stringify(st)); }
         return;
       }
       if (r.version === 0) return remoteDeleted();

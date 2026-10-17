@@ -72,6 +72,7 @@ var MyStudy = (function(){
   function header(active){
     var items = [["dashboard", "Dashboard", "dashboard.html"], ["progress", "Progress", "progress.html"], ["journal", "Journal", "journal.html"]];
     if (T.feature("challenges")) items.push(["challenges", "Challenges", "challenges.html"]);
+    items.push(["library", "Library", "library.html"]);
     var links = items.map(function(i){
       return '<a href="' + i[2] + '"' + (i[0] === active ? ' class="is-current" aria-current="page"' : "") + ">" + i[1] + "</a>";
     }).join("");

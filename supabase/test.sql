@@ -7,7 +7,7 @@ set role anon;
 do $$
 declare t text;
 begin
-  foreach t in array array['vault','nickname_claims','challenges','challenge_players','challenge_answers','class_tally','pp_settings'] loop
+  foreach t in array array['vault','nickname_claims','challenges','challenge_players','challenge_answers','class_tally','pp_settings','shared_files'] loop
     begin execute format('select count(*) from public.%I', t); raise exception 'READ ALLOWED on %', t;
     exception when insufficient_privilege then null; end;
     begin execute format('delete from public.%I', t); raise exception 'DELETE ALLOWED on %', t;
@@ -256,4 +256,47 @@ begin
   -- Nothing stored can be traced back: no lookup IDs or tickets, only hashes
   assert not exists (select 1 from public.vault where length(lookup_hash) <> 64), 'vault keys are hashes';
   raise notice 'ok 5 - expiry, clean-up and year-old nicknames';
+end $$;
+
+-- 8. Library: tracking codes only, own files only, tags and types checked, upload limit, admin key
+reset role;
+select public.set_library_admin_key(repeat('a', 40));
+set role anon;
+do $$
+declare
+  a text := encode(extensions.gen_random_bytes(32), 'hex');
+  b text := encode(extensions.gen_random_bytes(32), 'hex');
+  stranger text := encode(extensions.gen_random_bytes(32), 'hex');
+  f1 uuid; f2 uuid; i int; j jsonb;
+begin
+  perform public.save_vault(a, 'cipher-a', 0);
+  perform public.save_vault(b, 'cipher-b', 0);
+  begin perform public.lib_add(stranger, 'x', null, '["all"]', '["all"]', null, 'x.pdf', 'application/pdf', 10); raise exception 'non-tracker uploaded';
+  exception when raise_exception then if sqlerrm <> 'not tracking' then raise; end if; end;
+  begin perform public.lib_list(stranger); raise exception 'non-tracker listed';
+  exception when raise_exception then if sqlerrm <> 'not tracking' then raise; end if; end;
+  f1 := public.lib_add(a, ' Wound care notes ', 'My notes', '["nur114:U-03"]', '["nur114:U-03:tissue-integrity"]', 'Nicole', 'notes.pdf', 'application/pdf', 1234);
+  f2 := public.lib_add(b, 'Everything', '', '["all"]', '["all"]', '', 'all.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 99);
+  begin perform public.lib_add(a, 'x', null, '["U-03"]', '["all"]', null, 'x.pdf', 'application/pdf', 10); raise exception 'bad unit tag accepted';
+  exception when raise_exception then if sqlerrm <> 'bad tags' then raise; end if; end;
+  begin perform public.lib_add(a, 'x', null, '["all"]', '["all"]', null, 'x.exe', 'application/x-msdownload', 10); raise exception 'bad type accepted';
+  exception when raise_exception then if sqlerrm <> 'bad file type' then raise; end if; end;
+  j := public.lib_list(b);
+  assert jsonb_array_length(j) = 2 and j->0->>'title' = 'Everything' and (j->0->>'mine')::boolean and not (j->1->>'mine')::boolean, 'newest first, mine marked';
+  assert j->1->>'title' = 'Wound care notes' and j->1->>'name' = 'Nicole' and j->0->'name' = 'null'::jsonb and j->0->'description' = 'null'::jsonb, 'trimmed; blank name = Anonymous';
+  assert j::text !~ 'owner' and j::text !~ a and j::text !~ b, 'no owner hash or lookup in the list';
+  assert public.lib_get(b, f1)->>'file_name' = 'notes.pdf', 'any tracker can get a download link';
+  assert not public.lib_delete(b, f1), 'can''t delete someone else''s file';
+  assert public.lib_delete(a, f1), 'can delete your own';
+  assert jsonb_array_length(public.lib_list(a)) = 1, 'gone';
+  for i in 1..9 loop perform public.lib_add(b, 'n' || i, null, '["all"]', '["all"]', null, 'n.png', 'image/png', 5); end loop;
+  begin perform public.lib_add(b, 'eleventh', null, '["all"]', '["all"]', null, 'n.png', 'image/png', 5); raise exception 'no upload limit';
+  exception when raise_exception then if sqlerrm <> 'upload limit' then raise; end if; end;
+  begin perform public.lib_admin_list('wrong'); raise exception 'admin list without key';
+  exception when raise_exception then if sqlerrm <> 'not allowed' then raise; end if; end;
+  assert jsonb_array_length(public.lib_admin_list(repeat('a', 40))) = 10, 'admin sees every file';
+  assert public.lib_admin_delete(repeat('a', 40), f2), 'admin deletes anyone''s file';
+  begin perform public.set_library_admin_key(repeat('b', 40)); raise exception 'admin key settable from the site';
+  exception when insufficient_privilege then null; end;
+  raise notice 'ok 8 - library: trackers only, own deletes, tags/types checked, upload limit, admin key';
 end $$;
