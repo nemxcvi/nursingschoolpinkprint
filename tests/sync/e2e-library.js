@@ -114,6 +114,11 @@ const BAD = {
   check(/No patient information/.test(await text(pa, ".lb-rules")) && /No test content/.test(await text(pa, ".lb-rules")), "the two sharing rules are at the top");
   check(await pa.inputValue("#lb-name") === "" && await pa.getAttribute("#lb-name", "placeholder") === "Your name or nickname", "the name to show starts blank, typed by the student");
   check(await pa.$eval('.ms-nav a[href="library.html"]', a => a.classList.contains("is-current")), "Library tab in My study");
+  check(await pa.isVisible("#lb-open") && !(await pa.isVisible("#lb-file")), "the Share box starts small, closed");
+  await pa.click("#lb-open"); await pa.click("#lb-close");
+  check(!(await pa.isVisible("#lb-file")), "Cancel closes it again");
+  await pa.click("#lb-open");
+  check(await pa.isVisible("#lb-file"), "+ Share a file opens the form");
   check(await pa.$eval("#lb-upload", b => b.disabled), "Share is disabled until both boxes are ticked");
   const pickUnits = async (pg, list) => {
     if (await pg.isChecked('#lb-units input[value="all"]')) await pg.uncheck('#lb-units input[value="all"]');
@@ -123,7 +128,9 @@ const BAD = {
     if (await pg.isChecked('#lb-topics input[value="all"]')) await pg.uncheck('#lb-topics input[value="all"]');
     for (const t of list) await pg.check(`#lb-topics input[value="${t}"]`);
   };
+  const openForm = async pg => { if (await pg.isVisible("#lb-open")) await pg.click("#lb-open"); };
   const upload = async (pg, f, opts = {}) => {
+    await openForm(pg);
     await pg.setInputFiles("#lb-file", f);
     await pg.fill("#lb-title", opts.title || f.name);
     await pg.fill("#lb-desc", opts.desc || "");
@@ -158,7 +165,7 @@ const BAD = {
     await lib(pa);
   }
   const big = {name: "huge.pdf", mimeType: "application/pdf", buffer: Buffer.concat([Buffer.from("%PDF-1.4\n"), Buffer.alloc(21 * 1024 * 1024)])};
-  const bigMsg = await (async () => { await pa.setInputFiles("#lb-file", big); await pa.fill("#lb-title", "big"); await pa.check("#lb-ok1"); await pa.check("#lb-ok2"); await pa.click("#lb-upload"); return text(pa, "#lb-msg"); })();
+  const bigMsg = await (async () => { await openForm(pa); await pa.setInputFiles("#lb-file", big); await pa.fill("#lb-title", "big"); await pa.check("#lb-ok1"); await pa.check("#lb-ok2"); await pa.click("#lb-upload"); return text(pa, "#lb-msg"); })();
   check(/up to 20 MB/.test(bigMsg), "21 MB file: told files can be up to 20 MB", bigMsg);
   const serverBig = await pa.evaluate(async () => {
     const k = await Tracking.ensureKeys();

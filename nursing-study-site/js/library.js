@@ -62,6 +62,9 @@ var Library = (function(){
     var name = "";
     try { name = localStorage.getItem(NAME_KEY) || ""; } catch (e) {}
     return '<form class="ms-card lb-form" id="lb-form" novalidate><h2 class="ms-h2 ch-h2">Share a file</h2>' +
+      '<p class="tp-hint lb-pitch" id="lb-pitch">Notes, diagrams or handouts for the class: PDF, images or Word, up to 20 MB.</p>' +
+      '<button type="button" class="ms-btn is-primary" id="lb-open" aria-expanded="false" aria-controls="lb-fields">+ Share a file</button>' +
+      '<div class="lb-fields hidden" id="lb-fields">' +
       '<div class="ch-field"><label for="lb-file">File</label><input type="file" id="lb-file" class="lb-file" accept="' + ACCEPT + '">' +
       '<span class="tp-hint">PDF, JPG, PNG, WEBP, HEIC or Word, up to 20 MB.</span></div>' +
       '<div class="ch-field"><label for="lb-title">Title</label><input id="lb-title" class="tp-input" maxlength="120" required></div>' +
@@ -72,9 +75,10 @@ var Library = (function(){
       '<label class="lb-check"><input type="radio" name="show" value="name" checked> Show a name</label>' +
       '<label class="lb-check"><input type="radio" name="show" value="anon"> Anonymous</label></div>' +
       '<input id="lb-name" class="tp-input" maxlength="40" aria-label="Name to show" placeholder="Your name or nickname" value="' + esc(name) + '"></fieldset>' +
-      '<div class="lb-confirm"><label class="lb-check"><input type="checkbox" id="lb-ok1"> This file contains no patient information (names, initials, room numbers, dates of birth, MRNs, photos, or anything identifying from clinical).</label>' +
-      '<label class="lb-check"><input type="checkbox" id="lb-ok2"> This file contains no exam questions, recalled test content, or proctored ATI material.</label></div>' +
+      '<div class="lb-confirm"><label class="lb-check"><input type="checkbox" id="lb-ok1"> This file contains no patient information (HIPAA): no names, dates of birth, MRNs, or anything identifying.</label>' +
+      '<label class="lb-check"><input type="checkbox" id="lb-ok2"> This file contains no test content: no exam questions or recalled test content.</label></div>' +
       '<button type="submit" class="ms-btn is-primary is-big" id="lb-upload" disabled>Share file</button>' +
+      '<button type="button" class="lb-cancel" id="lb-close">Cancel</button></div>' +
       '<p class="tp-note hidden" id="lb-msg" role="alert"></p></form>';
   }
   function picked(boxId){
@@ -149,6 +153,15 @@ var Library = (function(){
     var sync = function(){ $("lb-upload").disabled = !($("lb-ok1").checked && $("lb-ok2").checked); };
     $("lb-ok1").addEventListener("change", sync);
     $("lb-ok2").addEventListener("change", sync);
+    var open = function(on){
+      $("lb-fields").classList.toggle("hidden", !on);
+      $("lb-open").classList.toggle("hidden", on);
+      $("lb-pitch").classList.toggle("hidden", on);
+      $("lb-open").setAttribute("aria-expanded", on ? "true" : "false");
+      if (on){ say(""); $("lb-file").focus(); } else $("lb-open").focus();
+    };
+    $("lb-open").addEventListener("click", function(){ open(true); });
+    $("lb-close").addEventListener("click", function(){ open(false); });
     $("lb-form").addEventListener("change", function(e){ if (e.target.name === "show") $("lb-name").classList.toggle("hidden", e.target.value !== "name"); });
     $("lb-form").addEventListener("submit", function(e){
       e.preventDefault();
@@ -185,6 +198,7 @@ var Library = (function(){
         $("lb-ok1").checked = false; $("lb-ok2").checked = false;
         btn.textContent = "Share file";
         sync();
+        open(false);
         say("Shared! It's in the list now.");
         return refresh();
       }, function(err){

@@ -1046,6 +1046,9 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .lb-rules abbr{text-decoration:none;}
 .lb-rules ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;}
 .lb-form{gap:16px;}
+.lb-fields{display:flex;flex-direction:column;gap:16px;}
+.lb-pitch{margin:-6px 0 0;}
+.lb-cancel{align-self:center;min-height:44px;padding:0 12px;border:0;background:none;color:var(--label);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;text-decoration:underline;cursor:pointer;}
 .lb-file{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;color:var(--text);}
 .lb-desc{min-height:64px;padding:10px 12px;resize:vertical;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;}
 .lb-checks{display:flex;flex-direction:column;gap:2px;max-height:190px;overflow-y:auto;padding:6px 10px;border:1.5px solid var(--border);background:var(--card);}
