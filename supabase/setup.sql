@@ -548,7 +548,7 @@ end $$;
 create or replace function public.set_library_admin_key(p_key text) returns text
 language plpgsql security definer set search_path = '' as $$
 begin
-  if p_key is null or length(p_key) < 32 then raise exception 'use a key of at least 32 characters'; end if;
+  if p_key is null or length(p_key) < 6 then raise exception 'use a key of at least 6 characters'; end if;
   insert into public.pp_settings (key, value) values ('library_admin_hash', public.pp_hash(p_key))
     on conflict (key) do update set value = excluded.value;
   return 'library admin key saved';
