@@ -5,6 +5,7 @@
 var Library = (function(){
   var T = Tracking;
   var ACCEPT = ".pdf,.jpg,.jpeg,.png,.webp,.heic,.heif,.doc,.docx,application/pdf,image/jpeg,image/png,image/webp,image/heic,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+  var NAME_KEY = "pinkprint-library-name";
   var MAX = 20 * 1024 * 1024;
   var TYPE_LABEL = {"application/pdf": "PDF", "image/jpeg": "JPG", "image/png": "PNG", "image/webp": "WEBP", "image/heic": "HEIC",
                     "application/msword": "Word", "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "Word"};
@@ -46,8 +47,8 @@ var Library = (function(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Shared resources</div><h1 class="tp-h1">Library</h1>' +
       '<p class="tp-lede">Notes, diagrams and handouts shared by classmates. Download anything here, and share your own.</p></section>' +
       '<section class="lb-rules" aria-label="Sharing rules"><h2 class="ch-eyebrow">Sharing rules</h2><ol>' +
-      "<li><strong>No patient information.</strong> No names, initials, room numbers, dates of birth, MRNs, photos, or anything identifying from clinical.</li>" +
-      "<li><strong>No test content.</strong> No exam questions, recalled test content, or proctored ATI material.</li></ol></section>";
+      '<li><strong>No patient information (<abbr title="Health Insurance Portability and Accountability Act">HIPAA</abbr>).</strong> No names, dates of birth, MRNs (medical record numbers), or anything identifying.</li>' +
+      "<li><strong>No test content.</strong> No exam questions or recalled test content.</li></ol></section>";
   }
   function checkList(name, items, allLabel, picked){
     var all = picked.indexOf("all") !== -1;
@@ -58,7 +59,8 @@ var Library = (function(){
       }).join("");
   }
   function formHtml(){
-    var nick = (T.state() || {}).nickname || "";
+    var name = "";
+    try { name = localStorage.getItem(NAME_KEY) || ""; } catch (e) {}
     return '<form class="ms-card lb-form" id="lb-form" novalidate><h2 class="ms-h2 ch-h2">Share a file</h2>' +
       '<div class="ch-field"><label for="lb-file">File</label><input type="file" id="lb-file" class="lb-file" accept="' + ACCEPT + '">' +
       '<span class="tp-hint">PDF, JPG, PNG, WEBP, HEIC or Word, up to 20 MB.</span></div>' +
@@ -67,9 +69,9 @@ var Library = (function(){
       '<fieldset class="ch-field"><legend>Units</legend><div class="lb-checks" id="lb-units">' + checkList("unit", units, "All units", ["all"]) + "</div></fieldset>" +
       '<fieldset class="ch-field"><legend>Topics</legend><div class="lb-checks" id="lb-topics"></div></fieldset>' +
       '<fieldset class="ch-field"><legend>Shown as</legend><div class="lb-show">' +
-      '<label class="lb-check"><input type="radio" name="show" value="name" checked> Show my name</label>' +
+      '<label class="lb-check"><input type="radio" name="show" value="name" checked> Show a name</label>' +
       '<label class="lb-check"><input type="radio" name="show" value="anon"> Anonymous</label></div>' +
-      '<input id="lb-name" class="tp-input" maxlength="40" aria-label="Name to show" value="' + esc(nick) + '"></fieldset>' +
+      '<input id="lb-name" class="tp-input" maxlength="40" aria-label="Name to show" placeholder="Your name or nickname" value="' + esc(name) + '"></fieldset>' +
       '<div class="lb-confirm"><label class="lb-check"><input type="checkbox" id="lb-ok1"> This file contains no patient information (names, initials, room numbers, dates of birth, MRNs, photos, or anything identifying from clinical).</label>' +
       '<label class="lb-check"><input type="checkbox" id="lb-ok2"> This file contains no exam questions, recalled test content, or proctored ATI material.</label></div>' +
       '<button type="submit" class="ms-btn is-primary is-big" id="lb-upload" disabled>Share file</button>' +
@@ -169,6 +171,7 @@ var Library = (function(){
       fd.append("topics", JSON.stringify(t));
       fd.append("show", show);
       fd.append("name", $("lb-name").value.trim());
+      if (show === "name") try { localStorage.setItem(NAME_KEY, $("lb-name").value.trim()); } catch (e) {}
       fd.append("noPatientInfo", $("lb-ok1").checked ? "yes" : "");
       fd.append("noExamContent", $("lb-ok2").checked ? "yes" : "");
       var btn = $("lb-upload");

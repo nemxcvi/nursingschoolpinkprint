@@ -112,6 +112,7 @@ const BAD = {
   const lib = async pg => { await pg.goto(BASE + "library.html"); await pg.waitForSelector("#lb-form"); await pg.waitForSelector("#lb-list .lb-card, #lb-list .ch-note"); };
   await lib(pa);
   check(/No patient information/.test(await text(pa, ".lb-rules")) && /No test content/.test(await text(pa, ".lb-rules")), "the two sharing rules are at the top");
+  check(await pa.inputValue("#lb-name") === "" && await pa.getAttribute("#lb-name", "placeholder") === "Your name or nickname", "the name to show starts blank, typed by the student");
   check(await pa.$eval('.ms-nav a[href="library.html"]', a => a.classList.contains("is-current")), "Library tab in My study");
   check(await pa.$eval("#lb-upload", b => b.disabled), "Share is disabled until both boxes are ticked");
   const pickUnits = async (pg, list) => {
@@ -129,6 +130,7 @@ const BAD = {
     if (opts.units) await pickUnits(pg, opts.units);
     if (opts.topics) await pickTopics(pg, opts.topics);
     if (opts.anon) await pg.check('#lb-form input[name="show"][value="anon"]');
+    else await pg.fill("#lb-name", opts.name || "Kayla R.");
     await pg.check("#lb-ok1"); await pg.check("#lb-ok2");
     await pg.click("#lb-upload");
     await pg.waitForFunction(() => !/Sharing/.test(document.getElementById("lb-upload").textContent));
@@ -137,13 +139,14 @@ const BAD = {
   const results = {};
   results.pdf = await upload(pa, FILES.pdf, {title: "Wound care notes", desc: "Stages and dressings", units: ["nur114:U-03"], topics: ["nur114:U-03:tissue-integrity"]});
   await lib(pa);
+  check(await pa.inputValue("#lb-name") === "Kayla R.", "the typed name is remembered on this device for next time");
   results.jpg = await upload(pa, FILES.jpg, {title: "Chain of infection diagram", units: ["nur114:U-03"], topics: ["nur114:U-03:infection-control"], anon: true});
   await lib(pa);
   for (const k of ["png", "webp", "heic", "doc", "docx"]) { results[k] = await upload(pa, FILES[k]); await lib(pa); }
   check(Object.values(results).every(m => /Shared!/.test(m)), "uploads: PDF, JPG, PNG, WEBP, HEIC, DOC and DOCX all accepted", JSON.stringify(results).slice(0, 120));
   const rows = await q("select title, file_name, mime, size, display_name, units, topics, owner_hash from public.shared_files order by created_at");
   check(rows.length === 7 && R2().length === r0 + 7, "7 files: 7 database rows and 7 objects in the bucket");
-  check(rows[0].display_name === sa.nickname && rows[1].display_name === null && rows.every(r => r.owner_hash.length === 64 && !r.owner_hash.includes(sa.sync.lookup)),
+  check(rows[0].display_name === "Kayla R." && rows[1].display_name === null && rows.every(r => r.owner_hash.length === 64 && !r.owner_hash.includes(sa.sync.lookup)),
     "shown as the name or Anonymous; owner kept only as a hash");
   check(rows[4].file_name === "IMG_0042.heic" && rows[6].file_name === "Study guide.docx" && rows[0].mime === "application/pdf", "file names and types come from the file's contents", rows.map(r => r.file_name).join(", "));
   await pa.screenshot({path: OUT + "/lib-page.png", fullPage: true});

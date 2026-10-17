@@ -1040,8 +1040,10 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ch-cardcode{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.12em;color:var(--heading);padding:0 4px;}
 
 /* ---------- Library (shared resources) ---------- */
-.lb-rules{margin:0 0 20px;padding:14px 18px;border:1.5px dashed var(--border);background:var(--card);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.5;color:var(--text);}
-.lb-rules h2{margin:0 0 6px;}
+.lb-rules{margin:0 0 20px;padding:14px 18px;border:1.5px solid var(--missed-border);background:var(--missed-bg);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.5;color:var(--text);}
+.lb-rules h2{margin:0 0 6px;color:var(--missed-text);}
+.lb-rules,.lb-rules strong{color:var(--missed-text);}
+.lb-rules abbr{text-decoration:none;}
 .lb-rules ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;}
 .lb-form{gap:16px;}
 .lb-file{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;color:var(--text);}

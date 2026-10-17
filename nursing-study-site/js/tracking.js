@@ -34,7 +34,7 @@
   var PROGRESS_KEY = "pinkprint-progress";
   var CARRY_KEY = "pinkprint-carry";        /* sessionStorage, only after a guest taps "Start tracking" on results */
   /* Everything tracking has ever saved on a device, cleared by Delete my data */
-  var ALL_KEYS = [KEY, PROGRESS_KEY, "pinkprint-today", "pinkprint-track"];
+  var ALL_KEYS = [KEY, PROGRESS_KEY, "pinkprint-today", "pinkprint-track", "pinkprint-library-name"];
 
   var OWNER_NAME = "Miss Pinkprint";
   /* SHA-256 of the owner phrase (never the phrase itself). Empty until the owner picks one. */
