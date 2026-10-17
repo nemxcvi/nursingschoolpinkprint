@@ -62,14 +62,21 @@ const BAD = {
   const A = await device("A");
   const pa = await A.newPage();
   await pa.goto(BASE + "start-tracking.html?from=home");
-  await pa.waitForSelector("#st-classcard:not(.hidden)");
-  check(!(await pa.isVisible("#st-start")) && !(await pa.isVisible("#st-nick")), "Start tracking: class code first, the new-code steps hidden");
+  await pa.waitForSelector("#st-qr svg");
+  check(await pa.isVisible("#st-start") && await pa.isVisible("#st-nick") && !(await pa.isVisible("#st-classcard")), "Start tracking: the steps show first as a preview, no class code yet");
   check(await pa.isVisible("#st-link"), "Already have a code? (linking) is still there without the class code");
+  await pa.click("#st-start");
+  await pa.waitForSelector("#st-classcard", {state: "visible"});
+  check(await pa.$eval("#st-classdlg", d => d.open) && (await state(pa)) === null, "pressing Start tracking pops up the class code; nothing saved yet");
   await pa.screenshot({path: OUT + "/lib-classcode.png"});
+  await pa.click("#st-classclose");
+  check(!(await pa.isVisible("#st-classcard")) && (await state(pa)) === null, "Close shuts the pop-up without starting");
+  await pa.click("#st-start");
+  await pa.waitForSelector("#st-classcard", {state: "visible"});
   await pa.fill("#st-class", "wrong");
   await pa.click("#st-classgo");
   await pa.waitForSelector("#st-classmsg:not(.hidden)");
-  check(/isn't right/.test(await text(pa, "#st-classmsg")) && !(await pa.isVisible("#st-start")), "wrong class code: told so, still locked");
+  check(/isn't right/.test(await text(pa, "#st-classmsg")) && (await state(pa)) === null, "wrong class code: told so, nothing started");
   // The server refuses a brand-new code without the class code, even when called directly
   const direct = await pa.evaluate(async () => {
     const r = await fetch("api/vault/save", {method: "POST", headers: {"Content-Type": "application/json"},
@@ -85,10 +92,8 @@ const BAD = {
   check(directWrong === 400 && (await q("select count(*)::int n from public.vault"))[0].n === 0, "server: and with a wrong class code; nothing saved");
   await pa.fill("#st-class", "  pink NURSES 26 ");
   await pa.click("#st-classgo");
-  await pa.waitForSelector("#st-qr svg");
-  check(await pa.isVisible("#st-start") && !(await pa.isVisible("#st-classcard")), "right class code (any case/spaces): the steps appear");
-  await pa.click("#st-start");
   await pa.waitForURL(BASE);
+  check(true, "right class code (any case/spaces): tracking starts straight away");
   await waitFor(async () => { const s = await state(pa); return s && s.sync && s.sync.version > 0; });
   const sa = await state(pa);
   check(sa.sync.version > 0 && !("classCode" in sa) && (await q("select count(*)::int n from public.vault"))[0].n === 1, "tracking code made and saved; the class code isn't kept on the device afterwards");
@@ -99,7 +104,7 @@ const BAD = {
   const B2 = await device("A-phone");
   const pl = await B2.newPage();
   await pl.goto(BASE + "start-tracking.html?from=home");
-  await pl.waitForSelector("#st-classcard:not(.hidden)");
+  await pl.waitForSelector("#st-qr svg");
   await pl.click("#st-link");
   await pl.fill("#st-linkcode", sa.code);
   await pl.click("#st-linkgo");
@@ -216,7 +221,9 @@ const BAD = {
     const list = await Tracking.call("library/list", {lookup: k.lookup});
     const link = await Tracking.call("library/link", {lookup: k.lookup, id: list[0].id});
     const r = await fetch(link.url);
-    const forged = await fetch(link.url.replace(/.$/, c => c === "A" ? "B" : "A"));
+    // Change a character in the middle of the signature (the last one can differ only in unused padding bits)
+    const i = link.url.length - 10, c = link.url[i];
+    const forged = await fetch(link.url.slice(0, i) + (c === "A" ? "B" : "A") + link.url.slice(i + 1));
     return [r.headers.get("Content-Disposition"), forged.status];
   });
   check(/^attachment; filename=/.test(head[0]) && head[1] === 403, "served with Content-Disposition: attachment; a tampered link is refused", head[0]);
@@ -225,10 +232,10 @@ const BAD = {
   const B = await device("B");
   const pb = await B.newPage();
   await pb.goto(BASE + "start-tracking.html?from=home");
-  await pb.fill("#st-class", "Pink Nurses 26");
-  await pb.click("#st-classgo");
   await pb.waitForSelector("#st-qr svg");
   await pb.click("#st-start");
+  await pb.fill("#st-class", "Pink Nurses 26");
+  await pb.click("#st-classgo");
   await pb.waitForURL(BASE);
   await waitFor(async () => { const s = await state(pb); return s && s.sync && s.sync.version > 0; });
   await lib(pb);

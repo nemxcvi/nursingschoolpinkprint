@@ -577,6 +577,10 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .tp-cols{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;}
 .tp-main{flex:2 1 560px;min-width:0;display:flex;flex-direction:column;gap:16px;}
 .st-new{display:contents;}
+.st-dialog{width:min(480px,calc(100vw - 32px));max-width:none;padding:0;border:0;background:transparent;color:var(--text);}
+.st-dialog::backdrop{background:rgba(40,12,26,.45);}
+.st-dialog .tp-card{background:var(--page);box-shadow:0 12px 40px rgba(40,12,26,.25);}
+.st-dialog .tp-textlink{align-self:center;}
 .tp-aside{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:16px;}
 .tp-card{background:var(--card);border:1.5px solid var(--border);padding:24px 28px;display:flex;flex-direction:column;gap:14px;}
 .tp-col{gap:18px;}
