@@ -484,8 +484,11 @@ function initPracticeQuiz(bank, catLabels, opts){
   /* ---------- Drag and drop ----------
      Two boxes; every option starts on the left, shuffled. Options move by pointer
      drag (mouse, pen and touch all use pointer events), by tapping an option and
-     then a box, or with the letter keys. Only the answer box counts when checked. */
+     then a box, or with the letter keys. Only the answer box counts when checked.
+     On touch screens a drag starts only after a short press and hold, so swiping
+     over the options still scrolls the page and keeps the picked option picked. */
   var ddPicked = null, ddDrag = null, ddDragEnd = {item: null, at: 0};
+  var DD_HOLD = 250;
 
   function ddBoxes(){ return optsEl.querySelectorAll(".pq-dd-box"); }
   function ddList(box){ return box.querySelector(".pq-dd-list"); }
@@ -591,9 +594,10 @@ function initPracticeQuiz(bank, catLabels, opts){
 
   function ddCancelDrag(){
     if (!ddDrag) return;
+    if (ddDrag.hold) clearTimeout(ddDrag.hold);
     if (ddDrag.raf) cancelAnimationFrame(ddDrag.raf);
     if (ddDrag.ghost) ddDrag.ghost.remove();
-    ddDrag.item.classList.remove("is-dragging");
+    ddDrag.item.classList.remove("is-dragging", "is-held");
     ddBoxes().forEach(function(b){ b.classList.remove("is-over"); });
     ddDrag = null;
   }
@@ -602,7 +606,13 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (answered || !e.isPrimary || (e.pointerType === "mouse" && e.button !== 0)) return;
     var item = e.currentTarget;
     ddCancelDrag();
-    ddDrag = {item: item, id: e.pointerId, sx: e.clientX, sy: e.clientY, x: e.clientX, y: e.clientY, active: false};
+    var touch = e.pointerType === "touch";
+    var drag = ddDrag = {item: item, id: e.pointerId, sx: e.clientX, sy: e.clientY, x: e.clientX, y: e.clientY, active: false, ready: !touch};
+    if (touch) drag.hold = setTimeout(function(){
+      if (ddDrag !== drag) return;
+      drag.ready = true;
+      item.classList.add("is-held");
+    }, DD_HOLD);
     try { item.setPointerCapture(e.pointerId); } catch (err) {}
   }
 
@@ -611,6 +621,8 @@ function initPracticeQuiz(bank, catLabels, opts){
     ddDrag.x = e.clientX; ddDrag.y = e.clientY;
     if (!ddDrag.active){
       if (Math.abs(e.clientX - ddDrag.sx) + Math.abs(e.clientY - ddDrag.sy) < 8) return;
+      /* Moved before the hold finished: it's a scroll, not a drag */
+      if (!ddDrag.ready){ ddCancelDrag(); return; }
       var item = ddDrag.item, r = item.getBoundingClientRect();
       ddUnpick();
       ddDrag.active = true;
@@ -638,7 +650,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       ddDragEnd = {item: drag.item, at: Date.now()};
       if (over && e.type === "pointerup") ddMove(drag.item, over);
     } else {
-      ddDrag = null;
+      ddCancelDrag();
     }
   }
 
@@ -688,9 +700,16 @@ function initPracticeQuiz(bank, catLabels, opts){
       item.addEventListener("pointermove", ddPointerMove);
       item.addEventListener("pointerup", ddPointerUp);
       item.addEventListener("pointercancel", ddPointerUp);
+      /* Once a touch has been held long enough to drag, stop the page from scrolling */
+      item.addEventListener("touchmove", function(e){
+        if (ddDrag && ddDrag.item === item && ddDrag.ready) e.preventDefault();
+      }, {passive: false});
+      item.addEventListener("contextmenu", function(e){ if (ddDrag) e.preventDefault(); });
       item.addEventListener("click", function(){
         /* A finished drag can fire a click on the item; don't treat it as a tap */
         if (ddDragEnd.item === item && Date.now() - ddDragEnd.at < 400) return;
+        /* With an option picked, tapping an option in the other box moves the picked one there */
+        if (ddPicked && ddBoxOf(ddPicked) !== ddBoxOf(item)){ ddMove(ddPicked, ddBoxOf(item)); return; }
         ddPick(item);
       });
       poolList.appendChild(item);
