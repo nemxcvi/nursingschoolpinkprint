@@ -140,18 +140,19 @@
     return out;
   }
 
-  /* ---------- Weak spots ----------
-     Missed last time first (most misses first), then lowest accuracy; fills with
-     still-learning questions if short. */
-  function weakSpots(questions, store, n){
-    var acc = function(r){ return r.seen ? (r.correct || 0) / r.seen : 1; };
-    var seen = questions.filter(function(q){ var r = store[q.id]; return r && r.seen; });
-    var missed = seen.filter(function(q){ return store[q.id].lastCorrect === false; })
-      .sort(function(a, b){ var ra = store[a.id], rb = store[b.id]; return (rb.wrong || 0) - (ra.wrong || 0) || acc(ra) - acc(rb); });
-    var lowAcc = seen.filter(function(q){ var r = store[q.id]; return r.lastCorrect !== false && !r.mastered && acc(r) < 1; })
-      .sort(function(a, b){ return acc(store[a.id]) - acc(store[b.id]); });
-    var learning = seen.filter(function(q){ var r = store[q.id]; return !r.mastered && missed.indexOf(q) === -1 && lowAcc.indexOf(q) === -1; });
-    return missed.concat(lowAcc, learning).slice(0, n);
+  /* ---------- Mistakes quiz ----------
+     Blind spots first, then the rest of the Mistake journal (up to 40). Fewer than 20?
+     Topped up with questions never seen, so there's always a full quiz. */
+  var MISTAKES_MAX = 40, MISTAKES_MIN = 20;
+  function mistakesQuiz(questions, store, today, exams, random){
+    var status = function(q){ return P.statusOf(store[q.id], q.unit, today, exams); };
+    var missed = questions.filter(function(q){ var r = store[q.id]; return (r && r.journal) || status(q) === "blindspot"; });
+    var out = rank(missed, store, today, exams, MISTAKES_MAX, random);
+    if (out.length < MISTAKES_MIN){
+      var unseen = questions.filter(function(q){ return status(q) === "new" && out.indexOf(q) === -1; });
+      out = out.concat(rank(unseen, store, today, exams, MISTAKES_MIN - out.length, random));
+    }
+    return out;
   }
 
   /* ---------- Weekly goal and streaks ----------
@@ -267,7 +268,7 @@
     shortDate: shortDate, longDate: longDate, inBreak: inBreak,
     stats: stats, readiness: readiness, READINESS_LABEL: READINESS_LABEL,
     GROUPS: GROUPS, groupCounts: groupCounts, rank: rank, examUnitsQuestions: examUnitsQuestions, previousExam: previousExam,
-    planToday: planToday, examReady: examReady, weakSpots: weakSpots,
+    planToday: planToday, examReady: examReady, mistakesQuiz: mistakesQuiz,
     dailyTotals: dailyTotals, weekProgress: weekProgress, weekKind: weekKind, passesLeft: passesLeft, streaks: streaks,
     grade: grade, strip: strip, recap: recap
   };

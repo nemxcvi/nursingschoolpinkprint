@@ -136,13 +136,10 @@ var MyStudy = (function(){
   }
 
   function tiles(d){
-    var missed = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.seen && r.lastCorrect === false; }).length;
-    var weak = S.weakSpots(d.questions, d.store, 20).length;
     var journal = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.journal; }).length;
     var marks = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.bookmarked; });
     var notes = marks.filter(function(q){ return d.store[q.id].note; }).length;
     var t = [
-      ["session.html?mode=weak", "Weak spots quiz", weak ? (missed ? "Your " + weak + " most-missed" : plural(weak, "question") + " to firm up") : "Nothing missed yet"],
       ["journal.html?tab=mistakes", "Mistake journal", journal ? journal + " to review" : "Nothing to review"],
       ["journal.html?tab=bookmarks", "Bookmarks", marks.length ? marks.length + " saved · " + notes + " with notes" : "None saved yet"]
     ];
@@ -482,18 +479,20 @@ var MyStudy = (function(){
     var topicOpts = topicList.map(function(t){ return '<option value="' + esc(t) + '"' + (js.topic === t ? " selected" : "") + ">" + esc(t) + "</option>"; }).join("");
     var scope = (js.unit ? "&unit=" + js.unit : "") + (js.topic ? "&topic=" + encodeURIComponent(js.topic) : "");
     var quizHref = "session.html?mode=" + (js.tab === "journal" ? "journal" : "bookmarks") + scope;
-    /* Blind spots (wrong while sure) get their own quiz on the Mistakes tab, following the same filters */
-    var blind = js.tab !== "journal" ? [] : d.questions.filter(function(q){
-      return (!js.unit || q.unit === +js.unit) && (!js.topic || q.topic === js.topic) && P.statusOf(d.store[q.id], q.unit, d.today, d.exams) === "blindspot";
-    });
+    /* Mistakes tab: one quiz (blind spots first, then mistakes, topped up with unseen questions), following the filters */
+    var mq = js.tab !== "journal" ? [] : S.mistakesQuiz(d.questions.filter(function(q){
+      return (!js.unit || q.unit === +js.unit) && (!js.topic || q.topic === js.topic);
+    }), d.store, d.today, d.exams);
+    var mqMissed = mq.filter(function(q){ var r = d.store[q.id]; return r && r.seen; }).length;
     var noun = js.tab === "journal" ? ["mistake", "mistakes"] : ["bookmark", "bookmarks"];
     var term = (+d.semester.start.slice(5, 7) >= 8 ? "Fall " : "Spring ") + d.semester.start.slice(0, 4);
     var isProgress = js.tab === "progress";
     var tab = function(key, label){ return '<button type="button" role="tab" data-tab="' + key + '" aria-selected="' + (js.tab === key) + '"' + (js.tab === key ? ' class="is-on"' : "") + ">" + label + "</button>"; };
     var html = '<section class="ms-journal-head"><div class="tp-stack"><div class="tp-eyebrow">' + (isProgress ? "NUR 114 · " + term : "Review before exams") + '</div><h1 class="tp-h1">Journal</h1></div>' +
-      (isProgress ? progressTotals(d) : filtered.length || blind.length ? '<div class="ms-jbtns">' +
-        (filtered.length ? '<a class="ms-btn is-primary is-big" href="' + quizHref + '">Quiz my ' + filtered.length + " " + (filtered.length === 1 ? noun[0] : noun[1]) + " →</a>" : "") +
-        (blind.length ? '<a class="ms-btn is-blind is-big" href="session.html?mode=blind' + scope + '">Quiz my ' + plural(blind.length, "blind spot") + " →</a>" : "") + "</div>" : "") + "</section>" +
+      (isProgress ? progressTotals(d) : js.tab === "journal" ? (mq.length ? '<div class="ms-jquiz"><a class="ms-btn is-primary is-big" href="' + quizHref + '">' +
+          (mqMissed ? "Quiz my mistakes · " + mq.length : "Quiz " + mq.length + " new questions") + " →</a>" +
+          '<span class="ms-jquiz-sub">' + (mqMissed ? "Blind spots first, then mistakes" + (mq.length > mqMissed ? ", then new questions to make " + mq.length : "") : "No mistakes here yet, so these are questions you haven't seen") + "</span></div>" : "")
+        : filtered.length ? '<a class="ms-btn is-primary is-big" href="' + quizHref + '">Quiz my ' + filtered.length + " " + (filtered.length === 1 ? noun[0] : noun[1]) + " →</a>" : "") + "</section>" +
       '<div class="ms-tabs" role="tablist">' + tab("progress", "Progress") + tab("journal", "Mistakes · " + inJournal.length) + tab("bookmarks", "Bookmarks · " + marks.length) + "</div>";
     if (isProgress){
       host.innerHTML = html + progressBody(d);

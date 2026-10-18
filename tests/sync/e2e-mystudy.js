@@ -64,7 +64,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   const kv = await pg.$$eval(".ms-kv div", d => d.map(x => x.children[0].textContent + ": " + x.children[1].textContent));
   check(kv[0] === "Streak: 6 weeks" && kv[1] === "Best streak: 6 weeks" && /70\s*of 50 questions/.test(week), "dashboard: this week, streak and best streak", kv.join(" | "));
   check(/81%/.test(await text(".ms-grade")) && /73%/.test(await text(".ms-grade")), "dashboard: exam average 81%, needs about 73%");
-  check((await pg.$$eval(".ms-tile", t => t.length)) === 4, "dashboard: 4 tiles");
+  check((await pg.$$eval(".ms-tile", t => t.length)) === 3 && !/Weak spots/.test(await text(".ms-tiles")), "dashboard: 3 tiles, no Weak spots");
   check((await pg.$$eval(".ms-current .ms-row", r => r.length)) === 7, "dashboard: Unit 3 topic table (7 topics)");
   await shot("dashboard-oct1");
 
@@ -113,14 +113,15 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(/Progress/.test(tabs) && /Mistakes · 34/.test(tabs), "journal: Progress tab + 28 unit-3 + 6 unit-2 mistakes", tabs);
   await pg.click('[data-tab="journal"]');
   check(/Your answer/.test(await text(".ms-jcard")) && /Correct answer/.test(await text(".ms-jcard")), "journal: your answer and correct answer");
-  const jbtns = await pg.$$eval(".ms-jbtns a", a => a.map(x => [x.textContent, x.getAttribute("href")]));
-  check(jbtns.length === 2 && /Quiz my 34 mistakes/.test(jbtns[0][0]) && /Quiz my \d+ blind spots?/.test(jbtns[1][0]) && /mode=blind/.test(jbtns[1][1]),
-    "journal: Quiz my mistakes and Quiz my blind spots side by side", JSON.stringify(jbtns));
+  const jbtns = await pg.$$eval(".ms-jquiz a", a => a.map(x => [x.textContent, x.getAttribute("href")]));
+  check(jbtns.length === 1 && /Quiz my mistakes · 34/.test(jbtns[0][0]) && /mode=journal/.test(jbtns[0][1]) && /Blind spots first, then mistakes/.test(await text(".ms-jquiz-sub")),
+    "journal: one quiz, blind spots first then mistakes", JSON.stringify(jbtns));
   await shot("journal-mistakes");
   check(/Resolved · 3/.test(await text(".ms-resolved")), "journal: resolved section");
   await pg.selectOption("#j-unit", "2");
   check((await pg.$$eval(".ms-jcard", c => c.length)) === 6, "journal: unit filter");
-  check(await pg.$$eval(".ms-jbtns a", a => a.every(x => /unit=2/.test(x.getAttribute("href")))), "journal: both quiz buttons follow the unit filter");
+  check(/unit=2/.test(await pg.$eval(".ms-jquiz a", x => x.getAttribute("href"))) && /Quiz my mistakes · 20/.test(await text(".ms-jquiz a")) && /then new questions to make 20/.test(await text(".ms-jquiz-sub")),
+    "journal: the quiz follows the unit filter; 6 mistakes topped up to 20 with new questions", await text(".ms-jquiz"));
   await shot("journal");
   await pg.selectOption("#j-unit", "");
   await pg.click('[data-tab="bookmarks"]');
@@ -131,11 +132,14 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.waitForSelector("#pq-quiz-screen:not(.hidden)");
   const prog = await text("#pq-progress");
   check(/question 1 of \d+/.test(prog), "session: today's plan starts straight away", prog);
+  await go("session.html?mode=journal&unit=2", "2026-10-01");
+  await pg.waitForSelector("#pq-quiz-screen:not(.hidden)");
+  check(/of 20/.test(await text("#pq-progress")), "session: mistakes quiz for Unit 2 (6 mistakes + 14 new = 20)", await text("#pq-progress"));
+  await pg.click("#pq-end-test");
+  check(/Mistakes quiz mastery/.test(await text("#pq-mastery")), "session: results with Mastery box");
   await go("session.html?mode=weak", "2026-10-01");
   await pg.waitForSelector("#pq-quiz-screen:not(.hidden)");
-  check(/of 20/.test(await text("#pq-progress")), "session: weak spots (20 questions)", await text("#pq-progress"));
-  await pg.click("#pq-end-test");
-  check(/Weak spots quiz mastery/.test(await text("#pq-mastery")), "session: results with Mastery box");
+  check(/of 34/.test(await text("#pq-progress")) && /Mistakes quiz/.test(await text("#ss-title")), "session: old Weak spots links open the mistakes quiz", await text("#pq-progress"));
   check(await pg.$$eval('#pq-mastery a[href*="journal.html"]', a => a.length).then(n => n >= 0), "session: journal link present when mistakes added");
   await go("session.html?mode=review&unit=1", "2026-10-01");
   await pg.waitForSelector("#pq-quiz-screen:not(.hidden), #pq-empty:not(.hidden)");
@@ -179,7 +183,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   // ---- Settings switches hide features ----
   await pg.evaluate(() => { Tracking.setFeature("countdown", false); Tracking.setFeature("goal", false); Tracking.setFeature("challenges", false); });
   await go("dashboard.html", "2026-10-01");
-  check(!(await pg.$(".ms-exam")) && !(await pg.$(".ms-week")) && (await pg.$$eval(".ms-tile", t => t.length)) === 3, "switches: countdown, goal and challenges hidden");
+  check(!(await pg.$(".ms-exam")) && !(await pg.$(".ms-week")) && (await pg.$$eval(".ms-tile", t => t.length)) === 2, "switches: countdown, goal and challenges hidden");
   await go("", "2026-10-15");
   check(!(await pg.$("#pp-strip")), "switches: no countdown strip on the homepage");
   check(await pg.evaluate(() => Tracking.feature("grade")), "Exam average is on by default");
