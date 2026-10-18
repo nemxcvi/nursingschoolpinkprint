@@ -429,14 +429,6 @@ var MyStudy = (function(){
         bar(st, {ready: ready}) + '<strong class="ms-unit-pct">' + st.masteryPct + "%</strong>" + btn + "</div>" +
         (open ? '<div class="ms-topics">' + table(topicRows(d, u, {exam: ready ? exam : null})) + "</div>" : "") + "</div>";
     }).join("") + "</section>";
-    var blind = d.questions.filter(function(q){ return P.statusOf(d.store[q.id], q.unit, d.today, d.exams) === "blindspot"; });
-    html += '<section class="ms-card ms-blind"><div class="ms-current-head"><h2 class="ms-h2">Blind spots</h2>' +
-      (blind.length ? '<a class="ms-btn is-blind" href="session.html?mode=blind">Quiz my ' + plural(blind.length, "blind spot") + "</a>" : "") + "</div>" +
-      '<p class="ms-blind-sub">' + (blind.length ? "Questions you got wrong while marking Sure. They come first in every review." : "No blind spots right now. They're questions you got wrong while marking Sure.") + "</p>" +
-      (blind.length ? "<ul>" + blind.slice(0, 12).map(function(q){
-        var t = topicOf(d, q);
-        return "<li>" + esc(q.prompt) + ' <span class="ms-blind-topic">· ' + esc(t ? t.topic : "") + "</span></li>";
-      }).join("") + "</ul>" : "") + "</section>";
     return html;
   }
   function topicOf(d, q){
@@ -488,13 +480,20 @@ var MyStudy = (function(){
     var topicList = [];
     d.units.forEach(function(u){ if (!js.unit || u.unit === +js.unit) u.topics.forEach(function(t){ topicList.push(t.topic); }); });
     var topicOpts = topicList.map(function(t){ return '<option value="' + esc(t) + '"' + (js.topic === t ? " selected" : "") + ">" + esc(t) + "</option>"; }).join("");
-    var quizHref = "session.html?mode=" + (js.tab === "journal" ? "journal" : "bookmarks") + (js.unit ? "&unit=" + js.unit : "") + (js.topic ? "&topic=" + encodeURIComponent(js.topic) : "");
+    var scope = (js.unit ? "&unit=" + js.unit : "") + (js.topic ? "&topic=" + encodeURIComponent(js.topic) : "");
+    var quizHref = "session.html?mode=" + (js.tab === "journal" ? "journal" : "bookmarks") + scope;
+    /* Blind spots (wrong while sure) get their own quiz on the Mistakes tab, following the same filters */
+    var blind = js.tab !== "journal" ? [] : d.questions.filter(function(q){
+      return (!js.unit || q.unit === +js.unit) && (!js.topic || q.topic === js.topic) && P.statusOf(d.store[q.id], q.unit, d.today, d.exams) === "blindspot";
+    });
     var noun = js.tab === "journal" ? ["mistake", "mistakes"] : ["bookmark", "bookmarks"];
     var term = (+d.semester.start.slice(5, 7) >= 8 ? "Fall " : "Spring ") + d.semester.start.slice(0, 4);
     var isProgress = js.tab === "progress";
     var tab = function(key, label){ return '<button type="button" role="tab" data-tab="' + key + '" aria-selected="' + (js.tab === key) + '"' + (js.tab === key ? ' class="is-on"' : "") + ">" + label + "</button>"; };
     var html = '<section class="ms-journal-head"><div class="tp-stack"><div class="tp-eyebrow">' + (isProgress ? "NUR 114 · " + term : "Review before exams") + '</div><h1 class="tp-h1">Journal</h1></div>' +
-      (isProgress ? progressTotals(d) : filtered.length ? '<a class="ms-btn is-primary is-big" href="' + quizHref + '">Quiz my ' + filtered.length + " " + (filtered.length === 1 ? noun[0] : noun[1]) + " →</a>" : "") + "</section>" +
+      (isProgress ? progressTotals(d) : filtered.length || blind.length ? '<div class="ms-jbtns">' +
+        (filtered.length ? '<a class="ms-btn is-primary is-big" href="' + quizHref + '">Quiz my ' + filtered.length + " " + (filtered.length === 1 ? noun[0] : noun[1]) + " →</a>" : "") +
+        (blind.length ? '<a class="ms-btn is-blind is-big" href="session.html?mode=blind' + scope + '">Quiz my ' + plural(blind.length, "blind spot") + " →</a>" : "") + "</div>" : "") + "</section>" +
       '<div class="ms-tabs" role="tablist">' + tab("progress", "Progress") + tab("journal", "Mistakes · " + inJournal.length) + tab("bookmarks", "Bookmarks · " + marks.length) + "</div>";
     if (isProgress){
       host.innerHTML = html + progressBody(d);

@@ -101,7 +101,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.click('.ms-unit-name[data-unit="3"]');
   await pg.waitForSelector(".ms-topics");
   check((await pg.$$eval(".ms-topics .ms-row", r => r.length)) === 7, "progress: Unit 3 topics open");
-  check(/Quiz my \d+ blind spots?/.test(await text(".ms-blind")), "progress: blind spots box", (await text(".ms-blind .ms-btn")));
+  check(!(await pg.$(".ms-blind")) && !/Quiz my/.test(await text(".ms-main")), "progress: no blind spots box (the quiz is on the Mistakes tab)");
   check(/journal\.html/.test(pg.url()), "progress.html redirects to the Journal", pg.url());
   check(!(await pg.$$eval(".ms-nav a", a => a.map(x => x.textContent))).includes("Progress"), "header: no separate Progress link");
   await shot("progress");
@@ -113,9 +113,14 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(/Progress/.test(tabs) && /Mistakes · 34/.test(tabs), "journal: Progress tab + 28 unit-3 + 6 unit-2 mistakes", tabs);
   await pg.click('[data-tab="journal"]');
   check(/Your answer/.test(await text(".ms-jcard")) && /Correct answer/.test(await text(".ms-jcard")), "journal: your answer and correct answer");
+  const jbtns = await pg.$$eval(".ms-jbtns a", a => a.map(x => [x.textContent, x.getAttribute("href")]));
+  check(jbtns.length === 2 && /Quiz my 34 mistakes/.test(jbtns[0][0]) && /Quiz my \d+ blind spots?/.test(jbtns[1][0]) && /mode=blind/.test(jbtns[1][1]),
+    "journal: Quiz my mistakes and Quiz my blind spots side by side", JSON.stringify(jbtns));
+  await shot("journal-mistakes");
   check(/Resolved · 3/.test(await text(".ms-resolved")), "journal: resolved section");
   await pg.selectOption("#j-unit", "2");
   check((await pg.$$eval(".ms-jcard", c => c.length)) === 6, "journal: unit filter");
+  check(await pg.$$eval(".ms-jbtns a", a => a.every(x => /unit=2/.test(x.getAttribute("href")))), "journal: both quiz buttons follow the unit filter");
   await shot("journal");
   await pg.selectOption("#j-unit", "");
   await pg.click('[data-tab="bookmarks"]');
