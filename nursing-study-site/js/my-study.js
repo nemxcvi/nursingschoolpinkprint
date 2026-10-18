@@ -61,7 +61,6 @@ var MyStudy = (function(){
   }
 
   /* ---------- Shared pieces ---------- */
-  /* Top menu for My study pages: Dashboard, Progress, Journal, Challenges + nickname (Settings) */
   /* My study header: the site menu at the left (assets/header.js in "menu" mode, loaded after the
      page script), brand, My study links, then Settings and night mode at the right (icons; Settings
      is also in the menu). Built once; later calls only refresh the links (e.g. after the Challenges
@@ -70,7 +69,7 @@ var MyStudy = (function(){
   var SUN = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
   function isDark(){ return document.documentElement.getAttribute("data-theme") === "dark"; }
   function header(active){
-    var items = [["dashboard", "Dashboard", "dashboard.html"], ["progress", "Progress", "progress.html"], ["journal", "Journal", "journal.html"]];
+    var items = [["dashboard", "Dashboard", "dashboard.html"], ["journal", "Journal", "journal.html"]];
     if (T.feature("challenges")) items.push(["challenges", "Challenges", "challenges.html"]);
     items.push(["library", "Library", "library.html"]);
     var links = items.map(function(i){
@@ -144,7 +143,7 @@ var MyStudy = (function(){
     var notes = marks.filter(function(q){ return d.store[q.id].note; }).length;
     var t = [
       ["session.html?mode=weak", "Weak spots quiz", weak ? (missed ? "Your " + weak + " most-missed" : plural(weak, "question") + " to firm up") : "Nothing missed yet"],
-      ["journal.html", "Mistake journal", journal ? journal + " to review" : "Nothing to review"],
+      ["journal.html?tab=mistakes", "Mistake journal", journal ? journal + " to review" : "Nothing to review"],
       ["journal.html?tab=bookmarks", "Bookmarks", marks.length ? marks.length + " saved · " + notes + " with notes" : "None saved yet"]
     ];
     if (T.feature("challenges")){
@@ -255,7 +254,7 @@ var MyStudy = (function(){
         }), {first: "Unit"});
     }
     /* The link sits on the eyebrow line (like Edit scores) so the title keeps the full width */
-    head = head.replace("</span>", '</span><a class="ms-linkbtn ms-toplink" href="progress.html">All units<span class="ms-wide"> in Progress</span></a></div>');
+    head = head.replace("</span>", '</span><a class="ms-linkbtn ms-toplink" href="journal.html">All units<span class="ms-wide"> in Progress</span></a></div>');
     return '<section class="ms-card ms-current"><div class="tp-stack"><div class="ms-grade-top">' + head + "</div>" + body + "</section>";
   }
 
@@ -406,18 +405,19 @@ var MyStudy = (function(){
     host.innerHTML = html;
   }
 
-  /* ---------- Progress ---------- */
+  /* ---------- Progress (the Journal's first tab) ---------- */
   var openUnits = {};
-  function progressPage(d, host){
+  function progressTotals(d){
+    var all = S.stats(d.questions, d.store, d.today, d.exams);
+    return '<div class="ms-totals"><div><span class="ms-total">' + all.mastered + '<small> / ' + all.total + '</small></span><span class="ms-sub">Mastered</span></div>' +
+      (T.feature("review") ? '<div><span class="ms-total">' + all.due + '</span><span class="ms-sub">Due for review</span></div>' : "") +
+      '<div><span class="ms-total is-blind">' + all.blind + '</span><span class="ms-sub">Blind spots</span></div></div>';
+  }
+  function progressBody(d){
     var exam = P.nextExam(d.exams, d.today);
     var inWindow = exam && d.today >= S.addDays(exam.date, -3) && d.today < exam.date;
-    var all = S.stats(d.questions, d.store, d.today, d.exams);
     var showDue = T.feature("review");
-    var term = (+d.semester.start.slice(5, 7) >= 8 ? "Fall " : "Spring ") + d.semester.start.slice(0, 4);
-    var html = '<section class="ms-progress-head"><div class="tp-stack"><div class="tp-eyebrow">NUR 114 · ' + term + '</div><h1 class="tp-h1">Progress</h1></div>' +
-      '<div class="ms-totals"><div><span class="ms-total">' + all.mastered + '<small> / ' + all.total + '</small></span><span class="ms-sub">Mastered</span></div>' +
-      (showDue ? '<div><span class="ms-total">' + all.due + '</span><span class="ms-sub">Due for review</span></div>' : "") +
-      '<div><span class="ms-total is-blind">' + all.blind + '</span><span class="ms-sub">Blind spots</span></div></div></section>' + legend(inWindow);
+    var html = legend(inWindow);
     html += '<section class="ms-card ms-units">' + d.units.map(function(u){
       var st = S.stats(u.questions, d.store, d.today, d.exams);
       var ready = inWindow && exam.units.indexOf(u.unit) !== -1 ? S.examReady(u.questions, d.store, exam).ready : 0;
@@ -437,22 +437,15 @@ var MyStudy = (function(){
         var t = topicOf(d, q);
         return "<li>" + esc(q.prompt) + ' <span class="ms-blind-topic">· ' + esc(t ? t.topic : "") + "</span></li>";
       }).join("") + "</ul>" : "") + "</section>";
-    host.innerHTML = html;
-    host.querySelectorAll("[data-unit]").forEach(function(b){
-      b.addEventListener("click", function(){
-        var n = +b.getAttribute("data-unit");
-        openUnits[n] = !openUnits[n];
-        progressPage(d, host);
-      });
-    });
+    return html;
   }
   function topicOf(d, q){
     var u = unitData(d, q.unit);
     return u ? u.topics.filter(function(t){ return t.topic === q.topic; })[0] : null;
   }
 
-  /* ---------- Journal: Mistake journal and Bookmarks ---------- */
-  var journalState = {tab: "journal", unit: "", topic: "", sort: "missed", showResolved: false};
+  /* ---------- Journal: Progress, Mistake journal and Bookmarks ---------- */
+  var journalState = {tab: "progress", scrollTo: "", unit: "", topic: "", sort: "missed", showResolved: false};
   function letterIndex(id){ return "abcdefghijklmnopqrstuvwxyz".indexOf(String(id)); }
   function optionTexts(q, ids){ return (ids || []).map(function(id){ var o = q.options[letterIndex(id)]; return o ? o.text : ""; }).filter(Boolean); }
   function correctTexts(q){ return q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.text; }); }
@@ -482,7 +475,7 @@ var MyStudy = (function(){
     var inJournal = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.journal; });
     var resolved = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.resolved && !r.journal; });
     var marks = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.bookmarked; });
-    var list = js.tab === "journal" ? inJournal : marks;
+    var list = js.tab === "bookmarks" ? marks : inJournal;
     var filtered = list.filter(function(q){ return (!js.unit || q.unit === +js.unit) && (!js.topic || q.topic === js.topic); });
     var order = {};
     d.questions.forEach(function(q, i){ order[q.id] = i; });
@@ -497,11 +490,30 @@ var MyStudy = (function(){
     var topicOpts = topicList.map(function(t){ return '<option value="' + esc(t) + '"' + (js.topic === t ? " selected" : "") + ">" + esc(t) + "</option>"; }).join("");
     var quizHref = "session.html?mode=" + (js.tab === "journal" ? "journal" : "bookmarks") + (js.unit ? "&unit=" + js.unit : "") + (js.topic ? "&topic=" + encodeURIComponent(js.topic) : "");
     var noun = js.tab === "journal" ? ["mistake", "mistakes"] : ["bookmark", "bookmarks"];
-    var html = '<section class="ms-journal-head"><div class="tp-stack"><div class="tp-eyebrow">Review before exams</div><h1 class="tp-h1">Journal</h1></div>' +
-      (filtered.length ? '<a class="ms-btn is-primary is-big" href="' + quizHref + '">Quiz my ' + filtered.length + " " + (filtered.length === 1 ? noun[0] : noun[1]) + " →</a>" : "") + "</section>" +
-      '<div class="ms-tabs" role="tablist"><button type="button" role="tab" data-tab="journal" aria-selected="' + (js.tab === "journal") + '"' + (js.tab === "journal" ? ' class="is-on"' : "") + ">Mistake journal · " + inJournal.length + "</button>" +
-      '<button type="button" role="tab" data-tab="bookmarks" aria-selected="' + (js.tab === "bookmarks") + '"' + (js.tab === "bookmarks" ? ' class="is-on"' : "") + ">Bookmarks · " + marks.length + "</button></div>" +
-      '<div class="ms-filters"><label><span class="tp-label">Unit</span><select id="j-unit"><option value="">All units</option>' + unitOpts + "</select></label>" +
+    var term = (+d.semester.start.slice(5, 7) >= 8 ? "Fall " : "Spring ") + d.semester.start.slice(0, 4);
+    var isProgress = js.tab === "progress";
+    var tab = function(key, label){ return '<button type="button" role="tab" data-tab="' + key + '" aria-selected="' + (js.tab === key) + '"' + (js.tab === key ? ' class="is-on"' : "") + ">" + label + "</button>"; };
+    var html = '<section class="ms-journal-head"><div class="tp-stack"><div class="tp-eyebrow">' + (isProgress ? "NUR 114 · " + term : "Review before exams") + '</div><h1 class="tp-h1">Journal</h1></div>' +
+      (isProgress ? progressTotals(d) : filtered.length ? '<a class="ms-btn is-primary is-big" href="' + quizHref + '">Quiz my ' + filtered.length + " " + (filtered.length === 1 ? noun[0] : noun[1]) + " →</a>" : "") + "</section>" +
+      '<div class="ms-tabs" role="tablist">' + tab("progress", "Progress") + tab("journal", "Mistakes · " + inJournal.length) + tab("bookmarks", "Bookmarks · " + marks.length) + "</div>";
+    if (isProgress){
+      host.innerHTML = html + progressBody(d);
+      bindJournal(d, host);
+      host.querySelectorAll("[data-unit]").forEach(function(b){
+        b.addEventListener("click", function(){
+          var n = +b.getAttribute("data-unit");
+          openUnits[n] = !openUnits[n];
+          journalPage(d, host);
+        });
+      });
+      if (js.scrollTo){
+        var el = document.getElementById(js.scrollTo);
+        js.scrollTo = "";
+        if (el) el.scrollIntoView();
+      }
+      return;
+    }
+    html += '<div class="ms-filters"><label><span class="tp-label">Unit</span><select id="j-unit"><option value="">All units</option>' + unitOpts + "</select></label>" +
       '<label><span class="tp-label">Topic</span><select id="j-topic"><option value="">All topics</option>' + topicOpts + "</select></label>" +
       '<label><span class="tp-label">Sort</span><select id="j-sort"><option value="missed"' + (js.sort === "missed" ? " selected" : "") + ">Most missed</option>" +
       '<option value="recent"' + (js.sort === "recent" ? " selected" : "") + ">Most recent</option><option value=\"unit\"" + (js.sort === "unit" ? " selected" : "") + ">Unit order</option></select></label></div>";
@@ -512,12 +524,25 @@ var MyStudy = (function(){
         (js.showResolved ? resolved.map(function(q){ return journalCard(d, q, "resolved"); }).join("") : "") + "</section>";
     }
     host.innerHTML = html;
-    host.querySelectorAll("[data-tab]").forEach(function(b){ b.addEventListener("click", function(){ js.tab = b.getAttribute("data-tab"); js.sort = js.tab === "journal" ? "missed" : "recent"; journalPage(d, host); }); });
+    bindJournal(d, host);
     document.getElementById("j-unit").addEventListener("change", function(e){ js.unit = e.target.value; js.topic = ""; journalPage(d, host); });
     document.getElementById("j-topic").addEventListener("change", function(e){ js.topic = e.target.value; journalPage(d, host); });
     document.getElementById("j-sort").addEventListener("change", function(e){ js.sort = e.target.value; journalPage(d, host); });
     var rb = document.getElementById("j-resolved");
     if (rb) rb.addEventListener("click", function(){ js.showResolved = !js.showResolved; journalPage(d, host); });
+  }
+  /* Tabs; the address keeps the open tab so refresh and Back stay on it */
+  var TAB_PARAM = {progress: "", journal: "mistakes", bookmarks: "bookmarks"};
+  function bindJournal(d, host){
+    host.querySelectorAll("[data-tab]").forEach(function(b){
+      b.addEventListener("click", function(){
+        var js = journalState;
+        js.tab = b.getAttribute("data-tab");
+        js.sort = js.tab === "journal" ? "missed" : "recent";
+        try { history.replaceState(null, "", "journal.html" + (TAB_PARAM[js.tab] ? "?tab=" + TAB_PARAM[js.tab] : "")); } catch (e) {}
+        journalPage(d, host);
+      });
+    });
   }
 
   /* ---------- Tracker homepage: countdown strip and the current unit ---------- */
@@ -581,10 +606,13 @@ var MyStudy = (function(){
     load: load, header: header, bar: bar, home: home, page: page,
     dashboard: function(){ page(dashboard, "dashboard"); },
     exam: function(){ page(examPage, "dashboard"); },
-    progress: function(){ page(progressPage, "progress"); },
     journal: function(){
       var tab = new URLSearchParams(location.search).get("tab");
       if (tab === "bookmarks"){ journalState.tab = "bookmarks"; journalState.sort = "recent"; }
+      else if (tab === "mistakes" || tab === "journal") journalState.tab = "journal";
+      /* #unit-N (old Progress links) opens that unit's topics */
+      var m = location.hash.match(/^#unit-(\d+)$/);
+      if (m && journalState.tab === "progress"){ openUnits[+m[1]] = true; journalState.scrollTo = "unit-" + m[1]; }
       page(journalPage, "journal");
     }
   };

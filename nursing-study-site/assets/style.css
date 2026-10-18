@@ -377,9 +377,10 @@ h2{font-size:20px;}
 .pq-dd-empty{display:none;flex:1;margin:0;padding:6px 12px 18px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:var(--muted);text-align:center;}
 .pq-dd-box.is-empty .pq-dd-list{display:none;}
 .pq-dd-box.is-empty .pq-dd-empty{display:flex;align-items:center;justify-content:center;padding-top:18px;}
-.pq-dd-item{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;cursor:grab;min-height:52px;padding:10px 12px;gap:12px;}
+.pq-dd-item{touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;cursor:grab;min-height:52px;padding:10px 12px;gap:12px;}
 .pq-dd-item .pq-opt-text{font-size:15px;}
 .pq-dd-item.is-dragging{opacity:.35;}
+.pq-dd-item.is-held{border-color:var(--label);box-shadow:0 4px 12px rgba(0,0,0,.14);}
 .pq-dd-item:disabled{cursor:default;}
 .pq-dd-ghost{position:fixed;left:0;top:0;z-index:1000;pointer-events:none;cursor:grabbing;border-color:var(--label);background:var(--page);background-image:linear-gradient(var(--pill),var(--pill));box-shadow:0 8px 20px rgba(0,0,0,.18);}
 /* Result states after checking (every question type) */
@@ -835,7 +836,6 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-meaning div{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
 .ms-meaning div span:not(.ms-ready){margin-right:14px;}
 /* Progress */
-.ms-progress-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;}
 .ms-totals{display:flex;gap:32px;}
 .ms-totals div{display:flex;flex-direction:column;gap:4px;}
 .ms-total{font-family:'Young Serif',Georgia,serif;font-size:32px;line-height:1;color:var(--heading);}
@@ -863,6 +863,7 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-tabs{display:flex;gap:8px;border-bottom:1.5px solid var(--border);}
 .ms-tabs button{min-height:44px;padding:0 18px;border:1.5px solid var(--border);border-bottom:0;border-radius:0;background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
 .ms-tabs button.is-on{background:var(--border);color:var(--fill-text);}
+@media(max-width:420px){.ms-tabs{gap:4px;}.ms-tabs button{flex:1 1 auto;padding:0 8px;font-size:11px;letter-spacing:.03em;}}
 .ms-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,.8fr);gap:12px;}
 .ms-filters label{min-width:0;display:flex;flex-direction:column;gap:6px;}
 .ms-filters select{width:100%;min-width:0;text-overflow:ellipsis;min-height:44px;padding:0 12px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:14px;}
