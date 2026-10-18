@@ -329,8 +329,12 @@ async function signKey(env) {
   return crypto.subtle.importKey("raw", raw, {name: "HMAC", hash: "SHA-256"}, false, ["sign", "verify"]);
 }
 /* A download address good for 2 minutes */
-async function fileLink(env, f) {
-  const payload = b64url(new TextEncoder().encode(JSON.stringify({i: f.id, n: f.file_name, m: f.mime, e: Math.floor(Date.now() / 1000) + 120})));
+/* Types a browser can show by itself (Preview). Word files are previewed in the page instead. */
+const LIB_INLINE = ["application/pdf", "image/jpeg", "image/png", "image/webp", "image/heic"];
+async function fileLink(env, f, view) {
+  const t = {i: f.id, n: f.file_name, m: f.mime, e: Math.floor(Date.now() / 1000) + 120};
+  if (view && LIB_INLINE.includes(f.mime)) t.v = 1;
+  const payload = b64url(new TextEncoder().encode(JSON.stringify(t)));
   const sig = new Uint8Array(await crypto.subtle.sign("HMAC", await signKey(env), new TextEncoder().encode(payload)));
   return "/api/library/file/" + f.id + "?t=" + payload + "." + b64url(sig);
 }
@@ -343,16 +347,21 @@ async function serveFile(env, url) {
       p = JSON.parse(new TextDecoder().decode(unb64url(payload)));
     }
   } catch (e) {}
-  if (!p || p.i !== id || !(p.e > Date.now() / 1000)) return new Response("This download link has expired. Go back to the Library and tap Download again.", {status: 403, headers: {"Content-Type": "text/plain; charset=utf-8"}});
+  if (!p || p.i !== id || !(p.e > Date.now() / 1000)) return new Response("This link has expired. Go back to the Library and tap Preview or Download again.", {status: 403, headers: {"Content-Type": "text/plain; charset=utf-8"}});
   if (!env.LIBRARY) return new Response("File storage is not set up", {status: 503});
   const obj = await env.LIBRARY.get(id);
   if (!obj) return new Response("That file was deleted.", {status: 404, headers: {"Content-Type": "text/plain; charset=utf-8"}});
   const ascii = p.n.replace(/[^\x20-\x7e]/g, "_").replace(/["\\]/g, "_");
-  return new Response(obj.body, {headers: {
+  /* Preview links show the file in the browser; it still can't run anything on the site
+     (pictures get a sandbox; PDFs open in the browser's own viewer) */
+  const inline = p.v === 1 && LIB_INLINE.includes(p.m);
+  const headers = {
     "Content-Type": p.m, "Content-Length": String(obj.size),
-    "Content-Disposition": 'attachment; filename="' + ascii + "\"; filename*=UTF-8''" + encodeURIComponent(p.n),
+    "Content-Disposition": (inline ? "inline" : "attachment") + '; filename="' + ascii + "\"; filename*=UTF-8''" + encodeURIComponent(p.n),
     "Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff"
-  }});
+  };
+  if (inline && p.m !== "application/pdf") headers["Content-Security-Policy"] = "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; sandbox";
+  return new Response(obj.body, {headers});
 }
 function libTags(raw, topics) {
   let v;
@@ -421,7 +430,7 @@ async function handleLibrary(request, env, url) {
     if (action === "link") {
       const f = await rpc(env, "lib_get", {p_lookup: hex64(b.lookup), p_id: uuid(b.id)});
       if (!f) return reply(404, {error: "That file was deleted."});
-      return reply(200, {result: {url: await fileLink(env, f)}});
+      return reply(200, {result: {url: await fileLink(env, f, b.view === true)}});
     }
     if (action === "delete") {
       const id = uuid(b.id);

@@ -29,6 +29,13 @@ const FILES = {
   docx: {name: "Study guide.docx", mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
          buffer: Buffer.concat([Buffer.from([0x50, 0x4B, 0x03, 0x04]), pad(30), Buffer.from("word/document.xml"), pad(800)])}
 };
+/* Real files for Preview: a 1x1 PNG and a small Word file with two paragraphs */
+const REAL = {
+  png: {name: "dot.png", mimeType: "image/png", buffer: Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8DwHwAFBQIAX8jx0gAAAABJRU5ErkJggg==", "base64")},
+  docx: {name: "stages.docx", mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+         buffer: Buffer.from("UEsDBBQAAAAIAL26Ul15bjPX6AAAAK0BAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbH1QyU7DMBD9FWuuKHHggBCK0wPLETiUDxjZk8SqN3nc0v49Tlt6QIXjzFv1+tXeO7GjzDYGBbdtB4KCjsaGScHn+rV5AMEFg0EXAyk4EMNq6NeHRCyqNrCCuZT0KCXrmTxyGxOFiowxeyz1zJNMqDc4kbzrunupYygUSlMWDxj6Zxpx64p42df3qUcmxyCeTsQlSwGm5KzGUnG5C+ZXSnNOaKvyyOHZJr6pBJBXExbk74Cz7r0Ok60h8YG5vKGvLPkVs5Em6q2vyvZ/mys94zhaTRf94pZy1MRcF/euvSAebfjpL49zD99QSwMEFAAAAAgAvbpSXZv9N+qtAAAAKQEAAAsAAABfcmVscy8ucmVsc43POw7CMAwG4KtE3mlaBoRQ0y4IqSsqB7ASN61oHkrCo7cnAwNFDIy2f3+W6/ZpZnanECdnBVRFCYysdGqyWsClP232wGJCq3B2lgQsFKFt6jPNmPJKHCcfWTZsFDCm5A+cRzmSwVg4TzZPBhcMplwGzT3KK2ri27Lc8fBpwNpknRIQOlUB6xdP/9huGCZJRydvhmz6ceIrkWUMmpKAhwuKq3e7yCzwpuarF5sXUEsDBBQAAAAIAL26Ul3kZcKGyQAAACwBAAARAAAAd29yZC9kb2N1bWVudC54bWxtj8FOxDAMRH8lyhma7h4QqtrujTPSwgekiWnLJnZkp5T+PQkSQkJcxrJm5snuL58xqA9gWQkHfWparQAd+RXnQb++PN0/aiXZoreBEAZ9gOjL2O+dJ7dFwKwKAKXbB73knDpjxC0QrTSUAIv3RhxtLivPZif2icmBSOHHYM5t+2CiXVFX5ET+qDNV4Sp5fOYS3hjUiu8bH/WWGaQ31avK35r+1q41pk5dqWXrspLbincKCadg0S12CqAYPBZ48w/M/Bxjfh8dvwBQSwECFAMUAAAACAC9ulJdeW4z1+gAAACtAQAAEwAAAAAAAAAAAAAAgAEAAAAAW0NvbnRlbnRfVHlwZXNdLnhtbFBLAQIUAxQAAAAIAL26Ul2b/TfqrQAAACkBAAALAAAAAAAAAAAAAACAARkBAABfcmVscy8ucmVsc1BLAQIUAxQAAAAIAL26Ul3kZcKGyQAAACwBAAARAAAAAAAAAAAAAACAAe8BAAB3b3JkL2RvY3VtZW50LnhtbFBLBQYAAAAAAwADALkAAADnAgAAAAA=", "base64")},
+  pdf: {name: "handout.pdf", mimeType: "application/pdf", buffer: Buffer.concat([Buffer.from("%PDF-1.4\n%test\n"), pad(500)])}
+};
 const BAD = {
   fakePdf: {name: "notes.pdf", mimeType: "application/pdf", buffer: Buffer.from("This is just text pretending to be a PDF. ".repeat(20))},
   exe: {name: "picture.png", mimeType: "image/png", buffer: Buffer.concat([Buffer.from("MZ"), pad(2000)])},
@@ -277,6 +284,50 @@ const BAD = {
   check(adminNoKey === 403, "admin API refuses without the key");
   const links = await pa.$$eval("a", a => a.map(x => x.getAttribute("href")).filter(h => /library-admin/.test(h || "")));
   check(links.length === 0, "the admin page isn't linked from the site");
+
+  // Preview (B shares three real files; uploads by A are near the hourly limit)
+  await lib(pb);
+  await upload(pb, REAL.png, {title: "Dot picture"}); await lib(pb);
+  await upload(pb, REAL.docx, {title: "Stages handout"}); await lib(pb);
+  await upload(pb, REAL.pdf, {title: "PDF handout"}); await lib(pb);
+  const pcard = t => pb.locator(".lb-card", {hasText: t});
+  check(await pcard("old notes.doc").locator(".lb-preview").count() === 0 && await pcard("Stages handout").locator(".lb-preview").count() === 1 &&
+        await pcard("Dot picture").locator(".lb-preview").count() === 1 && await pcard("PDF handout").locator(".lb-preview").count() === 1,
+    "Preview on pictures, PDFs and .docx; none on old .doc files");
+  await pcard("Dot picture").locator(".lb-preview").click();
+  await pb.waitForSelector("#lb-viewer .lb-vimg");
+  check(await pb.$eval("#lb-viewer", d => d.open) && await pb.$eval(".lb-vimg", i => i.naturalWidth) === 1 && await text(pb, "#lb-vtitle") === "Dot picture", "picture preview: shown in the pop-up");
+  await pb.click("#lb-vclose");
+  check(!(await pb.$eval("#lb-viewer", d => d.open)), "the pop-up closes");
+  await pcard("IMG_0042.HEIC").locator(".lb-preview").click();
+  await pb.waitForSelector("#lb-viewer .lb-vnote:not(:empty)");
+  await waitFor(async () => /HEIC/.test(await text(pb, "#lb-vbody")));
+  check(/can't show HEIC/.test(await text(pb, "#lb-vbody")), "HEIC in a browser that can't show it: told to download");
+  await pb.click("#lb-vclose");
+  await pcard("Stages handout").locator(".lb-preview").click();
+  await pb.waitForSelector("#lb-viewer iframe.lb-vdoc");
+  const doc = await pb.$eval("#lb-viewer iframe.lb-vdoc", f => ({sandbox: f.getAttribute("sandbox"), html: f.srcdoc}));
+  check(doc.sandbox === "" && /Pressure injury stages/.test(doc.html) && /Stage 1: intact skin/.test(doc.html), "Word preview: the text, in a frame that can't run scripts");
+  const [dl2] = await Promise.all([pb.waitForEvent("download"), pb.click("#lb-vdownload")]);
+  check(dl2.suggestedFilename() === "stages.docx", "Download from the preview");
+  await pb.click("#lb-vclose");
+  /* (The test browser has no PDF viewer, so it saves the file instead; check the new tab asked for the preview link) */
+  const pdfReq = pb.context().waitForEvent("request", r => /api\/library\/file\/.*[?]t=/.test(r.url()) && r.frame().page() !== pb);
+  const [pop] = await Promise.all([pb.waitForEvent("popup"), pcard("PDF handout").locator(".lb-preview").click()]);
+  check(!!(await pdfReq.catch(() => null)), "PDF preview: opens in a new tab");
+  await pop.close().catch(() => {});
+  const heads = await pb.evaluate(async () => {
+    const k = await Tracking.ensureKeys();
+    const list = await Tracking.call("library/list", {lookup: k.lookup});
+    const get = async (title, view) => {
+      const f = list.find(x => x.title === title);
+      const r = await fetch((await Tracking.call("library/link", {lookup: k.lookup, id: f.id, view})).url);
+      return [r.headers.get("Content-Disposition").split(";")[0], r.headers.get("Content-Security-Policy") || ""];
+    };
+    return {pdf: await get("PDF handout", true), png: await get("Dot picture", true), pngDl: await get("Dot picture", false), docx: await get("Stages handout", true)};
+  });
+  check(heads.pdf[0] === "inline" && heads.png[0] === "inline" && /sandbox/.test(heads.png[1]) && heads.pngDl[0] === "attachment" && heads.docx[0] === "attachment",
+    "preview links show in the browser (pictures sandboxed); downloads and Word files stay attachments", JSON.stringify(heads));
 
   check(errors.length === 0, "no page errors", JSON.stringify(errors));
   await b.close();

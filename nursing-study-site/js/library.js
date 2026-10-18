@@ -9,6 +9,10 @@ var Library = (function(){
   var MAX = 20 * 1024 * 1024;
   var TYPE_LABEL = {"application/pdf": "PDF", "image/jpeg": "JPG", "image/png": "PNG", "image/webp": "WEBP", "image/heic": "HEIC",
                     "application/msword": "Word", "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "Word"};
+  var DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+  /* Preview: pictures and Word (.docx) in a pop-up, PDFs in the browser's viewer. Old .doc files can't be previewed. */
+  var PREVIEW = {"application/pdf": "pdf", "image/jpeg": "img", "image/png": "img", "image/webp": "img", "image/heic": "img"};
+  PREVIEW[DOCX] = "docx";
   var units = [], topicsByUnit = {}, files = [], filter = {unit: "", topic: ""}, lookup = null;
 
   function esc(s){ return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
@@ -131,8 +135,113 @@ var Library = (function(){
       '<span class="ch-meta">' + esc(f.name || "Anonymous") + " · " + day(f.created_at) + "</span>" +
       (f.description ? '<p class="lb-desc-text">' + esc(f.description) + "</p>" : "") +
       '<div class="lb-tags">' + tags(f) + "</div>" +
-      '<div class="ch-btns"><button type="button" class="ms-btn is-primary lb-download">Download</button><span class="lb-fname">' + esc(f.file_name) + "</span></div></article>";
+      '<div class="ch-btns">' + (PREVIEW[f.mime] ? '<button type="button" class="ms-btn lb-preview">Preview</button>' : "") +
+      '<button type="button" class="ms-btn is-primary lb-download">Download</button><span class="lb-fname">' + esc(f.file_name) + "</span></div></article>";
   }
+  function fileById(id){ return files.filter(function(f){ return f.id === id; })[0]; }
+  function fileUrl(id, view){
+    return T.call("library/link", {lookup: lookup, id: id, view: !!view}).then(function(r){ return T.ROOT + r.url.replace(/^\//, ""); });
+  }
+  function download(id, btn){
+    if (btn) btn.disabled = true;
+    fileUrl(id).then(function(url){
+      if (btn) btn.disabled = false;
+      var a = document.createElement("a");
+      a.href = url;
+      a.setAttribute("download", "");
+      document.body.appendChild(a); a.click(); a.remove();
+    }, function(err){ if (btn) btn.disabled = false; alert(err.message); refresh(); });
+  }
+
+  /* ---------- Preview ---------- */
+  function viewer(){
+    var d = $("lb-viewer");
+    if (d) return d;
+    d = document.createElement("dialog");
+    d.id = "lb-viewer";
+    d.className = "lb-viewer";
+    d.setAttribute("aria-labelledby", "lb-vtitle");
+    d.innerHTML = '<div class="lb-vhead"><h2 class="ms-h2 ch-h2" id="lb-vtitle"></h2>' +
+      '<button type="button" class="ms-btn is-primary lb-vdownload" id="lb-vdownload">Download</button>' +
+      '<button type="button" class="lb-vclose" id="lb-vclose" aria-label="Close preview">&times;</button></div>' +
+      '<div class="lb-vbody" id="lb-vbody"></div>';
+    document.body.appendChild(d);
+    var close = function(){ if (d.close) d.close(); else d.removeAttribute("open"); $("lb-vbody").innerHTML = ""; };
+    $("lb-vclose").addEventListener("click", close);
+    d.addEventListener("click", function(e){ if (e.target === d) close(); });
+    d.addEventListener("close", function(){ $("lb-vbody").innerHTML = ""; });
+    $("lb-vdownload").addEventListener("click", function(){ download(d.getAttribute("data-id"), $("lb-vdownload")); });
+    return d;
+  }
+  function noPreview(text){ $("lb-vbody").innerHTML = '<p class="lb-vnote">' + esc(text) + "</p>"; }
+  var mammothLoad = null;
+  function loadMammoth(){
+    if (window.mammoth) return Promise.resolve(window.mammoth);
+    if (!mammothLoad) mammothLoad = new Promise(function(res, rej){
+      var sc = document.createElement("script");
+      sc.src = T.ROOT + "assets/vendor/mammoth.browser.min.js?v=1";
+      sc.onload = function(){ res(window.mammoth); };
+      sc.onerror = function(){ mammothLoad = null; rej(new Error("Couldn't load the preview. Check your connection.")); };
+      document.head.appendChild(sc);
+    });
+    return mammothLoad;
+  }
+  /* The Word file's text, in a frame that can't run scripts or load anything from the internet */
+  function docFrame(html){
+    var f = document.createElement("iframe");
+    f.className = "lb-vdoc";
+    f.title = "File preview";
+    f.setAttribute("sandbox", "");
+    f.srcdoc = '<!DOCTYPE html><html><head><meta charset="utf-8">' +
+      '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src data:; style-src \'unsafe-inline\'">' +
+      "<style>body{margin:0;padding:24px;font:15px/1.55 system-ui,-apple-system,sans-serif;color:#2b1a22;background:#fff;overflow-wrap:anywhere;}" +
+      "img{max-width:100%;height:auto;}table{border-collapse:collapse;max-width:100%;}td,th{border:1px solid #ccc;padding:4px 8px;vertical-align:top;}" +
+      "h1,h2,h3{line-height:1.25;}a{color:inherit;pointer-events:none;}</style></head><body>" + html + "</body></html>";
+    return f;
+  }
+  function preview(f){
+    if (!f) return;
+    var kind = PREVIEW[f.mime];
+    if (kind === "pdf"){
+      /* Opened right away so the browser doesn't block the new tab, then pointed at the file */
+      var w = window.open("", "_blank");
+      fileUrl(f.id, true).then(function(url){
+        if (w){ try { w.opener = null; } catch (e) {} w.location.href = url; }
+        else location.href = url;
+      }, function(err){ if (w) w.close(); alert(err.message); refresh(); });
+      return;
+    }
+    var d = viewer();
+    d.setAttribute("data-id", f.id);
+    $("lb-vtitle").textContent = f.title;
+    $("lb-vbody").innerHTML = '<p class="lb-vnote">Loading&hellip;</p>';
+    if (d.showModal){ if (!d.open) d.showModal(); } else d.setAttribute("open", "");
+    if (kind === "img"){
+      fileUrl(f.id, true).then(function(url){
+        var img = new Image();
+        img.className = "lb-vimg";
+        img.alt = f.title;
+        img.onload = function(){ $("lb-vbody").innerHTML = ""; $("lb-vbody").appendChild(img); };
+        img.onerror = function(){
+          noPreview(f.mime === "image/heic" ? "This browser can't show HEIC photos (Safari on iPhone, iPad and Mac can). Download it to open." : "Couldn't show this file. Download it to open.");
+        };
+        img.src = url;
+      }, function(err){ noPreview(err.message); });
+      return;
+    }
+    Promise.all([fileUrl(f.id), loadMammoth()]).then(function(r){
+      return fetch(r[0], {credentials: "same-origin"}).then(function(res){
+        if (!res.ok) throw new Error("Couldn't open this file. Download it instead.");
+        return res.arrayBuffer();
+      }).then(function(buf){ return r[1].convertToHtml({arrayBuffer: buf}); });
+    }).then(function(out){
+      if (!$("lb-vbody") || d.getAttribute("data-id") !== f.id) return;
+      if (!out.value.replace(/<[^>]*>/g, "").trim() && out.value.indexOf("<img") === -1) return noPreview("This file looks empty in the preview. Download it to open.");
+      $("lb-vbody").innerHTML = '<p class="lb-vnote lb-vhint">Text preview: the layout may look different in Word.</p>';
+      $("lb-vbody").appendChild(docFrame(out.value));
+    }).catch(function(err){ noPreview(err && err.message && !/zip|central directory|docx/i.test(err.message) ? err.message : "Couldn't preview this file. Download it to open."); });
+  }
+
   function drawList(){
     var shown = files.filter(matches);
     $("lb-list").innerHTML = shown.length ? shown.map(cardHtml).join("")
@@ -218,17 +327,8 @@ var Library = (function(){
       var card = e.target.closest(".lb-card");
       if (!card) return;
       var id = card.getAttribute("data-id");
-      if (e.target.closest(".lb-download")){
-        var b = e.target.closest(".lb-download");
-        b.disabled = true;
-        T.call("library/link", {lookup: lookup, id: id}).then(function(r){
-          b.disabled = false;
-          var a = document.createElement("a");
-          a.href = T.ROOT + r.url.replace(/^\//, "");
-          a.setAttribute("download", "");
-          document.body.appendChild(a); a.click(); a.remove();
-        }, function(err){ b.disabled = false; alert(err.message); refresh(); });
-      }
+      if (e.target.closest(".lb-download")) download(id, e.target.closest(".lb-download"));
+      if (e.target.closest(".lb-preview")) preview(fileById(id));
       if (e.target.closest(".lb-delete")){
         if (!confirm("Delete this file from the Library for everyone? This can't be undone.")) return;
         T.call("library/delete", {lookup: lookup, id: id}).then(function(ok){
