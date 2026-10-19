@@ -622,6 +622,7 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .tp-start{display:flex;justify-content:center;align-items:center;width:100%;min-height:56px;border:none;border-radius:0;background:var(--border);color:var(--fill-text);font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}
 .tp-start:disabled{opacity:.5;cursor:not-allowed;}
 .tp-textlink{align-self:center;padding:4px;border:0;background:none;color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+.tp-textlink.se-goalchange{padding:8px 0;}
 .tp-soon{margin:0;padding:10px 14px;border:1.5px dashed var(--border);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;color:var(--text2);}
 .tp-unlock{padding:24px;}
 .tp-sample{border:1.5px dashed var(--border);padding:12px;display:flex;flex-direction:column;gap:8px;}
