@@ -220,6 +220,19 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.click("#se-goalsave");
   check(await pg.evaluate(() => Tracking.state().goal.type === "days" && Tracking.state().goal.value === 4) && /4 study days/i.test(await pg.textContent("#se-goal")),
     "settings: Save changes the goal", await pg.textContent("#se-goal"));
+  const nick = await pg.evaluate(() => Tracking.state().nickname);
+  check(/your nickname/.test(await pg.textContent("#se-dashname")), "settings: dashboard name defaults to the nickname");
+  await pg.click("#se-dashedit");
+  await pg.fill("#se-dashinput", "  Kayla  ");
+  await pg.click("#se-dashsave");
+  check(await pg.textContent("#se-dashname") === "Kayla" && await pg.evaluate(() => Tracking.state().dashName === "Kayla" && Tracking.state().nickname) === nick,
+    "settings: a preferred name is saved; the nickname stays the same");
+  await go("dashboard.html", "2026-10-01");
+  check(/Welcome back, Kayla/.test(await text(".ms-welcome")), "dashboard: Welcome back uses the preferred name");
+  await go("settings.html", "2026-10-01");
+  await pg.click("#se-dashclear");
+  await go("dashboard.html", "2026-10-01");
+  check((await text(".ms-welcome")).includes(nick), "Use my nickname: back to the nickname on the dashboard");
 
   check(errors.length === 0, "no page errors", errors.join(" | "));
   console.log(failures ? failures + " FAILED" : "all My study checks passed");

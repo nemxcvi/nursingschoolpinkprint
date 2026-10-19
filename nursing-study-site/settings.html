@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=110">
+<link rel="stylesheet" href="assets/style.css?v=111">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -36,7 +36,7 @@
     <div class="tp-stack">
       <span class="tp-label">Nickname</span>
       <span class="tp-big" id="se-nick"></span>
-      <span class="tp-hint">Shows on your home page and in challenges.</span>
+      <span class="tp-hint">Shows in challenges, and on your dashboard unless you add a preferred name.</span>
       <span class="tp-warn-inline hidden" id="se-nicktaken">Someone else has this nickname now. Switch to a new one to keep yours unique.</span>
     </div>
     <button type="button" class="tp-textlink se-link" id="se-switch">Switch nickname</button>
@@ -51,7 +51,26 @@
       <p class="tp-note hidden" id="se-nickmsg" role="status"></p>
       <div class="tp-actions">
         <button type="button" class="tp-btn" id="se-nickcancel">Cancel</button>
-        <button type="button" class="tp-btn tp-btn-primary" id="se-nicksave">Save nickname</button>
+        <button type="button" class="tp-btn tp-btn-primary" id="se-nicksave">Save</button>
+      </div>
+    </div>
+    <div class="se-dashname">
+      <div class="tp-stack">
+        <span class="tp-label">Name on your dashboard</span>
+        <span class="se-dashval" id="se-dashname"></span>
+        <span class="tp-hint">Optional, like your first name. Only you see it; challenges always use your nickname.</span>
+      </div>
+      <div class="se-dashlinks" id="se-dashlinks">
+        <button type="button" class="tp-textlink se-link" id="se-dashedit">Add a preferred name</button>
+        <button type="button" class="tp-textlink se-link hidden" id="se-dashclear">Use my nickname</button>
+      </div>
+      <div class="tp-editor se-nickedit hidden" id="se-dasheditor">
+        <input id="se-dashinput" class="tp-input" maxlength="30" autocomplete="given-name" aria-label="Preferred name for your dashboard" placeholder="Your preferred name">
+        <p class="tp-note hidden" id="se-dashmsg" role="status"></p>
+        <div class="tp-actions">
+          <button type="button" class="tp-btn" id="se-dashcancel">Cancel</button>
+          <button type="button" class="tp-btn tp-btn-primary" id="se-dashsave">Save</button>
+        </div>
       </div>
     </div>
   </section>
@@ -128,12 +147,12 @@
   </section>
 </div>
 <script src="assets/vendor/qrcode.js?v=1"></script>
-<script src="js/tracking.js?v=13"></script>
+<script src="js/tracking.js?v=14"></script>
 <script src="js/progress.js?v=7"></script>
 <script src="js/tracking-ui.js?v=2"></script>
 <script src="assets/site-data.js?v=10"></script>
 <script src="js/study.js?v=5"></script>
-<script src="js/my-study.js?v=23"></script>
+<script src="js/my-study.js?v=24"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -155,6 +174,9 @@
   function render(){
     var s = st();
     $("se-nick").textContent = s.nickname;
+    $("se-dashname").textContent = s.dashName || s.nickname + " (your nickname)";
+    $("se-dashedit").textContent = s.dashName ? "Change" : "Add a preferred name";
+    $("se-dashclear").classList.toggle("hidden", !s.dashName);
     MyStudy.header("settings");
     $("se-code").textContent = codeShown ? s.code : Tracking.maskCode(s.code);
     $("se-show").textContent = codeShown ? "Hide code" : "Show code";
@@ -247,6 +269,25 @@
       say("se-nickmsg", "Couldn't reach the server, so your nickname didn't change. Try again when you're online.");
     }).then(function(){ $("se-nicksave").disabled = false; });
   });
+
+  /* Preferred name for the dashboard (optional; empty = the nickname) */
+  function closeDash(){ $("se-dasheditor").classList.add("hidden"); $("se-dashlinks").classList.remove("hidden"); }
+  $("se-dashedit").addEventListener("click", function(){
+    say("se-dashmsg", "");
+    $("se-dashinput").value = st().dashName || "";
+    $("se-dasheditor").classList.remove("hidden");
+    $("se-dashlinks").classList.add("hidden");
+    $("se-dashinput").focus();
+  });
+  $("se-dashcancel").addEventListener("click", closeDash);
+  $("se-dashsave").addEventListener("click", function(){
+    var v = $("se-dashinput").value.replace(/\s+/g, " ").trim();
+    if (v.length > 30) return say("se-dashmsg", "Keep it to 30 characters.");
+    Tracking.update({dashName: v});
+    closeDash(); render();
+  });
+  $("se-dashinput").addEventListener("keydown", function(e){ if (e.key === "Enter") $("se-dashsave").click(); });
+  $("se-dashclear").addEventListener("click", function(){ Tracking.update({dashName: ""}); render(); });
 
   /* Code */
   $("se-show").addEventListener("click", function(){ codeShown = !codeShown; render(); });

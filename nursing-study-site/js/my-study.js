@@ -139,7 +139,7 @@ var MyStudy = (function(){
   function dashboard(d, host){
     var st = d.state, plan = S.planToday(d.questions, d.store, d.today, d.exams);
     var html = '<section class="tp-intro tp-intro-tight"><div class="tp-eyebrow">NUR 114 · ' + esc(S.longDate(d.today)) + '</div>' +
-      '<h1 class="tp-h1 ms-welcome">Welcome back, ' + esc(st.nickname) + "</h1></section>";
+      '<h1 class="tp-h1 ms-welcome">Welcome back, ' + esc(st.dashName || st.nickname) + "</h1></section>";
 
     var top = "";
     if (d.today > d.semester.end) top += recapCard(d);
