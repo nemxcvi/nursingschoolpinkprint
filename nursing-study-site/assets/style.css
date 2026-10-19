@@ -1076,7 +1076,7 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .lb-tags{display:flex;gap:6px;flex-wrap:wrap;}
 .lb-tag{padding:3px 8px;border:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.03em;color:var(--label);}
 .lb-card .ch-btns{margin-top:4px;align-items:center;}
-.lb-card .lb-download,.lb-card .lb-preview{min-height:44px;padding:0 18px;font-size:12px;}
+.lb-card .lb-download,.lb-card .lb-preview,.lb-card .lb-openlink{min-height:44px;padding:0 18px;font-size:12px;}
 .lb-viewer{width:min(960px,calc(100vw - 32px));max-width:none;height:min(860px,calc(100vh - 48px));max-height:none;padding:0;border:1.5px solid var(--border);background:var(--page);color:var(--text);box-shadow:0 12px 40px rgba(40,12,26,.25);}
 .lb-viewer[open]{display:flex;flex-direction:column;}
 .lb-viewer::backdrop{background:rgba(40,12,26,.55);}

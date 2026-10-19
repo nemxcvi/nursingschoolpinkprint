@@ -143,11 +143,9 @@ const BAD = {
   check(await pa.isVisible("#lb-file"), "+ Share a file opens the form");
   check(await pa.$eval("#lb-upload", b => b.disabled), "Share is disabled until both boxes are ticked");
   const pickUnits = async (pg, list) => {
-    if (await pg.isChecked('#lb-units input[value="all"]')) await pg.uncheck('#lb-units input[value="all"]');
     for (const u of list) await pg.check(`#lb-units input[value="${u}"]`);
   };
   const pickTopics = async (pg, list) => {
-    if (await pg.isChecked('#lb-topics input[value="all"]')) await pg.uncheck('#lb-topics input[value="all"]');
     for (const t of list) await pg.check(`#lb-topics input[value="${t}"]`);
   };
   const openForm = async pg => { if (await pg.isVisible("#lb-open")) await pg.click("#lb-open"); };
@@ -345,6 +343,58 @@ const BAD = {
   });
   check(heads.pdf[0] === "inline" && heads.png[0] === "inline" && /sandbox/.test(heads.png[1]) && heads.pngDl[0] === "attachment" && heads.docx[0] === "attachment",
     "preview links show in the browser (pictures sandboxed); downloads and Word files stay attachments", JSON.stringify(heads));
+
+  // Unit / topic checkboxes swap over without unticking All first
+  await lib(pb);
+  await openForm(pb);
+  const unitState = () => pb.$$eval("#lb-units input", i => i.filter(x => x.checked).map(x => x.value));
+  check(JSON.stringify(await unitState()) === '["all"]' && !(await pb.$("#lb-units input:disabled")), "units start on All units, nothing greyed out");
+  await pb.check('#lb-units input[value="nur114:U-02"]');
+  check(JSON.stringify(await unitState()) === '["nur114:U-02"]', "ticking a unit unticks All units", JSON.stringify(await unitState()));
+  await pb.check('#lb-units input[value="nur114:U-03"]');
+  check(JSON.stringify(await unitState()) === '["nur114:U-02","nur114:U-03"]', "and more units can be added");
+  await pb.check('#lb-units input[value="all"]');
+  check(JSON.stringify(await unitState()) === '["all"]', "ticking All units unticks the rest");
+  await pb.check('#lb-units input[value="nur114:U-03"]');
+  await pb.uncheck('#lb-units input[value="nur114:U-03"]');
+  check(JSON.stringify(await unitState()) === '["all"]', "unticking the last unit goes back to All units");
+  await pb.check('#lb-units input[value="nur114:U-03"]');
+  await pb.check('#lb-topics input[value="nur114:U-03:safety"]');
+  check(JSON.stringify(await pb.$$eval("#lb-topics input", i => i.filter(x => x.checked).map(x => x.value))) === '["nur114:U-03:safety"]', "topics swap the same way");
+
+  // Links
+  await pb.check('#lb-form input[name="kind"][value="link"]');
+  check(await pb.isVisible("#lb-url") && !(await pb.isVisible("#lb-file")) && /Share link/.test(await text(pb, "#lb-upload")) && /This link contains/.test(await text(pb, ".lb-confirm")),
+    "Link: a web address box instead of the file picker");
+  await pb.fill("#lb-title", "Fall risk video");
+  await pb.fill("#lb-name", "Kayla R.");
+  await pb.check("#lb-ok1"); await pb.check("#lb-ok2");
+  await pb.fill("#lb-url", "ftp://example.org/x");
+  await pb.click("#lb-upload");
+  check(/full web address/.test(await text(pb, "#lb-msg")), "only http(s) links", await text(pb, "#lb-msg"));
+  await pb.fill("#lb-url", "https://www.youtube.com/watch?v=fallrisk");
+  await pb.click("#lb-upload");
+  await pb.waitForFunction(() => /Shared!/.test(document.getElementById("lb-msg").textContent));
+  await search(pb, "nur114:U-03", "nur114:U-03:safety");
+  const lcard = pb.locator(".lb-card", {hasText: "Fall risk video"});
+  const la = await lcard.locator("a.lb-openlink").evaluate(a => [a.getAttribute("href"), a.target, a.rel]);
+  check(la[0] === "https://www.youtube.com/watch?v=fallrisk" && la[1] === "_blank" && /noopener/.test(la[2]) && /noreferrer/.test(la[2]),
+    "the link shows with Open link (new tab, no referrer)", JSON.stringify(la));
+  check(/Link · youtube\.com/.test(await text(pb, ".lb-card.is-link")) && await lcard.locator(".lb-download, .lb-preview").count() === 0, "link card: site name, no Download or Preview");
+  const lrow = (await q("select mime, size, url, file_name from public.shared_files where title = 'Fall risk video'"))[0];
+  check(lrow && lrow.mime === "link" && lrow.size === 0 && lrow.file_name === "youtube.com", "saved as a link, nothing in the bucket", JSON.stringify(lrow));
+  const badLink = await pb.evaluate(async () => {
+    const k = await Tracking.ensureKeys();
+    const r = await fetch("api/library/addlink", {method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({lookup: k.lookup, url: "javascript:alert(1)", title: "x", units: ["all"], topics: ["all"], show: "anon", noPatientInfo: "yes", noExamContent: "yes"})});
+    const r2 = await fetch("api/library/addlink", {method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({lookup: k.lookup, url: "https://x.org", title: "x", units: ["all"], topics: ["all"], show: "anon"})});
+    return [r.status, r2.status];
+  });
+  check(badLink[0] === 400 && badLink[1] === 400, "server refuses non-web links and links without both sharing boxes", JSON.stringify(badLink));
+  await lcard.locator(".lb-delete").click();
+  await waitFor(async () => !(await q("select 1 from public.shared_files where title = 'Fall risk video'")).length);
+  check(!(await q("select 1 from public.shared_files where title = 'Fall risk video'")).length, "own link deleted");
 
   check(errors.length === 0, "no page errors", JSON.stringify(errors));
   await b.close();

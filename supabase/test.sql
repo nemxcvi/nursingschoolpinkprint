@@ -289,8 +289,20 @@ begin
   assert not public.lib_delete(b, f1), 'can''t delete someone else''s file';
   assert public.lib_delete(a, f1), 'can delete your own';
   assert jsonb_array_length(public.lib_list(a)) = 1, 'gone';
+  -- Links: http(s) only, listed with their address, counted toward the same limit
+  f1 := public.lib_add_link(a, 'Wound staging video', null, '["nur114:U-03"]', '["all"]', 'Nicole', 'https://www.youtube.com/watch?v=abc', 'youtube.com');
+  begin perform public.lib_add_link(a, 'x', null, '["all"]', '["all"]', null, 'javascript:alert(1)', 'x'); raise exception 'bad link accepted';
+  exception when raise_exception then if sqlerrm <> 'bad link' then raise; end if; end;
+  begin perform public.lib_add_link(stranger, 'x', null, '["all"]', '["all"]', null, 'https://x.org', 'x.org'); raise exception 'non-tracker shared a link';
+  exception when raise_exception then if sqlerrm <> 'not tracking' then raise; end if; end;
+  j := public.lib_list(b);
+  assert j->0->>'mime' = 'link' and j->0->>'url' = 'https://www.youtube.com/watch?v=abc' and j->0->>'file_name' = 'youtube.com' and (j->0->>'size')::int = 0, 'link listed';
+  assert j->1->'url' = 'null'::jsonb, 'files have no url';
+  assert public.lib_delete(a, f1), 'can delete your own link';
   for i in 1..9 loop perform public.lib_add(b, 'n' || i, null, '["all"]', '["all"]', null, 'n.png', 'image/png', 5); end loop;
   begin perform public.lib_add(b, 'eleventh', null, '["all"]', '["all"]', null, 'n.png', 'image/png', 5); raise exception 'no upload limit';
+  exception when raise_exception then if sqlerrm <> 'upload limit' then raise; end if; end;
+  begin perform public.lib_add_link(b, 'eleventh', null, '["all"]', '["all"]', null, 'https://x.org', 'x.org'); raise exception 'no limit on links';
   exception when raise_exception then if sqlerrm <> 'upload limit' then raise; end if; end;
   begin perform public.lib_admin_list('wrong'); raise exception 'admin list without key';
   exception when raise_exception then if sqlerrm <> 'not allowed' then raise; end if; end;
@@ -298,5 +310,5 @@ begin
   assert public.lib_admin_delete(repeat('a', 40), f2), 'admin deletes anyone''s file';
   begin perform public.set_library_admin_key(repeat('b', 40)); raise exception 'admin key settable from the site';
   exception when insufficient_privilege then null; end;
-  raise notice 'ok 8 - library: trackers only, own deletes, tags/types checked, upload limit, admin key';
+  raise notice 'ok 8 - library: trackers only, own deletes, tags/types checked, links, upload limit, admin key';
 end $$;

@@ -52,7 +52,7 @@ var Library = (function(){
   /* ---------- Page ---------- */
   function intro(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Shared resources</div><h1 class="tp-h1">Library</h1>' +
-      '<p class="tp-lede">Notes, diagrams and handouts shared by classmates. Download anything here, and share your own.</p></section>' +
+      '<p class="tp-lede">Notes, diagrams, handouts and links shared by classmates. Open anything here, and share your own.</p></section>' +
       '<section class="lb-rules" aria-label="Sharing rules"><h2 class="ch-eyebrow">Sharing rules</h2><ol>' +
       '<li><strong>No patient information (<abbr title="Health Insurance Portability and Accountability Act">HIPAA</abbr>).</strong> No names, dates of birth, MRNs (medical record numbers), or anything identifying.</li>' +
       "<li><strong>No test content.</strong> No exam questions or recalled test content.</li></ol></section>";
@@ -62,18 +62,23 @@ var Library = (function(){
     return '<label class="lb-check lb-all"><input type="checkbox" name="' + name + '" value="all"' + (all ? " checked" : "") + "> " + allLabel + "</label>" +
       items.map(function(i){
         return '<label class="lb-check"><input type="checkbox" name="' + name + '" value="' + esc(i.key) + '"' +
-          (all ? " disabled" : picked.indexOf(i.key) !== -1 ? " checked" : "") + "> " + esc(i.label) + "</label>";
+          (!all && picked.indexOf(i.key) !== -1 ? " checked" : "") + "> " + esc(i.label) + "</label>";
       }).join("");
   }
   function formHtml(){
     var name = "";
     try { name = localStorage.getItem(NAME_KEY) || ""; } catch (e) {}
-    return '<form class="ms-card lb-form" id="lb-form" novalidate><h2 class="ms-h2 ch-h2">Share a file</h2>' +
-      '<p class="tp-hint lb-pitch" id="lb-pitch">Notes, diagrams or handouts for the class: PDF, images or Word, up to 20 MB.</p>' +
-      '<button type="button" class="ms-btn is-primary" id="lb-open" aria-expanded="false" aria-controls="lb-fields">+ Share a file</button>' +
+    return '<form class="ms-card lb-form" id="lb-form" novalidate><h2 class="ms-h2 ch-h2">Share a file or link</h2>' +
+      '<p class="tp-hint lb-pitch" id="lb-pitch">Notes, diagrams, handouts or helpful web pages for the class: PDF, images or Word up to 20 MB, or a link.</p>' +
+      '<button type="button" class="ms-btn is-primary" id="lb-open" aria-expanded="false" aria-controls="lb-fields">+ Share a file or link</button>' +
       '<div class="lb-fields hidden" id="lb-fields">' +
-      '<div class="ch-field"><label for="lb-file">File</label><input type="file" id="lb-file" class="lb-file" accept="' + ACCEPT + '">' +
+      '<fieldset class="ch-field"><legend>Share a</legend><div class="lb-show lb-kind">' +
+      '<label class="lb-check"><input type="radio" name="kind" value="file" checked> File</label>' +
+      '<label class="lb-check"><input type="radio" name="kind" value="link"> Link</label></div></fieldset>' +
+      '<div class="ch-field" id="lb-filefield"><label for="lb-file">File</label><input type="file" id="lb-file" class="lb-file" accept="' + ACCEPT + '">' +
       '<span class="tp-hint">PDF, JPG, PNG, WEBP, HEIC or Word, up to 20 MB.</span></div>' +
+      '<div class="ch-field hidden" id="lb-urlfield"><label for="lb-url">Web address</label><input type="url" id="lb-url" class="tp-input" maxlength="1000" placeholder="https://" autocomplete="off" inputmode="url">' +
+      '<span class="tp-hint">A video, article or practice site. Paste the full address.</span></div>' +
       '<div class="ch-field"><label for="lb-title">Title</label><input id="lb-title" class="tp-input" maxlength="120" required></div>' +
       '<div class="ch-field"><label for="lb-desc">Short description (optional)</label><textarea id="lb-desc" class="tp-input lb-desc" maxlength="500" rows="2"></textarea></div>' +
       '<fieldset class="ch-field"><legend>Units</legend><div class="lb-checks" id="lb-units">' + checkList("unit", units, "All units", ["all"]) + "</div></fieldset>" +
@@ -82,8 +87,8 @@ var Library = (function(){
       '<label class="lb-check"><input type="radio" name="show" value="name" checked> Show a name</label>' +
       '<label class="lb-check"><input type="radio" name="show" value="anon"> Anonymous</label></div>' +
       '<input id="lb-name" class="tp-input" maxlength="40" aria-label="Name to show" placeholder="Your name or nickname" value="' + esc(name) + '"></fieldset>' +
-      '<div class="lb-confirm"><label class="lb-check"><input type="checkbox" id="lb-ok1"> This file contains no patient information (HIPAA): no names, dates of birth, MRNs, or anything identifying.</label>' +
-      '<label class="lb-check"><input type="checkbox" id="lb-ok2"> This file contains no test content: no exam questions or recalled test content.</label></div>' +
+      '<div class="lb-confirm"><label class="lb-check"><input type="checkbox" id="lb-ok1"> <span>This <span class="lb-kindword">file</span> contains no patient information (HIPAA): no names, dates of birth, MRNs, or anything identifying.</span></label>' +
+      '<label class="lb-check"><input type="checkbox" id="lb-ok2"> <span>This <span class="lb-kindword">file</span> contains no test content: no exam questions or recalled test content.</span></label></div>' +
       '<button type="submit" class="ms-btn is-primary is-big" id="lb-upload" disabled>Share file</button>' +
       '<button type="button" class="lb-cancel" id="lb-close">Cancel</button></div>' +
       '<p class="tp-note hidden" id="lb-msg" role="alert"></p></form>';
@@ -103,11 +108,15 @@ var Library = (function(){
     $("lb-topics").innerHTML = checkList("topic", items, "All topics", keep.length ? keep.filter(function(k){ return k === "all" || items.some(function(i){ return i.key === k; }); }) : ["all"]);
     if (!picked("lb-topics").length) $("lb-topics").querySelector('input[value="all"]').checked = true;
   }
+  /* "All" and specific picks swap over by themselves: ticking a unit unticks All units, ticking
+     All units unticks the rest, and unticking the last one goes back to All */
   function wireChecks(boxId, after){
     $(boxId).addEventListener("change", function(e){
-      if (e.target.value !== "all") return after && after();
-      var all = e.target.checked;
-      [].forEach.call($(boxId).querySelectorAll('input:not([value="all"])'), function(i){ i.disabled = all; if (all) i.checked = false; });
+      var box = $(boxId), all = box.querySelector('input[value="all"]');
+      if (e.target === all){
+        if (all.checked) [].forEach.call(box.querySelectorAll('input:not([value="all"])'), function(i){ i.checked = false; });
+      } else if (e.target.checked) all.checked = false;
+      if (!box.querySelector("input:checked")) all.checked = true;
       if (after) after();
     });
   }
@@ -134,15 +143,20 @@ var Library = (function(){
     var t = f.topics.indexOf("all") !== -1 ? ["All topics"] : f.topics.map(topicLabel);
     return u.concat(t).map(function(x){ return '<span class="lb-tag">' + esc(x) + "</span>"; }).join("");
   }
+  /* Links open in a new tab and never tell the other site where they came from */
+  function safeUrl(u){ return /^https?:\/\//i.test(u || "") ? u : ""; }
   function cardHtml(f){
-    return '<article class="ms-card lb-card" data-id="' + esc(f.id) + '"><div class="lb-top"><span class="ch-eyebrow">' + esc(TYPE_LABEL[f.mime] || "File") + " · " + size(f.size) + "</span>" +
+    var link = f.mime === "link";
+    var btns = link ? (safeUrl(f.url) ? '<a class="ms-btn is-primary lb-openlink" href="' + esc(safeUrl(f.url)) + '" target="_blank" rel="noopener noreferrer nofollow">Open link ↗</a>' : "")
+      : (PREVIEW[f.mime] ? '<button type="button" class="ms-btn lb-preview">Preview</button>' : "") +
+        '<button type="button" class="ms-btn is-primary lb-download">Download</button><span class="lb-fname">' + esc(f.file_name) + "</span>";
+    return '<article class="ms-card lb-card' + (link ? " is-link" : "") + '" data-id="' + esc(f.id) + '"><div class="lb-top"><span class="ch-eyebrow">' + (link ? "Link · " + esc(f.file_name) : esc(TYPE_LABEL[f.mime] || "File") + " · " + size(f.size)) + "</span>" +
       (f.mine ? '<button type="button" class="ms-linkbtn is-danger lb-delete">Delete</button>' : "") + "</div>" +
       '<h3 class="ms-h2 ch-h2">' + esc(f.title) + "</h3>" +
       '<span class="ch-meta">' + esc(f.name || "Anonymous") + " · " + day(f.created_at) + "</span>" +
       (f.description ? '<p class="lb-desc-text">' + esc(f.description) + "</p>" : "") +
       '<div class="lb-tags">' + tags(f) + "</div>" +
-      '<div class="ch-btns">' + (PREVIEW[f.mime] ? '<button type="button" class="ms-btn lb-preview">Preview</button>' : "") +
-      '<button type="button" class="ms-btn is-primary lb-download">Download</button><span class="lb-fname">' + esc(f.file_name) + "</span></div></article>";
+      '<div class="ch-btns">' + btns + "</div></article>";
   }
   function fileById(id){ return files.filter(function(f){ return f.id === id; })[0]; }
   function fileUrl(id, view){
@@ -272,6 +286,16 @@ var Library = (function(){
     wireChecks("lb-topics");
     fillTopics();
     var sync = function(){ $("lb-upload").disabled = !($("lb-ok1").checked && $("lb-ok2").checked); };
+    /* File or Link: swaps the file picker for a web address box */
+    var kind = function(){ return document.querySelector('#lb-form input[name="kind"]:checked').value; };
+    var setKind = function(){
+      var link = kind() === "link";
+      $("lb-filefield").classList.toggle("hidden", link);
+      $("lb-urlfield").classList.toggle("hidden", !link);
+      [].forEach.call(document.querySelectorAll(".lb-kindword"), function(w){ w.textContent = link ? "link" : "file"; });
+      $("lb-upload").textContent = link ? "Share link" : "Share file";
+    };
+    [].forEach.call(document.querySelectorAll('#lb-form input[name="kind"]'), function(r){ r.addEventListener("change", function(){ say(""); setKind(); }); });
     $("lb-ok1").addEventListener("change", sync);
     $("lb-ok2").addEventListener("change", sync);
     var open = function(on){
@@ -286,16 +310,21 @@ var Library = (function(){
     $("lb-form").addEventListener("change", function(e){ if (e.target.name === "show") $("lb-name").classList.toggle("hidden", e.target.value !== "name"); });
     $("lb-form").addEventListener("submit", function(e){
       e.preventDefault();
-      var file = $("lb-file").files[0];
+      var isLink = kind() === "link";
+      var file = $("lb-file").files[0], url = $("lb-url").value.trim();
       var title = $("lb-title").value.trim();
       var show = document.querySelector('#lb-form input[name="show"]:checked').value;
-      if (!file) return say("Choose a file to share.");
-      if (file.size > MAX) return say("Files can be up to 20 MB. That one is " + (file.size / 1048576).toFixed(1) + " MB.");
-      if (!title) return say("Give the file a title.");
+      if (isLink && !/^https?:\/\/\S+\.\S+/i.test(url)) return say("Paste a full web address starting with https://");
+      if (!isLink && !file) return say("Choose a file to share.");
+      if (!isLink && file.size > MAX) return say("Files can be up to 20 MB. That one is " + (file.size / 1048576).toFixed(1) + " MB.");
+      if (!title) return say(isLink ? "Give the link a title." : "Give the file a title.");
       if (show === "name" && !$("lb-name").value.trim()) return say("Type the name to show, or choose Anonymous.");
       var u = picked("lb-units"), t = picked("lb-topics");
       if (!u.length) return say("Pick at least one unit (or All units).");
       if (!t.length) return say("Pick at least one topic (or All topics).");
+      if (show === "name") try { localStorage.setItem(NAME_KEY, $("lb-name").value.trim()); } catch (e) {}
+      if (isLink) return shareLink({lookup: lookup, url: url, title: title, description: $("lb-desc").value.trim(), units: u, topics: t,
+        show: show, name: $("lb-name").value.trim(), noPatientInfo: $("lb-ok1").checked ? "yes" : "", noExamContent: $("lb-ok2").checked ? "yes" : ""});
       var fd = new FormData();
       fd.append("lookup", lookup);
       fd.append("file", file);
@@ -305,7 +334,6 @@ var Library = (function(){
       fd.append("topics", JSON.stringify(t));
       fd.append("show", show);
       fd.append("name", $("lb-name").value.trim());
-      if (show === "name") try { localStorage.setItem(NAME_KEY, $("lb-name").value.trim()); } catch (e) {}
       fd.append("noPatientInfo", $("lb-ok1").checked ? "yes" : "");
       fd.append("noExamContent", $("lb-ok2").checked ? "yes" : "");
       var btn = $("lb-upload");
@@ -314,20 +342,29 @@ var Library = (function(){
       say("");
       fetch(T.ROOT + "api/library/upload", {method: "POST", body: fd, credentials: "same-origin"}).then(function(r){
         return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok) throw new Error(j.error || "Upload failed (" + r.status + ")"); return j.result; });
-      }).then(function(){
-        $("lb-file").value = ""; $("lb-title").value = ""; $("lb-desc").value = "";
-        $("lb-ok1").checked = false; $("lb-ok2").checked = false;
-        btn.textContent = "Share file";
-        sync();
-        open(false);
-        say(filter ? "Shared! It's in the list now." : "Shared! Choose its unit and Search to see it in the list.");
-        return refresh();
-      }, function(err){
-        btn.textContent = "Share file";
-        sync();
-        say(err.message);
-      });
+      }).then(shared, failed);
     });
+    function shared(){
+      $("lb-file").value = ""; $("lb-url").value = ""; $("lb-title").value = ""; $("lb-desc").value = "";
+      $("lb-ok1").checked = false; $("lb-ok2").checked = false;
+      setKind();
+      sync();
+      open(false);
+      say(filter ? "Shared! It's in the list now." : "Shared! Choose its unit and Search to see it in the list.");
+      return refresh();
+    }
+    function failed(err){
+      setKind();
+      sync();
+      say(err.message);
+    }
+    function shareLink(body){
+      var btn = $("lb-upload");
+      btn.disabled = true;
+      btn.textContent = "Sharing…";
+      say("");
+      T.call("library/addlink", body).then(shared, failed);
+    }
   }
   function wireList(){
     $("lb-filterbox").addEventListener("change", function(e){
@@ -346,7 +383,7 @@ var Library = (function(){
       if (e.target.closest(".lb-download")) download(id, e.target.closest(".lb-download"));
       if (e.target.closest(".lb-preview")) preview(fileById(id));
       if (e.target.closest(".lb-delete")){
-        if (!confirm("Delete this file from the Library for everyone? This can't be undone.")) return;
+        if (!confirm("Delete this from the Library for everyone? This can't be undone.")) return;
         T.call("library/delete", {lookup: lookup, id: id}).then(function(ok){
           if (!ok) alert("That file couldn't be deleted.");
           refresh();

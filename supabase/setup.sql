@@ -15,7 +15,7 @@
 --                      No codes, lookup IDs or device info.
 --   class_tally        (phase 6) per question: times answered and times wrong. Nothing else:
 --                      no code, lookup ID, device or time. Only the owner's stats page reads it.
---   shared_files       Library uploads: title, description, unit/topic tags, display name (or
+--   shared_files       Library uploads and links: title, description, unit/topic tags, display name (or
 --                      none = Anonymous), file name, type and size. The file itself is in the
 --                      Cloudflare R2 bucket under the row's id. The uploader is a hash of their
 --                      lookup ID made only for this table, so it can't be matched to the vault.
@@ -128,10 +128,18 @@ create table if not exists public.shared_files (
   display_name text check (display_name is null or length(display_name) between 1 and 40),
   file_name text not null check (length(file_name) between 1 and 160),
   mime text not null,
-  size integer not null check (size between 1 and 20971520),
+  size integer not null,
   created_at timestamptz not null default clock_timestamp()
 );
 create index if not exists shared_files_owner on public.shared_files (owner_hash, created_at);
+-- Links (added later): a shared web page has mime 'link', size 0, its address in url and its
+-- site name in file_name; nothing is stored in R2 for it. Files keep size 1 to 20 MB and no url.
+alter table public.shared_files add column if not exists url text;
+alter table public.shared_files drop constraint if exists shared_files_size_check;
+alter table public.shared_files drop constraint if exists shared_files_kind_check;
+alter table public.shared_files add constraint shared_files_kind_check check (
+  (mime = 'link' and size = 0 and url is not null and length(url) <= 1000 and url ~ '^https?://[^[:space:]]+$')
+  or (mime <> 'link' and size between 1 and 20971520 and url is null));
 
 create table if not exists public.pp_settings (
   key text primary key,
@@ -484,6 +492,13 @@ language sql immutable set search_path = '' as $$
                               then '^[a-z0-9]{2,12}:U-[0-9]{2}:[a-z0-9-]{1,60}$' else '^[a-z0-9]{2,12}:U-[0-9]{2}$' end)))
 $$;
 
+-- At most 10 shares (files and links) an hour and 30 a day per tracking code
+create or replace function public.pp_lib_limit_ok(p_owner text) returns boolean
+language sql stable security definer set search_path = '' as $$
+  select (select count(*) from public.shared_files f where f.owner_hash = p_owner and f.created_at > now() - interval '1 hour') < 10
+     and (select count(*) from public.shared_files f where f.owner_hash = p_owner and f.created_at > now() - interval '1 day') < 30
+$$;
+
 -- Adds a file's details (the worker then stores the file in R2 under the returned id).
 -- At most 10 uploads an hour and 30 a day per tracking code, so a slip can't flood the list.
 create or replace function public.lib_add(p_lookup text, p_title text, p_description text, p_units jsonb, p_topics jsonb,
@@ -500,13 +515,30 @@ begin
                     'application/vnd.openxmlformats-officedocument.wordprocessingml.document') then
     raise exception 'bad file type';
   end if;
-  if (select count(*) from public.shared_files f where f.owner_hash = owner and f.created_at > now() - interval '1 hour') >= 10
-     or (select count(*) from public.shared_files f where f.owner_hash = owner and f.created_at > now() - interval '1 day') >= 30 then
-    raise exception 'upload limit';
-  end if;
+  if not public.pp_lib_limit_ok(owner) then raise exception 'upload limit'; end if;
   insert into public.shared_files (owner_hash, title, description, units, topics, display_name, file_name, mime, size)
     values (owner, trim(p_title), nullif(trim(coalesce(p_description, '')), ''), p_units, p_topics,
             nullif(trim(coalesce(p_display_name, '')), ''), p_file_name, p_mime, p_size)
+    returning id into new_id;
+  return new_id;
+end $$;
+
+-- Adds a shared link (a web page: http or https only). p_site is the site name shown on the card.
+create or replace function public.lib_add_link(p_lookup text, p_title text, p_description text, p_units jsonb, p_topics jsonb,
+                                               p_display_name text, p_url text, p_site text)
+returns uuid
+language plpgsql security definer set search_path = '' as $$
+declare
+  owner text := public.pp_lib_owner(p_lookup);
+  new_id uuid;
+begin
+  if owner is null then raise exception 'not tracking'; end if;
+  if not public.pp_lib_tags_ok(p_units, false) or not public.pp_lib_tags_ok(p_topics, true) then raise exception 'bad tags'; end if;
+  if p_url is null or length(p_url) > 1000 or p_url !~ '^https?://[^[:space:]]+$' then raise exception 'bad link'; end if;
+  if not public.pp_lib_limit_ok(owner) then raise exception 'upload limit'; end if;
+  insert into public.shared_files (owner_hash, title, description, units, topics, display_name, file_name, mime, size, url)
+    values (owner, trim(p_title), nullif(trim(coalesce(p_description, '')), ''), p_units, p_topics,
+            nullif(trim(coalesce(p_display_name, '')), ''), left(coalesce(nullif(p_site, ''), 'link'), 160), 'link', 0, p_url)
     returning id into new_id;
   return new_id;
 end $$;
@@ -519,7 +551,7 @@ begin
   if owner is null then raise exception 'not tracking'; end if;
   return coalesce((select jsonb_agg(jsonb_build_object(
       'id', f.id, 'title', f.title, 'description', f.description, 'units', f.units, 'topics', f.topics,
-      'name', f.display_name, 'file_name', f.file_name, 'mime', f.mime, 'size', f.size,
+      'name', f.display_name, 'file_name', f.file_name, 'mime', f.mime, 'size', f.size, 'url', f.url,
       'created_at', f.created_at, 'mine', f.owner_hash = owner) order by f.created_at desc)
     from public.shared_files f), '[]'::jsonb);
 end $$;
@@ -564,7 +596,7 @@ begin
   if not public.pp_lib_admin_ok(p_key) then raise exception 'not allowed'; end if;
   return coalesce((select jsonb_agg(jsonb_build_object(
       'id', f.id, 'title', f.title, 'name', f.display_name, 'file_name', f.file_name, 'mime', f.mime,
-      'size', f.size, 'created_at', f.created_at) order by f.created_at desc)
+      'size', f.size, 'url', f.url, 'created_at', f.created_at) order by f.created_at desc)
     from public.shared_files f), '[]'::jsonb);
 end $$;
 create or replace function public.lib_admin_delete(p_key text, p_id uuid) returns boolean
@@ -626,6 +658,6 @@ grant execute on function
   public.submit_score(text, text, integer), public.submit_answers(text, text, jsonb), public.share_focus(text, text, boolean),
   public.load_challenge(text, text),
   public.delete_challenge(text, text), public.increment_tally(jsonb), public.class_stats(text), public.ping(),
-  public.lib_add(text, text, text, jsonb, jsonb, text, text, text, integer), public.lib_list(text),
+  public.lib_add(text, text, text, jsonb, jsonb, text, text, text, integer), public.lib_add_link(text, text, text, jsonb, jsonb, text, text, text), public.lib_list(text),
   public.lib_get(text, uuid), public.lib_delete(text, uuid), public.lib_admin_list(text), public.lib_admin_delete(text, uuid)
   to anon;

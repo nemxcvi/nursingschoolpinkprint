@@ -43,6 +43,8 @@ const FNS = {
   ping: [[], "scalar"],
   lib_add: [[["p_lookup", "text"], ["p_title", "text"], ["p_description", "text"], ["p_units", "jsonb"], ["p_topics", "jsonb"],
              ["p_display_name", "text"], ["p_file_name", "text"], ["p_mime", "text"], ["p_size", "int"]], "scalar"],
+  lib_add_link: [[["p_lookup", "text"], ["p_title", "text"], ["p_description", "text"], ["p_units", "jsonb"], ["p_topics", "jsonb"],
+                 ["p_display_name", "text"], ["p_url", "text"], ["p_site", "text"]], "scalar"],
   lib_list: [[["p_lookup", "text"]], "scalar"],
   lib_get: [[["p_lookup", "text"], ["p_id", "uuid"]], "scalar"],
   lib_delete: [[["p_lookup", "text"], ["p_id", "uuid"]], "scalar"],

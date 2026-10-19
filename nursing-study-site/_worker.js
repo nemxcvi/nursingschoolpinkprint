@@ -406,6 +406,29 @@ async function libUpload(request, env) {
   }
   return reply(200, {result: {id, file_name: fileName, mime: t.mime, size: buf.byteLength}});
 }
+/* Shares a link (a web page) instead of a file: same title, tags, name and sharing boxes. Only
+   http(s) addresses; nothing goes in R2. */
+async function libAddLink(env, b) {
+  const lookup = hex64(b.lookup);
+  let u;
+  try { u = new URL(String(b.url || "").trim()); } catch (e) { u = null; }
+  if (!u || (u.protocol !== "https:" && u.protocol !== "http:") || !u.hostname.includes(".") || u.username || u.password || u.href.length > 1000) {
+    throw new BadRequest("Paste a full web address starting with https://");
+  }
+  const title = String(b.title || "").trim();
+  if (title.length < 1 || title.length > 120) throw new BadRequest("Give the link a title (up to 120 characters).");
+  const description = String(b.description || "").trim();
+  if (description.length > 500) throw new BadRequest("Keep the description to 500 characters.");
+  const units = libTags(JSON.stringify(b.units), false), topics = libTags(JSON.stringify(b.topics), true);
+  const name = b.show === "name" ? String(b.name || "").trim() : "";
+  if (b.show !== "name" && b.show !== "anon") throw new BadRequest("Choose Show my name or Anonymous.");
+  if (b.show === "name" && (name.length < 1 || name.length > 40)) throw new BadRequest("Type the name to show (up to 40 characters), or choose Anonymous.");
+  if (b.noPatientInfo !== "yes" || b.noExamContent !== "yes") throw new BadRequest("Tick both boxes to confirm the link follows the sharing rules.");
+  const site = u.hostname.replace(/^www\./, "").toLowerCase();
+  const id = await rpc(env, "lib_add_link", {p_lookup: lookup, p_title: title, p_description: description, p_units: units, p_topics: topics,
+                                              p_display_name: name, p_url: u.href, p_site: site});
+  return reply(200, {result: {id, url: u.href, site}});
+}
 function adminOk(env, key) {
   return !!env.LIBRARY_ADMIN_KEY && typeof key === "string" && key.length === env.LIBRARY_ADMIN_KEY.length &&
          [...key].reduce((d, c, i) => d | (c.charCodeAt(0) ^ env.LIBRARY_ADMIN_KEY.charCodeAt(i)), 0) === 0;
@@ -427,9 +450,11 @@ async function handleLibrary(request, env, url) {
     try { b = JSON.parse(raw || "{}") || {}; } catch (e) { throw new BadRequest("bad request"); }
     const uuid = v => { if (typeof v !== "string" || !/^[0-9a-f-]{36}$/.test(v)) throw new BadRequest("bad id"); return v; };
     if (action === "list") return reply(200, {result: await rpc(env, "lib_list", {p_lookup: hex64(b.lookup)})});
+    if (action === "addlink") return await libAddLink(env, b);
     if (action === "link") {
       const f = await rpc(env, "lib_get", {p_lookup: hex64(b.lookup), p_id: uuid(b.id)});
       if (!f) return reply(404, {error: "That file was deleted."});
+      if (f.mime === "link") return reply(400, {error: "That's a link, not a file."});
       return reply(200, {result: {url: await fileLink(env, f, b.view === true)}});
     }
     if (action === "delete") {
@@ -442,7 +467,7 @@ async function handleLibrary(request, env, url) {
       if (!adminOk(env, b.key)) return reply(403, {error: "not allowed"});
       if (action === "admin/list") {
         const rows = await rpc(env, "lib_admin_list", {p_key: env.LIBRARY_ADMIN_KEY});
-        for (const r of rows) r.url = await fileLink(env, r);
+        for (const r of rows) if (r.mime !== "link") r.url = await fileLink(env, r);
         return reply(200, {result: rows});
       }
       const id = uuid(b.id);
@@ -479,9 +504,9 @@ function load(){
   post("admin/list", {}).then(function(r){
     if (!r.result){ document.getElementById("m").textContent = r.error || "Not allowed"; return; }
     sessionStorage.setItem("libAdmin", key);
-    document.getElementById("m").textContent = r.result.length + " files";
+    document.getElementById("m").textContent = r.result.length + " shared";
     document.getElementById("l").innerHTML = r.result.map(function(f){
-      return '<li data-id="' + f.id + '"><span><b>' + esc(f.title) + '</b><br><small>' + esc(f.name || "Anonymous") + " · " + esc(f.file_name) + " · " + Math.ceil(f.size / 1024) + " KB · " + new Date(f.created_at).toLocaleDateString() + '</small></span><a href="' + f.url + '">Download</a><button type="button">Delete</button></li>';
+      return '<li data-id="' + f.id + '"><span><b>' + esc(f.title) + '</b><br><small>' + esc(f.name || "Anonymous") + " · " + esc(f.file_name) + (f.mime === "link" ? " · link" : " · " + Math.ceil(f.size / 1024) + " KB") + " · " + new Date(f.created_at).toLocaleDateString() + '</small></span><a href="' + esc(f.url) + '"' + (f.mime === "link" ? ' target="_blank" rel="noopener noreferrer nofollow">Open link' : ">Download") + '</a><button type="button">Delete</button></li>';
     }).join("");
   });
 }
