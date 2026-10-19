@@ -121,7 +121,17 @@ const BAD = {
   check(await waitFor(async () => (await q("select version from public.vault"))[0].version > (sa.sync.version)), "saves from an existing code keep working (no class code needed)");
 
   // ---- B) Library ----
-  const lib = async pg => { await pg.goto(BASE + "library.html"); await pg.waitForSelector("#lb-form"); await pg.waitForSelector("#lb-list .lb-card, #lb-list .ch-note"); };
+  /* Open the Library and search All units (the list starts empty until a search) */
+  const search = async (pg, unit, topic) => {
+    await pg.selectOption("#lb-funit", unit);
+    if (topic) await pg.selectOption("#lb-ftopic", topic);
+    await pg.click("#lb-search");
+  };
+  const lib = async pg => {
+    await pg.goto(BASE + "library.html"); await pg.waitForSelector("#lb-form"); await pg.waitForSelector("#lb-list .ch-note");
+    if (await pg.isEnabled("#lb-funit") && await pg.$("#lb-funit option[value='*']")) await search(pg, "*");
+    await pg.waitForSelector("#lb-list .lb-card, #lb-list .ch-note");
+  };
   await lib(pa);
   check(/No patient information/.test(await text(pa, ".lb-rules")) && /No test content/.test(await text(pa, ".lb-rules")), "the two sharing rules are at the top");
   check(await pa.inputValue("#lb-name") === "" && await pa.getAttribute("#lb-name", "placeholder") === "Your name or nickname", "the name to show starts blank, typed by the student");
@@ -206,14 +216,21 @@ const BAD = {
   check(notTracking === 403 && (await q("select count(*)::int n from public.shared_files"))[0].n === 7, "an unknown tracking code can't list files; nothing extra was stored");
 
   // Filters (files tagged All show under every filter)
-  await lib(pa);
-  const titles = async () => pa.$$eval("#lb-list .lb-card h3", h => h.map(x => x.textContent));
-  check((await titles()).length === 7, "all 7 files listed");
+  await pa.goto(BASE + "library.html"); await pa.waitForSelector("#lb-list .ch-note");
+  check(!(await pa.$("#lb-list .lb-card")) && /Choose a unit and a topic, then Search/.test(await text(pa, "#lb-list")) && /7 files shared/.test(await text(pa, "#lb-count")) &&
+        await pa.$eval("#lb-funit", s => s.selectedOptions[0].textContent) === "Choose a unit" && await pa.isDisabled("#lb-ftopic") && await pa.isDisabled("#lb-search"),
+    "Files start empty: Choose a unit / topic, Search disabled until a unit is picked");
+  await pa.screenshot({path: OUT + "/lib-start.png", fullPage: true});
   await pa.selectOption("#lb-funit", "nur114:U-01");
+  check(!(await pa.$("#lb-list .lb-card")) && await pa.isEnabled("#lb-search"), "picking a unit doesn't list anything until Search");
+  const titles = async () => pa.$$eval("#lb-list .lb-card h3", h => h.map(x => x.textContent));
+  await search(pa, "*");
+  check((await titles()).length === 7 && /7 of 7 files/.test(await text(pa, "#lb-count")), "All units: all 7 files listed");
+  await search(pa, "nur114:U-01");
   check((await titles()).length === 5 && !(await titles()).includes("Wound care notes"), "filter Unit 1: the 5 All-units files, not the Unit 3 ones", (await titles()).length);
-  await pa.selectOption("#lb-funit", "nur114:U-03");
+  await search(pa, "nur114:U-03");
   check((await titles()).length === 7, "filter Unit 3: its 2 files plus the 5 All-units files");
-  await pa.selectOption("#lb-ftopic", "nur114:U-03:tissue-integrity");
+  await search(pa, "nur114:U-03", "nur114:U-03:tissue-integrity");
   const ti = await titles();
   check(ti.includes("Wound care notes") && !ti.includes("Chain of infection diagram") && ti.length === 6, "filter Tissue Integrity: its file plus the All-topics files", ti.length);
   await pa.screenshot({path: OUT + "/lib-filtered.png", fullPage: true});

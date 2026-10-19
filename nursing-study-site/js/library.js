@@ -13,7 +13,10 @@ var Library = (function(){
   /* Preview: pictures and Word (.docx) in a pop-up, PDFs in the browser's viewer. Old .doc files can't be previewed. */
   var PREVIEW = {"application/pdf": "pdf", "image/jpeg": "img", "image/png": "img", "image/webp": "img", "image/heic": "img"};
   PREVIEW[DOCX] = "docx";
-  var units = [], topicsByUnit = {}, files = [], filter = {unit: "", topic: ""}, lookup = null;
+  var units = [], topicsByUnit = {}, files = [], lookup = null;
+  /* Files: nothing listed until a unit (and maybe a topic) is chosen and Search is pressed.
+     pick = what the menus show; filter = what was last searched ("*" = all). */
+  var pick = {unit: "", topic: ""}, filter = null;
 
   function esc(s){ return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function size(n){ return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
@@ -110,17 +113,20 @@ var Library = (function(){
   }
 
   function filtersHtml(){
-    var withFiles = units;
-    return '<div class="ms-filters lb-filters"><label><span class="tp-label">Unit</span><select id="lb-funit"><option value="">All units</option>' +
-      withFiles.map(function(u){ return '<option value="' + esc(u.key) + '"' + (filter.unit === u.key ? " selected" : "") + ">" + esc(u.label) + "</option>"; }).join("") + "</select></label>" +
-      '<label><span class="tp-label">Topic</span><select id="lb-ftopic"' + (filter.unit && topicsByUnit[filter.unit] ? "" : " disabled") + '><option value="">All topics</option>' +
-      (topicsByUnit[filter.unit] || []).map(function(t){ return '<option value="' + esc(t.key) + '"' + (filter.topic === t.key ? " selected" : "") + ">" + esc(t.label) + "</option>"; }).join("") +
-      "</select></label></div>";
+    var topics = pick.unit && pick.unit !== "*" ? topicsByUnit[pick.unit] || [] : [];
+    var opt = function(v, label, cur){ return '<option value="' + esc(v) + '"' + (cur === v ? " selected" : "") + ">" + esc(label) + "</option>"; };
+    return '<div class="ms-filters lb-filters"><label><span class="tp-label">Unit</span><select id="lb-funit">' +
+      '<option value=""' + (pick.unit ? "" : " selected") + ' disabled hidden>Choose a unit</option>' + opt("*", "All units", pick.unit) +
+      units.map(function(u){ return opt(u.key, u.label, pick.unit); }).join("") + "</select></label>" +
+      '<label><span class="tp-label">Topic</span><select id="lb-ftopic"' + (topics.length ? "" : " disabled") + ">" +
+      '<option value=""' + (pick.topic ? "" : " selected") + ' disabled hidden>Choose a topic</option>' + opt("*", "All topics", pick.topic) +
+      topics.map(function(t){ return opt(t.key, t.label, pick.topic); }).join("") + "</select></label>" +
+      '<button type="button" class="ms-btn is-primary lb-search" id="lb-search"' + (pick.unit ? "" : " disabled") + ">Search</button></div>";
   }
   /* Files tagged All show under every filter */
   function matches(f){
-    if (filter.unit && f.units.indexOf("all") === -1 && f.units.indexOf(filter.unit) === -1) return false;
-    if (filter.topic && f.topics.indexOf("all") === -1 && f.topics.indexOf(filter.topic) === -1) return false;
+    if (filter.unit !== "*" && f.units.indexOf("all") === -1 && f.units.indexOf(filter.unit) === -1) return false;
+    if (filter.topic && filter.topic !== "*" && f.topics.indexOf("all") === -1 && f.topics.indexOf(filter.topic) === -1) return false;
     return true;
   }
   function tags(f){
@@ -243,10 +249,16 @@ var Library = (function(){
   }
 
   function drawList(){
+    var total = files.length + (files.length === 1 ? " file" : " files");
+    if (!filter){
+      $("lb-list").innerHTML = '<p class="ch-note lb-start">' + (files.length ? "Choose a unit and a topic, then Search." : "No files yet. Share the first one!") + "</p>";
+      $("lb-count").textContent = files.length ? total + " shared" : "";
+      return;
+    }
     var shown = files.filter(matches);
     $("lb-list").innerHTML = shown.length ? shown.map(cardHtml).join("")
-      : '<p class="ch-note">' + (files.length ? "No files match these filters yet." : "No files yet. Share the first one!") + "</p>";
-    $("lb-count").textContent = shown.length === files.length ? files.length + (files.length === 1 ? " file" : " files") : shown.length + " of " + files.length + " files";
+      : '<p class="ch-note">' + (files.length ? "No files for this unit and topic yet." : "No files yet. Share the first one!") + "</p>";
+    $("lb-count").textContent = shown.length + " of " + total;
   }
   function refresh(){
     return T.call("library/list", {lookup: lookup}).then(function(list){ files = Array.isArray(list) ? list : []; drawList(); }, function(err){
@@ -308,7 +320,7 @@ var Library = (function(){
         btn.textContent = "Share file";
         sync();
         open(false);
-        say("Shared! It's in the list now.");
+        say(filter ? "Shared! It's in the list now." : "Shared! Choose its unit and Search to see it in the list.");
         return refresh();
       }, function(err){
         btn.textContent = "Share file";
@@ -319,8 +331,12 @@ var Library = (function(){
   }
   function wireList(){
     $("lb-filterbox").addEventListener("change", function(e){
-      if (e.target.id === "lb-funit"){ filter.unit = e.target.value; filter.topic = ""; $("lb-filterbox").innerHTML = filtersHtml(); }
-      if (e.target.id === "lb-ftopic") filter.topic = e.target.value;
+      if (e.target.id === "lb-funit"){ pick.unit = e.target.value; pick.topic = ""; $("lb-filterbox").innerHTML = filtersHtml(); }
+      if (e.target.id === "lb-ftopic") pick.topic = e.target.value;
+    });
+    $("lb-filterbox").addEventListener("click", function(e){
+      if (!e.target.closest("#lb-search") || !pick.unit) return;
+      filter = {unit: pick.unit, topic: pick.topic};
       drawList();
     });
     $("lb-list").addEventListener("click", function(e){
