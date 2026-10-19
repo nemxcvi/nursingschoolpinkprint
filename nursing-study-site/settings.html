@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=113">
+<link rel="stylesheet" href="assets/style.css?v=116">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -31,10 +31,10 @@
   </section>
 
   <div class="se-pair">
-  <div class="se-colstack">
   <section class="tp-card tp-col se-nickcard">
     <div class="tp-stack">
-      <div class="se-head"><span class="tp-label">Nickname</span><button type="button" class="tp-textlink se-link" id="se-switch">Switch nickname</button></div>
+      <div class="se-head"><span class="tp-label">Nickname</span><button type="button" class="tp-textlink se-link" id="se-switch">Switch nickname</button>
+        <span class="se-headbtns hidden" id="se-nickbtns"><button type="button" class="tp-btn se-small" id="se-nickcancel">Cancel</button><button type="button" class="tp-btn tp-btn-primary se-small" id="se-nicksave">Save</button></span></div>
       <span class="tp-big" id="se-nick"></span>
       <span class="tp-hint">Shows in challenges, and on your dashboard unless you add a preferred name.</span>
       <span class="tp-warn-inline hidden" id="se-nicktaken">Someone else has this nickname now. Switch to a new one to keep yours unique.</span>
@@ -48,41 +48,31 @@
         <button type="button" class="tp-btn" id="se-reroll"></button>
       </div>
       <p class="tp-note hidden" id="se-nickmsg" role="status"></p>
-      <div class="tp-actions">
-        <button type="button" class="tp-btn" id="se-nickcancel">Cancel</button>
-        <button type="button" class="tp-btn tp-btn-primary" id="se-nicksave">Save</button>
-      </div>
     </div>
     <div class="se-dashname">
       <div class="tp-stack">
         <div class="se-head"><span class="tp-label">Name on your dashboard</span>
-          <span class="se-dashlinks" id="se-dashlinks"><button type="button" class="tp-textlink se-link hidden" id="se-dashclear">Use my nickname</button><button type="button" class="tp-textlink se-link" id="se-dashedit">Add a preferred name</button></span></div>
+          <span class="se-dashlinks" id="se-dashlinks"><button type="button" class="tp-textlink se-link hidden" id="se-dashclear">Use my nickname</button><button type="button" class="tp-textlink se-link" id="se-dashedit">Add a preferred name</button></span>
+          <span class="se-headbtns hidden" id="se-dashbtns"><button type="button" class="tp-btn se-small" id="se-dashcancel">Cancel</button><button type="button" class="tp-btn tp-btn-primary se-small" id="se-dashsave">Save</button></span></div>
         <span class="se-dashval hidden" id="se-dashname"></span>
         <span class="tp-hint">Add an optional preferred name to dashboard greeting. Challenges always use your nickname.</span>
       </div>
       <div class="tp-editor se-nickedit hidden" id="se-dasheditor">
         <input id="se-dashinput" class="tp-input" maxlength="30" autocomplete="given-name" aria-label="Preferred name for your dashboard" placeholder="Your preferred name">
         <p class="tp-note hidden" id="se-dashmsg" role="status"></p>
-        <div class="tp-actions">
-          <button type="button" class="tp-btn" id="se-dashcancel">Cancel</button>
-          <button type="button" class="tp-btn tp-btn-primary" id="se-dashsave">Save</button>
-        </div>
       </div>
     </div>
   </section>
 
   <section class="tp-card tp-col se-goalcard">
     <div class="tp-stack">
-      <div class="se-head"><span class="tp-label">Weekly goal</span><button type="button" class="tp-textlink se-link" id="se-goalchange">Change goal</button></div>
+      <div class="se-head"><span class="tp-label">Weekly goal</span><button type="button" class="tp-textlink se-link" id="se-goalchange">Change goal</button>
+        <span class="se-headbtns hidden" id="se-goalbtns"><button type="button" class="tp-btn se-small" id="se-goalcancel">Cancel</button><button type="button" class="tp-btn tp-btn-primary se-small" id="se-goalsave">Save</button></span></div>
       <span class="tp-big tp-big-22" id="se-goal"></span>
       <span class="tp-hint">Reach it each week to grow your streak on My dashboard.</span>
     </div>
     <div class="tp-editor hidden" id="se-goaledit">
       <div id="se-goalpicker" class="tp-goal"></div>
-      <div class="tp-actions">
-        <button type="button" class="tp-btn" id="se-goalcancel">Cancel</button>
-        <button type="button" class="tp-btn tp-btn-primary" id="se-goalsave">Save</button>
-      </div>
     </div>
     <div class="tp-feature tp-breakgoal">
       <div class="tp-feature-text">
@@ -96,10 +86,12 @@
 
   <section class="tp-card tp-col se-codecard">
     <div class="se-head"><h2 class="tp-label se-h">Your code and devices</h2><button type="button" class="tp-textlink se-link" id="se-show">Show code</button></div>
-    <span class="tp-codebox" id="se-code"></span>
-    <div class="se-codebtns">
-      <button type="button" class="tp-btn tp-btn-48" id="se-email">Email it to myself</button>
-      <button type="button" class="tp-btn tp-btn-48" id="se-manager">Save to password manager</button>
+    <div class="se-coderow">
+      <span class="tp-codebox" id="se-code"></span>
+      <div class="se-codebtns">
+        <button type="button" class="tp-btn tp-btn-48" id="se-email">Email it to myself</button>
+        <button type="button" class="tp-btn tp-btn-48" id="se-manager">Save to password manager</button>
+      </div>
     </div>
     <div class="se-devices">
       <div class="tp-dashed tp-linkqr se-qrbox">
@@ -120,7 +112,6 @@
       </form>
     </div>
   </section>
-  </div>
 
 
   <section class="tp-card tp-features">
@@ -238,7 +229,7 @@
     loadNames().then(function(){
       fillList();
       $("se-nickedit").classList.remove("hidden");
-      $("se-switch").classList.add("is-off");
+      $("se-switch").classList.add("hidden"); $("se-nickbtns").classList.remove("hidden");
     });
   });
   /* Reroll: a random free name, selected in the dropdown */
@@ -246,7 +237,7 @@
     var pick = Tracking.pickNickname(names, picked);
     if (pick && pick !== st().nickname) choose(pick);
   });
-  function closeNick(){ openList(false); $("se-nickedit").classList.add("hidden"); $("se-switch").classList.remove("is-off"); }
+  function closeNick(){ openList(false); $("se-nickedit").classList.add("hidden"); $("se-switch").classList.remove("hidden"); $("se-nickbtns").classList.add("hidden"); }
   $("se-nickcancel").addEventListener("click", closeNick);
   $("se-nicksave").addEventListener("click", function(){
     var name = picked;
@@ -264,12 +255,12 @@
   });
 
   /* Preferred name for the dashboard (optional; empty = the nickname) */
-  function closeDash(){ $("se-dasheditor").classList.add("hidden"); $("se-dashlinks").classList.remove("is-off"); }
+  function closeDash(){ $("se-dasheditor").classList.add("hidden"); $("se-dashlinks").classList.remove("hidden"); $("se-dashbtns").classList.add("hidden"); }
   $("se-dashedit").addEventListener("click", function(){
     say("se-dashmsg", "");
     $("se-dashinput").value = st().dashName || "";
     $("se-dasheditor").classList.remove("hidden");
-    $("se-dashlinks").classList.add("is-off");
+    $("se-dashlinks").classList.add("hidden"); $("se-dashbtns").classList.remove("hidden");
     $("se-dashinput").focus();
   });
   $("se-dashcancel").addEventListener("click", closeDash);
@@ -305,12 +296,12 @@
 
   /* Weekly goal: pick, then Save (Cancel keeps the old one) */
   var draftGoal = null;
-  function closeGoal(){ $("se-goaledit").classList.add("hidden"); $("se-goalchange").classList.remove("is-off"); }
+  function closeGoal(){ $("se-goaledit").classList.add("hidden"); $("se-goalchange").classList.remove("hidden"); $("se-goalbtns").classList.add("hidden"); }
   $("se-goalchange").addEventListener("click", function(){
     draftGoal = st().goal || Tracking.DEFAULT_GOAL;
     TrackingUI.goalPicker($("se-goalpicker"), draftGoal, function(g){ draftGoal = g; });
     $("se-goaledit").classList.remove("hidden");
-    $("se-goalchange").classList.add("is-off");
+    $("se-goalchange").classList.add("hidden"); $("se-goalbtns").classList.remove("hidden");
   });
   $("se-goalcancel").addEventListener("click", closeGoal);
   $("se-goalsave").addEventListener("click", function(){

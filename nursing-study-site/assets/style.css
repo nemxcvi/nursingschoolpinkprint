@@ -626,12 +626,11 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .tp-textlink.se-link{align-self:flex-start;}
 /* Settings: Nickname and Your code and devices side by side on wide screens */
 .se-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:stretch;}
-.se-colstack{display:flex;flex-direction:column;gap:28px;min-width:0;}
-.se-colstack > .tp-card{flex:1 1 auto;}
-.se-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;min-height:22px;}
+.se-head{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:32px;}
 .se-head .se-h{margin:0;font-weight:400;}
 .se-head .tp-textlink.se-link{padding:2px 0;align-self:auto;flex:0 0 auto;}
-.se-head .is-off{visibility:hidden;}
+.se-headbtns{display:flex;gap:6px;flex:0 0 auto;}
+.tp-btn.se-small{min-height:32px;padding:0 12px;font-size:11px;}
 .se-dashlinks{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end;}
 .se-nickrow{align-items:flex-start;}
 .se-dashname{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1.5px dashed var(--soft);}
@@ -648,9 +647,11 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .se-ddopt.is-on{background:var(--border);color:var(--fill-text);}
 .se-pair > .tp-card{min-width:0;}
 .se-codecard .tp-codebox{flex:0 0 auto;}
-.se-devices{display:flex;flex-direction:column;gap:16px;}
+.se-devices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
 .se-devices .tp-dashed{flex:0 0 auto;}
-.se-nickedit .tp-actions,.se-goalcard .tp-actions{justify-content:flex-start;}
+.se-coderow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:stretch;}
+@media(max-width:900px){.se-devices,.se-coderow{grid-template-columns:minmax(0,1fr);}}
+.tp-editor.se-nickedit,.se-goalcard .tp-editor{flex:0 0 auto;}
 .se-codebtns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
 .se-codebtns .tp-btn{width:100%;}
 @media(max-width:420px){.se-codebtns{grid-template-columns:minmax(0,1fr);}}
