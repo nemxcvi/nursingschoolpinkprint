@@ -57,8 +57,8 @@
     <div class="se-dashname">
       <div class="tp-stack">
         <span class="tp-label">Name on your dashboard</span>
-        <span class="se-dashval" id="se-dashname"></span>
-        <span class="tp-hint">Optional, like your first name. Only you see it; challenges always use your nickname.</span>
+        <span class="se-dashval hidden" id="se-dashname"></span>
+        <span class="tp-hint">Add an optional preferred name to dashboard greeting. Challenges always use your nickname.</span>
       </div>
       <div class="se-dashlinks" id="se-dashlinks">
         <button type="button" class="tp-textlink se-link" id="se-dashedit">Add a preferred name</button>
@@ -174,7 +174,8 @@
   function render(){
     var s = st();
     $("se-nick").textContent = s.nickname;
-    $("se-dashname").textContent = s.dashName || s.nickname + " (your nickname)";
+    $("se-dashname").textContent = s.dashName || "";
+    $("se-dashname").classList.toggle("hidden", !s.dashName);
     $("se-dashedit").textContent = s.dashName ? "Change" : "Add a preferred name";
     $("se-dashclear").classList.toggle("hidden", !s.dashName);
     MyStudy.header("settings");

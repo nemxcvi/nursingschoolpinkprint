@@ -221,7 +221,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(await pg.evaluate(() => Tracking.state().goal.type === "days" && Tracking.state().goal.value === 4) && /4 study days/i.test(await pg.textContent("#se-goal")),
     "settings: Save changes the goal", await pg.textContent("#se-goal"));
   const nick = await pg.evaluate(() => Tracking.state().nickname);
-  check(/your nickname/.test(await pg.textContent("#se-dashname")), "settings: dashboard name defaults to the nickname");
+  check(!(await pg.isVisible("#se-dashname")) && /Add an optional preferred name to dashboard greeting/.test(await pg.textContent(".se-dashname")), "settings: no preferred name yet, just the short hint");
   await pg.click("#se-dashedit");
   await pg.fill("#se-dashinput", "  Kayla  ");
   await pg.click("#se-dashsave");
