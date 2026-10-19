@@ -125,8 +125,8 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(/Resolved · 3/.test(await text(".ms-resolved")), "journal: resolved section");
   await pg.selectOption("#j-unit", "2");
   check((await pg.$$eval(".ms-jcard", c => c.length)) === 6, "journal: unit filter");
-  check(/unit=2/.test(await pg.$eval(".ms-jquiz a", x => x.getAttribute("href"))) && /Quiz my weak spots/.test(await text(".ms-jquiz a")) && /then new questions to make 20/.test(await text(".ms-jquiz-sub")),
-    "journal: the quiz follows the unit filter; Unit 2's weak spots topped up to 20 with new questions", await text(".ms-jquiz"));
+  check(/unit=2/.test(await pg.$eval(".ms-jquiz a", x => x.getAttribute("href"))) && /Quiz my weak spots/.test(await text(".ms-jquiz a")) && !/new questions/.test(await text(".ms-jquiz")),
+    "journal: the quiz follows the unit filter, weak spots only", await text(".ms-jquiz"));
   await shot("journal");
   await pg.selectOption("#j-unit", "");
   await pg.click('[data-tab="bookmarks"]');
@@ -139,7 +139,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(/question 1 of \d+/.test(prog), "session: today's plan starts straight away", prog);
   await go("session.html?mode=journal&unit=2", "2026-10-01");
   await pg.waitForSelector("#pq-quiz-screen:not(.hidden)");
-  check(/of 20/.test(await text("#pq-progress")), "session: mistakes quiz for Unit 2 (6 mistakes + 14 new = 20)", await text("#pq-progress"));
+  check(/question 1 of (\d+)/.test(await text("#pq-progress")) && +((await text("#pq-progress")).match(/of (\d+)/) || [])[1] < 20, "session: Unit 2 weak spots quiz, no top-up with new questions", await text("#pq-progress"));
   await pg.click("#pq-end-test");
   check(/Weak spots quiz mastery/.test(await text("#pq-mastery")), "session: results with Mastery box");
   await go("session.html?mode=weak", "2026-10-01");

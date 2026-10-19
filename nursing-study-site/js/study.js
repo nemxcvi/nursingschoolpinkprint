@@ -141,21 +141,15 @@
   }
 
   /* ---------- Weak spots quiz ----------
-     Blind spots first, then the rest of the Mistake journal, then lucky guesses (up to 40).
-     Fewer than 20? Topped up with questions never seen, so there's always a full quiz. */
-  var WEAK_MAX = 40, WEAK_MIN = 20;
+     Blind spots first, then the rest of the Mistake journal, then lucky guesses (up to 40). */
+  var WEAK_MAX = 40;
   function isWeak(rec, unit, today, exams){
     var st = P.statusOf(rec, unit, today, exams);
     return st === "blindspot" || st === "journal" || st === "luckyguess" || !!(rec && rec.journal);
   }
   function weakSpotsQuiz(questions, store, today, exams, random){
     var weak = questions.filter(function(q){ return isWeak(store[q.id], q.unit, today, exams); });
-    var out = rank(weak, store, today, exams, WEAK_MAX, random);
-    if (out.length < WEAK_MIN){
-      var unseen = questions.filter(function(q){ return P.statusOf(store[q.id], q.unit, today, exams) === "new" && out.indexOf(q) === -1; });
-      out = out.concat(rank(unseen, store, today, exams, WEAK_MIN - out.length, random));
-    }
-    return out;
+    return rank(weak, store, today, exams, WEAK_MAX, random);
   }
 
   /* ---------- Weekly goal and streaks ----------

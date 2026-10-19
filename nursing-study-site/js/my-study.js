@@ -472,11 +472,10 @@ var MyStudy = (function(){
     var topicOpts = topicList.map(function(t){ return '<option value="' + esc(t) + '"' + (js.topic === t ? " selected" : "") + ">" + esc(t) + "</option>"; }).join("");
     var scope = (js.unit ? "&unit=" + js.unit : "") + (js.topic ? "&topic=" + encodeURIComponent(js.topic) : "");
     var quizHref = "session.html?mode=" + (js.tab === "journal" ? "journal" : "bookmarks") + scope;
-    /* Weak spots tab: one quiz (blind spots, mistakes, lucky guesses, topped up with unseen questions), following the filters */
+    /* Weak spots tab: one quiz (blind spots, mistakes, then lucky guesses), following the filters */
     var mq = js.tab !== "journal" ? [] : S.weakSpotsQuiz(d.questions.filter(function(q){
       return (!js.unit || q.unit === +js.unit) && (!js.topic || q.topic === js.topic);
     }), d.store, d.today, d.exams);
-    var mqMissed = mq.filter(function(q){ var r = d.store[q.id]; return r && r.seen; }).length;
     var noun = js.tab === "journal" ? ["mistake", "mistakes"] : ["bookmark", "bookmarks"];
     var term = (+d.semester.start.slice(5, 7) >= 8 ? "Fall " : "Spring ") + d.semester.start.slice(0, 4);
     var isProgress = js.tab === "progress";
@@ -504,8 +503,8 @@ var MyStudy = (function(){
     }
     /* The Weak spots quiz sits between the tabs and the filters */
     if (js.tab === "journal" && mq.length){
-      html += '<div class="ms-jquiz"><a class="ms-btn is-primary is-big" href="' + quizHref + '">' + (mqMissed ? "Quiz my weak spots" : "Quiz " + mq.length + " new questions") + " →</a>" +
-        '<span class="ms-jquiz-sub">' + (mqMissed ? "Blind spots first, then mistakes, then lucky guesses" + (mq.length > mqMissed ? ", then new questions to make " + mq.length : "") : "No weak spots here yet, so these are questions you haven't seen") + "</span></div>";
+      html += '<div class="ms-jquiz"><a class="ms-btn is-primary is-big" href="' + quizHref + '">Quiz my weak spots →</a>' +
+        '<span class="ms-jquiz-sub">Blind spots first, then mistakes, then lucky guesses</span></div>';
     }
     html += '<div class="ms-filters"><label><span class="tp-label">Unit</span><select id="j-unit"><option value="">All units</option>' + unitOpts + "</select></label>" +
       '<label><span class="tp-label">Topic</span><select id="j-topic"><option value="">All topics</option>' + topicOpts + "</select></label>" +

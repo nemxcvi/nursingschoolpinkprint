@@ -96,9 +96,9 @@
 </div>
 
 <script src="assets/theme.js?v=6"></script>
-<script src="js/study.js?v=4"></script>
+<script src="js/study.js?v=5"></script>
 <script src="assets/practice-quiz.js?v=19"></script>
-<script src="js/my-study.js?v=22"></script>
+<script src="js/my-study.js?v=23"></script>
 <script src="js/challenges.js?v=12"></script>
 <script>
 (function(){
@@ -125,7 +125,7 @@
       var qs = Study.examUnitsQuestions(questions, exam).filter(function(q){ return !Progress.isExamReady(store[q.id], exam.id); });
       return rank(qs, 20);
     }
-    /* Weak spots: blind spots, then mistakes, then lucky guesses, topped up with unseen questions */
+    /* Weak spots: blind spots, then mistakes, then lucky guesses (old Weak spots links land here too) */
     if (mode === "journal" || mode === "weak") return Study.weakSpotsQuiz(scoped, store, today, exams);
     if (mode === "bookmarks") return rank(scoped.filter(function(q){ var r = store[q.id]; return r && r.bookmarked; }), 40);
     if (mode === "blind") return rank(scoped.filter(function(q){ return status(q) === "blindspot"; }), 40);
