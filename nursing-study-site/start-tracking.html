@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=104">
+<link rel="stylesheet" href="assets/style.css?v=106">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -55,10 +55,10 @@
             <div class="tp-btns">
               <button type="button" class="tp-btn" id="st-email" disabled>Email it to myself</button>
               <button type="button" class="tp-btn" id="st-manager" disabled>Save to password manager</button>
-              <button type="button" class="tp-btn" id="st-print" disabled>Print QR code</button>
             </div>
           </div>
-          <div class="tp-qr" id="st-qr" role="img" aria-label="QR code for this progress code"><span>QR code</span></div>
+          <div class="tp-qrwrap"><div class="tp-qr" id="st-qr" role="img" aria-label="QR code for this progress code"><span>QR code</span></div>
+            <span class="tp-qrcap">Scan with your phone's camera to use this code there</span></div>
         </div>
         <div class="tp-warn">Save it now. Nobody can recover a lost code, not even the site owner. That's what keeps your progress private.</div>
       </div>
@@ -143,7 +143,7 @@
     $("st-code").classList.remove("hidden");
     $("st-create").classList.add("hidden");
     $("st-qr").innerHTML = Tracking.qrSvg(Tracking.linkUrl(code), 4);
-    ["st-email", "st-manager", "st-print", "st-start"].forEach(function(id){ $(id).disabled = false; });
+    ["st-email", "st-manager", "st-start"].forEach(function(id){ $(id).disabled = false; });
   }
 
   /* Only names nobody else has are offered */
@@ -186,7 +186,7 @@
 
   $("st-reroll").addEventListener("click", function(){ nickname = Tracking.pickNickname(names, nickname); showNick(); });
   $("st-create").addEventListener("click", createCode);
-  TrackingUI.wireBackups({email: $("st-email"), manager: $("st-manager"), print: $("st-print")},
+  TrackingUI.wireBackups({email: $("st-email"), manager: $("st-manager")},
     function(){ return code; }, function(){ return nickname; });
   TrackingUI.goalPicker($("st-goal"), goal, function(g){ goal = g; });
 

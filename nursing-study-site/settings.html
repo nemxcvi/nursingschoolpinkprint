@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=104">
+<link rel="stylesheet" href="assets/style.css?v=106">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -30,19 +30,19 @@
     <h1 class="tp-h1">Settings</h1>
   </section>
 
-  <section class="tp-card tp-split">
+  <div class="se-pair">
+  <section class="tp-card tp-col se-nickcard">
     <div class="tp-stack">
       <span class="tp-label">Nickname</span>
       <span class="tp-big" id="se-nick"></span>
       <span class="tp-hint">Shows on your home page and in challenges.</span>
       <span class="tp-warn-inline hidden" id="se-nicktaken">Someone else has this nickname now. Switch to a new one to keep yours unique.</span>
     </div>
-    <button type="button" class="tp-btn" id="se-switch">Switch nickname</button>
-    <div class="tp-editor hidden" id="se-nickedit">
-      <div class="tp-row">
-        <select id="se-nickselect" class="tp-select" aria-label="Pick a nickname"></select>
-        <button type="button" class="tp-btn" id="se-reroll"></button>
-      </div>
+    <button type="button" class="tp-textlink se-link" id="se-switch">Switch nickname</button>
+    <div class="tp-editor se-nickedit hidden" id="se-nickedit">
+      <span class="tp-hint">Pick a name nobody else has.</span>
+      <div class="se-names" id="se-names" role="radiogroup" aria-label="Nickname options"></div>
+      <button type="button" class="tp-textlink se-link" id="se-reroll">Show other names</button>
       <p class="tp-note hidden" id="se-nickmsg" role="status"></p>
       <div class="tp-actions">
         <button type="button" class="tp-btn" id="se-nickcancel">Cancel</button>
@@ -51,20 +51,20 @@
     </div>
   </section>
 
-  <section class="tp-card tp-col">
+  <section class="tp-card tp-col se-codecard">
     <h2 class="tp-h2 tp-h2-lg">Your code and devices</h2>
+    <span class="tp-codebox" id="se-code"></span>
     <div class="tp-row tp-row-wrap">
-      <span class="tp-codebox" id="se-code"></span>
       <button type="button" class="tp-btn tp-btn-48" id="se-show">Show code</button>
       <button type="button" class="tp-btn tp-btn-48" id="se-email">Email it to myself</button>
       <button type="button" class="tp-btn tp-btn-48" id="se-manager">Save to password manager</button>
     </div>
-    <div class="tp-row tp-row-wrap tp-gap16">
-      <div class="tp-dashed tp-linkqr">
-        <div class="tp-qr tp-qr-120" id="se-qr" role="img" aria-label="QR code for linking a device"><span>QR code</span></div>
+    <div class="se-devices">
+      <div class="tp-dashed tp-linkqr se-qrbox">
+        <div class="tp-qr tp-qr-120" id="se-qr" role="img" aria-label="QR code for linking your phone"><span>QR code</span></div>
         <div class="tp-stack">
-          <span class="tp-h3">Link a new device</span>
-          <span class="tp-hint">On your phone or another computer, open the site, tap Link a device, and scan this.</span>
+          <span class="tp-h3">Link your phone</span>
+          <span class="tp-hint">Point your phone's camera at this code and open the link. On another computer, choose "Already have a code?" on Start tracking and type your code.</span>
         </div>
       </div>
       <form class="tp-dashed tp-col tp-linkform" id="se-linkform">
@@ -78,6 +78,7 @@
       </form>
     </div>
   </section>
+  </div>
 
   <section class="tp-card tp-split">
     <div class="tp-stack">
@@ -88,6 +89,10 @@
     <button type="button" class="tp-textlink se-goalchange" id="se-goalchange">Change goal</button>
     <div class="tp-editor hidden" id="se-goaledit">
       <div id="se-goalpicker" class="tp-goal"></div>
+      <div class="tp-actions">
+        <button type="button" class="tp-btn" id="se-goalcancel">Cancel</button>
+        <button type="button" class="tp-btn tp-btn-primary" id="se-goalsave">Save goal</button>
+      </div>
     </div>
     <div class="tp-feature tp-breakgoal">
       <div class="tp-feature-text">
@@ -153,41 +158,53 @@
   document.addEventListener("pinkprint-synced", render);
   $("se-qr").innerHTML = Tracking.qrSvg(Tracking.linkUrl(st().code), 4);
 
-  /* Switch nickname: reroll or pick from the list */
-  $("se-reroll").innerHTML = TrackingUI.DICE + "Reroll";
+  /* Switch nickname: a few free names to tap, Show other names for a fresh few */
+  var SHOWN = 6, chosen = "";
   /* Only names nobody else has (plus your own) */
-  function loadNames(){ return Tracking.freeNicknames(st().nickname).then(function(n){ names = n; }); }
-  function fillSelect(selected){
-    var sel = $("se-nickselect");
-    sel.innerHTML = "";
-    var list = names.slice();
-    if (list.indexOf(st().nickname) === -1) list.unshift(st().nickname);
-    list.forEach(function(n){
-      var o = document.createElement("option");
-      o.value = n; o.textContent = n;
-      if (n === selected) o.selected = true;
-      sel.appendChild(o);
+  function loadNames(){ return Tracking.freeNicknames(st().nickname).then(function(n){ names = n.filter(function(x){ return x !== st().nickname; }); }); }
+  function someNames(){
+    var pool = names.slice(), out = [];
+    while (pool.length && out.length < SHOWN) out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+    return out;
+  }
+  function drawNames(list){
+    var box = $("se-names");
+    box.innerHTML = "";
+    [st().nickname].concat(list).forEach(function(n, i){
+      var b = TrackingUI.el("button", "se-name" + (n === chosen ? " is-on" : ""), n);
+      b.type = "button";
+      b.setAttribute("role", "radio");
+      b.setAttribute("aria-checked", n === chosen ? "true" : "false");
+      if (i === 0) b.appendChild(TrackingUI.el("small", "", "current"));
+      b.addEventListener("click", function(){
+        chosen = n;
+        box.querySelectorAll(".se-name").forEach(function(x){ var on = x === b; x.classList.toggle("is-on", on); x.setAttribute("aria-checked", on ? "true" : "false"); });
+      });
+      box.appendChild(b);
     });
+    $("se-reroll").classList.toggle("hidden", names.length <= SHOWN);
   }
   $("se-switch").addEventListener("click", function(){
     say("se-nickmsg", "");
     loadNames().then(function(){
-      fillSelect(st().nickname);
+      chosen = st().nickname;
+      drawNames(someNames());
       $("se-nickedit").classList.remove("hidden");
       $("se-switch").classList.add("hidden");
     });
   });
-  $("se-reroll").addEventListener("click", function(){ fillSelect(Tracking.pickNickname(names, $("se-nickselect").value)); });
+  $("se-reroll").addEventListener("click", function(){ drawNames(someNames()); });
   function closeNick(){ $("se-nickedit").classList.add("hidden"); $("se-switch").classList.remove("hidden"); }
   $("se-nickcancel").addEventListener("click", closeNick);
   $("se-nicksave").addEventListener("click", function(){
-    var name = $("se-nickselect").value;
+    var name = chosen;
+    if (!name || name === st().nickname){ closeNick(); return; }
     $("se-nicksave").disabled = true;
     Tracking.switchNickname(name).then(function(ok){
       if (ok){ closeNick(); render(); }
       else {
         say("se-nickmsg", "Someone just took " + name + ". Pick another.");
-        loadNames().then(function(){ fillSelect(st().nickname); });
+        loadNames().then(function(){ chosen = st().nickname; drawNames(someNames()); });
       }
     }, function(){
       say("se-nickmsg", "Couldn't reach the server, so your nickname didn't change. Try again when you're online.");
@@ -215,14 +232,20 @@
     });
   });
 
-  /* Weekly goal: a tap saves it */
+  /* Weekly goal: pick, then Save (Cancel keeps the old one) */
+  var draftGoal = null;
+  function closeGoal(){ $("se-goaledit").classList.add("hidden"); $("se-goalchange").classList.remove("hidden"); }
   $("se-goalchange").addEventListener("click", function(){
-    var open = $("se-goaledit").classList.toggle("hidden") === false;
-    $("se-goalchange").textContent = open ? "Done" : "Change goal";
-    if (open) TrackingUI.goalPicker($("se-goalpicker"), st().goal || Tracking.DEFAULT_GOAL, function(g){
-      var cur = st().goal || Tracking.DEFAULT_GOAL;
-      if (g.type !== cur.type || g.value !== cur.value){ Tracking.update({goal: g}); render(); }
-    });
+    draftGoal = st().goal || Tracking.DEFAULT_GOAL;
+    TrackingUI.goalPicker($("se-goalpicker"), draftGoal, function(g){ draftGoal = g; });
+    $("se-goaledit").classList.remove("hidden");
+    $("se-goalchange").classList.add("hidden");
+  });
+  $("se-goalcancel").addEventListener("click", closeGoal);
+  $("se-goalsave").addEventListener("click", function(){
+    var cur = st().goal || Tracking.DEFAULT_GOAL;
+    if (draftGoal && (draftGoal.type !== cur.type || draftGoal.value !== cur.value)){ Tracking.update({goal: draftGoal}); render(); }
+    closeGoal();
   });
 
   /* Weekly goals during semester or holiday breaks */

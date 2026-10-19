@@ -207,6 +207,19 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await go("settings.html", "2026-10-01");
   check(/Your private exam average and scores on your dashboard/.test(await text("#se-features")) && /Due for review/.test(await text("#se-features")),
     "settings: new Study features wording");
+  const goal0 = await pg.evaluate(() => JSON.stringify(Tracking.state().goal));
+  check(await pg.$eval("#se-goalchange", b => b.classList.contains("tp-textlink")) && await pg.$eval("#se-switch", b => b.classList.contains("tp-textlink")),
+    "settings: Change goal and Switch nickname are underlined links");
+  await pg.click("#se-goalchange");
+  await pg.click('#se-goalpicker button[data-type="questions"][data-value="150"]');
+  check(await pg.evaluate(() => JSON.stringify(Tracking.state().goal)) === goal0, "settings: picking a goal doesn't save it until Save");
+  await pg.click("#se-goalcancel");
+  check(await pg.evaluate(() => JSON.stringify(Tracking.state().goal)) === goal0 && await pg.isVisible("#se-goalchange"), "settings: Cancel keeps the old goal");
+  await pg.click("#se-goalchange");
+  await pg.click('#se-goalpicker button[data-type="days"][data-value="4"]');
+  await pg.click("#se-goalsave");
+  check(await pg.evaluate(() => Tracking.state().goal.type === "days" && Tracking.state().goal.value === 4) && /4 study days/i.test(await pg.textContent("#se-goal")),
+    "settings: Save changes the goal", await pg.textContent("#se-goal"));
 
   check(errors.length === 0, "no page errors", errors.join(" | "));
   console.log(failures ? failures + " FAILED" : "all My study checks passed");

@@ -105,25 +105,30 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   pg = await open(B, BASE + "settings.html");
   await pg.click("#se-switch");
   await pg.waitForSelector("#se-nickedit:not(.hidden)");
-  const options = await pg.$$eval("#se-nickselect option", o => o.map(x => x.value));
-  check(!options.includes("Miss Pinkprint"), "owner name never offered");
-  const newName = options.find(n => n !== nickA);
-  await pg.selectOption("#se-nickselect", newName);
+  const options = await pg.$$eval("#se-names .se-name", o => o.map(x => x.firstChild.textContent));
+  check(!options.includes("Miss Pinkprint") && options.length >= 2 && options.length <= 7, "nickname options: a short list of free names, owner name never offered", options.join(","));
+  await pg.click("#se-reroll");
+  const options2 = await pg.$$eval("#se-names .se-name", o => o.map(x => x.firstChild.textContent));
+  check(options2.length >= 2, "Show other names gives a fresh few");
+  const pickName = options2.find(n => n !== nickA);
+  await pg.evaluate(n => [...document.querySelectorAll("#se-names .se-name")].find(b => b.firstChild.textContent === n).click(), pickName);
+  check(await pg.$eval("#se-names .se-name.is-on", b => b.firstChild.textContent) === pickName, "tapping a name selects it");
+  const newNameFinal = pickName;
   await pg.click("#se-nicksave");
-  await pg.waitForFunction(n => document.getElementById("se-nick").textContent === n, newName);
+  await pg.waitForFunction(n => document.getElementById("se-nick").textContent === n, newNameFinal);
   await synced(pg);
   claims = await q("select nickname from public.nickname_claims where ticket_hash is not null");
-  check(claims.length === 1 && claims[0].nickname === newName, "switch: new name claimed, old one freed", claims.map(c => c.nickname).join(","));
+  check(claims.length === 1 && claims[0].nickname === newNameFinal, "switch: new name claimed, old one freed", claims.map(c => c.nickname).join(","));
   pg = await open(A, BASE + "settings.html");
-  await pg.waitForFunction(n => document.getElementById("se-nick").textContent === n, newName, {timeout: 15000}).catch(() => {});
-  check((await pg.textContent("#se-nick")) === newName, "A picks up the new nickname");
+  await pg.waitForFunction(n => document.getElementById("se-nick").textContent === n, newNameFinal, {timeout: 15000}).catch(() => {});
+  check((await pg.textContent("#se-nick")) === newNameFinal, "A picks up the new nickname");
 
   // ---- A third person can't be offered a taken name ----
   const C = await device("C");
   let pc = await open(C, BASE + "start-tracking.html?from=home");
   await pc.waitForSelector("#st-qr svg");
   let offeredTaken = false;
-  for (let i = 0; i < 60; i++) { if ((await pc.textContent("#st-nick")) === newName) offeredTaken = true; await pc.click("#st-reroll"); }
+  for (let i = 0; i < 60; i++) { if ((await pc.textContent("#st-nick")) === newNameFinal) offeredTaken = true; await pc.click("#st-reroll"); }
   check(!offeredTaken, "taken nicknames are never offered");
   // Race: someone claims C's name a moment before C presses Start
   const cName = await pc.textContent("#st-nick");
