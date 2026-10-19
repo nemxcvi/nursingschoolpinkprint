@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=106">
+<link rel="stylesheet" href="assets/style.css?v=108">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -31,6 +31,7 @@
   </section>
 
   <div class="se-pair">
+  <div class="se-colstack">
   <section class="tp-card tp-col se-nickcard">
     <div class="tp-stack">
       <span class="tp-label">Nickname</span>
@@ -40,9 +41,11 @@
     </div>
     <button type="button" class="tp-textlink se-link" id="se-switch">Switch nickname</button>
     <div class="tp-editor se-nickedit hidden" id="se-nickedit">
-      <span class="tp-hint">Pick a name nobody else has.</span>
-      <div class="se-names" id="se-names" role="radiogroup" aria-label="Nickname options"></div>
-      <button type="button" class="tp-textlink se-link" id="se-reroll">Show other names</button>
+      <div class="tp-row">
+        <select id="se-nickselect" class="tp-select" aria-label="Pick a nickname"></select>
+        <button type="button" class="tp-btn" id="se-reroll"></button>
+      </div>
+      <button type="button" class="tp-textlink se-link" id="se-morenames">Show other names</button>
       <p class="tp-note hidden" id="se-nickmsg" role="status"></p>
       <div class="tp-actions">
         <button type="button" class="tp-btn" id="se-nickcancel">Cancel</button>
@@ -51,11 +54,37 @@
     </div>
   </section>
 
+  <section class="tp-card tp-split se-goalcard">
+    <div class="tp-stack">
+      <span class="tp-label">Weekly goal</span>
+      <span class="tp-big tp-big-22" id="se-goal"></span>
+      <span class="tp-hint">Reach it each week to grow your streak on My dashboard.</span>
+    </div>
+    <button type="button" class="tp-textlink se-goalchange" id="se-goalchange">Change goal</button>
+    <div class="tp-editor hidden" id="se-goaledit">
+      <div id="se-goalpicker" class="tp-goal"></div>
+      <div class="tp-actions">
+        <button type="button" class="tp-btn" id="se-goalcancel">Cancel</button>
+        <button type="button" class="tp-btn tp-btn-primary" id="se-goalsave">Save goal</button>
+      </div>
+    </div>
+    <div class="tp-feature tp-breakgoal">
+      <div class="tp-feature-text">
+        <span class="tp-feature-name" id="se-breaklabel">Weekly goals during semester or holiday breaks</span>
+        <span class="tp-hint">On by default. During semester and holiday breaks, hitting your goal grows your streak and missing it only pauses it. Turn it off to pause your streak completely during breaks.</span>
+      </div>
+      <button type="button" class="tp-switch" id="se-breakswitch" role="switch" aria-labelledby="se-breaklabel"><span></span></button>
+    </div>
+  </section>
+  </div>
+
   <section class="tp-card tp-col se-codecard">
     <h2 class="tp-h2 tp-h2-lg">Your code and devices</h2>
-    <span class="tp-codebox" id="se-code"></span>
-    <div class="tp-row tp-row-wrap">
-      <button type="button" class="tp-btn tp-btn-48" id="se-show">Show code</button>
+    <div class="tp-stack se-codewrap">
+      <span class="tp-codebox" id="se-code"></span>
+      <button type="button" class="tp-textlink se-link" id="se-show">Show code</button>
+    </div>
+    <div class="se-codebtns">
       <button type="button" class="tp-btn tp-btn-48" id="se-email">Email it to myself</button>
       <button type="button" class="tp-btn tp-btn-48" id="se-manager">Save to password manager</button>
     </div>
@@ -80,28 +109,6 @@
   </section>
   </div>
 
-  <section class="tp-card tp-split">
-    <div class="tp-stack">
-      <span class="tp-label">Weekly goal</span>
-      <span class="tp-big tp-big-22" id="se-goal"></span>
-      <span class="tp-hint">Reach it each week to grow your streak on My dashboard.</span>
-    </div>
-    <button type="button" class="tp-textlink se-goalchange" id="se-goalchange">Change goal</button>
-    <div class="tp-editor hidden" id="se-goaledit">
-      <div id="se-goalpicker" class="tp-goal"></div>
-      <div class="tp-actions">
-        <button type="button" class="tp-btn" id="se-goalcancel">Cancel</button>
-        <button type="button" class="tp-btn tp-btn-primary" id="se-goalsave">Save goal</button>
-      </div>
-    </div>
-    <div class="tp-feature tp-breakgoal">
-      <div class="tp-feature-text">
-        <span class="tp-feature-name" id="se-breaklabel">Weekly goals during semester or holiday breaks</span>
-        <span class="tp-hint">On by default. During semester and holiday breaks, hitting your goal grows your streak and missing it only pauses it. Turn it off to pause your streak completely during breaks.</span>
-      </div>
-      <button type="button" class="tp-switch" id="se-breakswitch" role="switch" aria-labelledby="se-breaklabel"><span></span></button>
-    </div>
-  </section>
 
   <section class="tp-card tp-features">
     <h2 class="tp-h2 tp-h2-lg">Study features</h2>
@@ -158,53 +165,55 @@
   document.addEventListener("pinkprint-synced", render);
   $("se-qr").innerHTML = Tracking.qrSvg(Tracking.linkUrl(st().code), 4);
 
-  /* Switch nickname: a few free names to tap, Show other names for a fresh few */
-  var SHOWN = 6, chosen = "";
+  /* Switch nickname: a short dropdown of free names. Reroll picks one at random; Show other names
+     fills the dropdown with a fresh few. */
+  var SHOWN = 8, offered = [];
+  $("se-reroll").innerHTML = TrackingUI.DICE + "Reroll";
   /* Only names nobody else has (plus your own) */
   function loadNames(){ return Tracking.freeNicknames(st().nickname).then(function(n){ names = n.filter(function(x){ return x !== st().nickname; }); }); }
-  function someNames(){
-    var pool = names.slice(), out = [];
+  function someNames(keep){
+    var pool = names.filter(function(n){ return n !== keep; }), out = keep ? [keep] : [];
     while (pool.length && out.length < SHOWN) out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
     return out;
   }
-  function drawNames(list){
-    var box = $("se-names");
-    box.innerHTML = "";
+  function fillSelect(list, selected){
+    offered = list;
+    var sel = $("se-nickselect");
+    sel.innerHTML = "";
     [st().nickname].concat(list).forEach(function(n, i){
-      var b = TrackingUI.el("button", "se-name" + (n === chosen ? " is-on" : ""), n);
-      b.type = "button";
-      b.setAttribute("role", "radio");
-      b.setAttribute("aria-checked", n === chosen ? "true" : "false");
-      if (i === 0) b.appendChild(TrackingUI.el("small", "", "current"));
-      b.addEventListener("click", function(){
-        chosen = n;
-        box.querySelectorAll(".se-name").forEach(function(x){ var on = x === b; x.classList.toggle("is-on", on); x.setAttribute("aria-checked", on ? "true" : "false"); });
-      });
-      box.appendChild(b);
+      var o = document.createElement("option");
+      o.value = n; o.textContent = i === 0 ? n + " (current)" : n;
+      if (n === selected) o.selected = true;
+      sel.appendChild(o);
     });
-    $("se-reroll").classList.toggle("hidden", names.length <= SHOWN);
+    $("se-morenames").classList.toggle("hidden", names.length <= SHOWN);
   }
   $("se-switch").addEventListener("click", function(){
     say("se-nickmsg", "");
     loadNames().then(function(){
-      chosen = st().nickname;
-      drawNames(someNames());
+      fillSelect(someNames(), st().nickname);
       $("se-nickedit").classList.remove("hidden");
       $("se-switch").classList.add("hidden");
     });
   });
-  $("se-reroll").addEventListener("click", function(){ drawNames(someNames()); });
+  /* Reroll: a random free name, selected (kept in the list) */
+  $("se-reroll").addEventListener("click", function(){
+    var pick = Tracking.pickNickname(names, $("se-nickselect").value);
+    if (!pick || pick === st().nickname) return;
+    fillSelect(offered.indexOf(pick) !== -1 ? offered : someNames(pick), pick);
+  });
+  $("se-morenames").addEventListener("click", function(){ fillSelect(someNames(), st().nickname); });
   function closeNick(){ $("se-nickedit").classList.add("hidden"); $("se-switch").classList.remove("hidden"); }
   $("se-nickcancel").addEventListener("click", closeNick);
   $("se-nicksave").addEventListener("click", function(){
-    var name = chosen;
+    var name = $("se-nickselect").value;
     if (!name || name === st().nickname){ closeNick(); return; }
     $("se-nicksave").disabled = true;
     Tracking.switchNickname(name).then(function(ok){
       if (ok){ closeNick(); render(); }
       else {
         say("se-nickmsg", "Someone just took " + name + ". Pick another.");
-        loadNames().then(function(){ chosen = st().nickname; drawNames(someNames()); });
+        loadNames().then(function(){ fillSelect(someNames(), st().nickname); });
       }
     }, function(){
       say("se-nickmsg", "Couldn't reach the server, so your nickname didn't change. Try again when you're online.");
