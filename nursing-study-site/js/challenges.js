@@ -127,13 +127,7 @@ var Challenges = (function(){
   /* ---------- Challenges page ---------- */
   function intro(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Study buddy</div><h1 class="tp-h1">Challenges</h1>' +
-      '<p class="tp-lede">Challenges are for studying together: everyone answers the same set of questions.</p>' +
-      '<ol class="ch-steps">' +
-      '<li><span class="ch-stepn">1</span><strong>Create</strong><span>Pick a unit or topic and 10, 20 or 40 questions.</span></li>' +
-      '<li><span class="ch-stepn">2</span><strong>Send</strong><span>Share the code or link with up to 10 people. Expires in 7 days.</span></li>' +
-      '<li><span class="ch-stepn">3</span><strong>Study</strong><span>Group focus shows which units or topics your group should review.</span></li>' +
-      '<li><span class="ch-stepn">4</span><strong>Progress</strong><span>Your answers count toward your own progress.</span></li>' +
-      "</ol></section>";
+      '<p class="tp-lede">Create one, send the link to a friend, and study results as a group when you finish. Challenge answers count toward your own progress too.</p></section>';
   }
 
   /* Someone without tracking opened a challenge link */
