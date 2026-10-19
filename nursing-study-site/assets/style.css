@@ -731,11 +731,6 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-recap{display:flex;gap:28px;flex-wrap:wrap;}
 .ms-recap div{display:flex;flex-direction:column;gap:6px;}
 .ms-recap .ms-bignum{font-size:44px;}
-.ms-tiles{display:flex;gap:12px;flex-wrap:wrap;}
-.ms-tile{flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:6px;padding:18px 20px;background:var(--card);border:1.5px solid var(--border);text-decoration:none;color:var(--text);}
-.ms-tile:hover{background:var(--pill);}
-.ms-tile-title{font-family:'Young Serif',Georgia,serif;font-size:18px;}
-.ms-tile-sub{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--text2);}
 .ms-current-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
 .ms-toplink{flex:0 0 auto;align-self:auto;padding:12px 0;margin:-12px 0;}
 .ms-grade-top .tp-eyebrow{min-width:0;}
@@ -774,7 +769,13 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ms-new{display:inline-block;vertical-align:middle;margin-left:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;background:var(--pill);color:var(--label);}
 @media(max-width:760px){.ms-thead{display:none;}.ms-row{flex-wrap:wrap;}.ms-table .c-name{flex:1 1 100%;}.ms-table .c-bar{flex:1 1 100%;}.ms-table .c-ready,.ms-table .c-acc,.ms-table .c-go{flex:0 0 auto;text-align:left;}}
 /* Exam average */
+.ms-tiles{display:flex;gap:12px;flex-wrap:wrap;}
+.ms-tile{flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:6px;padding:18px 20px;background:var(--card);border:1.5px solid var(--border);text-decoration:none;color:var(--text);}
+.ms-tile:hover{background:var(--pill);}
+.ms-tile-title{font-family:'Young Serif',Georgia,serif;font-size:18px;}
+.ms-tile-sub{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--text2);}
 .ms-grade-top{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:20px;}
+.ms-grade-eyebrow{display:flex;align-items:center;gap:14px;}
 .ms-grade-top .ms-linkbtn{align-self:auto;padding:12px 0;margin:-12px 0;}
 .ms-grade-save{justify-content:flex-end;margin-top:16px;}
 .ms-grade-body{display:flex;gap:40px;flex-wrap:wrap;}

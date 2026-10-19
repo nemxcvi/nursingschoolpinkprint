@@ -64,7 +64,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   const kv = await pg.$$eval(".ms-kv div", d => d.map(x => x.children[0].textContent + ": " + x.children[1].textContent));
   check(kv[0] === "Streak: 6 weeks" && kv[1] === "Best streak: 6 weeks" && /70\s*of 50 questions/.test(week), "dashboard: this week, streak and best streak", kv.join(" | "));
   check(/81%/.test(await text(".ms-grade")) && /73%/.test(await text(".ms-grade")), "dashboard: exam average 81%, needs about 73%");
-  check((await pg.$$eval(".ms-tile", t => t.length)) === 3 && !/Weak spots/.test(await text(".ms-tiles")), "dashboard: 3 tiles, no Weak spots");
+  check(!(await pg.$(".ms-tiles")) && !/Weak spots|Mistake journal/.test(await text(".ms-main")), "dashboard: no tiles (Weak spots, Mistake journal, Bookmarks, Challenges)");
   check((await pg.$$eval(".ms-current .ms-row", r => r.length)) === 7, "dashboard: Unit 3 topic table (7 topics)");
   await shot("dashboard-oct1");
 
@@ -183,13 +183,19 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   // ---- Settings switches hide features ----
   await pg.evaluate(() => { Tracking.setFeature("countdown", false); Tracking.setFeature("goal", false); Tracking.setFeature("challenges", false); });
   await go("dashboard.html", "2026-10-01");
-  check(!(await pg.$(".ms-exam")) && !(await pg.$(".ms-week")) && (await pg.$$eval(".ms-tile", t => t.length)) === 2, "switches: countdown, goal and challenges hidden");
+  check(!(await pg.$(".ms-exam")) && !(await pg.$(".ms-week")), "switches: countdown and goal hidden");
   await go("", "2026-10-15");
   check(!(await pg.$("#pp-strip")), "switches: no countdown strip on the homepage");
   check(await pg.evaluate(() => Tracking.feature("grade")), "Exam average is on by default");
-  await pg.evaluate(() => Tracking.setFeature("grade", false));
   await go("dashboard.html", "2026-10-01");
-  check(!(await pg.$(".ms-grade")), "switches: Exam average hidden");
+  pg.once("dialog", dl => dl.accept());
+  await pg.click("#ms-hidegrade");
+  check(!(await pg.$(".ms-grade")) && !(await pg.evaluate(() => Tracking.feature("grade"))), "Hide on the Exam average card turns off its Settings switch");
+  await go("dashboard.html", "2026-10-01");
+  check(!(await pg.$(".ms-grade")), "switches: Exam average stays hidden");
+  await go("settings.html", "2026-10-01");
+  check(/Your private exam average and scores on your dashboard/.test(await text("#se-features")) && /Due for review/.test(await text("#se-features")),
+    "settings: new Study features wording");
 
   check(errors.length === 0, "no page errors", errors.join(" | "));
   console.log(failures ? failures + " FAILED" : "all My study checks passed");

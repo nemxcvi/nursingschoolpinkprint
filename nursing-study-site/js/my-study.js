@@ -135,25 +135,6 @@ var MyStudy = (function(){
     });
   }
 
-  function tiles(d){
-    var journal = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.journal; }).length;
-    var marks = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.bookmarked; });
-    var notes = marks.filter(function(q){ return d.store[q.id].note; }).length;
-    var t = [
-      ["journal.html?tab=mistakes", "Mistake journal", journal ? journal + " to review" : "Nothing to review"],
-      ["journal.html?tab=bookmarks", "Bookmarks", marks.length ? marks.length + " saved · " + notes + " with notes" : "None saved yet"]
-    ];
-    if (T.feature("challenges")){
-      /* Saved challenges from the last 7 days (links expire after 7 days) */
-      var week = Date.now() - 7 * 24 * 3600 * 1000;
-      var open = T.challenges().filter(function(c){ return (c.at || 0) > week; }).length;
-      t.push(["challenges.html", "Challenges", open ? plural(open, "challenge") + " this week" : "Send a friend the same questions"]);
-    }
-    return '<section class="ms-tiles" aria-label="Study tools">' + t.map(function(x){
-      return '<a class="ms-tile" href="' + x[0] + '"><span class="ms-tile-title">' + x[1] + '</span><span class="ms-tile-sub">' + esc(x[2]) + "</span></a>";
-    }).join("") + "</section>";
-  }
-
   /* ---------- My dashboard ---------- */
   function dashboard(d, host){
     var st = d.state, plan = S.planToday(d.questions, d.store, d.today, d.exams);
@@ -165,7 +146,6 @@ var MyStudy = (function(){
     else if (T.feature("countdown") && plan.exam) top += examCard(d, plan);
     if (T.feature("goal")) top += weekCard(d);
     if (top) html += '<section class="ms-toprow">' + top + "</section>";
-    html += tiles(d);
     html += currentUnitCard(d, plan);
     if (T.feature("grade")) html += gradeCard(d);
     host.innerHTML = html;
@@ -290,7 +270,8 @@ var MyStudy = (function(){
       '<p class="tp-hint">' + (g.passed ? "" : g.needPoints + " of the " + g.left + " points left · ") + "Exams 1–6 are 100 points each, the final is 300</p></div>" +
       '<div class="ms-grade-right"><div class="g-row g-head"><span class="g-name">Exam</span><span class="g-date">Date</span><span class="g-pts">Points</span><span class="g-pct">Score</span></div>' + rows + saveBtns + "</div>";
     return '<section class="ms-card ms-grade"><div class="tp-stack ms-grade-head">' +
-      '<div class="ms-grade-top"><span class="tp-eyebrow">Exam average</span>' + (editingScores ? "" : '<button type="button" class="ms-linkbtn" id="ms-editscores">Edit scores</button>') + "</div>" +
+      '<div class="ms-grade-top"><span class="ms-grade-eyebrow"><span class="tp-eyebrow">Exam average</span>' + (editingScores ? "" : '<button type="button" class="ms-linkbtn ms-hidegrade" id="ms-hidegrade">Hide</button>') + "</span>" +
+      (editingScores ? "" : '<button type="button" class="ms-linkbtn" id="ms-editscores">Edit scores</button>') + "</div>" +
       '<h2 class="ms-h2">Your grade so far</h2><span class="tp-hint">Just a reminder that only you can see this.</span></div>' +
       '<div class="ms-grade-body">' + parts + '</div><p class="tp-note hidden" id="ms-scoremsg" role="status"></p></section>';
   }
@@ -304,6 +285,14 @@ var MyStudy = (function(){
     if (pass) pass.addEventListener("click", function(){
       T.update({busyWeeks: (d.state.busyWeeks || []).concat([S.weekStart(d.today)])});
       rerender();
+    });
+    /* Hide = the Exam average switch in Settings (turned back on there) */
+    var hideGrade = document.getElementById("ms-hidegrade");
+    if (hideGrade) hideGrade.addEventListener("click", function(){
+      if (!confirm("Hide your exam average? You can turn it back on in Settings under Study features.")) return;
+      T.setFeature("grade", false);
+      var card = hideGrade.closest(".ms-grade");
+      if (card) card.remove();
     });
     var edit = document.getElementById("ms-editscores");
     if (edit) edit.addEventListener("click", function(){ editingScores = true; rerender(); });

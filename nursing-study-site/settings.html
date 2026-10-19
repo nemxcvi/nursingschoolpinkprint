@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=97">
+<link rel="stylesheet" href="assets/style.css?v=98">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -100,7 +100,7 @@
 
   <section class="tp-card tp-features">
     <h2 class="tp-h2 tp-h2-lg">Study features</h2>
-    <p class="tp-hint tp-features-sub">All on by default. Turning one off hides it; your saved progress stays.</p>
+    <p class="tp-hint tp-features-sub">All on by default. Turning it off hides it.</p>
     <div id="se-features"></div>
   </section>
 
@@ -119,20 +119,20 @@
 <script src="js/tracking-ui.js?v=2"></script>
 <script src="assets/site-data.js?v=10"></script>
 <script src="js/study.js?v=3"></script>
-<script src="js/my-study.js?v=20"></script>
+<script src="js/my-study.js?v=21"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
   var $ = function(id){ return document.getElementById(id); };
   var SLIDERS = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>';
   var FEATURES = [
-    ["sure", "Sure / Guessed tap", "Mark how sure you were. Finds lucky guesses and blind spots."],
-    ["goal", "Weekly goal and streaks", "The goal bar and streak counter on your home page."],
+    ["sure", "Sure / Guessed tap", "Markers on quiz questions. Finds lucky guesses and blind spots."],
+    ["goal", "Weekly goal and streaks", "The goal bar and streak counter on your dashboard."],
     ["countdown", "Exam countdown", "The next exam, its study plan and the exam ready window."],
-    ["grade", "Exam average", "Your private exam average and scores on My dashboard."],
-    ["review", "Due for review labels", "Labels like 8 due for review on your mastery bars."],
+    ["grade", "Exam average", "Your private exam average and scores on your dashboard."],
+    ["review", "Due for review", "Labels on your mastery bars."],
     ["notes", "My notes under rationales", "Your bookmark notes below rationales. Notes stay saved when off."],
-    ["challenges", "Challenges", "The Challenges page and Challenge a friend buttons."],
+    ["challenges", "Challenges", "The Challenge a friend page and buttons."],
     ["celebrations", "Celebration animations", "For streaks, exam ready and newly mastered questions."]
   ];
   var names = [], codeShown = false;
