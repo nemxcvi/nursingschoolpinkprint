@@ -409,7 +409,7 @@ var Challenges = (function(){
     if (doneEl) doneEl.previousElementSibling.classList.toggle("hidden", !done);
     if (listEl.querySelector(".ch-card")){ var e = listEl.querySelector(".ch-empty"); if (e) e.remove(); return; }
     if (done){ if (!listEl.querySelector(".ch-empty")) listEl.innerHTML = '<p class="ch-note ch-empty">Nothing left to take. Make a new challenge or join one with a code.</p>'; return; }
-    listEl.innerHTML = '<div class="ch-empty ch-none"><h2 class="ms-h2 ch-h2">No challenges yet</h2><p class="tp-hint">Create one, send the link to a friend, and study results as a group when you finish. Challenge answers count toward your own progress too.</p></div>';
+    listEl.innerHTML = '<p class="ms-empty ch-empty">No challenges yet. Create one, send the link to a friend, and study results as a group when you finish. Challenge answers count toward your own progress too.</p>';
   }
   function addCard(entry, first){
     var empty = listEl.querySelector(".ch-empty");
