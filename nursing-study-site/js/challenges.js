@@ -127,7 +127,13 @@ var Challenges = (function(){
   /* ---------- Challenges page ---------- */
   function intro(){
     return '<section class="tp-intro"><div class="tp-eyebrow">Study buddy</div><h1 class="tp-h1">Challenges</h1>' +
-      '<p class="tp-lede">Create one, send the link to a friend, and study results as a group when you finish. Challenge answers count toward your own progress too.</p></section>';
+      '<p class="tp-lede">Challenges are for studying together: everyone answers the same set of questions.</p>' +
+      '<ol class="ch-steps">' +
+      '<li><span class="ch-stepn">1</span><strong>Create</strong><span>Pick a unit or topic and 10, 20 or 40 questions.</span></li>' +
+      '<li><span class="ch-stepn">2</span><strong>Send</strong><span>Share the code or link with up to 10 people. Expires in 7 days.</span></li>' +
+      '<li><span class="ch-stepn">3</span><strong>Study</strong><span>Group focus shows which units or topics your group should review.</span></li>' +
+      '<li><span class="ch-stepn">4</span><strong>Progress</strong><span>Your answers count toward your own progress.</span></li>' +
+      "</ol></section>";
   }
 
   /* Someone without tracking opened a challenge link */
@@ -403,7 +409,7 @@ var Challenges = (function(){
     if (doneEl) doneEl.previousElementSibling.classList.toggle("hidden", !done);
     if (listEl.querySelector(".ch-card")){ var e = listEl.querySelector(".ch-empty"); if (e) e.remove(); return; }
     if (done){ if (!listEl.querySelector(".ch-empty")) listEl.innerHTML = '<p class="ch-note ch-empty">Nothing left to take. Make a new challenge or join one with a code.</p>'; return; }
-    listEl.innerHTML = '<div class="ms-card ch-empty"><h2 class="ms-h2 ch-h2">No challenges yet</h2><p class="tp-hint">Make one, send the link to a friend, and compare scores when you both finish. Challenge answers count toward your own progress too.</p></div>';
+    listEl.innerHTML = '<div class="ch-empty ch-none"><h2 class="ms-h2 ch-h2">No challenges yet</h2><p class="tp-hint">Create one, send the link to a friend, and study results as a group when you finish. Challenge answers count toward your own progress too.</p></div>';
   }
   function addCard(entry, first){
     var empty = listEl.querySelector(".ch-empty");

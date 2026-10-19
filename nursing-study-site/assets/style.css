@@ -970,6 +970,8 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .ch-score{font-weight:600;}
 .ch-pct{flex:0 0 44px;text-align:right;color:var(--text2);}
 .ch-scores li.is-taking .ch-score{font-weight:400;}
+.ch-none{display:flex;flex-direction:column;gap:8px;padding:20px 22px;border:1.5px dashed var(--border);}
+.ch-none .tp-hint{margin:0;}
 .ch-note{margin:0;border:1.5px dashed var(--border);padding:10px 14px;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:13px;line-height:1.45;color:var(--text2);}
 .ch-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
 .ch-top{display:flex;justify-content:space-between;align-items:center;gap:12px;}
