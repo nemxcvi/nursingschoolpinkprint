@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=108">
+<link rel="stylesheet" href="assets/style.css?v=110">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -41,11 +41,13 @@
     </div>
     <button type="button" class="tp-textlink se-link" id="se-switch">Switch nickname</button>
     <div class="tp-editor se-nickedit hidden" id="se-nickedit">
-      <div class="tp-row">
-        <select id="se-nickselect" class="tp-select" aria-label="Pick a nickname"></select>
+      <div class="tp-row se-nickrow">
+        <div class="se-dd" id="se-dd">
+          <button type="button" class="se-ddbtn" id="se-nickselect" aria-haspopup="listbox" aria-expanded="false" aria-controls="se-ddlist" aria-label="Pick a nickname"><span id="se-ddlabel"></span></button>
+          <ul class="se-ddlist hidden" id="se-ddlist" role="listbox" aria-label="Free nicknames"></ul>
+        </div>
         <button type="button" class="tp-btn" id="se-reroll"></button>
       </div>
-      <button type="button" class="tp-textlink se-link" id="se-morenames">Show other names</button>
       <p class="tp-note hidden" id="se-nickmsg" role="status"></p>
       <div class="tp-actions">
         <button type="button" class="tp-btn" id="se-nickcancel">Cancel</button>
@@ -165,55 +167,81 @@
   document.addEventListener("pinkprint-synced", render);
   $("se-qr").innerHTML = Tracking.qrSvg(Tracking.linkUrl(st().code), 4);
 
-  /* Switch nickname: a short dropdown of free names. Reroll picks one at random; Show other names
-     fills the dropdown with a fresh few. */
-  var SHOWN = 8, offered = [];
+  /* Switch nickname: a dropdown that opens a short list of every free name (it scrolls inside
+     itself). Reroll picks one at random. */
+  var picked = "";
   $("se-reroll").innerHTML = TrackingUI.DICE + "Reroll";
   /* Only names nobody else has (plus your own) */
   function loadNames(){ return Tracking.freeNicknames(st().nickname).then(function(n){ names = n.filter(function(x){ return x !== st().nickname; }); }); }
-  function someNames(keep){
-    var pool = names.filter(function(n){ return n !== keep; }), out = keep ? [keep] : [];
-    while (pool.length && out.length < SHOWN) out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
-    return out;
+  function choose(n){
+    picked = n;
+    $("se-ddlabel").textContent = n === st().nickname ? n + " (current)" : n;
+    $("se-nickselect").setAttribute("data-value", n);
+    [].forEach.call($("se-ddlist").children, function(li){ var on = li.getAttribute("data-value") === n; li.classList.toggle("is-on", on); li.setAttribute("aria-selected", on ? "true" : "false"); });
   }
-  function fillSelect(list, selected){
-    offered = list;
-    var sel = $("se-nickselect");
-    sel.innerHTML = "";
-    [st().nickname].concat(list).forEach(function(n, i){
-      var o = document.createElement("option");
-      o.value = n; o.textContent = i === 0 ? n + " (current)" : n;
-      if (n === selected) o.selected = true;
-      sel.appendChild(o);
+  function fillList(){
+    var list = $("se-ddlist");
+    list.innerHTML = "";
+    [st().nickname].concat(names).forEach(function(n, i){
+      var li = TrackingUI.el("li", "se-ddopt", i === 0 ? n + " (current)" : n);
+      li.setAttribute("role", "option");
+      li.setAttribute("data-value", n);
+      li.tabIndex = -1;
+      list.appendChild(li);
     });
-    $("se-morenames").classList.toggle("hidden", names.length <= SHOWN);
+    choose(st().nickname);
   }
+  function openList(on){
+    $("se-ddlist").classList.toggle("hidden", !on);
+    $("se-nickselect").setAttribute("aria-expanded", on ? "true" : "false");
+    if (on){
+      var cur = $("se-ddlist").querySelector(".is-on") || $("se-ddlist").firstChild;
+      if (cur){ $("se-ddlist").scrollTop = cur.offsetTop - 40; cur.focus(); }
+    }
+  }
+  $("se-nickselect").addEventListener("click", function(){ openList($("se-ddlist").classList.contains("hidden")); });
+  $("se-ddlist").addEventListener("click", function(e){
+    var li = e.target.closest(".se-ddopt");
+    if (!li) return;
+    choose(li.getAttribute("data-value"));
+    openList(false);
+    $("se-nickselect").focus();
+  });
+  $("se-ddlist").addEventListener("keydown", function(e){
+    var li = document.activeElement;
+    if (e.key === "Escape"){ openList(false); $("se-nickselect").focus(); return; }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp"){
+      e.preventDefault();
+      var next = e.key === "ArrowDown" ? li.nextElementSibling : li.previousElementSibling;
+      if (next) next.focus();
+    }
+    if (e.key === "Enter" || e.key === " "){ e.preventDefault(); if (li.classList.contains("se-ddopt")) li.click(); }
+  });
+  document.addEventListener("click", function(e){ if (!e.target.closest("#se-dd")) openList(false); });
   $("se-switch").addEventListener("click", function(){
     say("se-nickmsg", "");
     loadNames().then(function(){
-      fillSelect(someNames(), st().nickname);
+      fillList();
       $("se-nickedit").classList.remove("hidden");
       $("se-switch").classList.add("hidden");
     });
   });
-  /* Reroll: a random free name, selected (kept in the list) */
+  /* Reroll: a random free name, selected in the dropdown */
   $("se-reroll").addEventListener("click", function(){
-    var pick = Tracking.pickNickname(names, $("se-nickselect").value);
-    if (!pick || pick === st().nickname) return;
-    fillSelect(offered.indexOf(pick) !== -1 ? offered : someNames(pick), pick);
+    var pick = Tracking.pickNickname(names, picked);
+    if (pick && pick !== st().nickname) choose(pick);
   });
-  $("se-morenames").addEventListener("click", function(){ fillSelect(someNames(), st().nickname); });
-  function closeNick(){ $("se-nickedit").classList.add("hidden"); $("se-switch").classList.remove("hidden"); }
+  function closeNick(){ openList(false); $("se-nickedit").classList.add("hidden"); $("se-switch").classList.remove("hidden"); }
   $("se-nickcancel").addEventListener("click", closeNick);
   $("se-nicksave").addEventListener("click", function(){
-    var name = $("se-nickselect").value;
+    var name = picked;
     if (!name || name === st().nickname){ closeNick(); return; }
     $("se-nicksave").disabled = true;
     Tracking.switchNickname(name).then(function(ok){
       if (ok){ closeNick(); render(); }
       else {
         say("se-nickmsg", "Someone just took " + name + ". Pick another.");
-        loadNames().then(function(){ fillSelect(someNames(), st().nickname); });
+        loadNames().then(fillList);
       }
     }, function(){
       say("se-nickmsg", "Couldn't reach the server, so your nickname didn't change. Try again when you're online.");

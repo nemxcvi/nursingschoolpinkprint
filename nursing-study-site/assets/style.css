@@ -627,7 +627,16 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 /* Settings: Nickname and Your code and devices side by side on wide screens */
 .se-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:start;}
 .se-colstack{display:flex;flex-direction:column;gap:28px;min-width:0;}
-.se-nickedit .tp-select{flex:1 1 200px;}
+.se-nickrow{align-items:flex-start;}
+.se-dd{position:relative;flex:1 1 200px;min-width:0;}
+.se-ddbtn{width:100%;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 12px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:14px;text-align:left;cursor:pointer;}
+.se-ddbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.se-ddbtn::after{content:"";flex:0 0 auto;width:7px;height:7px;margin-top:-4px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);}
+.se-ddbtn[aria-expanded="true"]::after{margin-top:4px;transform:rotate(-135deg);}
+.se-ddlist{position:absolute;z-index:20;top:calc(100% - 1.5px);left:0;right:0;max-height:212px;overflow-y:auto;overscroll-behavior:contain;margin:0;padding:4px 0;list-style:none;border:1.5px solid var(--border);background:var(--page);box-shadow:0 8px 24px rgba(40,12,26,.12);}
+.se-ddopt{padding:9px 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text);cursor:pointer;outline:none;}
+.se-ddopt:hover,.se-ddopt:focus{background:var(--pill);}
+.se-ddopt.is-on{background:var(--border);color:var(--fill-text);}
 .se-pair > .tp-card{min-width:0;}
 .se-codecard .tp-codebox{flex:0 0 auto;}
 .se-devices{display:flex;flex-direction:column;gap:16px;}

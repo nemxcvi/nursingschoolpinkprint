@@ -105,14 +105,17 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   pg = await open(B, BASE + "settings.html");
   await pg.click("#se-switch");
   await pg.waitForSelector("#se-nickedit:not(.hidden)");
-  const options = await pg.$$eval("#se-nickselect option", o => o.map(x => x.value));
-  check(!options.includes("Miss Pinkprint") && options.length >= 2 && options.length <= 9 && options[0] === nickA, "nickname dropdown: current name plus a short list of free names, owner name never offered", options.join(","));
-  await pg.click("#se-morenames");
-  const options2 = await pg.$$eval("#se-nickselect option", o => o.map(x => x.value));
-  check(options2.length >= 2 && options2[0] === nickA, "Show other names refreshes the dropdown");
+  const options = await pg.$$eval("#se-ddlist .se-ddopt", o => o.map(x => x.dataset.value));
+  check(!options.includes("Miss Pinkprint") && options.length >= 2 && options[0] === nickA && !(await pg.isVisible("#se-ddlist")),
+    "nickname dropdown: closed at first, current name plus every free name, owner name never offered", options.length);
+  await pg.click("#se-nickselect");
+  const box = await pg.$eval("#se-ddlist", l => ({h: l.clientHeight, sh: l.scrollHeight}));
+  check(await pg.isVisible("#se-ddlist") && box.h <= 220 && box.sh > box.h, "it opens a short list that scrolls inside itself", JSON.stringify(box));
+  await pg.locator("#se-ddlist .se-ddopt").nth(2).click();
+  check(!(await pg.isVisible("#se-ddlist")) && await pg.$eval("#se-nickselect", b => b.dataset.value) === options[2], "tapping a name picks it and closes the list");
   await pg.click("#se-reroll");
-  const rolled = await pg.$eval("#se-nickselect", s => s.value);
-  check(rolled !== nickA && !/Miss Pinkprint/.test(rolled), "Reroll picks a free name in the dropdown", rolled);
+  const rolled = await pg.$eval("#se-nickselect", b => b.dataset.value);
+  check(rolled !== nickA && !/Miss Pinkprint/.test(rolled) && /\S/.test(await pg.textContent("#se-ddlabel")), "Reroll picks a free name in the dropdown", rolled);
   const newNameFinal = rolled;
   await pg.click("#se-nicksave");
   await pg.waitForFunction(n => document.getElementById("se-nick").textContent === n, newNameFinal);
