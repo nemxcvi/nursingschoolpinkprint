@@ -110,18 +110,23 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await go("journal.html", "2026-10-01");
   await pg.waitForSelector(".ms-tabs");
   const tabs = await text(".ms-tabs");
-  check(/Progress/.test(tabs) && /Mistakes · 34/.test(tabs), "journal: Progress tab + 28 unit-3 + 6 unit-2 mistakes", tabs);
+  const weakN = +((tabs.match(/Weak spots · (\d+)/) || [])[1] || 0);
+  check(/Progress/.test(tabs) && weakN >= 34, "journal: Progress tab + Weak spots tab (34 mistakes plus any lucky guesses)", tabs);
   await pg.click('[data-tab="journal"]');
   check(/Your answer/.test(await text(".ms-jcard")) && /Correct answer/.test(await text(".ms-jcard")), "journal: your answer and correct answer");
   const jbtns = await pg.$$eval(".ms-jquiz a", a => a.map(x => [x.textContent, x.getAttribute("href")]));
-  check(jbtns.length === 1 && /Quiz my mistakes · 34/.test(jbtns[0][0]) && /mode=journal/.test(jbtns[0][1]) && /Blind spots first, then mistakes/.test(await text(".ms-jquiz-sub")),
+  const between = await pg.evaluate(() => { const q = document.querySelector(".ms-jquiz"); return !!q && q.previousElementSibling.classList.contains("ms-tabs") && q.nextElementSibling.classList.contains("ms-filters"); });
+  check(between, "journal: the Weak spots quiz sits between the tabs and the filters");
+  const luckyTags = await pg.$$eval(".ms-jcard .pq-tag-lucky", t => t.length);
+  check(luckyTags === weakN - 34, "journal: lucky guesses listed with a Lucky guess tag", luckyTags + " of " + (weakN - 34));
+  check(jbtns.length === 1 && /Quiz my weak spots →/.test(jbtns[0][0]) && /mode=journal/.test(jbtns[0][1]) && /Blind spots first, then mistakes, then lucky guesses/.test(await text(".ms-jquiz-sub")),
     "journal: one quiz, blind spots first then mistakes", JSON.stringify(jbtns));
   await shot("journal-mistakes");
   check(/Resolved · 3/.test(await text(".ms-resolved")), "journal: resolved section");
   await pg.selectOption("#j-unit", "2");
   check((await pg.$$eval(".ms-jcard", c => c.length)) === 6, "journal: unit filter");
-  check(/unit=2/.test(await pg.$eval(".ms-jquiz a", x => x.getAttribute("href"))) && /Quiz my mistakes · 20/.test(await text(".ms-jquiz a")) && /then new questions to make 20/.test(await text(".ms-jquiz-sub")),
-    "journal: the quiz follows the unit filter; 6 mistakes topped up to 20 with new questions", await text(".ms-jquiz"));
+  check(/unit=2/.test(await pg.$eval(".ms-jquiz a", x => x.getAttribute("href"))) && /Quiz my weak spots/.test(await text(".ms-jquiz a")) && /then new questions to make 20/.test(await text(".ms-jquiz-sub")),
+    "journal: the quiz follows the unit filter; Unit 2's weak spots topped up to 20 with new questions", await text(".ms-jquiz"));
   await shot("journal");
   await pg.selectOption("#j-unit", "");
   await pg.click('[data-tab="bookmarks"]');
@@ -136,10 +141,10 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.waitForSelector("#pq-quiz-screen:not(.hidden)");
   check(/of 20/.test(await text("#pq-progress")), "session: mistakes quiz for Unit 2 (6 mistakes + 14 new = 20)", await text("#pq-progress"));
   await pg.click("#pq-end-test");
-  check(/Mistakes quiz mastery/.test(await text("#pq-mastery")), "session: results with Mastery box");
+  check(/Weak spots quiz mastery/.test(await text("#pq-mastery")), "session: results with Mastery box");
   await go("session.html?mode=weak", "2026-10-01");
   await pg.waitForSelector("#pq-quiz-screen:not(.hidden)");
-  check(/of 34/.test(await text("#pq-progress")) && /Mistakes quiz/.test(await text("#ss-title")), "session: old Weak spots links open the mistakes quiz", await text("#pq-progress"));
+  check(new RegExp("of " + Math.min(40, weakN) + "\\b").test(await text("#pq-progress")) && /Weak spots quiz/.test(await text("#ss-title")), "session: mode=weak opens the Weak spots quiz for all units", await text("#pq-progress"));
   check(await pg.$$eval('#pq-mastery a[href*="journal.html"]', a => a.length).then(n => n >= 0), "session: journal link present when mistakes added");
   await go("session.html?mode=review&unit=1", "2026-10-01");
   await pg.waitForSelector("#pq-quiz-screen:not(.hidden), #pq-empty:not(.hidden)");
@@ -188,11 +193,17 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(!(await pg.$("#pp-strip")), "switches: no countdown strip on the homepage");
   check(await pg.evaluate(() => Tracking.feature("grade")), "Exam average is on by default");
   await go("dashboard.html", "2026-10-01");
-  pg.once("dialog", dl => dl.accept());
   await pg.click("#ms-hidegrade");
-  check(!(await pg.$(".ms-grade")) && !(await pg.evaluate(() => Tracking.feature("grade"))), "Hide on the Exam average card turns off its Settings switch");
+  check(await pg.$(".ms-grade.is-folded") && !/%|Your grade/.test(await text(".ms-grade")) && await pg.evaluate(() => Tracking.feature("grade") && Tracking.state().gradeHidden === true),
+    "Hide folds the Exam average box shut (no numbers showing); the feature stays on");
+  await shot("grade-folded");
   await go("dashboard.html", "2026-10-01");
-  check(!(await pg.$(".ms-grade")), "switches: Exam average stays hidden");
+  check(!!(await pg.$(".ms-grade.is-folded")), "it stays folded after a reload");
+  await pg.click("#ms-showgrade");
+  check(/Your grade so far/.test(await text(".ms-grade")) && !(await pg.$(".ms-grade.is-folded")) && !!(await pg.$("#ms-hidegrade")), "Show opens it again");
+  await pg.evaluate(() => Tracking.setFeature("grade", false));
+  await go("dashboard.html", "2026-10-01");
+  check(!(await pg.$(".ms-grade")), "switches: Exam average off in Settings removes it");
   await go("settings.html", "2026-10-01");
   check(/Your private exam average and scores on your dashboard/.test(await text("#se-features")) && /Due for review/.test(await text("#se-features")),
     "settings: new Study features wording");

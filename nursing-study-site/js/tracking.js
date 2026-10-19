@@ -13,6 +13,7 @@
      startedOn          "YYYY-MM-DD"
      nicknameTicket     random claim ticket for the nickname (never the lookup ID)
      scores             {examId: points} logged with Edit scores (private)
+     gradeHidden        true = the Exam average box on the dashboard is folded shut (Hide / Show)
      busyWeeks          Mondays ("YYYY-MM-DD") of weeks a busy week pass was used
      breaksOff          true = holiday break weeks are skipped. Missing/false = the weekly goal still
                         counts during breaks (hit grows the streak, miss only pauses): on by default.
@@ -108,7 +109,7 @@
   var LOOKUP_SALT = "pinkprint-lookup-v1", KEY_SALT = "pinkprint-key-v1";
   /* Settings that travel between devices (everything else in the saved state stays on the device) */
   var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn",
-                "scores", "busyWeeks", "breaksOff", "knownCounts", "challenges", "ownerProof"];
+                "scores", "gradeHidden", "busyWeeks", "breaksOff", "knownCounts", "challenges", "ownerProof"];
 
   function subtle(){ return cryptoObj().subtle; }
   function utf8(s){ return new TextEncoder().encode(s); }

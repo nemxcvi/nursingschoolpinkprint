@@ -88,28 +88,31 @@ test("exam ready counts and priority groups (review due folds into mastered in t
   assert.equal(outside.reviewdue, 2, "outside the window review due keeps its own group");
 });
 
-test("mistakes quiz: blind spots, then mistakes, topped up to 20 with unseen questions", () => {
-  const qs = ["blind", "m1", "m2", "learn", "mast"].map(id => q(id)).concat(Array.from({length: 30}, (_, i) => q("new" + i)));
+test("weak spots quiz: blind spots, mistakes, lucky guesses, topped up to 20 with unseen questions", () => {
+  const qs = ["blind", "m1", "m2", "lucky", "learn", "mast"].map(id => q(id)).concat(Array.from({length: 30}, (_, i) => q("new" + i)));
   const store = {
     blind: rec({seen: 2, correct: 1, wrong: 1, lastCorrect: false, lastSure: true, journal: true}),
     m1: rec({seen: 1, wrong: 1, lastCorrect: false, lastSure: false, journal: true}),
     m2: rec({seen: 3, correct: 2, wrong: 1, lastCorrect: true, journal: true}),
+    lucky: rec({seen: 1, correct: 1, lastCorrect: true, lastSure: false}),
     learn: rec({seen: 1, correct: 1, lastCorrect: true}),
     mast: rec({seen: 2, correct: 2, mastered: true, lastCorrect: true})
   };
-  const out = S.mistakesQuiz(qs, store, "2026-10-01", EXAMS).map(x => x.id);
+  const out = S.weakSpotsQuiz(qs, store, "2026-10-01", EXAMS).map(x => x.id);
   assert.equal(out.length, 20);
   assert.equal(out[0], "blind");
   assert.deepEqual(out.slice(1, 3).sort(), ["m1", "m2"]);
-  assert.ok(out.slice(3).every(id => id.startsWith("new")), "the rest are questions never seen");
+  assert.equal(out[3], "lucky");
+  assert.ok(out.slice(4).every(id => id.startsWith("new")), "the rest are questions never seen");
+  assert.ok(S.isWeak(store.lucky, 3, "2026-10-01", EXAMS) && !S.isWeak(store.learn, 3, "2026-10-01", EXAMS) && !S.isWeak(store.mast, 3, "2026-10-01", EXAMS));
   // 45 mistakes: no top-up, capped at 40, blind spot still first
   const many = Array.from({length: 45}, (_, i) => q("j" + i)).concat(qs);
   const st2 = Object.assign({}, store);
   for (let i = 0; i < 45; i++) st2["j" + i] = rec({seen: 1, wrong: 1, lastCorrect: false, journal: true});
-  const out2 = S.mistakesQuiz(many, st2, "2026-10-01", EXAMS).map(x => x.id);
+  const out2 = S.weakSpotsQuiz(many, st2, "2026-10-01", EXAMS).map(x => x.id);
   assert.equal(out2.length, 40);
   assert.equal(out2[0], "blind");
-  assert.ok(!out2.some(id => id.startsWith("new")));
+  assert.ok(!out2.some(id => id.startsWith("new")) && !out2.includes("lucky"));
 });
 
 test("streaks: weeks in a row hitting the goal (Mon-Sun), passes, Thanksgiving and breaks", () => {

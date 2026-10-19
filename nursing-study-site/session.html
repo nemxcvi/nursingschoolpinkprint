@@ -19,13 +19,13 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=98">
+<link rel="stylesheet" href="assets/style.css?v=99">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-type="quizzes"></div>
 <script src="assets/site-data.js?v=10"></script>
-<script src="js/tracking.js?v=12"></script>
+<script src="js/tracking.js?v=13"></script>
 <script src="assets/header.js?v=14"></script>
 <script src="js/progress.js?v=7"></script>
 <div class="wrap">
@@ -96,9 +96,9 @@
 </div>
 
 <script src="assets/theme.js?v=6"></script>
-<script src="js/study.js?v=3"></script>
+<script src="js/study.js?v=4"></script>
 <script src="assets/practice-quiz.js?v=19"></script>
-<script src="js/my-study.js?v=21"></script>
+<script src="js/my-study.js?v=22"></script>
 <script src="js/challenges.js?v=12"></script>
 <script>
 (function(){
@@ -106,7 +106,7 @@
   /* Which questions this session uses (see js/study.js for the rules) */
   var p = new URLSearchParams(location.search), mode = p.get("mode") || "today";
   var unit = +p.get("unit") || 0, topic = p.get("topic") || "";
-  var TITLES = {today: "Today's plan", examready: "Exam ready session", weak: "Mistakes quiz", journal: "Mistakes quiz",
+  var TITLES = {today: "Today's plan", examready: "Exam ready session", weak: "Weak spots quiz", journal: "Weak spots quiz",
                 bookmarks: "Bookmarks", blind: "Blind spots", review: "Review" + (unit ? ": Unit " + unit : ""), challenge: "Challenge"};
   var title = TITLES[mode] || "Practice session";
   document.getElementById("ss-title").textContent = title;
@@ -125,8 +125,8 @@
       var qs = Study.examUnitsQuestions(questions, exam).filter(function(q){ return !Progress.isExamReady(store[q.id], exam.id); });
       return rank(qs, 20);
     }
-    /* Blind spots, then mistakes, topped up with unseen questions (old Weak spots links land here too) */
-    if (mode === "journal" || mode === "weak") return Study.mistakesQuiz(scoped, store, today, exams);
+    /* Weak spots: blind spots, then mistakes, then lucky guesses, topped up with unseen questions */
+    if (mode === "journal" || mode === "weak") return Study.weakSpotsQuiz(scoped, store, today, exams);
     if (mode === "bookmarks") return rank(scoped.filter(function(q){ var r = store[q.id]; return r && r.bookmarked; }), 40);
     if (mode === "blind") return rank(scoped.filter(function(q){ return status(q) === "blindspot"; }), 40);
     if (mode === "review") return rank(scoped.filter(function(q){ return Progress.isReviewDue(store[q.id], q.unit, today, exams); }), 40);

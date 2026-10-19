@@ -238,6 +238,11 @@ var MyStudy = (function(){
   /* Exam average (only on this person's devices) */
   var editingScores = false;
   function gradeCard(d){
+    /* Folded shut: just the heading, so nobody nearby sees the numbers */
+    if (d.state.gradeHidden && !editingScores){
+      return '<section class="ms-card ms-grade is-folded"><div class="ms-grade-top"><span class="ms-grade-eyebrow"><span class="tp-eyebrow">Exam average</span>' +
+        '<button type="button" class="ms-linkbtn" id="ms-showgrade" aria-expanded="false">Show</button></span><span class="ms-sub">Hidden on this dashboard</span></div></section>';
+    }
     var scores = d.state.scores || {}, g = S.grade(d.exams, scores, d.grading);
     var graded = d.exams.filter(function(e){ return e.graded; });
     var rows = "";
@@ -270,7 +275,7 @@ var MyStudy = (function(){
       '<p class="tp-hint">' + (g.passed ? "" : g.needPoints + " of the " + g.left + " points left · ") + "Exams 1–6 are 100 points each, the final is 300</p></div>" +
       '<div class="ms-grade-right"><div class="g-row g-head"><span class="g-name">Exam</span><span class="g-date">Date</span><span class="g-pts">Points</span><span class="g-pct">Score</span></div>' + rows + saveBtns + "</div>";
     return '<section class="ms-card ms-grade"><div class="tp-stack ms-grade-head">' +
-      '<div class="ms-grade-top"><span class="ms-grade-eyebrow"><span class="tp-eyebrow">Exam average</span>' + (editingScores ? "" : '<button type="button" class="ms-linkbtn ms-hidegrade" id="ms-hidegrade">Hide</button>') + "</span>" +
+      '<div class="ms-grade-top"><span class="ms-grade-eyebrow"><span class="tp-eyebrow">Exam average</span>' + (editingScores ? "" : '<button type="button" class="ms-linkbtn ms-hidegrade" id="ms-hidegrade" aria-expanded="true">Hide</button>') + "</span>" +
       (editingScores ? "" : '<button type="button" class="ms-linkbtn" id="ms-editscores">Edit scores</button>') + "</div>" +
       '<h2 class="ms-h2">Your grade so far</h2><span class="tp-hint">Just a reminder that only you can see this.</span></div>' +
       '<div class="ms-grade-body">' + parts + '</div><p class="tp-note hidden" id="ms-scoremsg" role="status"></p></section>';
@@ -286,13 +291,10 @@ var MyStudy = (function(){
       T.update({busyWeeks: (d.state.busyWeeks || []).concat([S.weekStart(d.today)])});
       rerender();
     });
-    /* Hide = the Exam average switch in Settings (turned back on there) */
-    var hideGrade = document.getElementById("ms-hidegrade");
-    if (hideGrade) hideGrade.addEventListener("click", function(){
-      if (!confirm("Hide your exam average? You can turn it back on in Settings under Study features.")) return;
-      T.setFeature("grade", false);
-      var card = hideGrade.closest(".ms-grade");
-      if (card) card.remove();
+    /* Hide folds the Exam average box shut (remembered on every device); Show opens it */
+    [["ms-hidegrade", true], ["ms-showgrade", false]].forEach(function(x){
+      var b = document.getElementById(x[0]);
+      if (b) b.addEventListener("click", function(){ T.update({gradeHidden: x[1]}); rerender(); });
     });
     var edit = document.getElementById("ms-editscores");
     if (edit) edit.addEventListener("click", function(){ editingScores = true; rerender(); });
@@ -435,7 +437,8 @@ var MyStudy = (function(){
   function journalCard(d, q, kind){
     var r = d.store[q.id] || {}, t = topicOf(d, q);
     var status = P.statusOf(r, q.unit, d.today, d.exams);
-    var tags = (status === "blindspot" ? '<span class="pq-tag-blind">Blind spot</span>' : "") + (r.bookmarked && kind === "journal" ? '<span class="ms-tag">Bookmarked</span>' : "");
+    var lucky = r.lastCorrect === true && r.lastSure === false;
+    var tags = (status === "blindspot" ? '<span class="pq-tag-blind">Blind spot</span>' : lucky && kind !== "bookmarks" ? '<span class="pq-tag-lucky">Lucky guess</span>' : "") + (r.bookmarked && kind === "journal" ? '<span class="ms-tag">Bookmarked</span>' : "");
     var meta = r.wrong ? "Missed " + r.wrong + "×" + (r.lastWrong ? " · Last " + S.shortDate(r.lastWrong.date) : "") : (r.seen ? plural(r.seen, "answer") : "Not answered yet");
     var lw = r.lastWrong || {};
     var mine = optionTexts(q, lw.picked);
@@ -450,8 +453,9 @@ var MyStudy = (function(){
 
   function journalPage(d, host){
     var js = journalState;
-    var inJournal = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.journal; });
-    var resolved = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.resolved && !r.journal; });
+    /* Weak spots tab: blind spots, the Mistake journal and lucky guesses */
+    var inJournal = d.questions.filter(function(q){ return S.isWeak(d.store[q.id], q.unit, d.today, d.exams); });
+    var resolved = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.resolved && !r.journal && inJournal.indexOf(q) === -1; });
     var marks = d.questions.filter(function(q){ var r = d.store[q.id]; return r && r.bookmarked; });
     var list = js.tab === "bookmarks" ? marks : inJournal;
     var filtered = list.filter(function(q){ return (!js.unit || q.unit === +js.unit) && (!js.topic || q.topic === js.topic); });
@@ -468,8 +472,8 @@ var MyStudy = (function(){
     var topicOpts = topicList.map(function(t){ return '<option value="' + esc(t) + '"' + (js.topic === t ? " selected" : "") + ">" + esc(t) + "</option>"; }).join("");
     var scope = (js.unit ? "&unit=" + js.unit : "") + (js.topic ? "&topic=" + encodeURIComponent(js.topic) : "");
     var quizHref = "session.html?mode=" + (js.tab === "journal" ? "journal" : "bookmarks") + scope;
-    /* Mistakes tab: one quiz (blind spots first, then mistakes, topped up with unseen questions), following the filters */
-    var mq = js.tab !== "journal" ? [] : S.mistakesQuiz(d.questions.filter(function(q){
+    /* Weak spots tab: one quiz (blind spots, mistakes, lucky guesses, topped up with unseen questions), following the filters */
+    var mq = js.tab !== "journal" ? [] : S.weakSpotsQuiz(d.questions.filter(function(q){
       return (!js.unit || q.unit === +js.unit) && (!js.topic || q.topic === js.topic);
     }), d.store, d.today, d.exams);
     var mqMissed = mq.filter(function(q){ var r = d.store[q.id]; return r && r.seen; }).length;
@@ -478,11 +482,9 @@ var MyStudy = (function(){
     var isProgress = js.tab === "progress";
     var tab = function(key, label){ return '<button type="button" role="tab" data-tab="' + key + '" aria-selected="' + (js.tab === key) + '"' + (js.tab === key ? ' class="is-on"' : "") + ">" + label + "</button>"; };
     var html = '<section class="ms-journal-head"><div class="tp-stack"><div class="tp-eyebrow">' + (isProgress ? "NUR 114 · " + term : "Review before exams") + '</div><h1 class="tp-h1">Journal</h1></div>' +
-      (isProgress ? progressTotals(d) : js.tab === "journal" ? (mq.length ? '<div class="ms-jquiz"><a class="ms-btn is-primary is-big" href="' + quizHref + '">' +
-          (mqMissed ? "Quiz my mistakes · " + mq.length : "Quiz " + mq.length + " new questions") + " →</a>" +
-          '<span class="ms-jquiz-sub">' + (mqMissed ? "Blind spots first, then mistakes" + (mq.length > mqMissed ? ", then new questions to make " + mq.length : "") : "No mistakes here yet, so these are questions you haven't seen") + "</span></div>" : "")
+      (isProgress ? progressTotals(d) : js.tab === "journal" ? ""
         : filtered.length ? '<a class="ms-btn is-primary is-big" href="' + quizHref + '">Quiz my ' + filtered.length + " " + (filtered.length === 1 ? noun[0] : noun[1]) + " →</a>" : "") + "</section>" +
-      '<div class="ms-tabs" role="tablist">' + tab("progress", "Progress") + tab("journal", "Mistakes · " + inJournal.length) + tab("bookmarks", "Bookmarks · " + marks.length) + "</div>";
+      '<div class="ms-tabs" role="tablist">' + tab("progress", "Progress") + tab("journal", "Weak spots · " + inJournal.length) + tab("bookmarks", "Bookmarks · " + marks.length) + "</div>";
     if (isProgress){
       host.innerHTML = html + progressBody(d);
       bindJournal(d, host);
@@ -500,12 +502,17 @@ var MyStudy = (function(){
       }
       return;
     }
+    /* The Weak spots quiz sits between the tabs and the filters */
+    if (js.tab === "journal" && mq.length){
+      html += '<div class="ms-jquiz"><a class="ms-btn is-primary is-big" href="' + quizHref + '">' + (mqMissed ? "Quiz my weak spots" : "Quiz " + mq.length + " new questions") + " →</a>" +
+        '<span class="ms-jquiz-sub">' + (mqMissed ? "Blind spots first, then mistakes, then lucky guesses" + (mq.length > mqMissed ? ", then new questions to make " + mq.length : "") : "No weak spots here yet, so these are questions you haven't seen") + "</span></div>";
+    }
     html += '<div class="ms-filters"><label><span class="tp-label">Unit</span><select id="j-unit"><option value="">All units</option>' + unitOpts + "</select></label>" +
       '<label><span class="tp-label">Topic</span><select id="j-topic"><option value="">All topics</option>' + topicOpts + "</select></label>" +
       '<label><span class="tp-label">Sort</span><select id="j-sort"><option value="missed"' + (js.sort === "missed" ? " selected" : "") + ">Most missed</option>" +
       '<option value="recent"' + (js.sort === "recent" ? " selected" : "") + ">Most recent</option><option value=\"unit\"" + (js.sort === "unit" ? " selected" : "") + ">Unit order</option></select></label></div>";
     html += filtered.length ? filtered.map(function(q){ return journalCard(d, q, js.tab); }).join("")
-      : '<p class="ms-empty">' + (js.tab === "journal" ? (inJournal.length ? "Nothing matches these filters." : "No mistakes to review. Every missed question shows up here until you master it.") : (marks.length ? "Nothing matches these filters." : "No bookmarks yet. Tap Bookmark on any quiz question to save it here.")) + "</p>";
+      : '<p class="ms-empty">' + (js.tab === "journal" ? (inJournal.length ? "Nothing matches these filters." : "No weak spots right now. Blind spots, missed questions and lucky guesses show up here until you master them.") : (marks.length ? "Nothing matches these filters." : "No bookmarks yet. Tap Bookmark on any quiz question to save it here.")) + "</p>";
     if (js.tab === "journal" && resolved.length){
       html += '<section class="ms-resolved"><div class="ms-resolved-head"><span><strong>Resolved · ' + resolved.length + "</strong> " + (resolved.length === 1 ? "question you've" : "questions you've") + ' mastered since missing ' + (resolved.length === 1 ? "it" : "them") + '</span><button type="button" class="ms-btn is-small" id="j-resolved">' + (js.showResolved ? "Hide" : "Show") + "</button></div>" +
         (js.showResolved ? resolved.map(function(q){ return journalCard(d, q, "resolved"); }).join("") : "") + "</section>";

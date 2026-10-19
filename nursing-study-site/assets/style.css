@@ -855,9 +855,9 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 @media(max-width:760px){.ms-unit-name{flex:1 1 100%;}.ms-days-left{border-right:0;padding-right:0;}}
 /* Journal */
 .ms-journal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;}
-.ms-jquiz{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
-.ms-jquiz-sub{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:13px;color:var(--text2);text-align:right;}
-@media(max-width:560px){.ms-jquiz{align-items:stretch;}.ms-jquiz-sub{text-align:left;}}
+.ms-jquiz{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;}
+.ms-jquiz-sub{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;color:var(--text2);}
+@media(max-width:560px){.ms-jquiz .ms-btn{flex:1 1 100%;}}
 .ms-tabs{display:flex;gap:8px;border-bottom:1.5px solid var(--border);}
 .ms-tabs button{min-height:44px;padding:0 18px;border:1.5px solid var(--border);border-bottom:0;border-radius:0;background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
 .ms-tabs button.is-on{background:var(--border);color:var(--fill-text);}
