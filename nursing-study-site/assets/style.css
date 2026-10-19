@@ -625,12 +625,18 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .tp-textlink.se-goalchange,.tp-textlink.se-link{padding:8px 0;}
 .tp-textlink.se-link{align-self:flex-start;}
 /* Settings: Nickname and Your code and devices side by side on wide screens */
-.se-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:start;}
+.se-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:stretch;}
 .se-colstack{display:flex;flex-direction:column;gap:28px;min-width:0;}
+.se-colstack > .tp-card{flex:1 1 auto;}
+.se-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;min-height:22px;}
+.se-head .se-h{margin:0;font-weight:400;}
+.se-head .tp-textlink.se-link{padding:2px 0;align-self:auto;flex:0 0 auto;}
+.se-head .is-off{visibility:hidden;}
+.se-dashlinks{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end;}
 .se-nickrow{align-items:flex-start;}
 .se-dashname{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1.5px dashed var(--soft);}
 .se-dashval{font-family:'Young Serif',Georgia,serif;font-size:19px;color:var(--heading);overflow-wrap:anywhere;}
-.se-dashlinks{display:flex;gap:20px;flex-wrap:wrap;}
+
 .se-dd{position:relative;flex:1 1 200px;min-width:0;}
 .se-ddbtn{width:100%;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 12px;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:14px;text-align:left;cursor:pointer;}
 .se-ddbtn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -645,7 +651,6 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .se-devices{display:flex;flex-direction:column;gap:16px;}
 .se-devices .tp-dashed{flex:0 0 auto;}
 .se-nickedit .tp-actions,.se-goalcard .tp-actions{justify-content:flex-start;}
-.se-codewrap{gap:2px;}
 .se-codebtns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
 .se-codebtns .tp-btn{width:100%;}
 @media(max-width:420px){.se-codebtns{grid-template-columns:minmax(0,1fr);}}
