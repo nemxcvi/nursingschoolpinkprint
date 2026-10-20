@@ -53,22 +53,103 @@ test("countdown strip: one square per day since the last exam, window and exam d
   assert.equal(S.strip(EXAMS, SEM, "2026-08-24").days[0].date, "2026-08-24", "before Exam 1 it starts at the semester start");
 });
 
-test("today's plan spreads what's left over the days before the window, and re-spreads", () => {
-  const qs = Array.from({length: 40}, (_, i) => q("q" + i, 3));
-  // Oct 1: Exam 3 is Oct 12, window opens Oct 9 -> 8 days left
-  let p = S.planToday(qs, {}, "2026-10-01", EXAMS);
-  assert.equal(p.exam.id, "exam-3"); assert.equal(p.windowStart, "2026-10-09"); assert.equal(p.n, 5, "40 over 8 days");
-  // Missed a day and mastered nothing: Oct 3 -> 40 over 6 days = 7
-  assert.equal(S.planToday(qs, {}, "2026-10-03", EXAMS).n, 7);
-  // Mastered 10: 30 left over 6 days = 5
-  const store = {}; for (let i = 0; i < 10; i++) store["q" + i] = rec({seen: 2, correct: 2, mastered: true});
-  assert.equal(S.planToday(qs, store, "2026-10-03", EXAMS).n, 5);
-  // In the window: the not-yet-exam-ready questions over the days to the exam
-  p = S.planToday(qs, store, "2026-10-10", EXAMS);
-  assert.ok(p.inWindow); assert.equal(p.remaining, 40); assert.equal(p.n, 20, "40 over 2 days");
-  // Next exam's unit has no questions yet (Unit 4 on Oct 16): review earlier units
-  p = S.planToday(qs, store, "2026-10-16", EXAMS);
-  assert.equal(p.exam.id, "exam-4"); assert.ok(p.fallback); assert.equal(p.n, 10);
+test("readiness needs a fair share of the group answered: 20, or half if smaller, at least 5", () => {
+  assert.equal(S.minSeen(10), 5); assert.equal(S.minSeen(30), 15); assert.equal(S.minSeen(40), 20); assert.equal(S.minSeen(376), 20);
+  assert.equal(S.minSeen(3), 3, "tiny groups need every question");
+  const qs = Array.from({length: 376}, (_, i) => q("q" + i, 4));
+  const store = {};
+  for (let i = 0; i < 19; i++) store["q" + i] = rec({seen: 1, correct: 1});
+  let s = S.stats(qs, store, "2026-10-20", EXAMS);
+  assert.equal(s.readiness, "nodata", "19 of 376 seen isn't enough");
+  store.q19 = rec({seen: 1, correct: 1});
+  s = S.stats(qs, store, "2026-10-20", EXAMS);
+  assert.equal(s.readiness, "strong"); assert.equal(s.coveragePct, 5, "20 of 376 seen"); assert.equal(s.seen, 20);
+});
+
+test("today's plan: daily size in sets of 10, any answers today count, coverage pace", () => {
+  const qs = Array.from({length: 376}, (_, i) => q("q" + i, 4));
+  // Oct 20: Exam 4 is Oct 26, window opens Oct 23 -> 3 days (Oct 20, 21, 22)
+  let p = S.planToday(qs, {}, "2026-10-20", EXAMS);
+  assert.equal(p.exam.id, "exam-4"); assert.equal(p.size, 30, "30 a day by default");
+  assert.equal(p.target, 30); assert.equal(p.sets, 3); assert.equal(p.n, 10, "one set at a time");
+  assert.equal(p.setsDone, 0); assert.ok(!p.complete);
+  assert.equal(p.pace.unseen, 376); assert.equal(p.pace.reach, 90); assert.ok(!p.pace.onPace);
+  assert.equal(p.pace.lastDay, "2026-10-22");
+  // 14 answered today: set 2 of 3, 16 left, next set 10
+  p = S.planToday(qs, {}, "2026-10-20", EXAMS, {size: 30, done: 14});
+  assert.equal(p.setsDone, 1); assert.equal(p.left, 16); assert.equal(p.n, 10);
+  p = S.planToday(qs, {}, "2026-10-20", EXAMS, {size: 30, done: 25});
+  assert.equal(p.n, 5, "the last set is what's left");
+  p = S.planToday(qs, {}, "2026-10-20", EXAMS, {size: 30, done: 31});
+  assert.ok(p.complete); assert.equal(p.n, 0); assert.equal(p.setsDone, 3);
+  // Size 40 and only 60 unseen: on pace
+  const store = {}; for (let i = 0; i < 316; i++) store["q" + i] = rec({seen: 1, correct: 1, lastCorrect: true});
+  p = S.planToday(qs, store, "2026-10-20", EXAMS, {size: 40});
+  assert.equal(p.target, 40); assert.equal(p.pace.unseen, 60); assert.ok(p.pace.onPace);
+  // Unknown size falls back to 30
+  assert.equal(S.planToday(qs, {}, "2026-10-20", EXAMS, {size: 17}).size, 30);
+  // Almost everything mastered: the plan shrinks to what's left
+  const m = {}; for (let i = 0; i < 371; i++) m["q" + i] = rec({seen: 2, correct: 2, mastered: true, lastCorrect: true, lastAnswered: "2026-10-19"});
+  p = S.planToday(qs, m, "2026-10-20", EXAMS);
+  assert.equal(p.target, 5); assert.equal(p.sets, 1); assert.equal(p.n, 5);
+  // Next exam's unit has no questions yet: review earlier units
+  p = S.planToday(Array.from({length: 40}, (_, i) => q("u3-" + i, 3)), {}, "2026-10-16", EXAMS);
+  assert.ok(p.fallback); assert.equal(p.target, 10);
+});
+
+test("today's plan in the window: clear weak spots, then the readiness check, then exam ready", () => {
+  const qs = Array.from({length: 100}, (_, i) => q("q" + i, 4));
+  const store = {};
+  for (let i = 0; i < 4; i++) store["q" + i] = rec({seen: 1, wrong: 1, lastCorrect: false, lastSure: true, journal: true});
+  // Oct 24 is in Exam 4's window (Oct 23-25)
+  let p = S.planToday(qs, store, "2026-10-24", EXAMS);
+  assert.ok(p.inWindow); assert.equal(p.step, "weak"); assert.equal(p.weak, 4); assert.equal(p.target, 4); assert.equal(p.n, 4);
+  // Weak spots cleared: take the check
+  p = S.planToday(qs, {}, "2026-10-24", EXAMS);
+  assert.equal(p.step, "check"); assert.equal(p.target, 0); assert.equal(p.check, null);
+  // A check before the window doesn't count; one in the window does
+  const checks = {"exam-4": [{date: "2026-10-20", correct: 40, total: 40}, {date: "2026-10-23", correct: 32, total: 40}]};
+  p = S.planToday(qs, {}, "2026-10-24", EXAMS, {checks});
+  assert.equal(p.check, 0.8); assert.equal(p.step, "check", "80% isn't exam ready");
+  checks["exam-4"].push({date: "2026-10-24", correct: 35, total: 40});
+  p = S.planToday(qs, {}, "2026-10-24", EXAMS, {checks});
+  assert.equal(p.step, "ready"); assert.equal(p.check, 0.875);
+  // A passing check with weak spots still open isn't exam ready yet
+  assert.equal(S.planToday(qs, store, "2026-10-24", EXAMS, {checks}).step, "weak");
+  assert.equal(S.planToday(qs, {}, "2026-10-26", EXAMS).step, "examday");
+  assert.equal(S.checkLabel(0.85), "strong"); assert.equal(S.checkLabel(0.75), "ontrack"); assert.equal(S.checkLabel(0.7), "needswork"); assert.equal(S.checkLabel(null), "nodata");
+});
+
+test("plan sets: weak spots, then never seen, then the rest; weak spots only in the window", () => {
+  const qs = ["blind", "miss", "lucky", "learn", "mast"].map(id => q(id, 4)).concat(Array.from({length: 20}, (_, i) => q("new" + i, 4)), [q("other", 3)]);
+  const store = {
+    blind: rec({seen: 1, wrong: 1, lastCorrect: false, lastSure: true, journal: true}),
+    miss: rec({seen: 1, wrong: 1, lastCorrect: false, lastSure: false, journal: true}),
+    lucky: rec({seen: 1, correct: 1, lastCorrect: true, lastSure: false}),
+    learn: rec({seen: 1, correct: 1, lastCorrect: true}),
+    mast: rec({seen: 2, correct: 2, mastered: true, lastCorrect: true, lastAnswered: "2026-10-19"})
+  };
+  const set = S.pickPlan(qs, 10, store, "2026-10-20", EXAMS, () => 0.5).map(x => x.id);
+  assert.deepEqual(set.slice(0, 2), ["blind", "miss"]);
+  assert.ok(set.slice(2).every(id => id.startsWith("new")), "never seen comes right after the weak spots");
+  const win = S.pickPlan(qs, 10, store, "2026-10-24", EXAMS).map(x => x.id).sort();
+  assert.deepEqual(win, ["blind", "lucky", "miss"], "in the window, weak spots only");
+});
+
+test("readiness check: 40 questions spread over every topic and category of the exam's units", () => {
+  const qs = [];
+  ["Fluids", "Lytes", "Acid-Base", "Nutrition"].forEach((t, ti) => ["A", "B"].forEach(c => {
+    for (let i = 0; i < 30; i++) qs.push({id: t + c + i, unit: 4, topic: t, category: c});
+  }));
+  qs.push({id: "u3", unit: 3, topic: "Safety", category: "X"});
+  const check = S.readinessCheck(qs, EXAMS.find(e => e.id === "exam-4"));
+  assert.equal(check.length, 40);
+  assert.ok(check.every(x => x.unit === 4), "only the exam's units");
+  const per = {};
+  check.forEach(x => { const k = x.topic + x.category; per[k] = (per[k] || 0) + 1; });
+  assert.equal(Object.keys(per).length, 8); assert.ok(Object.values(per).every(n => n === 5), "evenly spread");
+  assert.equal(new Set(check.map(x => x.id)).size, 40, "no repeats");
+  assert.equal(S.bestCheck({}, EXAMS.find(e => e.id === "exam-4"), "2026-10-23"), null);
 });
 
 test("exam ready counts and priority groups (review due folds into mastered in the window)", () => {

@@ -886,6 +886,16 @@ a.ledger-row:hover{background:color-mix(in srgb,var(--pill) 55%,var(--card));}
 .g-text{flex:1 1 auto;display:flex;flex-direction:column;gap:3px;}
 .g-text strong{font-size:15px;}
 .g-text span{font-size:12px;color:var(--text2);}
+/* Exam ready checklist (window): weak spots, then the readiness check */
+.ms-checklist{margin:0;padding:0;list-style:none;border-top:1.5px solid var(--soft);}
+.ms-checklist li{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:14px 0;border-bottom:1.5px solid var(--soft);}
+.ms-checklist .g-num{font-size:14px;font-weight:600;flex:0 0 18px;}
+.ms-checklist .g-text{flex:1 1 220px;}
+.ms-checklist .g-text .ms-ready{align-self:flex-start;margin-top:4px;}
+.ms-checklist li.is-done .g-num{color:var(--success-text);}
+.ms-checklist li.is-done strong{text-decoration:line-through;text-decoration-thickness:1px;color:var(--text2);}
+.ms-planline{margin:0;}
+.se-daily{flex-wrap:wrap;}
 .g-count{font-size:16px;font-variant-numeric:tabular-nums;}
 .ms-confidence-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
 .ms-confidence-head .ms-sub{text-transform:none;letter-spacing:0;font-size:13px;color:var(--label);}

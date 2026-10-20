@@ -17,6 +17,9 @@
                         sees it; challenges always use the nickname). Missing/empty = the nickname.
      gradeHidden        true = the Exam average box on the dashboard is folded shut (Hide / Show)
      busyWeeks          Mondays ("YYYY-MM-DD") of weeks a busy week pass was used
+     dailySize          today's plan size: 10, 20, 30 or 40 questions (missing = 30)
+     readinessChecks    {examId: [{date, correct, total, at}]}: readiness check scores (merged
+                        between devices so none is lost)
      breaksOff          true = holiday break weeks are skipped. Missing/false = the weekly goal still
                         counts during breaks (hit grows the streak, miss only pauses): on by default.
                         (Replaces the old break goal menu; any saved breakGoal is ignored.)
@@ -111,7 +114,8 @@
   var LOOKUP_SALT = "pinkprint-lookup-v1", KEY_SALT = "pinkprint-key-v1";
   /* Settings that travel between devices (everything else in the saved state stays on the device) */
   var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn",
-                "scores", "gradeHidden", "dashName", "busyWeeks", "breaksOff", "knownCounts", "challenges", "ownerProof"];
+                "scores", "gradeHidden", "dashName", "busyWeeks", "breaksOff", "knownCounts", "challenges", "ownerProof",
+                "dailySize", "readinessChecks"];
 
   function subtle(){ return cryptoObj().subtle; }
   function utf8(s){ return new TextEncoder().encode(s); }
@@ -194,14 +198,32 @@
     });
     return out;
   }
-  /* Newest settings win, except challenge tickets, which are combined so none is lost */
+  /* Newest settings win, except challenge tickets and readiness check scores, which are combined
+     so none is lost */
   function mergeSettings(local, remote){
     var win = (remote && (remote.settingsAt || 0) > (local.settingsAt || 0)) ? remote : local;
     var list = mergeChallenges(local.challenges, remote && remote.challenges);
-    if (!list.length && !win.challenges) return win;
+    var checks = mergeChecks(local.readinessChecks, remote && remote.readinessChecks);
+    if (!list.length && !win.challenges && !checks) return win;
     var out = {};
     Object.keys(win).forEach(function(k){ out[k] = win[k]; });
-    out.challenges = list;
+    if (list.length || win.challenges) out.challenges = list;
+    if (checks) out.readinessChecks = checks;
+    return out;
+  }
+  /* Readiness check scores from both devices, by exam, without duplicates */
+  function mergeChecks(a, b){
+    if (!a && !b) return null;
+    var out = {};
+    [a || {}, b || {}].forEach(function(src){
+      Object.keys(src).forEach(function(exam){
+        out[exam] = out[exam] || [];
+        (src[exam] || []).forEach(function(c){
+          var dup = out[exam].some(function(x){ return x.at === c.at && x.date === c.date && x.correct === c.correct && x.total === c.total; });
+          if (!dup) out[exam].push(c);
+        });
+      });
+    });
     return out;
   }
   /* Challenge tickets saved on any device, by challenge ID. A removed one stays removed. Entries
@@ -671,6 +693,21 @@
   /* ---------- Challenges (phase 6) ----------
      Each challenge this person made or joined is saved with its own random ticket, which is the
      only way to submit a score, see scores or delete it. */
+  /* Today's plan size (questions a day) */
+  api.dailySize = function(){
+    var s = api.state();
+    return s && [10, 20, 30, 40].indexOf(s.dailySize) !== -1 ? s.dailySize : 30;
+  };
+  /* Save a readiness check score for an exam */
+  api.addCheck = function(examId, date, correct, total){
+    var s = api.state();
+    if (!s) return;
+    var checks = {};
+    Object.keys(s.readinessChecks || {}).forEach(function(k){ checks[k] = s.readinessChecks[k].slice(); });
+    checks[examId] = (checks[examId] || []).concat([{date: date, correct: correct, total: total, at: Date.now()}]);
+    api.update({readinessChecks: checks});
+  };
+
   /* Weekly goals during semester or holiday breaks: on unless they turned it off */
   api.goalOnBreaks = function(){
     var s = api.state();

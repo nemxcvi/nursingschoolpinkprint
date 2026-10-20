@@ -253,3 +253,12 @@ test("challenge tickets from two devices are combined, removals stick, old ones 
   assert.equal(m.challenges.find(c => c.id === "AAAA2222").ticket, "a", "a ticket only one device had is kept");
   assert.deepEqual(T.mergeSettings({settingsAt: 1}, {settingsAt: 2, goal: 1}), {settingsAt: 2, goal: 1}, "no challenges: unchanged");
 });
+
+test("settings merge keeps readiness check scores from both devices", () => {
+  const a = {settingsAt: 100, dailySize: 20, readinessChecks: {"exam-4": [{date: "2026-10-23", correct: 30, total: 40, at: 1}]}};
+  const b = {settingsAt: 200, dailySize: 40, readinessChecks: {"exam-4": [{date: "2026-10-24", correct: 36, total: 40, at: 2}, {date: "2026-10-23", correct: 30, total: 40, at: 1}]}};
+  const m = T.mergeSettings(a, b);
+  assert.equal(m.dailySize, 40, "newest daily size wins");
+  assert.equal(m.readinessChecks["exam-4"].length, 2, "union without the duplicate");
+  assert.deepEqual(m.readinessChecks["exam-4"].map(c => c.at).sort(), [1, 2]);
+});

@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=118">
+<link rel="stylesheet" href="assets/style.css?v=119">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -81,6 +81,13 @@
       </div>
       <button type="button" class="tp-switch" id="se-breakswitch" role="switch" aria-labelledby="se-breaklabel"><span></span></button>
     </div>
+    <div class="tp-feature se-daily">
+      <div class="tp-feature-text">
+        <span class="tp-feature-name" id="se-dailylabel">Today's plan size</span>
+        <span class="tp-hint">How many questions your daily plan asks for, in sets of 10. Any practice that day counts toward it.</span>
+      </div>
+      <div class="tp-seg" id="se-daily" role="radiogroup" aria-labelledby="se-dailylabel"></div>
+    </div>
   </section>
   </div>
 
@@ -130,12 +137,12 @@
   </section>
 </div>
 <script src="assets/vendor/qrcode.js?v=1"></script>
-<script src="js/tracking.js?v=14"></script>
+<script src="js/tracking.js?v=15"></script>
 <script src="js/progress.js?v=7"></script>
 <script src="js/tracking-ui.js?v=2"></script>
 <script src="assets/site-data.js?v=14"></script>
-<script src="js/study.js?v=5"></script>
-<script src="js/my-study.js?v=27"></script>
+<script src="js/study.js?v=6"></script>
+<script src="js/my-study.js?v=28"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -319,6 +326,23 @@
   $("se-breakswitch").addEventListener("click", function(){ Tracking.update({breaksOff: Tracking.goalOnBreaks()}); syncBreak(); });
   syncBreak();
   document.addEventListener("pinkprint-synced", syncBreak);
+
+  /* Today's plan size: saved as soon as it's tapped */
+  function syncDaily(){
+    var cur = Tracking.dailySize();
+    $("se-daily").innerHTML = "";
+    [10, 20, 30, 40].forEach(function(n){
+      var b = TrackingUI.el("button", n === cur ? "is-on" : "", String(n));
+      b.type = "button";
+      b.setAttribute("role", "radio");
+      b.setAttribute("aria-checked", n === cur ? "true" : "false");
+      b.setAttribute("aria-label", n + " a day");
+      b.addEventListener("click", function(){ Tracking.update({dailySize: n}); syncDaily(); });
+      $("se-daily").appendChild(b);
+    });
+  }
+  syncDaily();
+  document.addEventListener("pinkprint-synced", syncDaily);
 
   /* Study features */
   FEATURES.forEach(function(f){

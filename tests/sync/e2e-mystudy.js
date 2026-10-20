@@ -58,7 +58,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   check(/Exam 3 · Skin, Wounds & Diagnostics/.test(await text(".ms-exam")), "dashboard: next exam is Exam 3", (await text(".ms-exam h2")));
   check(/11\s*days left/.test(await text(".ms-days")), "dashboard: 11 days left on Oct 1");
   const planLine = await text(".ms-plan");
-  check(/Today's plan: \d+ questions/.test(planLine), "dashboard: today's plan", planLine);
+  check(/Today's plan · set \d+ of \d+/.test(planLine) && /done today/.test(await text(".ms-exam-foot")), "dashboard: today's plan in sets", planLine);
   check(/opens Fri Oct 9/.test(await text(".ms-exam-foot")), "dashboard: window opens Fri Oct 9");
   const week = await text(".ms-week");
   const kv = await pg.$$eval(".ms-kv div", d => d.map(x => x.children[0].textContent + ": " + x.children[1].textContent));
@@ -76,26 +76,52 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.waitForTimeout(300);
   check(/84%/.test(await text(".ms-grade-big")), "exam scores: logging Exam 3 updates the average", await text(".ms-grade-big"));
 
-  // ---- Unit 4 (no questions yet) ----
-  await go("dashboard.html", "2026-10-15");
-  check(/Exam 4/.test(await text(".ms-exam h2")) && /coming soon/.test(await text(".ms-exam-foot")), "Unit 4 current: coming soon, plan reviews earlier units");
-  check(/coming soon/.test(await text(".ms-current")), "Unit 4 card says coming soon");
-  await shot("dashboard-oct15");
+  // ---- Unit 4: big bank, 30 a day in sets of 10, pace line, seen vs mastered ----
+  await go("dashboard.html", "2026-10-20");
+  const u4 = await text(".ms-exam-foot");
+  check(/Exam 4/.test(await text(".ms-exam h2")) && /set 1 of 3/.test(u4) && /unseen questions before the exam ready window opens Fri Oct 23/.test(u4), "Unit 4: set 1 of 3 and the pace line (behind at 30 a day)", u4);
+  check(/Seen 0 of \d+ · 0 mastered/.test(await text(".ms-current")), "Unit 4 card: seen vs mastered", await text(".ms-unitbar-top"));
+  await shot("dashboard-oct20");
+
+  // ---- Settings: daily size 20 -> 2 sets ----
+  await go("settings.html", "2026-10-20");
+  await pg.click('#se-daily button[aria-label="20 a day"]');
+  check(await pg.getAttribute('#se-daily button[aria-label="20 a day"]', "aria-checked") === "true", "settings: daily plan size picked");
+  await go("dashboard.html", "2026-10-20");
+  check(/set 1 of 2/.test(await text(".ms-plan")), "dashboard: 20 a day = 2 sets", await text(".ms-plan"));
+
+  // ---- Unit 5 (no questions yet) ----
+  await go("dashboard.html", "2026-10-27");
+  check(/Exam 5/.test(await text(".ms-exam h2")) && /coming soon/.test(await text(".ms-exam-foot")), "Unit 5 current: coming soon, plan reviews earlier units");
+  check(/coming soon/.test(await text(".ms-current")), "Unit 5 card says coming soon");
+  await shot("dashboard-oct27");
 
   // ---- Exam countdown in the window ----
   await go("exam.html", "2026-10-10");
   await pg.waitForSelector(".ms-examtop");
-  check(/of 280 exam ready/.test(await text(".ms-examtop")), "exam page: exam ready count for Unit 3", (await text(".ms-examtop h2")));
-  check((await pg.$$eval(".ms-groups li", l => l.length)) === 7, "exam page: 7 groups in the window (review folded into mastered)");
+  check(/Not exam ready yet/.test(await text(".ms-examtop h2")) && (await pg.$$eval(".ms-checklist li", l => l.length)) === 2, "exam page: window checklist (weak spots, readiness check)", await text(".ms-examtop h2"));
+  check(/Not taken in this window yet/.test(await text(".ms-checklist")), "exam page: readiness check not taken yet");
+  check((await pg.$$eval(".ms-groups li", l => l.length)) === 8, "exam page: 8 groups in plan order");
   check((await pg.$$eval(".ms-confidence .ms-row", r => r.length)) === 7, "exam page: confidence check per topic");
   await shot("exam-window");
   await go("exam.html", "2026-10-01");
-  check(/of 280 mastered/.test(await text(".ms-examtop")) && (await pg.$$eval(".ms-groups li", l => l.length)) === 8, "exam page outside the window: mastered + 8 groups");
+  check(/Seen \d+ of 280 · \d+ mastered/.test(await text(".ms-examtop")) && (await pg.$$eval(".ms-groups li", l => l.length)) === 8, "exam page outside the window: seen vs mastered + 8 groups");
+
+  // ---- Readiness check in the window: 40 questions, the first finish is saved ----
+  await go("session.html?mode=check", "2026-10-10");
+  await pg.waitForSelector("#pq-progress");
+  check(/question 1 of 40/.test(await text("#pq-progress")), "readiness check: 40 questions", await text("#pq-progress"));
+  pg.once("dialog", dl => dl.accept());
+  await pg.click("#pq-end-test");
+  await pg.waitForSelector("#ss-check");
+  check(/Readiness check saved: 0%/.test(await text("#ss-check")), "readiness check: score saved", await text("#ss-check"));
+  await go("exam.html", "2026-10-10");
+  check(/Best this window: 0%/.test(await text(".ms-checklist")), "exam page: best check this window", await text(".ms-checklist"));
 
   // ---- Journal: Progress tab (old progress.html links redirect here) ----
   await go("progress.html", "2026-10-01");
   await pg.waitForSelector(".ms-units");
-  check((await pg.$$eval(".ms-unit", u => u.length)) === 3, "progress: 3 units with questions");
+  check((await pg.$$eval(".ms-unit", u => u.length)) === 4, "progress: 4 units with questions");
   const due = await text(".ms-totals");
   check(/Due for review/.test(due), "progress: totals", due);
   await pg.click('.ms-unit-name[data-unit="3"]');

@@ -21,10 +21,12 @@
     return (breaks || []).filter(function(b){ return d >= b.start && d <= b.end; })[0] || null;
   }
 
-  /* ---------- Readiness and mastery ---------- */
+  /* ---------- Coverage, mastery and readiness ---------- */
   /* For any group of questions (a topic, a unit, an exam):
-     mastery % = mastered / all questions; readiness = accuracy on answered questions,
-     "Not enough data" until 5 different questions have been answered. */
+     coverage % = seen / all questions; mastery % = mastered / all questions (shown as "N of the
+     ones you've seen" next to coverage, so a big bank doesn't make a student look behind);
+     readiness = accuracy on answered questions, "Not enough data" until a fair share of the group
+     has been answered (minSeen). */
   function stats(questions, store, today, exams){
     var s = {total: questions.length, mastered: 0, learning: 0, unseen: 0, seen: 0, answers: 0, correct: 0, due: 0, blind: 0};
     questions.forEach(function(q){
@@ -39,11 +41,15 @@
     });
     s.accuracy = s.answers ? s.correct / s.answers : null;
     s.masteryPct = s.total ? Math.round(s.mastered / s.total * 100) : 0;
+    s.coveragePct = s.total ? Math.round(s.seen / s.total * 100) : 0;
     s.readiness = readiness(s);
     return s;
   }
+  /* A fair share: 20 questions, or half the group if that's smaller, but at least 5 (or all of
+     a group with fewer than 5) */
+  function minSeen(total){ return Math.min(total, Math.max(5, Math.min(20, Math.ceil(total / 2)))); }
   function readiness(s){
-    if (s.seen < 5) return "nodata";
+    if (!s.seen || s.seen < minSeen(s.total)) return "nodata";
     if (s.accuracy >= 0.85) return "strong";
     if (s.accuracy >= 0.75) return "ontrack";
     return "needswork";
@@ -51,13 +57,15 @@
   var READINESS_LABEL = {strong: "Strong", ontrack: "On track", needswork: "Needs work", nodata: "Not enough data"};
 
   /* ---------- Priority groups ---------- */
+  /* In the order today's plan works through them: weak spots, then never seen (coverage first),
+     then the rest */
   var GROUPS = [
     {key: "blindspot", name: "Blind spots", sub: "Wrong, but you were sure"},
     {key: "journal", name: "Mistake journal", sub: "Missed last time"},
+    {key: "new", name: "Never seen", sub: "See every question at least once"},
+    {key: "luckyguess", name: "Lucky guesses", sub: "Right, but you guessed"},
     {key: "bookmarked", name: "Your bookmarks", sub: "Flagged as tricky"},
     {key: "reviewdue", name: "Due for review", sub: "Mastered, time for a refresher"},
-    {key: "luckyguess", name: "Lucky guesses", sub: "Right, but you guessed"},
-    {key: "new", name: "Never seen", sub: ""},
     {key: "learning", name: "Still learning", sub: ""},
     {key: "mastered", name: "Mastered", sub: ""}
   ];
@@ -93,38 +101,115 @@
     return before[0] || null;
   }
 
-  /* Today's plan: spread the not-yet-mastered questions of the next exam's units over the days
-     left before its exam ready window (recomputed each day, so a missed day re-spreads). In the
-     window, spread the not-yet-exam-ready ones over the days left. When the next exam's unit has
-     no questions yet, the plan reviews earlier units instead. */
-  function planToday(questions, store, today, exams){
+  /* ---------- Today's plan ----------
+     The student picks a daily size (10, 20, 30 or 40; 30 by default), done in sets of 10. Any
+     answers today count toward it.
+     Before the exam ready window: coverage first. Weak spots, then never-seen questions, then
+     the rest, from the next exam's units. The pace line says whether that size reaches every
+     question before the window opens.
+     In the window (the 3 days before the exam): clear the weak spots in the exam's units, then
+     take the readiness check. Exam ready = no weak spots left and a check score of 85% or more.
+     When the next exam's unit has no questions yet, the plan reviews earlier units instead. */
+  var DAILY_SIZES = [10, 20, 30, 40], DEFAULT_DAILY = 30, SET_SIZE = 10;
+  var PLAN_ORDER = ["blindspot", "journal", "new", "luckyguess", "bookmarked", "reviewdue", "learning", "mastered"];
+  var CHECK_SIZE = 40, CHECK_READY = 0.85, CHECK_ALMOST = 0.75;
+  function dailySize(n){ return DAILY_SIZES.indexOf(n) !== -1 ? n : DEFAULT_DAILY; }
+
+  function planToday(questions, store, today, exams, opts){
+    opts = opts || {};
+    var size = dailySize(opts.size), done = opts.done || 0;
     var exam = P.nextExam(exams, today);
-    if (!exam) return {exam: null, n: 0, fallback: true};
+    if (!exam) return {exam: null, n: 0, fallback: true, size: size, done: done, target: 0};
     var windowStart = addDays(exam.date, -3);
     var inWindow = today >= windowStart && today < exam.date;
     var qs = examUnitsQuestions(questions, exam);
-    var plan = {exam: exam, windowStart: windowStart, inWindow: inWindow, daysLeft: daysBetween(today, exam.date), fallback: false};
+    var plan = {exam: exam, windowStart: windowStart, inWindow: inWindow, daysLeft: daysBetween(today, exam.date),
+                fallback: false, size: size, done: done, step: "learn"};
+    var weak = qs.filter(function(q){ return isWeak(store[q.id], q.unit, today, exams); }).length;
+    plan.weak = weak;
     if (!qs.length){
       /* Nothing to learn for this exam yet: review what most needs it from earlier units */
       var urgent = groupCounts(questions, store, today, exams, false);
       var n = urgent.blindspot + urgent.journal + urgent.bookmarked + urgent.reviewdue + urgent.luckyguess;
       plan.fallback = true;
-      plan.n = Math.min(20, Math.max(n, questions.length ? 10 : 0));
       plan.remaining = n;
-      return plan;
-    }
-    if (inWindow){
-      var notReady = qs.filter(function(q){ return !P.isExamReady(store[q.id], exam.id); }).length;
-      plan.remaining = notReady;
-      plan.n = Math.min(notReady, Math.ceil(notReady / Math.max(1, daysBetween(today, exam.date))));
+      plan.target = Math.min(size, Math.max(n, questions.length ? SET_SIZE : 0));
     } else if (today === exam.date){
-      plan.remaining = 0; plan.n = 0;
+      plan.step = "examday"; plan.remaining = 0; plan.target = 0;
+    } else if (inWindow){
+      var check = bestCheck(opts.checks, exam, windowStart);
+      plan.check = check;
+      plan.remaining = weak;
+      if (weak){ plan.step = "weak"; plan.target = Math.min(size, weak + done); }
+      else { plan.step = check !== null && check >= CHECK_READY ? "ready" : "check"; plan.target = 0; }
     } else {
-      var notMastered = qs.filter(function(q){ var r = store[q.id]; return !(r && r.mastered); }).length;
-      plan.remaining = notMastered;
-      plan.n = Math.min(notMastered, Math.ceil(notMastered / Math.max(1, daysBetween(today, windowStart))));
+      var st = stats(qs, store, today, exams);
+      plan.remaining = st.total - st.mastered;
+      plan.unseen = st.unseen;
+      plan.target = Math.min(size, plan.remaining + done);
+      /* Pace: can this size reach every unseen question before the window opens? */
+      var days = Math.max(1, daysBetween(today, windowStart));
+      var capacity = Math.max(0, size - done) + size * (days - 1);
+      plan.pace = {days: days, unseen: st.unseen, reach: Math.min(st.unseen, capacity), onPace: st.unseen <= capacity,
+                   lastDay: addDays(windowStart, -1)};
     }
+    plan.left = Math.max(0, (plan.target || 0) - done);
+    plan.n = Math.min(SET_SIZE, plan.left);
+    plan.sets = Math.ceil((plan.target || 0) / SET_SIZE);
+    plan.setsDone = Math.min(plan.sets, Math.floor(done / SET_SIZE));
+    plan.complete = (plan.target || 0) > 0 && plan.left === 0;
     return plan;
+  }
+
+  /* The next set: the next exam's units in plan order (weak spots only in the window), random
+     within a group; other units fill in only before the window if the exam's units run short */
+  function pickPlan(questions, n, store, today, exams, random){
+    random = random || Math.random;
+    var exam = P.nextExam(exams, today);
+    var inWindow = exam && today >= addDays(exam.date, -3) && today < exam.date;
+    var inUnit = function(q){ return !exam || exam.units.indexOf(q.unit) !== -1; };
+    var ranked = function(list){
+      return list.map(function(q){
+        return {q: q, r: PLAN_ORDER.indexOf(P.statusOf(store[q.id], q.unit, today, exams)), t: random()};
+      }).sort(function(a, b){ return a.r - b.r || a.t - b.t; }).map(function(x){ return x.q; });
+    };
+    if (inWindow) return ranked(questions.filter(function(q){ return inUnit(q) && isWeak(store[q.id], q.unit, today, exams); })).slice(0, n);
+    var first = ranked(questions.filter(inUnit));
+    var rest = first.length < n ? ranked(questions.filter(function(q){ return !inUnit(q); })) : [];
+    return first.concat(rest).slice(0, n);
+  }
+
+  /* Readiness check: 40 questions from the exam's units, spread evenly over every topic and
+     category (round robin, random inside each), so it samples the whole unit fairly */
+  function readinessCheck(questions, exam, n, random){
+    random = random || Math.random;
+    n = n || CHECK_SIZE;
+    var groups = {}, keys = [];
+    examUnitsQuestions(questions, exam).forEach(function(q){
+      var k = q.unit + "|" + q.topic + "|" + (q.category || "");
+      if (!groups[k]){ groups[k] = []; keys.push(k); }
+      groups[k].push(q);
+    });
+    var shuffle = function(a){ return a.map(function(x){ return {x: x, t: random()}; }).sort(function(p, q){ return p.t - q.t; }).map(function(p){ return p.x; }); };
+    keys = shuffle(keys);
+    keys.forEach(function(k){ groups[k] = shuffle(groups[k]); });
+    var out = [];
+    for (var i = 0; out.length < n; i++){
+      var added = false;
+      keys.forEach(function(k){ if (out.length < n && groups[k][i]){ out.push(groups[k][i]); added = true; } });
+      if (!added) break;
+    }
+    return shuffle(out);
+  }
+  /* checks = {examId: [{date, correct, total}]}; the best score taken in this exam's window */
+  function bestCheck(checks, exam, windowStart){
+    var list = ((checks || {})[exam.id] || []).filter(function(c){ return c.date >= windowStart && c.date <= exam.date && c.total; });
+    if (!list.length) return null;
+    return Math.max.apply(null, list.map(function(c){ return c.correct / c.total; }));
+  }
+  function checkLabel(score){
+    if (score === null || score === undefined) return "nodata";
+    return score >= CHECK_READY ? "strong" : score >= CHECK_ALMOST ? "ontrack" : "needswork";
   }
 
   /* Exam ready numbers for the window view */
@@ -266,6 +351,9 @@
     stats: stats, readiness: readiness, READINESS_LABEL: READINESS_LABEL,
     GROUPS: GROUPS, groupCounts: groupCounts, rank: rank, examUnitsQuestions: examUnitsQuestions, previousExam: previousExam,
     planToday: planToday, examReady: examReady, isWeak: isWeak, weakSpotsQuiz: weakSpotsQuiz,
+    minSeen: minSeen, DAILY_SIZES: DAILY_SIZES, DEFAULT_DAILY: DEFAULT_DAILY, SET_SIZE: SET_SIZE, dailySize: dailySize,
+    pickPlan: pickPlan, readinessCheck: readinessCheck, bestCheck: bestCheck, checkLabel: checkLabel,
+    CHECK_SIZE: CHECK_SIZE, CHECK_READY: CHECK_READY, CHECK_ALMOST: CHECK_ALMOST,
     dailyTotals: dailyTotals, weekProgress: weekProgress, weekKind: weekKind, passesLeft: passesLeft, streaks: streaks,
     grade: grade, strip: strip, recap: recap
   };

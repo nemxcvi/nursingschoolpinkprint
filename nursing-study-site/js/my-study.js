@@ -52,6 +52,34 @@ var MyStudy = (function(){
     return known === undefined ? now : Math.max(0, now - known);
   }
 
+  /* Today's plan with this person's daily size, today's answers and readiness check scores */
+  function planFor(d){
+    var done = S.dailyTotals(d.state.activity)[d.today] || 0;
+    return S.planToday(d.questions, d.store, d.today, d.exams, {size: T.dailySize(), done: done, checks: d.state.readinessChecks});
+  }
+  /* The plan's headline, the line under it, and its buttons (dashboard and exam plan) */
+  function planText(plan){
+    var exam = plan.exam, set = Math.min(plan.sets, plan.setsDone + 1);
+    var start = '<a class="ms-btn is-primary" href="session.html?mode=today">Start set ' + set + " of " + plan.sets + " →</a>";
+    var extra = '<a class="ms-btn" href="session.html?mode=today">Extra set of ' + S.SET_SIZE + " →</a>";
+    var checkBtn = function(label, primary){ return '<a class="ms-btn' + (primary ? " is-primary" : "") + '" href="session.html?mode=check">' + label + "</a>"; };
+    var pctOf = function(x){ return Math.round(x * 100) + "%"; };
+    if (plan.step === "examday") return {head: "Exam day. Good luck!", sub: "", btns: ""};
+    if (plan.step === "check") return {head: "Next: the readiness check", sub: "Weak spots cleared. Score " + pctOf(S.CHECK_READY) + " or more on a " + S.CHECK_SIZE + "-question check of the whole unit to be exam ready.", btns: checkBtn("Take the readiness check →", true)};
+    if (plan.step === "ready") return {head: "Exam ready ✓", sub: "Weak spots cleared and your best readiness check is " + pctOf(plan.check) + ". Keep it fresh with an extra set or a retake.", btns: checkBtn("Retake the check", false)};
+    var sub;
+    if (plan.fallback) sub = siteUnit(exam.units[0]).name + " questions are coming soon, so today's plan reviews earlier units.";
+    else if (plan.step === "weak") sub = plural(plan.weak, "weak spot") + " left in this exam's units. Clear them, then take the readiness check.";
+    else if (plan.pace && !plan.pace.unseen) sub = "You've seen every question. Keep mastering the rest.";
+    else if (plan.pace && plan.pace.onPace) sub = "On pace to see all " + plural(plan.pace.unseen, "unseen question") + " by " + S.longDate(plan.pace.lastDay) + ".";
+    else if (plan.pace) sub = "At " + plan.size + " a day you'll see about " + plan.pace.reach + " of " + plan.pace.unseen + " unseen questions before the exam ready window opens " + S.longDate(plan.windowStart) + ". A bigger daily size is in Settings.";
+    else sub = "";
+    if (!plan.target) return {head: "Today's plan: all caught up", sub: sub, btns: plan.step === "learn" && !plan.fallback ? extra : ""};
+    if (plan.complete) return {head: "Today's plan done: " + plural(plan.target, "question") + " ✓", sub: sub, btns: extra};
+    var what = plan.step === "weak" ? "Today: clear your weak spots" : "Today's plan";
+    return {head: what + " · set " + set + " of " + plan.sets, sub: plan.done + " of " + plan.target + " done today. " + sub, btns: start};
+  }
+
   function examTitle(exam){
     if (exam.units.length > 1) return exam.name + " · All units";
     return exam.name + " · " + siteUnit(exam.units[0]).name;
@@ -93,21 +121,21 @@ var MyStudy = (function(){
     });
   }
 
-  /* Mastery bar: exam ready (window only), mastered, still learning, not seen (white) */
+  /* Progress bar: mastered, still learning (seen), not seen (white) */
   function bar(st, opts){
     opts = opts || {};
-    var total = st.total || 1, ready = opts.ready || 0;
-    var segs = [["is-ready", ready], ["is-mastered", st.mastered - ready], ["is-learning", st.learning]];
-    return '<span class="ms-bar' + (opts.thin ? " is-thin" : "") + '" role="img" aria-label="' + st.masteryPct + ' percent mastered">' +
+    var total = st.total || 1;
+    var segs = [["is-mastered", st.mastered], ["is-learning", st.learning]];
+    return '<span class="ms-bar' + (opts.thin ? " is-thin" : "") + '" role="img" aria-label="' + st.coveragePct + " percent seen, " + st.masteryPct + ' percent mastered">' +
       segs.filter(function(s){ return s[1] > 0; }).map(function(s){
         return '<span class="' + s[0] + '" style="width:' + (s[1] / total * 100) + '%"></span>';
       }).join("") + "</span>";
   }
-  function legend(withReady){
-    return '<div class="ms-legend">' +
-      (withReady ? '<span><i class="is-ready"></i>Exam ready (3 days before an exam)</span>' : "") +
-      '<span><i class="is-mastered"></i>Mastered (2 right in a row)</span><span><i class="is-learning"></i>Still learning</span><span><i class="is-unseen"></i>Not seen</span></div>';
+  function legend(){
+    return '<div class="ms-legend"><span><i class="is-mastered"></i>Mastered (2 right in a row)</span><span><i class="is-learning"></i>Seen, still learning</span><span><i class="is-unseen"></i>Not seen</span></div>';
   }
+  /* "Seen 210 of 376 · 140 mastered" */
+  function seenText(st){ return "Seen " + st.seen + " of " + st.total + " · " + st.mastered + " mastered"; }
   function readyTag(key){ return '<span class="ms-ready is-' + key + '">' + S.READINESS_LABEL[key] + "</span>"; }
   function accText(st){ return (st.readiness === "nodata" || st.accuracy === null ? "—" : pct(st.accuracy)) + " · " + st.seen + " of " + st.total; }
 
@@ -115,29 +143,26 @@ var MyStudy = (function(){
   function table(rows, opts){
     opts = opts || {};
     return '<div class="ms-table">' +
-      '<div class="ms-thead"><span class="c-name">' + (opts.first || "Topic") + '</span><span class="c-bar">Mastery</span><span class="c-ready">Readiness</span><span class="c-acc">Correct · seen</span><span class="c-go"></span></div>' +
+      '<div class="ms-thead"><span class="c-name">' + (opts.first || "Topic") + '</span><span class="c-bar">Seen</span><span class="c-ready">Readiness</span><span class="c-acc">Correct · seen</span><span class="c-go"></span></div>' +
       rows.map(function(r){
         return '<div class="ms-row' + (r.highlight ? " is-low" : "") + '">' +
           '<span class="c-name">' + esc(r.name) + (r.newCount ? ' <span class="ms-new">' + plural(r.newCount, "new question") + "</span>" : "") + "</span>" +
-          '<span class="c-bar">' + bar(r.st, {ready: r.ready, thin: true}) + '<span class="c-pct">' + r.st.masteryPct + "%</span></span>" +
+          '<span class="c-bar">' + bar(r.st, {thin: true}) + '<span class="c-pct">' + r.st.coveragePct + "%</span></span>" +
           '<span class="c-ready">' + readyTag(r.st.readiness) + "</span>" +
           '<span class="c-acc">' + accText(r.st) + "</span>" +
           '<span class="c-go">' + (r.href ? '<a href="' + r.href + '">Practice →</a>' : "") + "</span></div>";
       }).join("") + "</div>";
   }
-  function topicRows(d, u, opts){
-    opts = opts || {};
+  function topicRows(d, u){
     return u.topics.map(function(t){
-      var qs = topicQuestions(u, t);
-      var st = S.stats(qs, d.store, d.today, d.exams);
-      return {name: t.topic, st: st, href: ROOT + t.quiz, newCount: newCount(d, u, t),
-              ready: opts.exam ? S.examReady(qs, d.store, opts.exam).ready : 0};
+      var st = S.stats(topicQuestions(u, t), d.store, d.today, d.exams);
+      return {name: t.topic, st: st, href: ROOT + t.quiz, newCount: newCount(d, u, t)};
     });
   }
 
   /* ---------- My dashboard ---------- */
   function dashboard(d, host){
-    var st = d.state, plan = S.planToday(d.questions, d.store, d.today, d.exams);
+    var st = d.state, plan = planFor(d);
     var html = '<section class="tp-intro tp-intro-tight"><div class="tp-eyebrow">NUR 114 · ' + esc(S.longDate(d.today)) + '</div>' +
       '<h1 class="tp-h1 ms-welcome">Welcome back, ' + esc(st.dashName || st.nickname) + "</h1></section>";
 
@@ -153,18 +178,14 @@ var MyStudy = (function(){
   }
 
   function examCard(d, plan){
-    var exam = plan.exam, n = plan.n;
-    var sub;
-    if (plan.fallback) sub = siteUnit(exam.units[0]).name + " questions are coming soon, so today's plan reviews earlier units.";
-    else if (plan.inWindow) sub = "Exam ready window: " + plural(plan.daysLeft, "day") + " left";
-    else if (plan.daysLeft === 0) sub = "Exam day. Good luck!";
-    else sub = "Exam ready window opens " + S.longDate(plan.windowStart);
+    var exam = plan.exam, pt = planText(plan);
+    var when = plan.inWindow ? "Exam ready window: " + plural(plan.daysLeft, "day") + " left" : plan.daysLeft === 0 ? "" : "Exam ready window opens " + S.longDate(plan.windowStart);
     return '<div class="ms-card ms-exam">' +
       '<div class="ms-exam-top"><div class="tp-stack"><div class="tp-eyebrow">Next exam</div><h2 class="ms-h2">' + esc(examTitle(exam)) + '</h2><div class="ms-sub">' + esc(examSub(exam)) + "</div></div>" +
       '<div class="ms-days"><div class="ms-bignum">' + (plan.daysLeft === 0 ? "Today" : plan.daysLeft) + "</div>" + (plan.daysLeft === 0 ? "" : '<div class="ms-sub">' + (plan.daysLeft === 1 ? "day left" : "days left") + "</div>") + "</div></div>" +
-      '<div class="ms-exam-foot"><div class="tp-stack"><div class="ms-plan">' + (n ? "Today's plan: " + plural(n, "question") : "Today's plan: all caught up") + '</div><div class="tp-hint">' + esc(sub) + "</div></div>" +
-      '<div class="ms-btns">' + (n ? '<a class="ms-btn is-primary" href="session.html?mode=today">Start today\'s ' + n + " →</a>" : "") +
-      '<a class="ms-btn" href="exam.html">Exam plan</a></div></div></div>';
+      '<div class="ms-exam-foot"><div class="tp-stack"><div class="ms-plan">' + esc(pt.head) + '</div><div class="tp-hint">' + esc(pt.sub) + "</div>" +
+      (when && pt.sub.indexOf("window opens") === -1 ? '<div class="tp-hint">' + esc(when) + "</div>" : "") + "</div>" +
+      '<div class="ms-btns">' + pt.btns + '<a class="ms-btn" href="exam.html">Exam plan</a></div></div></div>';
   }
 
   function weekCard(d){
@@ -216,18 +237,15 @@ var MyStudy = (function(){
       if (!u) body = '<p class="tp-hint">Questions for this unit are coming soon. Until then, keep earlier units fresh with today\'s plan and your Mistake journal.</p>';
       else {
         var st = S.stats(u.questions, d.store, d.today, d.exams);
-        var ready = plan.inWindow ? S.examReady(u.questions, d.store, exam).ready : 0;
-        body = '<div class="ms-unitbar"><div class="ms-unitbar-top"><span>Unit mastery</span><strong>' + st.masteryPct + "% mastered</strong></div>" + bar(st, {ready: ready}) + legend(plan.inWindow) + "</div>" +
-          table(topicRows(d, u, {exam: plan.inWindow ? exam : null}));
+        body = '<div class="ms-unitbar"><div class="ms-unitbar-top"><span>Unit progress</span><strong>' + esc(seenText(st)) + "</strong></div>" + bar(st) + legend() + "</div>" +
+          table(topicRows(d, u));
       }
     } else {
       head = '<span class="tp-eyebrow">All units' + (exam ? " · " + esc(exam.name) + " on " + esc(S.shortDate(exam.date)) : "") + '</span><h2 class="ms-h2">All units</h2>';
       var all = S.stats(d.questions, d.store, d.today, d.exams);
-      var readyAll = plan.inWindow ? S.examReady(d.questions, d.store, exam).ready : 0;
-      body = '<div class="ms-unitbar"><div class="ms-unitbar-top"><span>Overall mastery</span><strong>' + all.masteryPct + "% mastered</strong></div>" + bar(all, {ready: readyAll}) + legend(plan.inWindow) + "</div>" +
+      body = '<div class="ms-unitbar"><div class="ms-unitbar-top"><span>Overall progress</span><strong>' + esc(seenText(all)) + "</strong></div>" + bar(all) + legend() + "</div>" +
         table(d.units.map(function(u){
-          return {name: "Unit " + u.unit + " · " + u.name, st: S.stats(u.questions, d.store, d.today, d.exams), href: ROOT + siteUnit(u.unit).slug + "mix-quiz.html",
-                  ready: plan.inWindow ? S.examReady(u.questions, d.store, exam).ready : 0};
+          return {name: "Unit " + u.unit + " · " + u.name, st: S.stats(u.questions, d.store, d.today, d.exams), href: ROOT + siteUnit(u.unit).slug + "mix-quiz.html"};
         }), {first: "Unit"});
     }
     /* The link sits on the eyebrow line (like Edit scores) so the title keeps the full width */
@@ -336,7 +354,7 @@ var MyStudy = (function(){
       host.innerHTML = '<section class="tp-intro"><a class="ms-back" href="dashboard.html">← Dashboard</a><h1 class="tp-h1">No exams left</h1><p class="tp-lede">That\'s the end of the NUR 114 exams. Your recap is on My dashboard.</p></section>';
       return;
     }
-    var plan = S.planToday(d.questions, d.store, d.today, d.exams);
+    var plan = planFor(d), pt = planText(plan);
     var qs = S.examUnitsQuestions(d.questions, exam);
     var topics = [];
     exam.units.forEach(function(n){ var u = unitData(d, n); if (u) u.topics.forEach(function(t){ topics.push({u: u, t: t}); }); });
@@ -345,41 +363,44 @@ var MyStudy = (function(){
       '<div class="ms-sub">' + esc(examSub(exam)) + (qs.length ? " · " + plural(topics.length, "topic") + " · " + plural(qs.length, "question") : "") + "</div></section>";
     if (!qs.length){
       html += '<section class="ms-card"><p class="tp-hint">' + esc(siteUnit(exam.units[0]).name) + " questions are coming soon. Until then, today's plan reviews earlier units.</p>" +
-        (plan.n ? '<div class="ms-btns"><a class="ms-btn is-primary" href="session.html?mode=today">Start today\'s ' + plan.n + " →</a></div>" : "") + "</section>";
+        '<div class="ms-btns">' + pt.btns + "</div></section>";
       host.innerHTML = html;
       return;
     }
-    var counts = S.groupCounts(qs, d.store, d.today, d.exams, plan.inWindow);
+    var st = S.stats(qs, d.store, d.today, d.exams);
     var days = plan.daysLeft;
+    var top = '<section class="ms-card ms-examtop"><div class="ms-days-left"><span class="ms-bignum">' + days + '</span><span class="ms-sub">' + (days === 1 ? "day left" : "days left") + "</span></div>";
     if (plan.inWindow || days === 0){
-      var r = S.examReady(qs, d.store, exam);
-      var togo = r.total - r.ready;
-      html += '<section class="ms-card ms-examtop"><div class="ms-days-left"><span class="ms-bignum">' + days + '</span><span class="ms-sub">' + (days === 1 ? "day left" : "days left") + "</span></div>" +
-        '<div class="ms-examprog"><div class="ms-examprog-top"><h2 class="ms-h2">' + r.ready + " of " + r.total + ' exam ready</h2><span class="ms-sub">' + togo + " to go" + (days ? " · about " + Math.ceil(togo / days) + " a day" : "") + "</span></div>" +
-        '<span class="ms-bar is-tall"><span class="is-ready" style="width:' + (r.ready / r.total * 100) + '%"></span><span class="is-mastered" style="width:' + (r.mastered / r.total * 100) + '%"></span></span>' +
-        '<div class="ms-keys"><div><i class="is-ready"></i><span class="k-title"><strong>' + r.ready + "</strong> exam ready</span><span class=\"k-sub\">Done for this exam</span></div>" +
-        '<div><i class="is-mastered"></i><span class="k-title"><strong>' + r.mastered + "</strong> mastered</span><span class=\"k-sub\">Answer right once to make exam ready</span></div>" +
-        '<div><i class="is-unseen"></i><span class="k-title"><strong>' + r.notMastered + "</strong> not mastered yet</span><span class=\"k-sub\">Answer right twice in a row to make exam ready</span></div></div></div>" +
-        (togo ? '<a class="ms-btn is-primary is-big" href="session.html?mode=examready">Start exam ready session →</a>' : "") + "</section>";
+      /* Exam ready = weak spots cleared + readiness check 85% or more */
+      var weakDone = !plan.weak, checkKey = S.checkLabel(plan.check === undefined ? null : plan.check);
+      var ready = plan.step === "ready";
+      top += '<div class="ms-examprog"><div class="ms-examprog-top"><h2 class="ms-h2">' + (ready ? "Exam ready ✓" : days === 0 ? "Exam day" : "Not exam ready yet") + '</h2><span class="ms-sub">Two steps, the same for every unit</span></div>' +
+        '<ol class="ms-checklist">' +
+        '<li class="' + (weakDone ? "is-done" : "") + '"><span class="g-num">' + (weakDone ? "✓" : "1") + '</span><span class="g-text"><strong>Clear your weak spots</strong><span>' +
+          (weakDone ? "None left in this exam's units" : plural(plan.weak, "blind spot, mistake or lucky guess", "blind spots, mistakes and lucky guesses") + " left. Answer each one right again.") + "</span></span>" +
+          (weakDone || days === 0 ? "" : '<a class="ms-btn is-primary" href="session.html?mode=today">Quiz my weak spots →</a>') + "</li>" +
+        '<li class="' + (ready ? "is-done" : "") + '"><span class="g-num">' + (ready ? "✓" : "2") + '</span><span class="g-text"><strong>Readiness check</strong><span>' +
+          S.CHECK_SIZE + " questions across every topic. " + Math.round(S.CHECK_READY * 100) + "% or more = exam ready. " +
+          (plan.check === null || plan.check === undefined ? "Not taken in this window yet." : "Best this window: " + Math.round(plan.check * 100) + "% " ) + "</span>" +
+          (plan.check === null || plan.check === undefined ? "" : readyTag(checkKey)) + "</span>" +
+          (days === 0 ? "" : '<a class="ms-btn' + (weakDone && !ready ? " is-primary" : "") + '" href="session.html?mode=check">' + (plan.check === null || plan.check === undefined ? "Take the check →" : "Retake →") + "</a>") + "</li></ol></div>";
     } else {
-      var st = S.stats(qs, d.store, d.today, d.exams);
-      var left = st.total - st.mastered;
-      var before = S.daysBetween(d.today, plan.windowStart);
-      html += '<section class="ms-card ms-examtop"><div class="ms-days-left"><span class="ms-bignum">' + days + '</span><span class="ms-sub">' + (days === 1 ? "day left" : "days left") + "</span></div>" +
-        '<div class="ms-examprog"><div class="ms-examprog-top"><h2 class="ms-h2">' + st.mastered + " of " + st.total + ' mastered</h2><span class="ms-sub">' + left + " to go · about " + Math.ceil(left / Math.max(1, before)) + " a day until " + esc(S.longDate(plan.windowStart)) + "</span></div>" +
+      top += '<div class="ms-examprog"><div class="ms-examprog-top"><h2 class="ms-h2">' + esc(seenText(st)) + '</h2><span class="ms-sub">' + esc(pt.sub) + "</span></div>" +
         bar(st, {}) +
         '<div class="ms-keys"><div><i class="is-mastered"></i><span class="k-title"><strong>' + st.mastered + "</strong> mastered</span><span class=\"k-sub\">2 right in a row</span></div>" +
         '<div><i class="is-learning"></i><span class="k-title"><strong>' + st.learning + "</strong> still learning</span><span class=\"k-sub\">Seen, not mastered yet</span></div>" +
-        '<div><i class="is-unseen"></i><span class="k-title"><strong>' + st.unseen + "</strong> not seen</span><span class=\"k-sub\">Spread over the days before the window</span></div></div></div>" +
-        (plan.n ? '<a class="ms-btn is-primary is-big" href="session.html?mode=today">Start today\'s ' + plan.n + " →</a>" : "") + "</section>";
+        '<div><i class="is-unseen"></i><span class="k-title"><strong>' + st.unseen + "</strong> not seen</span><span class=\"k-sub\">Today's plan covers these first, after weak spots</span></div></div>" +
+        '<p class="tp-hint ms-planline"><strong>' + esc(pt.head) + "</strong></p>" +
+        '<div class="ms-btns">' + pt.btns + "</div></div>";
     }
-    var groups = S.GROUPS.filter(function(g){ return !(plan.inWindow && g.key === "reviewdue"); });
+    html += top + "</section>";
+    var counts = S.groupCounts(qs, d.store, d.today, d.exams, false);
     var i = 0;
-    html += '<section class="ms-split"><div class="ms-card ms-groups"><h2 class="ms-h2">Up next, riskiest first</h2><p class="tp-hint">Sessions work down this list. Questions are shuffled within each group.</p><ol>' +
-      groups.map(function(g){
+    html += '<section class="ms-split"><div class="ms-card ms-groups"><h2 class="ms-h2">Up next, in plan order</h2><p class="tp-hint">' +
+      (plan.inWindow ? "In the exam ready window, sets cover weak spots only (the first two groups and lucky guesses)." : "Today's plan works down this list in sets of " + S.SET_SIZE + ". Questions are shuffled within each group.") + "</p><ol>" +
+      S.GROUPS.map(function(g){
         i++;
-        var sub = g.key === "mastered" && plan.inWindow ? "1 correct answer each" : g.sub;
-        return '<li><span class="g-num">' + i + '</span><span class="g-text"><strong>' + g.name + "</strong>" + (sub ? "<span>" + sub + "</span>" : "") + '</span><span class="g-count">' + counts[g.key] + "</span></li>";
+        return '<li><span class="g-num">' + i + '</span><span class="g-text"><strong>' + g.name + "</strong>" + (g.sub ? "<span>" + g.sub + "</span>" : "") + '</span><span class="g-count">' + counts[g.key] + "</span></li>";
       }).join("") + "</ol></div>";
     var rows = topics.map(function(x){ return {t: x.t, st: S.stats(topicQuestions(x.u, x.t), d.store, d.today, d.exams)}; });
     var lowest = rows.filter(function(r){ return r.st.readiness === "needswork"; }).sort(function(a, b){ return a.st.accuracy - b.st.accuracy; })[0];
@@ -389,7 +410,7 @@ var MyStudy = (function(){
         return '<div class="ms-row' + (r === lowest ? " is-low" : "") + '"><span class="c-name">' + esc(r.t.topic) + '</span><span class="c-ready">' + readyTag(r.st.readiness) + '</span><span class="c-acc">' + accText(r.st) + "</span></div>";
       }).join("") + "</div>" +
       '<div class="ms-meaning"><span class="tp-label">What readiness means</span><div>' + readyTag("strong") + "<span>85% or more correct</span>" + readyTag("ontrack") + "<span>75–84%</span></div>" +
-      "<div>" + readyTag("needswork") + "<span>Under 75%</span>" + readyTag("nodata") + "<span>Fewer than 5 answered</span></div></div></div></section>";
+      "<div>" + readyTag("needswork") + "<span>Under 75%</span>" + readyTag("nodata") + "<span>Answer 20 of the topic (or half, if it's smaller) first</span></div></div></div></section>";
     host.innerHTML = html;
   }
 
@@ -397,25 +418,23 @@ var MyStudy = (function(){
   var openUnits = {};
   function progressTotals(d){
     var all = S.stats(d.questions, d.store, d.today, d.exams);
-    return '<div class="ms-totals"><div><span class="ms-total">' + all.mastered + '<small> / ' + all.total + '</small></span><span class="ms-sub">Mastered</span></div>' +
+    return '<div class="ms-totals"><div><span class="ms-total">' + all.seen + '<small> / ' + all.total + '</small></span><span class="ms-sub">Seen</span></div>' +
+      '<div><span class="ms-total">' + all.mastered + '</span><span class="ms-sub">Mastered</span></div>' +
       (T.feature("review") ? '<div><span class="ms-total">' + all.due + '</span><span class="ms-sub">Due for review</span></div>' : "") +
       '<div><span class="ms-total is-blind">' + all.blind + '</span><span class="ms-sub">Blind spots</span></div></div>';
   }
   function progressBody(d){
-    var exam = P.nextExam(d.exams, d.today);
-    var inWindow = exam && d.today >= S.addDays(exam.date, -3) && d.today < exam.date;
     var showDue = T.feature("review");
-    var html = legend(inWindow);
+    var html = legend();
     html += '<section class="ms-card ms-units">' + d.units.map(function(u){
       var st = S.stats(u.questions, d.store, d.today, d.exams);
-      var ready = inWindow && exam.units.indexOf(u.unit) !== -1 ? S.examReady(u.questions, d.store, exam).ready : 0;
       var open = !!openUnits[u.unit];
       var btn = showDue && st.due ? '<a class="ms-btn is-small" href="session.html?mode=review&unit=' + u.unit + '">Review ' + st.due + " due</a>"
         : '<button type="button" class="ms-btn is-small' + (open ? " is-primary" : "") + '" data-unit="' + u.unit + '" aria-expanded="' + open + '">' + (open ? "Hide topics" : "Show topics") + "</button>";
       return '<div class="ms-unit" id="unit-' + u.unit + '"><div class="ms-unit-row">' +
         '<button type="button" class="ms-unit-name" data-unit="' + u.unit + '" aria-expanded="' + open + '"><span class="ms-sub">' + siteUnit(u.unit).code + " · " + plural(u.questions.length, "question") + "</span><span class=\"ms-unit-title\">" + esc(u.name) + "</span></button>" +
-        bar(st, {ready: ready}) + '<strong class="ms-unit-pct">' + st.masteryPct + "%</strong>" + btn + "</div>" +
-        (open ? '<div class="ms-topics">' + table(topicRows(d, u, {exam: ready ? exam : null})) + "</div>" : "") + "</div>";
+        bar(st) + '<strong class="ms-unit-pct" title="' + esc(seenText(st)) + '">' + st.coveragePct + "% seen</strong>" + btn + "</div>" +
+        (open ? '<div class="ms-topics">' + table(topicRows(d, u)) + "</div>" : "") + "</div>";
     }).join("") + "</section>";
     return html;
   }
@@ -544,7 +563,7 @@ var MyStudy = (function(){
 
   /* ---------- Tracker homepage: countdown strip and the current unit ---------- */
   function home(d){
-    var plan = S.planToday(d.questions, d.store, d.today, d.exams);
+    var plan = planFor(d);
     var currentUnits = plan.exam ? plan.exam.units : [];
     if (T.feature("countdown")){
       var s = S.strip(d.exams, d.semester, d.today);

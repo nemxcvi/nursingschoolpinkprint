@@ -19,13 +19,13 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=118">
+<link rel="stylesheet" href="assets/style.css?v=119">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-type="quizzes"></div>
 <script src="assets/site-data.js?v=14"></script>
-<script src="js/tracking.js?v=14"></script>
+<script src="js/tracking.js?v=15"></script>
 <script src="assets/header.js?v=14"></script>
 <script src="js/progress.js?v=7"></script>
 <div class="wrap">
@@ -96,9 +96,9 @@
 </div>
 
 <script src="assets/theme.js?v=6"></script>
-<script src="js/study.js?v=5"></script>
+<script src="js/study.js?v=6"></script>
 <script src="assets/practice-quiz.js?v=21"></script>
-<script src="js/my-study.js?v=27"></script>
+<script src="js/my-study.js?v=28"></script>
 <script src="js/challenges.js?v=17"></script>
 <script>
 (function(){
@@ -106,7 +106,7 @@
   /* Which questions this session uses (see js/study.js for the rules) */
   var p = new URLSearchParams(location.search), mode = p.get("mode") || "today";
   var unit = +p.get("unit") || 0, topic = p.get("topic") || "";
-  var TITLES = {today: "Today's plan", examready: "Exam ready session", weak: "Weak spots quiz", journal: "Weak spots quiz",
+  var TITLES = {today: "Today's plan", examready: "Weak spots", check: "Readiness check", weak: "Weak spots quiz", journal: "Weak spots quiz",
                 bookmarks: "Bookmarks", blind: "Blind spots", review: "Review" + (unit ? ": Unit " + unit : ""), challenge: "Challenge"};
   var title = TITLES[mode] || "Practice session";
   document.getElementById("ss-title").textContent = title;
@@ -116,14 +116,18 @@
     var status = function(q){ return Progress.statusOf(store[q.id], q.unit, today, exams); };
     var scoped = questions.filter(function(q){ return (!unit || q.unit === unit) && (!topic || q.topic === topic); });
     var rank = function(list, n){ return Study.rank(list, store, today, exams, n); };
-    if (mode === "today"){
-      var plan = Study.planToday(questions, store, today, exams);
-      return Progress.pickSmart(questions, plan.n, store, today, exams);
+    /* One set of today's plan (an extra set once the day's plan is done). Old exam ready links
+       land here too: in the window, sets are weak spots only. */
+    if (mode === "today" || mode === "examready"){
+      var st = Tracking.state();
+      var plan = Study.planToday(questions, store, today, exams, {size: Tracking.dailySize(),
+        done: Study.dailyTotals(st.activity)[today] || 0, checks: st.readinessChecks});
+      return Study.pickPlan(questions, plan.n || Study.SET_SIZE, store, today, exams);
     }
-    if (mode === "examready"){
-      var exam = Progress.nextExam(exams, today);
-      var qs = Study.examUnitsQuestions(questions, exam).filter(function(q){ return !Progress.isExamReady(store[q.id], exam.id); });
-      return rank(qs, 20);
+    /* Readiness check: 40 questions spread over every topic of the next exam */
+    if (mode === "check"){
+      checkExam = Progress.nextExam(exams, today);
+      return checkExam ? Study.readinessCheck(questions, checkExam) : [];
     }
     /* Weak spots: blind spots, then mistakes, then lucky guesses (old Weak spots links land here too) */
     if (mode === "journal" || mode === "weak") return Study.weakSpotsQuiz(scoped, store, today, exams);
@@ -134,7 +138,48 @@
   }
   if (mode === "challenge") return challenge(p.get("id") || "");
   if (mode === "group") return groupFocus(p.get("id") || "");
-  loadSessionQuiz({data: Tracking.ROOT + "data/nur114/", title: title, pick: pick});
+  var checkExam = null, checkSaved = false;
+  /* Ending a readiness check early counts the rest as wrong, so check first */
+  if (mode === "check") document.addEventListener("click", function(e){
+    if (checkSaved || !e.target.closest || !e.target.closest("#pq-end-test")) return;
+    var m = /question (\d+) of (\d+)/.exec(document.getElementById("pq-progress").textContent);
+    var answered = !document.getElementById("pq-next").classList.contains("hidden");
+    if (m && (+m[1] < +m[2] || !answered) && !confirm("End the readiness check now? Questions you haven't answered count as wrong.")){
+      e.stopImmediatePropagation(); e.preventDefault();
+    }
+  }, true);
+  loadSessionQuiz({data: Tracking.ROOT + "data/nur114/", title: title, pick: pick, onFinish: mode === "check" ? saveCheck : null});
+
+  /* Readiness check: the first finish is saved (unanswered questions count as wrong), and the
+     result says what it means for exam ready */
+  function saveCheck(res){
+    var box = document.getElementById("ss-check") || document.createElement("div");
+    box.id = "ss-check";
+    box.className = "ss-challenge";
+    var center = document.querySelector("#pq-end-screen .pq-center");
+    center.parentNode.insertBefore(box, center.nextSibling);
+    var score = res.total ? res.correct / res.total : 0;
+    var pctText = Math.round(score * 100) + "%";
+    if (!checkSaved && checkExam && res.total){
+      Tracking.addCheck(checkExam.id, Progress.today(), res.correct, res.total);
+      checkSaved = true;
+    } else {
+      box.innerHTML = '<p class="tp-hint">Practice round: only the first finish of a check is saved. Start a new check from your exam plan.</p><a class="ms-btn is-primary" href="exam.html">Exam plan &rarr;</a>';
+      return;
+    }
+    var opens = Study.addDays(checkExam.date, -3);
+    if (Progress.today() < opens){
+      box.innerHTML = '<p class="tp-hint"><strong>Practice check: ' + pctText + " (" + res.correct + "/" + res.total + ").</strong> Checks count toward exam ready once the window opens " + Study.longDate(opens) + ".</p>" +
+        '<a class="ms-btn is-primary" href="exam.html">See your exam plan &rarr;</a>';
+      return;
+    }
+    var key = Study.checkLabel(score);
+    var msg = key === "strong" ? "That's exam ready territory. Clear any weak spots left and you're set."
+      : key === "ontrack" ? "Almost there. Work your weak spots and the topics marked Needs work, then retake it."
+      : "Not yet. Work your weak spots and the topics marked Needs work, then retake it.";
+    box.innerHTML = '<p class="tp-hint"><strong>Readiness check saved: ' + pctText + " (" + res.correct + "/" + res.total + ").</strong> " + msg + "</p>" +
+      '<a class="ms-btn is-primary" href="exam.html">See your exam plan &rarr;</a>';
+  }
 
   /* Quiz us on these: every question someone in the group missed (most missed first). Counts
      toward this person's progress like any session; nothing goes back to the challenge. */
