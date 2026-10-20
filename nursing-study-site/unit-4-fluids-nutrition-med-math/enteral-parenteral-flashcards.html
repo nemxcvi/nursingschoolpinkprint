@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enteral &amp; Parenteral Nutrition &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Enteral &amp; Parenteral Nutrition &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/enteral-parenteral-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Enteral &amp; Parenteral Nutrition &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=117">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=12"></script>
+<script src="../js/tracking.js?v=14"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Enteral &amp; Parenteral Nutrition</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  tubes: {label:"Feeding Tubes", hue:"blue"},
+  placement: {label:"Checking Placement", hue:"orange"},
+  feedings: {label:"Giving Feedings", hue:"green"},
+  ng: {label:"NG Tube Skills", hue:"violet"},
+  parenteral: {label:"Parenteral Nutrition", hue:"red"}
+};
+var CARDS = [
+[1, "tubes", "Enteral nutrition", "Nutrients given directly into the GI (gastrointestinal) tract through a tube; total or supplemental, short or long term"],
+[2, "tubes", "Short-term feeding tubes", "Nasogastric, nasoduodenal, nasojejunal"],
+[3, "tubes", "Long-term feeding tube", "Gastrostomy tube (G-tube)"],
+[4, "tubes", "NG (nasogastric) tube", "A thin plastic tube from the nostril down the esophagus, with the end in the stomach"],
+[5, "tubes", "Nasoduodenal tube", "From the nostril past the stomach, tip in the duodenum"],
+[6, "tubes", "Nasojejunal tube", "Thin, soft tube from the nostril through the stomach, ending in the jejunum"],
+[7, "tubes", "G-tube", "Delivers nutrition directly into the stomach through the abdominal wall"],
+[8, "tubes", "PEG tube", "Percutaneous endoscopic gastrostomy: the most common way to place a G-tube"],
+[9, "tubes", "How long can a nasal feeding tube stay?", "Short-term, under about 4 weeks"],
+[10, "tubes", "Large-bore vs small-bore tubes", "Large-bore (12–18 French): suction, lavage, decompression. Small-bore (8–12 French): feeding"],
+[11, "placement", "When to verify tube placement", "After insertion, before every feeding or medication, and regularly during continuous feeds"],
+[12, "placement", "Gold standard for placement", "X-ray, before the first feeding or medication"],
+[13, "placement", "Other placement checks", "Tube length and marking at the nares, aspirate pH, appearance of aspirate"],
+[14, "placement", "Air to clear the tube before aspirating", "30 mL"],
+[15, "placement", "Gastric residual less than 100 mL", "Return it to the stomach"],
+[16, "placement", "Gastric aspirate pH", "About 1–4"],
+[17, "placement", "Aspirate pH 7 or higher", "Likely intestinal (or respiratory) placement, not the stomach"],
+[18, "placement", "Flush after checking placement", "30 mL of water"],
+[19, "placement", "Flush with medications", "30 mL of water before and after"],
+[20, "placement", "Why not listen over the stomach while pushing air?", "Unreliable: you can hear air even if the tube is in the lung"],
+[21, "placement", "CO2 detected at the tube", "The tube is in the airway; remove it"],
+[22, "placement", "Feeding tube when not in use", "Cap or clamp it"],
+[23, "feedings", "Continuous feeding", "Gradual, steady delivery; requires a feeding pump"],
+[24, "feedings", "Intermittent (bolus) feeding", "Equal portions at regular times by pump, gravity or syringe; flush with water after"],
+[25, "feedings", "Head of bed during tube feeding", "30–45°"],
+[26, "feedings", "Head of bed after a tube feeding", "At least 30° for 1 hour"],
+[27, "feedings", "Signs of feeding intolerance", "Gastric distention, abdominal discomfort, nausea, vomiting, diarrhea, reflux"],
+[28, "feedings", "Feeding system and tubing change", "Every 24 hours"],
+[29, "feedings", "Complications of enteral feedings", "Aspiration, clogged tube, nasal erosion or pressure injury, diarrhea, nausea and vomiting, dislodgement, G-tube site infection"],
+[30, "feedings", "Preventing a clogged tube", "Crush medications thoroughly and flush with water"],
+[31, "feedings", "How much formula to hang at once", "Only enough for 4 hours (prevents bacterial growth)"],
+[32, "feedings", "Formula temperature", "Room temperature"],
+[33, "feedings", "Checking residuals", "Every 4–6 hours for tubes in the stomach; 50–60 mL syringe on small-bore tubes"],
+[34, "feedings", "Diarrhea with tube feeding", "Confirm it's true diarrhea; ask the provider about slowing or diluting the formula or adding fiber"],
+[35, "ng", "Position for NG insertion", "High-Fowler's"],
+[36, "ng", "Measuring an NG tube", "Tip of the nose → earlobe → xiphoid process"],
+[37, "ng", "Lubricant for NG tubes and nares", "Water-soluble (never petroleum jelly; it can cause lipid pneumonia if aspirated)"],
+[38, "ng", "Helping the tube pass", "Head tilted forward (chin down) and sips of water as you advance"],
+[39, "ng", "Stop advancing the NG tube if", "Respiratory distress, unable to speak, heavy nosebleed, or resistance"],
+[40, "ng", "Gastric decompression", "Suction removes air and fluid for bowel obstruction, paralytic ileus, or GI surgery"],
+[41, "ng", "When can a decompression tube come out?", "When bowel function returns: bowel sounds or passing flatus"],
+[42, "ng", "Suction for a single-lumen (Levin) tube", "Low intermittent suction, to protect the stomach lining"],
+[43, "ng", "Blue air vent on a double-lumen sump tube", "Never clamp it, connect it to suction, or irrigate through it; keep it above the stomach"],
+[44, "ng", "Irrigating an NG tube", "20–30 mL of normal saline or water; record it as intake"],
+[45, "ng", "Risk of heavy NG drainage", "Fluid volume deficit and electrolyte loss (metabolic alkalosis)"],
+[46, "ng", "Removing an NG tube", "Flush with air or saline, have the client take a deep breath and hold it, pinch and withdraw steadily, then mouth care"],
+[47, "parenteral", "Parenteral nutrition", "Nutrition given IV (intravenously) for clients who can't meet needs by mouth or tube"],
+[48, "parenteral", "Route for parenteral nutrition", "CVAD (central venous access device) or a peripheral vein, depending on how concentrated the solution is"],
+[49, "parenteral", "TPN (total parenteral nutrition)", "Highly concentrated solution that provides all daily nutritional needs"],
+[50, "parenteral", "PPN (partial parenteral nutrition)", "Provides part of the daily nutritional needs"],
+[51, "parenteral", "Common TPN complication", "Glucose abnormalities (high blood glucose): monitor blood glucose"],
+[52, "parenteral", "Parenteral nutrition duration", "Short-term; the GI tract is preferred because using it keeps the gut working"],
+[53, "parenteral", "Order of preference for feeding", "By mouth → enteral (tube) → parenteral (IV)"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

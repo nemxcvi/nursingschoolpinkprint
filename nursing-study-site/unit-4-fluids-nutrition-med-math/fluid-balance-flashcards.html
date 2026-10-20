@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluid Balance &amp; Imbalances &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Fluid Balance &amp; Imbalances &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/fluid-balance-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fluid Balance &amp; Imbalances &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=117">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=12"></script>
+<script src="../js/tracking.js?v=14"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Fluid Balance &amp; Imbalances</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  compartments: {label:"Fluid Compartments", hue:"blue"},
+  regulation: {label:"Regulation & I&amp;O", hue:"aqua"},
+  imbalances: {label:"Fluid Imbalances", hue:"red"},
+  assessment: {label:"Assessment", hue:"green"}
+};
+var CARDS = [
+[1, "compartments", "Functions of body fluids", "Carry nutrients to cells and waste away; transport hormones, enzymes, platelets, RBCs (red blood cells) and WBCs (white blood cells); help cellular metabolism and digestion; a medium for excreting waste; a lubricant"],
+[2, "compartments", "How fluids and solutes move between compartments", "Osmosis, diffusion, active transport, and capillary filtration (plus organs and body systems)"],
+[3, "compartments", "ICF (intracellular fluid)", "Fluid inside the cells; runs cell function and metabolism. About 67% (two-thirds) of total body water"],
+[4, "compartments", "ECF (extracellular fluid)", "Fluid outside the cells: interstitial (25%), intravascular (8%), and a small amount of transcellular fluid"],
+[5, "compartments", "Interstitial fluid", "Fluid in the spaces between cells; includes lymph. About 25% of body water"],
+[6, "compartments", "Intravascular fluid", "Plasma inside the blood vessels. About 8% of body water"],
+[7, "compartments", "Transcellular fluid", "Specialized fluids: cerebrospinal, pleural, peritoneal, pericardial, synovial, and digestive juices"],
+[8, "compartments", "Lymph", "Fluid that moves through the body in lymph vessels; part of the interstitial fluid"],
+[9, "compartments", "Water as a share of adult body weight", "About 50–60%"],
+[10, "regulation", "Intake includes", "Anything by mouth, IV (intravenous) fluids, and feeding tubes"],
+[11, "regulation", "Output includes", "Urine, bowel movements, drains, NG (nasogastric) tube drainage, and vomiting"],
+[12, "regulation", "What mainly regulates fluid intake?", "The thirst mechanism in the hypothalamus"],
+[13, "regulation", "Main regulator of fluid volume", "The renal system (kidneys)"],
+[14, "regulation", "Solvent vs solutes", "Water is the main solvent. Solutes are electrolytes and nonelectrolytes"],
+[15, "regulation", "BUN (blood urea nitrogen) normal", "10–20 mg/dL; reflects kidney function"],
+[16, "regulation", "Creatinine normal", "Female 0.5–1.2 mg/dL; male 0.6–1.3 mg/dL; reflects kidney function"],
+[17, "regulation", "Serum osmolality", "The concentration of solutes to water in the blood; the body's gauge of fluid balance. Normal 285–295 mOsm/kg"],
+[18, "regulation", "Internal water balance mechanisms", "Thirst response and ADH (antidiuretic hormone)"],
+[19, "regulation", "ADH (antidiuretic hormone)", "Released when the blood gets concentrated; the kidneys hold on to water and make less urine. Also called vasopressin"],
+[20, "regulation", "Converting ounces to mL for I&amp;O (intake and output)", "1 oz = 30 mL", "An 8-oz cup = 240 mL"],
+[21, "regulation", "Report urine output below", "30 mL/hr"],
+[22, "imbalances", "Dehydration", "Loss of water (or lack of water intake) without a loss of sodium. Sodium rises (hypernatremia) and serum osmolality rises; water moves out of the cells into the vascular space"],
+[23, "imbalances", "Causes of dehydration (slides)", "Diarrhea, vomiting, diuretic medications"],
+[24, "imbalances", "Hypovolemia", "Fluid volume deficit: the body loses both fluid and electrolytes, so blood volume drops"],
+[25, "imbalances", "Causes of hypovolemia", "Bleeding, GI (gastrointestinal) losses (nausea, vomiting, diarrhea), heavy sweating, large burns, diuretics, low fluid intake, increased urination"],
+[26, "imbalances", "Early signs of hypovolemia", "Dry nose and mouth, skin loses elasticity (poor turgor), urine output drops"],
+[27, "imbalances", "How the body compensates for hypovolemia", "Heart rate and strength of contraction increase; vessels in the arms and legs constrict to save blood for the heart, brain and kidneys"],
+[28, "imbalances", "Untreated hypovolemia or dehydration: findings", "Oliguria, tachycardia, tachypnea, low BP (blood pressure), weak pulse, slow capillary refill, change in LOC (level of consciousness), flattened neck veins, palpitations, blue lips and nail beds"],
+[29, "imbalances", "Neck veins: fluid deficit vs overload", "Flat with deficit (hypovolemia); distended with overload (hypervolemia)"],
+[30, "imbalances", "Hypovolemic shock", "Loss of more than 20% of circulating blood volume; can lead to multiple organ failure (lungs, kidneys, brain, heart)"],
+[31, "imbalances", "Treatment for hypovolemia", "IV fluids (easiest), packed red cells, or blood transfusion"],
+[32, "imbalances", "Hypervolemia", "Fluid overload: too much water in the body, commonly from kidney problems. Goal: remove the extra fluid"],
+[33, "imbalances", "Signs of hypervolemia", "Quick weight gain, high BP, bounding pulse, pale cool skin, edema, ascites, crackles, shortness of breath, neck vein distension"],
+[34, "imbalances", "Treatment for hypervolemia", "Diuretics; also fluid and sodium restriction, semi-Fowler's position, daily weights"],
+[35, "imbalances", "Hct (hematocrit) with fluid deficit vs overload", "Rises with deficit (hemoconcentration); falls with overload (hemodilution)"],
+[36, "imbalances", "Why older adults dehydrate easily", "Less body water and a weaker thirst sense. Skin turgor is less reliable in them"],
+[37, "assessment", "Assessing fluid and electrolyte imbalances", "I&amp;O, daily weight, electrolyte labs, urine volume and concentration"],
+[38, "assessment", "Daily weight", "Same time each day, same scale, same clothing (after voiding)"],
+[39, "assessment", "Normal urine specific gravity", "1.005–1.030"],
+[40, "assessment", "Urine specific gravity 1.030 or higher", "Dehydration (concentrated urine)"],
+[41, "assessment", "Urine specific gravity 1.005 or lower", "Fluid overload or renal failure (dilute urine)"],
+[42, "assessment", "Low urine volume + high specific gravity", "Fluid volume deficit"],
+[43, "assessment", "Why urine specific gravity is checked more than serum osmolality", "It's easier to get, and it measures the same idea: concentration"],
+[44, "assessment", "Skin turgor", "Pinch and release the skin; if it stays tented, the client has a fluid deficit"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

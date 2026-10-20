@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IV Therapy &amp; Blood Transfusions &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="IV Therapy &amp; Blood Transfusions &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/iv-therapy-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IV Therapy &amp; Blood Transfusions &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=117">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=12"></script>
+<script src="../js/tracking.js?v=14"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">IV Therapy &amp; Blood Transfusions</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  solutions: {label:"IV Solutions", hue:"aqua"},
+  access: {label:"Access Devices", hue:"blue"},
+  complications: {label:"IV Complications", hue:"red"},
+  blood: {label:"Blood Transfusions", hue:"magenta"}
+};
+var CARDS = [
+[1, "solutions", "Colloid solutions", "IV (intravenous) solutions with large molecules that can't pass through capillary membranes, so they stay in the vessels. Also called plasma or volume expanders"],
+[2, "solutions", "Crystalloid solutions", "Contain small particles that pass easily from the bloodstream into cells and tissues; grouped by tonicity"],
+[3, "solutions", "Tonicity", "A solution's ability to make water move in or out of cells by osmosis"],
+[4, "solutions", "Isotonic solution", "Same osmolality as body fluid; no fluid shift, no change inside cells. Expands ECF (extracellular fluid) volume"],
+[5, "solutions", "Isotonic: when used", "Increase or maintain ECF volume; treat hypovolemia from dehydration or bleeding"],
+[6, "solutions", "Isotonic examples", "0.9% normal saline, lactated Ringer's"],
+[7, "solutions", "Hypotonic solution", "Lower osmolality than blood; water moves into the cells, which can swell"],
+[8, "solutions", "Hypotonic: when used", "To correct high serum electrolyte levels (such as hypernatremia)"],
+[9, "solutions", "Hypotonic examples", "0.33% normal saline, 0.45% normal saline"],
+[10, "solutions", "Hypertonic solution", "Higher osmolality than blood; pulls water out of the cells into the vessels, so cells can shrink"],
+[11, "solutions", "Hypertonic: when used", "To treat low serum electrolyte levels and hypoglycemia"],
+[12, "solutions", "Hypertonic examples", "D5NS (dextrose 5% in normal saline), 3% and 5% sodium chloride, D10W (dextrose 10%), D5LR (dextrose 5% in lactated Ringer's)"],
+[13, "solutions", "Which IV fluid makes cells swell?", "Hypotonic"],
+[14, "solutions", "Which IV fluid makes cells shrink?", "Hypertonic"],
+[15, "solutions", "Only IV fluid that runs with blood", "0.9% normal saline"],
+[16, "access", "Types of vascular access devices", "Peripheral venous catheter, midline catheter, and CVADs (central venous access devices): PICC (peripherally inserted central catheter), central venous catheter, implanted port"],
+[17, "access", "Peripheral IV catheter", "Single-lumen plastic catheter in a peripheral vein: hands, wrist, forearm, antecubital fossa"],
+[18, "access", "Peripheral IV sizes", "14 to 24 gauge. The bigger the number, the narrower the catheter", "18 gauge is larger than 22 gauge"],
+[19, "access", "Gauge for trauma, surgery, rapid fluids or blood", "Large bore: 16–18 gauge (18–20 for blood transfusions)"],
+[20, "access", "How often is a peripheral IV site changed?", "Every 96 hours (facility policy)"],
+[21, "access", "IV tubing: continuous infusion", "Change every 96 hours"],
+[22, "access", "IV tubing: intermittent infusion", "Change every 24 hours"],
+[23, "access", "CVAD", "Indwelling device in a large central vein for blood, medications, fluids and other therapy; for frequent or long-term IV therapy. Types: tunneled, nontunneled, peripherally inserted, implanted port"],
+[24, "access", "CVAD dressing change", "Every 7 days"],
+[25, "access", "Curos caps", "Disinfecting caps that cover CVAD ports when not in use"],
+[26, "access", "Insertion angle for a peripheral IV", "10–30°, bevel up"],
+[27, "access", "Hair at the IV site", "Clip it; never shave (abrasions raise infection risk)"],
+[28, "access", "Fragile veins or anticoagulants", "Use a BP (blood pressure) cuff instead of a tourniquet, a smaller catheter, and gentle cleaning"],
+[29, "complications", "Four IV complications on the slides", "Phlebitis or thrombophlebitis, circulatory overload, infiltration or extravasation, VAD (vascular access device)-related infection"],
+[30, "complications", "PIE", "Phlebitis (inflamed vein), Infiltration (leak of IV fluid or meds into tissue), Extravasation (leak of a vesicant into tissue)"],
+[31, "complications", "Phlebitis", "Inflammation of the vein: warm, red, painful; red streak or palpable cord"],
+[32, "complications", "Thrombophlebitis", "Phlebitis caused by or with a thrombus (clot)"],
+[33, "complications", "Phlebitis: nursing actions", "Stop the infusion and remove the catheter, elevate, warm compress, restart in the other arm"],
+[34, "complications", "Infiltration", "Non-vesicant IV fluid leaks into tissue: cool, pale, swollen; slowed infusion"],
+[35, "complications", "Extravasation", "A vesicant (tissue-damaging drug) leaks into tissue"],
+[36, "complications", "Infiltration vs phlebitis: skin temperature", "Infiltration is cool; phlebitis is warm"],
+[37, "complications", "Extravasation: first actions", "Stop the infusion, aspirate from the catheter (don't flush), notify the provider"],
+[38, "complications", "Circulatory overload signs", "High BP, tachycardia, crackles, shortness of breath, distended neck veins"],
+[39, "complications", "Circulatory overload: nursing actions", "Slow the IV, raise the head of the bed, check vital signs and oxygen, notify the provider"],
+[40, "complications", "IV site infection signs", "Redness, swelling, pus, fever"],
+[41, "blood", "Whole blood", "White blood cells, red blood cells and platelets in plasma; used for trauma and surgery with major blood loss"],
+[42, "blood", "PRBCs (packed red blood cells)", "Red cells with the plasma removed; restore blood levels without adding much volume"],
+[43, "blood", "Plasma", "The liquid part of blood that carries the cells"],
+[44, "blood", "Platelets", "Thrombocytes; stop or prevent bleeding. Used in organ transplants, cancer treatment and surgery"],
+[45, "blood", "Universal donor", "O negative"],
+[46, "blood", "Universal recipient", "AB positive"],
+[47, "blood", "When do most transfusion reactions happen?", "In the first 15 minutes; stay with the client"],
+[48, "blood", "Transfusion time limit", "Finish within 4 hours"],
+[49, "blood", "Transfusion reaction: first action", "Stop the transfusion; keep the vein open with normal saline through new tubing; notify the provider"],
+[50, "blood", "Signs of a transfusion reaction", "Fever, chills, back or chest pain, hives, wheezing or dyspnea, low BP, red urine"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

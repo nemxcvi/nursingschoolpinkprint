@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrolytes &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Electrolytes &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/electrolytes-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Electrolytes &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=117">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=12"></script>
+<script src="../js/tracking.js?v=14"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Electrolytes</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  basics: {label:"Electrolyte Basics", hue:"violet"},
+  sodium: {label:"Sodium", hue:"blue"},
+  potassium: {label:"Potassium", hue:"orange"},
+  calcium: {label:"Calcium", hue:"green"},
+  magnesium: {label:"Magnesium", hue:"magenta"}
+};
+var CARDS = [
+[1, "basics", "Electrolytes", "Minerals that conduct electricity: they let muscles contract and nerves communicate. Found in urine, blood, tissues and other body fluids, and in food, drinks and supplements"],
+[2, "basics", "Lab panel that measures electrolytes", "The CMP (comprehensive metabolic panel); also the BMP (basic metabolic panel)"],
+[3, "basics", "Electrolytes are responsible for", "Balancing body water and pH, moving waste out of cells and nutrients in, and letting muscles, heart, nerves and brain work"],
+[4, "basics", "Causes of electrolyte imbalance", "Dehydration, overhydration, certain medications, heart, kidney or liver disorders, the wrong IV (intravenous) fluids or feedings"],
+[5, "basics", "Four electrolyte normals", "K+ 3.5–5 mEq/L · Na+ 136–145 mEq/L · Ca2+ 9–10.5 mg/dL · Mg2+ 1.3–2.1 mEq/L"],
+[6, "sodium", "Sodium normal range", "136–145 mEq/L"],
+[7, "sodium", "Sodium's job", "Supports nerve and muscle function, helps keep blood pressure normal, regulates fluid balance"],
+[8, "sodium", "Hyponatremia", "Sodium below 136 mEq/L: loss of sodium or gain of water"],
+[9, "sodium", "Most common cause of hyponatremia", "Excess water in the body (also vomiting, diarrhea, medications)"],
+[10, "sodium", "Signs of hyponatremia", "Nausea, confusion, lethargy, irritability, edema, muscle cramps, weakness"],
+[11, "sodium", "Nursing for hyponatremia", "PO (by mouth) or IV sodium; possible fluid restriction. Replace sodium slowly"],
+[12, "sodium", "Hypernatremia", "Sodium above 145 mEq/L: excess water loss or excess sodium intake"],
+[13, "sodium", "Most common cause of hypernatremia", "Loss of water from the body"],
+[14, "sodium", "Signs of hypernatremia", "The CNS (central nervous system) is hit hardest: confusion, lethargy, agitation, irritability, hallucinations, delusions, possible seizures. Also thirst, dry sticky mucous membranes"],
+[15, "sodium", "Nursing for hypernatremia", "Encourage oral fluids; hypotonic IV fluids; low-sodium diet"],
+[16, "sodium", "Why must sodium be corrected slowly?", "Fast shifts move water in or out of brain cells too quickly and can injure the brain"],
+[17, "potassium", "Potassium normal range", "3.5–5 mEq/L"],
+[18, "potassium", "Potassium's job", "Nerve and muscle cell function, especially the muscle cells of the heart"],
+[19, "potassium", "Causes of hypokalemia", "Diuretics and GI (gastrointestinal) loss"],
+[20, "potassium", "First signs of hypokalemia", "Skeletal muscles: weakness, leg cramps. Then fatigue and dysrhythmias"],
+[21, "potassium", "Nursing for hypokalemia", "PO or IV potassium; IV potassium is a high-alert medication"],
+[22, "potassium", "IV potassium rate", "10–20 mEq per hour, diluted, on a pump. Never IV push or bolus"],
+[23, "potassium", "Common cause of hyperkalemia", "Kidney failure"],
+[24, "potassium", "Signs of hyperkalemia", "Nerve conduction and muscle contraction affected: paresthesia, paralysis, life-threatening dysrhythmias or cardiac arrest"],
+[25, "potassium", "Nursing for hyperkalemia", "Sodium polystyrene sulfonate, IV insulin (moves potassium into cells), dialysis; continuous ECG (electrocardiogram) monitoring"],
+[26, "potassium", "Why check glucose when insulin treats hyperkalemia?", "Insulin also lowers blood glucose, so there's a risk of hypoglycemia"],
+[27, "potassium", "Salt substitutes and potassium", "Many contain potassium chloride; clients with hyperkalemia or kidney disease should avoid them"],
+[28, "potassium", "Foods high in potassium", "Baked potatoes, bananas, oranges, spinach, avocado, cantaloupe, salmon"],
+[29, "calcium", "Calcium normal range", "9–10.5 mg/dL"],
+[30, "calcium", "Calcium's job", "Keeps bones and teeth hard (where most is stored); helps muscles move, nerves carry messages, and vessels move blood"],
+[31, "calcium", "Causes of hypocalcemia", "Laxatives, lack of vitamin D, hormone changes in menopause"],
+[32, "calcium", "Hallmark of hypocalcemia", "Tetany!"],
+[33, "calcium", "Signs of hypocalcemia", "Tetany, numbness and tingling of fingers, mouth and feet, muscle cramps, seizures; can progress to laryngeal spasm"],
+[34, "calcium", "Trousseau's sign", "Inflate a blood pressure cuff above systolic pressure; a carpal (hand) spasm is positive for hypocalcemia"],
+[35, "calcium", "Chvostek's sign", "Tap the face in front of the ear, below the cheekbone; facial twitching is positive for hypocalcemia"],
+[36, "calcium", "Nursing for hypocalcemia", "PO or IV calcium; seizure precautions"],
+[37, "calcium", "Causes of hypercalcemia", "Cancers, hyperparathyroidism"],
+[38, "calcium", "Signs of hypercalcemia", "Nausea, vomiting, constipation, confusion, lethargy, slurred speech"],
+[39, "calcium", "Chronic hypercalcemia complication", "Kidney stones"],
+[40, "calcium", "Hypercalcemia mnemonic", "Stones, bones, groans, moans: kidney stones, bone pain, abdominal groans, psychiatric moans (confusion)"],
+[41, "magnesium", "Magnesium normal range", "1.3–2.1 mEq/L"],
+[42, "magnesium", "Magnesium's job", "Regulates nerve and muscle function, blood pressure and blood sugar; helps make bone, protein and DNA"],
+[43, "magnesium", "Causes of hypomagnesemia", "Medications, decreased absorption, diarrhea"],
+[44, "magnesium", "Signs of hypomagnesemia", "GI: nausea, vomiting, decreased appetite. Severely low: muscle spasticity, seizures"],
+[45, "magnesium", "Nursing for hypomagnesemia", "PO or IV magnesium"],
+[46, "magnesium", "Cause of hypermagnesemia", "Kidney disease (also too many magnesium antacids or laxatives)"],
+[47, "magnesium", "Signs of hypermagnesemia", "Dizziness, weakness, confusion, decreased DTRs (deep tendon reflexes)"],
+[48, "magnesium", "Which imbalance causes decreased deep tendon reflexes?", "Hypermagnesemia"],
+[49, "magnesium", "Electrolytes that often drop along with magnesium", "Calcium and potassium"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

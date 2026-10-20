@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrition &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Nutrition &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/nutrition-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nutrition &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=117">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=12"></script>
+<script src="../js/tracking.js?v=14"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Nutrition</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  principles: {label:"Principles & Digestion", hue:"green"},
+  nutrients: {label:"Nutrients & Labs", hue:"orange"},
+  vitamins: {label:"Vitamins, Minerals & Water", hue:"yellow"},
+  assessment: {label:"BMI & Assessment", hue:"violet"},
+  diets: {label:"Therapeutic Diets", hue:"blue"},
+  eating: {label:"Safe Eating & Aspiration", hue:"red"}
+};
+var CARDS = [
+[1, "principles", "Nutrition", "The study of food, how it affects health, and how the body metabolizes it for energy"],
+[2, "principles", "6 classes of nutrients", "Energy: carbohydrates, proteins, lipids. Regulate body processes: vitamins, minerals, water"],
+[3, "principles", "Macronutrients", "Protein, carbohydrates, fat: eaten in large amounts; the building blocks of the diet; provide energy"],
+[4, "principles", "Micronutrients", "Vitamins and minerals; only small amounts needed"],
+[5, "principles", "Digestion", "Breaking food down into simple substances that are absorbed as nutrients or eliminated as waste"],
+[6, "principles", "Liver (digestion)", "Filters toxins and makes bile to break down carbohydrates, proteins and fats"],
+[7, "principles", "Gallbladder", "Stores bile and releases it when needed"],
+[8, "principles", "Pancreas", "Makes insulin for sugar metabolism"],
+[9, "principles", "Where most nutrients are absorbed", "The small intestine"],
+[10, "principles", "Large intestine", "Removes water and electrolytes and turns the rest into feces"],
+[11, "principles", "Common digestive issues", "Diarrhea, constipation, indigestion, food poisoning, flatulence, acid reflux (from stress, diet or disease)"],
+[12, "principles", "Average daily calories to maintain weight", "About 2,000"],
+[13, "principles", "Energy balance", "Calories in must equal calories burned. Too few = undernourished; too many = obesity"],
+[14, "principles", "Basal metabolism", "Energy for the body's involuntary activities at rest"],
+[15, "principles", "Why men usually have a higher BMR (basal metabolic rate)", "More muscle mass"],
+[16, "principles", "What increases BMR", "Growth, infection, fever, emotional stress, extreme temperatures, some hormones"],
+[17, "principles", "What decreases BMR", "Aging, prolonged fasting, too little sleep"],
+[18, "nutrients", "Carbohydrates", "The body's primary fuel source (including the brain and nervous system); 45–65% of daily calories; converted to glucose"],
+[19, "nutrients", "Simple vs complex carbs", "Simple (mainly sugar): quick spike. Complex (with other nutrients): slow, steady energy"],
+[20, "nutrients", "Proteins", "The building block of the body: growth, healing, maintenance; a secondary energy source"],
+[21, "nutrients", "Why adequate protein matters", "Prevents tissue breakdown: muscle wasting and pressure injuries"],
+[22, "nutrients", "Lipids (fats)", "95% triglycerides; help absorb vitamins, give energy, insulation, structure and temperature control; part of every cell membrane"],
+[23, "nutrients", "Bad fats", "Trans and saturated: raise cholesterol (heart disease, stroke)"],
+[24, "nutrients", "Healthy fats", "Monounsaturated (avocado, olive oil): lower cholesterol"],
+[25, "nutrients", "Calories per gram", "Carbohydrate 4, protein 4, fat 9"],
+[26, "nutrients", "Total cholesterol goal", "Less than 200 mg/dL"],
+[27, "nutrients", "HDL (high-density lipoprotein)", "The \"good\" cholesterol, the only one we want high: female &gt;55, male &gt;45 mg/dL"],
+[28, "nutrients", "LDL (low-density lipoprotein)", "The \"bad\" cholesterol: less than 130 mg/dL"],
+[29, "nutrients", "Albumin", "3.5–5 g/dL; shows nutrition status a few weeks before the blood draw"],
+[30, "nutrients", "Prealbumin", "19–38 mg/dL; short-term (current) nutrition; excellent malnutrition marker; more reliable than albumin"],
+[31, "nutrients", "Calorie density", "The number of calories a food has for its volume or weight"],
+[32, "nutrients", "Glycemic index", "How fast a food raises blood glucose. High = rapid spike; low = slow, steady rise"],
+[33, "vitamins", "Vitamins", "Organic compounds needed in small amounts for metabolism of carbs, protein and fat; destroyed by light, heat, air and preparation"],
+[34, "vitamins", "Water-soluble vitamins", "B complex and C: absorbed straight into the blood and not stored, so deficiency shows up sooner"],
+[35, "vitamins", "Fat-soluble vitamins", "A, D, E, K: absorbed with fat into the lymph and stored in the liver and fat; excess can cause toxicity"],
+[36, "vitamins", "Vitamin C", "Collagen, antioxidant, immune function, helps absorb iron"],
+[37, "vitamins", "Vitamin B", "Energy, brain function, cell metabolism"],
+[38, "vitamins", "Vitamin A", "Vision, skin and mucous membranes, immune function"],
+[39, "vitamins", "Vitamin D", "Calcium and phosphorus metabolism; helps absorb calcium"],
+[40, "vitamins", "Vitamin E", "Antioxidant that protects vitamin A; helps fight infection"],
+[41, "vitamins", "Vitamin K", "Makes proteins needed for blood clotting; an antidote for some anticoagulants"],
+[42, "vitamins", "Minerals", "Inorganic; help hydration, metabolism, fluid regulation, nerve impulses, energy, bones and blood; mostly absorbed in the small intestine"],
+[43, "vitamins", "Are minerals destroyed by processing?", "Usually not, unless the food is overcooked or soaked"],
+[44, "vitamins", "Iron", "Carries oxygen in the blood (part of hemoglobin)"],
+[45, "vitamins", "Water in the body", "50–60% of body weight; two-thirds is inside cells"],
+[46, "vitamins", "Water's jobs", "Solvent; helps digestion, absorption, circulation and excretion; regulates temperature by sweat evaporation"],
+[47, "vitamins", "Average adult water intake", "2,500–3,500 mL/day"],
+[48, "assessment", "BMI (body mass index): normal", "18.5–24.9"],
+[49, "assessment", "BMI categories", "Under 18.5 underweight · 25–29.9 overweight · 30+ obese · over 40 extreme obesity"],
+[50, "assessment", "BMI formula", "Weight (kg) ÷ height (m)²", "80 kg, 1.6 m tall: 80 ÷ 2.56 = 31.3 (obese)"],
+[51, "assessment", "Why BMI can mislead", "Muscle weighs more than fat, so muscular clients can have a falsely high BMI"],
+[52, "assessment", "Malnutrition", "Impaired development or function from a long-term deficiency, excess or imbalance of nutrients"],
+[53, "assessment", "Signs of malnutrition", "Less activity, weight loss, reduced height, hair loss, swelling or a bigger abdomen; slower wound healing"],
+[54, "assessment", "Why low protein causes edema", "Low protein → low albumin → not enough osmotic pressure to hold fluid in the vessels → edema"],
+[55, "assessment", "Nutritional assessment tools", "24-hour food recall and the food frequency questionnaire"],
+[56, "assessment", "Nutritional assessment covers", "Chewing, swallowing, teeth; appetite, allergies; illness and history; labs; income and food budget; drugs; lifestyle; culture and religion"],
+[57, "assessment", "Factors that affect nutrition", "Physical factors, illness or trauma, medications, megadoses of supplements, alcohol use disorder, social determinants and money, culture and religion"],
+[58, "assessment", "Older adults: nutrition", "Fewer calories, weaker thirst (dehydration risk), same vitamins and minerals, more calcium, need fiber, absorb less"],
+[59, "assessment", "Food labels: the four parts on the slides", "Serving size, calories, % Daily Value, breakdown of nutrients"],
+[60, "diets", "Regular diet", "Healthy foods from all food groups; no restrictions"],
+[61, "diets", "Clear liquid diet", "See-through liquids: water, tea, coffee, broth, carbonated drinks, popsicles, gelatin, clear juice. Minimal digestion; short-term"],
+[62, "diets", "Full liquid diet", "Clear liquids plus anything pourable at room temperature: milk, soup, pudding, yogurt, custard, plain frozen desserts, vegetable juice"],
+[63, "diets", "Soft diet", "Soft, easy to swallow and digest; no most raw fruits and vegetables, seeds, nuts or dried fruit. For chewing or swallowing trouble"],
+[64, "diets", "Pureed diet", "Soft, smooth foods that need no chewing"],
+[65, "diets", "NPO", "Nothing by mouth: no food or drink (meds may be allowed with small sips unless fully NPO)"],
+[66, "diets", "Heart-healthy diet", "Limit sodium and unhealthy fats"],
+[67, "diets", "Renal diet", "Limit sodium, potassium and phosphorus"],
+[68, "diets", "Consistent-carbohydrate diet", "Controls carbohydrate intake; for diabetes"],
+[69, "diets", "High-fiber diet", "Whole grains, fruits"],
+[70, "diets", "Low-residue diet", "Easy to digest, low in fiber"],
+[71, "diets", "Ways to limit sodium", "No table salt or salt in cooking; avoid processed meats; choose no-salt-added foods; low-sodium soup, one serving; read labels"],
+[72, "eating", "Nausea: nursing actions", "Find the cause, check for dehydration, remove uneaten food, fresh air, no strong perfumes, oral care, small non-greasy meals, antiemetics PRN (as needed)"],
+[73, "eating", "Stimulating appetite", "Small frequent meals, favorite foods, oral care, limit liquids with meals, clean environment, eat with others, pain controlled"],
+[74, "eating", "Why limit liquids with meals?", "So the client fills up on food; offer fluids between meals"],
+[75, "eating", "Dysphagia", "Difficulty swallowing; raises aspiration risk"],
+[76, "eating", "Overt vs silent aspiration", "Overt: obvious signs. Silent: no obvious signs"],
+[77, "eating", "Signs of aspiration", "Coughing, wheezing, trouble breathing, congestion, gagging, throat clearing, vomiting"],
+[78, "eating", "Positioning to prevent aspiration", "Upright in a chair, or head of bed 90° to eat; at least 45° for 1 hour after"],
+[79, "eating", "Straws and aspiration risk", "Avoid straws"],
+[80, "eating", "After a meal, check for", "Pocketed food in the mouth"],
+[81, "eating", "Chin-tuck", "Chin to chest while swallowing; narrows the airway entrance"],
+[82, "eating", "Who evaluates swallowing?", "Speech therapy; may order diet changes or thickened liquids"],
+[83, "eating", "Thickened liquid stages", "Nectar-like (runs off the spoon), honey-like (drips in dollops), spoon-thick (stays on the spoon)"],
+[84, "eating", "Why thicken liquids?", "Thin liquids move fast and slip into the airway; thicker liquids give more time to swallow"],
+[85, "eating", "Sedatives and meals", "Avoid sedatives and hypnotics before meals; monitor LOC (level of consciousness)"],
+[86, "eating", "Assisting with eating", "Sit at eye level, cut food small, ask preferences, restroom and hand washing first, napkin, dentures in"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
