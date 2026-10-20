@@ -2635,7 +2635,7 @@
     {
      "text": "Baked potato",
      "correct": true,
-     "rationale": "Potatoes are one of the highest-potassium foods."
+     "rationale": "Potatoes are high in potassium."
     },
     {
      "text": "Banana",
@@ -10121,7 +10121,7 @@
     {
      "text": "Baked potato",
      "correct": true,
-     "rationale": "A baked potato is one of the highest-potassium foods."
+     "rationale": "A baked potato is high in potassium."
     },
     {
      "text": "Banana",
@@ -10157,27 +10157,27 @@
    "topic": "Food Sources",
    "category": "Electrolyte Foods",
    "type": "mc",
-   "prompt": "Which food has the most potassium per serving?",
+   "prompt": "A client with hypokalemia asks for one food to add at dinner. Which food is high in potassium?",
    "options": [
     {
-     "text": "1 medium baked potato",
+     "text": "Baked potato",
      "correct": true,
-     "rationale": "A baked potato has about 900 mg, more than the others."
+     "rationale": "Potatoes are high in potassium."
     },
     {
-     "text": "1/2 cup white beans",
+     "text": "White rice",
      "correct": false,
-     "rationale": "White beans have about 500 mg per 1/2 cup."
+     "rationale": "White rice is low in potassium."
     },
     {
-     "text": "3 oz salmon",
+     "text": "Cucumber",
      "correct": false,
-     "rationale": "Salmon has about 400 mg per 3 oz."
+     "rationale": "Cucumbers are low in potassium."
     },
     {
-     "text": "1 cup plain nonfat yogurt",
+     "text": "White bread",
      "correct": false,
-     "rationale": "Yogurt has about 600 mg per cup."
+     "rationale": "White bread is low in potassium."
     }
    ]
   },
@@ -10877,12 +10877,12 @@
    "category": "Electrolyte Foods",
    "type": "cloze",
    "prompt": "A nurse is teaching a client who has hypokalemia and takes a loop diuretic.",
-   "sentence": "The nurse suggests adding {1} and explains that {2} is the highest-potassium fruit on the list.",
+   "sentence": "The nurse suggests adding {1} to dinner and {2} as a snack, since both are high in potassium.",
    "options": [
     {
      "text": "a baked potato",
      "correct": true,
-     "rationale": "A medium baked potato has about 900 mg of potassium.",
+     "rationale": "A baked potato is high in potassium.",
      "blank": 1
     },
     {
@@ -10894,7 +10894,7 @@
     {
      "text": "a banana",
      "correct": true,
-     "rationale": "A medium banana is the highest-potassium fruit on the chart.",
+     "rationale": "Bananas are high in potassium.",
      "blank": 2
     },
     {
