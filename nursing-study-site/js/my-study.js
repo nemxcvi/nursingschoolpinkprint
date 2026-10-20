@@ -569,17 +569,13 @@ var MyStudy = (function(){
         quote.parentNode.insertBefore(a, quote.nextSibling);
       }
     }
-    /* Unit cards: the current unit gets the highlighted border (its Ready / In draft label stays) and opens My dashboard. No mastery bars here this semester. */
+    /* Unit cards: the current unit gets the highlighted border (its Ready / In draft label stays) and still opens its unit page. No mastery bars here this semester. */
     document.querySelectorAll("#unitgrid .pp-card").forEach(function(card){
       var m = (card.getAttribute("href") || "").match(/unit-(\d+)-/);
       if (!m) return;
       var n = +m[1];
       var isCurrent = currentUnits.length === 1 && currentUnits[0] === n;
-      if (isCurrent){
-        card.classList.add("is-current");
-        card.setAttribute("href", "dashboard.html");
-        card.setAttribute("title", "Current unit · opens My dashboard");
-      }
+      if (isCurrent) card.classList.add("is-current");
     });
   }
 

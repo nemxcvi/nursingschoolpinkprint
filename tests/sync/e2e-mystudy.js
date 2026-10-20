@@ -158,7 +158,7 @@ const check = (ok, label, extra) => { console.log((ok ? "ok   " : "FAIL ") + lab
   await pg.waitForSelector("#pp-strip");
   check((await pg.$$eval(".pp-day", d => d.length)) === 14, "homepage: 14 squares Oct 13 - Oct 26");
   check(/11\s*days to Exam 4/.test(await text("#pp-strip")), "homepage: 11 days to Exam 4");
-  check((await pg.$$eval(".pp-card-mastery", c => c.length)) === 0 && await pg.$eval('.pp-card[href="dashboard.html"]', el => el.classList.contains("is-current") && /In draft/.test(el.textContent)), "homepage: no mastery bars; Unit 4 is highlighted as the current unit and still says In draft");
+  check((await pg.$$eval(".pp-card-mastery", c => c.length)) === 0 && await pg.$eval('.pp-card[href="unit-4-fluids-nutrition-med-math/"]', el => el.classList.contains("is-current") && /In progress/.test(el.textContent)), "homepage: no mastery bars; Unit 4 is highlighted as the current unit, keeps its label, and still opens the unit page");
   check(await pg.getAttribute("#tag-mystudy", "href") === "dashboard.html", "homepage: My study opens My dashboard");
   await shot("home-oct15");
   await go("", "2026-11-20");
