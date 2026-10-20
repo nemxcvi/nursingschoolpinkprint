@@ -7,8 +7,8 @@ var SITE = {
       {code:"U-01", num:1, weeks:"1–3", name:"Intro to Nursing", slug:"unit-1-intro-to-nursing/"},
       {code:"U-02", num:2, weeks:"4–5", name:"Basic Human Needs", slug:"unit-2-basic-human-needs/"},
       {code:"U-03", num:3, weeks:"6–7", name:"Skin, Wounds & Diagnostics", slug:"unit-3-skin-wounds-diagnostics/"},
-      {code:"U-04", num:4, weeks:"8–9", name:"Fluids & Nutrition", slug:"unit-4-fluids-nutrition/"},
-      {code:"U-05", num:5, weeks:"10–11", name:"Gas Exchange & Med Math", slug:"unit-5-gas-exchange-med-math/"},
+      {code:"U-04", num:4, weeks:"8–9", name:"Fluids, Nutrition & Med Math", slug:"unit-4-fluids-nutrition-med-math/"},
+      {code:"U-05", num:5, weeks:"10–11", name:"Gas Exchange & Med Admin", slug:"unit-5-gas-exchange-med-admin/"},
       {code:"U-06", num:6, weeks:"12–13", name:"Pharmacology & Med Admin", slug:"unit-6-pharmacology-med-admin/"}
     ]},
     {id:"nur121", num:"02", code:"NUR 121", units:[]}
