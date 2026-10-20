@@ -93,6 +93,7 @@ section.topic{padding:48px 0 20px}
 .guide-footer{padding-top:24px;padding-bottom:60px;color:var(--muted);font-size:15px}:root{--l-epi:#F6C9B5;--l-derm:#EFA3A6;--l-fat:#F7E3A1;--l-musc:#C9737C;--l-bone:#EDE7DA;--wound:#8E1F3A}
 [data-theme="dark"]{--l-epi:#9C6A5A;--l-derm:#8F4E55;--l-fat:#8C7A3F;--l-musc:#6E343C;--l-bone:#6F6A5F;--wound:#F28AB5}
 .legend .lg-note{background:var(--side-bg);border-color:var(--side);color:var(--side)}
+.legend .lg-conn{background:var(--card);border-color:var(--label);color:var(--label)}
 .guide-body h4{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15}
 .gsub > h3{margin:0 0 10px}
 .guide-body td:first-child{font-weight:600}
@@ -122,6 +123,8 @@ section.topic{padding:48px 0 20px}
 .note .tag{color:var(--side)}
 .slides{background:var(--slides-bg);border-color:var(--slides)}
 .slides .tag{color:var(--slides)}
+.conn{background:var(--card);border-color:var(--border);border-left:5px solid var(--label)}
+.conn .tag{color:var(--label)}
 .nc{background:var(--red-bg);border-color:var(--red)}
 .nc .tag{color:var(--red)}
 
@@ -200,13 +203,14 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 <header class="guide-hero gwrap">
   <p class="course">NUR 114 &middot; Unit 4 &middot; Week 8</p>
   <h1>Fluids, electrolytes, acid-base &amp; nutrition</h1>
-  <p class="lede">Drafted from the Week 8 lecture slides, the ATI chapters, and the ATI skills modules on nasogastric tubes and enteral feeding. Your instructor said the slides are what you need to know for now and that ATI goes deeper, so slide material gets the most space here. ATI-only details are kept short in blue boxes: give those a lighter review. Hit the quick checks at the end of each topic.</p>
+  <p class="lede">Drafted from the Week 8 lecture slides, the ATI chapters, and the ATI skills modules on nasogastric tubes and enteral feeding. Your instructor said some of the information on the slides is what you need to know for now, so slide material gets the most space here. ATI-only details are kept shorter in blue boxes. Hit the quick checks at the end of each topic.</p>
   <div class="legend" aria-label="Key">
     <span class="lg-slides">Slides content: covered in instructor's slides</span>
     <span class="lg-flag">Instructor flagged for the test</span>
     <span class="lg-known">Known mnemonic</span>
     <span class="lg-hook">Memory hook made for this guide</span>
-    <span class="lg-note">ATI extra: lighter review</span>
+    <span class="lg-note">ATI only</span>
+    <span class="lg-conn">Connects to earlier units</span>
   </div>
 </header>
 
@@ -241,6 +245,17 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     </table></div>
     <figure class="pic" style="max-width:420px"><img src="week8-img/01.jpg" alt="Interstitial fluid between cells, intracellular fluid inside cells, and plasma inside the blood vessel" loading="lazy"><figcaption>The three places to picture: between cells, inside cells, inside vessels</figcaption></figure>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>67 · 25 · 8:</b> most water is <b>in</b> the cells, a quarter sits <b>between</b> them, and only a sliver is in the <b>blood</b>.</p></div>
+    <div class="box note"><span class="tag">ATI only</span>
+      <ul>
+        <li>Water is <b>50–60%</b> of an adult's body weight.</li>
+        <li><b>Osmosis:</b> <b>water</b> moves across a membrane from the weaker (more dilute) side to the stronger (more concentrated) side. No energy needed.</li>
+        <li><b>Diffusion:</b> <b>solutes</b> (like electrolytes) spread from high concentration to low. No energy needed.</li>
+        <li><b>Active transport:</b> uses energy (ATP, adenosine triphosphate) to move solutes from low concentration to high, like the sodium–potassium pump.</li>
+        <li><b>Filtration:</b> pressure pushes fluid out of the capillaries into the tissues.</li>
+        <li><b>Sensible losses</b> can be measured (urine, sweat, liquid stool). <b>Insensible losses</b> can't (breathing, evaporation from the skin, water in formed stool).</li>
+        <li><b>Third spacing:</b> fluid gets trapped in a body space where the body can't use it (burns, cirrhosis, pancreatitis). It's still in the body, but blood volume drops.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="gsub">
@@ -259,7 +274,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>BUN (blood urea nitrogen)</td><td>10–20 mg/dL</td></tr>
       <tr><td>Creatinine</td><td>Female 0.5–1.2 mg/dL · Male 0.6–1.3 mg/dL</td></tr>
     </table></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Measure all I&amp;O in mL: <b>1 oz = 30 mL</b> (an 8-oz cup is 240 mL). Intake includes foods that melt at room temperature, IV flushes and IV medications, tube feedings and irrigants. Output includes blood, emesis, diarrhea, and wound or tube drainage. Report urine output under <b>30 mL/hr</b>.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Measure all I&amp;O in mL: <b>1 oz = 30 mL</b> (an 8-oz cup is 240 mL). Intake includes foods that melt at room temperature, IV flushes and IV medications, tube feedings and irrigants. Output includes blood, emesis, diarrhea, and wound or tube drainage. Report urine output under <b>30 mL/hr</b>.</p><p>Measure with calibrated containers, read at eye level. Total I&amp;O at least every <b>8 hours</b>: intake minus output; a negative number means a deficit. For incontinence briefs, weigh them: <b>1 g = 1 mL</b>. Weigh the client daily at the same time, <b>after voiding</b>, in the same type of clothes (same linens on a bed scale).</p></div>
   </div>
 
   <div class="gsub">
@@ -288,13 +303,24 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <p><b>Hypovolemic shock:</b> losing more than <b>20%</b> of circulating blood volume. Without treatment, poor perfusion causes multiple organ failure (lungs, kidneys, brain and heart).</p>
     <p><b>Skin turgor:</b> skin that stays tented after you pinch and release it means fluid deficit.</p>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Neck veins tell the story:</b> flat when the tank is low (hypovolemia), bulging when it's overfull (hypervolemia).</p></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Hct (hematocrit) and BUN rise with fluid deficit (hemoconcentration) and fall with overload (hemodilution). Older adults are at higher risk: they have less body water and a weaker thirst sense, and skin turgor is less reliable in them. For overload: semi-Fowler's position, daily weights, fluid and sodium restriction, and monitor lung sounds and edema.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Hct (hematocrit) and BUN rise with fluid deficit (hemoconcentration) and fall with overload (hemodilution). Older adults are at higher risk for both: less body water, a weaker thirst sense, and kidneys and heart that handle shifts less well. Skin turgor is less reliable in them.</p>
+      <div class="tbl"><table>
+        <tr><th></th><th>Fluid volume deficit (hypovolemia, dehydration)</th><th>Fluid volume excess (hypervolemia, overhydration)</th></tr>
+        <tr><td>Vital signs</td><td>Tachycardia, thready pulse, low BP, <b>orthostatic hypotension</b>, fast breathing</td><td>Tachycardia, <b>bounding</b> pulse, <b>high</b> BP, fast breathing</td></tr>
+        <tr><td>Other findings</td><td>Thirst, dry mucous membranes, dry furrowed tongue, sunken eyes, no tears, cool clammy skin, acute weight loss, dizziness, confusion</td><td>Weight gain, pitting edema, distended neck veins, crackles, dyspnea and orthopnea (short of breath lying flat), confusion</td></tr>
+        <tr><td>Labs</td><td>Hct ↑ (but it drops if the cause is bleeding); BUN ↑; dehydration: sodium over 145, osmolality over 295, urine specific gravity over 1.030. A BUN-to-creatinine ratio over 20:1 means poor blood flow to the kidneys</td><td>Hct and BUN ↓; with water excess, sodium ↓ and osmolality under 280; urine specific gravity under 1.010; chest X-ray shows congestion</td></tr>
+        <tr><td>Causes ATI adds</td><td>NG suction, heavy sweating, fever, burns, diuretics, NPO (nothing by mouth) status, tube feedings without enough water</td><td>Heart failure, kidney failure, cirrhosis, too much sodium (diet, IV fluids, sodium bicarbonate antacids), SIADH (syndrome of inappropriate antidiuretic hormone: too much ADH holds on to water)</td></tr>
+        <tr><td>Nursing care</td><td>Oral rehydration first if the client can drink (drinks with electrolytes and glucose, like sports drinks); IV isotonic fluids for moderate or severe hypovolemia; daily weights; report urine under 30 mL/hr; check orthostatic BP; <b>fall safety</b>: change positions slowly, call light, help with walking</td><td>Semi-Fowler's; listen to all lung fields; oxygen as needed; daily weights; check edema (pretibial, sacral, around the eyes); slow the IV; diuretics; reposition at least every 2 hours and support swollen arms and legs</td></tr>
+      </table></div>
+      <p><b>Fluid restriction tips:</b> remove the water pitcher, serve fluids in small cups so they look full, set short 1–2 hour goals, tell dietary staff and every shift how much the client may have, and record all oral intake.</p>
+    </div>
   </div>
 
   <div class="gsub">
     <h3>Assessing fluid and electrolyte imbalances<span class="gslides inl">Slides content</span></h3>
     <ul class="tight"><li>I&amp;O</li><li><b>Daily weight</b>: same time, same scale</li><li>Regular electrolyte labs</li><li>Urine volume and concentration: low volume + high specific gravity = fluid volume deficit</li></ul>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>Normal urine specific gravity: <b>1.005–1.030</b>. It's checked more often than serum osmolality because it's easier to get, and it's the same idea (concentration) under a different name.</p><ul><li><b>1.030 or higher</b> = dehydration (concentrated urine)</li><li><b>1.005 or lower</b> = fluid overload or renal failure (dilute urine)</li></ul></div>
+    <div class="box conn"><span class="tag">Connects to earlier units</span><ul><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Unit 3 skin assessment</a>: skin turgor (tenting = fluid deficit, unreliable in older adults) and capillary refill under 3 seconds. Slow refill and tenting both point to a low tank.</li><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Unit 3 thorax and cardiovascular assessment</a>: JVD (jugular venous distention) is checked with the head of the bed at 30–45°, and crackles don't clear with a cough. Both mean fluid overload here.</li><li><a href="../unit-2-basic-human-needs/week4-study-guide.html#immobility">Unit 2 immobility</a>: orthostatic hypotension raises fall risk. A client with fluid deficit gets the same precautions: dangle first, change positions slowly.</li><li><a href="../unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Unit 1 lab values</a>: BUN 10–20 mg/dL and Hct (female 37–47%, male 42–52%). Now you know <i>why</i> they move: concentrated blood pushes them up, diluted blood pulls them down.</li></ul></div>
   </div>
 
   <div class="gcheck">
@@ -326,6 +352,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       </div>
     </div>
     <div class="box note"><span class="tag">Side note</span><p>One slide lists magnesium as 1.3–2.1 mg/dL, but the magnesium slides and ATI use <b>mEq/L</b>. This guide uses mEq/L.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>ATI also lists <b>chloride 98–106 mEq/L</b> and <b>phosphorus 3–4.5 mg/dL</b>. <b>Sodium</b> is the main electrolyte <b>outside</b> the cells (ECF); <b>potassium</b> is the main one <b>inside</b> the cells (ICF). Positive ions (cations): sodium, potassium, calcium, magnesium. Negative ions (anions): chloride, phosphate, bicarbonate. Highest risk for imbalances: older adults and clients with chronic illness or cognitive disorders.</p></div>
   </div>
 
   <div class="gsub">
@@ -336,7 +363,12 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <div><h4>Hypernatremia (&gt;145)</h4><ul><li><b>Cause:</b> excess water loss or excess sodium intake. <b>Water loss</b> is the most common cause</li><li>The CNS (central nervous system) is hit hardest: confusion, lethargy, agitation, irritability, hallucinations, delusions, possible seizures</li><li><b>Nursing:</b> encourage oral fluids; hypotonic IV fluids</li></ul></div>
     </div>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>Low sodium usually means <b>too much water</b>; high sodium usually means <b>lost water</b>. Sodium replacement has to be done <b>slowly</b>.</p></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Both imbalances affect the brain because water shifts in or out of brain cells. Hyponatremia: fluid restriction for water excess; 3% saline only for severe cases. Hypernatremia: thirst, dry sticky mucous membranes, warm flushed skin; low-sodium diet.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Both imbalances affect the brain because water shifts in or out of brain cells.</p>
+      <ul>
+        <li><b>Hyponatremia</b> (brain cells swell): also caused by SIADH, heart failure, too much IV D5W (dextrose 5% in water), NG suction, tap-water enemas and diuretics. Headache, muscle twitching, <b>decreased</b> deep tendon reflexes, seizures. Fluid restriction for water excess; 3% saline only for severe cases. Change positions slowly; watch breathing if muscles are weak.</li>
+        <li><b>Hypernatremia</b> (brain cells shrink): also caused by fever, heavy sweating, burns, watery diarrhea, NPO status, hypertonic tube feedings. Thirst, dry sticky mucous membranes, warm flushed skin, fever, <b>brisk</b> reflexes, oliguria. Oral care to ease thirst, low-sodium diet, safety for confusion.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="gsub">
@@ -348,7 +380,15 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     </div>
     <div class="box flag"><span class="tag">Instructor flagged</span><p><b>IV potassium:</b> always diluted, on a pump, <b>10–20 mEq per HOUR</b>. Never give it by IV push or bolus (it can stop the heart). One ATI page says "per minute"; your instructor confirmed in class that it's <b>per hour</b>.</p></div>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Low K = Lasix (diuretics) and losses; high K = kidneys failing.</b> Either way, watch the <b>heart</b>.</p></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Foods high in potassium: baked potatoes, bananas, oranges, spinach, avocado, cantaloupe, salmon. Salt substitutes contain potassium, so clients with hyperkalemia should avoid them. Insulin pushes potassium into the cells, so check blood glucose (risk of hypoglycemia). Hypokalemia raises the risk of digoxin toxicity. Continuous ECG (electrocardiogram) monitoring for both.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Foods high in potassium: baked potatoes, bananas, oranges, spinach, avocado, cantaloupe, salmon. Salt substitutes contain potassium, so clients with hyperkalemia should avoid them. Insulin pushes potassium into the cells, so check blood glucose (risk of hypoglycemia). Hypokalemia raises the risk of digoxin toxicity. Continuous ECG (electrocardiogram) monitoring for both.</p>
+      <div class="tbl"><table>
+        <tr><th></th><th>Hypokalemia</th><th>Hyperkalemia</th></tr>
+        <tr><td>More causes</td><td>NG suction, vomiting, laxatives, corticosteroids, insulin, long runs of IV fluid with no electrolytes</td><td>Salt substitutes, blood transfusions, acidosis (diabetic ketoacidosis), burns and tissue injury, ACE (angiotensin-converting enzyme) inhibitors, potassium-sparing diuretics</td></tr>
+        <tr><td>ECG</td><td><b>Flat or inverted T waves</b>, U waves, ST depression</td><td><b>Peaked T waves</b>, wide QRS, prolonged PR</td></tr>
+        <tr><td>Muscles &amp; gut</td><td>Weakness that climbs both legs and can reach the breathing muscles; hypoactive reflexes; constipation, ileus</td><td>Weakness and flaccid paralysis; diarrhea, cramping, hyperactive bowel sounds</td></tr>
+        <tr><td>Nursing</td><td>Treat the cause; oral or IV potassium; monitor urine output (kidneys must work before giving potassium), breathing, bowel sounds</td><td>Stop IV potassium and hold oral potassium; low-potassium diet; IV regular insulin with dextrose; sodium polystyrene sulfonate (by mouth or enema); loop diuretics if the kidneys work; dialysis if severe</td></tr>
+      </table></div>
+    </div>
   </div>
 
   <div class="gsub">
@@ -361,6 +401,14 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <div class="gallery" style="--min:200px"><figure><img src="week8-img/03.jpg" alt="Trousseau's sign: hand spasm with a blood pressure cuff inflated" loading="lazy"><figcaption><b>Trousseau's:</b> inflate a BP cuff above systolic; carpal (hand) spasm = positive</figcaption></figure><figure><img src="week8-img/04.jpg" alt="Chvostek's sign: tapping in front of the ear" loading="lazy"><figcaption><b>Chvostek's:</b> tap in front of the ear below the cheekbone; facial twitching = positive</figcaption></figure></div>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Low calcium = "twitchy."</b> Calcium calms nerves, so without it nerves fire too easily: tingling, cramps, tetany, positive Trousseau's and Chvostek's. <b>High calcium = "sluggish":</b> constipation, lethargy, confusion.</p></div>
     <div class="box known"><span class="tag">Known mnemonic</span><p>Hypercalcemia: <b>stones, bones, groans, moans</b> (kidney stones, bone pain, abdominal groans like constipation and nausea, psychiatric moans like confusion).</p></div>
+    <div class="box note"><span class="tag">ATI only</span>
+      <ul>
+        <li><b>More hypocalcemia risks:</b> thyroid or neck surgery (the parathyroid glands sit behind the thyroid), low magnesium, low albumin, many transfusions (the preservative in stored blood binds calcium), pancreatitis, kidney disease, long-term steroids, and acid-reducing medications.</li>
+        <li><b>Ionized calcium</b> (the active, unbound part, about half the total) is low under <b>4.5 mg/dL</b>. It needs its own lab order; the CMP gives only total calcium.</li>
+        <li>Hypocalcemia also brings <b>hyperactive reflexes</b>, prolonged QT on the ECG, and diarrhea. <b>Nursing:</b> seizure and fall precautions, emergency equipment nearby (laryngeal spasm), calcium and vitamin D. Calcium supplements absorb best in doses under 500 mg at a time.</li>
+        <li><b>Hypercalcemia</b> can also come from thiazide diuretics, lithium, too much vitamin D, and <b>prolonged bed rest</b> (bones release calcium). It brings decreased reflexes, thirst and polyuria. <b>Nursing:</b> more fluids, limit calcium, get the client moving, and watch for fractures.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="gsub">
@@ -371,7 +419,13 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <div><h4>Hypermagnesemia (&gt;2.1)</h4><ul><li><b>Cause:</b> kidney disease</li><li>Dizziness, weakness, confusion</li><li><b>Decreased DTRs (deep tendon reflexes)</b></li><li><b>Nursing:</b> IV or PO medications</li></ul></div>
     </div>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Magnesium is a brake.</b> Too much brake: everything slows (weak, dizzy, reflexes fade). Too little brake: nerves overreact (spasticity, seizures).</p></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Low magnesium often comes with low calcium and low potassium, and can also cause positive Trousseau's and Chvostek's signs. High magnesium can slow breathing and heart rate; check reflexes and report absent ones. Calcium gluconate treats severe high magnesium (and protects the heart in high potassium).</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Low magnesium often comes with low calcium and low potassium, and can also cause positive Trousseau's and Chvostek's signs. High magnesium can slow breathing and heart rate; check reflexes and report absent ones. Calcium gluconate treats severe high magnesium (and protects the heart in high potassium).</p>
+      <ul>
+        <li><b>Hypomagnesemia causes:</b> alcohol use disorder, diarrhea, diuretics, PPIs (proton pump inhibitors), malnutrition. Signs: <b>hyperactive</b> reflexes, tremors, tetany, high BP, tachycardia, dysrhythmias. Oral magnesium can cause diarrhea.</li>
+        <li><b>IV magnesium is a high-alert medication:</b> double-check the dose with another nurse. Given too fast, it causes flushing, sweating and slowed breathing.</li>
+        <li><b>Hypermagnesemia causes:</b> kidney disease, and too many magnesium laxatives or antacids. Check the <b>patellar reflex</b>: absent = high magnesium. Severe: slow, shallow breathing, bradycardia, low BP, cardiac arrest. Stop magnesium sources, loop diuretics, calcium gluconate, dialysis if the kidneys can't clear it.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="gsub">
@@ -383,6 +437,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>Calcium</td><td>Laxatives, low vitamin D, menopause</td><td>Tetany, tingling, Trousseau's/Chvostek's</td><td>Cancers</td><td>Nausea, constipation, confusion</td></tr>
       <tr><td>Magnesium</td><td>Meds, poor absorption, diarrhea</td><td>Nausea, vomiting; severe: spasticity, seizures</td><td>Kidney disease</td><td>↓ deep tendon reflexes</td></tr>
     </table></div>
+    <div class="box conn"><span class="tag">Connects to earlier units</span><ul><li><a href="../unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Unit 1 lab values</a>: the same CMP ranges (sodium, potassium, chloride, calcium). This week adds what happens when they're out of range.</li><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Unit 3 neuro assessment</a>: reflexes are graded 0–4+, with 2+ expected. Low calcium or low magnesium → hyperactive (3+ to 4+); high magnesium → diminished or absent (0 to 1+).</li><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Unit 3 safety</a>: seizure and fall precautions apply to severe sodium, calcium and magnesium imbalances, since confusion, weakness and seizures are common findings.</li><li>Kidneys keep coming up: kidney failure causes <b>high</b> potassium and <b>high</b> magnesium, and is why a renal diet limits sodium, potassium and phosphorus (Nutrition, below).</li></ul></div>
   </div>
 
   <div class="gcheck">
@@ -413,6 +468,12 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     </table></div>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>hypO = "Oh, cells swell"</b> (water goes in). <b>hypER = "cells shrivel"</b> (water is pulled out). <b>ISO = "I stay outside"</b>: it stays in the vessels and just adds volume.</p></div>
     <div class="box note"><span class="tag">Side note</span><p>The slides also list D5W (dextrose 5% in water) as isotonic, but your instructor said it isn't a focus for now.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><ul>
+      <li><b>Hypotonic</b> (0.45% saline): watch for low BP; avoid with burns, liver disease, trauma, or increased intracranial pressure (swelling brain cells make it worse).</li>
+      <li><b>Hypertonic:</b> watch for fluid overload; may be avoided with heart or kidney disease. D10W can irritate veins, so a central line is preferred.</li>
+      <li><b>Lactated Ringer's:</b> common for burns and trauma; use with caution in kidney failure.</li>
+      <li><b>Colloids:</b> albumin (natural; counts as a blood product) and synthetic dextran and hetastarch. They pull fluid into the vessels, so watch for fluid overload and allergic reactions. Albumin must finish within 4 hours of opening.</li>
+    </ul></div>
   </div>
 
   <div class="gsub">
@@ -423,7 +484,20 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <div class="box flag"><span class="tag">Instructor flagged · facility policy</span><ul><li>Peripheral IV site changed every <b>96 hr</b></li><li>IV tubing: <b>continuous</b> infusion every <b>96 hr</b>; <b>intermittent</b> infusion every <b>24 hr</b></li><li>CVAD dressings changed every <b>7 days</b>; <b>Curos caps</b> cover ports when not in use</li></ul></div>
     <p><b>CVADs</b> are indwelling devices placed in a large central vein for blood products, medications, fluids and other therapy. They're used for clients who need frequent or long-term IV therapy. Types: tunneled and nontunneled, peripherally inserted, and implanted ports.</p>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>Don't get lost in the ATI detail on CVADs: keep it simple. The vein diagram on the slides is just a visual; you don't need to memorize it.</p></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Larger gauges (16–18) for trauma, surgery, rapid fluids and blood; 20–24 for routine or fragile veins. Start distal on the nondominant arm. Avoid veins on the side of a mastectomy, an AV (arteriovenous) fistula, or recent infiltration. Clip hair; never shave. Insert bevel up at 10–30°. Older adults or clients on anticoagulants: use a BP cuff instead of a tourniquet and a smaller catheter.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Larger gauges (16–18) for trauma, surgery, rapid fluids and blood; 20–24 for routine or fragile veins. Start distal on the nondominant arm. Avoid veins on the side of a mastectomy, an AV (arteriovenous) fistula, or recent infiltration. Clip hair; never shave. Insert bevel up at 10–30°. Older adults or clients on anticoagulants: use a BP cuff instead of a tourniquet and a smaller catheter.</p>
+      <h4>Starting a peripheral IV</h4>
+      <ol class="seq">
+        <li><span>Check the prescription, allergies (latex, tape) and the solution (clear, no leaks, not expired); hand hygiene; clean gloves</span></li>
+        <li><span>Tourniquet or BP cuff <b>4–6 in (10–15 cm) above</b> the site; pick a soft, bouncy vein, distal first. Avoid the back of the hand, the inner wrist, joints, varicose or hard veins, and an arm with lymph nodes removed, a PICC, or a fistula</span></li>
+        <li><span>Clean with chlorhexidine using <b>back-and-forth friction</b>; let it <b>air dry 1–2 minutes</b></span></li>
+        <li><span>Anchor the vein below the site; insert bevel up at 10–30°; a <b>flashback</b> of blood confirms the vein</span></li>
+        <li><span>Lower the hub, advance the catheter off the needle, release the tourniquet, press above the tip, remove the needle and activate its safety device</span></li>
+        <li><span>Connect, dress (don't tape all the way around the limb), and document: date and time, site, gauge, dressing, fluid and rate, client response</span></li>
+      </ol>
+      <p><b>Afterward:</b> check the site and rate every 2–4 hours (hourly for older adults). Don't let a continuous infusion stop or blood back up, or a clot can block the catheter. Label the bag and tubing (never write on the bag with a marker). Scrub the hub with an antiseptic before every access. Remove a catheter not used in 24 hours.</p>
+      <p><b>Discontinuing:</b> clamp the tubing, remove the dressing, hold sterile gauze over the site (no alcohol), pull the catheter straight out, press at least <b>30 seconds</b>, then <b>check that the catheter tip is intact</b>.</p>
+      <p><b>Needlestick prevention:</b> use needleless systems and safety devices, never recap, and drop needles in a sharps container right away.</p>
+    </div>
   </div>
 
   <div class="gsub">
@@ -431,14 +505,16 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <ul class="tight"><li><b>Phlebitis / thrombophlebitis</b>: inflammation of the vein (can be caused by a thrombus)</li><li><b>Circulatory overload</b></li><li><b>Infiltration</b> (leak of IV fluid) or <b>extravasation</b> (damaging leak of a vesicant)</li><li><b>VAD (vascular access device)-related infection</b></li></ul>
     <figure class="pic" style="max-width:300px"><img src="week8-img/05.jpg" alt="NCLEX hack: PIE, phlebitis, infiltration, extravasation" loading="lazy"><figcaption>The slide's NCLEX hack: "Not as easy as PIE"</figcaption></figure>
     <div class="box known"><span class="tag">Known mnemonic</span><p><b>PIE:</b> <b>P</b>hlebitis (inflamed vein), <b>I</b>nfiltration (leak of IV fluid or meds into tissue), <b>E</b>xtravasation (leak of a vesicant, a drug that damages tissue).</p></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span>
+    <div class="box note"><span class="tag">ATI only</span>
       <div class="tbl"><table>
         <tr><th>Complication</th><th>Looks like</th><th>Do this</th></tr>
         <tr><td>Phlebitis</td><td><b>Warm</b>, red, painful; red streak or palpable cord along the vein</td><td>Stop the infusion and remove the catheter, elevate, <b>warm</b> compress, restart in the other arm</td></tr>
-        <tr><td>Infiltration</td><td><b>Cool</b>, pale, swollen; slowed infusion; damp dressing</td><td>Stop and remove, elevate, restart in the other arm</td></tr>
+        <tr><td>Infiltration</td><td><b>Cool</b>, pale, swollen; slowed infusion; damp dressing</td><td>Stop and remove, elevate, warm or cold compress depending on the fluid, restart above the site or in the other arm</td></tr>
         <tr><td>Extravasation</td><td>Same as infiltration, with a vesicant (can cause tissue death)</td><td>Stop, aspirate (don't flush), notify the provider (antidote may be needed)</td></tr>
-        <tr><td>Circulatory overload</td><td>↑ BP, tachycardia, crackles, dyspnea, distended neck veins</td><td>Slow the IV, raise the head of the bed, notify the provider</td></tr>
-        <tr><td>Infection</td><td>Redness, swelling, pus, fever</td><td>Remove, culture the site and catheter, notify the provider</td></tr>
+        <tr><td>Circulatory overload</td><td>↑ BP, tachycardia, crackles, dyspnea, distended neck veins</td><td>Slow the IV, raise the head of the bed, vital signs and oxygen saturation, notify the provider, diuretics as prescribed. <b>Prevent it:</b> use a pump</td></tr>
+        <tr><td>Infection (cellulitis)</td><td>Pain, warmth, swelling, hardness, red streaking, pus, fever, chills</td><td>Stop and remove, culture the site and catheter, warm compresses 3–4 times a day, antibiotics as prescribed</td></tr>
+        <tr><td>Air embolism</td><td>Air enters the line</td><td><b>Prevent it:</b> prime all tubing, change bags before they run dry, clamp a CVAD when changing tubing</td></tr>
+        <tr><td>Catheter embolus</td><td>Catheter tip missing on removal; pain if it travels</td><td>Tourniquet high on the arm, notify the provider, prepare for X-ray; save the catheter. <b>Prevent it:</b> never put the needle back into the catheter</td></tr>
       </table></div>
     </div>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Phlebitis is hot; infiltration is cold.</b> Inflammation is warm and red; leaked fluid sitting in tissue is cool and pale.</p></div>
@@ -455,7 +531,16 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>Platelets</td><td>Thrombocytes: stop or prevent bleeding</td><td>Organ transplants, cancer treatment, surgery</td></tr>
     </table></div>
     <div class="box slides"><span class="tag">Slides content</span><p><b>Universal donor: O–</b> · <b>Universal recipient: AB+</b></p></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><ul><li>Consent first; 18–20 gauge IV already in place</li><li>Two nurses check the unit against the client at the bedside</li><li>Only <b>0.9% normal saline</b> runs with blood</li><li><b>Stay with the client the first 15 minutes</b> (most reactions happen then); vital signs before, at 15 min, and per policy</li><li>Finish within <b>4 hours</b></li><li>Reaction (fever, chills, back pain, hives, dyspnea, low BP): <b>stop the transfusion</b>, keep the vein open with normal saline through new tubing, notify the provider, send the bag back to the blood bank</li></ul></div>
+    <div class="box note"><span class="tag">ATI only</span><ul><li>Consent first; 18–20 gauge IV already in place</li><li>Two nurses check the unit against the client at the bedside</li><li>Only <b>0.9% normal saline</b> runs with blood</li><li><b>Stay with the client the first 15 minutes</b> (most reactions happen then); vital signs before, at 15 min, and per policy</li><li>Finish within <b>4 hours</b></li><li>Reaction (fever, chills, back pain, hives, dyspnea, low BP): <b>stop the transfusion</b>, keep the vein open with normal saline through new tubing, notify the provider, send the bag back to the blood bank</li><li>Blood is <b>typed and crossmatched</b> first. PRBCs are usually given when Hgb (hemoglobin) drops to 7–8 g/dL; each unit raises Hgb about 1 g/dL and Hct about 3%</li><li>Change blood tubing after every unit or every 4 hours. Never give IV medications through a line running blood</li></ul>
+      <div class="tbl"><table>
+        <tr><th>Reaction</th><th>Clues</th></tr>
+        <tr><td>Acute hemolytic (wrong blood)</td><td>Fever, chills, low BP, pain in the chest, back or flank, <b>red urine</b>, shock</td></tr>
+        <tr><td>Febrile</td><td>Fever, chills, headache</td></tr>
+        <tr><td>Allergic</td><td>Itching, hives, flushing, wheezing (anaphylaxis: low BP, bronchospasm, shock)</td></tr>
+        <tr><td>Circulatory overload</td><td>Too much, too fast: high BP, distended neck veins, dyspnea. High-Fowler's and oxygen</td></tr>
+      </table></div>
+    </div>
+    <div class="box conn"><span class="tag">Connects to earlier units</span><ul><li><a href="../unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Unit 3 infection control</a>: starting an IV and caring for central lines use <b>surgical asepsis</b>, and CLABSI (central line–associated bloodstream infection) is one of the hospital-acquired infections. Scrubbing the hub and changing dressings on schedule are how you prevent it.</li><li><a href="../unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Unit 3 venipuncture</a>: the same steps carry over: tourniquet above the site, let the antiseptic dry completely, and drop sharps straight into a container less than ¾ full.</li><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Unit 3 safety</a>: <b>two identifiers</b> at the bedside, and for blood, two nurses check the unit together.</li><li><a href="../unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Unit 1 lab values</a>: Hgb (female 12–16, male 14–18 g/dL), Hct, and platelets 150,000–400,000/mm³ tell you when blood products are needed.</li></ul></div>
   </div>
 
   <div class="gcheck">
@@ -523,12 +608,21 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>7.30</td><td>52</td><td>24</td><td>Respiratory acidosis (pH low, CO2 high)</td></tr>
       <tr><td>7.50</td><td>40</td><td>30</td><td>Metabolic alkalosis (pH high, HCO3– high)</td></tr>
     </table></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>The body compensates with the other system: the lungs respond in minutes to hours, the kidneys in hours to days. Metabolic acidosis (diabetic ketoacidosis, diarrhea, kidney failure) brings deep, rapid Kussmaul breathing as the lungs blow off CO2. Metabolic alkalosis comes from prolonged vomiting, gastric suction, or too many antacids.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>The body compensates with the other system: the lungs respond in minutes to hours, the kidneys in hours to days. Metabolic acidosis (diabetic ketoacidosis, diarrhea, kidney failure) brings deep, rapid Kussmaul breathing as the lungs blow off CO2. Metabolic alkalosis comes from prolonged vomiting, gastric suction, or too many antacids.</p>
+      <div class="tbl"><table>
+        <tr><th>Imbalance</th><th>Common causes</th><th>Look for</th><th>Nursing</th></tr>
+        <tr><td>Respiratory acidosis</td><td>Slowed breathing: opioids, sedatives, anesthesia, head or spinal cord injury; lung problems: pneumonia, atelectasis, COPD (chronic obstructive pulmonary disease), chest injury</td><td>Anxiety, confusion, sleepiness, shortness of breath</td><td>Airway and breathing first: lung sounds, oxygen, bronchodilators as prescribed</td></tr>
+        <tr><td>Respiratory alkalosis</td><td>Hyperventilation: anxiety, pain, fever, sepsis, head injury, pregnancy</td><td>Lightheadedness, dizziness, chest discomfort, tachycardia, confusion</td><td>Slow the breathing (coach, rebreathe into a paper bag for anxiety), treat pain or anxiety, fall precautions</td></tr>
+        <tr><td>Metabolic acidosis</td><td>Diabetic ketoacidosis, diarrhea, kidney or liver failure, starvation, lactic acidosis, aspirin (salicylate) overdose</td><td>Kussmaul breathing, headache, confusion, nausea, tachycardia</td><td>Treat the cause, IV fluids, sodium bicarbonate as prescribed</td></tr>
+        <tr><td>Metabolic alkalosis</td><td>Vomiting, NG suction, diuretics, antacids, hypokalemia</td><td>Muscle twitching, tingling, numb hands, lightheadedness, nausea; severe: seizures, dysrhythmias</td><td>Seizure and fall precautions, cardiac monitoring</td></tr>
+      </table></div>
+    </div>
   </div>
 
   <div class="gsub">
     <h3>Nursing interventions<span class="gslides inl">Slides content</span></h3>
     <p>To prevent or correct fluid, electrolyte or acid-base imbalances: diet changes, changes to fluid intake, medications, IV therapy, blood and blood product replacement, parenteral nutrition, and client and family teaching.</p>
+    <div class="box conn"><span class="tag">Connects to earlier units</span><ul><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Unit 3 respiratory assessment</a>: rate, depth and effort, plus oxygen saturation of 95% or higher. The lungs are half of acid-base balance, so a change in breathing pattern is a clue.</li><li><a href="../unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Unit 1 lab values</a>: the "CO2" on a basic metabolic panel or CMP is the blood's <b>bicarbonate</b> level, the metabolic half of the ABG.</li><li><b>Ties this week together:</b> vomiting and NG suction lose stomach acid, potassium and fluid at the same time, so the same client can have metabolic alkalosis, hypokalemia and fluid volume deficit. Diarrhea loses bicarbonate instead, pushing toward metabolic acidosis.</li></ul></div>
   </div>
 
   <div class="gcheck">
@@ -572,7 +666,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <h3>Energy balance &amp; metabolism<span class="gslides inl">Slides content</span></h3>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>The average person needs about <b>2,000 calories a day</b> to maintain their weight.</p></div>
     <ul class="tight"><li>Calories are the energy stored in food, used for walking, breathing and thinking</li><li>Calories in must equal calories burned. Too few = <b>undernourished</b>; too many = <b>obesity</b></li><li><b>Basal metabolism:</b> energy for the body's involuntary activities at rest (the body still needs calories at rest)</li><li>Men usually have a higher BMR (basal metabolic rate) because of more muscle mass</li><li><b>Increase BMR:</b> growth, infection, fever, emotional stress, extreme temperatures, some hormones (healing increases the body's work)</li><li><b>Decrease BMR:</b> aging, prolonged fasting, too little sleep</li></ul>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Carbohydrates and protein give <b>4 kcal per gram</b>; fat gives <b>9 kcal per gram</b>.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Carbohydrates and protein give <b>4 kcal per gram</b>; fat gives <b>9 kcal per gram</b>. No more than <b>35%</b> of calories should come from fat. Extra glucose is stored as <b>glycogen</b> in the liver and muscles as backup energy. A healthy weight-loss pace is <b>1–2 lb a week</b>, and losing just 5–10% of body weight improves BP, blood glucose and cholesterol. Adults need 150 minutes of moderate activity a week plus 2 days of muscle strengthening.</p></div>
   </div>
 
   <div class="gsub">
@@ -615,6 +709,12 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <h4>Water: an essential nutrient</h4>
     <ul class="tight"><li>50–60% of body weight; two-thirds of it is inside cells (ICF)</li><li>A solvent for chemical processes; helps digestion, absorption, circulation and excretion</li><li>Regulates temperature through sweat evaporation; isn't stored</li><li>Intake usually equals output</li></ul>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>Average adult water intake: <b>2,500–3,500 mL/day</b>.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p><b>Supplements</b> don't replace a healthy diet, and the FDA (Food and Drug Administration) doesn't approve them before they're sold. Ask about them in every nutrition assessment, and clients should check with their provider first.</p><ul>
+      <li><b>St. John's wort</b> weakens birth control, heart medications and antidepressants</li>
+      <li><b>Vitamin K</b> weakens <b>warfarin</b> (raises clot risk); keep vitamin K intake steady</li>
+      <li>Antioxidant supplements (<b>vitamins C and E</b>) can weaken chemotherapy</li>
+      <li>Too much <b>iron</b>: nausea, vomiting, liver damage. Too much <b>vitamin A</b>: headaches, weaker bones</li>
+    </ul></div>
   </div>
 
   <div class="gsub">
@@ -627,6 +727,14 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <div class="box flag"><span class="tag">Instructor flagged · client teaching</span><p>Don't assume a client can read a food label (for example, without their glasses). Ask whether they need help.</p></div>
     <p><b>Factors that affect nutrition:</b> physical factors, illness or trauma (healing), medications, megadoses of supplements (can affect other processes), alcohol use disorder (toxic to the GI tract; B vitamins are needed to absorb it), social determinants of health and money (food deserts), and culture, religion and traditions.</p>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>Don't assume: ask about money, food access, culture and religion.</p></div>
+    <div class="box note"><span class="tag">ATI only · reading a label</span><ul>
+      <li>Everything on the label is <b>per serving</b>. Eat two servings, double every number.</li>
+      <li><b>%DV (percent Daily Value):</b> <b>5% or less = low</b>, <b>20% or more = high</b>. Choose high %DV for fiber, vitamin D, calcium, potassium and iron; low %DV for sodium, added sugars and saturated fat.</li>
+      <li><b>Added sugars</b> are counted inside total sugars.</li>
+      <li><b>Net carbs</b> = total carbohydrates − fiber (and sugar alcohols). 10 g carbs with 5 g fiber = 5 g net carbs.</li>
+      <li><b>Sodium:</b> no more than <b>2,300 mg a day</b> (about 1 teaspoon of salt) for healthy adults, less with heart disease. About 70% comes from processed and restaurant food.</li>
+      <li><b>Fiber:</b> women 19–30 need 28 g a day, men 19–30 need 34 g; needs go down with age.</li>
+    </ul></div>
     <p><b>Growth stages:</b> adolescence, pregnancy and lactation raise needs; activity raises needs; needs level off in adulthood, and adults need fewer calories as BMR drops.</p>
     <h4>Older adults</h4>
     <ul class="tight"><li>Slower metabolism → <b>fewer calories</b></li><li>Thirst sense fades → <b>dehydration risk</b></li><li>Need the <b>same</b> vitamins and minerals as younger adults; supplements may be needed</li><li><b>Calcium</b> needs rise (absorption drops) for men and women</li><li>Need fiber and bulk for GI function</li><li>Less absorption of vitamins and minerals; less insulin production and sensitivity</li></ul>
@@ -644,9 +752,19 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     </table></div>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>Know the <b>normal</b> BMI range. Muscle weighs more than fat, so muscular clients can have a falsely high BMI.</p></div>
     <p>Two-thirds of adults are overweight or obese, which is tied to several chronic diseases. Low intake: <b>anorexia</b> (lack of appetite).</p>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p><b>BMI = weight (kg) ÷ height (m)²</b>. Example: 80 kg and 1.6 m tall → 1.6 × 1.6 = 2.56 → 80 ÷ 2.56 = <b>31.3 (obese)</b>.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p><b>BMI = weight (kg) ÷ height (m)²</b>. Example: 80 kg and 1.6 m tall → 1.6 × 1.6 = 2.56 → 80 ÷ 2.56 = <b>31.3 (obese)</b>.</p><p>In pounds and inches: <b>weight ÷ height ÷ height × 703</b>. Example: 170 lb, 64 in → 170 ÷ 64 ÷ 64 × 703 = <b>29.2 (overweight)</b>.</p></div>
     <p><b>Malnutrition:</b> impaired development or function from a long-term deficiency, excess or imbalance of nutrients. Signs: less activity, weight loss, reduced height, hair loss, swelling or a bigger abdomen. Malnourished clients <b>heal slower</b> and have more complications.</p>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Hair and nails go first</b>: the body sacrifices them when nutrients run short. <b>No protein → low albumin → fluid leaks out of the vessels → edema.</b></p></div>
+    <div class="box note"><span class="tag">ATI only</span>
+      <p><b>Signs of poor nutrition:</b> dry, brittle hair and nails; dry, scaly skin; loss of fat under the skin; flaccid muscles, weakness and fatigue; swollen or bleeding gums; dry, dull eyes; poor posture; mental status changes; changes in weight and bowel pattern; frequent infections. Low vitamin C → irritated gums.</p>
+      <div class="tbl"><table>
+        <tr><th>Eating disorder</th><th>Key features</th></tr>
+        <tr><td>Anorexia nervosa</td><td>Very low body weight, fear of gaining weight, sees self as fat, restricts food</td></tr>
+        <tr><td>Bulimia nervosa</td><td>Binge eating, then purging (vomiting, laxatives, diuretics, overexercise, fasting), at least weekly for 3 months</td></tr>
+        <tr><td>Binge-eating disorder</td><td>Binges with loss of control, then guilt or shame; <b>no purging</b>; often overweight</td></tr>
+      </table></div>
+      <p>Purging by vomiting, laxatives or diuretics ties back to this week: low potassium and fluid volume deficit.</p>
+    </div>
   </div>
 
   <div class="gsub">
@@ -674,6 +792,13 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>Low-residue</td><td>Easy to digest, <b>low fiber</b></td><td></td></tr>
     </table></div>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Clear = can see through it. Full = can pour it. Renal = "SPP":</b> limit Sodium, Potassium, Phosphorus.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><ul>
+      <li><b>NPO</b> means nothing at all, not even ice chips; clarify with the provider whether medications are allowed. Restarting food needs a provider's order.</li>
+      <li><b>Mechanical soft:</b> diced or ground foods. <b>Dysphagia diet:</b> pureed food and thickened liquids.</li>
+      <li><b>Low sodium:</b> no added salt, or 1–2 g sodium a day. <b>Low cholesterol:</b> no more than 300 mg a day.</li>
+      <li><b>Diabetic:</b> balanced protein, fat and carbohydrate, about 1,800 calories.</li>
+      <li>The nurse's job: make sure the client gets the <b>prescribed</b> diet and help advance it as ordered.</li>
+    </ul></div>
     <h4>Ways to limit sodium</h4>
     <ul class="tight"><li>No table salt; don't salt food while cooking</li><li>Avoid processed meats (lunch meat, hot dogs, bacon, sausage)</li><li>Choose "no salt added" foods</li><li>Avoid soups unless low sodium, and only one serving</li><li>Read labels for sodium per serving</li></ul>
   </div>
@@ -709,11 +834,23 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Thin liquids slip into the airway.</b> The thicker the liquid, the slower it moves, and the more time the client has to swallow safely.</p></div>
     <h4>Assisting with eating</h4>
     <ul class="tight"><li>Sit at eye level</li><li>Appropriate drinks; cut food into small pieces</li><li>Involve the client: preferences, order of foods, condiments</li><li>Restroom used? Hands washed? Dentures in?</li><li>Napkin over clothes; adaptive utensils as needed</li></ul>
+    <div class="box note"><span class="tag">ATI only · swallowing techniques</span><p>Taught by a speech therapist after a swallow evaluation. Risk factors for aspiration: stroke, acid reflux, mouth sores, dental problems.</p>
+      <div class="tbl"><table>
+        <tr><th>Technique</th><th>How</th></tr>
+        <tr><td>Chin tuck</td><td>Chin down to the chest while swallowing; narrows the airway entrance</td></tr>
+        <tr><td>Turn the head to the <b>weak</b> (affected) side</td><td>Closes off the weak side so food goes down the strong side</td></tr>
+        <tr><td>Tilt the head to the <b>strong</b> side</td><td>Gravity moves food down the strong side</td></tr>
+        <tr><td>Supraglottic swallow</td><td>Hold the breath, swallow (up to 3 times), then <b>cough</b> to clear what's left</td></tr>
+        <tr><td>Mendelsohn maneuver</td><td>Swallow, hold the swallow 2–3 seconds, finish, relax</td></tr>
+      </table></div>
+      <p>Also: support the head, neck and upper back; watch for coughing, choking, gagging and drooling; oral care after meals and snacks.</p>
+    </div>
+    <div class="box conn"><span class="tag">Connects to earlier units</span><ul><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Unit 3 cranial nerves</a>: swallowing is CN IX and X (cranial nerves 9 and 10). Check the gag reflex and that the client can follow directions before giving food or fluids.</li><li><a href="../unit-2-basic-human-needs/week4-study-guide.html#hygiene">Unit 2 oral care</a>: poor oral care leads to aspiration pneumonia, and dentures have to fit and be in to chew. Check both before meals.</li><li><a href="../unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Unit 3 wound healing</a>: healing needs protein, vitamins A and C, zinc, at least 2,500 mL of fluid and 1,500 kcal a day; albumin below 3.5 g/dL raises the risk. Malnutrition and pressure injuries go together.</li><li><a href="../unit-2-basic-human-needs/week4-study-guide.html#education">Unit 2 client education</a>: check health literacy and use teach-back for diet teaching. It's the same reason you don't assume a client can read a food label.</li></ul></div>
   </div>
 
   <div class="gsub" id="foods">
     <h3>Foods to know</h3>
-    <p>Every specific food named in the slides and the ATI material, grouped by what it's high in or which diet it fits. Most of these lists come from ATI, so treat them as lighter review unless your instructor stresses them. They're handy for client-teaching questions ("Which food should the client choose?").</p>
+    <p>Every specific food named in the slides and the ATI material, grouped by what it's high in or which diet it fits. Most of these lists come from ATI rather than the slides. They're handy for client-teaching questions ("Which food should the client choose?").</p>
     <h4>Electrolytes</h4>
     <div class="tbl"><table>
       <tr><th>High in</th><th>Foods</th><th>Teach for</th></tr>
@@ -759,7 +896,16 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>Renal: limit phosphorus</td><td>Dairy (about 1 cup of milk a day), dried beans, mushrooms, broccoli, Brussels sprouts, bran, granola, oatmeal, whole-grain bread; avoid beer and colas (clear sodas are OK)</td></tr>
       <tr><td>Heart healthy</td><td>Fruits, vegetables, whole grains, lean meats, fish, skim milk, no-salt-added canned foods</td></tr>
     </table></div>
-    <div class="box note"><span class="tag">Side note</span><p><b>Hypoglycemia (glucose under 70 mg/dL):</b> give 15 g of fast carbohydrate (glucose tablets or gel, 4 oz regular soda or juice, 1 tablespoon honey, or hard candy), recheck in 15 minutes, and repeat until it's at least 70. Then a meal or snack.</p></div>
+    <div class="box note"><span class="tag">ATI only · blood glucose</span><p><b>Fasting glucose</b> (nothing by mouth for at least 8 hours): <b>74–106 mg/dL</b>. Two hours after eating: under 140.</p><p><b>Hypoglycemia (glucose under 70 mg/dL):</b> give 15 g of fast carbohydrate (glucose tablets or gel, 4 oz regular soda or juice, 1 tablespoon honey, or hard candy), recheck in 15 minutes, and repeat until it's at least 70. Then a meal or snack.</p>
+      <div class="tbl"><table>
+        <tr><th>Insulin</th><th>Starts</th><th>Peaks</th><th>Lasts</th></tr>
+        <tr><td>Rapid-acting</td><td>15–30 min</td><td>30 min–3 hr</td><td>3–5 hr</td></tr>
+        <tr><td>Regular (short-acting)</td><td>30 min–1 hr</td><td>2–4 hr</td><td>4–12 hr</td></tr>
+        <tr><td>Intermediate-acting</td><td>1–2 hr</td><td>4–12 hr</td><td>14–24 hr</td></tr>
+        <tr><td>Long-acting</td><td>2–4 hr</td><td>No real peak</td><td>Up to 24 hr</td></tr>
+      </table></div>
+      <p>Check glucose before giving insulin. Inject at 90° (45° if the client has little fat under the skin), at least 2 in from the navel, away from scars or bruised, lumpy or numb skin.</p>
+    </div>
   </div>
 
   <div class="gcheck">
@@ -790,7 +936,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     </table></div>
     <figure class="pic" style="max-width:420px"><img src="week8-img/08.jpg" alt="Feeding tubes: nasogastric, nasoduodenal, nasojejunal, gastrostomy, jejunostomy, plus TPN and PPN by IV" loading="lazy"><figcaption>Feeding tubes (starred on the slides): tube names tell you where the tip ends</figcaption></figure>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>The name is the route:</b> "naso-" starts in the nose, "-gastric" ends in the stomach, "-jejunal" ends in the jejunum. Anything with "-ostomy" goes through the skin and is long-term.</p></div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Nasal tubes are for under about <b>4 weeks</b>. Small-bore feeding tubes are 8–12 French for adults; large-bore tubes (12–18 French) are for suction, lavage and decompression.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Nasal tubes are for under about <b>4 weeks</b>. Small-bore feeding tubes are 8–12 French for adults; large-bore tubes (12–18 French) are for suction, lavage (washing out the stomach) and decompression.</p><p>Enteral feeding is preferred over parenteral: fewer infections and shorter hospital stays. It's <b>not</b> used with GI bleeding, bowel obstruction, or a bowel without enough blood flow. A client is NPO at least 8 hours before a G-tube is placed.</p></div>
   </div>
 
   <div class="gsub">
@@ -809,7 +955,17 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
         <li><span>Cap or clamp the tube when not in use; change tubing every <b>24 hours</b></span></li>
       </ol>
     </div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Intestinal fluid has a pH of 7 or higher and looks bile-yellow; respiratory fluid is clear with a pH above 6. <b>Don't rely on listening</b> over the stomach while pushing air: you can hear air even if the tube is in the lung. Capnography (CO2 detection) means the tube is in the airway: remove it.</p></div>
+    <div class="box note"><span class="tag">ATI only</span>
+      <div class="tbl"><table>
+        <tr><th>Aspirate</th><th>pH</th><th>Looks like</th></tr>
+        <tr><td>Stomach (fasting 4+ hours)</td><td><b>1–4</b></td><td>Grassy green, off-white or tan; watery</td></tr>
+        <tr><td>Stomach, during continuous feeding</td><td>Often 5 or higher</td><td>Formula mixes with stomach acid</td></tr>
+        <tr><td>Intestine</td><td>7 or higher</td><td>Light to golden yellow or brownish green (bile); syrupy</td></tr>
+        <tr><td>Respiratory</td><td>Above 6</td><td>Clear</td></tr>
+      </table></div>
+      <p><b>Don't rely on listening</b> over the stomach while pushing air: you can hear air even if the tube is in the lung. Capnography (CO2 detection) means the tube is in the airway: remove it. No fluid? Turn the client side to side and try more air.</p>
+      <p>Extra risk of a misplaced tube: decreased LOC, weak cough or gag, recently removed breathing tube, agitation. Mark the tube where it leaves the nose and document the length.</p>
+    </div>
   </div>
 
   <div class="gsub">
@@ -824,12 +980,22 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <div><ul><li><b>Aspiration</b></li><li><b>Clogged tube</b>: crush medications thoroughly and flush</li><li>Nasal erosion or pressure injury</li><li>Diarrhea</li></ul></div>
       <div><ul><li>Nausea, vomiting, abdominal distension</li><li>Dislodgement</li><li>Infection at the gastrostomy site</li></ul></div>
     </div>
-    <div class="box note"><span class="tag">ATI extra · lighter review</span><p>Check residuals every 4–6 hours for tubes in the stomach. Use a 50–60 mL syringe on small-bore tubes. Hang only 4 hours of formula at a time; formula at room temperature. Flush 30 mL of water every 4 hours during continuous feeds. Diarrhea: ask about slowing or diluting the formula or adding fiber.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Check residuals every 4–6 hours for tubes in the stomach. Use a 50–60 mL syringe on small-bore tubes (smaller syringes can collapse them). Hang only 4 hours of formula at a time; formula at room temperature; wipe the can top with alcohol; label the bag and tubing. Flush with water before and after each intermittent feeding, every 4 hours during continuous feeds, and after medications and residual checks. The skills module allows 30–50 mL; the flagged steps above use 30 mL. Listen for bowel sounds first as a baseline (absent sounds alone don't stop a feeding).</p>
+      <div class="tbl"><table>
+        <tr><th>Formula</th><th>kcal/mL</th><th>For</th></tr>
+        <tr><td>Polymeric (whole nutrients)</td><td>1–2</td><td>Clients who can digest and absorb whole nutrients</td></tr>
+        <tr><td>Modular</td><td>3.8–4</td><td>One nutrient (protein, fat, glucose) added to supplement; not complete nutrition</td></tr>
+        <tr><td>Elemental (predigested)</td><td>1–3</td><td>A partly working GI tract</td></tr>
+        <tr><td>Specialty</td><td>1–2</td><td>Specific illnesses: liver failure, lung disease, diabetes</td></tr>
+      </table></div>
+      <p><b>Schedules:</b> intermittent (bolus, by syringe or pump), continuous (pump only), or <b>cyclic</b> (a set block each day, such as 2100 to 0900).</p>
+      <p><b>Most common complications:</b> displaced tube, aspiration, diarrhea. Diarrhea: ask about a slower rate, diluting or changing the formula, fiber, or lactose-free formula; keep the formula and tubing clean. <b>Skin:</b> protect the nose with a skin adhesive under the tape and shift the tube's position often. <b>Feelings:</b> tube feeding can bring isolation and body-image worries; offer privacy or company during feedings, listen, and teach the family.</p>
+    </div>
   </div>
 
   <div class="gsub">
     <h3>NG tubes: insertion, suction &amp; removal</h3>
-    <div class="box note"><span class="tag">ATI skills module · lighter review</span>
+    <div class="box note"><span class="tag">ATI only · skills module</span>
       <h4 style="margin-top:4px">Insertion</h4>
       <ul class="tight">
         <li>Check the order, nares and gag reflex; agree on a stop signal; suction at the bedside</li>
@@ -853,6 +1019,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
         <li>Client takes a <b>deep breath and holds it</b> (closes the airway)</li>
         <li>Pinch the tube and withdraw it steadily; never force it; then mouth care</li>
       </ul>
+      <p><b>Gastric lavage</b> (irrigating the stomach) uses a large-bore tube, mostly in the emergency department. It isn't routine for poisoning anymore. Never leave the client alone during it.</p>
     </div>
   </div>
 
@@ -862,6 +1029,8 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <ul class="tight"><li>Through a <b>CVAD</b> or a <b>peripheral vein</b>, depending on how concentrated the solution is</li><li><b>TPN (total parenteral nutrition):</b> highly concentrated; provides <b>all</b> daily needs</li><li><b>PPN (partial parenteral nutrition):</b> provides <b>part</b> of daily needs</li><li><b>Glucose abnormalities</b> are common with TPN: monitor blood glucose</li></ul>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>Parenteral nutrition should be <b>short-term</b>. Using the GI tract is preferred, because it keeps the gut working.</p></div>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>If the gut works, use it.</b> Mouth first, then a tube (enteral), and IV (parenteral) only when the gut can't be used.</p></div>
+    <div class="box note"><span class="tag">ATI only</span><p>Parenteral nutrition holds dextrose, amino acids (protein), lipids, electrolytes, vitamins and minerals, mixed for each client. High blood glucose is the common problem: check glucose often; insulin can be added to the bag or given under the skin. Labs also track electrolytes and kidney and liver function. Never give other IV medications through the parenteral nutrition line. Lipid tubing is changed every 12 hours and with each new container.</p></div>
+    <div class="box conn"><span class="tag">Connects to earlier units</span><ul><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Unit 3 positions</a>: semi-Fowler's (30–45°) for tube feedings, the same angle this week uses during feedings. Unit 3 lists Fowler's (45–60°) for NG insertion; the NG skills module uses high-Fowler's. Either way, the client sits up.</li><li><a href="../unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Unit 3 asepsis</a>: NG tubes are <b>medical</b> (clean) asepsis; parenteral nutrition through a central line is <b>surgical</b> asepsis, with CLABSI as the risk.</li><li><a href="../unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Unit 3 abdominal assessment</a>: listen to bowel sounds with the diaphragm, RLQ (right lower quadrant) first, before touching the abdomen. That's the baseline before a feeding.</li><li><a href="../unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Unit 3 tissue integrity</a>: a feeding tube is a medical device that can cause a pressure injury on the nose; check under the tape every shift. <a href="../unit-2-basic-human-needs/week4-study-guide.html#hygiene">Unit 2 oral care</a> matters even more when a client takes nothing by mouth.</li></ul></div>
   </div>
 
   <div class="gcheck">
