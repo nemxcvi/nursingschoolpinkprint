@@ -310,7 +310,7 @@ var Challenges = (function(){
     var missed = (groupMissed(c) || []).filter(function(id){ return qs[id]; });
     var top = missed.slice(0, limit).map(function(id){
       var q = qs[id];
-      return '<li><details><summary><span class="ch-qtext">' + esc(q.prompt) + '</span><span class="ch-missed">Missed by ' + m[id] + " of " + n + "</span></summary>" +
+      return '<li><details><summary><span class="ch-qtext">' + esc(q.prompt + (q.sentence ? " " + q.sentence.replace(/\{\d+\}/g, "_____") : "")) + '</span><span class="ch-missed">Missed by ' + m[id] + " of " + n + "</span></summary>" +
         rationaleHtml(q) + "</details></li>";
     }).join("");
     return '<section class="ms-card ch-fpart"><h2 class="ms-h2 ch-h2">Topics, weakest first</h2><ol class="ch-ftopics">' + rows + "</ol></section>" +

@@ -448,7 +448,7 @@ var MyStudy = (function(){
     var mine = optionTexts(q, lw.picked);
     var sure = lw.sure === true ? " · You were sure" : lw.sure === false ? " · You guessed" : "";
     return '<article class="ms-card ms-jcard"><div class="ms-jtop"><span class="ms-jwhere">' + siteUnit(q.unit).code + " · " + esc(t ? t.topic : q.topic) + '</span><span class="ms-jmeta">' + tags + "<span>" + esc(meta) + "</span></span></div>" +
-      '<h3 class="ms-jq">' + esc(q.prompt) + "</h3>" +
+      '<h3 class="ms-jq">' + esc(q.prompt + (q.sentence ? " " + q.sentence.replace(/\{\d+\}/g, "_____") : "")) + "</h3>" +
       '<div class="ms-jans">' + (kind === "journal" && mine.length ? '<div class="ms-jmine"><span class="tp-label">Your answer' + sure + "</span><span>" + esc(joinTexts(q, mine)) + "</span></div>" : "") +
       '<div class="ms-jright"><span class="tp-label">' + (q.type === "order" ? "Correct order" : "Correct answer") + "</span><span>" + esc(joinTexts(q, correctTexts(q))) + "</span></div></div>" +
       (rationale(q) ? '<p class="ms-jwhy">' + esc(rationale(q)) + "</p>" : "") +

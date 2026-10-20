@@ -160,7 +160,9 @@ function initPracticeQuiz(bank, catLabels, opts){
        multi (more than one correct answer), summary, explanation (older question-level text)
      and type is "dragdrop", "order", or else "sata"/"mc" decided by how many answers are correct.
      Ordered response ("order"): options are listed in the correct order; every one is
-     marked correct and q.correct keeps that order. */
+     marked correct and q.correct keeps that order.
+     Drop-down ("cloze"): q.sentence holds {1}, {2}... and each option has a blank number;
+     one correct option per blank, so it grades like select-all-that-apply. */
   function normalizeBank(bank){
     var missingRationale = [];
     bank.forEach(function(q, qi){
@@ -176,11 +178,11 @@ function initPracticeQuiz(bank, catLabels, opts){
         var id = o.id != null ? String(o.id) : (i < LETTERS.length ? LETTERS.charAt(i).toLowerCase() : "o" + i);
         var rationale = o.rationale ? String(o.rationale).replace(PREFIX_RE, "") : "";
         if (!rationale) gaps.push(id);
-        return {id: id, text: o.text, correct: ordered || o.correct === true || listed.indexOf(id) !== -1, rationale: rationale};
+        return {id: id, text: o.text, correct: ordered || o.correct === true || listed.indexOf(id) !== -1, rationale: rationale, blank: o.blank};
       });
       q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.id; });
       q.multi = q.correct.length > 1;
-      if (q.type !== "dragdrop" && !ordered) q.type = q.multi ? "sata" : "mc";
+      if (q.type !== "dragdrop" && q.type !== "cloze" && !ordered) q.type = q.multi ? "sata" : "mc";
       if (q.correct.length === 0) console.warn("[quiz] question " + q.id + " has no correct option: " + q.prompt);
       if (gaps.length) missingRationale.push({q: q, ids: gaps});
     });
@@ -257,10 +259,10 @@ function initPracticeQuiz(bank, catLabels, opts){
   }
 
   /* Every session mixes question types: drag-and-drop and select-all-that-apply each
-     get about 15% of the questions and ordered response about 10% (at least one of each
+     get about 15% of the questions, ordered response and drop-down about 10% each (at least one of each
      when the bank has any), and multiple choice fills the rest. If a bank is short on a type, its spare slots go to the
      others. Within each type, questions are still spread across categories. */
-  var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15, order: 0.1};
+  var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15, order: 0.1, cloze: 0.1};
   function mixedSample(source, count){
     count = Math.min(count, source.length);
     var byType = {};
@@ -467,13 +469,15 @@ function initPracticeQuiz(bank, catLabels, opts){
     document.getElementById("pq-progress").textContent = totalLabel;
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
     document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box"
-      : q.type === "order" ? "put in order · drag, or use the arrows" : q.multi ? "select all that apply" : "select one";
+      : q.type === "order" ? "put in order · drag, or use the arrows"
+      : q.type === "cloze" ? "drop-down · choose an option for each blank" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
     if (tracking) syncBookmark(q);
     if (useNotes) hideNote();
 
     if (q.type === "dragdrop"){ renderDragDrop(q); return; }
     if (q.type === "order"){ renderOrder(q); return; }
+    if (q.type === "cloze"){ renderCloze(q); return; }
 
     /* One correct answer: radio-style single select. More than one: checkboxes. */
     errEl.textContent = q.multi ? "Select at least one answer first" : "Select an answer first";
@@ -915,12 +919,84 @@ function initPracticeQuiz(bank, catLabels, opts){
     document.getElementById("pq-hint").innerHTML = "<span>1&ndash;" + currentDisplayOptions.length + " &middot; pick &middot; &uarr;&darr; move</span>" + checkHint();
   }
 
+  /* ---------- Drop-down (cloze) ----------
+     The sentence with one menu per blank, each holding that blank's options in a shuffled
+     order. Check answer waits until every blank has a choice. After checking, each menu is
+     marked right or wrong and every option is listed under its blank with its rationale. */
+  function clozeSelects(){ return Array.prototype.slice.call(optsEl.querySelectorAll(".pq-cloze-sel")); }
+  function clozeIds(){ return clozeSelects().map(function(sel){ return sel.value; }).filter(Boolean); }
+
+  function renderCloze(q){
+    optsEl.innerHTML = "";
+    optsEl.removeAttribute("role");
+    optsEl.removeAttribute("aria-label");
+    var wrap = document.createElement("div");
+    wrap.className = "pq-cloze";
+    var para = document.createElement("p");
+    para.className = "pq-cloze-text";
+    var parts = String(q.sentence || "").split(/\{(\d+)\}/);
+    var blanks = [];
+    parts.forEach(function(part, i){
+      if (i % 2 === 0){ if (part) para.appendChild(document.createTextNode(part)); return; }
+      var n = Number(part);
+      blanks.push(n);
+      var sel = document.createElement("select");
+      sel.className = "pq-cloze-sel";
+      sel.setAttribute("data-blank", n);
+      sel.setAttribute("aria-label", "Blank " + n);
+      var ph = document.createElement("option");
+      ph.value = ""; ph.textContent = "Select\u2026";
+      sel.appendChild(ph);
+      currentDisplayOptions.filter(function(o){ return Number(o.blank) === n; }).forEach(function(o){
+        var opt = document.createElement("option");
+        opt.value = o.id; opt.textContent = o.text;
+        sel.appendChild(opt);
+      });
+      sel.addEventListener("change", function(){
+        errEl.style.display = "none";
+        document.getElementById("pq-submit").disabled = clozeIds().length < clozeSelects().length;
+      });
+      para.appendChild(sel);
+    });
+    wrap.appendChild(para);
+
+    /* Result rows, shown after checking */
+    var results = document.createElement("div");
+    results.className = "pq-cloze-results hidden";
+    blanks.forEach(function(n){
+      var head = document.createElement("p");
+      head.className = "pq-cloze-blank";
+      head.textContent = "Blank " + n;
+      results.appendChild(head);
+      currentDisplayOptions.filter(function(o){ return Number(o.blank) === n; }).forEach(function(o, i){
+        results.appendChild(buildOption(o, i, "div"));
+      });
+    });
+    wrap.appendChild(results);
+    optsEl.appendChild(wrap);
+
+    errEl.textContent = "Choose an option for every blank";
+    document.getElementById("pq-submit").disabled = true;
+    document.getElementById("pq-hint").innerHTML = "<span>Tab &middot; next menu</span>" + checkHint();
+  }
+
+  function clozeShowResults(graded){
+    clozeSelects().forEach(function(sel){
+      sel.disabled = true;
+      var st = graded.states[sel.value];
+      sel.classList.add(st && st.state === "correct" ? "is-right" : "is-wrong");
+    });
+    var res = optsEl.querySelector(".pq-cloze-results");
+    if (res) res.classList.remove("hidden");
+  }
+
   /* ---------- Check answer (every type) ---------- */
   document.getElementById("pq-submit").addEventListener("click", function(){
     if (answered) return;
     var q = currentQuestion();
     if (q.type === "dragdrop") userSelection = ddAnswerIds();
     if (q.type === "order") userSelection = ordIds();
+    if (q.type === "cloze") userSelection = clozeIds();
     if (userSelection.length === 0){
       errEl.style.display = "block";
       return;
@@ -967,6 +1043,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     });
     if (q.type === "dragdrop") ddBoxes().forEach(function(b){ b.classList.add("is-done"); });
     if (q.type === "order"){ ordList().classList.add("is-done"); ordSync(); }
+    if (q.type === "cloze") clozeShowResults(graded);
 
     /* Heading, then the optional summary, then any older question-level explanation */
     fbEl.className = "pq-feedback " + (isCorrect ? "is-correct" : "is-wrong");
@@ -996,6 +1073,9 @@ function initPracticeQuiz(bank, catLabels, opts){
     nextBtn.classList.remove("hidden");
     nextBtn.focus({preventScroll:true});
   });
+
+  /* Drop-down questions keep their sentence in review lists, with the blanks as lines */
+  function fullPrompt(q){ return q.prompt + (q.sentence ? " " + q.sentence.replace(/\{\d+\}/g, "_____") : ""); }
 
   /* Ordered response reads as numbered steps: "1. First → 2. Second" */
   function optText(q, ids){
@@ -1081,7 +1161,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       item.className = "pq-review-item";
       var promptLine = document.createElement("div");
       promptLine.style.fontWeight = "600";
-      promptLine.textContent = (r.correct ? "\u2713 " : "\u2717 ") + r.question.prompt;
+      promptLine.textContent = (r.correct ? "\u2713 " : "\u2717 ") + fullPrompt(r.question);
       var tag = confidenceTag(r.correct, r.sure);
       if (tag){
         var row = document.createElement("div");
@@ -1117,7 +1197,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       var topRow = document.createElement("div");
       topRow.style.display = "flex"; topRow.style.justifyContent = "space-between"; topRow.style.gap = "10px";
       var promptEl = document.createElement("div");
-      promptEl.style.fontWeight = "600"; promptEl.textContent = q.prompt;
+      promptEl.style.fontWeight = "600"; promptEl.textContent = fullPrompt(q);
       var triesEl = document.createElement("div");
       triesEl.style.whiteSpace = "nowrap"; triesEl.style.color = col.text;
       triesEl.textContent = isResolved ? (tries + (tries === 1 ? " try" : " tries")) : "not yet correct";
@@ -1554,6 +1634,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     e.preventDefault();
     /* Ordered response: the number is the spot, not the option's starting letter */
     if (q.type === "order"){ if (/[1-9]/.test(k)) ordPick(ordItems()[idx]); return; }
+    if (q.type === "cloze") return;
     var el = optsEl.querySelector('.pq-option[data-opt="' + currentDisplayOptions[idx].id + '"]');
     if (!el) return;
     if (q.type === "dragdrop") ddMove(el, ddOtherBox(el));

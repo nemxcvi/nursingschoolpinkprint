@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Sources &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Food Sources &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/food-sources-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Food Sources &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=118">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=13"></script>
+<script src="../js/tracking.js?v=14"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Food Sources</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  electrolytes: {label:"Electrolyte Foods", hue:"orange"},
+  energy: {label:"Carbs, Protein & Fat", hue:"green"},
+  vitamins: {label:"Vitamin & Mineral Foods", hue:"yellow"},
+  fiber: {label:"Fiber & Glycemic Index", hue:"aqua"},
+  diets: {label:"Foods by Diet", hue:"blue"},
+  special: {label:"Special Situations", hue:"red"}
+};
+var CARDS = [
+[1, "electrolytes", "Foods high in potassium", "Baked potato (highest vegetable), prune juice, plain nonfat yogurt, white beans, sweet potato, banana (highest fruit), spinach, salmon, avocado, oranges, cantaloupe, dark leafy greens"],
+[2, "electrolytes", "Highest-potassium food on the ATI chart", "A medium baked potato (about 900 mg)"],
+[3, "electrolytes", "Foods high in sodium", "Roasted ham, frozen shrimp, frozen pizza, canned soup, vegetable juice, cottage cheese, instant pudding, soy sauce, processed and lunch meats, hot dogs, bacon, sausage"],
+[4, "electrolytes", "Lower-sodium swaps", "Fresh shrimp instead of frozen, low-sodium vegetable juice, regular (not instant) pudding, \"no salt added\" canned foods"],
+[5, "electrolytes", "Foods high in calcium", "Cheese, plain nonfat yogurt, almond milk, calcium-fortified orange juice, soymilk, low-fat or whole milk, broccoli, leafy greens, legumes, fortified cereals, almonds"],
+[6, "electrolytes", "Foods high in magnesium", "Cooked spinach, pumpkin seeds, black beans, soybeans, cashews and other nuts, dark chocolate, avocado, tofu, salmon, banana, dark green vegetables"],
+[7, "electrolytes", "Salt substitutes", "Usually contain potassium chloride: avoid with hyperkalemia or kidney disease"],
+[8, "energy", "Healthy carbohydrate sources", "Whole-grain bread, brown rice, baked potatoes and other plant foods (vegetables, fruits, legumes)"],
+[9, "energy", "Complete protein sources", "Beef, poultry, fish, eggs, whole milk"],
+[10, "energy", "Other protein sources", "Beans, soy, nuts"],
+[11, "energy", "Healthy fat sources", "Olive oil, avocado, salmon, nuts; omega-3s in fish oil, salmon, walnuts and flaxseed"],
+[12, "energy", "Saturated fat sources", "Full-fat dairy (cheese, butter, whole milk) and most animal fats"],
+[13, "energy", "Trans fat sources", "Processed foods with partially hydrogenated oils"],
+[14, "energy", "Empty-calorie foods", "Processed foods, cookies, chips, sweetened drinks: high calories, few nutrients"],
+[15, "energy", "Low-calorie-dense foods", "Fruits and vegetables: lots of volume for few calories"],
+[16, "vitamins", "Vitamin C foods", "Citrus fruits, strawberries and berries, tomatoes, Brussels sprouts, spinach, potatoes"],
+[17, "vitamins", "Vitamin K foods", "Spinach, kale, parsley, liver, butter (keep intake consistent on warfarin)"],
+[18, "vitamins", "Vitamin D sources", "Fish oil, milk, eggs, dairy products, and sunlight (a nonfood source)"],
+[19, "vitamins", "Vitamin A foods", "Fish liver oil, beef liver, dairy products, green leafy vegetables, sweet potatoes"],
+[20, "vitamins", "Vitamin E foods", "Almonds, wheat germ, sunflower seeds, spinach"],
+[21, "vitamins", "Folate (B9) foods", "Leafy green vegetables, orange juice, eggs, beans, avocado"],
+[22, "vitamins", "Vitamin B12 foods", "Clams, beef, salmon, milk, yogurt"],
+[23, "vitamins", "Iron foods", "Organ meats, red meat, leafy green vegetables, iron-fortified foods"],
+[24, "vitamins", "Zinc foods", "Meats, fish, whole grains, vegetables"],
+[25, "vitamins", "Iodine sources", "Seafood, iodized salt, dairy products"],
+[26, "vitamins", "Phosphorus foods", "Eggs, fish, poultry, milk"],
+[27, "vitamins", "Biotin foods (hair health)", "Egg yolks, whole grains, fish, seeds, nuts, sweet potatoes, broccoli, cauliflower"],
+[28, "fiber", "High-fiber foods", "Whole grains (bran, barley, oatmeal, brown rice, quinoa), legumes (lentils, black beans, split peas), raw and dried fruits (raspberries, pears and apples with skin, figs), vegetables (broccoli, Brussels sprouts), nuts, popcorn"],
+[29, "fiber", "Low-fiber (low-residue) foods", "Dairy (custard, yogurt), eggs, ripe bananas: easy to digest"],
+[30, "fiber", "Not allowed on a low-residue diet", "Whole grains (barley, oats), legumes (lentils, black beans), raw or gas-forming vegetables (broccoli, cabbage)"],
+[31, "fiber", "High-glycemic foods", "Potatoes, white bread, processed snack foods: spike blood glucose quickly"],
+[32, "fiber", "Low-glycemic foods", "Legumes, vegetables, fruits, whole grains: raise blood glucose slowly"],
+[33, "diets", "Clear liquid diet foods", "Water, tea, coffee, broth, carbonated drinks, popsicles, gelatin, clear fruit juice without pulp, sports drinks"],
+[34, "diets", "Full liquid diet adds", "Milk, soups (strained), pudding, yogurt, custard, ice cream and plain frozen desserts, milkshakes, vegetable juice"],
+[35, "diets", "Soft diet foods", "Well-cooked vegetables, low-fiber cereal, tender meat or fish, pancakes, creamy peanut butter, cooked fruit without skin or seeds, pulp-free juice"],
+[36, "diets", "Not on a soft diet", "Most raw fruits and vegetables, seeds, nuts, dried fruit"],
+[37, "diets", "Pureed diet foods", "Pudding, mashed potatoes, yogurt, pulp-free juice, pureed meats, broth, ice cream"],
+[38, "diets", "Renal diet: high-potassium foods to limit", "Dried beans, prune juice, tomatoes and tomato sauce or juice, oranges and orange juice, spinach, collards, kale, Swiss chard"],
+[39, "diets", "Renal diet: lower-potassium choices", "White bread, strawberries, eggs"],
+[40, "diets", "Potatoes on a renal diet", "Soak in water and drain before cooking to lower the potassium"],
+[41, "diets", "Renal diet: phosphorus foods to limit", "Dairy (1 cup milk a day), dried beans, mushrooms, broccoli, Brussels sprouts, bran, granola, oatmeal, whole-grain bread; avoid beer and colas or root beer (clear sodas are OK)"],
+[42, "diets", "Heart-healthy food choices", "Fruits, vegetables, whole grains, lean meats, fish, skim milk; no-salt-added canned foods"],
+[43, "special", "Fast fixes for hypoglycemia (15 g carbohydrate)", "Glucose tablets or gel, 4 oz regular soda or juice, 1 tablespoon honey, or hard candy; recheck in 15 minutes"],
+[44, "special", "Red dye before a colonoscopy", "Avoid red gelatin and red popsicles: red can look like blood"],
+[45, "special", "Foods that help appetite after nausea", "Small, frequent, non-greasy meals; cool water or ice"],
+[46, "special", "Liquids that can be thickened for dysphagia", "Milk, tea, water, coffee, soup, juice, nutritional supplements"],
+[47, "special", "Anti-inflammatory whole foods", "Single-ingredient foods: fruit, brown or wild rice, chicken or turkey breast, eggs, fish, legumes, nuts and seeds, oats"],
+[48, "special", "Brain-healthy foods", "Omega-3s (flaxseed, walnuts, fish oil, wild salmon), berries, whole grains"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

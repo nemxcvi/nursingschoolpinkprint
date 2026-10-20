@@ -52,12 +52,19 @@ var SITE = {
     {title:"Safety practice quiz", type:"quiz", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/safety-quiz.html", count:40},
     {title:"Week 7 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-03", href:"unit-3-skin-wounds-diagnostics/week7-study-guide.html", meta:"Physical assessment & safety · mnemonics & quick checks"},
     {title:"Fluid Balance & Imbalances", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/fluid-balance-flashcards.html", count:44},
+    {title:"Fluid Balance & Imbalances practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/fluid-balance-quiz.html", count:51},
     {title:"Electrolytes", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/electrolytes-flashcards.html", count:49},
+    {title:"Electrolytes practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/electrolytes-quiz.html", count:56},
     {title:"IV Therapy & Blood Transfusions", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/iv-therapy-flashcards.html", count:50},
+    {title:"IV Therapy & Blood Transfusions practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/iv-therapy-quiz.html", count:44},
     {title:"Acid-Base Balance", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/acid-base-flashcards.html", count:42},
+    {title:"Acid-Base Balance practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/acid-base-quiz.html", count:33},
     {title:"Nutrition", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/nutrition-flashcards.html", count:86},
+    {title:"Nutrition practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/nutrition-quiz.html", count:87},
     {title:"Enteral & Parenteral Nutrition", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/enteral-parenteral-flashcards.html", count:53},
-    {title:"Week 8 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/week8-study-guide.html", meta:"Fluids, electrolytes, IV therapy, acid-base & nutrition · ABG cheat sheet & quick checks"}
+    {title:"Enteral & Parenteral Nutrition practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/enteral-parenteral-quiz.html", count:52},
+    {title:"Food Sources", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/food-sources-flashcards.html", count:48},
+    {title:"Week 8 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/week8-study-guide.html", meta:"Fluids, electrolytes, IV therapy, acid-base, nutrition & foods · ABG cheat sheet & quick checks"}
   ],
   mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html", meta:"Random from every quiz on the site"},
 
