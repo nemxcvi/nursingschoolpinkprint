@@ -429,6 +429,10 @@ var MyStudy = (function(){
   function letterIndex(id){ return "abcdefghijklmnopqrstuvwxyz".indexOf(String(id)); }
   function optionTexts(q, ids){ return (ids || []).map(function(id){ var o = q.options[letterIndex(id)]; return o ? o.text : ""; }).filter(Boolean); }
   function correctTexts(q){ return q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.text; }); }
+  /* Ordered response shows numbered steps; other types a plain list */
+  function joinTexts(q, texts){
+    return q.type === "order" ? texts.map(function(t, i){ return (i + 1) + ". " + t; }).join(" \u2192 ") : texts.join("; ");
+  }
   function rationale(q){
     if (q.explanation) return q.explanation;
     return q.options.filter(function(o){ return o.correct && o.rationale; }).map(function(o){ return o.rationale.replace(PREFIX_RE, ""); }).join(" ");
@@ -445,8 +449,8 @@ var MyStudy = (function(){
     var sure = lw.sure === true ? " · You were sure" : lw.sure === false ? " · You guessed" : "";
     return '<article class="ms-card ms-jcard"><div class="ms-jtop"><span class="ms-jwhere">' + siteUnit(q.unit).code + " · " + esc(t ? t.topic : q.topic) + '</span><span class="ms-jmeta">' + tags + "<span>" + esc(meta) + "</span></span></div>" +
       '<h3 class="ms-jq">' + esc(q.prompt) + "</h3>" +
-      '<div class="ms-jans">' + (kind === "journal" && mine.length ? '<div class="ms-jmine"><span class="tp-label">Your answer' + sure + "</span><span>" + esc(mine.join("; ")) + "</span></div>" : "") +
-      '<div class="ms-jright"><span class="tp-label">Correct answer</span><span>' + esc(correctTexts(q).join("; ")) + "</span></div></div>" +
+      '<div class="ms-jans">' + (kind === "journal" && mine.length ? '<div class="ms-jmine"><span class="tp-label">Your answer' + sure + "</span><span>" + esc(joinTexts(q, mine)) + "</span></div>" : "") +
+      '<div class="ms-jright"><span class="tp-label">' + (q.type === "order" ? "Correct order" : "Correct answer") + "</span><span>" + esc(joinTexts(q, correctTexts(q))) + "</span></div></div>" +
       (rationale(q) ? '<p class="ms-jwhy">' + esc(rationale(q)) + "</p>" : "") +
       (r.note && T.feature("notes") ? '<div class="ms-jnote"><span class="tp-label">My note</span><span>' + esc(r.note) + "</span></div>" : "") + "</article>";
   }

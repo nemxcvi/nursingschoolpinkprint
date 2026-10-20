@@ -383,6 +383,18 @@ h2{font-size:20px;}
 .pq-dd-item.is-held{border-color:var(--label);box-shadow:0 4px 12px rgba(0,0,0,.14);}
 .pq-dd-item:disabled{cursor:default;}
 .pq-dd-ghost{position:fixed;left:0;top:0;z-index:1000;pointer-events:none;cursor:grabbing;border-color:var(--label);background:var(--page);background-image:linear-gradient(var(--pill),var(--pill));box-shadow:0 8px 20px rgba(0,0,0,.18);}
+/* Ordered response: one list; the badge shows each option's spot; arrows on the right */
+.pq-ord{display:grid;gap:8px;}
+.pq-ord-item{touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;cursor:grab;min-height:52px;padding:8px 8px 8px 12px;gap:12px;}
+.pq-ord-item .pq-opt-text{font-size:15px;}
+.pq-ord-item.is-dragging{position:relative;z-index:2;cursor:grabbing;border-color:var(--label);background:var(--pill);box-shadow:0 8px 20px rgba(0,0,0,.18);}
+.pq-ord-item.is-held{border-color:var(--label);box-shadow:0 4px 12px rgba(0,0,0,.14);}
+.pq-ord-btns{flex-shrink:0;display:flex;flex-direction:column;gap:4px;margin-left:auto;}
+.pq-ord-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:30px;padding:0;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--label);font-size:11px;line-height:1;cursor:pointer;}
+.pq-ord-btn:hover:not(:disabled){background:var(--pill);}
+.pq-ord-btn:disabled{opacity:.35;cursor:default;}
+.pq-ord.is-done .pq-ord-item{cursor:default;}
+.pq-ord.is-done .pq-ord-btns{display:none;}
 /* Result states after checking (every question type) */
 .pq-option.is-graded{align-items:flex-start;}
 .pq-option.is-missed{background:var(--missed-bg);border-color:var(--missed-border);color:var(--missed-text);}

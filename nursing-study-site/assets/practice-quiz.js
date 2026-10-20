@@ -158,7 +158,9 @@ function initPracticeQuiz(bank, catLabels, opts){
      optional summary). After this, every question has:
        id, prompt, options [{id, text, correct, rationale}], correct [ids],
        multi (more than one correct answer), summary, explanation (older question-level text)
-     and type is "dragdrop", or else "sata"/"mc" decided by how many answers are correct. */
+     and type is "dragdrop", "order", or else "sata"/"mc" decided by how many answers are correct.
+     Ordered response ("order"): options are listed in the correct order; every one is
+     marked correct and q.correct keeps that order. */
   function normalizeBank(bank){
     var missingRationale = [];
     bank.forEach(function(q, qi){
@@ -169,15 +171,16 @@ function initPracticeQuiz(bank, catLabels, opts){
       q.summary = q.summary ? String(q.summary) : "";
       var listed = Array.isArray(q.correct) ? q.correct.map(String) : [];
       var gaps = [];
+      var ordered = q.type === "order";
       q.options = (q.options || []).map(function(o, i){
         var id = o.id != null ? String(o.id) : (i < LETTERS.length ? LETTERS.charAt(i).toLowerCase() : "o" + i);
         var rationale = o.rationale ? String(o.rationale).replace(PREFIX_RE, "") : "";
         if (!rationale) gaps.push(id);
-        return {id: id, text: o.text, correct: o.correct === true || listed.indexOf(id) !== -1, rationale: rationale};
+        return {id: id, text: o.text, correct: ordered || o.correct === true || listed.indexOf(id) !== -1, rationale: rationale};
       });
       q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.id; });
       q.multi = q.correct.length > 1;
-      if (q.type !== "dragdrop") q.type = q.multi ? "sata" : "mc";
+      if (q.type !== "dragdrop" && !ordered) q.type = q.multi ? "sata" : "mc";
       if (q.correct.length === 0) console.warn("[quiz] question " + q.id + " has no correct option: " + q.prompt);
       if (gaps.length) missingRationale.push({q: q, ids: gaps});
     });
@@ -195,6 +198,16 @@ function initPracticeQuiz(bank, catLabels, opts){
      Each option also gets its result state and the prefix shown before its rationale. */
   function gradeQuestion(q, selected){
     var states = {}, allRight = true;
+    /* Ordered response: right only when every option is in its exact spot */
+    if (q.type === "order"){
+      q.correct.forEach(function(id, i){
+        var at = selected.indexOf(id), ok = at === i;
+        if (!ok) allRight = false;
+        states[id] = {state: ok ? "correct" : "wrong", chosen: true,
+          prefix: ok ? "Step " + (i + 1) + "." : "Step " + (i + 1) + (at === -1 ? "." : " (you had " + (at + 1) + ").")};
+      });
+      return {correct: allRight, states: states};
+    }
     q.options.forEach(function(o){
       var chosen = selected.indexOf(o.id) !== -1;
       var state = o.correct ? (chosen ? "correct" : "missed") : (chosen ? "wrong" : "neutral");
@@ -244,10 +257,10 @@ function initPracticeQuiz(bank, catLabels, opts){
   }
 
   /* Every session mixes question types: drag-and-drop and select-all-that-apply each
-     get about 15% of the questions (at least one when the bank has any), and multiple
-     choice fills the rest. If a bank is short on a type, its spare slots go to the
+     get about 15% of the questions and ordered response about 10% (at least one of each
+     when the bank has any), and multiple choice fills the rest. If a bank is short on a type, its spare slots go to the
      others. Within each type, questions are still spread across categories. */
-  var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15};
+  var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15, order: 0.1};
   function mixedSample(source, count){
     count = Math.min(count, source.length);
     var byType = {};
@@ -453,12 +466,14 @@ function initPracticeQuiz(bank, catLabels, opts){
     }
     document.getElementById("pq-progress").textContent = totalLabel;
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
-    document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box" : q.multi ? "select all that apply" : "select one";
+    document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box"
+      : q.type === "order" ? "put in order · drag, or use the arrows" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
     if (tracking) syncBookmark(q);
     if (useNotes) hideNote();
 
     if (q.type === "dragdrop"){ renderDragDrop(q); return; }
+    if (q.type === "order"){ renderOrder(q); return; }
 
     /* One correct answer: radio-style single select. More than one: checkboxes. */
     errEl.textContent = q.multi ? "Select at least one answer first" : "Select an answer first";
@@ -724,17 +739,194 @@ function initPracticeQuiz(bank, catLabels, opts){
     document.getElementById("pq-hint").innerHTML = "<span>A&ndash;" + last + " &middot; move between boxes</span>" + checkHint();
   }
 
+  /* ---------- Ordered response ----------
+     One list, shuffled; the badge on each option shows its current spot. Options move
+     by pointer drag (touch waits for the same short hold as drag and drop, so swiping
+     still scrolls), by tapping one and then the option whose spot it should take, by
+     the up/down arrows on each option, or with the keyboard: a number picks the option
+     in that spot, then the arrow keys move it. Graded all-or-nothing. */
+  var ordPicked = null, ordDrag = null, ordDragEnd = {item: null, at: 0};
+
+  function ordList(){ return optsEl.querySelector(".pq-ord"); }
+  function ordItems(){ var l = ordList(); return l ? Array.prototype.slice.call(l.children) : []; }
+  function ordIds(){ return ordItems().map(function(el){ return el.getAttribute("data-opt"); }); }
+
+  function ordSync(){
+    var items = ordItems();
+    items.forEach(function(el, i){
+      if (!answered) el.querySelector(".pq-letter").textContent = i + 1;
+      el.querySelector(".pq-ord-up").disabled = answered || i === 0;
+      el.querySelector(".pq-ord-down").disabled = answered || i === items.length - 1;
+    });
+  }
+
+  function ordPick(item){
+    if (answered) return;
+    if (ordPicked === item){ ordUnpick(); return; }
+    ordUnpick();
+    ordPicked = item;
+    item.classList.add("is-selected");
+    item.setAttribute("aria-selected", "true");
+  }
+  function ordUnpick(){
+    if (ordPicked){
+      ordPicked.classList.remove("is-selected");
+      ordPicked.setAttribute("aria-selected", "false");
+    }
+    ordPicked = null;
+  }
+
+  /* Move an option to spot `to` (0-based) */
+  function ordMoveTo(item, to){
+    if (answered) return;
+    var items = ordItems(), from = items.indexOf(item);
+    to = Math.max(0, Math.min(items.length - 1, to));
+    if (from === -1 || from === to) return;
+    var list = ordList();
+    list.removeChild(item);
+    list.insertBefore(item, list.children[to] || null);
+    ordSync();
+  }
+
+  function ordCancelDrag(){
+    if (!ordDrag) return;
+    if (ordDrag.hold) clearTimeout(ordDrag.hold);
+    if (ordDrag.raf) cancelAnimationFrame(ordDrag.raf);
+    ordDrag.item.classList.remove("is-dragging", "is-held");
+    ordDrag = null;
+  }
+
+  /* While dragging, the option takes the spot of whichever option the pointer is over */
+  function ordFollow(){
+    if (!ordDrag || !ordDrag.active) return;
+    var item = ordDrag.item, y = ordDrag.y, to = -1;
+    ordItems().forEach(function(el, i){
+      if (el === item) return;
+      var r = el.getBoundingClientRect();
+      if (y >= r.top && y <= r.bottom) to = i;
+    });
+    if (to !== -1) ordMoveTo(item, to);
+  }
+
+  function ordAutoScroll(){
+    if (!ordDrag || !ordDrag.active) return;
+    var edge = 70, y = ordDrag.y, h = window.innerHeight, dy = 0;
+    if (y < edge) dy = -Math.ceil((edge - y) / 5);
+    else if (y > h - edge) dy = Math.ceil((y - (h - edge)) / 5);
+    if (dy){ window.scrollBy(0, dy); ordFollow(); }
+    ordDrag.raf = requestAnimationFrame(ordAutoScroll);
+  }
+
+  function ordPointerDown(e){
+    if (answered || !e.isPrimary || (e.pointerType === "mouse" && e.button !== 0)) return;
+    if (e.target.closest(".pq-ord-btn")) return;
+    var item = e.currentTarget;
+    ordCancelDrag();
+    var touch = e.pointerType === "touch";
+    var drag = ordDrag = {item: item, id: e.pointerId, sx: e.clientX, sy: e.clientY, y: e.clientY, active: false, ready: !touch};
+    if (touch) drag.hold = setTimeout(function(){
+      if (ordDrag !== drag) return;
+      drag.ready = true;
+      item.classList.add("is-held");
+    }, DD_HOLD);
+    try { item.setPointerCapture(e.pointerId); } catch (err) {}
+  }
+
+  function ordPointerMove(e){
+    if (!ordDrag || e.pointerId !== ordDrag.id) return;
+    ordDrag.y = e.clientY;
+    if (!ordDrag.active){
+      if (Math.abs(e.clientX - ordDrag.sx) + Math.abs(e.clientY - ordDrag.sy) < 8) return;
+      /* Moved before the hold finished: it's a scroll, not a drag */
+      if (!ordDrag.ready){ ordCancelDrag(); return; }
+      ordUnpick();
+      ordDrag.active = true;
+      ordDrag.item.classList.add("is-dragging");
+      ordDrag.raf = requestAnimationFrame(ordAutoScroll);
+    }
+    e.preventDefault();
+    ordFollow();
+  }
+
+  function ordPointerUp(e){
+    if (!ordDrag || e.pointerId !== ordDrag.id) return;
+    if (ordDrag.active) ordDragEnd = {item: ordDrag.item, at: Date.now()};
+    ordCancelDrag();
+  }
+
+  function renderOrder(q){
+    ordPicked = null; ordCancelDrag();
+    /* Never start in the right order */
+    if (currentDisplayOptions.length > 1){
+      while (currentDisplayOptions.map(function(o){ return o.id; }).join() === q.correct.join()) currentDisplayOptions = shuffle(q.options);
+    }
+    optsEl.innerHTML = "";
+    optsEl.removeAttribute("role");
+    optsEl.removeAttribute("aria-label");
+    var list = document.createElement("div");
+    list.className = "pq-ord";
+    list.setAttribute("role", "listbox");
+    list.setAttribute("aria-label", "Put these in order, first at the top");
+    currentDisplayOptions.forEach(function(opt, i){
+      var item = buildOption(opt, i, "div");
+      item.classList.add("pq-ord-item");
+      item.setAttribute("role", "option");
+      item.setAttribute("aria-selected", "false");
+      var btns = document.createElement("span");
+      btns.className = "pq-ord-btns";
+      [["pq-ord-up", "Move up", "▲", -1], ["pq-ord-down", "Move down", "▼", 1]].forEach(function(b){
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pq-ord-btn " + b[0];
+        btn.setAttribute("aria-label", b[1] + ": " + opt.text);
+        btn.textContent = b[2];
+        btn.addEventListener("click", function(e){
+          e.stopPropagation();
+          ordUnpick();
+          ordMoveTo(item, ordItems().indexOf(item) + b[3]);
+          btn.focus();
+          if (btn.disabled){ var other = item.querySelector(b[3] < 0 ? ".pq-ord-down" : ".pq-ord-up"); if (other) other.focus(); }
+        });
+        btns.appendChild(btn);
+      });
+      item.appendChild(btns);
+      item.addEventListener("pointerdown", ordPointerDown);
+      item.addEventListener("pointermove", ordPointerMove);
+      item.addEventListener("pointerup", ordPointerUp);
+      item.addEventListener("pointercancel", ordPointerUp);
+      item.addEventListener("touchmove", function(e){
+        if (ordDrag && ordDrag.item === item && ordDrag.ready) e.preventDefault();
+      }, {passive: false});
+      item.addEventListener("contextmenu", function(e){ if (ordDrag) e.preventDefault(); });
+      item.addEventListener("click", function(e){
+        if (answered || e.target.closest(".pq-ord-btn")) return;
+        /* A finished drag can fire a click on the item; don't treat it as a tap */
+        if (ordDragEnd.item === item && Date.now() - ordDragEnd.at < 400) return;
+        /* With an option picked, tapping another one moves the picked one into its spot */
+        if (ordPicked && ordPicked !== item){ var p = ordPicked; ordUnpick(); ordMoveTo(p, ordItems().indexOf(item)); return; }
+        ordPick(item);
+      });
+      list.appendChild(item);
+    });
+    optsEl.appendChild(list);
+    ordSync();
+
+    document.getElementById("pq-submit").disabled = false;
+    document.getElementById("pq-hint").innerHTML = "<span>1&ndash;" + currentDisplayOptions.length + " &middot; pick &middot; &uarr;&darr; move</span>" + checkHint();
+  }
+
   /* ---------- Check answer (every type) ---------- */
   document.getElementById("pq-submit").addEventListener("click", function(){
     if (answered) return;
     var q = currentQuestion();
     if (q.type === "dragdrop") userSelection = ddAnswerIds();
+    if (q.type === "order") userSelection = ordIds();
     if (userSelection.length === 0){
       errEl.style.display = "block";
       return;
     }
     answered = true;
-    ddCancelDrag(); ddUnpick();
+    ddCancelDrag(); ddUnpick(); ordCancelDrag(); ordUnpick();
     var graded = gradeQuestion(q, userSelection);
     var isCorrect = graded.correct;
     /* "Check · I'm sure" / "Check · I guessed" (tracking on); Enter counts as sure */
@@ -774,6 +966,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       showOptionResult(el, opt, graded.states[id]);
     });
     if (q.type === "dragdrop") ddBoxes().forEach(function(b){ b.classList.add("is-done"); });
+    if (q.type === "order"){ ordList().classList.add("is-done"); ordSync(); }
 
     /* Heading, then the optional summary, then any older question-level explanation */
     fbEl.className = "pq-feedback " + (isCorrect ? "is-correct" : "is-wrong");
@@ -788,7 +981,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       head.appendChild(sureTag);
     }
     fbEl.appendChild(head);
-    [q.summary, q.explanation].forEach(function(t){
+    [isCorrect || q.type !== "order" ? "" : "Correct order: " + optText(q, q.correct), q.summary, q.explanation].forEach(function(t){
       if (!t) return;
       var p = document.createElement("p");
       p.className = "pq-fb-text";
@@ -804,11 +997,13 @@ function initPracticeQuiz(bank, catLabels, opts){
     nextBtn.focus({preventScroll:true});
   });
 
+  /* Ordered response reads as numbered steps: "1. First → 2. Second" */
   function optText(q, ids){
-    return ids.map(function(id){
+    var order = q.type === "order";
+    return ids.map(function(id, i){
       var opt = q.options.filter(function(o){ return o.id === id; })[0];
-      return opt ? opt.text : id;
-    }).join(", ");
+      return (order ? (i + 1) + ". " : "") + (opt ? opt.text : id);
+    }).join(order ? " \u2192 " : ", ");
   }
 
   /* Review screen: summary or older explanation, then the rationale for every option
@@ -1346,12 +1541,19 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (answered) return;
     var q = currentQuestion();
     if (!q) return;
-    if (e.key === "Escape"){ ddUnpick(); return; }
+    if (e.key === "Escape"){ ddUnpick(); ordUnpick(); return; }
+    if (q.type === "order" && ordPicked && (e.key === "ArrowUp" || e.key === "ArrowDown")){
+      e.preventDefault();
+      ordMoveTo(ordPicked, ordItems().indexOf(ordPicked) + (e.key === "ArrowUp" ? -1 : 1));
+      return;
+    }
     var k = e.key.length === 1 ? e.key.toUpperCase() : "";
     var idx = k ? LETTERS.indexOf(k) : -1;
     if (idx === -1 && k >= "1" && k <= "9") idx = Number(k) - 1;
     if (idx === -1 || idx >= currentDisplayOptions.length) return;
     e.preventDefault();
+    /* Ordered response: the number is the spot, not the option's starting letter */
+    if (q.type === "order"){ if (/[1-9]/.test(k)) ordPick(ordItems()[idx]); return; }
     var el = optsEl.querySelector('.pq-option[data-opt="' + currentDisplayOptions[idx].id + '"]');
     if (!el) return;
     if (q.type === "dragdrop") ddMove(el, ddOtherBox(el));

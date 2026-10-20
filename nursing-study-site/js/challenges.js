@@ -283,8 +283,9 @@ var Challenges = (function(){
   function rationaleHtml(q){
     var right = (q.options || []).filter(function(o){ return o.correct; });
     var strip = function(t){ return String(t || "").replace(/^\s*(Correct|Incorrect)[.:!]?\s*/i, ""); };
-    return '<div class="ch-answer"><span class="ch-eyebrow">' + (right.length > 1 ? "Correct answers" : "Correct answer") + "</span>" +
-      right.map(function(o){ return "<p><strong>" + esc(o.text) + "</strong>" + (o.rationale ? " " + esc(strip(o.rationale)) : "") + "</p>"; }).join("") +
+    var order = q.type === "order";
+    return '<div class="ch-answer"><span class="ch-eyebrow">' + (order ? "Correct order" : right.length > 1 ? "Correct answers" : "Correct answer") + "</span>" +
+      right.map(function(o, i){ return "<p><strong>" + (order ? (i + 1) + ". " : "") + esc(o.text) + "</strong>" + (o.rationale ? " " + esc(strip(o.rationale)) : "") + "</p>"; }).join("") +
       (q.explanation ? '<p class="ch-expl">' + esc(q.explanation) + "</p>" : "") + "</div>";
   }
   /* On the card: a short Group focus line; the full view is its own page (challenges.html?focus=ID) */

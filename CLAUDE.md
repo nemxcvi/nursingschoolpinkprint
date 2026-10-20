@@ -39,7 +39,7 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 - Study guides are organized by week (`weekN-study-guide.html`) with mnemonics/memory hooks and quick checks. Material taken straight from lecture slides is tagged as slide content.
 - Spell out every abbreviation the first time it appears on a page, in parentheses: `ADLs (activities of daily living)`. Mnemonics that are already spelled out letter by letter don't need it.
 - Content is for adult clients. Leave out infant- and child-focused material (pediatric care, child specimen collection). Keep teen/adolescent content, passing mentions of infants or children, and infant or child rows in a table that covers every age group, so the table stays complete.
-- Every topic quiz has exactly 40 questions. Keep `count` in `site-data.js` and the card/question counts on each unit `index.html` in sync.
+- Units 1–3: every topic quiz has exactly 40 questions. From Unit 4 on, a topic bank holds as many questions as it takes to cover everything that could be on the exam (sessions draw a random set from it). Either way, keep `count` in `site-data.js` and the card/question counts on each unit `index.html` in sync.
 - Quiz questions test the content, not where it came from. Never mark an answer wrong because it is "ATI only" or "not on the checklist"; every wrong option must be wrong on its own merits, and stems and rationales shouldn't cite the competency, slides, or ATI.
 - Keep wording plain and accurate. Prefer dropping a forced mnemonic to keeping a confusing one.
 
@@ -53,6 +53,7 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 - Each unit file has `topics` (topic name as shown on the unit page, `slug`, quiz page, `mixLabel` used for the Mix-all results, and `categories` in display order) and `questions`.
 - Question IDs are `nur114-u{unit}-{topic-slug}-{NNN}`, e.g. `nur114-u3-safety-001`. **Never change or reuse an ID**, even when rewording a question. A new question gets the next unused number in its topic.
 - `category` must match one of the topic's `categories` to show up in the "by category" results.
+- Question types: `mc` / `sata` (decided by how many options have `correct: true`), `dragdrop`, and `order` (ordered response / prioritizing: list the options in the correct order, no `correct` flags needed, each with a rationale; graded all-or-nothing). Sessions mix types: about 15% drag-and-drop, 15% SATA (select all that apply), 10% ordered response, the rest multiple choice.
 - `data/nur114/exams.json` holds the exam schedule and grading points. `data/nur114/index.json` lists which unit files exist; add a unit there when its JSON is added.
 - Quizzes load their data with `fetch`, so test locally with a server (`python3 -m http.server` in `nursing-study-site/`), not by opening the file directly.
 
