@@ -60,10 +60,11 @@ var SITE = {
     {title:"Acid-Base Balance", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/acid-base-flashcards.html", count:42},
     {title:"Acid-Base Balance practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/acid-base-quiz.html", count:33},
     {title:"Nutrition", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/nutrition-flashcards.html", count:86},
-    {title:"Nutrition practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/nutrition-quiz.html", count:87},
+    {title:"Nutrition practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/nutrition-quiz.html", count:69},
     {title:"Enteral & Parenteral Nutrition", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/enteral-parenteral-flashcards.html", count:53},
     {title:"Enteral & Parenteral Nutrition practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/enteral-parenteral-quiz.html", count:52},
     {title:"Food Sources", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/food-sources-flashcards.html", count:48},
+    {title:"Food Sources practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/food-sources-quiz.html", count:53},
     {title:"Week 8 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/week8-study-guide.html", meta:"Fluids, electrolytes, IV therapy, acid-base, nutrition & foods · ABG cheat sheet & quick checks"}
   ],
   mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html", meta:"Random from every quiz on the site"},

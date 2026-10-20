@@ -60,7 +60,6 @@
     "Nutrients & Energy",
     "Vitamins, Minerals & Water",
     "Labs, BMI & Assessment",
-    "Foods",
     "Therapeutic Diets",
     "Safe Eating & Aspiration"
    ]
@@ -76,6 +75,20 @@
     "Giving Feedings",
     "NG Tube Care",
     "Parenteral Nutrition"
+   ]
+  },
+  {
+   "topic": "Food Sources",
+   "slug": "food-sources",
+   "quiz": "unit-4-fluids-nutrition-med-math/food-sources-quiz.html",
+   "mixLabel": "Food Sources",
+   "categories": [
+    "Electrolyte Foods",
+    "Carbs, Protein & Fat",
+    "Vitamin & Mineral Foods",
+    "Fiber & Glycemic Index",
+    "Foods by Diet",
+    "Special Situations"
    ]
   }
  ],
@@ -7537,661 +7550,6 @@
    ]
   },
   {
-   "id": "nur114-u4-nutrition-043",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "A client with hypokalemia asks which foods to add. Which are high in potassium? Select all that apply.",
-   "options": [
-    {
-     "text": "Baked potato",
-     "correct": true,
-     "rationale": "A baked potato is one of the highest-potassium foods."
-    },
-    {
-     "text": "Banana",
-     "correct": true,
-     "rationale": "Bananas are high in potassium."
-    },
-    {
-     "text": "Spinach",
-     "correct": true,
-     "rationale": "Spinach is high in potassium."
-    },
-    {
-     "text": "Salmon",
-     "correct": true,
-     "rationale": "Salmon is high in potassium."
-    },
-    {
-     "text": "White bread",
-     "correct": false,
-     "rationale": "White bread is low in potassium."
-    },
-    {
-     "text": "Eggs",
-     "correct": false,
-     "rationale": "Eggs are low in potassium."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-044",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "mc",
-   "prompt": "Which food has the most potassium per serving?",
-   "options": [
-    {
-     "text": "1 medium baked potato",
-     "correct": true,
-     "rationale": "A baked potato has about 900 mg, more than the others."
-    },
-    {
-     "text": "1/2 cup white beans",
-     "correct": false,
-     "rationale": "White beans have about 500 mg per 1/2 cup."
-    },
-    {
-     "text": "3 oz salmon",
-     "correct": false,
-     "rationale": "Salmon has about 400 mg per 3 oz."
-    },
-    {
-     "text": "1 cup plain nonfat yogurt",
-     "correct": false,
-     "rationale": "Yogurt has about 600 mg per cup."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-045",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "A client on a low-sodium diet should limit which foods? Select all that apply.",
-   "options": [
-    {
-     "text": "Roasted ham",
-     "correct": true,
-     "rationale": "Ham is very high in sodium."
-    },
-    {
-     "text": "Canned soup",
-     "correct": true,
-     "rationale": "Canned soup is high in sodium unless labeled low sodium."
-    },
-    {
-     "text": "Frozen pizza",
-     "correct": true,
-     "rationale": "Frozen pizza is high in sodium."
-    },
-    {
-     "text": "Hot dogs and lunch meat",
-     "correct": true,
-     "rationale": "Processed meats are high in sodium."
-    },
-    {
-     "text": "Fresh fruit",
-     "correct": false,
-     "rationale": "Fresh fruit is naturally low in sodium."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-046",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which foods are good sources of calcium? Select all that apply.",
-   "options": [
-    {
-     "text": "Plain nonfat yogurt",
-     "correct": true,
-     "rationale": "Yogurt is high in calcium."
-    },
-    {
-     "text": "Low-fat milk",
-     "correct": true,
-     "rationale": "Milk is a classic calcium source."
-    },
-    {
-     "text": "Calcium-fortified orange juice",
-     "correct": true,
-     "rationale": "Fortified juice provides calcium."
-    },
-    {
-     "text": "Cheese",
-     "correct": true,
-     "rationale": "Cheese is high in calcium."
-    },
-    {
-     "text": "White rice",
-     "correct": false,
-     "rationale": "White rice isn't a significant calcium source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-047",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which foods are high in magnesium? Select all that apply.",
-   "options": [
-    {
-     "text": "Cooked spinach",
-     "correct": true,
-     "rationale": "Dark green vegetables are high in magnesium."
-    },
-    {
-     "text": "Pumpkin seeds",
-     "correct": true,
-     "rationale": "Seeds are high in magnesium."
-    },
-    {
-     "text": "Black beans",
-     "correct": true,
-     "rationale": "Legumes are high in magnesium."
-    },
-    {
-     "text": "Cashews",
-     "correct": true,
-     "rationale": "Nuts are high in magnesium."
-    },
-    {
-     "text": "Butter",
-     "correct": false,
-     "rationale": "Butter isn't a magnesium source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-048",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "dragdrop",
-   "prompt": "A client with kidney disease must limit potassium. Move the HIGH-potassium foods to the answer box.",
-   "leftLabel": "Foods",
-   "rightLabel": "High in potassium",
-   "options": [
-    {
-     "text": "Tomato sauce",
-     "correct": true,
-     "rationale": "Tomatoes and tomato products are high in potassium."
-    },
-    {
-     "text": "Orange juice",
-     "correct": true,
-     "rationale": "Oranges and orange juice are high in potassium."
-    },
-    {
-     "text": "Cooked spinach",
-     "correct": true,
-     "rationale": "Leafy greens are high in potassium."
-    },
-    {
-     "text": "Dried beans",
-     "correct": true,
-     "rationale": "Dried beans are high in potassium."
-    },
-    {
-     "text": "White bread",
-     "correct": false,
-     "rationale": "White bread is low in potassium."
-    },
-    {
-     "text": "Strawberries",
-     "correct": false,
-     "rationale": "Strawberries are lower in potassium."
-    },
-    {
-     "text": "Eggs",
-     "correct": false,
-     "rationale": "Eggs are low in potassium."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-049",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which are healthy sources of carbohydrates? Select all that apply.",
-   "options": [
-    {
-     "text": "Whole-grain bread",
-     "correct": true,
-     "rationale": "Whole grains are healthy carbs with fiber."
-    },
-    {
-     "text": "Brown rice",
-     "correct": true,
-     "rationale": "Brown rice is a whole grain."
-    },
-    {
-     "text": "Baked potato",
-     "correct": true,
-     "rationale": "Potatoes are a healthy plant carb source."
-    },
-    {
-     "text": "Sugar-sweetened soda",
-     "correct": false,
-     "rationale": "Soda is added sugar with empty calories."
-    },
-    {
-     "text": "Cookies",
-     "correct": false,
-     "rationale": "Cookies are processed foods with empty calories."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-050",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which foods are complete protein sources? Select all that apply.",
-   "options": [
-    {
-     "text": "Beef",
-     "correct": true,
-     "rationale": "Meat is a complete protein."
-    },
-    {
-     "text": "Poultry",
-     "correct": true,
-     "rationale": "Chicken and turkey are complete proteins."
-    },
-    {
-     "text": "Eggs",
-     "correct": true,
-     "rationale": "Eggs are a complete protein."
-    },
-    {
-     "text": "Fish",
-     "correct": true,
-     "rationale": "Fish is a complete protein."
-    },
-    {
-     "text": "Apples",
-     "correct": false,
-     "rationale": "Fruit isn't a protein source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-051",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which foods contain healthy (monounsaturated or omega-3) fats? Select all that apply.",
-   "options": [
-    {
-     "text": "Avocado",
-     "correct": true,
-     "rationale": "Avocados contain monounsaturated fat."
-    },
-    {
-     "text": "Olive oil",
-     "correct": true,
-     "rationale": "Olive oil is a monounsaturated fat."
-    },
-    {
-     "text": "Salmon",
-     "correct": true,
-     "rationale": "Salmon is rich in omega-3 fatty acids."
-    },
-    {
-     "text": "Walnuts",
-     "correct": true,
-     "rationale": "Walnuts contain omega-3s."
-    },
-    {
-     "text": "Butter",
-     "correct": false,
-     "rationale": "Butter is mostly saturated fat."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-052",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "mc",
-   "prompt": "A client taking warfarin asks about leafy greens. Which vitamin in these foods affects warfarin?",
-   "options": [
-    {
-     "text": "Vitamin K",
-     "correct": true,
-     "rationale": "Vitamin K (in spinach, kale, parsley) reduces warfarin's effect, so intake should stay consistent."
-    },
-    {
-     "text": "Vitamin C",
-     "correct": false,
-     "rationale": "Vitamin C doesn't interfere with warfarin this way."
-    },
-    {
-     "text": "Vitamin A",
-     "correct": false,
-     "rationale": "Vitamin A doesn't counteract warfarin."
-    },
-    {
-     "text": "Vitamin B12",
-     "correct": false,
-     "rationale": "B12 doesn't affect clotting."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-053",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which foods are good sources of vitamin C? Select all that apply.",
-   "options": [
-    {
-     "text": "Citrus fruits",
-     "correct": true,
-     "rationale": "Oranges and other citrus are high in vitamin C."
-    },
-    {
-     "text": "Strawberries",
-     "correct": true,
-     "rationale": "Berries are good vitamin C sources."
-    },
-    {
-     "text": "Tomatoes",
-     "correct": true,
-     "rationale": "Tomatoes provide vitamin C."
-    },
-    {
-     "text": "Brussels sprouts",
-     "correct": true,
-     "rationale": "Brussels sprouts are high in vitamin C."
-    },
-    {
-     "text": "Butter",
-     "correct": false,
-     "rationale": "Butter isn't a vitamin C source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-054",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which foods are high in iron? Select all that apply.",
-   "options": [
-    {
-     "text": "Red meat",
-     "correct": true,
-     "rationale": "Red meat is high in iron."
-    },
-    {
-     "text": "Organ meats such as liver",
-     "correct": true,
-     "rationale": "Organ meats are very high in iron."
-    },
-    {
-     "text": "Leafy green vegetables",
-     "correct": true,
-     "rationale": "Leafy greens provide iron."
-    },
-    {
-     "text": "Iron-fortified cereal",
-     "correct": true,
-     "rationale": "Fortified foods provide iron."
-    },
-    {
-     "text": "Cucumber",
-     "correct": false,
-     "rationale": "Cucumbers aren't a good iron source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-055",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which foods are high-fiber? Select all that apply.",
-   "options": [
-    {
-     "text": "Lentils",
-     "correct": true,
-     "rationale": "Legumes are high in fiber."
-    },
-    {
-     "text": "Raspberries",
-     "correct": true,
-     "rationale": "Berries are high in fiber."
-    },
-    {
-     "text": "Oatmeal",
-     "correct": true,
-     "rationale": "Whole grains are high in fiber."
-    },
-    {
-     "text": "Brown rice",
-     "correct": true,
-     "rationale": "Brown rice is a whole grain with fiber."
-    },
-    {
-     "text": "Vanilla custard",
-     "correct": false,
-     "rationale": "Custard is low in fiber."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-056",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "A client has hypoglycemia (blood glucose 62 mg/dL) and is alert. Which items give about 15 g of fast-acting carbohydrate? Select all that apply.",
-   "options": [
-    {
-     "text": "4 oz of fruit juice",
-     "correct": true,
-     "rationale": "4 oz of juice is about 15 g of carbohydrate."
-    },
-    {
-     "text": "4 oz of regular soda",
-     "correct": true,
-     "rationale": "Regular (not diet) soda works."
-    },
-    {
-     "text": "1 tablespoon of honey",
-     "correct": true,
-     "rationale": "One tablespoon of honey provides about 15 g."
-    },
-    {
-     "text": "Glucose tablets",
-     "correct": true,
-     "rationale": "Glucose tablets are a standard treatment."
-    },
-    {
-     "text": "4 oz of diet soda",
-     "correct": false,
-     "rationale": "Diet soda has no sugar."
-    },
-    {
-     "text": "A slice of cheese",
-     "correct": false,
-     "rationale": "Cheese is protein and fat, not fast-acting carbohydrate."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-057",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which foods are high-glycemic and raise blood glucose quickly? Select all that apply.",
-   "options": [
-    {
-     "text": "White bread",
-     "correct": true,
-     "rationale": "Refined grains raise glucose quickly."
-    },
-    {
-     "text": "Potatoes",
-     "correct": true,
-     "rationale": "Potatoes have a high glycemic index."
-    },
-    {
-     "text": "Processed snack foods",
-     "correct": true,
-     "rationale": "Processed snacks spike glucose."
-    },
-    {
-     "text": "Lentils",
-     "correct": false,
-     "rationale": "Legumes are low-glycemic."
-    },
-    {
-     "text": "Broccoli",
-     "correct": false,
-     "rationale": "Vegetables are low-glycemic."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-058",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "Which are examples of empty-calorie foods? Select all that apply.",
-   "options": [
-    {
-     "text": "Chips",
-     "correct": true,
-     "rationale": "Chips are high in calories but low in nutrients."
-    },
-    {
-     "text": "Cookies",
-     "correct": true,
-     "rationale": "Cookies are empty calories."
-    },
-    {
-     "text": "Sweetened drinks",
-     "correct": true,
-     "rationale": "Sugary drinks are empty calories."
-    },
-    {
-     "text": "Fresh vegetables",
-     "correct": false,
-     "rationale": "Vegetables are nutrient-rich."
-    },
-    {
-     "text": "Lean poultry",
-     "correct": false,
-     "rationale": "Lean protein is nutrient-rich."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-059",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "sata",
-   "prompt": "A client on a renal diet must limit phosphorus. Which items should the client limit or avoid? Select all that apply.",
-   "options": [
-    {
-     "text": "Cola drinks",
-     "correct": true,
-     "rationale": "Colas are high in phosphorus; clear sodas are preferred."
-    },
-    {
-     "text": "Milk and cheese beyond the allowed amount",
-     "correct": true,
-     "rationale": "Dairy is high in phosphorus."
-    },
-    {
-     "text": "Bran cereal and granola",
-     "correct": true,
-     "rationale": "Bran and granola are high in phosphorus."
-    },
-    {
-     "text": "Beer",
-     "correct": true,
-     "rationale": "Beer should be avoided."
-    },
-    {
-     "text": "White bread",
-     "correct": false,
-     "rationale": "White bread is preferred over whole grain on a renal diet."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-060",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Foods",
-   "type": "mc",
-   "prompt": "A client with kidney disease wants to eat potatoes. What can the nurse teach?",
-   "options": [
-    {
-     "text": "Soak the potatoes in water and drain before cooking to lower potassium",
-     "correct": true,
-     "rationale": "Soaking and draining reduces potassium in potatoes."
-    },
-    {
-     "text": "Fry them in oil to remove the potassium",
-     "correct": false,
-     "rationale": "Frying doesn't remove potassium."
-    },
-    {
-     "text": "Potatoes are low in potassium, so eat them freely",
-     "correct": false,
-     "rationale": "Potatoes are high in potassium."
-    },
-    {
-     "text": "Add a salt substitute for flavor",
-     "correct": false,
-     "rationale": "Salt substitutes contain potassium."
-    }
-   ]
-  },
-  {
    "id": "nur114-u4-nutrition-061",
    "course": "NUR 114",
    "unit": 4,
@@ -10748,6 +10106,1870 @@
      "text": "A client with mild nausea who is eating",
      "correct": false,
      "rationale": "They can still eat."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-043",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "sata",
+   "prompt": "A client with hypokalemia asks which foods to add. Which are high in potassium? Select all that apply.",
+   "options": [
+    {
+     "text": "Baked potato",
+     "correct": true,
+     "rationale": "A baked potato is one of the highest-potassium foods."
+    },
+    {
+     "text": "Banana",
+     "correct": true,
+     "rationale": "Bananas are high in potassium."
+    },
+    {
+     "text": "Spinach",
+     "correct": true,
+     "rationale": "Spinach is high in potassium."
+    },
+    {
+     "text": "Salmon",
+     "correct": true,
+     "rationale": "Salmon is high in potassium."
+    },
+    {
+     "text": "White bread",
+     "correct": false,
+     "rationale": "White bread is low in potassium."
+    },
+    {
+     "text": "Eggs",
+     "correct": false,
+     "rationale": "Eggs are low in potassium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-044",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "mc",
+   "prompt": "Which food has the most potassium per serving?",
+   "options": [
+    {
+     "text": "1 medium baked potato",
+     "correct": true,
+     "rationale": "A baked potato has about 900 mg, more than the others."
+    },
+    {
+     "text": "1/2 cup white beans",
+     "correct": false,
+     "rationale": "White beans have about 500 mg per 1/2 cup."
+    },
+    {
+     "text": "3 oz salmon",
+     "correct": false,
+     "rationale": "Salmon has about 400 mg per 3 oz."
+    },
+    {
+     "text": "1 cup plain nonfat yogurt",
+     "correct": false,
+     "rationale": "Yogurt has about 600 mg per cup."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-045",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "sata",
+   "prompt": "A client on a low-sodium diet should limit which foods? Select all that apply.",
+   "options": [
+    {
+     "text": "Roasted ham",
+     "correct": true,
+     "rationale": "Ham is very high in sodium."
+    },
+    {
+     "text": "Canned soup",
+     "correct": true,
+     "rationale": "Canned soup is high in sodium unless labeled low sodium."
+    },
+    {
+     "text": "Frozen pizza",
+     "correct": true,
+     "rationale": "Frozen pizza is high in sodium."
+    },
+    {
+     "text": "Hot dogs and lunch meat",
+     "correct": true,
+     "rationale": "Processed meats are high in sodium."
+    },
+    {
+     "text": "Fresh fruit",
+     "correct": false,
+     "rationale": "Fresh fruit is naturally low in sodium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-046",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "sata",
+   "prompt": "Which foods are good sources of calcium? Select all that apply.",
+   "options": [
+    {
+     "text": "Plain nonfat yogurt",
+     "correct": true,
+     "rationale": "Yogurt is high in calcium."
+    },
+    {
+     "text": "Low-fat milk",
+     "correct": true,
+     "rationale": "Milk is a classic calcium source."
+    },
+    {
+     "text": "Calcium-fortified orange juice",
+     "correct": true,
+     "rationale": "Fortified juice provides calcium."
+    },
+    {
+     "text": "Cheese",
+     "correct": true,
+     "rationale": "Cheese is high in calcium."
+    },
+    {
+     "text": "White rice",
+     "correct": false,
+     "rationale": "White rice isn't a significant calcium source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-047",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "sata",
+   "prompt": "Which foods are high in magnesium? Select all that apply.",
+   "options": [
+    {
+     "text": "Cooked spinach",
+     "correct": true,
+     "rationale": "Dark green vegetables are high in magnesium."
+    },
+    {
+     "text": "Pumpkin seeds",
+     "correct": true,
+     "rationale": "Seeds are high in magnesium."
+    },
+    {
+     "text": "Black beans",
+     "correct": true,
+     "rationale": "Legumes are high in magnesium."
+    },
+    {
+     "text": "Cashews",
+     "correct": true,
+     "rationale": "Nuts are high in magnesium."
+    },
+    {
+     "text": "Butter",
+     "correct": false,
+     "rationale": "Butter isn't a magnesium source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-048",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "dragdrop",
+   "prompt": "A client with kidney disease must limit potassium. Move the HIGH-potassium foods to the answer box.",
+   "leftLabel": "Foods",
+   "rightLabel": "High in potassium",
+   "options": [
+    {
+     "text": "Tomato sauce",
+     "correct": true,
+     "rationale": "Tomatoes and tomato products are high in potassium."
+    },
+    {
+     "text": "Orange juice",
+     "correct": true,
+     "rationale": "Oranges and orange juice are high in potassium."
+    },
+    {
+     "text": "Cooked spinach",
+     "correct": true,
+     "rationale": "Leafy greens are high in potassium."
+    },
+    {
+     "text": "Dried beans",
+     "correct": true,
+     "rationale": "Dried beans are high in potassium."
+    },
+    {
+     "text": "White bread",
+     "correct": false,
+     "rationale": "White bread is low in potassium."
+    },
+    {
+     "text": "Strawberries",
+     "correct": false,
+     "rationale": "Strawberries are lower in potassium."
+    },
+    {
+     "text": "Eggs",
+     "correct": false,
+     "rationale": "Eggs are low in potassium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-049",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "sata",
+   "prompt": "Which are healthy sources of carbohydrates? Select all that apply.",
+   "options": [
+    {
+     "text": "Whole-grain bread",
+     "correct": true,
+     "rationale": "Whole grains are healthy carbs with fiber."
+    },
+    {
+     "text": "Brown rice",
+     "correct": true,
+     "rationale": "Brown rice is a whole grain."
+    },
+    {
+     "text": "Baked potato",
+     "correct": true,
+     "rationale": "Potatoes are a healthy plant carb source."
+    },
+    {
+     "text": "Sugar-sweetened soda",
+     "correct": false,
+     "rationale": "Soda is added sugar with empty calories."
+    },
+    {
+     "text": "Cookies",
+     "correct": false,
+     "rationale": "Cookies are processed foods with empty calories."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-050",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "sata",
+   "prompt": "Which foods are complete protein sources? Select all that apply.",
+   "options": [
+    {
+     "text": "Beef",
+     "correct": true,
+     "rationale": "Meat is a complete protein."
+    },
+    {
+     "text": "Poultry",
+     "correct": true,
+     "rationale": "Chicken and turkey are complete proteins."
+    },
+    {
+     "text": "Eggs",
+     "correct": true,
+     "rationale": "Eggs are a complete protein."
+    },
+    {
+     "text": "Fish",
+     "correct": true,
+     "rationale": "Fish is a complete protein."
+    },
+    {
+     "text": "Apples",
+     "correct": false,
+     "rationale": "Fruit isn't a protein source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-051",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "sata",
+   "prompt": "Which foods contain healthy (monounsaturated or omega-3) fats? Select all that apply.",
+   "options": [
+    {
+     "text": "Avocado",
+     "correct": true,
+     "rationale": "Avocados contain monounsaturated fat."
+    },
+    {
+     "text": "Olive oil",
+     "correct": true,
+     "rationale": "Olive oil is a monounsaturated fat."
+    },
+    {
+     "text": "Salmon",
+     "correct": true,
+     "rationale": "Salmon is rich in omega-3 fatty acids."
+    },
+    {
+     "text": "Walnuts",
+     "correct": true,
+     "rationale": "Walnuts contain omega-3s."
+    },
+    {
+     "text": "Butter",
+     "correct": false,
+     "rationale": "Butter is mostly saturated fat."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-052",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "mc",
+   "prompt": "A client taking warfarin asks about leafy greens. Which vitamin in these foods affects warfarin?",
+   "options": [
+    {
+     "text": "Vitamin K",
+     "correct": true,
+     "rationale": "Vitamin K (in spinach, kale, parsley) reduces warfarin's effect, so intake should stay consistent."
+    },
+    {
+     "text": "Vitamin C",
+     "correct": false,
+     "rationale": "Vitamin C doesn't interfere with warfarin this way."
+    },
+    {
+     "text": "Vitamin A",
+     "correct": false,
+     "rationale": "Vitamin A doesn't counteract warfarin."
+    },
+    {
+     "text": "Vitamin B12",
+     "correct": false,
+     "rationale": "B12 doesn't affect clotting."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-053",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "sata",
+   "prompt": "Which foods are good sources of vitamin C? Select all that apply.",
+   "options": [
+    {
+     "text": "Citrus fruits",
+     "correct": true,
+     "rationale": "Oranges and other citrus are high in vitamin C."
+    },
+    {
+     "text": "Strawberries",
+     "correct": true,
+     "rationale": "Berries are good vitamin C sources."
+    },
+    {
+     "text": "Tomatoes",
+     "correct": true,
+     "rationale": "Tomatoes provide vitamin C."
+    },
+    {
+     "text": "Brussels sprouts",
+     "correct": true,
+     "rationale": "Brussels sprouts are high in vitamin C."
+    },
+    {
+     "text": "Butter",
+     "correct": false,
+     "rationale": "Butter isn't a vitamin C source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-054",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "sata",
+   "prompt": "Which foods are high in iron? Select all that apply.",
+   "options": [
+    {
+     "text": "Red meat",
+     "correct": true,
+     "rationale": "Red meat is high in iron."
+    },
+    {
+     "text": "Organ meats such as liver",
+     "correct": true,
+     "rationale": "Organ meats are very high in iron."
+    },
+    {
+     "text": "Leafy green vegetables",
+     "correct": true,
+     "rationale": "Leafy greens provide iron."
+    },
+    {
+     "text": "Iron-fortified cereal",
+     "correct": true,
+     "rationale": "Fortified foods provide iron."
+    },
+    {
+     "text": "Cucumber",
+     "correct": false,
+     "rationale": "Cucumbers aren't a good iron source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-055",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Fiber & Glycemic Index",
+   "type": "sata",
+   "prompt": "Which foods are high-fiber? Select all that apply.",
+   "options": [
+    {
+     "text": "Lentils",
+     "correct": true,
+     "rationale": "Legumes are high in fiber."
+    },
+    {
+     "text": "Raspberries",
+     "correct": true,
+     "rationale": "Berries are high in fiber."
+    },
+    {
+     "text": "Oatmeal",
+     "correct": true,
+     "rationale": "Whole grains are high in fiber."
+    },
+    {
+     "text": "Brown rice",
+     "correct": true,
+     "rationale": "Brown rice is a whole grain with fiber."
+    },
+    {
+     "text": "Vanilla custard",
+     "correct": false,
+     "rationale": "Custard is low in fiber."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-056",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Special Situations",
+   "type": "sata",
+   "prompt": "A client has hypoglycemia (blood glucose 62 mg/dL) and is alert. Which items give about 15 g of fast-acting carbohydrate? Select all that apply.",
+   "options": [
+    {
+     "text": "4 oz of fruit juice",
+     "correct": true,
+     "rationale": "4 oz of juice is about 15 g of carbohydrate."
+    },
+    {
+     "text": "4 oz of regular soda",
+     "correct": true,
+     "rationale": "Regular (not diet) soda works."
+    },
+    {
+     "text": "1 tablespoon of honey",
+     "correct": true,
+     "rationale": "One tablespoon of honey provides about 15 g."
+    },
+    {
+     "text": "Glucose tablets",
+     "correct": true,
+     "rationale": "Glucose tablets are a standard treatment."
+    },
+    {
+     "text": "4 oz of diet soda",
+     "correct": false,
+     "rationale": "Diet soda has no sugar."
+    },
+    {
+     "text": "A slice of cheese",
+     "correct": false,
+     "rationale": "Cheese is protein and fat, not fast-acting carbohydrate."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-057",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Fiber & Glycemic Index",
+   "type": "sata",
+   "prompt": "Which foods are high-glycemic and raise blood glucose quickly? Select all that apply.",
+   "options": [
+    {
+     "text": "White bread",
+     "correct": true,
+     "rationale": "Refined grains raise glucose quickly."
+    },
+    {
+     "text": "Potatoes",
+     "correct": true,
+     "rationale": "Potatoes have a high glycemic index."
+    },
+    {
+     "text": "Processed snack foods",
+     "correct": true,
+     "rationale": "Processed snacks spike glucose."
+    },
+    {
+     "text": "Lentils",
+     "correct": false,
+     "rationale": "Legumes are low-glycemic."
+    },
+    {
+     "text": "Broccoli",
+     "correct": false,
+     "rationale": "Vegetables are low-glycemic."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-058",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "sata",
+   "prompt": "Which are examples of empty-calorie foods? Select all that apply.",
+   "options": [
+    {
+     "text": "Chips",
+     "correct": true,
+     "rationale": "Chips are high in calories but low in nutrients."
+    },
+    {
+     "text": "Cookies",
+     "correct": true,
+     "rationale": "Cookies are empty calories."
+    },
+    {
+     "text": "Sweetened drinks",
+     "correct": true,
+     "rationale": "Sugary drinks are empty calories."
+    },
+    {
+     "text": "Fresh vegetables",
+     "correct": false,
+     "rationale": "Vegetables are nutrient-rich."
+    },
+    {
+     "text": "Lean poultry",
+     "correct": false,
+     "rationale": "Lean protein is nutrient-rich."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-059",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "sata",
+   "prompt": "A client on a renal diet must limit phosphorus. Which items should the client limit or avoid? Select all that apply.",
+   "options": [
+    {
+     "text": "Cola drinks",
+     "correct": true,
+     "rationale": "Colas are high in phosphorus; clear sodas are preferred."
+    },
+    {
+     "text": "Milk and cheese beyond the allowed amount",
+     "correct": true,
+     "rationale": "Dairy is high in phosphorus."
+    },
+    {
+     "text": "Bran cereal and granola",
+     "correct": true,
+     "rationale": "Bran and granola are high in phosphorus."
+    },
+    {
+     "text": "Beer",
+     "correct": true,
+     "rationale": "Beer should be avoided."
+    },
+    {
+     "text": "White bread",
+     "correct": false,
+     "rationale": "White bread is preferred over whole grain on a renal diet."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-060",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "mc",
+   "prompt": "A client with kidney disease wants to eat potatoes. What can the nurse teach?",
+   "options": [
+    {
+     "text": "Soak the potatoes in water and drain before cooking to lower potassium",
+     "correct": true,
+     "rationale": "Soaking and draining reduces potassium in potatoes."
+    },
+    {
+     "text": "Fry them in oil to remove the potassium",
+     "correct": false,
+     "rationale": "Frying doesn't remove potassium."
+    },
+    {
+     "text": "Potatoes are low in potassium, so eat them freely",
+     "correct": false,
+     "rationale": "Potatoes are high in potassium."
+    },
+    {
+     "text": "Add a salt substitute for flavor",
+     "correct": false,
+     "rationale": "Salt substitutes contain potassium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-001",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "mc",
+   "prompt": "A client on a low-sodium diet wants shrimp. Which choice is lower in sodium?",
+   "options": [
+    {
+     "text": "Fresh shrimp",
+     "correct": true,
+     "rationale": "Fresh shrimp has about 100 mg per 3 oz, far less than frozen."
+    },
+    {
+     "text": "Frozen, nonbreaded shrimp",
+     "correct": false,
+     "rationale": "Frozen shrimp has about 800 mg of sodium per 3 oz."
+    },
+    {
+     "text": "Breaded fried shrimp",
+     "correct": false,
+     "rationale": "Breading and frying add sodium."
+    },
+    {
+     "text": "Canned shrimp in brine",
+     "correct": false,
+     "rationale": "Brine is salt water."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-002",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "mc",
+   "prompt": "Which pudding is the better choice for a client limiting sodium?",
+   "options": [
+    {
+     "text": "Regular vanilla pudding",
+     "correct": true,
+     "rationale": "Regular pudding has about 135 mg per 1/2 cup, much less than instant."
+    },
+    {
+     "text": "Instant vanilla pudding",
+     "correct": false,
+     "rationale": "Instant pudding has about 350 mg per 1/2 cup."
+    },
+    {
+     "text": "Either one; pudding has no sodium",
+     "correct": false,
+     "rationale": "Both contain sodium, but instant has much more."
+    },
+    {
+     "text": "Instant pudding made with extra milk",
+     "correct": false,
+     "rationale": "Extra milk doesn't remove the sodium in the mix."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-003",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "dragdrop",
+   "prompt": "A client with hypocalcemia asks what to eat. Move the foods high in calcium to the answer box.",
+   "leftLabel": "Foods",
+   "rightLabel": "High in calcium",
+   "options": [
+    {
+     "text": "Plain nonfat yogurt",
+     "correct": true,
+     "rationale": "Yogurt is one of the best calcium sources."
+    },
+    {
+     "text": "Almond milk",
+     "correct": true,
+     "rationale": "Almond milk is high in calcium."
+    },
+    {
+     "text": "Calcium-fortified orange juice",
+     "correct": true,
+     "rationale": "Fortified juice provides calcium."
+    },
+    {
+     "text": "Cheese",
+     "correct": true,
+     "rationale": "Cheese is high in calcium."
+    },
+    {
+     "text": "White rice",
+     "correct": false,
+     "rationale": "White rice isn't a calcium source."
+    },
+    {
+     "text": "Apple",
+     "correct": false,
+     "rationale": "Apples aren't a calcium source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-004",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "cloze",
+   "prompt": "A nurse is teaching a client who has hypokalemia and takes a loop diuretic.",
+   "sentence": "The nurse suggests adding {1} and explains that {2} is the highest-potassium fruit on the list.",
+   "options": [
+    {
+     "text": "a baked potato",
+     "correct": true,
+     "rationale": "A medium baked potato has about 900 mg of potassium.",
+     "blank": 1
+    },
+    {
+     "text": "white bread",
+     "correct": false,
+     "rationale": "White bread is low in potassium.",
+     "blank": 1
+    },
+    {
+     "text": "a banana",
+     "correct": true,
+     "rationale": "A medium banana is the highest-potassium fruit on the chart.",
+     "blank": 2
+    },
+    {
+     "text": "an apple",
+     "correct": false,
+     "rationale": "Apples are low in potassium.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-005",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Electrolyte Foods",
+   "type": "mc",
+   "prompt": "A client with hyperkalemia should avoid which seasoning?",
+   "options": [
+    {
+     "text": "Salt substitute",
+     "correct": true,
+     "rationale": "Most salt substitutes are potassium chloride."
+    },
+    {
+     "text": "Black pepper",
+     "correct": false,
+     "rationale": "Pepper doesn't add potassium."
+    },
+    {
+     "text": "Garlic powder",
+     "correct": false,
+     "rationale": "Garlic powder is a fine sodium-free option."
+    },
+    {
+     "text": "Lemon juice",
+     "correct": false,
+     "rationale": "Lemon juice adds flavor without much potassium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-006",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "sata",
+   "prompt": "Which foods are high in saturated fat? Select all that apply.",
+   "options": [
+    {
+     "text": "Butter",
+     "correct": true,
+     "rationale": "Butter is mostly saturated fat."
+    },
+    {
+     "text": "Cheese",
+     "correct": true,
+     "rationale": "Full-fat cheese is high in saturated fat."
+    },
+    {
+     "text": "Whole milk",
+     "correct": true,
+     "rationale": "Whole milk contains saturated fat."
+    },
+    {
+     "text": "Olive oil",
+     "correct": false,
+     "rationale": "Olive oil is mostly monounsaturated."
+    },
+    {
+     "text": "Avocado",
+     "correct": false,
+     "rationale": "Avocado is mostly monounsaturated."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-007",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "mc",
+   "prompt": "Where are trans fats most often found?",
+   "options": [
+    {
+     "text": "Processed foods made with partially hydrogenated oils",
+     "correct": true,
+     "rationale": "Trans fats come mainly from processed foods."
+    },
+    {
+     "text": "Fresh fruit",
+     "correct": false,
+     "rationale": "Fruit has no trans fat."
+    },
+    {
+     "text": "Salmon",
+     "correct": false,
+     "rationale": "Salmon has healthy omega-3 fats."
+    },
+    {
+     "text": "Brown rice",
+     "correct": false,
+     "rationale": "Brown rice isn't a trans fat source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-008",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "mc",
+   "prompt": "Which food is low in calorie density?",
+   "options": [
+    {
+     "text": "Fresh vegetables",
+     "correct": true,
+     "rationale": "Vegetables have lots of volume for few calories."
+    },
+    {
+     "text": "French fries",
+     "correct": false,
+     "rationale": "Fries are high in calories for their size."
+    },
+    {
+     "text": "Cheese",
+     "correct": false,
+     "rationale": "Cheese is calorie-dense."
+    },
+    {
+     "text": "Oil",
+     "correct": false,
+     "rationale": "Oil is the most calorie-dense food."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-009",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "sata",
+   "prompt": "A vegetarian client asks about protein sources. Which plant foods provide protein? Select all that apply.",
+   "options": [
+    {
+     "text": "Beans",
+     "correct": true,
+     "rationale": "Beans are a plant protein."
+    },
+    {
+     "text": "Soy and tofu",
+     "correct": true,
+     "rationale": "Soy foods are rich in protein."
+    },
+    {
+     "text": "Nuts",
+     "correct": true,
+     "rationale": "Nuts provide protein."
+    },
+    {
+     "text": "Lettuce",
+     "correct": false,
+     "rationale": "Lettuce has very little protein."
+    },
+    {
+     "text": "Apples",
+     "correct": false,
+     "rationale": "Fruit has very little protein."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-010",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Carbs, Protein & Fat",
+   "type": "dragdrop",
+   "prompt": "Move the HEALTHY fat sources to the answer box.",
+   "leftLabel": "Foods",
+   "rightLabel": "Healthy fats",
+   "options": [
+    {
+     "text": "Olive oil",
+     "correct": true,
+     "rationale": "Monounsaturated fat."
+    },
+    {
+     "text": "Avocado",
+     "correct": true,
+     "rationale": "Monounsaturated fat."
+    },
+    {
+     "text": "Salmon",
+     "correct": true,
+     "rationale": "Rich in omega-3 fatty acids."
+    },
+    {
+     "text": "Walnuts",
+     "correct": true,
+     "rationale": "Contain omega-3s."
+    },
+    {
+     "text": "Butter",
+     "correct": false,
+     "rationale": "Mostly saturated fat."
+    },
+    {
+     "text": "Packaged snack cakes",
+     "correct": false,
+     "rationale": "Processed foods can contain trans fats."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-011",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "mc",
+   "prompt": "Which food is a good source of vitamin D?",
+   "options": [
+    {
+     "text": "Milk",
+     "correct": true,
+     "rationale": "Milk, eggs, fish oil and dairy provide vitamin D, along with sunlight."
+    },
+    {
+     "text": "Orange juice that isn't fortified",
+     "correct": false,
+     "rationale": "Plain orange juice provides vitamin C, not D."
+    },
+    {
+     "text": "Lettuce",
+     "correct": false,
+     "rationale": "Lettuce isn't a vitamin D source."
+    },
+    {
+     "text": "White rice",
+     "correct": false,
+     "rationale": "Rice isn't a vitamin D source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-012",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "mc",
+   "prompt": "Which is a nonfood source of vitamin D?",
+   "options": [
+    {
+     "text": "Sunlight",
+     "correct": true,
+     "rationale": "The skin makes vitamin D with sun exposure."
+    },
+    {
+     "text": "Drinking water",
+     "correct": false,
+     "rationale": "Water doesn't provide vitamin D."
+    },
+    {
+     "text": "Exercise",
+     "correct": false,
+     "rationale": "Exercise doesn't create vitamin D."
+    },
+    {
+     "text": "Sleep",
+     "correct": false,
+     "rationale": "Sleep doesn't provide vitamin D."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-013",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "sata",
+   "prompt": "Which foods are good sources of folate? Select all that apply.",
+   "options": [
+    {
+     "text": "Leafy green vegetables",
+     "correct": true,
+     "rationale": "Leafy greens are rich in folate."
+    },
+    {
+     "text": "Orange juice",
+     "correct": true,
+     "rationale": "Orange juice provides folate."
+    },
+    {
+     "text": "Beans",
+     "correct": true,
+     "rationale": "Beans are a folate source."
+    },
+    {
+     "text": "Eggs",
+     "correct": true,
+     "rationale": "Eggs provide folate."
+    },
+    {
+     "text": "Butter",
+     "correct": false,
+     "rationale": "Butter isn't a folate source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-014",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "mc",
+   "prompt": "Which food provides vitamin B12?",
+   "options": [
+    {
+     "text": "Beef",
+     "correct": true,
+     "rationale": "B12 comes from animal foods like beef, clams, salmon, milk and yogurt."
+    },
+    {
+     "text": "Spinach",
+     "correct": false,
+     "rationale": "Plant foods don't naturally provide B12."
+    },
+    {
+     "text": "Apples",
+     "correct": false,
+     "rationale": "Fruit isn't a B12 source."
+    },
+    {
+     "text": "White rice",
+     "correct": false,
+     "rationale": "Rice isn't a B12 source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-015",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "mc",
+   "prompt": "Which foods are sources of vitamin A?",
+   "options": [
+    {
+     "text": "Sweet potatoes and green leafy vegetables",
+     "correct": true,
+     "rationale": "Vitamin A comes from sweet potatoes, leafy greens, liver, fish liver oil and dairy."
+    },
+    {
+     "text": "Citrus fruits",
+     "correct": false,
+     "rationale": "Citrus is known for vitamin C."
+    },
+    {
+     "text": "White bread",
+     "correct": false,
+     "rationale": "White bread isn't a vitamin A source."
+    },
+    {
+     "text": "Black coffee",
+     "correct": false,
+     "rationale": "Coffee isn't a vitamin A source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-016",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "mc",
+   "prompt": "Which food is a source of vitamin E?",
+   "options": [
+    {
+     "text": "Almonds",
+     "correct": true,
+     "rationale": "Almonds, wheat germ, sunflower seeds and spinach provide vitamin E."
+    },
+    {
+     "text": "Skim milk",
+     "correct": false,
+     "rationale": "Skim milk isn't a vitamin E source."
+    },
+    {
+     "text": "Chicken broth",
+     "correct": false,
+     "rationale": "Broth isn't a vitamin E source."
+    },
+    {
+     "text": "Gelatin",
+     "correct": false,
+     "rationale": "Gelatin isn't a vitamin E source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-017",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "cloze",
+   "prompt": "A client taking warfarin loves salads with kale and spinach.",
+   "sentence": "These greens are high in {1}, so the nurse teaches the client to {2}.",
+   "options": [
+    {
+     "text": "vitamin K",
+     "correct": true,
+     "rationale": "Kale and spinach are rich in vitamin K, which reduces warfarin's effect.",
+     "blank": 1
+    },
+    {
+     "text": "vitamin C",
+     "correct": false,
+     "rationale": "Vitamin C doesn't counteract warfarin.",
+     "blank": 1
+    },
+    {
+     "text": "keep the amount they eat consistent",
+     "correct": true,
+     "rationale": "Steady vitamin K intake keeps the warfarin dose effective.",
+     "blank": 2
+    },
+    {
+     "text": "double their servings",
+     "correct": false,
+     "rationale": "A sudden increase would lower warfarin's effect.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-018",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Vitamin & Mineral Foods",
+   "type": "sata",
+   "prompt": "Which are sources of iodine? Select all that apply.",
+   "options": [
+    {
+     "text": "Seafood",
+     "correct": true,
+     "rationale": "Seafood provides iodine."
+    },
+    {
+     "text": "Iodized salt",
+     "correct": true,
+     "rationale": "Salt is fortified with iodine."
+    },
+    {
+     "text": "Dairy products",
+     "correct": true,
+     "rationale": "Dairy provides iodine."
+    },
+    {
+     "text": "Apples",
+     "correct": false,
+     "rationale": "Apples aren't an iodine source."
+    },
+    {
+     "text": "Rice",
+     "correct": false,
+     "rationale": "Rice isn't an iodine source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-019",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Fiber & Glycemic Index",
+   "type": "sata",
+   "prompt": "Which foods are allowed on a low-residue diet? Select all that apply.",
+   "options": [
+    {
+     "text": "Eggs",
+     "correct": true,
+     "rationale": "Eggs are low in fiber and easy to digest."
+    },
+    {
+     "text": "Yogurt",
+     "correct": true,
+     "rationale": "Dairy is allowed on a low-residue diet."
+    },
+    {
+     "text": "Ripe bananas",
+     "correct": true,
+     "rationale": "Ripe bananas are low in fiber."
+    },
+    {
+     "text": "Lentils",
+     "correct": false,
+     "rationale": "Legumes are high in fiber."
+    },
+    {
+     "text": "Raw broccoli",
+     "correct": false,
+     "rationale": "Raw vegetables are high in fiber."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-020",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Fiber & Glycemic Index",
+   "type": "sata",
+   "prompt": "Which foods are low-glycemic? Select all that apply.",
+   "options": [
+    {
+     "text": "Lentils",
+     "correct": true,
+     "rationale": "Legumes raise blood glucose slowly."
+    },
+    {
+     "text": "Broccoli",
+     "correct": true,
+     "rationale": "Vegetables are low-glycemic."
+    },
+    {
+     "text": "Whole grains",
+     "correct": true,
+     "rationale": "Whole grains raise glucose slowly."
+    },
+    {
+     "text": "White bread",
+     "correct": false,
+     "rationale": "White bread spikes glucose."
+    },
+    {
+     "text": "Potato chips",
+     "correct": false,
+     "rationale": "Processed snacks spike glucose."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-021",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Fiber & Glycemic Index",
+   "type": "mc",
+   "prompt": "A client who wants more fiber asks about breakfast. Which choice is best?",
+   "options": [
+    {
+     "text": "Oatmeal with raspberries",
+     "correct": true,
+     "rationale": "Whole grains and berries are both high in fiber."
+    },
+    {
+     "text": "White toast with jelly",
+     "correct": false,
+     "rationale": "Refined bread and jelly are low in fiber."
+    },
+    {
+     "text": "Scrambled eggs",
+     "correct": false,
+     "rationale": "Eggs have no fiber."
+    },
+    {
+     "text": "Vanilla yogurt",
+     "correct": false,
+     "rationale": "Yogurt is low in fiber."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-022",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Fiber & Glycemic Index",
+   "type": "dragdrop",
+   "prompt": "Move the HIGH-fiber foods to the answer box.",
+   "leftLabel": "Foods",
+   "rightLabel": "High fiber",
+   "options": [
+    {
+     "text": "Black beans",
+     "correct": true,
+     "rationale": "Legumes are high in fiber."
+    },
+    {
+     "text": "Brown rice",
+     "correct": true,
+     "rationale": "Whole grains are high in fiber."
+    },
+    {
+     "text": "Pear with skin",
+     "correct": true,
+     "rationale": "Raw fruit with the skin is high in fiber."
+    },
+    {
+     "text": "Popcorn",
+     "correct": true,
+     "rationale": "Popcorn is a whole grain."
+    },
+    {
+     "text": "Custard",
+     "correct": false,
+     "rationale": "Custard is low in fiber."
+    },
+    {
+     "text": "Eggs",
+     "correct": false,
+     "rationale": "Eggs have no fiber."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-023",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "sata",
+   "prompt": "Which foods are allowed on a soft diet? Select all that apply.",
+   "options": [
+    {
+     "text": "Well-cooked vegetables",
+     "correct": true,
+     "rationale": "Cooked vegetables are soft and easy to chew."
+    },
+    {
+     "text": "Tender fish",
+     "correct": true,
+     "rationale": "Tender proteins are allowed."
+    },
+    {
+     "text": "Creamy peanut butter",
+     "correct": true,
+     "rationale": "Creamy (not chunky) peanut butter is soft."
+    },
+    {
+     "text": "Pancakes",
+     "correct": true,
+     "rationale": "Soft baked goods are allowed."
+    },
+    {
+     "text": "Mixed nuts",
+     "correct": false,
+     "rationale": "Nuts are excluded."
+    },
+    {
+     "text": "Raw carrots",
+     "correct": false,
+     "rationale": "Raw vegetables are excluded."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-024",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "sata",
+   "prompt": "Which foods fit a pureed diet? Select all that apply.",
+   "options": [
+    {
+     "text": "Mashed potatoes",
+     "correct": true,
+     "rationale": "Smooth and needs no chewing."
+    },
+    {
+     "text": "Pudding",
+     "correct": true,
+     "rationale": "Smooth and needs no chewing."
+    },
+    {
+     "text": "Pureed meat",
+     "correct": true,
+     "rationale": "Pureed meat provides protein without chewing."
+    },
+    {
+     "text": "Yogurt",
+     "correct": true,
+     "rationale": "Smooth and needs no chewing."
+    },
+    {
+     "text": "Grilled chicken strips",
+     "correct": false,
+     "rationale": "Needs chewing."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-025",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "dragdrop",
+   "prompt": "A client is on a clear liquid diet. Move the items the client CAN have to the answer box.",
+   "leftLabel": "Items",
+   "rightLabel": "Allowed",
+   "options": [
+    {
+     "text": "Broth",
+     "correct": true,
+     "rationale": "A clear liquid."
+    },
+    {
+     "text": "Gelatin",
+     "correct": true,
+     "rationale": "See-through and allowed."
+    },
+    {
+     "text": "Popsicle",
+     "correct": true,
+     "rationale": "Melts to a clear liquid."
+    },
+    {
+     "text": "Black coffee",
+     "correct": true,
+     "rationale": "Coffee without milk is clear."
+    },
+    {
+     "text": "Milkshake",
+     "correct": false,
+     "rationale": "Full liquid, not clear."
+    },
+    {
+     "text": "Cream of tomato soup",
+     "correct": false,
+     "rationale": "Full liquid, not clear."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-026",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "mc",
+   "prompt": "Which item is allowed on a full liquid diet?",
+   "options": [
+    {
+     "text": "Ice cream",
+     "correct": true,
+     "rationale": "Ice cream is liquid at room temperature."
+    },
+    {
+     "text": "Scrambled eggs",
+     "correct": false,
+     "rationale": "Solid food isn't allowed."
+    },
+    {
+     "text": "Toast",
+     "correct": false,
+     "rationale": "Solid food isn't allowed."
+    },
+    {
+     "text": "Applesauce with chunks",
+     "correct": false,
+     "rationale": "Chunky food isn't a liquid."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-027",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "sata",
+   "prompt": "Which foods should a client on a renal diet limit because of potassium? Select all that apply.",
+   "options": [
+    {
+     "text": "Tomato juice",
+     "correct": true,
+     "rationale": "Tomatoes are high in potassium."
+    },
+    {
+     "text": "Prune juice",
+     "correct": true,
+     "rationale": "Prune juice is high in potassium."
+    },
+    {
+     "text": "Oranges",
+     "correct": true,
+     "rationale": "Oranges are high in potassium."
+    },
+    {
+     "text": "Swiss chard",
+     "correct": true,
+     "rationale": "Dark greens are high in potassium."
+    },
+    {
+     "text": "Eggs",
+     "correct": false,
+     "rationale": "Eggs are lower in potassium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-028",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "sata",
+   "prompt": "Which food choices fit a heart-healthy diet? Select all that apply.",
+   "options": [
+    {
+     "text": "Skim milk",
+     "correct": true,
+     "rationale": "Low-fat dairy is heart-healthy."
+    },
+    {
+     "text": "Grilled fish",
+     "correct": true,
+     "rationale": "Lean protein supports heart health."
+    },
+    {
+     "text": "Whole-grain pasta",
+     "correct": true,
+     "rationale": "Whole grains support heart health."
+    },
+    {
+     "text": "No-salt-added canned vegetables",
+     "correct": true,
+     "rationale": "Lower sodium protects the heart."
+    },
+    {
+     "text": "Bacon",
+     "correct": false,
+     "rationale": "Bacon is high in sodium and saturated fat."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-029",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Foods by Diet",
+   "type": "mc",
+   "prompt": "On a renal diet, which soft drink is the better choice?",
+   "options": [
+    {
+     "text": "A clear soda such as lemon-lime",
+     "correct": true,
+     "rationale": "Clear sodas are allowed; colas and root beer are high in phosphorus."
+    },
+    {
+     "text": "Cola",
+     "correct": false,
+     "rationale": "Colas are high in phosphorus."
+    },
+    {
+     "text": "Root beer",
+     "correct": false,
+     "rationale": "Root beer is high in phosphorus."
+    },
+    {
+     "text": "Beer",
+     "correct": false,
+     "rationale": "Beer should be avoided."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-030",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Special Situations",
+   "type": "mc",
+   "prompt": "A client is on a clear liquid diet before a colonoscopy. Which item should the nurse remove from the tray?",
+   "options": [
+    {
+     "text": "Red gelatin",
+     "correct": true,
+     "rationale": "Red dye can look like blood during a colon procedure."
+    },
+    {
+     "text": "Yellow gelatin",
+     "correct": false,
+     "rationale": "Non-red gelatin is fine."
+    },
+    {
+     "text": "Clear broth",
+     "correct": false,
+     "rationale": "Broth is allowed."
+    },
+    {
+     "text": "Apple juice",
+     "correct": false,
+     "rationale": "Clear apple juice is allowed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-031",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Special Situations",
+   "type": "order",
+   "prompt": "A client's blood glucose is 58 mg/dL and they are alert. Place the nurse's actions in order.",
+   "options": [
+    {
+     "text": "Give 15 g of fast carbohydrate, such as 4 oz of juice",
+     "rationale": "Raise the glucose first."
+    },
+    {
+     "text": "Recheck blood glucose in 15 minutes",
+     "rationale": "Check whether it's back to at least 70 mg/dL."
+    },
+    {
+     "text": "Repeat 15 g if glucose is still below 70 mg/dL",
+     "rationale": "Repeat until it's at least 70."
+    },
+    {
+     "text": "Give a meal or snack once glucose is normal",
+     "rationale": "Food keeps the glucose from dropping again."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-032",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Special Situations",
+   "type": "sata",
+   "prompt": "Which foods support brain health with omega-3 fatty acids? Select all that apply.",
+   "options": [
+    {
+     "text": "Wild salmon",
+     "correct": true,
+     "rationale": "Salmon is rich in omega-3s."
+    },
+    {
+     "text": "Walnuts",
+     "correct": true,
+     "rationale": "Walnuts contain omega-3s."
+    },
+    {
+     "text": "Flaxseed",
+     "correct": true,
+     "rationale": "Flaxseed contains omega-3s."
+    },
+    {
+     "text": "Fish oil",
+     "correct": true,
+     "rationale": "Fish oil is a concentrated omega-3 source."
+    },
+    {
+     "text": "White bread",
+     "correct": false,
+     "rationale": "White bread has no omega-3s."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-033",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Special Situations",
+   "type": "sata",
+   "prompt": "A client wants to follow an anti-inflammatory eating pattern. Which whole foods fit? Select all that apply.",
+   "options": [
+    {
+     "text": "Fresh fruit such as an apple",
+     "correct": true,
+     "rationale": "Single-ingredient whole foods fit the pattern."
+    },
+    {
+     "text": "Brown or wild rice",
+     "correct": true,
+     "rationale": "Whole grains in their natural form fit."
+    },
+    {
+     "text": "Eggs",
+     "correct": true,
+     "rationale": "Eggs are a whole food."
+    },
+    {
+     "text": "Legumes",
+     "correct": true,
+     "rationale": "Legumes are whole foods."
+    },
+    {
+     "text": "Granola bars with a long ingredient list",
+     "correct": false,
+     "rationale": "Even \"healthy\" snacks can be highly processed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-034",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Special Situations",
+   "type": "sata",
+   "prompt": "Which liquids can be thickened for a client with dysphagia? Select all that apply.",
+   "options": [
+    {
+     "text": "Milk",
+     "correct": true,
+     "rationale": "Milk can be thickened."
+    },
+    {
+     "text": "Coffee",
+     "correct": true,
+     "rationale": "Coffee can be thickened."
+    },
+    {
+     "text": "Juice",
+     "correct": true,
+     "rationale": "Juice can be thickened."
+    },
+    {
+     "text": "Nutritional supplements",
+     "correct": true,
+     "rationale": "Supplements can be thickened."
+    },
+    {
+     "text": "Ice chips",
+     "correct": false,
+     "rationale": "Ice melts into thin water, which isn't safe with dysphagia."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-food-sources-035",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Food Sources",
+   "category": "Special Situations",
+   "type": "mc",
+   "prompt": "A client is nauseated but wants to try eating. Which food choice is best?",
+   "options": [
+    {
+     "text": "Dry crackers in a small portion",
+     "correct": true,
+     "rationale": "Small, non-greasy foods are easier to tolerate."
+    },
+    {
+     "text": "A large cheeseburger with fries",
+     "correct": false,
+     "rationale": "Large, greasy meals worsen nausea."
+    },
+    {
+     "text": "Fried chicken",
+     "correct": false,
+     "rationale": "Greasy food worsens nausea."
+    },
+    {
+     "text": "A big bowl of spicy chili",
+     "correct": false,
+     "rationale": "Large, heavy meals worsen nausea."
     }
    ]
   }
