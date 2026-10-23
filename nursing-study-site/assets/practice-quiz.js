@@ -660,6 +660,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       : q.type === "order" ? "put in order · drag, or use the arrows"
       : q.type === "cloze" ? "drop-down · choose an option for each blank" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
+    showQuestionImage(q);
     calc.sync(q);
     if (tracking) syncBookmark(q);
     if (useNotes) hideNote();
@@ -1264,6 +1265,20 @@ function initPracticeQuiz(bank, catLabels, opts){
   });
 
   /* Drop-down questions keep their sentence in review lists, with the blanks as lines */
+  // Optional picture under the stem: q.image is a site-root path, q.imageAlt describes it.
+  function showQuestionImage(q){
+    var promptEl = document.getElementById("pq-prompt");
+    var fig = document.getElementById("pq-img");
+    if (!q.image){ if (fig) fig.hidden = true; return; }
+    if (!fig){
+      fig = document.createElement("figure"); fig.id = "pq-img"; fig.className = "pq-img";
+      fig.appendChild(document.createElement("img"));
+      promptEl.parentNode.insertBefore(fig, promptEl.nextSibling);
+    }
+    var img = fig.firstChild;
+    img.src = q.image; img.alt = q.imageAlt || "";
+    fig.hidden = false;
+  }
   function fullPrompt(q){ return q.prompt + (q.sentence ? " " + q.sentence.replace(/\{\d+\}/g, "_____") : ""); }
 
   /* Ordered response reads as numbered steps: "1. First → 2. Second" */

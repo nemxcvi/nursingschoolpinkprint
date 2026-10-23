@@ -349,6 +349,8 @@ h2{font-size:20px;}
 .pq-note.is-editing .pq-note-text,.pq-note.is-editing #pq-note-edit{display:none;}
 .pq-progress-track{height:6px;background:var(--pill);overflow:hidden;margin-bottom:22px;}
 .pq-progress-fill{height:100%;width:0;background:var(--border);transition:width .25s ease;}
+.pq-img{margin:0 0 14px;max-width:520px}
+.pq-img img{display:block;width:100%;height:auto;border-radius:8px;background:#fff}
 .pq-prompt{font-family:'Young Serif',serif;font-size:22px;font-weight:400;line-height:1.4;color:var(--heading);margin-bottom:12px;}
 .pq-type-label{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label);margin-bottom:12px;}
 /* Calculator for med math questions: button on the question-type line; keypad floats upper right on wide screens, opens below the button on phones */

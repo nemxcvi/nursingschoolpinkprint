@@ -66,7 +66,7 @@ var SITE = {
     {title:"Food Sources", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/food-sources-flashcards.html", count:47},
     {title:"Food Sources practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/food-sources-quiz.html", count:53},
     {title:"Bowel Elimination", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/bowel-elimination-flashcards.html", count:139},
-    {title:"Bowel Elimination practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/bowel-elimination-quiz.html", count:137},
+    {title:"Bowel Elimination practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/bowel-elimination-quiz.html", count:140},
     {title:"Urinary Elimination", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/urinary-elimination-flashcards.html", count:123},
     {title:"Urinary Elimination practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/urinary-elimination-quiz.html", count:123},
     {title:"Med Math", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/med-math-flashcards.html", count:76},

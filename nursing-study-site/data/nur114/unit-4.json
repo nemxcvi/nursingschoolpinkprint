@@ -17105,6 +17105,140 @@
    ]
   },
   {
+   "id": "nur114-u4-bowel-elimination-138",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Ostomies",
+   "type": "cloze",
+   "prompt": "Look at the picture. Each abdomen has one stoma.",
+   "sentence": "Stoma A is {1}, stoma B is {2}, and stoma C is {3}.",
+   "image": "/unit-4-fluids-nutrition-med-math/quiz-img/ostomy-sites-abc.jpg",
+   "imageAlt": "Three abdomens, each with one stoma. A: stoma at the end of the small intestine in the right lower abdomen, with the whole large intestine shaded. B: stoma on the transverse colon, upper right abdomen. C: stoma on the sigmoid colon, left lower abdomen.",
+   "options": [
+    {
+     "text": "an ileostomy",
+     "correct": true,
+     "rationale": "A comes off the end of the small intestine (ileum) in the right lower quadrant, with the whole colon bypassed.",
+     "blank": 1
+    },
+    {
+     "text": "a transverse colostomy",
+     "correct": false,
+     "rationale": "A transverse colostomy sits on the transverse colon in the upper abdomen.",
+     "blank": 1
+    },
+    {
+     "text": "a sigmoid colostomy",
+     "correct": false,
+     "rationale": "A sigmoid colostomy sits in the left lower quadrant.",
+     "blank": 1
+    },
+    {
+     "text": "a transverse colostomy",
+     "correct": true,
+     "rationale": "B sits on the transverse colon, upper abdomen.",
+     "blank": 2
+    },
+    {
+     "text": "an ileostomy",
+     "correct": false,
+     "rationale": "An ileostomy comes off the small intestine in the right lower quadrant.",
+     "blank": 2
+    },
+    {
+     "text": "a sigmoid colostomy",
+     "correct": false,
+     "rationale": "A sigmoid colostomy sits in the left lower quadrant.",
+     "blank": 2
+    },
+    {
+     "text": "a sigmoid colostomy",
+     "correct": true,
+     "rationale": "C sits on the sigmoid colon in the left lower quadrant.",
+     "blank": 3
+    },
+    {
+     "text": "an ileostomy",
+     "correct": false,
+     "rationale": "An ileostomy is in the right lower quadrant.",
+     "blank": 3
+    },
+    {
+     "text": "a transverse colostomy",
+     "correct": false,
+     "rationale": "A transverse colostomy is in the upper abdomen.",
+     "blank": 3
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-bowel-elimination-139",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Ostomies",
+   "type": "mc",
+   "prompt": "Look at the picture. Which client is at greatest risk for fluid and electrolyte imbalance from stoma output?",
+   "image": "/unit-4-fluids-nutrition-med-math/quiz-img/ostomy-sites-abc.jpg",
+   "imageAlt": "Three abdomens, each with one stoma. A: stoma at the end of the small intestine in the right lower abdomen, with the whole large intestine shaded. B: stoma on the transverse colon, upper right abdomen. C: stoma on the sigmoid colon, left lower abdomen.",
+   "options": [
+    {
+     "text": "Client A",
+     "correct": true,
+     "rationale": "A is an ileostomy: the colon is bypassed, so output is liquid (up to 2,000 mL a day at first) with sodium and potassium loss."
+    },
+    {
+     "text": "Client B",
+     "correct": false,
+     "rationale": "B is a transverse colostomy; its output is pasty, so less fluid is lost than from an ileostomy."
+    },
+    {
+     "text": "Client C",
+     "correct": false,
+     "rationale": "C is a sigmoid colostomy; most water has been absorbed, so output is formed."
+    },
+    {
+     "text": "All three are at equal risk",
+     "correct": false,
+     "rationale": "Fluid loss is greatest when the stoma is earliest in the bowel."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-bowel-elimination-140",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Ostomies",
+   "type": "mc",
+   "prompt": "Look at the picture. Which client should the nurse expect to have formed stool from the stoma?",
+   "image": "/unit-4-fluids-nutrition-med-math/quiz-img/ostomy-sites-abc.jpg",
+   "imageAlt": "Three abdomens, each with one stoma. A: stoma at the end of the small intestine in the right lower abdomen, with the whole large intestine shaded. B: stoma on the transverse colon, upper right abdomen. C: stoma on the sigmoid colon, left lower abdomen.",
+   "options": [
+    {
+     "text": "Client C",
+     "correct": true,
+     "rationale": "C is a sigmoid colostomy, near the end of the colon, so most water has been absorbed and stool is formed."
+    },
+    {
+     "text": "Client A",
+     "correct": false,
+     "rationale": "A is an ileostomy; output is liquid."
+    },
+    {
+     "text": "Client B",
+     "correct": false,
+     "rationale": "B is a transverse colostomy; output is pasty."
+    },
+    {
+     "text": "None of them",
+     "correct": false,
+     "rationale": "A sigmoid colostomy (C) usually puts out formed stool."
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-urinary-elimination-001",
    "course": "NUR 114",
    "unit": 4,
