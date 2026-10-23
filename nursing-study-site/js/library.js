@@ -380,6 +380,7 @@ var Library = (function(){
       var card = e.target.closest(".lb-card");
       if (!card) return;
       var id = card.getAttribute("data-id");
+      if (e.target.closest(".lb-openlink")) T.call("library/opened", {lookup: lookup, id: id}).catch(function(){});
       if (e.target.closest(".lb-download")) download(id, e.target.closest(".lb-download"));
       if (e.target.closest(".lb-preview")) preview(fileById(id));
       if (e.target.closest(".lb-delete")){

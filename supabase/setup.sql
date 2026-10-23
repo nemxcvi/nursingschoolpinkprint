@@ -140,6 +140,11 @@ alter table public.shared_files drop constraint if exists shared_files_kind_chec
 alter table public.shared_files add constraint shared_files_kind_check check (
   (mime = 'link' and size = 0 and url is not null and length(url) <= 1000 and url ~ '^https?://[^[:space:]]+$')
   or (mime <> 'link' and size between 1 and 20971520 and url is null));
+-- How often each one was used (added later; only the owner's admin page shows them): downloads
+-- and previews for files, opens for links. Counted each time a student taps the button.
+alter table public.shared_files add column if not exists downloads integer not null default 0;
+alter table public.shared_files add column if not exists previews integer not null default 0;
+alter table public.shared_files add column if not exists opens integer not null default 0;
 
 create table if not exists public.pp_settings (
   key text primary key,
@@ -565,6 +570,19 @@ begin
           from public.shared_files f where f.id = p_id);
 end $$;
 
+-- Counts one download, preview or link open (tracking codes only). Never returns the counts.
+create or replace function public.lib_count(p_lookup text, p_id uuid, p_kind text) returns boolean
+language plpgsql security definer set search_path = '' as $$
+begin
+  if public.pp_lib_owner(p_lookup) is null then raise exception 'not tracking'; end if;
+  update public.shared_files f set
+      downloads = f.downloads + (p_kind = 'download')::int,
+      previews = f.previews + (p_kind = 'preview')::int,
+      opens = f.opens + (p_kind = 'open')::int
+    where f.id = p_id and ((p_kind in ('download', 'preview') and f.mime <> 'link') or (p_kind = 'open' and f.mime = 'link'));
+  return found;
+end $$;
+
 -- Deletes your own file's details (the worker then removes the file from R2)
 create or replace function public.lib_delete(p_lookup text, p_id uuid) returns boolean
 language plpgsql security definer set search_path = '' as $$
@@ -596,7 +614,8 @@ begin
   if not public.pp_lib_admin_ok(p_key) then raise exception 'not allowed'; end if;
   return coalesce((select jsonb_agg(jsonb_build_object(
       'id', f.id, 'title', f.title, 'name', f.display_name, 'file_name', f.file_name, 'mime', f.mime,
-      'size', f.size, 'url', f.url, 'created_at', f.created_at) order by f.created_at desc)
+      'size', f.size, 'url', f.url, 'created_at', f.created_at,
+      'downloads', f.downloads, 'previews', f.previews, 'opens', f.opens) order by f.created_at desc)
     from public.shared_files f), '[]'::jsonb);
 end $$;
 create or replace function public.lib_admin_delete(p_key text, p_id uuid) returns boolean
@@ -659,5 +678,5 @@ grant execute on function
   public.load_challenge(text, text),
   public.delete_challenge(text, text), public.increment_tally(jsonb), public.class_stats(text), public.ping(),
   public.lib_add(text, text, text, jsonb, jsonb, text, text, text, integer), public.lib_add_link(text, text, text, jsonb, jsonb, text, text, text), public.lib_list(text),
-  public.lib_get(text, uuid), public.lib_delete(text, uuid), public.lib_admin_list(text), public.lib_admin_delete(text, uuid)
+  public.lib_get(text, uuid), public.lib_count(text, uuid, text), public.lib_delete(text, uuid), public.lib_admin_list(text), public.lib_admin_delete(text, uuid)
   to anon;

@@ -47,6 +47,7 @@ const FNS = {
                  ["p_display_name", "text"], ["p_url", "text"], ["p_site", "text"]], "scalar"],
   lib_list: [[["p_lookup", "text"]], "scalar"],
   lib_get: [[["p_lookup", "text"], ["p_id", "uuid"]], "scalar"],
+  lib_count: [[["p_lookup", "text"], ["p_id", "uuid"], ["p_kind", "text"]], "scalar"],
   lib_delete: [[["p_lookup", "text"], ["p_id", "uuid"]], "scalar"],
   lib_admin_list: [[["p_key", "text"]], "scalar"],
   lib_admin_delete: [[["p_key", "text"], ["p_id", "uuid"]], "scalar"]

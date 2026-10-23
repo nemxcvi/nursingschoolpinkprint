@@ -286,6 +286,13 @@ begin
   assert j->1->>'title' = 'Wound care notes' and j->1->>'name' = 'Nicole' and j->0->'name' = 'null'::jsonb and j->0->'description' = 'null'::jsonb, 'trimmed; blank name = Anonymous';
   assert j::text !~ 'owner' and j::text !~ a and j::text !~ b, 'no owner hash or lookup in the list';
   assert public.lib_get(b, f1)->>'file_name' = 'notes.pdf', 'any tracker can get a download link';
+  assert public.lib_count(b, f1, 'download') and public.lib_count(a, f1, 'download') and public.lib_count(b, f1, 'preview'), 'downloads and previews counted';
+  assert not public.lib_count(b, f1, 'open') and not public.lib_count(b, f1, 'other'), 'a file can''t be opened as a link';
+  begin perform public.lib_count(stranger, f1, 'download'); raise exception 'non-tracker counted';
+  exception when raise_exception then if sqlerrm <> 'not tracking' then raise; end if; end;
+  j := (select x from jsonb_array_elements(public.lib_admin_list(repeat('a', 40))) x where x->>'id' = f1::text);
+  assert (j->>'downloads')::int = 2 and (j->>'previews')::int = 1 and (j->>'opens')::int = 0, 'counts stored, shown to the admin';
+  assert public.lib_list(b)::text !~ 'downloads|previews|opens', 'students never see the counts';
   assert not public.lib_delete(b, f1), 'can''t delete someone else''s file';
   assert public.lib_delete(a, f1), 'can delete your own';
   assert jsonb_array_length(public.lib_list(a)) = 1, 'gone';
@@ -295,6 +302,7 @@ begin
   exception when raise_exception then if sqlerrm <> 'bad link' then raise; end if; end;
   begin perform public.lib_add_link(stranger, 'x', null, '["all"]', '["all"]', null, 'https://x.org', 'x.org'); raise exception 'non-tracker shared a link';
   exception when raise_exception then if sqlerrm <> 'not tracking' then raise; end if; end;
+  assert public.lib_count(b, f1, 'open') and not public.lib_count(b, f1, 'download'), 'links count opens, not downloads';
   j := public.lib_list(b);
   assert j->0->>'mime' = 'link' and j->0->>'url' = 'https://www.youtube.com/watch?v=abc' and j->0->>'file_name' = 'youtube.com' and (j->0->>'size')::int = 0, 'link listed';
   assert j->1->'url' = 'null'::jsonb, 'files have no url';
@@ -310,5 +318,5 @@ begin
   assert public.lib_admin_delete(repeat('a', 40), f2), 'admin deletes anyone''s file';
   begin perform public.set_library_admin_key(repeat('b', 40)); raise exception 'admin key settable from the site';
   exception when insufficient_privilege then null; end;
-  raise notice 'ok 8 - library: trackers only, own deletes, tags/types checked, links, upload limit, admin key';
+  raise notice 'ok 8 - library: trackers only, own deletes, tags/types checked, links, counts, upload limit, admin key';
 end $$;

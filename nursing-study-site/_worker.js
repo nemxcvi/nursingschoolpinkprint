@@ -257,7 +257,8 @@ async function handleApi(request, env, url) {
    Files live in the R2 bucket bound as LIBRARY, under the id of their row in shared_files.
    Every call carries the student's lookup ID; the database only answers for real tracking codes.
    Downloads: /api/library/link (tracking code checked) returns a short-lived signed address,
-   /api/library/file/<id>?t=... serves the file as an attachment. The owner's hidden page
+   /api/library/file/<id>?t=... serves the file as an attachment. Each Download, Preview and
+   Open link tap is counted (lib_count); only the admin page shows the counts. The owner's hidden page
    /library-admin uses the Cloudflare secret LIBRARY_ADMIN_KEY (the same key saved in Supabase
    with set_library_admin_key) and is linked from nowhere. */
 const LIB_MAX = 20 * 1024 * 1024;
@@ -455,8 +456,11 @@ async function handleLibrary(request, env, url) {
       const f = await rpc(env, "lib_get", {p_lookup: hex64(b.lookup), p_id: uuid(b.id)});
       if (!f) return reply(404, {error: "That file was deleted."});
       if (f.mime === "link") return reply(400, {error: "That's a link, not a file."});
+      /* Counted for the owner's admin page; a failed count never blocks the download */
+      await rpc(env, "lib_count", {p_lookup: hex64(b.lookup), p_id: f.id, p_kind: b.view === true ? "preview" : "download"}).catch(() => {});
       return reply(200, {result: {url: await fileLink(env, f, b.view === true)}});
     }
+    if (action === "opened") return reply(200, {result: !!await rpc(env, "lib_count", {p_lookup: hex64(b.lookup), p_id: uuid(b.id), p_kind: "open"})});
     if (action === "delete") {
       const id = uuid(b.id);
       const ok = await rpc(env, "lib_delete", {p_lookup: hex64(b.lookup), p_id: id});
@@ -500,13 +504,15 @@ ul{list-style:none;margin:0;padding:0;}li{justify-content:space-between;padding:
 var key = sessionStorage.getItem("libAdmin") || "";
 function post(a, b){ b.key = key; return fetch("/api/library/" + a, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(b)}).then(function(r){ return r.json(); }); }
 function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function n(c, w){ c = c || 0; return c + " " + w + (c === 1 ? "" : "s"); }
 function load(){
   post("admin/list", {}).then(function(r){
     if (!r.result){ document.getElementById("m").textContent = r.error || "Not allowed"; return; }
     sessionStorage.setItem("libAdmin", key);
-    document.getElementById("m").textContent = r.result.length + " shared";
+    var t = r.result.reduce(function(a, f){ return [a[0] + (f.downloads || 0), a[1] + (f.previews || 0), a[2] + (f.opens || 0)]; }, [0, 0, 0]);
+    document.getElementById("m").textContent = r.result.length + " shared · " + n(t[0], "download") + " · " + n(t[1], "preview") + " · " + n(t[2], "link open");
     document.getElementById("l").innerHTML = r.result.map(function(f){
-      return '<li data-id="' + f.id + '"><span><b>' + esc(f.title) + '</b><br><small>' + esc(f.name || "Anonymous") + " · " + esc(f.file_name) + (f.mime === "link" ? " · link" : " · " + Math.ceil(f.size / 1024) + " KB") + " · " + new Date(f.created_at).toLocaleDateString() + '</small></span><a href="' + esc(f.url) + '"' + (f.mime === "link" ? ' target="_blank" rel="noopener noreferrer nofollow">Open link' : ">Download") + '</a><button type="button">Delete</button></li>';
+      return '<li data-id="' + f.id + '"><span><b>' + esc(f.title) + '</b><br><small>' + esc(f.name || "Anonymous") + " · " + esc(f.file_name) + (f.mime === "link" ? " · link" : " · " + Math.ceil(f.size / 1024) + " KB") + " · " + new Date(f.created_at).toLocaleDateString() + "<br>" + (f.mime === "link" ? n(f.opens, "open") : n(f.downloads, "download") + " · " + n(f.previews, "preview")) + '</small></span><a href="' + esc(f.url) + '"' + (f.mime === "link" ? ' target="_blank" rel="noopener noreferrer nofollow">Open link' : ">Download") + '</a><button type="button">Delete</button></li>';
     }).join("");
   });
 }

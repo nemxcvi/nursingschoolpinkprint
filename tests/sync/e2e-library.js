@@ -249,6 +249,10 @@ const BAD = {
     return [r.headers.get("Content-Disposition"), forged.status];
   });
   check(/^attachment; filename=/.test(head[0]) && head[1] === 403, "served with Content-Disposition: attachment; a tampered link is refused", head[0]);
+  const wc = (await q("select downloads, previews from public.shared_files where title = 'Wound care notes'"))[0];
+  check(wc.downloads >= 1 && wc.previews === 0, "Download taps are counted", JSON.stringify(wc));
+  const listKeys = await pa.evaluate(async () => { const k = await Tracking.ensureKeys(); return JSON.stringify(await Tracking.call("library/list", {lookup: k.lookup})); });
+  check(!/downloads|previews|opens/.test(listKeys), "students never get the counts");
 
   // Another student: sees everything, can delete nothing of A's
   const B = await device("B");
@@ -291,6 +295,8 @@ const BAD = {
   await pg.click("#f button");
   await pg.waitForSelector("#l li");
   check((await pg.$$("#l li")).length === 6, "admin page: right key lists every file");
+  check(/Wound care notes[\s\S]*?[1-9]\d* downloads? · 0 previews/.test(await text(pg, "#l")) && /\d+ downloads? · \d+ previews? · \d+ link opens?/.test(await text(pg, "#m")),
+    "admin page: downloads and previews per file, totals at the top", await text(pg, "#m"));
   await pg.locator("#l li", {hasText: "Wound care notes"}).locator("button").click();
   await waitFor(async () => (await pg.$$("#l li")).length === 5);
   check((await q("select count(*)::int n from public.shared_files"))[0].n === 5 && R2().length === r0 + 5 && !(await q("select 1 from public.shared_files where title = 'Wound care notes'")).length,
@@ -380,6 +386,10 @@ const BAD = {
   const la = await lcard.locator("a.lb-openlink").evaluate(a => [a.getAttribute("href"), a.target, a.rel]);
   check(la[0] === "https://www.youtube.com/watch?v=fallrisk" && la[1] === "_blank" && /noopener/.test(la[2]) && /noreferrer/.test(la[2]),
     "the link shows with Open link (new tab, no referrer)", JSON.stringify(la));
+  await lcard.locator("a.lb-openlink").evaluate(a => a.addEventListener("click", e => e.preventDefault()));
+  await lcard.locator("a.lb-openlink").click();
+  await waitFor(async () => (await q("select opens from public.shared_files where title = 'Fall risk video'"))[0].opens === 1);
+  check((await q("select opens, downloads from public.shared_files where title = 'Fall risk video'"))[0].opens === 1, "Open link taps are counted");
   check(/Link · youtube\.com/.test(await text(pb, ".lb-card.is-link")) && await lcard.locator(".lb-download, .lb-preview").count() === 0, "link card: site name, no Download or Preview");
   const lrow = (await q("select mime, size, url, file_name from public.shared_files where title = 'Fall risk video'"))[0];
   check(lrow && lrow.mime === "link" && lrow.size === 0 && lrow.file_name === "youtube.com", "saved as a link, nothing in the bucket", JSON.stringify(lrow));
