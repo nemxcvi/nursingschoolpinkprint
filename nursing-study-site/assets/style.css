@@ -351,11 +351,15 @@ h2{font-size:20px;}
 .pq-progress-fill{height:100%;width:0;background:var(--border);transition:width .25s ease;}
 .pq-prompt{font-family:'Young Serif',serif;font-size:22px;font-weight:400;line-height:1.4;color:var(--heading);margin-bottom:12px;}
 .pq-type-label{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label);margin-bottom:12px;}
-/* Calculator for med math questions: button under the prompt, keypad opens below it */
-.pq-calc-row{margin:-4px 0 12px;}
-.pq-calc-btn{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}
+/* Calculator for med math questions: button on the question-type line; keypad floats upper right on wide screens, opens below the button on phones */
+.pq-type-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:32px;margin-bottom:12px;}
+.pq-type-row .pq-type-label{margin-bottom:0;}
+.pq-calc-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}
 .pq-calc-btn[aria-expanded="true"]{background:var(--border);color:var(--fill-text);}
-.pq-calc{width:260px;max-width:100%;box-sizing:border-box;margin-top:8px;padding:10px;background:var(--page);border:1.5px solid var(--border);border-radius:var(--radius);color:var(--text);}
+.pq-calc-btn.is-off{visibility:hidden;}
+.pq-calc.is-floating{position:fixed;z-index:60;margin:0;box-shadow:0 10px 30px rgba(0,0,0,.18);}
+.pq-calc.is-floating .pq-calc-head{cursor:move;touch-action:none;user-select:none;}
+.pq-calc{width:236px;max-width:100%;box-sizing:border-box;margin-top:8px;padding:10px;background:var(--page);border:1.5px solid var(--border);border-radius:var(--radius);color:var(--text);}
 .pq-calc:focus{outline:none;}
 .pq-calc:focus-visible{outline:2px solid var(--label);outline-offset:2px;}
 .pq-calc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);}

@@ -69,8 +69,8 @@ var SITE = {
     {title:"Bowel Elimination practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/bowel-elimination-quiz.html", count:137},
     {title:"Urinary Elimination", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/urinary-elimination-flashcards.html", count:123},
     {title:"Urinary Elimination practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/urinary-elimination-quiz.html", count:123},
-    {title:"Med Math", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/med-math-flashcards.html", count:64},
-    {title:"Med Math practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/med-math-quiz.html", count:86, note:"Calculator on math questions"},
+    {title:"Med Math", type:"flashcards", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/med-math-flashcards.html", count:76},
+    {title:"Med Math practice quiz", type:"quiz", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/med-math-quiz.html", count:97, note:"Calculator on math questions"},
     {title:"Week 8 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/week8-study-guide.html", meta:"Fluids, electrolytes, IV therapy, acid-base, nutrition & foods · ABG cheat sheet & quick checks"},
     {title:"Week 9 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/week9-study-guide.html", meta:"Bowel & urinary elimination, ostomies, catheters & med math · quick checks"}
   ],

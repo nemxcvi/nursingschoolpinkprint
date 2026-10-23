@@ -382,11 +382,14 @@ function initPracticeQuiz(bank, catLabels, opts){
   optsEl.parentNode.insertBefore(fbEl, optsEl);
 
   /* ---------- Calculator ----------
-     Questions flagged calc: true (med math) get a Calculator button under the prompt.
-     It opens a small keypad under the button that stays open while the next questions need it.
+     Questions flagged calc: true (med math) get a Calculator button at the right end of the
+     question-type line. On wide screens the keypad floats in the upper right (beside the
+     question when there's room) and can be dragged by its title bar, so the answers never
+     move; on phones it opens under the button. It stays open while the next questions need it.
      Typing works while the keypad has focus, and those keys never reach the quiz shortcuts. */
   var calc = (function(){
-    var row = null, panel = null, exprEl = null, resultEl = null;
+    var row = null, btn = null, panel = null, exprEl = null, resultEl = null, moved = false;
+    var WIDE = window.matchMedia ? window.matchMedia("(min-width: 900px)") : {matches: false};
     var expr = "", result = null;
     var SHOW = {"*": "×", "/": "÷", "-": "−", "+": "+"};
 
@@ -441,14 +444,15 @@ function initPracticeQuiz(bank, catLabels, opts){
     function build(){
       var label = document.getElementById("pq-type-label");
       row = document.createElement("div");
-      row.className = "pq-calc-row hidden";
-      var btn = document.createElement("button");
-      btn.type = "button"; btn.className = "pq-calc-btn"; btn.id = "pq-calc-btn";
+      row.className = "pq-type-row";
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      btn = document.createElement("button");
+      btn.type = "button"; btn.className = "pq-calc-btn is-off"; btn.id = "pq-calc-btn";
       btn.setAttribute("aria-expanded", "false");
       btn.innerHTML = '<i class="ti ti-calculator" aria-hidden="true"></i> Calculator';
       btn.addEventListener("click", function(){ isOpen() ? close() : open(); });
       row.appendChild(btn);
-      label.parentNode.insertBefore(row, label.nextSibling);
 
       panel = document.createElement("div");
       panel.className = "pq-calc hidden";
@@ -463,6 +467,21 @@ function initPracticeQuiz(bank, catLabels, opts){
       x.innerHTML = '<i class="ti ti-x" aria-hidden="true"></i>';
       x.addEventListener("click", function(){ close(); btn.focus({preventScroll:true}); });
       head.appendChild(x);
+      /* Drag the floating keypad by its title bar */
+      var drag = null;
+      head.addEventListener("pointerdown", function(e){
+        if (!panel.classList.contains("is-floating") || e.target.closest(".pq-calc-close")) return;
+        var r = panel.getBoundingClientRect();
+        drag = {dx: e.clientX - r.left, dy: e.clientY - r.top};
+        head.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      });
+      head.addEventListener("pointermove", function(e){
+        if (!drag) return;
+        moveTo(e.clientX - drag.dx, e.clientY - drag.dy);
+        moved = true;
+      });
+      ["pointerup", "pointercancel"].forEach(function(t){ head.addEventListener(t, function(){ drag = null; }); });
       var screen = document.createElement("div");
       screen.className = "pq-calc-screen";
       exprEl = document.createElement("div"); exprEl.className = "pq-calc-expr";
@@ -495,13 +514,39 @@ function initPracticeQuiz(bank, catLabels, opts){
         /* Keep calculator keys away from the quiz's letter, number and Enter shortcuts */
         e.preventDefault(); e.stopPropagation();
       });
-      row.appendChild(panel);
+      window.addEventListener("resize", function(){
+        if (!isOpen() || !panel.classList.contains("is-floating")) return;
+        if (moved){ var r = panel.getBoundingClientRect(); moveTo(r.left, r.top); } else place();
+      });
       render();
     }
     function isOpen(){ return panel && !panel.classList.contains("hidden"); }
+    /* Keep the keypad fully on screen */
+    function moveTo(left, top){
+      var w = panel.offsetWidth, h = panel.offsetHeight;
+      panel.style.left = Math.max(8, Math.min(left, window.innerWidth - w - 8)) + "px";
+      panel.style.top = Math.max(8, Math.min(top, window.innerHeight - h - 8)) + "px";
+    }
+    /* Upper right: in the margin beside the question if it fits, else the window's corner */
+    function place(){
+      var gap = 16, w = panel.offsetWidth;
+      var col = document.getElementById("pq-quiz-screen").getBoundingClientRect();
+      var bar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--cbar-h")) || 56;
+      var left = col.right + gap + w <= window.innerWidth - gap ? col.right + gap : window.innerWidth - w - gap;
+      moveTo(left, bar + gap);
+    }
     function open(){
       if (!panel) build();
       panel.classList.remove("hidden");
+      if (WIDE.matches){
+        if (panel.parentNode !== document.body) document.body.appendChild(panel);
+        panel.classList.add("is-floating");
+        if (moved){ var r = panel.getBoundingClientRect(); moveTo(r.left, r.top); } else place();
+      } else {
+        panel.classList.remove("is-floating");
+        panel.style.left = panel.style.top = "";
+        if (panel.previousSibling !== row) row.parentNode.insertBefore(panel, row.nextSibling);
+      }
       document.getElementById("pq-calc-btn").setAttribute("aria-expanded", "true");
       panel.focus({preventScroll:true});
     }
@@ -513,9 +558,11 @@ function initPracticeQuiz(bank, catLabels, opts){
     return {
       /* Show the button only on calculator questions; keep the keypad open between them */
       sync: function(q){
-        if (!q.calc && !row) return;
+        /* Build the button row up front when the quiz has any calculator questions, so layout never jumps */
+        if (!row && !q.calc && !bank.some(function(b){ return b.calc; })) return;
         if (!row) build();
-        row.classList.toggle("hidden", !q.calc);
+        btn.classList.toggle("is-off", !q.calc);
+        btn.tabIndex = q.calc ? 0 : -1;
         if (!q.calc) close();
       },
       close: close

@@ -24058,6 +24058,384 @@
      "rationale": "Changing the dose without verifying is unsafe."
     }
    ]
+  },
+  {
+   "id": "nur114-u4-med-math-087",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Dosage Calculations",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give phenytoin 0.6 g. Available: phenytoin 300-mg capsules. How many capsules should the nurse give? (Round to the nearest whole number.)",
+   "calc": true,
+   "options": [
+    {
+     "text": "2",
+     "correct": true,
+     "rationale": "0.6 g = 600 mg; 600 ÷ 300 = 2 capsules."
+    },
+    {
+     "text": "0.002",
+     "correct": false,
+     "rationale": "Convert grams to milligrams before dividing."
+    },
+    {
+     "text": "20",
+     "correct": false,
+     "rationale": "0.6 g is 600 mg, not 6,000 mg."
+    },
+    {
+     "text": "1",
+     "correct": false,
+     "rationale": "One capsule is only 300 mg."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-088",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Dosage Calculations",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give digoxin 125 mcg. Available: digoxin elixir 0.05 mg/mL. How many mL should the nurse give? (Round to the nearest tenth.)",
+   "calc": true,
+   "options": [
+    {
+     "text": "2.5 mL",
+     "correct": true,
+     "rationale": "125 mcg = 0.125 mg; 0.125 ÷ 0.05 = 2.5 mL."
+    },
+    {
+     "text": "2,500 mL",
+     "correct": false,
+     "rationale": "Convert mcg to mg first."
+    },
+    {
+     "text": "0.4 mL",
+     "correct": false,
+     "rationale": "That divides the wrong way."
+    },
+    {
+     "text": "6.3 mL",
+     "correct": false,
+     "rationale": "Check the conversion: 125 mcg is 0.125 mg."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-089",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Dosage Calculations",
+   "type": "mc",
+   "prompt": "A client is prescribed a medication at 40 mg/kg/day and weighs 132 lb. What is the total daily dose? (Round to the nearest whole number.)",
+   "calc": true,
+   "options": [
+    {
+     "text": "2,400 mg/day",
+     "correct": true,
+     "rationale": "132 ÷ 2.2 = 60 kg; 60 × 40 = 2,400 mg/day."
+    },
+    {
+     "text": "5,280 mg/day",
+     "correct": false,
+     "rationale": "Convert pounds to kilograms first."
+    },
+    {
+     "text": "11,616 mg/day",
+     "correct": false,
+     "rationale": "That multiplies by 2.2 instead of dividing."
+    },
+    {
+     "text": "1,200 mg/day",
+     "correct": false,
+     "rationale": "Check the multiplication: 60 × 40 = 2,400."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-090",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Metric & Household Conversions",
+   "type": "mc",
+   "prompt": "Convert 60 mL to tablespoons.",
+   "calc": true,
+   "options": [
+    {
+     "text": "4 Tbsp",
+     "correct": true,
+     "rationale": "1 Tbsp = 15 mL, so 60 ÷ 15 = 4 Tbsp."
+    },
+    {
+     "text": "12 Tbsp",
+     "correct": false,
+     "rationale": "12 is the number of teaspoons (60 ÷ 5)."
+    },
+    {
+     "text": "2 Tbsp",
+     "correct": false,
+     "rationale": "2 Tbsp is 30 mL."
+    },
+    {
+     "text": "6 Tbsp",
+     "correct": false,
+     "rationale": "6 Tbsp is 90 mL."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-091",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Metric & Household Conversions",
+   "type": "mc",
+   "prompt": "How many milliliters are in 1 pint?",
+   "calc": true,
+   "options": [
+    {
+     "text": "480 mL",
+     "correct": true,
+     "rationale": "1 pint = 16 oz × 30 mL = 480 mL."
+    },
+    {
+     "text": "240 mL",
+     "correct": false,
+     "rationale": "240 mL is 1 cup."
+    },
+    {
+     "text": "960 mL",
+     "correct": false,
+     "rationale": "960 mL is 1 quart."
+    },
+    {
+     "text": "1,000 mL",
+     "correct": false,
+     "rationale": "1,000 mL is 1 L."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-092",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Metric & Household Conversions",
+   "type": "mc",
+   "prompt": "How many milliliters are in 1 quart?",
+   "calc": true,
+   "options": [
+    {
+     "text": "960 mL",
+     "correct": true,
+     "rationale": "1 quart = 32 oz × 30 mL = 960 mL."
+    },
+    {
+     "text": "480 mL",
+     "correct": false,
+     "rationale": "480 mL is 1 pint."
+    },
+    {
+     "text": "240 mL",
+     "correct": false,
+     "rationale": "240 mL is 1 cup."
+    },
+    {
+     "text": "2,000 mL",
+     "correct": false,
+     "rationale": "That's about 2 quarts."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-093",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Metric & Household Conversions",
+   "type": "mc",
+   "prompt": "A client weighs 80 kg. What is the weight in pounds?",
+   "calc": true,
+   "options": [
+    {
+     "text": "176 lb",
+     "correct": true,
+     "rationale": "kg × 2.2 = lb: 80 × 2.2 = 176 lb. The number in kilograms is always the smaller one."
+    },
+    {
+     "text": "36.4 lb",
+     "correct": false,
+     "rationale": "That divides by 2.2; to get pounds, multiply."
+    },
+    {
+     "text": "82.2 lb",
+     "correct": false,
+     "rationale": "That adds 2.2 instead of multiplying."
+    },
+    {
+     "text": "160 lb",
+     "correct": false,
+     "rationale": "That multiplies by 2."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-094",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Metric & Household Conversions",
+   "type": "cloze",
+   "prompt": "A nurse is converting within the metric system.",
+   "sentence": "To convert milligrams to grams, move the decimal point {1}; to convert milligrams to micrograms, move it {2}.",
+   "calc": true,
+   "options": [
+    {
+     "text": "3 places to the left",
+     "correct": true,
+     "rationale": "Going to a larger unit makes the number smaller: 5,000 mg = 5 g.",
+     "blank": 1
+    },
+    {
+     "text": "3 places to the right",
+     "correct": false,
+     "rationale": "That makes the number larger; grams are the bigger unit.",
+     "blank": 1
+    },
+    {
+     "text": "6 places to the left",
+     "correct": false,
+     "rationale": "Grams and milligrams differ by 1,000, not 1,000,000.",
+     "blank": 1
+    },
+    {
+     "text": "3 places to the right",
+     "correct": true,
+     "rationale": "Going to a smaller unit makes the number larger: 5 mg = 5,000 mcg.",
+     "blank": 2
+    },
+    {
+     "text": "3 places to the left",
+     "correct": false,
+     "rationale": "That makes the number smaller.",
+     "blank": 2
+    },
+    {
+     "text": "1 place to the right",
+     "correct": false,
+     "rationale": "Milligrams and micrograms differ by 1,000.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-095",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Abbreviations",
+   "type": "mc",
+   "prompt": "Why are apothecary units such as grains no longer used for medications?",
+   "options": [
+    {
+     "text": "They caused many calculation and medication errors and are on the \"Do Not Use\" list",
+     "correct": true,
+     "rationale": "The Joint Commission and the Institute for Safe Medication Practices list apothecary units as unsafe."
+    },
+    {
+     "text": "They are more accurate than metric units",
+     "correct": false,
+     "rationale": "The metric system is the most precise."
+    },
+    {
+     "text": "They are used only for IV medications",
+     "correct": false,
+     "rationale": "Apothecary units aren't used for any route."
+    },
+    {
+     "text": "Pharmacies no longer stock them",
+     "correct": false,
+     "rationale": "The reason is safety, not supply."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-096",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Dosage Calculations",
+   "type": "sata",
+   "prompt": "Which habits help a nurse calculate doses safely? Select all that apply.",
+   "calc": true,
+   "options": [
+    {
+     "text": "Write the unit labels (mg, mL, tablets) in every step",
+     "correct": true,
+     "rationale": "Labels prevent unit mix-ups."
+    },
+    {
+     "text": "Read the whole problem before starting",
+     "correct": true,
+     "rationale": "Know what you're solving for and pull out the desired dose, the dose available, the quantity and any time factor."
+    },
+    {
+     "text": "Check whether the answer makes sense",
+     "correct": true,
+     "rationale": "An answer like 25 tablets means recheck or ask another nurse to check."
+    },
+    {
+     "text": "Use the same calculation method every time",
+     "correct": true,
+     "rationale": "Sticking with one method builds mastery and accuracy."
+    },
+    {
+     "text": "Round each step to keep the numbers simple",
+     "correct": false,
+     "rationale": "Round only at the end."
+    },
+    {
+     "text": "Leave off the leading zero to save space",
+     "correct": false,
+     "rationale": "A missing leading zero can cause a tenfold error."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-097",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Dosage Calculations",
+   "type": "mc",
+   "prompt": "When setting up a dimensional analysis problem, how should each new fraction be placed?",
+   "calc": true,
+   "options": [
+    {
+     "text": "Its numerator matches the unit in the previous fraction's denominator, so that unit cancels",
+     "correct": true,
+     "rationale": "Units cancel step by step until only the unit you're solving for is left."
+    },
+    {
+     "text": "Its numerator matches the previous numerator",
+     "correct": false,
+     "rationale": "Matching numerators means nothing cancels."
+    },
+    {
+     "text": "It goes in any order; placement doesn't matter",
+     "correct": false,
+     "rationale": "Placement decides whether units cancel."
+    },
+    {
+     "text": "The unit you're solving for goes in the denominator",
+     "correct": false,
+     "rationale": "The unit you're solving for goes on top."
+    }
+   ]
   }
  ]
 }

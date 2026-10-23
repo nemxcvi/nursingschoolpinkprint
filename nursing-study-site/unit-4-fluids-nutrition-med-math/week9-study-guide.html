@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="../assets/style.css?v=120">
+<link rel="stylesheet" href="../assets/style.css?v=121">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 <style>
 /* Week 9: same components and styles as the Week 6 guide */
@@ -188,11 +188,12 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 .pq img{height:190px;object-fit:cover}
 .pq details{padding:8px 10px;font-size:15px}
 
+.guide-hero p.key-note{max-width:60ch;color:var(--muted);font-size:15.5px;font-style:italic;margin:10px 0 0}
 </style>
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="studyguides"></div>
-<script src="../assets/site-data.js?v=17"></script>
+<script src="../assets/site-data.js?v=18"></script>
 <script src="../js/tracking.js?v=15"></script>
 <script src="../assets/header.js?v=14"></script>
 <script src="../js/progress.js?v=7"></script>
@@ -201,12 +202,13 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
   <p class="course">NUR 114 &middot; Unit 4 &middot; Week 9</p>
   <h1>Elimination &amp; med math</h1>
   <p class="lede">Drafted from the Week 9 modules and powerpoints, scaled down for exam crams. Use the mnemonics and memory tricks to lock in lists, then hit the quick checks at the end of each topic.</p>
+  <p class="key-note">The elimination slides are mostly topic headings that point to the ATI skills modules, so most details here come from ATI. The orange tag marks what the slides cover.</p>
   <div class="legend" aria-label="Key">
     <span class="lg-slides">Slides content: covered in instructor's slides</span>
     <span class="lg-flag">Instructor flagged for the test</span>
     <span class="lg-known">Known mnemonic</span>
     <span class="lg-hook">Memory hook made for this guide</span>
-    <span class="lg-note">Side note: sources differ</span>
+    <span class="lg-note">Side note</span>
   </div>
 </header>
 
@@ -645,6 +647,12 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     </ul>
     <p>For tube feeding (formulas, tube types, residuals, flushing and complications), see the <a href="week8-study-guide.html#tubes">Week 8 study guide</a>.</p>
   </div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>What does the blue pigtail on a sump tube do, and can you clamp it?</summary><p>It's an air vent that keeps the tube from sucking onto the stomach lining. Never clamp it while the tube is on suction.</p></details>
+    <details><summary>How do you measure an NG tube?</summary><p>Tip of the nose to the earlobe, then to the xiphoid process.</p></details>
+    <details><summary>Which NG drainage do you report right away?</summary><p>Coffee-ground, dark or blood-streaked drainage.</p></details>
+  </div>
 </section>
 
 <!-- ===================== URINARY TRACT ===================== -->
@@ -1044,7 +1052,10 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     </div>
     <ul class="tight">
       <li><b>Base units:</b> weight in kilograms (doses in mg or mcg), volume in liters (IV fluids in L or mL; liquid doses in mL), length in meters (height in cm).</li>
-      <li><b>Bigger unit → smaller unit: multiply.</b> 2.5 mg × 1,000 = 2,500 mcg. <b>Smaller → bigger: divide.</b> 10 mg ÷ 1,000 = 0.01 g.</li>
+      <li><b>Bigger unit → smaller unit: multiply</b> (move the decimal right). 5 mg = 5,000 mcg. <b>Smaller → bigger: divide</b> (move the decimal left). 5,000 mg = 5 g. Each step between g, mg and mcg is 3 decimal places.</li>
+      <li>More household equivalents: <b>2 Tbsp = 1 oz</b>, <b>1 pint = 480 mL (16 oz)</b>, <b>1 quart = 960 mL (32 oz)</b>.</li>
+      <li><b>Pounds and kilograms:</b> lb ÷ 2.2 = kg; kg × 2.2 = lb. The kilogram number is always the smaller one.</li>
+      <li><b>Apothecary units</b> (grains) are no longer used: they caused so many errors that The Joint Commission and ISMP (Institute for Safe Medication Practices) put them on the "Do Not Use" list.</li>
       <li>Teach clients to use a calibrated cup or oral syringe; kitchen spoons vary.</li>
       <li>Insulin, heparin and some vitamins are measured in <b>units</b> (always spelled out); potassium in milliequivalents (mEq).</li>
     </ul>
@@ -1089,6 +1100,21 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <h4>The slide's example</h4>
     <p>174 mg of amoxicillin/clavulanate ordered; available 125 mg/5 mL; round to the nearest whole number.</p>
     <div class="strip"><span>X mL = (5 mL ÷ 125 mg) × (174 mg ÷ 1)</span><span class="arrow">→</span><span>mg cancels</span><span class="arrow">→</span><span>6.96 mL</span><span class="arrow">→</span><span><b>7 mL</b></span></div>
+    <h4>One more example, all three ways</h4>
+    <p>Phenytoin 0.6 g ordered; available 300-mg capsules. First convert: 0.6 g = 600 mg.</p>
+    <div class="tbl"><table>
+      <tr><th>Method</th><th>Setup</th><th>Answer</th></tr>
+      <tr><td>Ratio and proportion</td><td>300 mg / 1 capsule = 600 mg / X → 300X = 600</td><td>2 capsules</td></tr>
+      <tr><td>Desired over have</td><td>X = 600 mg × 1 capsule ÷ 300 mg</td><td>2 capsules</td></tr>
+      <tr><td>Dimensional analysis</td><td>X = (1 capsule / 300 mg) × (1,000 mg / 1 g) × (0.6 g / 1)</td><td>2 capsules</td></tr>
+    </table></div>
+    <h4>Habits that prevent errors</h4>
+    <ul class="tight">
+      <li>Read the whole problem first: what unit you're solving for, the desired dose, the dose you have, the quantity, and any time factor (such as every 12 hr).</li>
+      <li>Write the unit labels (mg, mL, tablets) in every step.</li>
+      <li>Pick one method and use it every time.</li>
+      <li>Ask whether the answer makes sense; 25 tablets means recheck or have another nurse check.</li>
+    </ul>
     <h4>Dosage by weight</h4>
     <ol class="seq"><li>Convert pounds to kilograms: divide by <b>2.2</b> (don't round yet)</li><li>Multiply kilograms by the prescribed mg/kg</li><li>Work out the volume or tablets from what's available</li><li>Round the final answer as directed</li></ol>
     <p><b>Example:</b> 15 mg/kg for a client who weighs 176 lb → 176 ÷ 2.2 = 80 kg → 80 × 15 = <b>1,200 mg</b>.</p>
@@ -1103,6 +1129,8 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <details><summary>Round 0.746 mL using general rules.</summary><p>0.75 mL (doses under 1 round to the hundredth).</p></details>
     <details><summary>Magnesium hydroxide 2.4 g ordered; 400 mg/5 mL available. How many mL?</summary><p>2,400 × 5 ÷ 400 = 30 mL.</p></details>
     <details><summary>Cephalexin 0.5 g ordered; 250 mg capsules. How many capsules?</summary><p>2.</p></details>
+    <details><summary>Digoxin 125 mcg ordered; elixir 0.05 mg/mL. How many mL?</summary><p>125 mcg = 0.125 mg; 0.125 ÷ 0.05 = 2.5 mL.</p></details>
+    <details><summary>How many mL in a pint? In a quart?</summary><p>480 mL; 960 mL.</p></details>
   </div>
 </section>
 
