@@ -1469,6 +1469,7 @@
    "category": "Assessment & I&O",
    "type": "mc",
    "prompt": "A client drinks two 8-oz cups of coffee. How much intake does the nurse record?",
+   "calc": true,
    "options": [
     {
      "text": "480 mL",
@@ -1500,6 +1501,7 @@
    "category": "Assessment & I&O",
    "type": "mc",
    "prompt": "A client drinks a 6-oz juice and 4 oz of water. How many mL of intake is that?",
+   "calc": true,
    "options": [
     {
      "text": "300 mL",
@@ -7167,6 +7169,7 @@
    "category": "Labs, BMI & Assessment",
    "type": "mc",
    "prompt": "A client weighs 80 kg and is 1.6 m tall. What is the client's BMI category?",
+   "calc": true,
    "options": [
     {
      "text": "Obese",
