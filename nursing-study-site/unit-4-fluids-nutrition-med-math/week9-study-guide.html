@@ -184,59 +184,18 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 .gallery figure{margin:0;border:none;padding:0;background:none}
 .gallery img{height:170px;object-fit:contain}
 .gallery figcaption{margin-top:6px}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(var(--min,240px),100%),1fr));gap:12px;border:1.5px solid var(--border);background:var(--card);padding:10px;margin:14px 0}
+.pics figure{margin:0}
+.pics img{display:block;width:100%;height:auto;background:#fff}
+.pics figcaption{margin-top:6px}
+.guide-footer .credits{font-size:13px}
+.credit{display:block;font-size:12px;color:var(--muted);font-style:italic}
 .pq{display:flex;flex-direction:column;gap:8px}
 .pq img{height:190px;object-fit:cover}
 .pq details{padding:8px 10px;font-size:15px}
 
 .guide-hero p.key-note{max-width:60ch;color:var(--muted);font-size:15.5px;font-style:italic;margin:10px 0 0}
 
-/* Week 9 diagrams (drawn for this guide) */
-:root{--d-skin:#F8E6DC;--d-gi:#F2A7A0;--d-si:#F4B6A6;--d-colon:#E9B949;--d-liver:#A9584E;--d-gb:#7FB069;--d-panc:#F2CF8C;
-  --d-kidney:#C9605C;--d-med:#E89A8E;--d-pyr:#B04A47;--d-pelvis:#F2D2B0;--d-ureter:#E0A84C;--d-bladder:#F0B8C8;
-  --d-stoma:#D1495B;--d-wall:#EAC7B4;--d-bag:#F6E7A8;--d-steel:#8A8F98;--d-bone:#E9E2D2}
-[data-theme="dark"]{--d-skin:#3A2530;--d-gi:#B4625C;--d-si:#A9685D;--d-colon:#B88A2E;--d-liver:#7E3B33;--d-gb:#4E7A3E;--d-panc:#9C7F4A;
-  --d-kidney:#A44A47;--d-med:#B86C62;--d-pyr:#7A2F2D;--d-pelvis:#8C7058;--d-ureter:#B0802E;--d-bladder:#A5677A;
-  --d-stoma:#E0707F;--d-wall:#6B4A3F;--d-bag:#8C7C3A;--d-steel:#A7ADB6;--d-bone:#6F6A5F}
-.dia svg{display:block;width:100%;height:auto}
-.dia .svg-text{font-family:'IBM Plex Mono',monospace;fill:var(--text)}
-.dia .svg-title{font-family:'Young Serif',Georgia,serif;fill:var(--label);font-size:15px}
-.dia .svg-note{font-family:'IBM Plex Mono',monospace;fill:var(--muted)}
-.dia .lead{stroke:var(--muted);stroke-width:1.2}
-.dia .skin{fill:var(--d-skin)}
-.dia .skin-line{fill:var(--d-skin);stroke:var(--muted);stroke-width:1.2}
-.dia .gi{fill:var(--d-gi)}
-.dia .gi-tube{fill:none;stroke:var(--d-gi);stroke-width:12;stroke-linecap:round}
-.dia .si{fill:none;stroke:var(--d-si);stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
-.dia .colon{fill:none;stroke:var(--d-colon);stroke-width:22;stroke-linecap:round;stroke-linejoin:round}
-.dia .colon-end{fill:none;stroke:var(--d-si);stroke-width:10;stroke-linecap:round}
-.dia .liver{fill:var(--d-liver)} .dia .gb{fill:var(--d-gb)} .dia .pancreas{fill:var(--d-panc)}
-.dia .kidney{fill:var(--d-kidney)} .dia .medulla-bg{fill:var(--d-med)} .dia .pyramid{fill:var(--d-pyr)} .dia .pelvis{fill:var(--d-pelvis)}
-.dia .ureter{fill:none;stroke:var(--d-ureter);stroke-width:6;stroke-linecap:round}
-.dia .bladder{fill:var(--d-bladder)}
-.dia .stoma{fill:var(--d-stoma)} .dia .opening{fill:var(--page)}
-.dia .wall{fill:var(--d-wall)}
-.dia .bowel{fill:none;stroke:var(--d-colon);stroke-width:22;stroke-linecap:round}
-.dia .bowel-in{display:none}
-.dia .rod{fill:var(--d-steel)}
-.dia .pouch{fill:var(--d-si)}
-.dia .bag{fill:var(--d-bag);stroke:var(--muted);stroke-width:1}
-.dia .tube,.dia .cath{fill:none;stroke:var(--d-steel);stroke-width:5;stroke-linecap:round}
-.dia .bed{fill:none;stroke:var(--muted);stroke-width:3;stroke-linecap:round}
-.dia .bed-arc{fill:none;stroke:var(--muted);stroke-width:1.2}
-.dia .pan{fill:var(--d-steel)} .dia .pad{fill:var(--d-bag)}
-.dia .port{fill:var(--d-bag);stroke:var(--d-steel);stroke-width:3}
-.dia .clamp{stroke:var(--label);stroke-width:4;stroke-linecap:round}
-.dia .syringe{stroke:var(--d-steel);stroke-width:4} .dia .syringe-body{fill:none;stroke:var(--d-steel);stroke-width:3}
-.dia .balloon{fill:var(--d-bag);stroke:var(--d-steel);stroke-width:2}
-.dia .bone{fill:none;stroke:var(--d-bone);stroke-width:12;stroke-linecap:round}
-
-.dia{margin:16px 0;background:var(--card,transparent);border:1px solid var(--line,rgba(0,0,0,.08));border-radius:14px;padding:12px}
-.dia svg{display:block;width:100%;height:auto}
-.dia figcaption{font-size:14px;color:var(--muted);margin-top:6px;text-align:center}
-.dia.wide{overflow-x:auto}
-@media (max-width:600px){.dia.wide svg{min-width:560px}.dia.wide figcaption::after{content:" (swipe to see it all)";white-space:nowrap}.dia.wide figcaption{position:sticky;left:0;max-width:calc(100vw - 80px)}}
-.dia-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
-.dia-grid .dia{margin:0}
 </style>
 </head>
 <body>
@@ -287,31 +246,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 
   <div class="gsub">
     <h3>How stool is made<span class="gslides inl">Slides content</span></h3>
-    <figure class="dia wide"><svg viewBox="0 0 690 600" role="img" aria-label="Digestive tract from mouth to anus with the liver, gallbladder and pancreas">
-<path class="skin" d="M300 18c-38 0-58 26-58 62 0 22 8 38 20 48-30 8-118 20-128 60-10 40-14 330-4 380 8 24 340 24 340 0 10-50 6-340-4-380-10-40-98-52-128-60 12-10 20-26 20-48 0-36-20-62-58-62z"/>
-<ellipse class="gi" cx="300" cy="96" rx="22" ry="9"/>
-<path class="gi-tube" d="M300 104 L300 196"/>
-<path class="liver" d="M168 196c30-20 120-22 150-6 10 12 0 40-30 50-40 12-96 22-118 10-14-10-14-42-2-54z"/>
-<ellipse class="gb" cx="236" cy="252" rx="13" ry="9"/>
-<path class="gi" d="M302 196c30-4 78 6 88 34 10 30-6 58-44 62-30 4-44-18-40-38 2-14-6-34-4-58z"/>
-<path class="pancreas" d="M262 300c40-8 90-8 120-2 8 4 4 14-4 14-34 2-80 4-112 0-10-2-12-10-4-12z"/>
-<path class="colon" d="M206 474 L206 330 Q206 318 220 318 L390 318 Q404 318 404 332 L404 450 Q404 486 360 486 Q330 486 316 470"/>
-<path class="gi-tube" d="M316 470 Q300 490 300 512 L300 548"/>
-<path class="si" d="M228 340c40 0 120-4 150 6 6 18-140 14-146 30-4 16 140 6 146 24 2 18-140 10-144 28-2 16 120 10 126 22"/>
-<circle class="gi" cx="300" cy="552" r="5"/>
-<line class="lead" x1="278" y1="96" x2="120" y2="96"/><text class="svg-text" x="114" y="100" font-size="13" text-anchor="end">Mouth</text>
-<line class="lead" x1="300" y1="150" x2="120" y2="150"/><text class="svg-text" x="114" y="154" font-size="13" text-anchor="end">Esophagus</text>
-<line class="lead" x1="196" y1="212" x2="120" y2="212"/><text class="svg-text" x="114" y="216" font-size="13" text-anchor="end">Liver</text>
-<line class="lead" x1="224" y1="256" x2="120" y2="262"/><text class="svg-text" x="114" y="266" font-size="13" text-anchor="end">Gallbladder</text>
-<line class="lead" x1="382" y1="236" x2="470" y2="236"/><text class="svg-text" x="476" y="240" font-size="13" text-anchor="start">Stomach</text>
-<line class="lead" x1="378" y1="306" x2="470" y2="300"/><text class="svg-text" x="476" y="304" font-size="13" text-anchor="start">Pancreas</text>
-<line class="lead" x1="330" y1="372" x2="470" y2="372"/><text class="svg-text" x="476" y="368" font-size="13" text-anchor="start">Small intestine</text><text class="svg-note" x="476" y="384" font-size="11" text-anchor="start">absorbs nutrients</text>
-<line class="lead" x1="404" y1="330" x2="470" y2="330"/><text class="svg-text" x="476" y="328" font-size="13" text-anchor="start">Large intestine</text><text class="svg-note" x="476" y="344" font-size="11" text-anchor="start">absorbs water; stool forms</text>
-<line class="lead" x1="206" y1="420" x2="120" y2="420"/><text class="svg-text" x="114" y="416" font-size="13" text-anchor="end">Ascending</text><text class="svg-text" x="114" y="430" font-size="13" text-anchor="end">colon</text>
-<line class="lead" x1="372" y1="484" x2="470" y2="470"/><text class="svg-text" x="476" y="466" font-size="13" text-anchor="start">Sigmoid colon</text>
-<line class="lead" x1="300" y1="530" x2="120" y2="530"/><text class="svg-text" x="114" y="534" font-size="13" text-anchor="end">Rectum</text>
-<line class="lead" x1="300" y1="552" x2="470" y2="552"/><text class="svg-text" x="476" y="556" font-size="13" text-anchor="start">Anus</text>
-</svg><figcaption>The GI (gastrointestinal) tract, mouth to anus</figcaption></figure>
+    <figure class="pic" style="max-width:380px"><img src="week9-img/digestive-system.jpg" alt="Digestive system from the mouth to the anus, with the liver, gallbladder and pancreas" loading="lazy"><figcaption>The GI (gastrointestinal) tract, mouth to anus <span class="credit">NIDDK</span></figcaption></figure>
     <div class="strip"><span>Mouth</span><span class="arrow">→</span><span>Esophagus</span><span class="arrow">→</span><span>Stomach</span><span class="arrow">→</span><span>Small intestine</span><span class="arrow">→</span><span>Large intestine</span><span class="arrow">→</span><span>Anus</span></div>
     <ul class="tight">
       <li>The <b>epiglottis</b> covers the airway when you swallow so food goes into the esophagus.</li>
@@ -544,17 +479,6 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <figure><img src="week9-img/05.jpg" alt="Regular bedpan" loading="lazy"><figcaption><b>Regular bedpan:</b> can lift the hips, no leg restrictions</figcaption></figure>
       <figure><img src="week9-img/06.jpg" alt="Fracture bedpan" loading="lazy"><figcaption><b>Fracture pan:</b> body or leg cast, leg fracture, can't lift hips</figcaption></figure>
     </div>
-    <figure class="dia wide"><svg viewBox="0 0 700 250" role="img" aria-label="Client with the head of the bed raised 30 degrees and a fracture bedpan with its flat end under the buttocks">
-<path class="bed" d="M200 190 L670 190"/><path class="bed" d="M200 190 L40 98"/>
-<path class="bed-arc" d="M150 190 A50 50 0 0 0 157 165"/><text class="svg-note" x="110" y="214" font-size="12">Head of bed 30°</text>
-<circle class="skin-line" cx="78" cy="96" r="22"/>
-<path class="skin-line" d="M96 110 L206 172 L360 172 Q382 172 386 180 L640 180 Q656 180 656 186 L360 186 L206 186 L86 118 Z"/>
-<path class="pan" d="M318 190 L318 182 Q340 186 380 176 L420 172 L420 190 Z"/>
-<rect class="pad" x="290" y="190" width="150" height="6"/>
-<line class="lead" x1="322" y1="184" x2="250" y2="64"/><text class="svg-text" x="140" y="56" font-size="12" text-anchor="start">Flat, thin end under the buttocks</text>
-<line class="lead" x1="416" y1="176" x2="460" y2="120"/><text class="svg-text" x="464" y="112" font-size="12" text-anchor="start">Deeper end and handle</text><text class="svg-text" x="464" y="128" font-size="12" text-anchor="start">under the upper thighs</text>
-<line class="lead" x1="380" y1="196" x2="400" y2="232"/><text class="svg-text" x="404" y="236" font-size="12" text-anchor="start">Waterproof pad underneath</text>
-</svg><figcaption>Fracture pan: flat end under the buttocks, head of bed at 30°, waterproof pad underneath</figcaption></figure>
     <ul class="tight">
       <li>Place the upper end under the buttocks and the lower end under the upper thighs, with a waterproof pad underneath.</li>
       <li>Can't lift hips: <b>roll to the side</b>, place the pan, roll back. Fracture pan: head of bed at <b>30°</b>.</li>
@@ -624,21 +548,9 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 
   <div class="gsub">
     <h3>Types of bowel diversions<span class="gslides inl">Slides content</span></h3>
-    <p>An <b>ostomy</b> is a surgical opening in the abdominal wall; the <b>stoma</b> is the end of bowel brought to the skin. Ostomies are temporary or permanent, for cancer, inflammatory bowel disease, trauma, obstruction or diverticular disease. A loop colostomy's rod or bridge stays in for 7–10 days.</p>
-    <div class="dia-grid"><figure class="dia"><svg viewBox="-12 0 250 272" role="img" aria-label="End"><rect class="wall" x="10" y="90" width="220" height="26"/>
-<path class="bowel" d="M100 240 Q100 140 118 116"/><ellipse class="stoma" cx="120" cy="86" rx="28" ry="10"/>
-<text class="svg-title" x="10" y="26" font-size="16">End</text>
-<text class="svg-text" x="10" y="262" font-size="12" text-anchor="start">One stoma; usually permanent</text></svg></figure><figure class="dia"><svg viewBox="-12 0 250 272" role="img" aria-label="Loop"><rect class="wall" x="0" y="90" width="220" height="26"/>
-<path class="bowel" d="M46 240 Q46 130 110 80 Q174 130 174 240"/><rect class="rod" x="58" y="74" width="104" height="7" rx="3"/>
-<ellipse class="stoma" cx="110" cy="72" rx="40" ry="12"/><circle class="opening" cx="92" cy="72" r="5"/><circle class="opening" cx="128" cy="72" r="5"/>
-<text class="svg-title" x="0" y="26" font-size="16">Loop</text>
-<line class="lead" x1="92" y1="66" x2="66" y2="46"/><text class="svg-note" x="62" y="46" font-size="11" text-anchor="end">stool</text><line class="lead" x1="128" y1="66" x2="156" y2="46"/><text class="svg-note" x="160" y="46" font-size="11" text-anchor="start">mucus</text>
-<text class="svg-text" x="0" y="262" font-size="12" text-anchor="start">One stoma, two openings, on a rod</text></svg></figure><figure class="dia"><svg viewBox="-12 0 250 272" role="img" aria-label="Double-barrel"><rect class="wall" x="0" y="90" width="220" height="26"/>
-<path class="bowel" d="M46 240 Q46 140 64 116"/><ellipse class="stoma" cx="66" cy="86" rx="24" ry="10"/>
-<path class="bowel" d="M176 240 Q176 140 158 116"/><ellipse class="stoma" cx="156" cy="86" rx="24" ry="10"/>
-<text class="svg-title" x="0" y="26" font-size="16">Double-barrel</text>
-<text class="svg-note" x="66" y="62" font-size="11" text-anchor="middle">stool</text><text class="svg-note" x="156" y="62" font-size="11" text-anchor="middle">mucus</text>
-<text class="svg-text" x="0" y="262" font-size="12" text-anchor="start">Two stomas; distal drains mucus</text></svg></figure></div>
+    <p>An <b>ostomy</b> is a surgical opening in the abdominal wall; the <b>stoma</b> is the end of bowel brought to the skin. Ostomies are temporary or permanent, for cancer, inflammatory bowel disease, trauma, obstruction or diverticular disease.</p>
+    <div class="pics" style="--min:240px"><figure><img src="week9-img/loop-colostomy.jpg" alt="Temporary loop colostomy in the transverse colon" loading="lazy"><figcaption><b>Loop</b> (temporary, transverse): one stoma, two openings, on a rod or bridge for 7–10 days <span class="credit">National Cancer Institute</span></figcaption></figure><figure><img src="week9-img/end-colostomy.jpg" alt="Permanent end colostomy in the sigmoid colon after the rectum is removed for rectal cancer" loading="lazy"><figcaption><b>End</b> (usually permanent, sigmoid): the working end of the colon brought to the skin <span class="credit">National Cancer Institute</span></figcaption></figure></div>
+    <p><b>Double-barrel:</b> the colon is divided and both ends come out as two separate stomas. The proximal one passes stool; the distal one (mucous fistula) drains only mucus.</p>
     <div class="tbl"><table>
       <tr><th>Diversion</th><th>Location</th><th>Output</th><th>Notes</th></tr>
       <tr><td>Ileostomy</td><td>Ileum, <b>RLQ</b></td><td>Liquid, dark green, enzymes</td><td>Up to 2,000 mL a day at first; dehydration and sodium and potassium loss</td></tr>
@@ -650,20 +562,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>J-pouch</td><td colspan="3">Internal ileal pouch connected to the anus after the colon and rectum are removed; <b>no external stoma</b>, keeps the sphincter. Made in stages with a temporary ileostomy.</td></tr>
       <tr><td>Kock pouch (continent ileostomy)</td><td colspan="3">Internal ileal pouch with a nipple valve; the client <b>drains it with a catheter</b> through the stoma several times a day; no external pouch</td></tr>
     </table></div>
-    <figure class="dia wide"><svg viewBox="-60 0 800 470" role="img" aria-label="Stoma sites for an ileostomy and ascending, transverse, descending and sigmoid colostomies, with output for each">
-<path class="skin" d="M230 24h260c40 0 60 30 60 70v300c0 40-40 60-80 60H250c-40 0-80-20-80-60V94c0-40 20-70 60-70z"/>
-<text class="svg-note" x="186" y="46" font-size="12">Client's right</text><text class="svg-note" x="534" y="46" font-size="12" text-anchor="end">Client's left</text>
-<path class="colon" d="M270 340 L270 170 Q270 150 290 150 L430 150 Q450 150 450 170 L450 330 Q450 372 410 380 Q380 386 372 410"/>
-<path class="si" d="M300 200c40 0 100-4 120 6 4 14-110 12-114 26-4 12 110 6 114 22 2 16-104 10-110 26-2 12 60 14 70 30 4 8-40 22-90 30"/>
-<path class="colon-end" d="M270 340 Q270 360 290 362"/>
-<circle class="stoma" cx="248" cy="350" r="9"/><circle class="stoma" cx="248" cy="240" r="9"/><circle class="stoma" cx="360" cy="128" r="9"/><circle class="stoma" cx="472" cy="210" r="9"/><circle class="stoma" cx="440" cy="400" r="9"/>
-<line class="lead" x1="239" y1="350" x2="150" y2="380"/><text class="svg-title" x="144" y="374" font-size="13" text-anchor="end">Ileostomy</text><text class="svg-text" x="144" y="390" font-size="13" text-anchor="end">RLQ · liquid</text>
-<line class="lead" x1="239" y1="240" x2="150" y2="240"/><text class="svg-title" x="144" y="234" font-size="13" text-anchor="end">Ascending</text><text class="svg-text" x="144" y="250" font-size="13" text-anchor="end">liquid to semi-liquid</text>
-<line class="lead" x1="360" y1="119" x2="360" y2="96"/><text class="svg-title" x="360" y="74" font-size="13" text-anchor="middle">Transverse</text><text class="svg-text" x="360" y="90" font-size="13" text-anchor="middle">pasty · often a temporary loop</text>
-<line class="lead" x1="481" y1="210" x2="566" y2="200"/><text class="svg-title" x="572" y="194" font-size="13" text-anchor="start">Descending</text><text class="svg-text" x="572" y="210" font-size="13" text-anchor="start">semi-formed</text>
-<line class="lead" x1="449" y1="400" x2="566" y2="410"/><text class="svg-title" x="572" y="404" font-size="13" text-anchor="start">Sigmoid</text><text class="svg-text" x="572" y="420" font-size="13" text-anchor="start">LLQ · formed</text><text class="svg-note" x="572" y="436" font-size="11" text-anchor="start">usual permanent site</text>
-<text class="svg-note" x="360" y="462" font-size="12" text-anchor="middle">The farther along the colon, the firmer the stool</text>
-</svg><figcaption>Stoma sites and output: the farther along the colon, the firmer the stool</figcaption></figure>
+    <figure class="pic" style="max-width:460px"><img src="week9-img/colostomy-sites.jpg" alt="Ascending, transverse, descending and sigmoid colostomy sites on the large intestine" loading="lazy"><figcaption>Colostomy sites: the farther along the colon, the firmer the stool <span class="credit">Blausen Medical, CC BY 3.0</span></figcaption></figure>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>The farther along the colon, the firmer the stool.</b> Ileostomy and ascending: liquid → transverse: pasty → descending: semi-formed → sigmoid: formed.</p></div>
   </div>
 
@@ -766,29 +665,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 
   <div class="gsub">
     <h3>How urine is made<span class="gslides inl">Slides content</span></h3>
-    <figure class="dia wide"><svg viewBox="0 0 700 380" role="img" aria-label="Kidneys, ureters, bladder and urethra, with a kidney cross-section showing cortex, medulla and renal pelvis">
-<path class="kidney" d="M96 60c-30 6-40 50-30 84 10 30 40 40 56 30 10-8 6-22 16-34 10-12 10-34-2-50-10-20-24-34-40-30z"/>
-<path class="kidney" d="M304 60c30 6 40 50 30 84-10 30-40 40-56 30-10-8-6-22-16-34-10-12-10-34 2-50 10-20 24-34 40-30z"/>
-<path class="ureter" d="M134 140 C150 200 176 230 184 276"/>
-<path class="ureter" d="M266 140 C250 200 224 230 216 276"/>
-<path class="bladder" d="M150 290c0-26 22-34 50-34s50 8 50 34c0 30-22 46-50 46s-50-16-50-46z"/>
-<path class="ureter" d="M200 336 L200 366"/>
-<line class="lead" x1="60" y1="110" x2="20" y2="60"/><text class="svg-text" x="18" y="52" font-size="13" text-anchor="start">Kidneys</text>
-<line class="lead" x1="150" y1="206" x2="60" y2="230"/><text class="svg-text" x="10" y="242" font-size="13" text-anchor="start">Ureters</text>
-<line class="lead" x1="250" y1="296" x2="300" y2="300"/><text class="svg-text" x="306" y="296" font-size="13" text-anchor="start">Bladder</text><text class="svg-note" x="306" y="312" font-size="11" text-anchor="start">stores urine</text>
-<line class="lead" x1="200" y1="358" x2="300" y2="358"/><text class="svg-text" x="306" y="362" font-size="13" text-anchor="start">Urethra</text>
-<g transform="translate(430,20)">
-<text class="svg-title" x="0" y="14" font-size="16">Kidney cross-section</text>
-<path class="kidney" d="M90 40c-60 6-82 90-64 160 18 70 90 90 124 66 18-14 8-40 22-62 12-18 18-50 0-80-20-40-46-88-82-84z"/>
-<path class="medulla-bg" d="M98 66c-40 6-56 70-44 128 12 52 62 66 86 50 10-8 6-30 14-44 8-14 12-38 0-60-14-30-30-76-56-74z"/>
-<path class="pyramid" d="M66 110 L118 140 L72 150 Z"/><path class="pyramid" d="M70 190 L120 170 L86 226 Z"/><path class="pyramid" d="M110 80 L132 132 L90 104 Z"/>
-<path class="pelvis" d="M150 120c-20 10-24 40-6 60 8 10 24 14 34 30 8 14 8 40 6 80l14 0c2-40 0-74-12-96-10-18-26-24-28-44-2-16 8-26 10-30z"/>
-<line class="lead" x1="32" y1="90" x2="0" y2="64"/><text class="svg-text" x="0" y="58" font-size="13" text-anchor="start">Cortex</text>
-<line class="lead" x1="96" y1="140" x2="0" y2="250"/><text class="svg-text" x="0" y="266" font-size="13" text-anchor="start">Medulla</text><text class="svg-note" x="0" y="280" font-size="11" text-anchor="start">(pyramids)</text>
-<line class="lead" x1="168" y1="160" x2="236" y2="120"/><text class="svg-text" x="212" y="108" font-size="13" text-anchor="start">Renal</text><text class="svg-text" x="212" y="122" font-size="13" text-anchor="start">pelvis</text>
-<line class="lead" x1="194" y1="286" x2="214" y2="286"/><text class="svg-text" x="218" y="290" font-size="13" text-anchor="start">Ureter</text>
-</g>
-</svg><figcaption>Kidneys → ureters → bladder → urethra, with a kidney cut open</figcaption></figure>
+    <div class="pics" style="--min:260px"><figure><img src="week9-img/urinary-tract.jpg" alt="Kidneys, ureters, bladder and urethra" loading="lazy"><figcaption>Kidneys → ureters → bladder → urethra <span class="credit">NIDDK</span></figcaption></figure><figure><img src="week9-img/kidney-nephron.jpg" alt="Kidney cut open with an inset of a nephron: glomerulus, tubule and collecting duct" loading="lazy"><figcaption>Inside the kidney: each nephron filters blood and makes urine <span class="credit">NIDDK</span></figcaption></figure></div>
     <div class="strip"><span>Glomerulus filters the blood</span><span class="arrow">→</span><span>Tubules and loop of Henle take back water, electrolytes and glucose</span><span class="arrow">→</span><span>Collecting duct</span><span class="arrow">→</span><span>Renal pelvis</span><span class="arrow">→</span><span>Ureter</span></div>
     <p class="dia-note" style="font-size:14px;color:var(--muted);margin:4px 0 0">Each kidney has about a million nephrons, the units that make urine.</p>
     <ul class="tight">
@@ -980,17 +857,6 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>Catheter specimen (culture)</td><td><b>Yes</b></td><td>Clamp below the sampling port, scrub it, withdraw with a sterile syringe, unclamp. <b>Never from the bag</b>; never disconnect the system.</td></tr>
       <tr><td>24-hour (timed) urine</td><td>No</td><td><b>Discard the first void</b> and record the time; collect every void, keep it cold; add the <b>final void</b> within 15 min of the stop time</td></tr>
     </table></div>
-    <figure class="dia wide"><svg viewBox="0 0 720 230" role="img" aria-label="Taking a urine specimen from the catheter sampling port: clamp below the port, scrub the port, withdraw with a sterile syringe, then unclamp">
-<path class="bladder" d="M20 80c0-26 22-36 52-36s52 10 52 36c0 30-22 46-52 46s-52-16-52-46z"/>
-<path class="cath" d="M110 96 L300 96"/><circle class="port" cx="300" cy="96" r="12"/>
-<path class="cath" d="M312 96 L620 96 Q650 96 650 126 L650 150"/><rect class="bag" x="626" y="150" width="48" height="64" rx="8"/>
-<path class="clamp" d="M400 82 L420 110 M420 82 L400 110"/>
-<path class="syringe" d="M300 84 L300 30"/><rect class="syringe-body" x="288" y="12" width="24" height="26" rx="3"/>
-<text class="svg-note" x="72" y="150" font-size="12" text-anchor="middle">Bladder</text>
-<line class="lead" x1="300" y1="72" x2="226" y2="40"/><text class="svg-text" x="222" y="34" font-size="13" text-anchor="end">② Scrub the port</text><text class="svg-text" x="222" y="50" font-size="13" text-anchor="end">③ Sterile syringe</text>
-<line class="lead" x1="410" y1="112" x2="440" y2="150"/><text class="svg-text" x="444" y="152" font-size="13" text-anchor="start">① Clamp below the port</text><text class="svg-text" x="444" y="168" font-size="13" text-anchor="start">so fresh urine collects</text><text class="svg-text" x="444" y="184" font-size="13" text-anchor="start">④ Unclamp afterward</text>
-<line class="lead" x1="650" y1="218" x2="560" y2="212"/><text class="svg-title" x="554" y="214" font-size="13" text-anchor="end">Never from the bag</text>
-</svg><figcaption>Catheter specimen: clamp below the port, scrub the port, draw with a sterile syringe, unclamp</figcaption></figure>
     <ul class="tight">
       <li><b>Female clean-catch:</b> wash hands, cleanse the labial folds front to back, then the urethral opening with a second wipe. <b>Male:</b> cleanse the tip of the penis (retract the foreskin if uncircumcised).</li>
       <li>Collect a culture <b>before antibiotics</b>; get it to the lab within about 2 hours or refrigerate it.</li>
@@ -1044,19 +910,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>Condom (external male)</td><td>Sheath over the penis; change at least daily</td></tr>
       <tr><td>External female</td><td>Soft wick between the labia on low continuous suction</td></tr>
     </table></div>
-    <div class="dia-grid"><figure class="dia"><svg viewBox="-12 0 370 290" role="img" aria-label="Urethral (Foley)"><text class="svg-title" x="10" y="22" font-size="16">Urethral (Foley)</text>
-<rect class="wall" x="10" y="40" width="26" height="170"/>
-<path class="bladder" d="M70 120c0-30 30-44 70-44s70 14 70 44c0 34-30 54-70 54s-70-20-70-54z"/>
-<path class="bone" d="M60 210 Q140 186 220 210"/>
-<path class="cath" d="M140 160 L140 240"/><circle class="balloon" cx="140" cy="152" r="10"/>
-<line class="lead" x1="150" y1="150" x2="230" y2="110"/><text class="svg-text" x="234" y="106" font-size="12" text-anchor="start">Balloon:</text><text class="svg-text" x="234" y="122" font-size="12" text-anchor="start">sterile water</text>
-<text class="svg-text" x="10" y="262" font-size="12" text-anchor="start">Through the urethra; the nurse inserts</text><text class="svg-text" x="10" y="278" font-size="12" text-anchor="start">it with sterile technique</text></svg></figure><figure class="dia"><svg viewBox="-12 0 370 290" role="img" aria-label="Suprapubic"><text class="svg-title" x="10" y="22" font-size="16">Suprapubic</text>
-<rect class="wall" x="10" y="40" width="26" height="170"/>
-<path class="bladder" d="M70 120c0-30 30-44 70-44s70 14 70 44c0 34-30 54-70 54s-70-20-70-54z"/>
-<path class="bone" d="M60 210 Q140 186 220 210"/>
-<path class="cath" d="M-14 112 L84 112"/><circle class="balloon" cx="94" cy="112" r="10"/>
-<line class="lead" x1="24" y1="112" x2="60" y2="52"/><text class="svg-text" x="64" y="46" font-size="12" text-anchor="start">Through the abdominal wall,</text><text class="svg-text" x="64" y="62" font-size="12" text-anchor="start">above the pubic bone</text>
-<text class="svg-text" x="10" y="262" font-size="12" text-anchor="start">Placed surgically by a provider;</text><text class="svg-text" x="10" y="278" font-size="12" text-anchor="start">change the dressing daily</text></svg></figure></div>
+    <div class="pics" style="--min:240px"><figure><img src="week9-img/foley-balloon.jpg" alt="Indwelling urethral catheter with its balloon inflated inside the bladder" loading="lazy"><figcaption><b>Urethral (Foley):</b> through the urethra; the balloon holds it in the bladder <span class="credit">NIDDK</span></figcaption></figure><figure><img src="week9-img/suprapubic-catheter.jpg" alt="Suprapubic catheter entering the bladder through the lower abdomen" loading="lazy"><figcaption><b>Suprapubic:</b> through the lower abdomen straight into the bladder; placed by a provider <span class="credit">BruceBlaus, CC BY-SA 4.0</span></figcaption></figure></div>
     <div class="gallery" style="--min:180px">
       <figure><img src="week9-img/25.jpg" alt="Straight catheter draining into a basin" loading="lazy"><figcaption>Straight catheter into a basin</figcaption></figure>
       <figure><img src="week9-img/30.jpg" alt="Condom catheter" loading="lazy"><figcaption>Condom catheter</figcaption></figure>
@@ -1117,28 +971,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
   <div class="topic-head"><h2>Urinary diversions</h2><p>The six diversions on the slides.</p></div>
   <div class="gsub">
     <h3>Types<span class="gslides inl">Slides content</span></h3>
-    <div class="dia-grid"><figure class="dia"><svg viewBox="-12 0 196 280" role="img" aria-label="Ileal conduit"><path class="kidney" d="M40 40c-16 2-22 26-16 44 6 16 22 20 30 14 6-4 2-12 8-18 6-8 4-20-2-28-6-10-12-14-20-12z"/><path class="kidney" d="M130 40c16 2 22 26 16 44-6 16-22 20-30 14-6-4-2-12-8-18-6-8-4-20 2-28 6-10 12-14 20-12z"/>
-<path class="ureter" d="M56 80 Q70 120 80 140"/><path class="ureter" d="M114 80 Q100 120 90 140"/>
-<path class="bowel" d="M60 150 Q85 136 120 150 L150 170"/><circle class="stoma" cx="156" cy="174" r="8"/><rect class="bag" x="164" y="160" width="22" height="44" rx="6"/>
-<text class="svg-title" x="0" y="20" font-size="15">Ileal conduit</text>
-<text class="svg-text" x="0" y="236" font-size="12" text-anchor="start">Piece of ileum → stoma</text><text class="svg-text" x="0" y="252" font-size="12" text-anchor="start">Drains all the time</text><text class="svg-note" x="0" y="268" font-size="11" text-anchor="start">Mucus is expected</text></svg></figure><figure class="dia"><svg viewBox="-12 0 196 280" role="img" aria-label="Ureterostomy"><path class="kidney" d="M40 40c-16 2-22 26-16 44 6 16 22 20 30 14 6-4 2-12 8-18 6-8 4-20-2-28-6-10-12-14-20-12z"/><path class="kidney" d="M130 40c16 2 22 26 16 44-6 16-22 20-30 14-6-4-2-12-8-18-6-8-4-20 2-28 6-10 12-14 20-12z"/>
-<path class="ureter" d="M56 80 Q40 140 30 170"/><path class="ureter" d="M114 80 Q130 140 140 170"/>
-<circle class="stoma" cx="28" cy="176" r="7"/><circle class="stoma" cx="142" cy="176" r="7"/>
-<text class="svg-title" x="0" y="20" font-size="15">Ureterostomy</text>
-<text class="svg-text" x="0" y="236" font-size="12" text-anchor="start">Ureters straight</text><text class="svg-text" x="0" y="252" font-size="12" text-anchor="start">to the skin</text><text class="svg-text" x="0" y="268" font-size="12" text-anchor="start">Drains all the time</text></svg></figure><figure class="dia"><svg viewBox="-12 0 196 280" role="img" aria-label="Nephrostomy"><path class="kidney" d="M40 40c-16 2-22 26-16 44 6 16 22 20 30 14 6-4 2-12 8-18 6-8 4-20-2-28-6-10-12-14-20-12z"/><path class="kidney" d="M130 40c16 2 22 26 16 44-6 16-22 20-30 14-6-4-2-12-8-18-6-8-4-20 2-28 6-10 12-14 20-12z"/>
-<path class="tube" d="M30 66 Q4 100 10 160"/><rect class="bag" x="0" y="160" width="22" height="44" rx="6"/>
-<path class="ureter" d="M114 80 Q100 120 90 150"/><path class="bladder" d="M70 160c0-10 10-14 22-14s22 4 22 14c0 12-10 18-22 18s-22-6-22-18z"/>
-<text class="svg-title" x="0" y="20" font-size="15">Nephrostomy</text>
-<text class="svg-text" x="0" y="236" font-size="12" text-anchor="start">Tube from the renal</text><text class="svg-text" x="0" y="252" font-size="12" text-anchor="start">pelvis out the back</text><text class="svg-text" x="0" y="268" font-size="12" text-anchor="start">Bag below the kidney</text></svg></figure><figure class="dia"><svg viewBox="-12 0 196 280" role="img" aria-label="Continent pouch"><path class="kidney" d="M40 40c-16 2-22 26-16 44 6 16 22 20 30 14 6-4 2-12 8-18 6-8 4-20-2-28-6-10-12-14-20-12z"/><path class="kidney" d="M130 40c16 2 22 26 16 44-6 16-22 20-30 14-6-4-2-12-8-18-6-8-4-20 2-28 6-10 12-14 20-12z"/>
-<path class="ureter" d="M56 80 Q70 120 80 140"/><path class="ureter" d="M114 80 Q100 120 90 140"/>
-<ellipse class="pouch" cx="86" cy="156" rx="34" ry="20"/><path class="tube" d="M120 156 L150 156"/><circle class="stoma" cx="156" cy="156" r="6"/>
-<path class="cath" d="M162 150 L178 132"/>
-<text class="svg-title" x="0" y="20" font-size="15">Continent pouch</text>
-<text class="svg-text" x="0" y="236" font-size="12" text-anchor="start">Kock or Indiana pouch</text><text class="svg-text" x="0" y="252" font-size="12" text-anchor="start">Valve holds urine in</text><text class="svg-text" x="0" y="268" font-size="12" text-anchor="start">Self-catheterize</text></svg></figure><figure class="dia"><svg viewBox="-12 0 196 280" role="img" aria-label="Neobladder"><path class="kidney" d="M30 40c-16 2-22 26-16 44 6 16 22 20 30 14 6-4 2-12 8-18 6-8 4-20-2-28-6-10-12-14-20-12z"/><path class="kidney" d="M120 40c16 2 22 26 16 44-6 16-22 20-30 14-6-4-2-12-8-18-6-8-4-20 2-28 6-10 12-14 20-12z"/>
-<path class="ureter" d="M46 80 Q60 120 70 140"/><path class="ureter" d="M104 80 Q90 120 80 140"/>
-<ellipse class="pouch" cx="76" cy="156" rx="30" ry="18"/><path class="ureter" d="M76 174 L76 204"/>
-<text class="svg-title" x="0" y="20" font-size="15">Neobladder</text>
-<text class="svg-text" x="0" y="236" font-size="12" text-anchor="start">Bowel pouch joined</text><text class="svg-text" x="0" y="252" font-size="12" text-anchor="start">to the urethra</text><text class="svg-text" x="0" y="268" font-size="12" text-anchor="start">Void by straining</text></svg></figure></div>
+    <div class="pics" style="--min:300px"><figure><img src="week9-img/ileal-conduit.jpg" alt="Ileal conduit: ureters attached to a segment of intestine that opens at a stoma" loading="lazy"><figcaption><b>Ileal conduit:</b> ureters into a piece of ileum, stoma with a bag <span class="credit">NIDDK</span></figcaption></figure><figure><img src="week9-img/ureterostomy.jpg" alt="Cutaneous ureterostomy: a ureter brought to a stoma on the skin" loading="lazy"><figcaption><b>Ureterostomy:</b> ureter brought straight to the skin <span class="credit">NIDDK</span></figcaption></figure><figure><img src="week9-img/nephrostomy.jpg" alt="Nephrostomy tube from the kidney out through the back to a drainage bag" loading="lazy"><figcaption><b>Nephrostomy:</b> tube from the renal pelvis out the back to a bag <span class="credit">NIDDK</span></figcaption></figure><figure><img src="week9-img/continent-reservoir.jpg" alt="Continent cutaneous reservoir: an internal pouch that opens at a stoma" loading="lazy"><figcaption><b>Continent pouch</b> (Kock, Indiana): self-catheterize the stoma <span class="credit">NIDDK</span></figcaption></figure><figure><img src="week9-img/neobladder.jpg" alt="Neobladder: a new bladder made from small bowel, attached to the urethra" loading="lazy"><figcaption><b>Neobladder:</b> new bladder from bowel, attached to the urethra <span class="credit">Cancer Research UK, CC BY-SA 4.0</span></figcaption></figure></div>
     <div class="tbl"><table>
       <tr><th>Diversion</th><th>Continent?</th><th>Key points</th></tr>
       <tr><td>Urinary catheterization</td><td>n/a</td><td>The most temporary diversion</td></tr>
@@ -1303,6 +1136,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 <footer class="guide-footer gwrap">
   <div class="box note"><span class="tag">Corrections to the slides</span><p>Bowel sounds: hypoactive is fewer than 5 and hyperactive is more than 35 (the slide swaps them). Time examples: 10:00 a.m. is 1000 and 11:42 p.m. is 2342. IM means intramuscular.</p></div>
   <p>Built from the Week 9 lecture slides, the ATI chapters on bowel elimination, urinary elimination, and nasogastric intubation and enteral feedings, the ATI elimination lessons, the dosage calculation and safe medication administration module, and the ATI skills modules on bowel elimination, ostomy care and urinary elimination. Infant- and child-specific details (pediatric enema depths and volumes, pediatric catheter sizes) are left out. Where the sources disagree, a side note gives both.</p>
+  <p class="credits">Pictures: NIDDK (National Institute of Diabetes and Digestive and Kidney Diseases), National Institutes of Health; National Cancer Institute (public domain); <a href="https://commons.wikimedia.org/wiki/File:Blausen_0247_Colostomy.png">Blausen.com staff, Medical gallery of Blausen Medical 2014</a> (<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>); <a href="https://commons.wikimedia.org/wiki/File:Female_Suprapubic_Catheter.png">BruceBlaus</a> and <a href="https://commons.wikimedia.org/wiki/File:Diagram_showing_bladder_reconstruction_CRUK_111.svg">Cancer Research UK</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>), via Wikimedia Commons, resized. Other photos are from the course slides.</p>
 </footer>
 
 </div>
