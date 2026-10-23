@@ -8825,7 +8825,7 @@
     {
      "text": "1–4",
      "correct": true,
-     "rationale": "Stomach fluid is acidic, around pH 1–4."
+     "rationale": "Stomach fluid is acidic, around pH 1–4. A pH of 5.5 or less supports gastric placement."
     },
     {
      "text": "7–8",
@@ -8833,9 +8833,9 @@
      "rationale": "pH 7 or higher suggests intestinal or respiratory placement."
     },
     {
-     "text": "5–6",
+     "text": "6–7",
      "correct": false,
-     "rationale": "This is higher than expected for the stomach."
+     "rationale": "This is higher than expected for stomach contents; gastric placement is supported by a pH of 5.5 or less."
     },
     {
      "text": "9–10",
@@ -9341,7 +9341,7 @@
     {
      "text": "Only enough for 4 hours",
      "correct": true,
-     "rationale": "Limiting hang time reduces bacterial growth."
+     "rationale": "Limiting hang time reduces bacterial growth. Follow the manufacturer's hang time for the formula."
     },
     {
      "text": "A full 24-hour supply",
@@ -9349,9 +9349,9 @@
      "rationale": "Formula left hanging too long can grow bacteria."
     },
     {
-     "text": "Enough for 12 hours",
+     "text": "Enough for 48 hours",
      "correct": false,
-     "rationale": "This is too long."
+     "rationale": "Formula hanging that long grows bacteria; unused formula is refrigerated and discarded after 24 hours."
     },
     {
      "text": "Whatever fits in the bag",
@@ -10149,6 +10149,510 @@
      "text": "A client with mild nausea who is eating",
      "correct": false,
      "rationale": "They can still eat."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-053",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Checking Placement",
+   "type": "mc",
+   "prompt": "A nurse is preparing to start an enteral feeding through an NG (nasogastric) tube. What is the highest-priority assessment before starting?",
+   "options": [
+    {
+     "text": "Verify tube placement",
+     "correct": true,
+     "rationale": "The greatest risk is aspiration, so confirming placement comes first."
+    },
+    {
+     "text": "Check how long the container has been open",
+     "correct": false,
+     "rationale": "Important for infection prevention, but placement is the priority."
+    },
+    {
+     "text": "Confirm the client doesn't have diarrhea",
+     "correct": false,
+     "rationale": "Diarrhea is a complication to manage, but placement prevents the immediate risk of aspiration."
+    },
+    {
+     "text": "Check that the client is alert and oriented",
+     "correct": false,
+     "rationale": "Helpful, but verifying placement is the priority."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-054",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Giving Feedings",
+   "type": "sata",
+   "prompt": "A nurse is about to give a tube feeding to a client with an NG tube. Which actions should the nurse take first? Select all that apply.",
+   "options": [
+    {
+     "text": "Auscultate bowel sounds",
+     "correct": true,
+     "rationale": "Confirms the GI (gastrointestinal) tract can absorb nutrients."
+    },
+    {
+     "text": "Raise the head of the bed to at least 30°",
+     "correct": true,
+     "rationale": "Upright positioning helps prevent aspiration."
+    },
+    {
+     "text": "Test the pH of gastric aspirate",
+     "correct": true,
+     "rationale": "pH testing supports placement between X-rays."
+    },
+    {
+     "text": "Warm the formula to body temperature",
+     "correct": false,
+     "rationale": "Formula is given at room temperature."
+    },
+    {
+     "text": "Discard all residual gastric contents",
+     "correct": false,
+     "rationale": "Residual is returned to the stomach unless it's large (more than 250 mL) or protocol says otherwise."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-055",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Giving Feedings",
+   "type": "mc",
+   "prompt": "A client receiving a continuous tube feeding suddenly coughs and becomes short of breath, and the nurse suspects aspiration. What should the nurse do first?",
+   "options": [
+    {
+     "text": "Stop the feeding",
+     "correct": true,
+     "rationale": "Stopping the feeding keeps more formula from entering the lungs."
+    },
+    {
+     "text": "Auscultate breath sounds",
+     "correct": false,
+     "rationale": "Important, but it doesn't stop further aspiration."
+    },
+    {
+     "text": "Obtain a chest X-ray",
+     "correct": false,
+     "rationale": "This confirms aspiration but doesn't stop it."
+    },
+    {
+     "text": "Start oxygen",
+     "correct": false,
+     "rationale": "Oxygen may be needed, but stopping the feeding comes first."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-056",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Giving Feedings",
+   "type": "mc",
+   "prompt": "A client asks why the nurse pours water into the syringe after the formula drains. What is the best response?",
+   "options": [
+    {
+     "text": "\"Water clears the tube so it doesn't clog.\"",
+     "correct": true,
+     "rationale": "Flushing clears leftover formula and keeps the tube patent."
+    },
+    {
+     "text": "\"Flushing keeps the tube in place.\"",
+     "correct": false,
+     "rationale": "A securing device holds the tube in place."
+    },
+    {
+     "text": "\"This gives you all the fluid you need.\"",
+     "correct": false,
+     "rationale": "A flush is too small to meet fluid needs."
+    },
+    {
+     "text": "\"Water makes the formula less concentrated.\"",
+     "correct": false,
+     "rationale": "Formula is prepared as prescribed; extra fluids are given separately."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-057",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Giving Feedings",
+   "type": "mc",
+   "prompt": "A client receiving tube feedings has had 3 loose stools in 24 hours. What should the nurse do?",
+   "options": [
+    {
+     "text": "Slow the infusion rate and notify the provider",
+     "correct": true,
+     "rationale": "Also confer with the dietitian, protect the skin, and ask whether an antibiotic is the cause."
+    },
+    {
+     "text": "Increase the infusion rate",
+     "correct": false,
+     "rationale": "A faster rate worsens diarrhea."
+    },
+    {
+     "text": "Stop all fluids",
+     "correct": false,
+     "rationale": "Fluids are still needed."
+    },
+    {
+     "text": "Switch to a cold formula",
+     "correct": false,
+     "rationale": "Cold formula can worsen GI upset."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-058",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Giving Feedings",
+   "type": "mc",
+   "prompt": "How often should capillary blood glucose be checked when a continuous tube feeding is started?",
+   "options": [
+    {
+     "text": "Every 4 to 6 hours until the client tolerates the full rate for 24 hours",
+     "correct": true,
+     "rationale": "Formula is high in carbohydrates, so glucose is monitored while the rate is increased."
+    },
+    {
+     "text": "Once a week",
+     "correct": false,
+     "rationale": "That's too infrequent while the feeding is new."
+    },
+    {
+     "text": "Only if the client has diabetes",
+     "correct": false,
+     "rationale": "All clients starting continuous feedings are monitored per protocol."
+    },
+    {
+     "text": "Every 15 minutes",
+     "correct": false,
+     "rationale": "That's more often than needed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-059",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Giving Feedings",
+   "type": "mc",
+   "prompt": "Which task related to tube feedings can the nurse NOT delegate to assistive personnel?",
+   "options": [
+    {
+     "text": "Giving the continuous tube feeding",
+     "correct": true,
+     "rationale": "Administering tube feedings isn't delegated to assistive personnel."
+    },
+    {
+     "text": "Measuring output",
+     "correct": false,
+     "rationale": "Measuring output can be delegated."
+    },
+    {
+     "text": "Giving oral care",
+     "correct": false,
+     "rationale": "Oral care can be delegated."
+    },
+    {
+     "text": "Providing comfort measures",
+     "correct": false,
+     "rationale": "Comfort measures can be delegated."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-060",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Feeding Tubes",
+   "type": "mc",
+   "prompt": "A client needs enteral feeding for several months and the tube will be placed endoscopically. Which tube should the nurse expect?",
+   "options": [
+    {
+     "text": "PEG (percutaneous endoscopic gastrostomy) tube",
+     "correct": true,
+     "rationale": "PEG or PEJ tubes are placed endoscopically for therapy longer than 30 days."
+    },
+    {
+     "text": "Nasogastric tube",
+     "correct": false,
+     "rationale": "Nasal tubes are for short-term therapy."
+    },
+    {
+     "text": "Nasointestinal tube",
+     "correct": false,
+     "rationale": "Nasal tubes are for short-term therapy."
+    },
+    {
+     "text": "Double-lumen sump tube",
+     "correct": false,
+     "rationale": "Sump tubes are for decompression, not long-term feeding."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-061",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Feeding Tubes",
+   "type": "mc",
+   "prompt": "A client with a history of aspiration pneumonia needs a feeding tube. Where should the tip usually be placed?",
+   "options": [
+    {
+     "text": "In the intestine (duodenum or jejunum)",
+     "correct": true,
+     "rationale": "Gastroparesis, reflux or a history of aspiration pneumonia generally calls for intestinal placement."
+    },
+    {
+     "text": "In the stomach",
+     "correct": false,
+     "rationale": "Gastric placement carries more aspiration risk for this client."
+    },
+    {
+     "text": "In the esophagus",
+     "correct": false,
+     "rationale": "Feeding tubes don't end in the esophagus."
+    },
+    {
+     "text": "It doesn't matter",
+     "correct": false,
+     "rationale": "Placement matters for aspiration risk."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-062",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Feeding Tubes",
+   "type": "mc",
+   "prompt": "A client has a partly working GI tract that can't absorb whole nutrients well. Which formula is most appropriate?",
+   "options": [
+    {
+     "text": "Elemental formula",
+     "correct": true,
+     "rationale": "Elemental formulas are predigested (1 to 3 kcal/mL) and easier to absorb."
+    },
+    {
+     "text": "Standard (polymeric) formula",
+     "correct": false,
+     "rationale": "Standard formulas need a GI tract that absorbs whole nutrients."
+    },
+    {
+     "text": "Modular formula",
+     "correct": false,
+     "rationale": "Modular formulas supply one macronutrient and aren't complete."
+    },
+    {
+     "text": "Blenderized whole food",
+     "correct": false,
+     "rationale": "Whole foods need normal digestion."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-063",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Feeding Tubes",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing enteral formulas.",
+   "sentence": "A {1} formula supplies whole nutrients at 1 to 2 kcal/mL, while a {2} formula supplies a single macronutrient as a supplement.",
+   "options": [
+    {
+     "text": "standard (polymeric)",
+     "correct": true,
+     "rationale": "Standard formulas are complete and need normal absorption.",
+     "blank": 1
+    },
+    {
+     "text": "modular",
+     "correct": false,
+     "rationale": "Modular formulas aren't complete.",
+     "blank": 1
+    },
+    {
+     "text": "elemental",
+     "correct": false,
+     "rationale": "Elemental formulas are predigested.",
+     "blank": 1
+    },
+    {
+     "text": "modular",
+     "correct": true,
+     "rationale": "Modular formulas (3.8 to 4 kcal/mL) add one nutrient such as protein.",
+     "blank": 2
+    },
+    {
+     "text": "standard",
+     "correct": false,
+     "rationale": "Standard formulas are complete.",
+     "blank": 2
+    },
+    {
+     "text": "specialty",
+     "correct": false,
+     "rationale": "Specialty formulas target conditions like liver failure.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-064",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "NG Tube Care",
+   "type": "dragdrop",
+   "prompt": "Move the reasons an NG tube can be used to the answer box.",
+   "leftLabel": "Reasons",
+   "rightLabel": "NG tube uses",
+   "options": [
+    {
+     "text": "Decompression: removing gas and stomach contents",
+     "correct": true,
+     "rationale": "Relieves distention, nausea and vomiting."
+    },
+    {
+     "text": "Feeding",
+     "correct": true,
+     "rationale": "A small-bore weighted tube gives nutrition."
+    },
+    {
+     "text": "Lavage: washing out the stomach after poisoning or bleeding",
+     "correct": true,
+     "rationale": "A large-bore tube is used."
+    },
+    {
+     "text": "Compression: a balloon to stop esophageal bleeding",
+     "correct": true,
+     "rationale": "A compression tube with balloons applies pressure."
+    },
+    {
+     "text": "Measuring urine output",
+     "correct": false,
+     "rationale": "Urine output is measured from the bladder."
+    },
+    {
+     "text": "Giving IV (intravenous) fluids",
+     "correct": false,
+     "rationale": "IV fluids go into a vein."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-065",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "NG Tube Care",
+   "type": "sata",
+   "prompt": "A nurse is preparing to insert an NG tube for gastric decompression. Which actions should the nurse take before beginning? Select all that apply.",
+   "options": [
+    {
+     "text": "Review a signal the client can use if in distress",
+     "correct": true,
+     "rationale": "Lets the client stop the procedure."
+    },
+    {
+     "text": "Lay a towel across the client's chest",
+     "correct": true,
+     "rationale": "Keeps the area clean and protects the gown."
+    },
+    {
+     "text": "Give oral pain medication",
+     "correct": false,
+     "rationale": "Suction would remove it from the stomach."
+    },
+    {
+     "text": "Get a small-bore, weighted-tip feeding tube",
+     "correct": false,
+     "rationale": "Decompression uses a double-lumen, single-lumen or intestinal decompression tube; weighted small-bore tubes are for feeding."
+    },
+    {
+     "text": "Have a petroleum-based lubricant ready",
+     "correct": false,
+     "rationale": "Use a water-soluble lubricant."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-066",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "NG Tube Care",
+   "type": "mc",
+   "prompt": "A client with an NG tube has sore, red nares. What should the nurse do?",
+   "options": [
+    {
+     "text": "Apply water-soluble lubricant and consider switching to the other nostril",
+     "correct": true,
+     "rationale": "This relieves pressure and irritation."
+    },
+    {
+     "text": "Apply petroleum jelly",
+     "correct": false,
+     "rationale": "Use water-soluble lubricant."
+    },
+    {
+     "text": "Tape the tube more tightly against the nostril",
+     "correct": false,
+     "rationale": "Pressure on the nares worsens injury."
+    },
+    {
+     "text": "Ignore it until the tube is removed",
+     "correct": false,
+     "rationale": "Skin injury should be treated."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-067",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "NG Tube Care",
+   "type": "mc",
+   "prompt": "An NG tube on suction has stopped draining and the client's abdomen is distended. What should the nurse do?",
+   "options": [
+    {
+     "text": "Irrigate per protocol, reposition the client, and check that suction is working",
+     "correct": true,
+     "rationale": "The tip may be against the stomach wall or clogged."
+    },
+    {
+     "text": "Remove the tube",
+     "correct": false,
+     "rationale": "Troubleshoot first."
+    },
+    {
+     "text": "Clamp the tube",
+     "correct": false,
+     "rationale": "Clamping worsens distention."
+    },
+    {
+     "text": "Increase the suction to high continuous",
+     "correct": false,
+     "rationale": "High suction can injure the stomach lining."
     }
    ]
   },
