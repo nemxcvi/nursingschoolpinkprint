@@ -111,7 +111,7 @@
      take the readiness check. Exam ready = no weak spots left and a check score of 85% or more.
      When the next exam's unit has no questions yet, the plan reviews earlier units instead. */
   var DAILY_SIZES = [10, 20, 30, 40], DEFAULT_DAILY = 30, SET_SIZE = 10;
-  var PLAN_ORDER = ["blindspot", "new", "journal", "luckyguess", "bookmarked", "reviewdue", "learning", "mastered"];
+  var PLAN_ORDER = P.STATUS_ORDER;
   var CHECK_SIZE = 40, CHECK_READY = 0.85, CHECK_ALMOST = 0.75;
   function dailySize(n){ return DAILY_SIZES.indexOf(n) !== -1 ? n : DEFAULT_DAILY; }
 

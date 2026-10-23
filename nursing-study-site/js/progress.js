@@ -31,8 +31,10 @@
   var REVIEW_EVERY = 28;        // ...and then every 4 weeks after it was last answered correctly
   var READY_WINDOW = 3;         // exam ready window: the last 3 days before an exam (not the exam day)
 
-  /* Status priority, highest first. Review-due mastered questions sit right after bookmarked. */
-  var STATUS_ORDER = ["blindspot", "journal", "bookmarked", "reviewdue", "luckyguess", "new", "learning", "mastered"];
+  /* Status priority, highest first: what every quiz serves first for a tracked student
+     (topic and mix quizzes, Today's plan and My study sessions). Coverage comes right after
+     blind spots, so new questions keep coming. */
+  var STATUS_ORDER = ["blindspot", "new", "journal", "luckyguess", "bookmarked", "reviewdue", "learning", "mastered"];
 
   /* ---------- Dates: plain "YYYY-MM-DD" strings, math done in UTC so DST never shifts a day ---------- */
   function toUTC(d){ var p = d.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }

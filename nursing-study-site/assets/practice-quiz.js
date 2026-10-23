@@ -287,6 +287,16 @@ function initPracticeQuiz(bank, catLabels, opts){
     return shuffle(picked.slice(0, count));
   }
 
+  /* Tracked students: fill the quiz in status priority order (Progress.STATUS_ORDER: blind spots,
+     never seen, mistake journal, lucky guesses, bookmarked, due for review, still learning,
+     mastered), random within a status, then shuffle. Guests keep the random type-mixed sample. */
+  function prioritySample(source, count){
+    var order = Progress.STATUS_ORDER;
+    return shuffle(source.map(function(q){
+      return {q: q, r: order.indexOf(Progress.status(q)), t: Math.random()};
+    }).sort(function(a, b){ return a.r - b.r || a.t - b.t; }).slice(0, count).map(function(x){ return x.q; }));
+  }
+
   function show(id){ document.getElementById(id).classList.remove("hidden"); }
   function hide(id){ document.getElementById(id).classList.add("hidden"); }
 
@@ -326,7 +336,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   document.getElementById("pq-start").addEventListener("click", function(){
     ready.then(function(){
       if (document.getElementById("pq-setup-screen").classList.contains("hidden")) return;
-      pool = mixedSample(bank, chosenCount);
+      pool = tracking ? prioritySample(bank, chosenCount) : mixedSample(bank, chosenCount);
       missedMap = {};
       startSessionTracking();
       hide("pq-setup-screen");
