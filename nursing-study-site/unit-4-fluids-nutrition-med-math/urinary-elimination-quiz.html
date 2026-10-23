@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urinary Elimination practice quiz &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Urinary Elimination practice quiz &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/urinary-elimination-quiz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Urinary Elimination practice quiz &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=120">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="quizzes"></div>
+<script src="../assets/site-data.js?v=16"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap">
+  <h2 style="margin-bottom:18px;">Urinary Elimination practice quiz</h2>
+
+  <div id="pq-setup-screen">
+    <p class="pq-step">1 &middot; Choose a mode</p>
+    <div class="pq-modes">
+      <button type="button" class="pq-mode-btn" data-mode="single" aria-pressed="true"><span class="pq-mode-title"><span class="pq-check" aria-hidden="true"></span>One session</span><span class="pq-mode-sub">Answer a set of questions once, then see your results.</span></button>
+      <button type="button" class="pq-mode-btn" data-mode="rounds" aria-pressed="false"><span class="pq-mode-title"><span class="pq-check" aria-hidden="true"></span>Mastery rounds</span><span class="pq-mode-sub">Practice in rounds until you clear the whole pool, then see your stats.</span></button>
+    </div>
+    <p class="pq-step">2 &middot; How many questions?</p>
+    <div class="pq-count-row" id="pq-counts" data-single="10,20,30,40" data-rounds="10,20,30,40">
+      <button type="button" class="pq-count-btn" data-count="10" aria-pressed="false">10</button>
+      <button type="button" class="pq-count-btn" data-count="20" aria-pressed="false">20</button>
+      <button type="button" class="pq-count-btn" data-count="30" aria-pressed="false">30</button>
+      <button type="button" class="pq-count-btn" data-count="40" aria-pressed="false">40</button>
+    </div>
+    <button type="button" class="btn btn-primary pq-start" id="pq-start">Start quiz &rarr;</button>
+  </div>
+
+  <div id="pq-quiz-screen" class="hidden">
+    <div class="pq-top-row"><span id="pq-progress"></span><span class="pq-top-right"><span id="pq-score"></span><button type="button" class="pq-endlink" id="pq-end-test">End &amp; see results</button></span></div>
+    <div class="pq-progress-track"><div id="pq-progress-bar" class="pq-progress-fill"></div></div>
+    <div id="pq-prompt" class="pq-prompt"></div>
+    <div id="pq-type-label" class="pq-type-label"></div>
+    <div id="pq-options" class="pq-options"></div>
+    <p id="pq-error" class="pq-error">select at least one answer</p>
+    <div id="pq-feedback" class="pq-feedback" aria-live="polite"></div>
+    <div class="pq-btn-row">
+      <button type="button" class="btn btn-primary" id="pq-submit" disabled>Check answer</button>
+      <button type="button" class="btn btn-primary hidden" id="pq-next">Next question &rarr;</button>
+    </div>
+    <p class="kbd-hint" id="pq-hint" aria-hidden="true"></p>
+  </div>
+
+  <div id="pq-round-complete-screen" class="hidden pq-center">
+    <div id="rc-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+    <div id="rc-score" class="pq-stat-big"></div>
+    <div class="pq-stat-sub">this round</div>
+    <div id="rc-detail" class="pq-stat-detail"></div>
+    <button class="btn btn-primary" id="rc-continue" style="margin-top:16px;max-width:200px;margin-left:auto;margin-right:auto;">continue</button>
+  </div>
+
+  <div id="pq-end-screen" class="hidden">
+    <div class="pq-center" style="margin-bottom:16px;">
+      <div id="end-title" style="font-size:16px;font-weight:600;margin-bottom:10px;"></div>
+      <div id="end-rounds-subtitle" class="hidden muted" style="margin-bottom:16px;"></div>
+      <div id="end-stats-single" class="hidden">
+        <div id="end-score" class="pq-stat-big"></div>
+        <div id="end-percent" class="muted"></div>
+      </div>
+      <div id="end-stats-rounds" class="hidden" style="display:flex;justify-content:center;gap:40px;">
+        <div><div id="end-pool-pct" class="pq-stat-big"></div><div class="muted">of pool completed</div></div>
+        <div><div id="end-accuracy-pct" class="pq-stat-big"></div><div class="muted">overall accuracy</div></div>
+      </div>
+    </div>
+    <p id="category-heading" class="eyebrow"></p>
+    <div id="category-grid" class="pq-cat-grid"></div>
+    <p class="eyebrow">review</p>
+    <div id="review-list" style="margin-bottom:20px;"></div>
+    <div class="pq-btn-row">
+      <button class="btn btn-secondary" id="end-restart">practice again</button>
+      <button class="btn btn-primary" id="end-missed">redo missed questions</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/practice-quiz.js?v=22"></script>
+<script>
+loadPracticeQuiz({data: "../data/nur114/", units: [4], topic: "Urinary Elimination"});
+</script>
+</body>
+</html>

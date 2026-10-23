@@ -381,6 +381,147 @@ function initPracticeQuiz(bank, catLabels, opts){
   /* The summary and result heading sit above the per-option rationales */
   optsEl.parentNode.insertBefore(fbEl, optsEl);
 
+  /* ---------- Calculator ----------
+     Questions flagged calc: true (med math) get a Calculator button under the prompt.
+     It opens a small keypad under the button that stays open while the next questions need it.
+     Typing works while the keypad has focus, and those keys never reach the quiz shortcuts. */
+  var calc = (function(){
+    var row = null, panel = null, exprEl = null, resultEl = null;
+    var expr = "", result = null;
+    var SHOW = {"*": "×", "/": "÷", "-": "−", "+": "+"};
+
+    function tokens(s){ return s.match(/\d*\.?\d+|\d+\.|[+\-*\/]/g) || []; }
+    /* Left to right, × and ÷ before + and − */
+    function evaluate(s){
+      var t = tokens(s);
+      if (!t.length || /[+\-*\/]/.test(t[t.length - 1])) return null;
+      var vals = [], ops = [];
+      t.forEach(function(tok, i){
+        if (i % 2 === 0) vals.push(parseFloat(tok)); else ops.push(tok);
+      });
+      for (var i = 0; i < ops.length; i++){
+        if (ops[i] === "*" || ops[i] === "/"){
+          vals.splice(i, 2, ops[i] === "*" ? vals[i] * vals[i + 1] : vals[i] / vals[i + 1]);
+          ops.splice(i, 1); i--;
+        }
+      }
+      var total = vals[0];
+      ops.forEach(function(op, j){ total = op === "+" ? total + vals[j + 1] : total - vals[j + 1]; });
+      return isFinite(total) ? Number(total.toPrecision(12)) : NaN;
+    }
+    function pretty(s){ return s.replace(/[+\-*\/]/g, function(o){ return " " + SHOW[o] + " "; }); }
+    function render(){
+      exprEl.textContent = expr ? pretty(expr) + (result !== null ? " =" : "") : "";
+      resultEl.textContent = result === null ? (expr ? "" : "0") : (isNaN(result) ? "Error" : String(result));
+    }
+    function press(k){
+      var last = expr.slice(-1), isOp = /[+\-*\/]/;
+      if (/^[0-9]$/.test(k)){
+        if (result !== null){ expr = ""; result = null; }
+        expr += k;
+      } else if (k === "."){
+        if (result !== null){ expr = ""; result = null; }
+        var cur = expr.split(/[+\-*\/]/).pop();
+        if (cur.indexOf(".") === -1) expr += cur === "" ? "0." : ".";
+      } else if (isOp.test(k)){
+        if (result !== null && !isNaN(result)){ expr = String(result); result = null; }
+        if (!expr) return;
+        expr = isOp.test(last) ? expr.slice(0, -1) + k : expr + k;
+      } else if (k === "="){
+        var v = evaluate(expr);
+        if (v !== null) result = v;
+      } else if (k === "back"){
+        if (result !== null){ result = null; return render(); }
+        expr = expr.slice(0, -1);
+      } else if (k === "clear"){
+        expr = ""; result = null;
+      }
+      render();
+    }
+    function build(){
+      var label = document.getElementById("pq-type-label");
+      row = document.createElement("div");
+      row.className = "pq-calc-row hidden";
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "pq-calc-btn"; btn.id = "pq-calc-btn";
+      btn.setAttribute("aria-expanded", "false");
+      btn.innerHTML = '<i class="ti ti-calculator" aria-hidden="true"></i> Calculator';
+      btn.addEventListener("click", function(){ isOpen() ? close() : open(); });
+      row.appendChild(btn);
+      label.parentNode.insertBefore(row, label.nextSibling);
+
+      panel = document.createElement("div");
+      panel.className = "pq-calc hidden";
+      panel.setAttribute("role", "dialog");
+      panel.setAttribute("aria-label", "Calculator");
+      panel.tabIndex = -1;
+      var head = document.createElement("div");
+      head.className = "pq-calc-head";
+      head.innerHTML = '<span>Calculator</span>';
+      var x = document.createElement("button");
+      x.type = "button"; x.className = "pq-calc-close"; x.setAttribute("aria-label", "Close calculator");
+      x.innerHTML = '<i class="ti ti-x" aria-hidden="true"></i>';
+      x.addEventListener("click", function(){ close(); btn.focus({preventScroll:true}); });
+      head.appendChild(x);
+      var screen = document.createElement("div");
+      screen.className = "pq-calc-screen";
+      exprEl = document.createElement("div"); exprEl.className = "pq-calc-expr";
+      resultEl = document.createElement("div"); resultEl.className = "pq-calc-result";
+      resultEl.setAttribute("aria-live", "polite");
+      screen.appendChild(exprEl); screen.appendChild(resultEl);
+      var keys = document.createElement("div");
+      keys.className = "pq-calc-keys";
+      [["C","clear","fn"],["⌫","back","fn"],["÷","/","op"],["×","*","op"],
+       ["7","7"],["8","8"],["9","9"],["−","-","op"],
+       ["4","4"],["5","5"],["6","6"],["+","+","op"],
+       ["1","1"],["2","2"],["3","3"],["=","=","eq"],
+       ["0","0","zero"],[".","."]].forEach(function(k){
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = k[0];
+        b.className = "pq-calc-key" + (k[2] ? " is-" + k[2] : "");
+        b.setAttribute("aria-label", {clear:"Clear", back:"Backspace", "/":"Divide", "*":"Multiply", "-":"Minus", "+":"Plus", "=":"Equals", ".":"Decimal point"}[k[1]] || k[0]);
+        b.addEventListener("click", function(){ press(k[1]); });
+        keys.appendChild(b);
+      });
+      panel.appendChild(head); panel.appendChild(screen); panel.appendChild(keys);
+      panel.addEventListener("keydown", function(e){
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        var k = e.key, map = {"x":"*", "X":"*", "Enter":"=", "=":"=", "Backspace":"back", "Delete":"clear", "c":"clear", "C":"clear"};
+        if (/^[0-9.+\-*\/]$/.test(k)) press(k);
+        else if (map[k]) press(map[k]);
+        else if (k === "Escape"){ close(); btn.focus({preventScroll:true}); }
+        else if (k === "Tab") { e.stopPropagation(); return; }
+        else return;
+        /* Keep calculator keys away from the quiz's letter, number and Enter shortcuts */
+        e.preventDefault(); e.stopPropagation();
+      });
+      row.appendChild(panel);
+      render();
+    }
+    function isOpen(){ return panel && !panel.classList.contains("hidden"); }
+    function open(){
+      if (!panel) build();
+      panel.classList.remove("hidden");
+      document.getElementById("pq-calc-btn").setAttribute("aria-expanded", "true");
+      panel.focus({preventScroll:true});
+    }
+    function close(){
+      if (!panel) return;
+      panel.classList.add("hidden");
+      document.getElementById("pq-calc-btn").setAttribute("aria-expanded", "false");
+    }
+    return {
+      /* Show the button only on calculator questions; keep the keypad open between them */
+      sync: function(q){
+        if (!q.calc && !row) return;
+        if (!row) build();
+        row.classList.toggle("hidden", !q.calc);
+        if (!q.calc) close();
+      },
+      close: close
+    };
+  })();
+
   /* Option card: letter box, text, a slot for the rationale shown after checking,
      and (for choice questions) a square radio or checkbox mark */
   function buildOption(opt, i, tag){
@@ -472,6 +613,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       : q.type === "order" ? "put in order · drag, or use the arrows"
       : q.type === "cloze" ? "drop-down · choose an option for each blank" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
+    calc.sync(q);
     if (tracking) syncBookmark(q);
     if (useNotes) hideNote();
 
@@ -1123,6 +1265,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   document.getElementById("pq-end-test").addEventListener("click", function(){ finishSession(); });
 
   function showRoundComplete(){
+    calc.close();
     hide("pq-quiz-screen"); show("pq-round-complete-screen");
     var correctThisRound = currentRound.filter(function(q){ return latestResult[q.id] && latestResult[q.id].correct; }).length;
     document.getElementById("rc-title").textContent = "round " + roundsTaken + " complete";
@@ -1521,6 +1664,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   }
 
   function finishSession(){
+    calc.close();
     hide("pq-quiz-screen"); hide("pq-round-complete-screen"); show("pq-end-screen");
     if (tracking){
       buildMasteryBox();

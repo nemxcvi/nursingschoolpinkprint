@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urinary Elimination &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Urinary Elimination &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/urinary-elimination-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Urinary Elimination &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=120">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=16"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Urinary Elimination</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  tract: {label:"Urinary Tract & Normal Urine", hue:"blue"},
+  inc: {label:"Incontinence & Retention", hue:"orange"},
+  cond: {label:"UTIs & Conditions", hue:"red"},
+  spec: {label:"Specimens & Tests", hue:"aqua"},
+  cath: {label:"Catheters & CAUTI", hue:"green"},
+  div: {label:"Urinary Diversions", hue:"violet"},
+  med: {label:"Medications", hue:"yellow"}
+};
+var CARDS = [
+[1, "tract", "Path of urine", "Kidneys → ureters → bladder → urethra"],
+[2, "tract", "Functions of the urinary system", "Filter waste and toxins, balance fluids and electrolytes, keep acid-base balance, make hormones for blood pressure"],
+[3, "tract", "Kidney location", "Below the ribcage beside the spine (retroperitoneal); left slightly higher than right"],
+[4, "tract", "Nephron", "The kidney's working unit: filters, reabsorbs and excretes"],
+[5, "tract", "Hormones and the kidneys", "Renin (blood pressure), erythropoietin (red blood cells), activate vitamin D"],
+[6, "tract", "Renin-angiotensin chain", "Renin → angiotensin I → ACE (angiotensin-converting enzyme) → angiotensin II: raises blood volume and pressure"],
+[7, "tract", "ADH (antidiuretic hormone)", "From the posterior pituitary; high ADH = less urine, low ADH = more urine"],
+[8, "tract", "Bladder volume that triggers the urge to void", "Sources vary: 250–450 mL, 250–400 mL, 300–400 mL; the bladder holds up to about 2 cups"],
+[9, "tract", "Daily adult urine output", "About 1–2 L (some sources: 1–3 L)"],
+[10, "tract", "Report urine output under", "30 mL/hr for more than 2 hours"],
+[11, "tract", "Minimum hourly output by weight", "0.5 mL/kg/hr (about 30–40 mL/hr for adults)"],
+[12, "tract", "I&O (intake and output) totals", "Every 24 hours for hospitalized clients"],
+[13, "tract", "Anuria", "Less than 50 mL of urine in 24 hours"],
+[14, "tract", "Oliguria", "Less than 400 mL of urine in 24 hours"],
+[15, "tract", "Polyuria", "Excessive urine output (diuresis)"],
+[16, "tract", "Dysuria", "Painful or difficult urination"],
+[17, "tract", "Nocturia", "Waking at night to urinate"],
+[18, "tract", "Glycosuria / proteinuria / pyuria", "Glucose / protein / pus in the urine"],
+[19, "tract", "Urgency vs frequency", "Urgency: strong desire to void · Frequency: voiding more often"],
+[20, "tract", "Normal urine", "Light yellow, clear, without strong odor"],
+[21, "tract", "Dark amber urine", "Concentrated: dehydration"],
+[22, "tract", "Foods that change urine color", "Beets, blackberries, rhubarb (red); food dyes (blue or green); asparagus (green, odor); fava beans or aloe (dark brown)"],
+[23, "tract", "Medications that change urine color", "Phenazopyridine: orange-red · Amitriptyline: green-blue · Levodopa: dark · Riboflavin: bright yellow"],
+[24, "tract", "Diet effects on urine", "High sodium: less urine · Caffeine and alcohol: more urine"],
+[25, "tract", "Medications that cause retention", "Anticholinergics, antihistamines, opioids; also anesthesia"],
+[26, "tract", "Older adult changes", "Fewer nephrons, smaller bladder (nocturia), weaker bladder tone (frequency), incomplete emptying (UTIs)"],
+[27, "tract", "Pregnancy and urination", "Fetus presses on the bladder; blood volume up 30–50%; relaxin relaxes the sphincter"],
+[28, "tract", "Types of diuretics", "Thiazide (hydrochlorothiazide, chlorthalidone) · Loop (furosemide, bumetanide, torsemide) · Potassium-sparing (spironolactone, triamterene, amiloride)"],
+[29, "tract", "When to take a diuretic", "In the morning (avoid nocturia)"],
+[30, "inc", "Urinary incontinence", "Involuntary loss of urine"],
+[31, "inc", "Stress incontinence", "Small leaks with coughing, laughing, sneezing, lifting; weak pelvic floor (childbirth, menopause, prostatectomy)"],
+[32, "inc", "Urge incontinence", "Sudden strong urge, leaks before reaching the toilet; overactive detrusor (UTI, overactive bladder)"],
+[33, "inc", "Overflow incontinence", "Dribbling from an overfull bladder: retention, enlarged prostate, weak detrusor, neurologic disorders"],
+[34, "inc", "Reflex incontinence", "Leaks without warning from nerve damage (spinal cord injury, stroke, MS (multiple sclerosis))"],
+[35, "inc", "Functional incontinence", "Can't reach or use the toilet in time: mobility, cognitive or environmental barriers"],
+[36, "inc", "Transient incontinence", "Reversible: UTI, temporary confusion, high blood glucose, medications"],
+[37, "inc", "Nocturnal enuresis in adults", "Bedwetting after alcohol, evening caffeine or certain medications"],
+[38, "inc", "Kegel exercises", "Tighten for 10, relax for 10, 15 repetitions, 3–4 times a day, lying, sitting and standing"],
+[39, "inc", "Bladder retraining", "Void on a schedule, lengthen intervals gradually toward every 4 hr after 3 days dry, hold until the scheduled time, track times"],
+[40, "inc", "Habit training", "Toileting schedule matched to the client's own pattern; for limited cognitive ability"],
+[41, "inc", "Incontinence nursing care", "Toileting schedule, fluids by day and less at bedtime, remove barriers, external catheter, avoid indwelling catheters"],
+[42, "inc", "Bladder irritants", "Caffeine (coffee, tea, colas), alcohol, chocolate, acidic fruits"],
+[43, "inc", "Complications of incontinence", "Skin breakdown, falls, fractures, social isolation, depression"],
+[44, "inc", "Bladder compression techniques", "Credé, Valsalva, double voiding, splinting (reflex incontinence)"],
+[45, "inc", "Urinary retention", "Bladder doesn't empty completely"],
+[46, "inc", "Signs of retention", "Suprapubic discomfort, distention, hesitancy, weak stream, frequent small voids, dribbling"],
+[47, "inc", "Retention treatment", "Bladder scan, then catheter drainage; then treat the cause (obstruction, nerves, medications)"],
+[48, "inc", "Postoperative retention", "Common after spinal or epidural anesthesia, long surgery, opioids: scan, catheterize, ambulate early"],
+[49, "inc", "Bladder scanner", "Portable ultrasound for bladder volume and residual; avoids unneeded catheterization (less CAUTI)"],
+[50, "inc", "Intermittent catheterization volume", "Adjust frequency to keep each volume at 400 mL or less"],
+[51, "inc", "BPH (benign prostatic hyperplasia)", "Age-related prostate growth: frequency, urgency, nocturia, weak stream, retention"],
+[52, "inc", "After TURP (transurethral resection of the prostate)", "Incontinence usually resolves in about 3 months"],
+[53, "cond", "UTI (urinary tract infection) risk factors", "Female (short urethra near anus), indwelling catheters, sexual activity, menopause, retention, diabetes"],
+[54, "cond", "UTI manifestations", "Urgency, frequency, burning, suprapubic or flank pain, fever, cloudy foul or bloody urine"],
+[55, "cond", "UTI in older adults", "New confusion, incontinence, falls, fatigue, poor appetite"],
+[56, "cond", "UTI teaching", "2,000–3,000 mL fluid a day, finish antibiotics, front-to-back wiping, void after intercourse, cotton underwear, no bubble baths or tight pants"],
+[57, "cond", "Pyelonephritis", "Kidney infection: flank pain, fever, nausea, vomiting, hematuria"],
+[58, "cond", "Kidney stones", "Flank pain radiating to the groin, hematuria, frequency, nausea; strain urine, fluids, pain medication"],
+[59, "cond", "ESWL (extracorporeal shock wave lithotripsy)", "Shock waves break up stones too big to pass"],
+[60, "cond", "Kidney stone risk factors", "Dehydration, BMI (body mass index) over 30, gout, high calcium, past stones, family history, diuretics, calcium antacids"],
+[61, "cond", "Kidney failure", "eGFR (estimated glomerular filtration rate) under 15 mL/min/1.73 m² or needing dialysis"],
+[62, "cond", "CKD (chronic kidney disease) risk factors", "Diabetes, hypertension, heart disease, family history, obesity, smoking"],
+[63, "cond", "Dehydration signs", "Thirst, dry mouth, fatigue, dizziness, dark urine, little or no urine"],
+[64, "spec", "Random urinalysis", "Nonsterile specimen"],
+[65, "spec", "Clean-catch midstream", "Cleanse, start voiding in the toilet, catch midstream in a sterile cup; for C&S (culture and sensitivity)"],
+[66, "spec", "Female clean-catch cleansing", "Front to back: labial folds, then the urethral opening, with separate wipes"],
+[67, "spec", "Catheter urine specimen", "Clamp below the port, cleanse it, withdraw with a sterile syringe; never from the bag"],
+[68, "spec", "24-hour urine", "Discard the first void, record start time, collect everything, keep cold, add the final void at 24 hr"],
+[69, "spec", "Missed void during a 24-hour collection", "Stop and restart"],
+[70, "spec", "Getting a urine specimen to the lab", "Promptly, ideally within 2 hours; refrigerate if delayed"],
+[71, "spec", "Culture timing", "Collect before starting antibiotics"],
+[72, "spec", "Labeling specimens", "In the client's presence with two identifiers"],
+[73, "spec", "Dipstick (reagent strip)", "pH, specific gravity, glucose, ketones, protein, blood, bilirubin, leukocyte esterase, nitrites"],
+[74, "spec", "Urinalysis vs culture", "Urinalysis can show bacteria; culture identifies them; sensitivity shows which antibiotics work"],
+[75, "spec", "Postvoid residual", "Urine left in the bladder after voiding (bladder scan)"],
+[76, "spec", "Uroflowmetry", "Measures urine flow rate and volume"],
+[77, "spec", "Cystometric test", "Bladder capacity and pressure as it fills"],
+[78, "spec", "Cystoscopy vs ureteroscopy", "Cystoscopy: urethra and bladder · Ureteroscopy: ureters and kidneys"],
+[79, "spec", "KUB (kidneys, ureters, bladder)", "X-ray of the size, shape and position of these organs"],
+[80, "spec", "IVP (intravenous pyelogram)", "Iodine contrast; report allergies (shellfish allergy needs assessment, not an automatic stop)"],
+[81, "cath", "Straight catheter", "One-time drainage, removed right away; no drainage bag"],
+[82, "cath", "Indwelling (Foley) catheter", "Balloon holds it in the bladder; closed drainage system"],
+[83, "cath", "Retention (multiple-lumen) catheter", "Drainage plus bladder irrigation and medications; often postoperative"],
+[84, "cath", "Coudé catheter", "Curved tip for clients with an enlarged prostate"],
+[85, "cath", "Suprapubic catheter", "Placed surgically through the abdomen by a provider; dressing changed daily"],
+[86, "cath", "Usual adult catheter sizes", "Females 10–12 Fr · Males 12–14 Fr"],
+[87, "cath", "Latex allergy", "Silicone or Teflon catheter"],
+[88, "cath", "Balloon inflation", "Sterile water"],
+[89, "cath", "Insertion technique", "Sterile for straight and indwelling catheters; clean (medical asepsis) for external catheters"],
+[90, "cath", "Catheter care", "Soap and water, not antiseptics; clean the catheter from the meatus outward (first 4 in)"],
+[91, "cath", "Female perineal care", "Front to back, a clean part of the washcloth each stroke"],
+[92, "cath", "Bladder fullness with a catheter", "Check for kinks and sediment in the tubing"],
+[93, "cath", "Drainage bag placement", "Below the bladder, on the bed frame (not the side rail), never on the floor"],
+[94, "cath", "Emptying the drainage bag", "Before half full (some policies: at least every 8 hours)"],
+[95, "cath", "Leg bag", "Smaller, discreet, for active clients; empty more often"],
+[96, "cath", "CAUTI (catheter-associated urinary tract infection)", "While a catheter is in or up to 48 hr after removal"],
+[97, "cath", "CAUTI risk factors", "Catheter use, longer dwell time, opening the system, routine changes, irrigation"],
+[98, "cath", "CAUTI prevention", "Only when needed, sterile insertion, closed system, bag below bladder, perineal care, assess need daily, remove promptly"],
+[99, "cath", "Condom catheter", "Change at least daily; correct size, no constriction; bag below bladder"],
+[100, "cath", "Female external catheter", "Wick between the labia on low continuous suction; check placement and skin"],
+[101, "cath", "Closed intermittent irrigation", "Keeps a catheter open; sterile technique"],
+[102, "cath", "Bladder irrigation pain", "Not expected: report (spasms, blockage, distention)"],
+[103, "cath", "Leaking around a catheter", "Bladder spasms, blocked catheter (clots, kinks), balloon problem"],
+[104, "div", "Urinary diversion", "Reroutes urine; temporary or permanent, continent or incontinent"],
+[105, "div", "Ileal conduit (urostomy)", "Ureters attached to a piece of ileum with a stoma; urine drains continuously; mucus is expected"],
+[106, "div", "Ureterostomy", "Ureters brought directly to the skin as a stoma"],
+[107, "div", "Nephrostomy tube", "From the renal pelvis out the back; bag below the kidney; flush only if ordered (usually 10 mL or less of saline)"],
+[108, "div", "Kock pouch (urinary)", "Continent reservoir from the ileum with nipple valves; self-catheterize (every 2–3 hr at first, then 5–6 hr; skills module: about every 4 hr)"],
+[109, "div", "Indiana pouch", "Continent reservoir from the cecum and ileum; self-catheterize"],
+[110, "div", "Neobladder", "New bladder from bowel attached to the urethra; void by straining abdominal muscles, sometimes self-catheterize"],
+[111, "div", "Cystostomy", "Catheter through the abdominal wall into the bladder"],
+[112, "div", "Ureteral stent", "Keeps a ureter open past a blockage"],
+[113, "div", "Urine output after urostomy surgery", "At least 30 mL/hr (prevent hydronephrosis)"],
+[114, "div", "Bowel-segment diversions", "Risk of electrolyte imbalance and metabolic acidosis"],
+[115, "div", "Changing a urostomy pouch", "Wick urine from the stoma with rolled gauze while preparing the skin"],
+[116, "div", "Continent reservoir fluids", "About 2 L a day to flush mucus and prevent UTIs"],
+[117, "div", "Report in a urinary diversion", "Dusky stoma, can't pass the catheter, fever, cloudy foul urine, confusion"],
+[118, "med", "Phenazopyridine", "Bladder analgesic: orange urine, doesn't treat infection, take with food, report jaundice"],
+[119, "med", "Oxybutynin", "Antispasmodic for overactive bladder: ask about glaucoma; dry mouth, dizziness; report retention"],
+[120, "med", "Nortriptyline for incontinence", "Anticholinergic effects; orthostatic hypotension; not with an MAOI (monoamine oxidase inhibitor)"],
+[121, "med", "Trimethoprim/sulfamethoxazole", "Take with 237 mL (8 oz) water; avoid sun; report rash or loose stools"],
+[122, "med", "Antibiotics for UTIs", "Take with food for GI upset; finish the full course"],
+[123, "med", "Desmopressin", "ADH analogue: decreases urine output"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

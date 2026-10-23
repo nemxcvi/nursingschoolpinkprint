@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bowel Elimination &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Bowel Elimination &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/bowel-elimination-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bowel Elimination &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=120">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=16"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=7"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Bowel Elimination</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  gi: {label:"GI Tract & Assessment", hue:"blue"},
+  cd: {label:"Constipation & Diarrhea", hue:"orange"},
+  cond: {label:"Bowel Conditions", hue:"red"},
+  tests: {label:"Stool Tests", hue:"aqua"},
+  care: {label:"Enemas & Bowel Care", hue:"green"},
+  ost: {label:"Ostomies", hue:"violet"},
+  ng: {label:"NG Decompression", hue:"magenta"}
+};
+var CARDS = [
+[1, "gi", "Path food takes through the GI (gastrointestinal) tract", "Mouth → esophagus → stomach → small intestine → large intestine → anus"],
+[2, "gi", "Where nutrients are absorbed", "Small intestine (into the bloodstream)"],
+[3, "gi", "Where water is absorbed and stool forms", "Large intestine"],
+[4, "gi", "Vitamin made by bacteria in the large intestine", "Vitamin K (blood clotting and strong bones)"],
+[5, "gi", "Job of the epiglottis", "Covers the airway during swallowing so food goes into the esophagus"],
+[6, "gi", "Peristalsis", "Wave-like muscle contractions that move food and stool through the GI tract, starting at the esophagus"],
+[7, "gi", "Expected stool", "Soft and formed, passed without straining; frequency varies from person to person"],
+[8, "gi", "Bristol Stool Chart", "Types 1–2: constipation · Types 3–4: ideal · Types 5–7: diarrhea"],
+[9, "gi", "Stool characteristics to assess", "Volume, color, odor, consistency, shape"],
+[10, "gi", "Order of abdominal assessment", "Inspect → auscultate → percuss → palpate (listen before touching)"],
+[11, "gi", "Order for listening to bowel sounds", "RLQ (right lower) → RUQ (right upper) → LUQ (left upper) → LLQ (left lower)"],
+[12, "gi", "Normoactive bowel sounds", "5–35 per minute"],
+[13, "gi", "Hypoactive bowel sounds", "Fewer than 5 per minute (the slide lists this backward; Unit 3 and standard references use this)"],
+[14, "gi", "Hyperactive bowel sounds", "More than 35 per minute"],
+[15, "gi", "Absent bowel sounds", "No sounds after listening a total of 5 minutes"],
+[16, "gi", "Factors that affect bowel elimination", "Diet, age, medications, physical activity, psychological factors (plus positioning, pain, pregnancy, surgery)"],
+[17, "gi", "Daily fiber requirement", "22–34 g/day"],
+[18, "gi", "Daily fluid requirement", "About 2.7 L for females and 3.7 L for males (from food and fluids)"],
+[19, "gi", "Older adult bowel changes", "Slower peristalsis, less bowel muscle tone, relaxed sphincters; inactivity and less fluid and fiber → constipation"],
+[20, "gi", "Effect of stress vs depression on the bowel", "Stress speeds peristalsis (diarrhea); depression slows it (constipation)"],
+[21, "gi", "Best position for a bowel movement", "Squatting or sitting with knees up: relaxes the puborectalis muscle"],
+[22, "gi", "Foods that increase gas", "Cabbage, cauliflower, apples"],
+[23, "gi", "Constipating foods", "Cheese, processed meats, refined carbohydrates, high-fat foods"],
+[24, "cd", "Constipation", "Infrequent (fewer than 3 a week), hard, dry stools that are difficult to pass"],
+[25, "cd", "Causes of constipation", "Frequent laxative use, older age, low fluid or fiber, immobility, sedentary lifestyle, pregnancy, medications such as opioids and iron"],
+[26, "cd", "Medications that cause constipation", "Opioids, oral iron, aluminum and calcium antacids, anticholinergics, calcium channel blockers, diuretics, antiseizure drugs, some antidepressants"],
+[27, "cd", "Medications that cause diarrhea", "Systemic antibiotics, magnesium antacids and laxatives"],
+[28, "cd", "First steps for constipation", "Increase fiber, then fluids (unless contraindicated) and activity"],
+[29, "cd", "Order of constipation treatments", "Fiber and fluids → bulk-forming product → stool softener, stimulant or suppository → enema (last resort)"],
+[30, "cd", "Complications of constipation", "Fecal impaction, hemorrhoids, rectal fissures, bradycardia/hypotension/fainting from straining"],
+[31, "cd", "Fecal impaction", "Hard stool wedged in the rectum; liquid stool may leak around it"],
+[32, "cd", "Digital disimpaction", "Left side, knees flexed, gloved lubricated finger, remove in small pieces; stop if the heart rate drops (vagus nerve)"],
+[33, "cd", "Valsalva maneuver risk", "Straining → bradycardia, hypotension, syncope; teach not to strain"],
+[34, "cd", "Diarrhea", "Frequent loose or watery stools, usually 3 or more in 24 hours"],
+[35, "cd", "Acute vs persistent vs chronic diarrhea", "Acute 14 days or fewer · persistent 2–4 weeks · chronic longer than 4 weeks"],
+[36, "cd", "Causes of diarrhea", "Viral or bacterial gastroenteritis, antibiotics, inflammatory bowel disease, IBS (irritable bowel syndrome), food sensitivities"],
+[37, "cd", "Complications of diarrhea", "Dehydration, fluid and electrolyte imbalances, skin breakdown around the anus"],
+[38, "cd", "Signs of dehydration from diarrhea", "Thirst, dry mouth, hypotension, weak rapid pulse, fever, poor skin turgor, dark or decreased urine, dizziness, confusion"],
+[39, "cd", "Hypokalemia from diarrhea", "Leg cramps, muscle weakness, nausea, vomiting, dysrhythmias"],
+[40, "cd", "Acid-base imbalance from diarrhea", "Metabolic acidosis (loss of bicarbonate)"],
+[41, "cd", "Diarrhea teaching", "Increase fluids, avoid caffeine and alcohol, easy-to-digest low-fiber foods, yogurt once diarrhea stops"],
+[42, "cd", "Foods to avoid with diarrhea", "Raw fruit with skin, dairy, high-fat or greasy foods, spicy foods, apples, peaches, pears, sorbitol and other sweeteners"],
+[43, "cd", "Antibiotics + watery diarrhea 3 or more times a day", "Test for Clostridioides difficile toxin"],
+[44, "cd", "When to avoid loperamide", "Blood in the stool or high fever"],
+[45, "cd", "Diarrhea needing follow-up (adults)", "Fever 39° C (102.2° F)+, longer than 2 days, 6+ stools a day, severe pain, black or bloody stool, can't keep fluids down"],
+[46, "cd", "Older adults and diarrhea", "Less able to make up for fluid loss; watch for dehydration, electrolyte imbalance, skin breakdown"],
+[47, "care", "Passive vs urge bowel incontinence", "Passive: leaks without awareness · Urge: feels the need but can't reach the toilet"],
+[48, "care", "Skin care for incontinence", "Clean after each episode with mild soap and water, pat dry, alcohol-free moisturizer, barrier cream reapplied every time"],
+[49, "care", "Flatulence relief", "Walk regularly, eat slowly, avoid gas-forming foods"],
+[50, "care", "Hemorrhoid relief", "Sitz bath or ice pack, moist wipes, prescribed creams; avoid straining and long sitting"],
+[51, "care", "Bedside commode", "For clients who can get out of bed but can't walk to the bathroom"],
+[52, "care", "Regular bedpan", "Clients who can lift their hips with no leg restrictions"],
+[53, "care", "Fracture bedpan", "Body or leg casts, leg fractures, or can't lift hips; flat end goes under the buttocks; head of bed 30°"],
+[54, "care", "Client can't lift hips for a bedpan", "Roll to the side, place the pan, roll back; never leave flat on a regular bedpan"],
+[55, "care", "Enema position", "Left side-lying (Sims') with the right knee flexed"],
+[56, "care", "Enema tube depth (adult)", "7.5–10 cm (3–4 in), pointed toward the umbilicus"],
+[57, "care", "Enema bag height", "30–45 cm (12–18 in) above the anus"],
+[58, "care", "Cramping during an enema", "Lower the bag to slow the flow"],
+[59, "care", "Enema solution temperature", "Warm: cold causes cramping, hot injures the mucosa"],
+[60, "care", "Resistance when inserting an enema tube", "Stop, have the client breathe deeply, instill a little fluid; never force"],
+[61, "care", "Enemas until clear", "No more than 3 (fluid and electrolyte risk)"],
+[62, "care", "Tap water enema", "Hypotonic; risk of water toxicity, don't repeat"],
+[63, "care", "Normal saline enema", "Isotonic; the safest solution"],
+[64, "care", "Hypertonic (sodium phosphate) enema", "Pulls fluid into the colon; for clients who can't tolerate large volumes; avoid if dehydrated"],
+[65, "care", "Soapsuds enema", "Pure castile soap (5 mL per 1 L); caution in older adults and pregnancy"],
+[66, "care", "Oil retention enema", "Lubricates the rectum and colon"],
+[67, "care", "Medicated enemas", "Neomycin (reduce colon bacteria before surgery), sodium polystyrene sulfonate (high potassium)"],
+[68, "care", "Return-flow (flush) enema", "100–200 mL in, then lower the bag so it flows back; relieves gas"],
+[69, "care", "Carminative enema", "Relieves flatus and distention"],
+[70, "care", "Large-volume enema (adult)", "750–1,000 mL"],
+[71, "care", "When cleansing enemas work", "Usually within 10–15 minutes"],
+[72, "care", "Bulk-forming laxatives", "Psyllium, methylcellulose, polycarbophil; absorb water and add bulk; 12–72 hr"],
+[73, "care", "Surfactant (stool softener)", "Docusate; lets water and fat into stool; 12–72 hr"],
+[74, "care", "Stimulant laxatives", "Bisacodyl, senna, castor oil; suppository 15–60 min, oral 6–12 hr"],
+[75, "care", "Osmotic laxatives", "Magnesium hydroxide/citrate/sulfate, sodium phosphate, polyethylene glycol, lactulose; pull water into the bowel"],
+[76, "care", "Chronic laxative use", "Weakens the bowel's natural response, causing chronic constipation"],
+[77, "care", "Rectal tube / fecal management system", "Protects skin in incontinent clients (often ICU, intensive care unit)"],
+[78, "care", "Bowel training", "Regular time each day, often after a meal; high fiber and fluids"],
+[79, "cond", "Diverticulitis", "Inflamed pouches in the colon: fever, change in bowel habits, LLQ (left lower quadrant) pain; can perforate"],
+[80, "cond", "Diverticulitis prevention", "High-fiber diet; nuts and seeds are no longer thought harmful"],
+[81, "cond", "IBS (irritable bowel syndrome)", "Gut-brain interaction disorder: pain, bloating, diarrhea and/or constipation without bowel damage"],
+[82, "cond", "IBS-C, IBS-D, IBS-M", "Mostly hard stools · mostly loose stools · mixed"],
+[83, "cond", "IBS first-line care", "Soluble fiber (psyllium), limit trigger foods, reduce stress, sleep, stay active"],
+[84, "cond", "Bowel obstruction", "Blockage: nausea, vomiting, pain, distention, severe constipation; CT (computed tomography) is the preferred imaging"],
+[85, "cond", "Bowel obstruction care", "Assess → notify provider → NPO (nothing by mouth) → IV (intravenous) fluids and electrolytes → NG (nasogastric) tube"],
+[86, "cond", "Ileus", "Bowel movement slows or stops with no physical blockage; diminished or absent bowel sounds"],
+[87, "cond", "Causes of ileus", "Abdominal surgery, opioids, hypokalemia, infection, trauma"],
+[88, "cond", "Ileus treatment", "NPO, NG decompression, IV fluids, fix electrolytes; TPN (total parenteral nutrition) if no oral diet after 7 days"],
+[89, "cond", "Ulcerative colitis", "Continuous inflammation starting in the rectum, colon only; bloody diarrhea with pus"],
+[90, "cond", "Crohn's disease", "Full-thickness inflammation anywhere in the GI tract, often the ileum; fistulas, strictures; RLQ pain"],
+[91, "cond", "Crohn's disease of the ileum", "Risk of vitamin B12 and iron deficiency"],
+[92, "tests", "FOBT (fecal occult blood test)", "Finds hidden blood in stool; doesn't show where it's coming from"],
+[93, "tests", "Positive guaiac FOBT color", "Blue"],
+[94, "tests", "Guaiac FOBT samples", "3 samples from 3 different bowel movements"],
+[95, "tests", "Avoid before a guaiac FOBT", "Red meat (3 days), some raw vegetables (broccoli, turnips), aspirin, ibuprofen, vitamin C"],
+[96, "tests", "FIT (fecal immunochemical test)", "Antibodies detect human hemoglobin; usually no diet restrictions"],
+[97, "tests", "FOBT technique", "Wooden applicator, thin smear from two areas of the stool; no cotton swabs; no urine or water"],
+[98, "tests", "Stool culture", "Finds organisms causing diarrhea; no diet restrictions; avoid urine, water or tissue; send promptly"],
+[99, "tests", "Colonoscopy prep", "Clear liquids and a bowel cleanser; moderate sedation, so the client can't drive home"],
+[100, "tests", "Colonoscopy vs sigmoidoscopy", "Colonoscopy: whole colon · Sigmoidoscopy: rectum and sigmoid colon"],
+[101, "tests", "EGD (esophagogastroduodenoscopy)", "Views the esophagus, stomach and upper small intestine"],
+[102, "tests", "ERCP (endoscopic retrograde cholangiopancreatography)", "Diagnoses bile and pancreatic duct problems such as gallstones"],
+[103, "tests", "Things that change stool color", "Beets (red); iron and bismuth (black); persistent red or black stool still needs follow-up"],
+[104, "ost", "Ostomy and stoma", "Ostomy: surgical opening for urine or stool · Stoma: the end of bowel or ureter brought to the skin"],
+[105, "ost", "Healthy stoma", "Pink to red, moist, shiny; slightly raised"],
+[106, "ost", "Report right away", "Pale, dusky, purple, brown or black stoma; no output with cramping and distention"],
+[107, "ost", "Colostomy output by location", "Ascending: liquid · Transverse: pasty · Descending: semi-formed · Sigmoid: formed"],
+[108, "ost", "Sigmoid colostomy", "Left lower quadrant; usually permanent (rectal cancer); formed stool"],
+[109, "ost", "Transverse loop colostomy", "Usually temporary, emergency; rod or bridge for 7–10 days; proximal opening drains stool, distal drains mucus"],
+[110, "ost", "Double-barrel colostomy", "Two stomas: proximal drains stool, distal (mucous fistula) drains mucus"],
+[111, "ost", "End colostomy / Hartmann's pouch", "Working end brought to the skin; distal colon can be closed off (Hartmann's pouch)"],
+[112, "ost", "Ileostomy", "Right lower quadrant; liquid output full of enzymes; up to 2,000 mL a day at first"],
+[113, "ost", "Ileostomy risks", "Dehydration, sodium and potassium loss, skin irritation, food blockage"],
+[114, "ost", "Ileostomy fluids", "About 80–96 oz (2.4–2.8 L) a day typically recommended; at least 1.5 L, more in hot weather or high output"],
+[115, "ost", "Ileostomy blockage", "Cramping, nausea, vomiting, swollen stoma, no output for 6+ hr; knee-chest position, massage, call provider"],
+[116, "ost", "Ileostomy diet", "Chew well; avoid high-fiber foods for 6–8 weeks (popcorn, nuts, corn, celery, seeds)"],
+[117, "ost", "Foods that thicken stool", "Applesauce, bananas, cheese, pasta, rice"],
+[118, "ost", "Foods that cause odor", "Asparagus, beans, cabbage, eggs, fish, garlic, onions"],
+[119, "ost", "When to empty a pouch", "One-third to one-half full"],
+[120, "ost", "Skin barrier opening", "1/16–1/8 in (1.5–3 mm) larger than the stoma; never more than 1/8 in"],
+[121, "ost", "Measuring the stoma", "Weekly for the first 8 weeks (it shrinks); cut-to-fit barriers for the first 6–8 weeks"],
+[122, "ost", "Cleaning peristomal skin", "Warm water or mild soap without moisturizers; no alcohol, povidone-iodine or oil-based soap"],
+[123, "ost", "Irritant dermatitis", "Red, moist, painful skin from leakage: clean, dry, barrier powder, remeasure"],
+[124, "ost", "Allergic contact dermatitis", "Redness where a product touches: change the product"],
+[125, "ost", "Candidiasis around a stoma", "Itchy, bumpy, red rash: antifungal powder, keep clean and dry"],
+[126, "ost", "Closed-end pouch", "Single use; sigmoid colostomy or clients who irrigate"],
+[127, "ost", "Drainable pouch", "Ileostomy, ascending or transverse colostomy, urostomy (with a tap)"],
+[128, "ost", "Colostomy irrigation", "Bowel training for a permanent descending or sigmoid colostomy"],
+[129, "ost", "Colostomy and laxatives", "Ask the provider first (fluid and electrolyte risk); caution with enteric-coated or extended-release pills"],
+[130, "ost", "J-pouch", "Internal ileal pouch connected to the anus; no external stoma; keeps continence"],
+[131, "ost", "Kock pouch (continent ileostomy)", "Internal ileal pouch with a nipple valve; emptied with a catheter through the stoma"],
+[132, "ost", "WOC nurse", "Wound, ostomy and continence nurse: teaching, fitting, skin problems, supplies"],
+[133, "ng", "Why NG decompression", "Removes gas and stomach contents for obstruction or ileus: less distention, vomiting and aspiration"],
+[134, "ng", "Double-lumen (sump) tube blue pigtail", "Air vent: never clamp on suction, don't irrigate through it, keep above the stomach"],
+[135, "ng", "Measuring an NG tube", "Tip of nose → earlobe → xiphoid process"],
+[136, "ng", "Confirming NG placement", "X-ray (gold standard); gastric pH 5.5 or less; never the air \"whoosh\" test"],
+[137, "ng", "Before NG insertion", "High-Fowler's, distress signal, towel and basin, check nares, water-soluble lubricant"],
+[138, "ng", "Report NG drainage that is", "Coffee-ground, dark or blood-streaked"],
+[139, "ng", "NG tasks you can delegate", "Measuring output, comfort measures, oral care (not insertion or placement checks)"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
