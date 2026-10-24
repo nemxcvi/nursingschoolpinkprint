@@ -263,7 +263,9 @@ function initPracticeQuiz(bank, catLabels, opts){
      when the bank has any), and multiple choice fills the rest. If a bank is short on a type, its spare slots go to the
      others. Within each type, questions are still spread across categories. */
   var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15, order: 0.1, cloze: 0.1};
-  function mixedSample(source, count){
+  /* `pickFn(list, n)` chooses n questions from one type's list (spread over categories by default) */
+  function mixedSample(source, count, pickFn){
+    pickFn = pickFn || stratifiedSample;
     count = Math.min(count, source.length);
     var byType = {};
     source.forEach(function(q){ (byType[q.type] = byType[q.type] || []).push(q); });
@@ -277,14 +279,49 @@ function initPracticeQuiz(bank, catLabels, opts){
     var restPool = [];
     rest.forEach(function(t){ restPool = restPool.concat(byType[t]); });
     var restCount = Math.min(restPool.length, Math.max(0, count - used));
-    var picked = stratifiedSample(restPool, restCount);
-    Object.keys(quota).forEach(function(t){ picked = picked.concat(stratifiedSample(byType[t], quota[t])); });
+    var picked = pickFn(restPool, restCount);
+    Object.keys(quota).forEach(function(t){ picked = picked.concat(pickFn(byType[t], quota[t])); });
     /* Top up from whatever is left if any type ran short */
     if (picked.length < count){
       var left = source.filter(function(q){ return picked.indexOf(q) === -1; });
-      picked = picked.concat(stratifiedSample(left, count - picked.length));
+      picked = picked.concat(pickFn(left, count - picked.length));
     }
     return shuffle(picked.slice(0, count));
+  }
+
+  /* Tracked students: the same type mix as guests, but each type's share is filled in status
+     priority order (Progress.STATUS_ORDER: blind spots, never seen, mistake journal, lucky
+     guesses, bookmarked, due for review, still learning, mastered). Whole statuses are taken
+     while they fit; the status that doesn't fully fit is sampled across categories. */
+  function priorityPick(list, n){
+    var order = Progress.STATUS_ORDER, groups = order.map(function(){ return []; });
+    list.forEach(function(q){
+      var r = order.indexOf(Progress.status(q));
+      groups[r < 0 ? order.length - 1 : r].push(q);
+    });
+    var out = [];
+    for (var i = 0; i < groups.length && out.length < n; i++){
+      var room = n - out.length;
+      out = out.concat(groups[i].length <= room ? groups[i] : stratifiedSample(groups[i], room));
+    }
+    return out;
+  }
+  /* Keep the type mix unless it would serve a lower-priority question while a higher-priority
+     one sits unused (e.g. a mastered multiple choice while an unseen SATA waits): then swap. */
+  function prioritySample(source, count){
+    var order = Progress.STATUS_ORDER;
+    var rankOf = function(q){ var r = order.indexOf(Progress.status(q)); return r < 0 ? order.length : r; };
+    var picked = mixedSample(source, count, priorityPick);
+    var left = source.filter(function(q){ return picked.indexOf(q) === -1; });
+    var byRank = function(list, dir){
+      return list.map(function(q){ return {q: q, r: rankOf(q), t: Math.random()}; })
+        .sort(function(a, b){ return dir * (a.r - b.r) || a.t - b.t; });
+    };
+    var worst = byRank(picked, -1), best = byRank(left, 1);
+    for (var i = 0; i < worst.length && i < best.length && best[i].r < worst[i].r; i++){
+      picked[picked.indexOf(worst[i].q)] = best[i].q;
+    }
+    return shuffle(picked);
   }
 
   function show(id){ document.getElementById(id).classList.remove("hidden"); }
@@ -326,7 +363,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   document.getElementById("pq-start").addEventListener("click", function(){
     ready.then(function(){
       if (document.getElementById("pq-setup-screen").classList.contains("hidden")) return;
-      pool = mixedSample(bank, chosenCount);
+      pool = tracking ? prioritySample(bank, chosenCount) : mixedSample(bank, chosenCount);
       missedMap = {};
       startSessionTracking();
       hide("pq-setup-screen");
