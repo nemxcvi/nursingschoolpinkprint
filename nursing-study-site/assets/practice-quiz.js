@@ -263,7 +263,9 @@ function initPracticeQuiz(bank, catLabels, opts){
      when the bank has any), and multiple choice fills the rest. If a bank is short on a type, its spare slots go to the
      others. Within each type, questions are still spread across categories. */
   var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15, order: 0.1, cloze: 0.1};
-  function mixedSample(source, count){
+  /* `pickFn(list, n)` chooses n questions from one type's list (spread over categories by default) */
+  function mixedSample(source, count, pickFn){
+    pickFn = pickFn || stratifiedSample;
     count = Math.min(count, source.length);
     var byType = {};
     source.forEach(function(q){ (byType[q.type] = byType[q.type] || []).push(q); });
@@ -277,14 +279,49 @@ function initPracticeQuiz(bank, catLabels, opts){
     var restPool = [];
     rest.forEach(function(t){ restPool = restPool.concat(byType[t]); });
     var restCount = Math.min(restPool.length, Math.max(0, count - used));
-    var picked = stratifiedSample(restPool, restCount);
-    Object.keys(quota).forEach(function(t){ picked = picked.concat(stratifiedSample(byType[t], quota[t])); });
+    var picked = pickFn(restPool, restCount);
+    Object.keys(quota).forEach(function(t){ picked = picked.concat(pickFn(byType[t], quota[t])); });
     /* Top up from whatever is left if any type ran short */
     if (picked.length < count){
       var left = source.filter(function(q){ return picked.indexOf(q) === -1; });
-      picked = picked.concat(stratifiedSample(left, count - picked.length));
+      picked = picked.concat(pickFn(left, count - picked.length));
     }
     return shuffle(picked.slice(0, count));
+  }
+
+  /* Tracked students: the same type mix as guests, but each type's share is filled in status
+     priority order (Progress.STATUS_ORDER: blind spots, never seen, mistake journal, lucky
+     guesses, bookmarked, due for review, still learning, mastered). Whole statuses are taken
+     while they fit; the status that doesn't fully fit is sampled across categories. */
+  function priorityPick(list, n){
+    var order = Progress.STATUS_ORDER, groups = order.map(function(){ return []; });
+    list.forEach(function(q){
+      var r = order.indexOf(Progress.status(q));
+      groups[r < 0 ? order.length - 1 : r].push(q);
+    });
+    var out = [];
+    for (var i = 0; i < groups.length && out.length < n; i++){
+      var room = n - out.length;
+      out = out.concat(groups[i].length <= room ? groups[i] : stratifiedSample(groups[i], room));
+    }
+    return out;
+  }
+  /* Keep the type mix unless it would serve a lower-priority question while a higher-priority
+     one sits unused (e.g. a mastered multiple choice while an unseen SATA waits): then swap. */
+  function prioritySample(source, count){
+    var order = Progress.STATUS_ORDER;
+    var rankOf = function(q){ var r = order.indexOf(Progress.status(q)); return r < 0 ? order.length : r; };
+    var picked = mixedSample(source, count, priorityPick);
+    var left = source.filter(function(q){ return picked.indexOf(q) === -1; });
+    var byRank = function(list, dir){
+      return list.map(function(q){ return {q: q, r: rankOf(q), t: Math.random()}; })
+        .sort(function(a, b){ return dir * (a.r - b.r) || a.t - b.t; });
+    };
+    var worst = byRank(picked, -1), best = byRank(left, 1);
+    for (var i = 0; i < worst.length && i < best.length && best[i].r < worst[i].r; i++){
+      picked[picked.indexOf(worst[i].q)] = best[i].q;
+    }
+    return shuffle(picked);
   }
 
   function show(id){ document.getElementById(id).classList.remove("hidden"); }
@@ -326,7 +363,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   document.getElementById("pq-start").addEventListener("click", function(){
     ready.then(function(){
       if (document.getElementById("pq-setup-screen").classList.contains("hidden")) return;
-      pool = mixedSample(bank, chosenCount);
+      pool = tracking ? prioritySample(bank, chosenCount) : mixedSample(bank, chosenCount);
       missedMap = {};
       startSessionTracking();
       hide("pq-setup-screen");
@@ -380,6 +417,194 @@ function initPracticeQuiz(bank, catLabels, opts){
   var errEl = document.getElementById("pq-error");
   /* The summary and result heading sit above the per-option rationales */
   optsEl.parentNode.insertBefore(fbEl, optsEl);
+
+  /* ---------- Calculator ----------
+     Questions flagged calc: true (med math) get a Calculator button at the right end of the
+     question-type line. On wide screens the keypad floats in the upper right (beside the
+     question when there's room) and can be dragged by its title bar, so the answers never
+     move; on phones it opens under the button. It stays open while the next questions need it.
+     Typing works while the keypad has focus, and those keys never reach the quiz shortcuts. */
+  var calc = (function(){
+    var row = null, btn = null, panel = null, exprEl = null, resultEl = null, moved = false;
+    var WIDE = window.matchMedia ? window.matchMedia("(min-width: 900px)") : {matches: false};
+    var expr = "", result = null;
+    var SHOW = {"*": "×", "/": "÷", "-": "−", "+": "+"};
+
+    function tokens(s){ return s.match(/\d*\.?\d+|\d+\.|[+\-*\/]/g) || []; }
+    /* Left to right, × and ÷ before + and − */
+    function evaluate(s){
+      var t = tokens(s);
+      if (!t.length || /[+\-*\/]/.test(t[t.length - 1])) return null;
+      var vals = [], ops = [];
+      t.forEach(function(tok, i){
+        if (i % 2 === 0) vals.push(parseFloat(tok)); else ops.push(tok);
+      });
+      for (var i = 0; i < ops.length; i++){
+        if (ops[i] === "*" || ops[i] === "/"){
+          vals.splice(i, 2, ops[i] === "*" ? vals[i] * vals[i + 1] : vals[i] / vals[i + 1]);
+          ops.splice(i, 1); i--;
+        }
+      }
+      var total = vals[0];
+      ops.forEach(function(op, j){ total = op === "+" ? total + vals[j + 1] : total - vals[j + 1]; });
+      return isFinite(total) ? Number(total.toPrecision(12)) : NaN;
+    }
+    function pretty(s){ return s.replace(/[+\-*\/]/g, function(o){ return " " + SHOW[o] + " "; }); }
+    function render(){
+      exprEl.textContent = expr ? pretty(expr) + (result !== null ? " =" : "") : "";
+      resultEl.textContent = result === null ? (expr ? "" : "0") : (isNaN(result) ? "Error" : String(result));
+    }
+    function press(k){
+      var last = expr.slice(-1), isOp = /[+\-*\/]/;
+      if (/^[0-9]$/.test(k)){
+        if (result !== null){ expr = ""; result = null; }
+        expr += k;
+      } else if (k === "."){
+        if (result !== null){ expr = ""; result = null; }
+        var cur = expr.split(/[+\-*\/]/).pop();
+        if (cur.indexOf(".") === -1) expr += cur === "" ? "0." : ".";
+      } else if (isOp.test(k)){
+        if (result !== null && !isNaN(result)){ expr = String(result); result = null; }
+        if (!expr) return;
+        expr = isOp.test(last) ? expr.slice(0, -1) + k : expr + k;
+      } else if (k === "="){
+        var v = evaluate(expr);
+        if (v !== null) result = v;
+      } else if (k === "back"){
+        if (result !== null){ result = null; return render(); }
+        expr = expr.slice(0, -1);
+      } else if (k === "clear"){
+        expr = ""; result = null;
+      }
+      render();
+    }
+    function build(){
+      var label = document.getElementById("pq-type-label");
+      row = document.createElement("div");
+      row.className = "pq-type-row";
+      label.parentNode.insertBefore(row, label);
+      row.appendChild(label);
+      btn = document.createElement("button");
+      btn.type = "button"; btn.className = "pq-calc-btn is-off"; btn.id = "pq-calc-btn";
+      btn.setAttribute("aria-expanded", "false");
+      btn.innerHTML = '<i class="ti ti-calculator" aria-hidden="true"></i> Calculator';
+      btn.addEventListener("click", function(){ isOpen() ? close() : open(); });
+      row.appendChild(btn);
+
+      panel = document.createElement("div");
+      panel.className = "pq-calc hidden";
+      panel.setAttribute("role", "dialog");
+      panel.setAttribute("aria-label", "Calculator");
+      panel.tabIndex = -1;
+      var head = document.createElement("div");
+      head.className = "pq-calc-head";
+      head.innerHTML = '<span>Calculator</span>';
+      var x = document.createElement("button");
+      x.type = "button"; x.className = "pq-calc-close"; x.setAttribute("aria-label", "Close calculator");
+      x.innerHTML = '<i class="ti ti-x" aria-hidden="true"></i>';
+      x.addEventListener("click", function(){ close(); btn.focus({preventScroll:true}); });
+      head.appendChild(x);
+      /* Drag the floating keypad by its title bar */
+      var drag = null;
+      head.addEventListener("pointerdown", function(e){
+        if (!panel.classList.contains("is-floating") || e.target.closest(".pq-calc-close")) return;
+        var r = panel.getBoundingClientRect();
+        drag = {dx: e.clientX - r.left, dy: e.clientY - r.top};
+        head.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      });
+      head.addEventListener("pointermove", function(e){
+        if (!drag) return;
+        moveTo(e.clientX - drag.dx, e.clientY - drag.dy);
+        moved = true;
+      });
+      ["pointerup", "pointercancel"].forEach(function(t){ head.addEventListener(t, function(){ drag = null; }); });
+      var screen = document.createElement("div");
+      screen.className = "pq-calc-screen";
+      exprEl = document.createElement("div"); exprEl.className = "pq-calc-expr";
+      resultEl = document.createElement("div"); resultEl.className = "pq-calc-result";
+      resultEl.setAttribute("aria-live", "polite");
+      screen.appendChild(exprEl); screen.appendChild(resultEl);
+      var keys = document.createElement("div");
+      keys.className = "pq-calc-keys";
+      [["C","clear","fn"],["⌫","back","fn"],["÷","/","op"],["×","*","op"],
+       ["7","7"],["8","8"],["9","9"],["−","-","op"],
+       ["4","4"],["5","5"],["6","6"],["+","+","op"],
+       ["1","1"],["2","2"],["3","3"],["=","=","eq"],
+       ["0","0","zero"],[".","."]].forEach(function(k){
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = k[0];
+        b.className = "pq-calc-key" + (k[2] ? " is-" + k[2] : "");
+        b.setAttribute("aria-label", {clear:"Clear", back:"Backspace", "/":"Divide", "*":"Multiply", "-":"Minus", "+":"Plus", "=":"Equals", ".":"Decimal point"}[k[1]] || k[0]);
+        b.addEventListener("click", function(){ press(k[1]); });
+        keys.appendChild(b);
+      });
+      panel.appendChild(head); panel.appendChild(screen); panel.appendChild(keys);
+      panel.addEventListener("keydown", function(e){
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        var k = e.key, map = {"x":"*", "X":"*", "Enter":"=", "=":"=", "Backspace":"back", "Delete":"clear", "c":"clear", "C":"clear"};
+        if (/^[0-9.+\-*\/]$/.test(k)) press(k);
+        else if (map[k]) press(map[k]);
+        else if (k === "Escape"){ close(); btn.focus({preventScroll:true}); }
+        else if (k === "Tab") { e.stopPropagation(); return; }
+        else return;
+        /* Keep calculator keys away from the quiz's letter, number and Enter shortcuts */
+        e.preventDefault(); e.stopPropagation();
+      });
+      window.addEventListener("resize", function(){
+        if (!isOpen() || !panel.classList.contains("is-floating")) return;
+        if (moved){ var r = panel.getBoundingClientRect(); moveTo(r.left, r.top); } else place();
+      });
+      render();
+    }
+    function isOpen(){ return panel && !panel.classList.contains("hidden"); }
+    /* Keep the keypad fully on screen */
+    function moveTo(left, top){
+      var w = panel.offsetWidth, h = panel.offsetHeight;
+      panel.style.left = Math.max(8, Math.min(left, window.innerWidth - w - 8)) + "px";
+      panel.style.top = Math.max(8, Math.min(top, window.innerHeight - h - 8)) + "px";
+    }
+    /* Upper right: in the margin beside the question if it fits, else the window's corner */
+    function place(){
+      var gap = 16, w = panel.offsetWidth;
+      var col = document.getElementById("pq-quiz-screen").getBoundingClientRect();
+      var bar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--cbar-h")) || 56;
+      var left = col.right + gap + w <= window.innerWidth - gap ? col.right + gap : window.innerWidth - w - gap;
+      moveTo(left, bar + gap);
+    }
+    function open(){
+      if (!panel) build();
+      panel.classList.remove("hidden");
+      if (WIDE.matches){
+        if (panel.parentNode !== document.body) document.body.appendChild(panel);
+        panel.classList.add("is-floating");
+        if (moved){ var r = panel.getBoundingClientRect(); moveTo(r.left, r.top); } else place();
+      } else {
+        panel.classList.remove("is-floating");
+        panel.style.left = panel.style.top = "";
+        if (panel.previousSibling !== row) row.parentNode.insertBefore(panel, row.nextSibling);
+      }
+      document.getElementById("pq-calc-btn").setAttribute("aria-expanded", "true");
+      panel.focus({preventScroll:true});
+    }
+    function close(){
+      if (!panel) return;
+      panel.classList.add("hidden");
+      document.getElementById("pq-calc-btn").setAttribute("aria-expanded", "false");
+    }
+    return {
+      /* Show the button only on calculator questions; keep the keypad open between them */
+      sync: function(q){
+        /* Build the button row up front when the quiz has any calculator questions, so layout never jumps */
+        if (!row && !q.calc && !bank.some(function(b){ return b.calc; })) return;
+        if (!row) build();
+        btn.classList.toggle("is-off", !q.calc);
+        btn.tabIndex = q.calc ? 0 : -1;
+        if (!q.calc) close();
+      },
+      close: close
+    };
+  })();
 
   /* Option card: letter box, text, a slot for the rationale shown after checking,
      and (for choice questions) a square radio or checkbox mark */
@@ -472,6 +697,8 @@ function initPracticeQuiz(bank, catLabels, opts){
       : q.type === "order" ? "put in order · drag, or use the arrows"
       : q.type === "cloze" ? "drop-down · choose an option for each blank" : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
+    showQuestionImage(q);
+    calc.sync(q);
     if (tracking) syncBookmark(q);
     if (useNotes) hideNote();
 
@@ -1075,6 +1302,20 @@ function initPracticeQuiz(bank, catLabels, opts){
   });
 
   /* Drop-down questions keep their sentence in review lists, with the blanks as lines */
+  // Optional picture under the stem: q.image is a site-root path, q.imageAlt describes it.
+  function showQuestionImage(q){
+    var promptEl = document.getElementById("pq-prompt");
+    var fig = document.getElementById("pq-img");
+    if (!q.image){ if (fig) fig.hidden = true; return; }
+    if (!fig){
+      fig = document.createElement("figure"); fig.id = "pq-img"; fig.className = "pq-img";
+      fig.appendChild(document.createElement("img"));
+      promptEl.parentNode.insertBefore(fig, promptEl.nextSibling);
+    }
+    var img = fig.firstChild;
+    img.src = q.image; img.alt = q.imageAlt || "";
+    fig.hidden = false;
+  }
   function fullPrompt(q){ return q.prompt + (q.sentence ? " " + q.sentence.replace(/\{\d+\}/g, "_____") : ""); }
 
   /* Ordered response reads as numbered steps: "1. First → 2. Second" */
@@ -1123,6 +1364,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   document.getElementById("pq-end-test").addEventListener("click", function(){ finishSession(); });
 
   function showRoundComplete(){
+    calc.close();
     hide("pq-quiz-screen"); show("pq-round-complete-screen");
     var correctThisRound = currentRound.filter(function(q){ return latestResult[q.id] && latestResult[q.id].correct; }).length;
     document.getElementById("rc-title").textContent = "round " + roundsTaken + " complete";
@@ -1521,6 +1763,7 @@ function initPracticeQuiz(bank, catLabels, opts){
   }
 
   function finishSession(){
+    calc.close();
     hide("pq-quiz-screen"); hide("pq-round-complete-screen"); show("pq-end-screen");
     if (tracking){
       buildMasteryBox();

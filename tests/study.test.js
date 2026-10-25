@@ -120,7 +120,7 @@ test("today's plan in the window: clear weak spots, then the readiness check, th
   assert.equal(S.checkLabel(0.85), "strong"); assert.equal(S.checkLabel(0.75), "ontrack"); assert.equal(S.checkLabel(0.7), "needswork"); assert.equal(S.checkLabel(null), "nodata");
 });
 
-test("plan sets: weak spots, then never seen, then the rest; weak spots only in the window", () => {
+test("plan sets: blind spots, then never seen, then mistakes and the rest; weak spots only in the window", () => {
   const qs = ["blind", "miss", "lucky", "learn", "mast"].map(id => q(id, 4)).concat(Array.from({length: 20}, (_, i) => q("new" + i, 4)), [q("other", 3)]);
   const store = {
     blind: rec({seen: 1, wrong: 1, lastCorrect: false, lastSure: true, journal: true}),
@@ -130,8 +130,8 @@ test("plan sets: weak spots, then never seen, then the rest; weak spots only in 
     mast: rec({seen: 2, correct: 2, mastered: true, lastCorrect: true, lastAnswered: "2026-10-19"})
   };
   const set = S.pickPlan(qs, 10, store, "2026-10-20", EXAMS, () => 0.5).map(x => x.id);
-  assert.deepEqual(set.slice(0, 2), ["blind", "miss"]);
-  assert.ok(set.slice(2).every(id => id.startsWith("new")), "never seen comes right after the weak spots");
+  assert.equal(set[0], "blind");
+  assert.ok(set.slice(1).every(id => id.startsWith("new")), "never seen comes right after blind spots, ahead of the mistake journal");
   const win = S.pickPlan(qs, 10, store, "2026-10-24", EXAMS).map(x => x.id).sort();
   assert.deepEqual(win, ["blind", "lucky", "miss"], "in the window, weak spots only");
 });

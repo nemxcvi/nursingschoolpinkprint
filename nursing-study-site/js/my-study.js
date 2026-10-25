@@ -389,7 +389,7 @@ var MyStudy = (function(){
         bar(st, {}) +
         '<div class="ms-keys"><div><i class="is-mastered"></i><span class="k-title"><strong>' + st.mastered + "</strong> mastered</span><span class=\"k-sub\">2 right in a row</span></div>" +
         '<div><i class="is-learning"></i><span class="k-title"><strong>' + st.learning + "</strong> still learning</span><span class=\"k-sub\">Seen, not mastered yet</span></div>" +
-        '<div><i class="is-unseen"></i><span class="k-title"><strong>' + st.unseen + "</strong> not seen</span><span class=\"k-sub\">Today's plan covers these first, after weak spots</span></div></div>" +
+        '<div><i class="is-unseen"></i><span class="k-title"><strong>' + st.unseen + "</strong> not seen</span><span class=\"k-sub\">Today's plan covers these right after blind spots</span></div></div>" +
         '<p class="tp-hint ms-planline"><strong>' + esc(pt.head) + "</strong></p>" +
         '<div class="ms-btns">' + pt.btns + "</div></div>";
     }

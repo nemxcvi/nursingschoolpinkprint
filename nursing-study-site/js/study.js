@@ -57,12 +57,12 @@
   var READINESS_LABEL = {strong: "Strong", ontrack: "On track", needswork: "Needs work", nodata: "Not enough data"};
 
   /* ---------- Priority groups ---------- */
-  /* In the order today's plan works through them: weak spots, then never seen (coverage first),
-     then the rest */
+  /* In the order today's plan works through them: blind spots, then never seen (coverage first),
+     then the mistake journal, then the rest */
   var GROUPS = [
     {key: "blindspot", name: "Blind spots", sub: "Wrong, but you were sure"},
-    {key: "journal", name: "Mistake journal", sub: "Missed last time"},
     {key: "new", name: "Never seen", sub: "See every question at least once"},
+    {key: "journal", name: "Mistake journal", sub: "Missed last time"},
     {key: "luckyguess", name: "Lucky guesses", sub: "Right, but you guessed"},
     {key: "bookmarked", name: "Your bookmarks", sub: "Flagged as tricky"},
     {key: "reviewdue", name: "Due for review", sub: "Mastered, time for a refresher"},
@@ -104,14 +104,14 @@
   /* ---------- Today's plan ----------
      The student picks a daily size (10, 20, 30 or 40; 30 by default), done in sets of 10. Any
      answers today count toward it.
-     Before the exam ready window: coverage first. Weak spots, then never-seen questions, then
-     the rest, from the next exam's units. The pace line says whether that size reaches every
+     Before the exam ready window: coverage first. Blind spots, then never-seen questions, then
+     the mistake journal and the rest, from the next exam's units. The pace line says whether that size reaches every
      question before the window opens.
      In the window (the 3 days before the exam): clear the weak spots in the exam's units, then
      take the readiness check. Exam ready = no weak spots left and a check score of 85% or more.
      When the next exam's unit has no questions yet, the plan reviews earlier units instead. */
   var DAILY_SIZES = [10, 20, 30, 40], DEFAULT_DAILY = 30, SET_SIZE = 10;
-  var PLAN_ORDER = ["blindspot", "journal", "new", "luckyguess", "bookmarked", "reviewdue", "learning", "mastered"];
+  var PLAN_ORDER = P.STATUS_ORDER;
   var CHECK_SIZE = 40, CHECK_READY = 0.85, CHECK_ALMOST = 0.75;
   function dailySize(n){ return DAILY_SIZES.indexOf(n) !== -1 ? n : DEFAULT_DAILY; }
 

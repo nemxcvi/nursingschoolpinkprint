@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Med Math &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Med Math &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-4-fluids-nutrition-med-math/med-math-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Med Math &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=22"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Med Math</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  clock: {label:"24-Hour Clock", hue:"blue"},
+  conv: {label:"Conversions", hue:"green"},
+  abbr: {label:"Abbreviations", hue:"violet"},
+  round: {label:"Rounding", hue:"orange"},
+  dose: {label:"Dosage Formulas", hue:"red"}
+};
+var CARDS = [
+[1, "clock", "a.m. to 24-hour time", "Remove the colon and make it 4 digits: 5:30 a.m. → 0530"],
+[2, "clock", "p.m. to 24-hour time", "Add 12 to the hour: 5:30 p.m. → 1730"],
+[3, "clock", "Midnight", "2400; one minute after is 0001"],
+[4, "clock", "12:30 a.m.", "0030"],
+[5, "clock", "Noon hour (12:00–12:59 p.m.)", "Just remove the colon: 12:10 p.m. → 1210"],
+[6, "clock", "24-hour to p.m. time", "Subtract 1200: 1930 → 7:30 p.m."],
+[7, "clock", "0945", "9:45 a.m."],
+[8, "clock", "1600", "4:00 p.m."],
+[9, "clock", "2200", "10:00 p.m."],
+[10, "clock", "11:42 p.m.", "2342 (a slide example shows 2142, which is 9:42 p.m.)"],
+[11, "clock", "Why use the 24-hour clock", "No mix-ups between a.m. and p.m."],
+[12, "conv", "1 tsp", "5 mL"],
+[13, "conv", "1 Tbsp", "15 mL (3 tsp)"],
+[14, "conv", "1 oz", "30 mL"],
+[15, "conv", "1 cup (8 oz)", "240 mL"],
+[16, "conv", "1 kg", "2.2 lb (memorize)"],
+[17, "conv", "1 g", "1,000 mg"],
+[18, "conv", "1 mg", "1,000 mcg"],
+[19, "conv", "1 mcg", "0.001 mg"],
+[20, "conv", "1 L", "1,000 mL"],
+[21, "conv", "1 mL", "1 cc (cubic centimeter)"],
+[22, "conv", "1 m", "100 cm"],
+[23, "conv", "1 cm", "10 mm"],
+[24, "conv", "1 in", "2.54 cm"],
+[25, "conv", "Bigger unit → smaller unit", "Multiply (g → mg: × 1,000)"],
+[26, "conv", "Smaller unit → bigger unit", "Divide (mg → g: ÷ 1,000)"],
+[27, "conv", "kilo-", "1,000"],
+[28, "conv", "centi-", "One hundredth (0.01)"],
+[29, "conv", "milli-", "One thousandth (0.001)"],
+[30, "conv", "micro-", "One millionth (0.000001)"],
+[31, "conv", "Metric base units", "Weight: kilogram (gram) · Volume: liter · Length: meter"],
+[32, "conv", "Household measuring at home", "Use a calibrated cup or oral syringe, not a kitchen spoon"],
+[33, "abbr", "AC", "Before meals"],
+[34, "abbr", "PC", "After meals"],
+[35, "abbr", "PRN", "As needed"],
+[36, "abbr", "STAT", "Immediately"],
+[37, "abbr", "PO", "By mouth"],
+[38, "abbr", "SL", "Sublingual (under the tongue)"],
+[39, "abbr", "ID", "Intradermal"],
+[40, "abbr", "IM", "Intramuscular"],
+[41, "abbr", "IV", "Intravenous"],
+[42, "abbr", "BID", "Twice a day"],
+[43, "abbr", "TID", "Three times a day"],
+[44, "abbr", "QID", "Four times a day"],
+[45, "abbr", "h", "Hour"],
+[46, "abbr", "gtt", "Drop"],
+[47, "abbr", "Units", "Always spell out; never \"U\" or \"IU\""],
+[48, "abbr", "USP", "U.S. Pharmacopeia: standards for quality, potency and purity"],
+[49, "round", "Doses less than 1", "Round to the nearest hundredth (0.746 → 0.75)"],
+[50, "round", "Doses greater than 1", "Round to the nearest tenth (7.48 → 7.5)"],
+[51, "round", "Digit to the right is 5 or more", "Round up"],
+[52, "round", "Digit to the right is less than 5", "Drop it (7.43 → 7.4)"],
+[53, "round", "When to round", "Only at the end of the calculation"],
+[54, "round", "Leading zero", "Always: 0.5 mg, never .5 mg"],
+[55, "round", "Trailing zero", "Never: 5 mg, never 5.0 mg"],
+[56, "round", "Where to round on tests", "The question will tell you"],
+[57, "dose", "Desired over have", "X = (Desired × Quantity) ÷ Have"],
+[58, "dose", "Ratio and proportion", "Have ÷ Quantity = Desired ÷ X"],
+[59, "dose", "Dimensional analysis", "Put the unit you're solving for on top; every other unit should cancel"],
+[60, "dose", "174 mg ordered; 125 mg/5 mL available", "174 × 5 ÷ 125 = 6.96 → 7 mL"],
+[61, "dose", "Weight-based dose steps", "lb ÷ 2.2 = kg → kg × mg/kg → round at the end"],
+[62, "dose", "mL to tsp", "Divide by 5"],
+[63, "dose", "oz to mL", "Multiply by 30"],
+[64, "dose", "Odd answer, like 6 tablets", "Recheck the math and units before giving"],
+[65, "conv", "1 pint", "480 mL (16 oz)"],
+[66, "conv", "1 quart", "960 mL (32 oz)"],
+[67, "conv", "2 Tbsp", "1 oz (30 mL)"],
+[68, "conv", "mg → g", "Move the decimal 3 places left: 5,000 mg = 5 g"],
+[69, "conv", "mg → mcg", "Move the decimal 3 places right: 5 mg = 5,000 mcg"],
+[70, "conv", "lb ↔ kg", "lb ÷ 2.2 = kg · kg × 2.2 = lb (the kg number is always smaller)"],
+[71, "abbr", "Apothecary units (grains)", "No longer used: on The Joint Commission and ISMP (Institute for Safe Medication Practices) \"Do Not Use\" list"],
+[72, "dose", "Before you calculate", "Read the whole problem: what unit you're solving for, desired dose, dose you have, quantity, any time factor"],
+[73, "dose", "Unit labels", "Write mg, mL or tablets in every step to avoid unit mix-ups"],
+[74, "dose", "Pick one method", "Use the same method (ratio and proportion, desired over have, or dimensional analysis) every time"],
+[75, "dose", "Phenytoin example", "0.6 g ordered, 300-mg capsules: 600 ÷ 300 = 2 capsules"],
+[76, "dose", "Digoxin example", "125 mcg ordered, 0.05 mg/mL: 0.125 ÷ 0.05 = 2.5 mL"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

@@ -114,7 +114,7 @@ test("status: blind spot, lucky guess and the priority order", () => {
   const dueLucky = play([["2026-09-30", true], ["2026-10-01", true, false]]).rec;
   assert.equal(P.statusOf(dueLucky, 3, "2026-10-09", EXAMS), "reviewdue");
 
-  assert.deepEqual(P.STATUS_ORDER, ["blindspot", "journal", "bookmarked", "reviewdue", "luckyguess", "new", "learning", "mastered"]);
+  assert.deepEqual(P.STATUS_ORDER, ["blindspot", "new", "journal", "luckyguess", "bookmarked", "reviewdue", "learning", "mastered"]);
 });
 
 test("review due: 3 days before the exam covering the unit, then every 4 weeks", () => {
@@ -232,13 +232,13 @@ test("next exam and smart session picking", () => {
   };
   // Oct 5: next exam is Exam 3 (Unit 3). Unit 3 questions come first, in priority order.
   const picked = P.pickSmart(questions, 7, store, "2026-10-05", EXAMS).map(x => x.id);
-  assert.deepEqual(picked, ["u3-blind", "u3-journal", "u3-bm", "u3-lucky", "u3-new", "u3-learning", "u3-mastered"]);
+  assert.deepEqual(picked, ["u3-blind", "u3-new", "u3-journal", "u3-lucky", "u3-bm", "u3-learning", "u3-mastered"]);
   // Asking for more than Unit 3 has fills in from other units, also by priority
   const more = P.pickSmart(questions, 9, store, "2026-10-05", EXAMS).map(x => x.id);
   assert.deepEqual(more.slice(7), ["u2-blind", "u2-new"]);
-  // Oct 9 is 3 days before Exam 3, so the mastered question is review due and moves up after bookmarked
+  // Oct 9 is 3 days before Exam 3, so the mastered question is review due and moves up after bookmarked, ahead of still learning
   const due = P.pickSmart(questions, 7, store, "2026-10-09", EXAMS).map(x => x.id);
-  assert.deepEqual(due, ["u3-blind", "u3-journal", "u3-bm", "u3-mastered", "u3-lucky", "u3-new", "u3-learning"]);
+  assert.deepEqual(due, ["u3-blind", "u3-new", "u3-journal", "u3-lucky", "u3-bm", "u3-mastered", "u3-learning"]);
   // The Final covers every unit, so everything competes on priority
   const final = P.pickSmart(questions, 3, store, "2026-12-08", EXAMS).map(x => x.id);
   assert.deepEqual(final.slice(0, 2).sort(), ["u2-blind", "u3-blind"]);
