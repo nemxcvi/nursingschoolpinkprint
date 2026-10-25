@@ -335,35 +335,35 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Select all red blood cell indices that are BELOW normal for this client: MCV 78 fL, MCH 26 pg, MCHC 30 g/dL, RDW 10.5%, MPV 11 fL.",
+      "prompt": "Which red blood cell and platelet indices are below normal for an adult client? Select all that apply.",
       "options": [
         {
-          "text": "MCV 78 fL",
+          "text": "MCV (mean corpuscular volume) 78 fL",
           "correct": true,
-          "rationale": ""
+          "rationale": "Below the normal 80–95 fL."
         },
         {
-          "text": "MCH 26 pg",
+          "text": "MCH (mean corpuscular hemoglobin) 26 pg",
           "correct": true,
-          "rationale": ""
+          "rationale": "Below the normal 27–31 pg."
         },
         {
-          "text": "MCHC 30 g/dL",
+          "text": "MCHC (mean corpuscular hemoglobin concentration) 30 g/dL",
           "correct": true,
-          "rationale": ""
+          "rationale": "Below the normal 32–36 g/dL."
         },
         {
-          "text": "RDW 10.5%",
-          "correct": true,
-          "rationale": ""
-        },
-        {
-          "text": "MPV 11 fL",
+          "text": "RDW (red cell distribution width) 14%",
           "correct": false,
-          "rationale": ""
+          "rationale": "Within the normal adult range of 11–45%."
+        },
+        {
+          "text": "MPV (mean platelet volume) 11 fL",
+          "correct": false,
+          "rationale": "Above the normal 7.4–10.4 fL, not below."
         }
       ],
-      "explanation": "MCV (normal 80–95), MCH (normal 27–31), and MCHC (normal 32–36) are all below their ranges. RDW 10.5% is below ATI's normal adult range of 11–45%. MPV 11 fL is actually above the normal range of 7.4–10.4 fL — not below."
+      "explanation": "MCV (normal 80–95), MCH (normal 27–31), and MCHC (normal 32–36) are all below their ranges. RDW 14% is within the normal adult range of 11–45%. MPV 11 fL is above the normal range of 7.4–10.4 fL, not below."
     },
     {
       "id": "nur114-u1-cbc-cmp-010",
@@ -395,7 +395,7 @@
           "rationale": ""
         }
       ],
-      "explanation": "Per ATI, normal adult RDW is 11–45%. 14% falls within that range; 10% is just below it, and 46% and 50% are just above it."
+      "explanation": "Normal adult RDW is 11–45%. 14% falls within that range; 10% is just below it, and 46% and 50% are just above it."
     },
     {
       "id": "nur114-u1-cbc-cmp-011",
@@ -820,35 +820,35 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Select all liver/protein panel values that are BELOW normal: ALT 2 units/L, AST 5 units/L, ALP 25 units/L, Albumin 3.0 g/dL, Bilirubin 0.1 mg/dL.",
+      "prompt": "Which liver and protein panel values are below normal for an adult client? Select all that apply.",
       "options": [
         {
-          "text": "ALT 2 units/L",
+          "text": "ALT (alanine aminotransferase) 2 units/L",
           "correct": true,
-          "rationale": ""
+          "rationale": "Below the normal 4–36 units/L."
         },
         {
-          "text": "AST 5 units/L",
+          "text": "AST (aspartate aminotransferase) 5 units/L",
           "correct": false,
-          "rationale": ""
+          "rationale": "Within the normal 0–35 units/L."
         },
         {
-          "text": "ALP 25 units/L",
+          "text": "ALP (alkaline phosphatase) 25 units/L",
           "correct": true,
-          "rationale": ""
+          "rationale": "Below the normal 30–120 units/L."
         },
         {
           "text": "Albumin 3.0 g/dL",
           "correct": true,
-          "rationale": ""
+          "rationale": "Below the normal 3.5–5 g/dL."
         },
         {
-          "text": "Bilirubin 0.1 mg/dL",
-          "correct": true,
-          "rationale": ""
+          "text": "Bilirubin 0.5 mg/dL",
+          "correct": false,
+          "rationale": "Within the normal 0.3–1 mg/dL."
         }
       ],
-      "explanation": "ALT 2 (normal 4–36), ALP 25 (normal 30–120), albumin 3.0 (normal 3.5–5), and bilirubin 0.1 (normal 0.3–1) are all below range. AST 5 is still within its normal range of 0–35."
+      "explanation": "ALT 2 (normal 4–36), ALP 25 (normal 30–120), and albumin 3.0 (normal 3.5–5) are below range. AST 5 (normal 0–35) and bilirubin 0.5 (normal 0.3–1) are within normal limits."
     },
     {
       "id": "nur114-u1-cbc-cmp-025",
@@ -953,35 +953,35 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Select all electrolyte values that are WITHIN normal limits for an adult client: Sodium 138 mEq/L, Potassium 5.8 mEq/L, Chloride 102 mEq/L, Magnesium 2.6 mEq/L, Calcium 9.8 mg/dL.",
+      "prompt": "Which electrolyte values are within normal limits for an adult client? Select all that apply.",
       "options": [
         {
           "text": "Sodium 138 mEq/L",
           "correct": true,
-          "rationale": ""
+          "rationale": "Within the normal 136–145 mEq/L."
         },
         {
           "text": "Potassium 5.8 mEq/L",
           "correct": false,
-          "rationale": ""
+          "rationale": "Above the normal 3.5–5 mEq/L."
         },
         {
           "text": "Chloride 102 mEq/L",
           "correct": true,
-          "rationale": ""
+          "rationale": "Within the normal 98–106 mEq/L."
         },
         {
           "text": "Magnesium 2.6 mEq/L",
           "correct": false,
-          "rationale": ""
+          "rationale": "Above the normal 1.3–2.1 mEq/L."
         },
         {
-          "text": "Calcium 9.8 mg/dL",
-          "correct": true,
-          "rationale": ""
+          "text": "Calcium 8.4 mg/dL",
+          "correct": false,
+          "rationale": "Below the normal 9.0–10.5 mg/dL."
         }
       ],
-      "explanation": "Sodium, chloride, and calcium fall within their normal adult ranges. Potassium 5.8 (normal 3.5–5) and magnesium 2.6 (normal 1.3–2.1) are both elevated."
+      "explanation": "Sodium and chloride fall within their normal adult ranges. Potassium 5.8 (normal 3.5–5) and magnesium 2.6 (normal 1.3–2.1) are elevated, and calcium 8.4 (normal 9.0–10.5) is low."
     },
     {
       "id": "nur114-u1-cbc-cmp-029",
@@ -1054,35 +1054,35 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Select all CBC values that are WITHIN normal limits for an adult male client: Hct 46%, Hgb 17 g/dL, RBC 4.5 ×10⁶/µL, Platelets 380,000/mm3, WBC 8,500/mm3.",
+      "prompt": "Which CBC (complete blood count) values are within normal limits for an adult male client? Select all that apply.",
       "options": [
         {
-          "text": "Hct 46%",
+          "text": "Hct (hematocrit) 46%",
           "correct": true,
-          "rationale": ""
+          "rationale": "Within the normal male 42–52%."
         },
         {
-          "text": "Hgb 17 g/dL",
+          "text": "Hgb (hemoglobin) 17 g/dL",
           "correct": true,
-          "rationale": ""
+          "rationale": "Within the normal male 14–18 g/dL."
         },
         {
-          "text": "RBC 4.5 ×10⁶/µL",
+          "text": "RBC (red blood cells) 4.5 ×10⁶/µL",
           "correct": false,
-          "rationale": ""
+          "rationale": "Below the normal male 4.7–6.1 ×10⁶/µL."
         },
         {
           "text": "Platelets 380,000/mm3",
           "correct": true,
-          "rationale": ""
+          "rationale": "Within the normal 150,000–400,000/mm3."
         },
         {
-          "text": "WBC 8,500/mm3",
-          "correct": true,
-          "rationale": ""
+          "text": "WBC (white blood cells) 11,200/mm3",
+          "correct": false,
+          "rationale": "Above the normal 5,000–10,000/mm3."
         }
       ],
-      "explanation": "Hct, Hgb, platelets, and WBC are all within normal adult male ranges. RBC 4.5 ×10⁶/µL is below the normal male range of 4.7–6.1."
+      "explanation": "Hct, Hgb, and platelets are within normal adult male ranges. RBC 4.5 ×10⁶/µL is below the normal male range of 4.7–6.1, and WBC 11,200 is above the normal 5,000–10,000."
     },
     {
       "id": "nur114-u1-cbc-cmp-032",
@@ -1256,30 +1256,30 @@
         {
           "text": "A client's total protein of 9.6 g/dL",
           "correct": true,
-          "rationale": ""
+          "rationale": "Total protein 9.6 is above the normal 6.4–8.3 g/dL."
         },
         {
           "text": "A client's potassium level of 2.8 mEq/L",
           "correct": true,
-          "rationale": ""
+          "rationale": "Potassium 2.8 is below the normal 3.5–5 mEq/L."
         },
         {
-          "text": "A client's platelet count of 410,000/mm3",
-          "correct": true,
-          "rationale": ""
+          "text": "A client's platelet count of 390,000/mm3",
+          "correct": false,
+          "rationale": "Platelets 390,000 are within the normal 150,000–400,000/mm3."
         },
         {
           "text": "A client's glucose level of 92 mg/dL",
           "correct": false,
-          "rationale": ""
+          "rationale": "Glucose 92 is within the normal 74–106 mg/dL."
         },
         {
           "text": "A client's sodium level of 140 mEq/L",
           "correct": false,
-          "rationale": ""
+          "rationale": "Sodium 140 is within the normal 136–145 mEq/L."
         }
       ],
-      "explanation": "Total protein 9.6 (normal 6.4–8.3) is elevated. Potassium 2.8 (normal 3.5–5) is low. Platelets 410,000 (normal 150,000–400,000) is elevated. Glucose 92 and sodium 140 are both within normal limits."
+      "explanation": "Total protein 9.6 (normal 6.4–8.3) is elevated. Potassium 2.8 (normal 3.5–5) is low. Platelets 390,000, glucose 92, and sodium 140 are all within normal limits."
     },
     {
       "id": "nur114-u1-cbc-cmp-038",
@@ -1293,30 +1293,30 @@
         {
           "text": "A client's bicarbonate level of 19 mEq/L",
           "correct": true,
-          "rationale": ""
+          "rationale": "Bicarbonate 19 is below the normal 23–30 mEq/L, so it should be reported."
         },
         {
-          "text": "A client's chloride level of 92 mEq/L",
-          "correct": true,
-          "rationale": ""
+          "text": "A client's chloride level of 101 mEq/L",
+          "correct": false,
+          "rationale": "Chloride 101 is within the normal 98–106 mEq/L."
         },
         {
           "text": "A client's magnesium level of 1.7 mEq/L",
           "correct": false,
-          "rationale": ""
+          "rationale": "Magnesium 1.7 is within the normal 1.3–2.1 mEq/L."
         },
         {
           "text": "A client's calcium level of 9.9 mg/dL",
           "correct": false,
-          "rationale": ""
+          "rationale": "Calcium 9.9 is within the normal 9.0–10.5 mg/dL."
         },
         {
-          "text": "A client's WBC of 7,200/mm3",
+          "text": "A client's WBC (white blood cell count) of 7,200/mm3",
           "correct": false,
-          "rationale": ""
+          "rationale": "WBC 7,200 is within the normal 5,000–10,000/mm3."
         }
       ],
-      "explanation": "Bicarbonate 19 (normal 23–30) is low. Chloride 92 (normal 98–106) is low. Magnesium 1.7, calcium 9.9, and WBC 7,200 are all within normal limits."
+      "explanation": "Bicarbonate 19 (normal 23–30) is low. Chloride 101, magnesium 1.7, calcium 9.9, and WBC 7,200 are all within normal limits."
     },
     {
       "id": "nur114-u1-cbc-cmp-039",
@@ -1330,30 +1330,30 @@
         {
           "text": "A client's total protein of 5.9 g/dL",
           "correct": true,
-          "rationale": ""
+          "rationale": "Total protein 5.9 is below the normal 6.4–8.3 g/dL."
         },
         {
           "text": "A client's hematocrit of 55% (male client)",
           "correct": true,
-          "rationale": ""
+          "rationale": "A male hematocrit of 55% is above the normal 42–52%."
         },
         {
-          "text": "A client's ALT of 30 units/L",
+          "text": "A client's ALT (alanine aminotransferase) of 30 units/L",
           "correct": false,
-          "rationale": ""
+          "rationale": "ALT 30 is within the normal 4–36 units/L."
         },
         {
-          "text": "A client's total bilirubin of 1.8 mg/dL",
-          "correct": true,
-          "rationale": ""
-        },
-        {
-          "text": "A client's BUN of 16 mg/dL",
+          "text": "A client's total bilirubin of 0.8 mg/dL",
           "correct": false,
-          "rationale": ""
+          "rationale": "Bilirubin 0.8 is within the normal 0.3–1 mg/dL."
+        },
+        {
+          "text": "A client's BUN (blood urea nitrogen) of 16 mg/dL",
+          "correct": false,
+          "rationale": "BUN 16 is within the normal 10–20 mg/dL."
         }
       ],
-      "explanation": "Total protein 5.9 (normal 6.4–8.3) is low. Male hematocrit 55% (normal 42–52) is elevated. Total bilirubin 1.8 (normal 0.3–1) is elevated. ALT 30 and BUN 16 are both within normal limits."
+      "explanation": "Total protein 5.9 (normal 6.4–8.3) is low. Male hematocrit 55% (normal 42–52) is elevated. ALT 30, total bilirubin 0.8, and BUN 16 are all within normal limits."
     },
     {
       "id": "nur114-u1-cbc-cmp-040",
@@ -1367,30 +1367,30 @@
         {
           "text": "A client's glucose level of 58 mg/dL",
           "correct": true,
-          "rationale": ""
+          "rationale": "Glucose 58 is below the normal 74–106 mg/dL."
         },
         {
-          "text": "A client's RBC count of 3.6 ×10⁶/µL (female client)",
+          "text": "A client's RBC (red blood cell) count of 3.6 ×10⁶/µL (female client)",
           "correct": true,
-          "rationale": ""
+          "rationale": "A female RBC of 3.6 is below the normal 4.2–5.4 ×10⁶/µL."
         },
         {
-          "text": "A client's ALP of 95 units/L",
+          "text": "A client's ALP (alkaline phosphatase) of 95 units/L",
           "correct": false,
-          "rationale": ""
+          "rationale": "ALP 95 is within the normal 30–120 units/L."
         },
         {
-          "text": "A client's magnesium level of 2.3 mEq/L",
-          "correct": true,
-          "rationale": ""
+          "text": "A client's magnesium level of 1.9 mEq/L",
+          "correct": false,
+          "rationale": "Magnesium 1.9 is within the normal 1.3–2.1 mEq/L."
         },
         {
           "text": "A client's creatinine of 0.9 mg/dL (35-year-old male client)",
           "correct": false,
-          "rationale": ""
+          "rationale": "Creatinine 0.9 is within the normal 0.6–1.2 mg/dL for a male aged 18–40."
         }
       ],
-      "explanation": "Glucose 58 (normal 74–106) is low. Female RBC 3.6 (normal 4.2–5.4) is low. Magnesium 2.3 (normal 1.3–2.1) is elevated. ALP 95 and creatinine 0.9 (normal 0.6–1.2 for this age) are both within normal limits."
+      "explanation": "Glucose 58 (normal 74–106) is low. Female RBC 3.6 (normal 4.2–5.4) is low. ALP 95, magnesium 1.9, and creatinine 0.9 (normal 0.6–1.2 for this age) are all within normal limits."
     },
     {
       "id": "nur114-u1-nursing-fundamentals-001",
@@ -1582,7 +1582,7 @@
           "rationale": ""
         }
       ],
-      "explanation": "ATI defines accountability as a legal obligation with a moral and ethical commitment to do the right thing every time and in every situation."
+      "explanation": "Accountability is a legal obligation with a moral and ethical commitment to do the right thing every time and in every situation."
     },
     {
       "id": "nur114-u1-nursing-fundamentals-007",
@@ -2140,30 +2140,30 @@
         {
           "text": "Heart rate 52/min",
           "correct": true,
-          "rationale": ""
+          "rationale": "Below 60/min is bradycardia."
         },
         {
-          "text": "Respiratory rate 24/min",
-          "correct": true,
-          "rationale": ""
-        },
-        {
-          "text": "SpO2 97%",
+          "text": "Respiratory rate 18/min",
           "correct": false,
-          "rationale": ""
+          "rationale": "18/min is within the expected 12–20/min."
+        },
+        {
+          "text": "SpO2 (oxygen saturation) 97%",
+          "correct": false,
+          "rationale": "97% is within the expected 95–100%."
         },
         {
           "text": "Temperature 38.4 °C (101.1 °F)",
           "correct": true,
-          "rationale": ""
+          "rationale": "Above 38 °C is a fever."
         },
         {
           "text": "Blood pressure 116/74 mmHg",
           "correct": false,
-          "rationale": ""
+          "rationale": "Under 120/80 is the expected adult range."
         }
       ],
-      "explanation": "Expected adult ranges: heart rate 60–100/min, respiratory rate 12–20/min, SpO2 95–100%, and blood pressure under 120/80. A temperature of 38.4 °C is a fever."
+      "explanation": "Expected adult ranges: heart rate 60–100/min, respiratory rate 12–20/min, SpO2 95–100%, and blood pressure under 120/80. A heart rate of 52 is bradycardia and a temperature of 38.4 °C is a fever."
     },
     {
       "id": "nur114-u1-nursing-fundamentals-025",
@@ -2305,30 +2305,30 @@
         {
           "text": "Giving a prescribed medication",
           "correct": true,
-          "rationale": ""
+          "rationale": "Carrying out a planned intervention is implementation."
         },
         {
           "text": "Reinforcing teaching about the medication",
           "correct": true,
-          "rationale": ""
+          "rationale": "Reinforcing teaching is a planned intervention, so it's implementation."
         },
         {
-          "text": "Repositioning the client every 2 hours",
-          "correct": true,
-          "rationale": ""
+          "text": "Choosing the client's priority nursing diagnosis",
+          "correct": false,
+          "rationale": "Naming the problem is the diagnosis (analysis) step."
         },
         {
           "text": "Writing a goal for the plan of care",
           "correct": false,
-          "rationale": ""
+          "rationale": "Writing goals is planning."
         },
         {
           "text": "Deciding whether the client met the goal",
           "correct": false,
-          "rationale": ""
+          "rationale": "Judging whether a goal was met is evaluation."
         }
       ],
-      "explanation": "Implementation is carrying out the planned interventions. Writing goals is planning, and deciding whether a goal was met is evaluation."
+      "explanation": "Implementation is carrying out the planned interventions, such as giving medications and reinforcing teaching. Choosing a nursing diagnosis is the diagnosis (analysis) step, writing goals is planning, and deciding whether a goal was met is evaluation."
     },
     {
       "id": "nur114-u1-nursing-fundamentals-030",
@@ -2438,30 +2438,30 @@
         {
           "text": "Discussing a client's diagnosis in the elevator",
           "correct": true,
-          "rationale": ""
+          "rationale": "Others can overhear, so this discloses PHI (protected health information)."
         },
         {
           "text": "Posting a photo of a client's wound on social media",
           "correct": true,
-          "rationale": ""
+          "rationale": "Client pictures must never be posted."
         },
         {
-          "text": "Opening the chart of a client the nurse isn't caring for",
-          "correct": true,
-          "rationale": ""
+          "text": "Discussing the client's wound with the wound care nurse consulted on the case",
+          "correct": false,
+          "rationale": "The consulted nurse is involved in the client's care, so sharing is allowed."
         },
         {
           "text": "Giving report to the oncoming nurse at shift change",
           "correct": false,
-          "rationale": ""
+          "rationale": "Handoff report is part of care."
         },
         {
           "text": "Reviewing the chart of an assigned client",
           "correct": false,
-          "rationale": ""
+          "rationale": "The nurse needs the chart to care for the client."
         }
       ],
-      "explanation": "Protected health information is shared only with people involved in the client's care, in private. Handoff report and reviewing an assigned client's chart are part of care."
+      "explanation": "PHI (protected health information) is shared only with people involved in the client's care, in private. Talking with a consulted nurse, giving handoff report, and reviewing an assigned client's chart are part of care."
     },
     {
       "id": "nur114-u1-nursing-fundamentals-034",
@@ -2931,14 +2931,14 @@
           "rationale": "Evidence-based practice (EBP) is a QSEN competency."
         },
         {
-          "text": "Informatics",
-          "correct": true,
-          "rationale": "Informatics is a QSEN competency."
+          "text": "Human flourishing",
+          "correct": false,
+          "rationale": "Human flourishing is an NLN (National League for Nursing) competency, not a QSEN one."
         },
         {
-          "text": "Teamwork and collaboration",
-          "correct": true,
-          "rationale": "Teamwork and collaboration is a QSEN competency."
+          "text": "Advocacy",
+          "correct": false,
+          "rationale": "Advocacy is an NSNA (National Student Nurses' Association) core value, not a QSEN competency."
         },
         {
           "text": "Altruism",
@@ -3855,7 +3855,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "sata",
-      "prompt": "Mr. Jones, 78, had hip surgery last night. His temperature is 39.0 °C (102.2 °F), pulse 122, respirations 16, BP 140/90 and pain 4/10. Which findings are outside the expected adult range? Select all that apply.",
+      "prompt": "Mr. Jones, 78, had hip surgery last night. His temperature is 39.0 °C (102.2 °F), pulse 122, respirations 16, BP 118/76 and pain 4/10. Which findings are outside the expected adult range? Select all that apply.",
       "options": [
         {
           "text": "Temperature 39.0 °C",
@@ -3868,9 +3868,9 @@
           "rationale": "Above 100 is tachycardia."
         },
         {
-          "text": "BP 140/90",
-          "correct": true,
-          "rationale": "140/90 is stage 2 hypertension."
+          "text": "BP 118/76",
+          "correct": false,
+          "rationale": "Under 120/80 is the expected adult range."
         },
         {
           "text": "Respirations 16",
@@ -4150,9 +4150,9 @@
           "rationale": "Supportive environments make healthy choices easier."
         },
         {
-          "text": "Public policy",
-          "correct": true,
-          "rationale": "Policies such as smoking bans promote health."
+          "text": "Treating symptoms once illness has developed",
+          "correct": false,
+          "rationale": "Treating symptoms is moving away from wellness, not promoting health."
         },
         {
           "text": "Providing referrals",
@@ -4373,9 +4373,9 @@
           "rationale": "Low urine output can mean poor perfusion."
         },
         {
-          "text": "Skin tone",
-          "correct": true,
-          "rationale": "Pale or mottled skin can mean poor circulation."
+          "text": "Lung sounds",
+          "correct": false,
+          "rationale": "Lung sounds are checked under breathing."
         },
         {
           "text": "Pupil reaction",
@@ -5709,12 +5709,12 @@
         {
           "text": "Using touch after asking permission",
           "correct": true,
-          "rationale": "Expressive touch shows compassion."
+          "rationale": "Expressive touch shows compassion when the client agrees to it."
         },
         {
-          "text": "Providing comfort measures like warm blankets",
-          "correct": true,
-          "rationale": "Nonpharmacologic comfort is caring."
+          "text": "Telling an anxious client, \"Don't worry, everything will be fine\"",
+          "correct": false,
+          "rationale": "False reassurance brushes off the client's feelings instead of exploring them."
         },
         {
           "text": "Charting while the client is speaking to you",
@@ -6015,14 +6015,14 @@
           "rationale": "Part of behavior."
         },
         {
-          "text": "Mood and speech",
-          "correct": true,
-          "rationale": "Part of behavior."
+          "text": "Auscultation of all lung fields",
+          "correct": false,
+          "rationale": "Listening to the lungs is part of the physical assessment, done after the general survey."
         },
         {
-          "text": "The client's insurance plan",
+          "text": "The client's family medical history",
           "correct": false,
-          "rationale": "Insurance isn't part of the general survey."
+          "rationale": "Family history is part of the health history, not the general survey."
         }
       ]
     },
@@ -6282,9 +6282,9 @@
           "rationale": "Fever raises the heart rate."
         },
         {
-          "text": "Acute pain",
-          "correct": true,
-          "rationale": "Pain triggers a faster heart rate."
+          "text": "Chronic severe pain",
+          "correct": false,
+          "rationale": "Chronic severe pain is linked with a slower heart rate, not tachycardia."
         },
         {
           "text": "Anemia or hypoxia",
@@ -6292,9 +6292,9 @@
           "rationale": "The heart speeds up to deliver more oxygen."
         },
         {
-          "text": "Anxiety or fear",
-          "correct": true,
-          "rationale": "Stress raises the heart rate."
+          "text": "Deep relaxation",
+          "correct": false,
+          "rationale": "Relaxation slows the heart rate."
         },
         {
           "text": "Hypothermia",
@@ -6328,9 +6328,9 @@
           "rationale": "Low output lowers BP."
         },
         {
-          "text": "Chest pain",
-          "correct": true,
-          "rationale": "The heart muscle may not get enough blood."
+          "text": "Flushed, warm skin",
+          "correct": false,
+          "rationale": "Low output tends to make skin cool and pale, not flushed and warm."
         },
         {
           "text": "Fainting (syncope)",
@@ -6923,7 +6923,7 @@
         {
           "text": "Heart failure",
           "correct": true,
-          "rationale": "Listed as a cause."
+          "rationale": "A weak heart may not raise its output fast enough when the client stands."
         },
         {
           "text": "Nervous system disorders",
@@ -6931,14 +6931,14 @@
           "rationale": "Problems with BP regulation can cause it."
         },
         {
-          "text": "Hypotension",
-          "correct": true,
-          "rationale": "A low baseline BP raises the risk."
+          "text": "Fluid volume excess",
+          "correct": false,
+          "rationale": "Extra fluid volume tends to raise BP, not make it drop on standing."
         },
         {
-          "text": "Drinking enough fluids",
+          "text": "Changing positions slowly",
           "correct": false,
-          "rationale": "Good hydration helps prevent it."
+          "rationale": "Changing positions slowly helps prevent it."
         }
       ]
     },
@@ -7229,9 +7229,9 @@
           "rationale": "Legs: drawn up or kicking scores 2."
         },
         {
-          "text": "Arched, rigid or jerking body",
-          "correct": true,
-          "rationale": "Activity: arched or rigid scores 2."
+          "text": "Squirming, shifting or tense movements",
+          "correct": false,
+          "rationale": "Activity: squirming or tense movement scores 1."
         },
         {
           "text": "Lying quietly and moving easily",
@@ -7935,14 +7935,14 @@
           "rationale": "Respect for every person's worth."
         },
         {
-          "text": "Integrity",
-          "correct": true,
-          "rationale": "Honesty and strong moral principles."
+          "text": "Loyalty to the employer over the client",
+          "correct": false,
+          "rationale": "The nurse's first duty is to the client, not the employer."
         },
         {
-          "text": "Autonomy",
-          "correct": true,
-          "rationale": "Respecting a person's right to decide."
+          "text": "Paternalism",
+          "correct": false,
+          "rationale": "Deciding for clients what is best for them goes against respecting their right to decide."
         },
         {
           "text": "Social justice",
@@ -8536,9 +8536,9 @@
           "rationale": "Some diseases must be reported to public health."
         },
         {
-          "text": "A client's personal political views",
+          "text": "A client's request to see their own medical record",
           "correct": false,
-          "rationale": "Not reportable."
+          "rationale": "Clients have a right to their own records; this isn't a reportable event."
         },
         {
           "text": "A client's choice to decline a treatment",
@@ -8811,9 +8811,9 @@
           "rationale": "Risks must be explained."
         },
         {
-          "text": "The alternatives",
-          "correct": true,
-          "rationale": "Alternatives, including no treatment, must be explained."
+          "text": "That consent can't be withdrawn once it is signed",
+          "correct": false,
+          "rationale": "A client can withdraw consent at any time, even after signing."
         },
         {
           "text": "The nurse's personal opinion of the surgeon",
@@ -9150,9 +9150,9 @@
           "rationale": "Less noise makes speech easier to hear."
         },
         {
-          "text": "Speak clearly at a normal pace",
-          "correct": true,
-          "rationale": "Clear, steady speech is easiest to follow."
+          "text": "Speak slowly with exaggerated mouth movements",
+          "correct": false,
+          "rationale": "Exaggerated lip movements distort speech and make lipreading harder; speak clearly at a normal pace."
         },
         {
           "text": "Write down key information",
@@ -9318,7 +9318,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "sata",
-      "prompt": "Which are the four TeamSTEPPS skills? Select all that apply.",
+      "prompt": "Which are key skills of TeamSTEPPS? Select all that apply.",
       "options": [
         {
           "text": "Leadership",
@@ -9336,14 +9336,14 @@
           "rationale": "Staying aware of the team and client."
         },
         {
-          "text": "Mutual support",
-          "correct": true,
-          "rationale": "Helping and giving feedback."
+          "text": "Roles and responsibilities",
+          "correct": false,
+          "rationale": "This is an IPEC (Interprofessional Education Collaborative) competency, not a TeamSTEPPS skill."
         },
         {
-          "text": "Competition",
+          "text": "Values and ethics",
           "correct": false,
-          "rationale": "Competition isn't a TeamSTEPPS skill."
+          "rationale": "This is an IPEC competency, not a TeamSTEPPS skill."
         }
       ]
     },
@@ -9644,9 +9644,9 @@
           "rationale": "Teaching prepares the client for home."
         },
         {
-          "text": "Readiness for discharge",
-          "correct": true,
-          "rationale": "Confirm the client is ready to go."
+          "text": "Waiting until the day of discharge to begin planning",
+          "correct": false,
+          "rationale": "Discharge planning starts on admission and continues through the stay."
         },
         {
           "text": "The nurse's opinion of the client's family",
@@ -10300,9 +10300,9 @@
           "rationale": "Experts reviewed the work before publication."
         },
         {
-          "text": "Scholarly databases",
-          "correct": true,
-          "rationale": "Databases index published research."
+          "text": "A coworker's account of how the unit has always done it",
+          "correct": false,
+          "rationale": "Habit or tradition isn't evidence."
         },
         {
           "text": "Clinical practice guidelines",
@@ -10317,7 +10317,7 @@
         {
           "text": "A product advertisement",
           "correct": false,
-          "rationale": "Advertising isn't evidence."
+          "rationale": "Advertising is written to sell, not reviewed as evidence."
         }
       ]
     },

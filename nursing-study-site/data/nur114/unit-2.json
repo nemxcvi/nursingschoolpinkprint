@@ -277,30 +277,30 @@
         {
           "text": "Bend your knees, not your back.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Bending the knees lowers the center of gravity and lets the leg muscles do the work."
         },
         {
           "text": "Keep the object as far from your body as possible.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Holding a load away from the body increases strain on the back; keep it close."
         },
         {
           "text": "Pivot your feet instead of twisting your torso.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Pivoting avoids twisting the spine, which can injure the back."
         },
         {
-          "text": "Tighten your abdominal muscles before lifting.",
-          "correct": true,
-          "rationale": ""
+          "text": "Keep your feet close together to stay steady.",
+          "correct": false,
+          "rationale": "Feet should be shoulder-width apart; a wider base of support is more stable."
         },
         {
           "text": "Lift using the muscles in your lower back.",
           "correct": false,
-          "rationale": ""
+          "rationale": "The lower back muscles are prone to injury; the leg muscles should do the lifting."
         }
       ],
-      "explanation": "Bending the knees, pivoting instead of twisting, and contracting the abdominal muscles are correct body mechanics. Objects should stay close to the body, and lifting should use the leg (quadriceps) muscles, not the back."
+      "explanation": "Bending the knees and pivoting instead of twisting are correct body mechanics. Feet should be shoulder-width apart for a wide base, objects should stay close to the body, and lifting should use the leg muscles, not the back."
     },
     {
       "id": "nur114-u2-mobility-007",
@@ -575,30 +575,30 @@
         {
           "text": "Lying prone helps prevent contractures in the hips and knees.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Prone positioning fully extends the hips and knees, which helps prevent contractures."
         },
         {
           "text": "The Trendelenburg position helps drain the lower lobes of your lungs.",
           "correct": true,
-          "rationale": ""
+          "rationale": "With the foot of the bed raised, gravity helps drain the lower lung lobes."
         },
         {
           "text": "Lying flat on your back is best for preventing pressure injuries.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Lying flat keeps pressure on the sacrum and heels; regular repositioning prevents pressure injury."
         },
         {
-          "text": "Side-lying with a pillow between your knees reduces pressure on your sacrum.",
-          "correct": true,
-          "rationale": ""
+          "text": "Side-lying with your hips and knees fully extended keeps your spine aligned.",
+          "correct": false,
+          "rationale": "In side-lying, the hips and knees are flexed with a pillow between the legs for alignment."
         },
         {
           "text": "Fowler's position helps your lungs expand more fully.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Raising the head of the bed lets the diaphragm move down so the lungs expand."
         }
       ],
-      "explanation": "Prone prevents contractures, Trendelenburg promotes lung drainage and venous return, lateral with a pillow reduces sacral and heel pressure, and Fowler's promotes lung expansion. Lying flat does not specifically prevent pressure injury — repositioning does."
+      "explanation": "Prone prevents hip and knee contractures, Trendelenburg drains the lower lung lobes, and Fowler's promotes lung expansion. Side-lying keeps the hips and knees flexed with a pillow between the legs, and lying flat does not by itself prevent pressure injury; repositioning does."
     },
     {
       "id": "nur114-u2-mobility-016",
@@ -834,32 +834,32 @@
       "prompt": "A nurse is teaching new staff about ergonomic risk factors in the workplace. Which examples should the nurse include? Select all that apply.",
       "options": [
         {
-          "text": "Poor lighting in a supply room",
-          "correct": true,
-          "rationale": ""
+          "text": "Side-opening linen bins",
+          "correct": false,
+          "rationale": "Side-opening bins reduce bending and reaching, so they lower ergonomic risk."
         },
         {
           "text": "A height-adjustable bed",
           "correct": false,
-          "rationale": ""
+          "rationale": "A height-adjustable bed lets staff work at a safe height, which reduces strain."
         },
         {
           "text": "Repetitive lifting without breaks",
           "correct": true,
-          "rationale": ""
+          "rationale": "Repeated lifting without rest fatigues muscles and raises the risk of injury."
         },
         {
           "text": "A wide, stable base when standing",
           "correct": false,
-          "rationale": ""
+          "rationale": "A wide base of support improves balance and is good body mechanics."
         },
         {
           "text": "Whole-body vibration from equipment",
           "correct": true,
-          "rationale": ""
+          "rationale": "Whole-body vibration places stress on the spine and is an ergonomic risk factor."
         }
       ],
-      "explanation": "Poor lighting, repetitive lifting without breaks, and whole-body vibration are ergonomic risk factors. A height-adjustable bed and a wide stable base are examples of good ergonomic practice, not risk factors."
+      "explanation": "Repetitive lifting without breaks and whole-body vibration are ergonomic risk factors. Height-adjustable beds, side-opening linen bins, and a wide stable base are examples of good ergonomic practice."
     },
     {
       "id": "nur114-u2-mobility-024",
@@ -1230,30 +1230,30 @@
         {
           "text": "Head of bed elevated 45 degrees",
           "correct": true,
-          "rationale": ""
+          "rationale": "Fowler's position at 45 degrees lowers the abdominal organs off the diaphragm so the lungs can expand."
         },
         {
           "text": "Foot of bed elevated above the head",
           "correct": false,
-          "rationale": ""
+          "rationale": "Trendelenburg pushes the abdominal organs toward the diaphragm, making deep breaths harder."
         },
         {
           "text": "Lying flat with head turned to one side",
           "correct": false,
-          "rationale": ""
+          "rationale": "Lying flat does not help lung expansion for a client who is struggling to breathe deeply."
         },
         {
           "text": "Semi-seated positioning",
           "correct": true,
-          "rationale": ""
+          "rationale": "A semi-seated position promotes lung expansion and easier deep breathing."
         },
         {
           "text": "Full extension of the hips and knees",
           "correct": false,
-          "rationale": ""
+          "rationale": "Full hip and knee extension prevents contractures but does not improve breathing and may strain an abdominal incision."
         }
       ],
-      "explanation": "Fowler's-type positioning (head of bed elevated, semi-seated) promotes lung expansion, which helps a client having difficulty breathing deeply. Trendelenburg and prone positioning do not address this need."
+      "explanation": "Fowler's-type positioning (head of bed elevated, semi-seated) promotes lung expansion, which helps a client having difficulty breathing deeply. Trendelenburg, lying flat, and full hip and knee extension do not address this need."
     },
     {
       "id": "nur114-u2-mobility-036",
@@ -1781,30 +1781,30 @@
         {
           "text": "Wash the skin folds with a pH-balanced liquid soap",
           "correct": true,
-          "rationale": ""
+          "rationale": "Washing removes trapped sweat, and pH-balanced soap is gentle on the skin."
         },
         {
           "text": "Leave the skin folds moist to prevent irritation",
           "correct": false,
-          "rationale": ""
+          "rationale": "Moisture trapped in skin folds causes rashes and infection."
         },
         {
           "text": "Lightly dab the skin dry after washing",
           "correct": true,
-          "rationale": ""
+          "rationale": "Dabbing dries the folds without causing friction damage."
         },
         {
-          "text": "Assess the folds for rash or breakdown regularly",
-          "correct": true,
-          "rationale": ""
+          "text": "Rub the skin folds briskly with a towel to dry them",
+          "correct": false,
+          "rationale": "Brisk rubbing causes friction that can damage fragile skin; dab dry instead."
         },
         {
           "text": "Avoid washing between skin folds",
           "correct": false,
-          "rationale": ""
+          "rationale": "Skin folds trap sweat and need regular washing to prevent rash and infection."
         }
       ],
-      "explanation": "Skin folds should be washed with pH-balanced soap, dried gently (dabbed, not rubbed), and assessed regularly for rash or breakdown. Leaving them moist or avoiding washing increases infection risk."
+      "explanation": "Skin folds should be washed with pH-balanced liquid soap and gently dabbed dry. Leaving them moist, skipping washing, or rubbing them briskly increases the risk of rash, breakdown, and infection."
     },
     {
       "id": "nur114-u2-hygiene-012",
@@ -1973,35 +1973,35 @@
       "topic": "Hygiene",
       "category": "Oral & denture care",
       "type": "sata",
-      "prompt": "A nurse is caring for a client on a ventilator. Select the 2 actions the nurse should take to help prevent ventilator-associated pneumonia.",
+      "prompt": "A nurse is caring for a client on a ventilator. Which actions should the nurse take to help prevent ventilator-associated pneumonia (VAP)? Select all that apply.",
       "options": [
         {
           "text": "Perform regular oral hygiene, including brushing the teeth",
           "correct": true,
-          "rationale": ""
+          "rationale": "Brushing removes plaque and bacteria that can be carried into the lungs and cause VAP."
         },
         {
-          "text": "Withhold all mouth care while the client is intubated",
+          "text": "Withhold mouth care while the client is intubated to avoid moving the tube",
           "correct": false,
-          "rationale": ""
+          "rationale": "Intubated clients need regular nurse-provided mouth care; skipping it lets bacteria build up."
         },
         {
-          "text": "Suction oral secretions as needed",
-          "correct": true,
-          "rationale": ""
-        },
-        {
-          "text": "Leave the head of the bed flat at all times",
+          "text": "Use lemon-glycerin swabs as the main method of mouth care",
           "correct": false,
-          "rationale": ""
+          "rationale": "Lemon-glycerin swabs dry the mouth and do not remove plaque the way brushing does."
         },
         {
-          "text": "Apply lotion to the lips only",
+          "text": "Keep the head of the bed at 10 degrees or lower",
           "correct": false,
-          "rationale": ""
+          "rationale": "A nearly flat position raises aspiration risk; the head of the bed is usually kept at 30 to 45 degrees."
+        },
+        {
+          "text": "Apply lip moisturizer in place of brushing the teeth",
+          "correct": false,
+          "rationale": "Lip moisturizer protects the lips but does nothing to remove bacteria from the teeth and mouth."
         }
       ],
-      "explanation": "Regular oral hygiene and suctioning secretions both help reduce the bacterial load that can travel into the lungs through the artificial airway, lowering VAP risk."
+      "explanation": "Regular nurse-provided oral hygiene, including brushing, lowers the mouth bacteria that can travel into the lungs along the artificial airway. Mouth care must not be skipped or replaced with lip products, lemon-glycerin swabs dry the mouth, and the head of the bed should be raised, not kept flat."
     },
     {
       "id": "nur114-u2-hygiene-018",
@@ -3157,30 +3157,30 @@
         {
           "text": "Explaining why the information is relevant to the client's specific situation",
           "correct": true,
-          "rationale": ""
+          "rationale": "Adults learn best when they know why the information applies to them."
         },
         {
           "text": "Ignoring the client's past experiences with similar health conditions",
           "correct": false,
-          "rationale": ""
+          "rationale": "Adult learning builds on what the client already knows."
         },
         {
-          "text": "Allowing the client to make informed decisions about their own care",
-          "correct": true,
-          "rationale": ""
+          "text": "Having the nurse decide when and how the client will practice new skills",
+          "correct": false,
+          "rationale": "Adults are self-directed and should control choices about their own learning."
         },
         {
           "text": "Presenting information only as material to memorize",
           "correct": false,
-          "rationale": ""
+          "rationale": "Adult learning is task-centered and tied to real problems, not memorization."
         },
         {
           "text": "Linking teaching to the client's real-life tasks and problems",
           "correct": true,
-          "rationale": ""
+          "rationale": "Task-centered teaching connects learning to the client's real problems."
         }
       ],
-      "explanation": "Explaining relevance, supporting self-directed decision-making, and using task-centered teaching all reflect Knowles's principles. Ignoring past experience and rote memorization go against adult learning theory."
+      "explanation": "Explaining relevance and using task-centered teaching reflect Knowles's principles. Adults are self-directed and should make their own choices, and teaching should build on past experience rather than ignore it or rely on rote memorization."
     },
     {
       "id": "nur114-u2-client-education-013",
@@ -4676,32 +4676,32 @@
       "prompt": "A nurse is reviewing clients on a community health caseload. Which clients should the nurse identify as members of a vulnerable population? Select all that apply.",
       "options": [
         {
-          "text": "An 8-year-old child experiencing poverty",
+          "text": "A 40-year-old client who is living in poverty",
           "correct": true,
-          "rationale": ""
+          "rationale": "People living in poverty have fewer resources and are a vulnerable population."
         },
         {
           "text": "A 91-year-old client who has heart failure",
           "correct": true,
-          "rationale": ""
+          "rationale": "Older adults and people with chronic illness are vulnerable populations."
         },
         {
-          "text": "A 1-year-old child who has cerebral palsy",
+          "text": "A 35-year-old client who has cerebral palsy and uses a wheelchair",
           "correct": true,
-          "rationale": ""
+          "rationale": "People with disabilities face barriers to care and are a vulnerable population."
         },
         {
           "text": "A 17-year-old client who is pregnant",
           "correct": true,
-          "rationale": ""
+          "rationale": "Pregnant teens are a vulnerable population."
         },
         {
-          "text": "A high-income adult who has no chronic illness",
-          "correct": false,
-          "rationale": ""
+          "text": "A 50-year-old veteran who recently left military service",
+          "correct": true,
+          "rationale": "Veterans are considered a vulnerable population."
         }
       ],
-      "explanation": "Vulnerable populations include children, older adults, people living in poverty, clients with chronic illness or disabilities, and pregnant adolescents. A high-income adult without chronic illness does not face these barriers."
+      "explanation": "Vulnerable populations face barriers to social, economic, and environmental resources and include people living in poverty, older adults, people with chronic illness or disabilities, pregnant teens, and veterans."
     },
     {
       "id": "nur114-u2-dei-019",
@@ -4811,30 +4811,30 @@
         {
           "text": "Access to transportation",
           "correct": true,
-          "rationale": ""
+          "rationale": "Without transportation, a client may not be able to reach appointments."
         },
         {
           "text": "Health insurance",
           "correct": true,
-          "rationale": ""
+          "rationale": "Lack of insurance can keep a client from getting or affording care."
         },
         {
           "text": "Geographic location",
           "correct": true,
-          "rationale": ""
+          "rationale": "Living far from services, such as in a rural area, limits access to care."
         },
         {
-          "text": "Sensory deficits",
-          "correct": true,
-          "rationale": ""
-        },
-        {
-          "text": "Blood type",
+          "text": "Preferred learning style",
           "correct": false,
-          "rationale": ""
+          "rationale": "Learning style affects how teaching is planned, not whether the client can get to care."
+        },
+        {
+          "text": "Family history of heart disease",
+          "correct": false,
+          "rationale": "Family history is a health risk factor, not a barrier to accessing care."
         }
       ],
-      "explanation": "Factors affecting access to care include transportation, accessibility, insurance, religion, geographic location, sensory deficits, disabilities, mental health, socioeconomic status, race, ethnicity, gender, sexual orientation, and limited education."
+      "explanation": "Transportation, health insurance, and geographic location all affect whether a client can reach and pay for care. A preferred learning style shapes how teaching is delivered, and family history is a health risk factor; neither is a barrier to accessing care."
     },
     {
       "id": "nur114-u2-dei-023",
@@ -5301,27 +5301,27 @@
         {
           "text": "Consult a certified medical interpreter.",
           "correct": true,
-          "rationale": ""
+          "rationale": "A certified medical interpreter gives accurate translation and protects confidentiality."
         },
         {
           "text": "Provide written instructions in the client's preferred language.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Written instructions in the client's language reinforce teaching after discharge."
         },
         {
           "text": "Have a family member translate the instructions.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Family members may omit or change information and the client's confidentiality is not protected."
         },
         {
           "text": "Ask a staff member who speaks some of the client's language to explain the instructions.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Staff who are not certified interpreters may misinterpret medical information."
         },
         {
           "text": "Speak more loudly in English.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Speaking louder does not help a client understand a language they do not speak."
         }
       ],
       "explanation": "Discharge teaching with a language barrier requires a certified medical interpreter and written instructions in the client's preferred language. Family members and other staff may misinterpret information and compromise confidentiality."
@@ -5338,27 +5338,27 @@
         {
           "text": "Face the client when speaking.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Facing the client lets them see your face and lips, which helps them follow what you say."
         },
         {
           "text": "Reduce background noise.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Less background noise makes speech easier to hear and understand."
         },
         {
           "text": "Use a loud tone of voice.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Shouting distorts speech and does not make words clearer."
         },
         {
           "text": "Speak at a faster pace.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Speaking faster makes words harder to follow; speak clearly at a normal pace."
         },
         {
           "text": "Write everything down on paper.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Writing down key information can help, but writing everything replaces conversation instead of supporting it."
         }
       ],
       "explanation": "The nurse should face the client and reduce background noise. A loud voice, faster speech, or writing everything down are not effective strategies."
@@ -5990,30 +5990,30 @@
         {
           "text": "Hormonal changes during puberty can affect body image.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Puberty brings rapid body changes, and adolescents are especially vulnerable to body image concerns."
         },
         {
           "text": "Weight stigma can negatively affect a person's self-concept.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Negative social attitudes about weight can harm body image and self-esteem."
         },
         {
-          "text": "Age-related loss of muscle and bone mass can cause older adults to reevaluate their body image.",
-          "correct": true,
-          "rationale": ""
+          "text": "Age-related loss of muscle and bone mass seldom affects how older adults see their bodies.",
+          "correct": false,
+          "rationale": "Aging changes such as loss of muscle and bone mass can lead older adults to reevaluate their body image."
         },
         {
           "text": "Body image becomes fixed once a person reaches adulthood.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Body image continues to change throughout life."
         },
         {
-          "text": "Adults rarely experience body image changes unless they develop a chronic illness.",
+          "text": "In adults, body image is affected only by visible changes such as scars.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Conditions that are not visible, such as diabetes, can also affect body image."
         }
       ],
-      "explanation": "Body image changes throughout life with puberty, societal attitudes like weight stigma, and aging. It is never fixed, and adults can experience changes from normal aging, not only from illness."
+      "explanation": "Puberty and weight stigma both affect body image. Body image keeps changing through adulthood, aging changes such as loss of muscle and bone mass can affect it, and changes that are not visible, such as diabetes, can affect it too."
     },
     {
       "id": "nur114-u2-self-concept-018",
@@ -6219,30 +6219,30 @@
         {
           "text": "Role conflict",
           "correct": true,
-          "rationale": ""
+          "rationale": "Role conflict occurs when two role expectations cannot both be met at the same time."
         },
         {
           "text": "Role overload",
           "correct": true,
-          "rationale": ""
+          "rationale": "Role overload occurs when a person has too many roles at once."
         },
         {
-          "text": "Role ambiguity",
-          "correct": true,
-          "rationale": ""
+          "text": "Role modeling",
+          "correct": false,
+          "rationale": "Role modeling is learning behaviors by watching others, not a role stressor."
         },
         {
           "text": "Role satisfaction",
           "correct": false,
-          "rationale": ""
+          "rationale": "Role satisfaction is a positive result of meeting role expectations, not a stressor."
         },
         {
           "text": "Role enhancement",
           "correct": false,
-          "rationale": ""
+          "rationale": "Role enhancement describes a role adding to well-being, not causing stress."
         }
       ],
-      "explanation": "Role conflict, role overload, and role ambiguity are role performance stressors. Role satisfaction and role enhancement are positive effects of fulfilling roles and do not cause stress."
+      "explanation": "Role conflict and role overload are role performance stressors, along with role strain and role ambiguity. Role modeling, role satisfaction, and role enhancement do not cause role stress."
     },
     {
       "id": "nur114-u2-self-concept-025",
@@ -6581,30 +6581,30 @@
         {
           "text": "The client verbalizes statements of self-worth.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Statements of self-worth show improving self-esteem."
         },
         {
           "text": "The client uses healthy coping strategies during physical therapy.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Healthy coping shows the client is adapting to the change in body function."
         },
         {
-          "text": "The client looks at the residual limb during dressing changes.",
-          "correct": true,
-          "rationale": ""
+          "text": "The client keeps the residual limb covered and asks staff to do all dressing changes.",
+          "correct": false,
+          "rationale": "Avoiding the residual limb suggests the client has not yet accepted the change in body image."
         },
         {
           "text": "The client refuses to discuss being fitted for a prosthesis.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Refusing to discuss a prosthesis is avoidance, which signals an unresolved concern."
         },
         {
           "text": "The client states, \"I'm useless now.\"",
           "correct": false,
-          "rationale": ""
+          "rationale": "Negative self-talk shows low self-esteem that still needs to be addressed."
         }
       ],
-      "explanation": "Statements of self-worth, healthy coping, and acceptance of body appearance and function indicate an effective plan. Avoidance and negative self-talk indicate unresolved self-concept concerns."
+      "explanation": "Statements of self-worth and healthy coping show the plan is working. Avoiding the residual limb, refusing to discuss a prosthesis, and negative self-talk show unresolved self-concept concerns."
     },
     {
       "id": "nur114-u2-self-concept-036",
@@ -7196,30 +7196,30 @@
         {
           "text": "Decreased stage 3 sleep",
           "correct": true,
-          "rationale": ""
+          "rationale": "Older adults spend less time in stage 3, the deepest sleep."
         },
         {
           "text": "Waking more frequently during the night",
           "correct": true,
-          "rationale": ""
+          "rationale": "Older adults wake more often during the night."
         },
         {
           "text": "Taking longer to fall asleep",
           "correct": true,
-          "rationale": ""
+          "rationale": "It takes older adults longer to fall asleep."
         },
         {
-          "text": "Increased stage 2 sleep",
-          "correct": true,
-          "rationale": ""
-        },
-        {
-          "text": "More REM cycles than younger adults",
+          "text": "Needing only about 4 to 5 hours of sleep each night",
           "correct": false,
-          "rationale": ""
+          "rationale": "Older adults are still recommended to get 7 to 8 hours of sleep."
+        },
+        {
+          "text": "More REM (rapid eye movement) cycles than younger adults",
+          "correct": false,
+          "rationale": "Older adults have fewer REM cycles, not more."
         }
       ],
-      "explanation": "Older adults have less stage 3 sleep and more stage 2 sleep, wake up more frequently, and take longer to fall asleep. They have fewer REM cycles, not more."
+      "explanation": "Older adults have less stage 3 sleep, wake more often, and take longer to fall asleep. They have fewer REM (rapid eye movement) cycles, not more, and are still recommended to get 7 to 8 hours of sleep."
     },
     {
       "id": "nur114-u2-comfort-rest-sleep-014",
@@ -7329,30 +7329,30 @@
         {
           "text": "Impaired judgment and decreased response time",
           "correct": true,
-          "rationale": ""
+          "rationale": "Lack of sleep slows reaction time and impairs judgment, raising accident risk."
         },
         {
           "text": "Increased risk for depression",
           "correct": true,
-          "rationale": ""
+          "rationale": "Sleep deprivation is linked to a higher risk of depression."
         },
         {
-          "text": "Worsening blood glucose control in clients who have type 2 diabetes",
-          "correct": true,
-          "rationale": ""
+          "text": "Improved blood glucose control in clients who have type 2 diabetes",
+          "correct": false,
+          "rationale": "Sleep deprivation worsens blood glucose control in type 2 diabetes."
         },
         {
           "text": "Reduced risk of migraines",
           "correct": false,
-          "rationale": ""
+          "rationale": "Sleep deprivation can trigger migraines rather than prevent them."
         },
         {
-          "text": "Decreased likelihood of obesity",
+          "text": "Permanent memory loss after a single sleepless night",
           "correct": false,
-          "rationale": ""
+          "rationale": "One lost night can affect concentration the next day, but it does not cause permanent memory loss."
         }
       ],
-      "explanation": "Sleep deprivation impairs judgment and response time, increases the risk of depression, and contributes to poor glucose control and obesity. It can trigger migraines rather than reduce them."
+      "explanation": "Sleep deprivation impairs judgment and response time and increases the risk of depression. It worsens, not improves, glucose control in type 2 diabetes, can trigger migraines, and one sleepless night does not cause permanent memory loss."
     },
     {
       "id": "nur114-u2-comfort-rest-sleep-018",
@@ -7366,30 +7366,30 @@
         {
           "text": "Dim the lights at night.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Lower light reduces stimulation and supports the sleep cycle."
         },
         {
           "text": "Offer earplugs and an eye mask.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Earplugs and an eye mask block noise and light that contribute to sensory overload."
         },
         {
-          "text": "Cluster care to minimize interruptions.",
-          "correct": true,
-          "rationale": ""
+          "text": "Schedule each care activity at a separate time through the night so each one is brief.",
+          "correct": false,
+          "rationale": "Spreading care out causes more interruptions; clustering care reduces them."
         },
         {
           "text": "Obtain vital signs every hour throughout the night regardless of the client's condition.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Vital signs that are not needed interrupt sleep and add stimulation."
         },
         {
           "text": "Leave the television on overnight for background noise.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Television noise and light add to sensory overload."
         }
       ],
-      "explanation": "Lowering light and noise, offering earplugs and eye masks, and coordinating care to minimize interruptions reduce sensory overload. Unnecessary interruptions and added stimulation increase it."
+      "explanation": "Dimming the lights and offering earplugs and an eye mask lower stimulation. Spreading care across the night, hourly vital signs that are not needed, and an overnight television add interruptions and stimulation; care should be clustered instead."
     },
     {
       "id": "nur114-u2-comfort-rest-sleep-019",
@@ -7664,30 +7664,30 @@
         {
           "text": "Wear the CPAP device while sleeping.",
           "correct": true,
-          "rationale": ""
+          "rationale": "CPAP (continuous positive airway pressure) keeps the airway open during sleep."
         },
         {
           "text": "Follow a healthy weight-loss program.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Weight loss reduces tissue around the airway that contributes to collapse."
         },
         {
           "text": "Avoid alcohol.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Alcohol relaxes the airway muscles and worsens obstruction."
         },
         {
-          "text": "Stop smoking.",
-          "correct": true,
-          "rationale": ""
+          "text": "Take a sedative at bedtime to sleep more deeply.",
+          "correct": false,
+          "rationale": "Sedatives relax the airway muscles and can make apnea episodes worse."
         },
         {
           "text": "Sleep on your back.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Lying on the back lets the airway collapse more easily and can worsen OSA."
         }
       ],
-      "explanation": "CPAP is the most widely recommended treatment for OSA, along with weight loss and avoiding smoking and alcohol. Sleeping on the back can worsen OSA."
+      "explanation": "CPAP (continuous positive airway pressure), weight loss, and avoiding alcohol are key parts of treating obstructive sleep apnea (OSA), along with not smoking. Sedatives relax the airway muscles, and sleeping on the back lets the airway collapse more easily."
     },
     {
       "id": "nur114-u2-comfort-rest-sleep-028",
@@ -7957,30 +7957,30 @@
         {
           "text": "Guided imagery",
           "correct": true,
-          "rationale": ""
+          "rationale": "Guided imagery relaxes the client and helps them fall asleep."
         },
         {
           "text": "Music therapy",
           "correct": true,
-          "rationale": ""
+          "rationale": "Soft music promotes relaxation before sleep."
         },
         {
           "text": "Massage",
           "correct": true,
-          "rationale": ""
+          "rationale": "Massage relaxes muscles and helps the client settle for sleep."
         },
         {
-          "text": "Mindfulness and restful breathing",
-          "correct": true,
-          "rationale": ""
-        },
-        {
-          "text": "A caffeinated beverage at bedtime",
+          "text": "A glass of wine before bed to help the client relax",
           "correct": false,
-          "rationale": ""
+          "rationale": "Alcohol may cause drowsiness but disrupts sleep later in the night."
+        },
+        {
+          "text": "Watching television in bed until the client feels drowsy",
+          "correct": false,
+          "rationale": "Television in bed adds light and stimulation; the bed should be kept for sleep."
         }
       ],
-      "explanation": "Guided imagery, music therapy, massage, mindfulness, meditation, and restful breathing are nonpharmacological interventions that promote sleep. Caffeine is a stimulant that disrupts sleep."
+      "explanation": "Guided imagery, music therapy, and massage are nonpharmacological interventions that promote sleep. Alcohol disrupts sleep later in the night, and watching television in bed works against good sleep hygiene."
     },
     {
       "id": "nur114-u2-comfort-rest-sleep-037",
@@ -8289,30 +8289,30 @@
         {
           "text": "The three stages are alarm, resistance, and exhaustion.",
           "correct": true,
-          "rationale": ""
+          "rationale": "GAS moves through alarm, then resistance, then exhaustion."
         },
         {
           "text": "It can be triggered by physical or psychological stressors.",
           "correct": true,
-          "rationale": ""
+          "rationale": "Both physical and psychological stressors can start the GAS response."
         },
         {
-          "text": "It occurs whether a stressor is perceived as positive or negative.",
-          "correct": true,
-          "rationale": ""
+          "text": "Epinephrine release during the exhaustion stage causes the fight-or-flight response.",
+          "correct": false,
+          "rationale": "The fight-or-flight surge of epinephrine happens in the alarm stage."
         },
         {
           "text": "It is triggered only by negative events.",
           "correct": false,
-          "rationale": ""
+          "rationale": "GAS occurs with positive and negative stress."
         },
         {
           "text": "The exhaustion stage occurs first.",
           "correct": false,
-          "rationale": ""
+          "rationale": "Alarm is the first stage; exhaustion comes last."
         }
       ],
-      "explanation": "GAS is a three-stage response (alarm, resistance, exhaustion) triggered by physical or psychological stressors, whether positive or negative. Alarm is the first stage."
+      "explanation": "GAS is a three-stage response (alarm, resistance, exhaustion) triggered by physical or psychological stressors, whether positive or negative. Alarm comes first, and epinephrine drives fight or flight in the alarm stage."
     },
     {
       "id": "nur114-u2-stress-coping-006",
@@ -8390,30 +8390,30 @@
         {
           "text": "Living in poverty",
           "correct": true,
-          "rationale": ""
+          "rationale": "Poverty is a constant, prolonged stressor."
         },
         {
           "text": "Exposure to racism",
           "correct": true,
-          "rationale": ""
+          "rationale": "Ongoing exposure to racism is a source of chronic stress."
         },
         {
           "text": "Living with a prolonged illness",
           "correct": true,
-          "rationale": ""
+          "rationale": "A long illness is a constant, prolonged stressor."
         },
         {
-          "text": "Growing up in a dysfunctional family",
-          "correct": true,
-          "rationale": ""
+          "text": "Cramming at the last minute before every exam",
+          "correct": false,
+          "rationale": "Frequent bouts of rushed, short-term stress are episodic acute stress, not chronic stress."
         },
         {
           "text": "Being in a minor car accident yesterday",
           "correct": false,
-          "rationale": ""
+          "rationale": "A car accident is a brief, immediate stressor, which is acute stress."
         }
       ],
-      "explanation": "Chronic stress is constant and prolonged, such as poverty, racism, prolonged illness, and a dysfunctional family. A car accident is a source of acute stress."
+      "explanation": "Chronic stress is constant and prolonged, such as poverty, racism, and prolonged illness. A minor car accident is acute stress, and cramming at the last minute before every exam is episodic acute stress."
     },
     {
       "id": "nur114-u2-stress-coping-009",
@@ -8491,30 +8491,30 @@
         {
           "text": "Decreases energy",
           "correct": false,
-          "rationale": ""
+          "rationale": "Regular exercise increases energy rather than draining it."
         },
         {
           "text": "Increases mood",
           "correct": true,
-          "rationale": ""
+          "rationale": "Exercise improves mood."
         },
         {
           "text": "Inhibits the release of endorphins",
           "correct": false,
-          "rationale": ""
+          "rationale": "Exercise releases endorphins; it does not block them."
         },
         {
-          "text": "Decreases stress",
-          "correct": true,
-          "rationale": ""
+          "text": "Works for stress only when done at high intensity",
+          "correct": false,
+          "rationale": "Moderate activity also lowers stress; high intensity is not required."
         },
         {
           "text": "Improves sleep",
           "correct": true,
-          "rationale": ""
+          "rationale": "Regular exercise improves sleep quality."
         }
       ],
-      "explanation": "Exercise increases mood and energy, decreases stress, improves sleep, and releases endorphins."
+      "explanation": "Exercise improves mood and sleep, and it also raises energy, lowers stress, and releases endorphins. Moderate activity is enough to get these benefits."
     },
     {
       "id": "nur114-u2-stress-coping-012",
@@ -8762,30 +8762,30 @@
         {
           "text": "Acting on a suicide threat",
           "correct": true,
-          "rationale": ""
+          "rationale": "Acting on a suicide threat puts the client's life at immediate risk."
         },
         {
-          "text": "Throwing and breaking items",
-          "correct": true,
-          "rationale": ""
+          "text": "Crying while talking about a recent job loss",
+          "correct": false,
+          "rationale": "Crying about a loss is an expected emotional response, not by itself an emergency."
         },
         {
           "text": "Threatening to harm others",
           "correct": true,
-          "rationale": ""
+          "rationale": "Threats of harm to others are a safety emergency."
         },
         {
           "text": "Hostile and belligerent behavior",
           "correct": true,
-          "rationale": ""
+          "rationale": "Hostility and belligerence are signs that the situation may become unsafe."
         },
         {
           "text": "Asking to speak with a chaplain",
           "correct": false,
-          "rationale": ""
+          "rationale": "Seeking spiritual support is a healthy coping step, not an emergency."
         }
       ],
-      "explanation": "Signs of a mental health emergency include acting on a suicide threat, hostile or belligerent behavior, throwing or breaking items, and threatening harm."
+      "explanation": "Signs of a mental health emergency include acting on a suicide threat, threatening to harm others, and hostile or belligerent behavior. Crying about a loss and asking for spiritual support are expected responses, not emergencies."
     },
     {
       "id": "nur114-u2-stress-coping-020",
