@@ -11150,6 +11150,224 @@
    ]
   },
   {
+   "id": "nur114-u4-nutrition-088",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Vitamins, Minerals & Water",
+   "type": "mc",
+   "prompt": "Which vitamin supports vision and keeps the skin and mucous membranes healthy?",
+   "options": [
+    {
+     "text": "Vitamin A",
+     "correct": true,
+     "rationale": "Vitamin A affects vision, the skin and mucous membranes, and immune function."
+    },
+    {
+     "text": "Vitamin K",
+     "correct": false,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting."
+    },
+    {
+     "text": "Vitamin D",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium."
+    },
+    {
+     "text": "Vitamin B",
+     "correct": false,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-089",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Vitamins, Minerals & Water",
+   "type": "sata",
+   "prompt": "Which are functions of the B vitamins? Select all that apply.",
+   "options": [
+    {
+     "text": "Energy",
+     "correct": true,
+     "rationale": "B vitamins help the body get energy from food."
+    },
+    {
+     "text": "Brain function",
+     "correct": true,
+     "rationale": "B vitamins support brain and nerve function."
+    },
+    {
+     "text": "Cell metabolism",
+     "correct": true,
+     "rationale": "B vitamins are needed for cell metabolism."
+    },
+    {
+     "text": "Blood clotting",
+     "correct": false,
+     "rationale": "Blood clotting depends on vitamin K."
+    },
+    {
+     "text": "Calcium absorption",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-090",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Vitamins, Minerals & Water",
+   "type": "mc",
+   "prompt": "Which vitamin is an antioxidant that protects vitamin A and helps the body fight infection?",
+   "options": [
+    {
+     "text": "Vitamin E",
+     "correct": true,
+     "rationale": "Vitamin E is an antioxidant that protects vitamin A and helps fight infection."
+    },
+    {
+     "text": "Vitamin K",
+     "correct": false,
+     "rationale": "Vitamin K is needed for blood clotting."
+    },
+    {
+     "text": "Vitamin D",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium."
+    },
+    {
+     "text": "Vitamin B",
+     "correct": false,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-091",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Vitamins, Minerals & Water",
+   "type": "cloze",
+   "prompt": "A nurse is teaching a client what vitamins do for the body.",
+   "sentence": "Vitamin {1} helps the blood clot. Vitamin {2} helps the body absorb calcium. Vitamin {3} is needed to make collagen for healing wounds. Vitamin {4} supports vision and the skin and mucous membranes. Vitamin {5} helps with energy, brain function and cell metabolism. Vitamin {6} is an antioxidant that protects vitamin A.",
+   "options": [
+    {
+     "text": "K",
+     "correct": true,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
+     "blank": 1
+    },
+    {
+     "text": "A",
+     "correct": false,
+     "rationale": "Vitamin A supports vision, the skin and mucous membranes, and immune function.",
+     "blank": 1
+    },
+    {
+     "text": "E",
+     "correct": false,
+     "rationale": "Vitamin E is an antioxidant that protects vitamin A and helps fight infection.",
+     "blank": 1
+    },
+    {
+     "text": "D",
+     "correct": true,
+     "rationale": "Vitamin D helps the body absorb calcium.",
+     "blank": 2
+    },
+    {
+     "text": "B",
+     "correct": false,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism.",
+     "blank": 2
+    },
+    {
+     "text": "K",
+     "correct": false,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
+     "blank": 2
+    },
+    {
+     "text": "C",
+     "correct": true,
+     "rationale": "Vitamin C is needed to make collagen and helps the body absorb iron.",
+     "blank": 3
+    },
+    {
+     "text": "D",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium.",
+     "blank": 3
+    },
+    {
+     "text": "E",
+     "correct": false,
+     "rationale": "Vitamin E is an antioxidant that protects vitamin A and helps fight infection.",
+     "blank": 3
+    },
+    {
+     "text": "A",
+     "correct": true,
+     "rationale": "Vitamin A supports vision, the skin and mucous membranes, and immune function.",
+     "blank": 4
+    },
+    {
+     "text": "K",
+     "correct": false,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
+     "blank": 4
+    },
+    {
+     "text": "B",
+     "correct": false,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism.",
+     "blank": 4
+    },
+    {
+     "text": "B",
+     "correct": true,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism.",
+     "blank": 5
+    },
+    {
+     "text": "C",
+     "correct": false,
+     "rationale": "Vitamin C is needed to make collagen and helps the body absorb iron.",
+     "blank": 5
+    },
+    {
+     "text": "D",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium.",
+     "blank": 5
+    },
+    {
+     "text": "E",
+     "correct": true,
+     "rationale": "Vitamin E is an antioxidant that protects vitamin A and helps fight infection.",
+     "blank": 6
+    },
+    {
+     "text": "A",
+     "correct": false,
+     "rationale": "Vitamin A supports vision, the skin and mucous membranes, and immune function.",
+     "blank": 6
+    },
+    {
+     "text": "K",
+     "correct": false,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
+     "blank": 6
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-food-sources-001",
    "course": "NUR 114",
    "unit": 4,
