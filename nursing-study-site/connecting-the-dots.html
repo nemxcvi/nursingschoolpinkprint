@@ -198,10 +198,9 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 
 /* Connecting the dots: connection cards, week links, See more */
 .legend .lg-conn{background:var(--card);border-color:var(--label);color:var(--label)}
-.upto{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:18px 0 0;padding:8px 14px;border:1.5px solid var(--label);background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-.upto[hidden]{display:none}
-.upto b{font-weight:600}
-.upto a{color:var(--heading);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.upto{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:18px 0 0;padding:6px 6px 6px 14px;border:1.5px solid var(--label);background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.upto select{font:inherit;font-weight:600;letter-spacing:inherit;text-transform:inherit;color:var(--heading);background:var(--page);border:1.5px solid var(--label);border-radius:0;padding:6px 10px;cursor:pointer}
+.upto select:focus-visible{outline:2px solid var(--heading);outline-offset:2px}
 .legend .lg-week{background:var(--card);border-color:var(--label);color:var(--label);border-style:dashed}
 a.wk{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--label);border:1.5px dashed var(--label);padding:0 6px;margin:0 1px;vertical-align:1px;white-space:nowrap;line-height:1.6}
 a.wk:hover{background:var(--pill)}
@@ -222,7 +221,7 @@ a.wk:hover{background:var(--pill)}
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-type="studyguides"></div>
 <script src="assets/site-data.js?v=28"></script>
 <script src="js/tracking.js?v=15"></script>
-<script src="assets/header.js?v=14"></script>
+<script src="assets/header.js?v=15"></script>
 <script src="js/progress.js?v=8"></script>
 <div class="guide-body">
 <header class="guide-hero gwrap">
@@ -230,7 +229,7 @@ a.wk:hover{background:var(--pill)}
   <h1>Connecting The Dots</h1>
   <p class="lede">Drafted from every week's modules and powerpoints, scaled down for exam crams. Use the mnemonics and memory tricks to lock in lists, then hit the quick checks at the end of each topic.</p>
   <p class="key-note">Each topic takes something you already learned and shows where it shows up next, so you can answer questions that mix units. Tap a week tag to jump to where it was first covered.</p>
-  <p id="upto-note" class="upto" hidden><i class="ti ti-filter" aria-hidden="true"></i><span>Showing Week <b>N</b> &amp; earlier</span><a href="connecting-the-dots.html">Show all weeks &rarr;</a></p>
+  <p id="upto-note" class="upto"><i class="ti ti-filter" aria-hidden="true"></i><label for="upto-pick">Show connections from</label><select id="upto-pick"><option value="">All weeks</option></select></p>
   <div class="legend" aria-label="Key">
     <span class="lg-conn">Connection</span>
     <span class="lg-week">Week tag: links to the guide</span>
@@ -823,9 +822,21 @@ a.wk:hover{background:var(--pill)}
 /* ?upto=N (from a weekly guide's link): show only connections from Week N and earlier.
    A piece's week is the latest week it links to; pieces with no week link carry data-wk. */
 (function(){
-  var m = /[?&]upto=(\d+)/.exec(location.search);
+  var m = /[?&]upto=(\d+)/.exec(location.search), main = document.querySelector("main");
+  /* Week picker: lists every week the guide links to; picking one reloads with ?upto=N */
+  var pick = document.getElementById("upto-pick"), last = 0;
+  main.querySelectorAll("a[href]").forEach(function(a){ var r = /week(\d+)-study-guide/.exec(a.getAttribute("href")); if (r) last = Math.max(last, +r[1]); });
+  for (var w = 2; w <= last; w++){
+    var o = document.createElement("option"); o.value = w;
+    o.textContent = w === 2 ? "Week 2 only" : "Weeks 2\u2013" + w;
+    pick.appendChild(o);
+  }
+  pick.value = m && +m[1] < last ? m[1] : "";
+  pick.addEventListener("change", function(){
+    location.replace(location.pathname + (pick.value ? "?upto=" + pick.value : "") + location.hash);
+  });
   if (!m) return;
-  var upto = +m[1], main = document.querySelector("main");
+  var upto = +m[1];
   /* A section or case can set a floor (data-min): its core idea comes from that week */
   function floorOf(el){ var f = el.closest("[data-min]"); return f ? +f.getAttribute("data-min") : 0; }
   function wkOf(el){
@@ -874,9 +885,6 @@ a.wk:hover{background:var(--pill)}
   });
   /* Week tags in headings that point past the filter */
   main.querySelectorAll("th a.wk").forEach(function(a){ var r = /week(\d+)-study-guide/.exec(a.getAttribute("href")); if (r && +r[1] > upto) hide(a); });
-  var note = document.getElementById("upto-note");
-  note.querySelector("b").textContent = upto;
-  note.hidden = false;
 })();
 </script>
 <script src="assets/theme.js?v=6"></script>

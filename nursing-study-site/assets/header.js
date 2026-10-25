@@ -114,11 +114,17 @@
       "<div class='hdr-right'>" + themeBtn() + "</div>" +
       panelHtml;
   } else {
-    var back = unit ? ROOT + unit.slug : ROOT;
+    var back = unit ? ROOT + unit.slug : ROOT, backInHistory = false;
     try {
       if (document.referrer){
-        var ref = new URL(document.referrer);
-        if (ref.origin === location.origin && ref.href.split("#")[0] !== location.href.split("#")[0]) back = ref.href;
+        var ref = new URL(document.referrer), backKey = "pp-back:" + location.pathname;
+        if (ref.origin === location.origin && ref.pathname !== location.pathname){
+          back = ref.href; backInHistory = true;
+          sessionStorage.setItem(backKey, back);
+        } else if (ref.origin === location.origin && sessionStorage.getItem(backKey)){
+          /* The page reloaded itself in place (e.g. a filter swap): keep the page we came from */
+          back = sessionStorage.getItem(backKey); backInHistory = true;
+        }
       }
     } catch (e){}
     var typeName = pageType ? pageType.one : "";
@@ -133,6 +139,29 @@
         "<div class='cbar-right'>" + themeBtn(" iconbtn-sm") + "</div>" +
         panelHtml +
       "</div>";
+  }
+
+  /* Back steps back through history when we came from another site page, so
+     jumping around by in-page links (topics bar, week tags) never ping-pongs.
+     Hash jumps add history entries; ppDepth counts them so Back skips them all. */
+  var backLink = host.querySelector(".cbar-back");
+  if (backLink){
+    var depth = function(){ var st = history.state; return st && typeof st.ppDepth === "number" ? st.ppDepth : 0; };
+    var stamp = function(d){ try { var st = history.state && typeof history.state === "object" ? history.state : {}; st.ppDepth = d; history.replaceState(st, ""); } catch (e){} };
+    var lastDepth = depth();
+    stamp(lastDepth);
+    window.addEventListener("hashchange", function(){
+      if (!history.state || typeof history.state.ppDepth !== "number") stamp(lastDepth + 1);
+      lastDepth = depth();
+    });
+    /* popstate also fires on a fresh hash jump (state still empty); only real back/forward moves land on a stamped entry */
+    window.addEventListener("popstate", function(){ if (history.state && typeof history.state.ppDepth === "number") lastDepth = history.state.ppDepth; });
+    backLink.addEventListener("click", function(e){
+      if (backInHistory && history.length > 1){
+        e.preventDefault();
+        history.go(-(depth() + 1));
+      }
+    });
   }
 
   /* ---------- Behavior ---------- */
