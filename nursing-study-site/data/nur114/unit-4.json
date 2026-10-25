@@ -10389,7 +10389,7 @@
     {
      "text": "Elemental formula",
      "correct": true,
-     "rationale": "Elemental formulas are predigested (1 to 3 kcal/mL) and easier to absorb."
+     "rationale": "Elemental formulas are predigested, so they are easier to absorb."
     },
     {
      "text": "Standard (polymeric) formula",
@@ -10416,7 +10416,7 @@
    "category": "Feeding Tubes",
    "type": "cloze",
    "prompt": "A nurse is reviewing enteral formulas.",
-   "sentence": "A {1} formula supplies whole nutrients at 1 to 2 kcal/mL, while a {2} formula supplies a single macronutrient as a supplement.",
+   "sentence": "A {1} formula supplies whole nutrients, while a {2} formula supplies a single macronutrient as a supplement.",
    "options": [
     {
      "text": "standard (polymeric)",
@@ -10439,7 +10439,7 @@
     {
      "text": "modular",
      "correct": true,
-     "rationale": "Modular formulas (3.8 to 4 kcal/mL) add one nutrient such as protein.",
+     "rationale": "Modular formulas add one nutrient, such as protein.",
      "blank": 2
     },
     {
