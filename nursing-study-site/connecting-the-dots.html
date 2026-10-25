@@ -229,7 +229,7 @@ a.wk:hover{background:var(--pill)}
   <h1>Connecting The Dots</h1>
   <p class="lede">Drafted from every week's modules and powerpoints, scaled down for exam crams. Use the mnemonics and memory tricks to lock in lists, then hit the quick checks at the end of each topic.</p>
   <p class="key-note">Each topic takes something you already learned and shows where it shows up next, so you can answer questions that mix units. Tap a week tag to jump to where it was first covered.</p>
-  <p id="upto-note" class="upto"><i class="ti ti-filter" aria-hidden="true"></i><label for="upto-pick">Show connections</label><select id="upto-pick"><option value="">All weeks</option></select></p>
+  <p id="upto-note" class="upto"><i class="ti ti-filter" aria-hidden="true"></i><label for="upto-pick">Show connections through</label><select id="upto-pick"><option value="">All weeks</option></select></p>
   <div class="legend" aria-label="Key">
     <span class="lg-conn">Connection</span>
     <span class="lg-week">Week tag: links to the guide</span>
@@ -828,7 +828,7 @@ a.wk:hover{background:var(--pill)}
   main.querySelectorAll("a[href]").forEach(function(a){ var r = /week(\d+)-study-guide/.exec(a.getAttribute("href")); if (r) last = Math.max(last, +r[1]); });
   for (var w = 2; w <= last; w++){
     var o = document.createElement("option"); o.value = w;
-    o.textContent = "Through Week " + w;
+    o.textContent = "Week " + w;
     pick.appendChild(o);
   }
   pick.value = m && +m[1] < last ? m[1] : "";
