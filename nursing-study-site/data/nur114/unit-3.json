@@ -4410,9 +4410,9 @@
           "rationale": "The back of the hand is an accepted turgor site."
         },
         {
-          "text": "Forearm",
-          "correct": true,
-          "rationale": "The forearm is a commonly used turgor site."
+          "text": "Earlobe",
+          "correct": false,
+          "rationale": "The earlobe is not used to assess turgor."
         },
         {
           "text": "Palm of the hand",

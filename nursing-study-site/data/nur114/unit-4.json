@@ -442,14 +442,14 @@
    "prompt": "Which lab tests reflect kidney function? Select all that apply.",
    "options": [
     {
-     "text": "Serum albumin",
-     "correct": false,
-     "rationale": "Albumin reflects nutrition status over the past few weeks, not kidney function."
-    },
-    {
      "text": "Blood urea nitrogen (BUN)",
      "correct": true,
-     "rationale": "BUN (10–20 mg/dL) reflects how well the kidneys clear waste."
+     "rationale": "BUN (10–20 mg/dL) reflects kidney function."
+    },
+    {
+     "text": "Creatinine",
+     "correct": true,
+     "rationale": "Creatinine reflects how well the kidneys filter."
     },
     {
      "text": "Prealbumin",
@@ -459,7 +459,7 @@
     {
      "text": "Hemoglobin",
      "correct": false,
-     "rationale": "Hemoglobin reflects the oxygen-carrying capacity of the blood."
+     "rationale": "Hemoglobin reflects oxygen-carrying capacity of the blood."
     },
     {
      "text": "Total cholesterol",
