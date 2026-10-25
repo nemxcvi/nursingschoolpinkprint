@@ -6302,37 +6302,6 @@
    ]
   },
   {
-   "id": "nur114-u4-nutrition-006",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Nutrients & Energy",
-   "type": "mc",
-   "prompt": "How many calories does 1 gram of fat provide?",
-   "options": [
-    {
-     "text": "9",
-     "correct": true,
-     "rationale": "Fat gives 9 kcal per gram."
-    },
-    {
-     "text": "4",
-     "correct": false,
-     "rationale": "Carbs and protein give 4 kcal per gram."
-    },
-    {
-     "text": "7",
-     "correct": false,
-     "rationale": "7 kcal per gram is alcohol."
-    },
-    {
-     "text": "2",
-     "correct": false,
-     "rationale": "No energy nutrient gives 2 kcal per gram."
-    }
-   ]
-  },
-  {
    "id": "nur114-u4-nutrition-007",
    "course": "NUR 114",
    "unit": 4,
@@ -7000,9 +6969,9 @@
      "rationale": "Water isn't stored for later use."
     },
     {
-     "text": "Provides 4 calories per gram",
+     "text": "Stores extra energy for later use",
      "correct": false,
-     "rationale": "Water has no calories."
+     "rationale": "Water isn't stored for energy; the body stores extra energy as glycogen and fat."
     }
    ]
   },
