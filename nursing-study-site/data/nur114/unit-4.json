@@ -12193,7 +12193,7 @@
    "prompt": "A client's blood glucose is 58 mg/dL and they are alert. Place the nurse's actions in order.",
    "options": [
     {
-     "text": "Give 15 g of fast carbohydrate, such as 4 oz of juice",
+     "text": "Give something with sugar, such as juice",
      "rationale": "Raise the glucose first."
     },
     {
@@ -12201,7 +12201,7 @@
      "rationale": "Check whether it's back to at least 70 mg/dL."
     },
     {
-     "text": "Repeat 15 g if glucose is still below 70 mg/dL",
+     "text": "Give more sugar if glucose is still below 70 mg/dL",
      "rationale": "Repeat until it's at least 70."
     },
     {
