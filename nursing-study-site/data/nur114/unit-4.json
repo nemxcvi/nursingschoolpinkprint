@@ -9409,7 +9409,7 @@
    "prompt": "How is the length of a nasogastric tube measured before insertion?",
    "options": [
     {
-     "text": "Tip of the nose to the earlobe to the xiphoid process",
+     "text": "Tip of the nose to the earlobe to the xiphoid process, then add 10 cm",
      "correct": true,
      "rationale": "This measures the distance to the stomach."
     },
@@ -9475,7 +9475,7 @@
      "rationale": "Positioning comes first."
     },
     {
-     "text": "Measure from the nose to the earlobe to the xiphoid process and mark the tube",
+     "text": "Measure from the nose to the earlobe to the xiphoid process, add 10 cm, and mark the tube",
      "rationale": "Measure before inserting."
     },
     {
@@ -16352,9 +16352,9 @@
    "prompt": "How should the nurse measure the length of an NG tube before insertion?",
    "options": [
     {
-     "text": "Tip of the nose to the earlobe, then to the xiphoid process",
+     "text": "Tip of the nose to the earlobe to the xiphoid process, then add 10 cm",
      "correct": true,
-     "rationale": "This measurement approximates the distance to the stomach."
+     "rationale": "This measurement approximates the distance into the stomach."
     },
     {
      "text": "Tip of the nose to the umbilicus",
