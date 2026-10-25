@@ -52,22 +52,22 @@
     <a class="pp-card" href="unit-1-intro-to-nursing/">
       <div class="pp-card-top"><span>U-01</span><span>Ready</span></div>
       <div class="pp-card-mid"><i class="ti ti-heartbeat" aria-hidden="true"></i><h2>Intro to Nursing</h2></div>
-      <div class="pp-card-bottom"><span class="pp-line"></span><span>5 widgets</span></div>
+      <div class="pp-card-bottom"><span class="pp-line"></span><span data-widget-count="U-01">16 widgets</span></div>
     </a>
     <a class="pp-card" href="unit-2-basic-human-needs/">
       <div class="pp-card-top"><span>U-02</span><span>Ready</span></div>
       <div class="pp-card-mid"><i class="ti ti-bed" aria-hidden="true"></i><h2>Basic Human Needs</h2></div>
-      <div class="pp-card-bottom"><span class="pp-line"></span><span>16 widgets</span></div>
+      <div class="pp-card-bottom"><span class="pp-line"></span><span data-widget-count="U-02">16 widgets</span></div>
     </a>
     <a class="pp-card" href="unit-3-skin-wounds-diagnostics/">
       <div class="pp-card-top"><span>U-03</span><span>Ready</span></div>
       <div class="pp-card-mid"><i class="ti ti-test-pipe" aria-hidden="true"></i><h2>Skin, Wounds &amp; Diagnostics</h2></div>
-      <div class="pp-card-bottom"><span class="pp-line"></span><span>14 widgets</span></div>
+      <div class="pp-card-bottom"><span class="pp-line"></span><span data-widget-count="U-03">16 widgets</span></div>
     </a>
     <a class="pp-card" href="unit-4-fluids-nutrition-med-math/">
       <div class="pp-card-top"><span>U-04</span><span>In progress</span></div>
       <div class="pp-card-mid"><i class="ti ti-droplet" aria-hidden="true"></i><h2>Fluids, Nutrition &amp; Med Math</h2></div>
-      <div class="pp-card-bottom"><span class="pp-line"></span><span>15 widgets</span></div>
+      <div class="pp-card-bottom"><span class="pp-line"></span><span data-widget-count="U-04">22 widgets</span></div>
     </a>
     <a class="pp-card draft" href="unit-5-gas-exchange-med-admin/">
       <div class="pp-card-top"><span>U-05</span><span>In draft</span></div>
@@ -207,6 +207,11 @@ var QUOTES = [
     idx = nextIdx;
   }, 8000);
 })();
+
+/* Unit cards: widget counts come from site-data.js so they never go stale */
+document.querySelectorAll("[data-widget-count]").forEach(function(el){
+  el.textContent = SITE.plural(SITE.widgetsFor(SITE.currentSheet, el.getAttribute("data-widget-count")).length, ["widget","widgets"]);
+});
 
 var MIX_ALL = SITE.mixAll;
 var TAGS = ["flashcards","quizzes","studyguides"];
