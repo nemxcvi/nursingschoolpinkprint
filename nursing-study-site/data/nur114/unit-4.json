@@ -5055,22 +5055,22 @@
     {
      "text": "Fever and chills",
      "correct": true,
-     "rationale": "These suggest a hemolytic or febrile reaction."
+     "rationale": "Fever and chills are common signs of a transfusion reaction."
     },
     {
      "text": "Low back pain",
      "correct": true,
-     "rationale": "Back or flank pain is a classic sign of a hemolytic reaction."
+     "rationale": "Back pain is a sign of a transfusion reaction."
     },
     {
      "text": "Hives and itching",
      "correct": true,
-     "rationale": "These suggest an allergic reaction."
+     "rationale": "Hives and itching can signal a reaction."
     },
     {
-     "text": "Red-colored urine",
+     "text": "Shortness of breath",
      "correct": true,
-     "rationale": "Destroyed red cells can cause hematuria."
+     "rationale": "Dyspnea can signal a transfusion reaction."
     },
     {
      "text": "A steady blood pressure at baseline",

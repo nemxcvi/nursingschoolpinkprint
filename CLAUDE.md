@@ -42,6 +42,7 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 - Units 1–3: every topic quiz has exactly 40 questions. From Unit 4 on, a topic bank holds as many questions as it takes to cover everything that could be on the exam (sessions draw a random set from it). Either way, keep `count` in `site-data.js` and the card/question counts on each unit `index.html` in sync.
 - Quiz questions test the content, not where it came from. Never mark an answer wrong because it is "ATI only" or "not on the checklist"; every wrong option must be wrong on its own merits, and stems and rationales shouldn't cite the competency, slides, or ATI.
 - Keep wording plain and accurate. Prefer dropping a forced mnemonic to keeping a confusing one.
+- Study guide boxes tagged **ATI only · not tested** are background only: never write quiz questions or flashcards from them. Use them for topics the instructor's slide notes said to keep basic (Week 8: IV solutions, blood products, acid-base causes and compensation). Plain **ATI only** boxes can be tested.
 
 ## Instructor flags waiting for upcoming content
 
