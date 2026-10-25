@@ -5135,9 +5135,9 @@
      "rationale": "7.30 is below the normal range."
     },
     {
-     "text": "Compensated",
+     "text": "Borderline normal",
      "correct": false,
-     "rationale": "A pH outside the normal range isn't fully compensated."
+     "rationale": "The normal range is 7.35–7.45, so 7.30 is clearly low, not borderline."
     }
    ]
   },
@@ -5610,7 +5610,7 @@
     {
      "text": "Only the PaCO2 changes",
      "correct": false,
-     "rationale": "The pH changes too in an uncompensated imbalance."
+     "rationale": "The pH changes too; that's what makes it an imbalance."
     }
    ]
   },
