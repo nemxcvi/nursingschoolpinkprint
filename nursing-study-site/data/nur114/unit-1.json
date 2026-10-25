@@ -1296,9 +1296,9 @@
           "rationale": "Bicarbonate 19 is below the normal 23–30 mEq/L, so it should be reported."
         },
         {
-          "text": "A client's chloride level of 101 mEq/L",
-          "correct": false,
-          "rationale": "Chloride 101 is within the normal 98–106 mEq/L."
+          "text": "A client's chloride level of 92 mEq/L",
+          "correct": true,
+          "rationale": "Chloride 92 is below the normal 98–106 mEq/L, so it should be reported."
         },
         {
           "text": "A client's magnesium level of 1.7 mEq/L",
@@ -1316,7 +1316,7 @@
           "rationale": "WBC 7,200 is within the normal 5,000–10,000/mm3."
         }
       ],
-      "explanation": "Bicarbonate 19 (normal 23–30) is low. Chloride 101, magnesium 1.7, calcium 9.9, and WBC 7,200 are all within normal limits."
+      "explanation": "Bicarbonate 19 (normal 23–30) and chloride 92 (normal 98–106) are both low. Magnesium 1.7, calcium 9.9, and WBC 7,200 are all within normal limits."
     },
     {
       "id": "nur114-u1-cbc-cmp-039",
@@ -4150,9 +4150,9 @@
           "rationale": "Supportive environments make healthy choices easier."
         },
         {
-          "text": "Treating symptoms once illness has developed",
-          "correct": false,
-          "rationale": "Treating symptoms is moving away from wellness, not promoting health."
+          "text": "Public policy",
+          "correct": true,
+          "rationale": "Policies such as smoking bans promote health."
         },
         {
           "text": "Providing referrals",
@@ -4373,9 +4373,9 @@
           "rationale": "Low urine output can mean poor perfusion."
         },
         {
-          "text": "Lung sounds",
-          "correct": false,
-          "rationale": "Lung sounds are checked under breathing."
+          "text": "Skin tone",
+          "correct": true,
+          "rationale": "Pale or mottled skin can mean poor circulation."
         },
         {
           "text": "Pupil reaction",
@@ -6328,9 +6328,9 @@
           "rationale": "Low output lowers BP."
         },
         {
-          "text": "Flushed, warm skin",
-          "correct": false,
-          "rationale": "Low output tends to make skin cool and pale, not flushed and warm."
+          "text": "Chest pain",
+          "correct": true,
+          "rationale": "The heart muscle may not get enough blood."
         },
         {
           "text": "Fainting (syncope)",
@@ -6923,7 +6923,7 @@
         {
           "text": "Heart failure",
           "correct": true,
-          "rationale": "A weak heart may not raise its output fast enough when the client stands."
+          "rationale": "Listed as a cause."
         },
         {
           "text": "Nervous system disorders",
@@ -6931,14 +6931,14 @@
           "rationale": "Problems with BP regulation can cause it."
         },
         {
-          "text": "Fluid volume excess",
-          "correct": false,
-          "rationale": "Extra fluid volume tends to raise BP, not make it drop on standing."
+          "text": "Hypotension",
+          "correct": true,
+          "rationale": "A low baseline BP raises the risk."
         },
         {
-          "text": "Changing positions slowly",
+          "text": "Drinking enough fluids",
           "correct": false,
-          "rationale": "Changing positions slowly helps prevent it."
+          "rationale": "Good hydration helps prevent it."
         }
       ]
     },
@@ -7935,14 +7935,14 @@
           "rationale": "Respect for every person's worth."
         },
         {
-          "text": "Loyalty to the employer over the client",
-          "correct": false,
-          "rationale": "The nurse's first duty is to the client, not the employer."
+          "text": "Integrity",
+          "correct": true,
+          "rationale": "Honesty and strong moral principles."
         },
         {
-          "text": "Paternalism",
-          "correct": false,
-          "rationale": "Deciding for clients what is best for them goes against respecting their right to decide."
+          "text": "Autonomy",
+          "correct": true,
+          "rationale": "Respecting a person's right to decide."
         },
         {
           "text": "Social justice",
@@ -8811,9 +8811,9 @@
           "rationale": "Risks must be explained."
         },
         {
-          "text": "That consent can't be withdrawn once it is signed",
-          "correct": false,
-          "rationale": "A client can withdraw consent at any time, even after signing."
+          "text": "The alternatives",
+          "correct": true,
+          "rationale": "Alternatives, including no treatment, must be explained."
         },
         {
           "text": "The nurse's personal opinion of the surgeon",
@@ -9150,9 +9150,9 @@
           "rationale": "Less noise makes speech easier to hear."
         },
         {
-          "text": "Speak slowly with exaggerated mouth movements",
-          "correct": false,
-          "rationale": "Exaggerated lip movements distort speech and make lipreading harder; speak clearly at a normal pace."
+          "text": "Speak clearly at a normal pace",
+          "correct": true,
+          "rationale": "Clear, steady speech is easiest to follow."
         },
         {
           "text": "Write down key information",
@@ -9318,7 +9318,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "sata",
-      "prompt": "Which are key skills of TeamSTEPPS? Select all that apply.",
+      "prompt": "Which are the four TeamSTEPPS skills? Select all that apply.",
       "options": [
         {
           "text": "Leadership",
@@ -9336,14 +9336,14 @@
           "rationale": "Staying aware of the team and client."
         },
         {
-          "text": "Roles and responsibilities",
-          "correct": false,
-          "rationale": "This is an IPEC (Interprofessional Education Collaborative) competency, not a TeamSTEPPS skill."
+          "text": "Mutual support",
+          "correct": true,
+          "rationale": "Helping and giving feedback."
         },
         {
-          "text": "Values and ethics",
+          "text": "Competition",
           "correct": false,
-          "rationale": "This is an IPEC competency, not a TeamSTEPPS skill."
+          "rationale": "Competition isn't a TeamSTEPPS skill."
         }
       ]
     },

@@ -582,19 +582,19 @@
           "rationale": "Redness is one of the five cardinal signs of inflammation."
         },
         {
-          "text": "Wound edges are well approximated",
-          "correct": false,
-          "rationale": "Edges that meet closely show expected healing, not inflammation."
+          "text": "Swelling at the incision site",
+          "correct": true,
+          "rationale": "Swelling is one of the five cardinal signs of inflammation."
         },
         {
-          "text": "Thick, foul-smelling drainage",
-          "correct": false,
-          "rationale": "Purulent, foul-smelling drainage suggests infection rather than a cardinal sign of inflammation."
+          "text": "Client reports pain at the site",
+          "correct": true,
+          "rationale": "Pain is one of the five cardinal signs of inflammation."
         },
         {
-          "text": "Numbness around the incision",
-          "correct": false,
-          "rationale": "Inflammation causes pain at the site, not numbness."
+          "text": "Difficulty moving the affected area",
+          "correct": true,
+          "rationale": "Loss of function is one of the five cardinal signs of inflammation."
         },
         {
           "text": "Pallor around the incision",
@@ -831,9 +831,9 @@
           "rationale": "Alcohol-based hand rubs are not effective on visibly soiled hands. Soap and water remove dirt and debris."
         },
         {
-          "text": "After removing gloves when caring for a client who has MRSA (methicillin-resistant Staphylococcus aureus)",
-          "correct": false,
-          "rationale": "MRSA does not form spores, so an alcohol-based hand rub is effective when hands are not visibly soiled."
+          "text": "After removing gloves when caring for a client who has C. difficile",
+          "correct": true,
+          "rationale": "Alcohol-based products do not remove spores. Wash with soap and water immediately after removing gloves."
         },
         {
           "text": "Before entering the room of a client on droplet precautions",
@@ -1077,9 +1077,9 @@
           "rationale": "Clients on airborne precautions need a private negative-pressure room (AIIR)."
         },
         {
-          "text": "Place the client in a positive-pressure room",
-          "correct": false,
-          "rationale": "Positive pressure pushes air out of the room. Airborne precautions need negative pressure."
+          "text": "Keep the door to the room closed",
+          "correct": true,
+          "rationale": "The door of an airborne precaution room should remain closed."
         },
         {
           "text": "Wear a fit-tested N95 respirator when entering the room",
@@ -1087,9 +1087,9 @@
           "rationale": "An N95 or higher respirator, specially fitted to the wearer, is required before entering."
         },
         {
-          "text": "Have the client wear an N95 respirator when leaving the room",
-          "correct": false,
-          "rationale": "The client wears a surgical mask outside the room. The N95 protects staff who enter the room."
+          "text": "Have the client wear a mask when leaving the room",
+          "correct": true,
+          "rationale": "Clients on airborne precautions wear a mask outside their room to prevent transmission."
         },
         {
           "text": "Wear a surgical mask when providing care",
@@ -3299,9 +3299,9 @@
           "rationale": "Localized pain and altered sensation are important indicators."
         },
         {
-          "text": "Check the area for swelling (edema)",
-          "correct": true,
-          "rationale": "Edema over a bony prominence can signal pressure injury when redness is hard to see."
+          "text": "Rely on whether the area blanches when pressed",
+          "correct": false,
+          "rationale": "Nonblanchable erythema is difficult to detect in dark skin, so the nurse must also palpate and use other cues."
         }
       ]
     },
@@ -4106,14 +4106,14 @@
           "rationale": "This position minimizes pressure on the abdomen."
         },
         {
-          "text": "Leave the client briefly to get a dressing kit from the supply room",
-          "correct": false,
-          "rationale": "Evisceration is an emergency. The nurse stays with the client and calls for help."
+          "text": "Stay with the client and call for help",
+          "correct": true,
+          "rationale": "Evisceration is an emergency. The nurse stays with the client and gets help so the provider is notified immediately."
         },
         {
-          "text": "Encourage the client to cough and deep breathe",
-          "correct": false,
-          "rationale": "Coughing raises abdominal pressure and can push more organs out."
+          "text": "Keep the client NPO",
+          "correct": true,
+          "rationale": "The client will likely return to surgery."
         },
         {
           "text": "Gently push the organs back into the abdomen",
@@ -4128,7 +4128,7 @@
         {
           "text": "Offer a warm drink to help the client relax",
           "correct": false,
-          "rationale": "The client should be kept NPO (nothing by mouth) in preparation for surgery."
+          "rationale": "The client should be kept NPO in preparation for surgery."
         }
       ]
     },
@@ -6220,19 +6220,19 @@
           "rationale": "Smiling shows symmetry of the facial muscles, controlled by CN VII."
         },
         {
+          "text": "Raise the eyebrows",
+          "correct": true,
+          "rationale": "Raising the eyebrows tests the upper facial muscles, controlled by CN VII."
+        },
+        {
           "text": "Puff out the cheeks",
           "correct": true,
           "rationale": "Puffing the cheeks tests facial muscle strength, controlled by CN VII."
         },
         {
-          "text": "Stick out the tongue",
-          "correct": false,
-          "rationale": "Tongue movement tests CN XII."
-        },
-        {
-          "text": "Follow a finger with the eyes",
-          "correct": false,
-          "rationale": "Eye movement tests CN III, IV, and VI."
+          "text": "Frown",
+          "correct": true,
+          "rationale": "Frowning tests the facial muscles, controlled by CN VII."
         },
         {
           "text": "Identify a familiar scent",
@@ -6797,7 +6797,7 @@
       "topic": "Cranial Nerves",
       "category": "Names & Types",
       "type": "sata",
-      "prompt": "Which cranial nerves have a motor function? Select all that apply.",
+      "prompt": "Which cranial nerves are motor only? Select all that apply.",
       "options": [
         {
           "text": "CN III, oculomotor",
@@ -6827,12 +6827,12 @@
         {
           "text": "CN VIII, vestibulocochlear",
           "correct": false,
-          "rationale": "CN VIII is sensory only: hearing and balance."
+          "rationale": "CN VIII is sensory only: hearing."
         },
         {
           "text": "CN VII, facial",
-          "correct": true,
-          "rationale": "CN VII is both sensory and motor; its motor part controls facial expression."
+          "correct": false,
+          "rationale": "CN VII is both sensory and motor."
         }
       ]
     },

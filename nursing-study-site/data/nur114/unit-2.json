@@ -277,30 +277,30 @@
         {
           "text": "Bend your knees, not your back.",
           "correct": true,
-          "rationale": "Bending the knees lowers the center of gravity and lets the leg muscles do the work."
+          "rationale": ""
         },
         {
           "text": "Keep the object as far from your body as possible.",
           "correct": false,
-          "rationale": "Holding a load away from the body increases strain on the back; keep it close."
+          "rationale": ""
         },
         {
           "text": "Pivot your feet instead of twisting your torso.",
           "correct": true,
-          "rationale": "Pivoting avoids twisting the spine, which can injure the back."
+          "rationale": ""
         },
         {
-          "text": "Keep your feet close together to stay steady.",
-          "correct": false,
-          "rationale": "Feet should be shoulder-width apart; a wider base of support is more stable."
+          "text": "Tighten your abdominal muscles before lifting.",
+          "correct": true,
+          "rationale": ""
         },
         {
           "text": "Lift using the muscles in your lower back.",
           "correct": false,
-          "rationale": "The lower back muscles are prone to injury; the leg muscles should do the lifting."
+          "rationale": ""
         }
       ],
-      "explanation": "Bending the knees and pivoting instead of twisting are correct body mechanics. Feet should be shoulder-width apart for a wide base, objects should stay close to the body, and lifting should use the leg muscles, not the back."
+      "explanation": "Bending the knees, pivoting instead of twisting, and contracting the abdominal muscles are correct body mechanics. Objects should stay close to the body, and lifting should use the leg (quadriceps) muscles, not the back."
     },
     {
       "id": "nur114-u2-mobility-007",
@@ -1991,9 +1991,9 @@
           "rationale": "Lemon-glycerin swabs dry the mouth and do not remove plaque the way brushing does."
         },
         {
-          "text": "Keep the head of the bed at 10 degrees or lower",
-          "correct": false,
-          "rationale": "A nearly flat position raises aspiration risk; the head of the bed is usually kept at 30 to 45 degrees."
+          "text": "Keep the head of the bed raised 30 to 45 degrees",
+          "correct": true,
+          "rationale": "Raising the head of the bed lowers the risk of aspirating secretions into the lungs."
         },
         {
           "text": "Apply lip moisturizer in place of brushing the teeth",
@@ -2001,7 +2001,7 @@
           "rationale": "Lip moisturizer protects the lips but does nothing to remove bacteria from the teeth and mouth."
         }
       ],
-      "explanation": "Regular nurse-provided oral hygiene, including brushing, lowers the mouth bacteria that can travel into the lungs along the artificial airway. Mouth care must not be skipped or replaced with lip products, lemon-glycerin swabs dry the mouth, and the head of the bed should be raised, not kept flat."
+      "explanation": "Regular nurse-provided oral hygiene, including brushing, lowers the mouth bacteria that can travel into the lungs along the artificial airway, and keeping the head of the bed raised 30 to 45 degrees lowers the risk of aspiration. Mouth care must not be skipped or replaced with lip products, and lemon-glycerin swabs dry the mouth."
     },
     {
       "id": "nur114-u2-hygiene-018",
@@ -4696,12 +4696,12 @@
           "rationale": "Pregnant teens are a vulnerable population."
         },
         {
-          "text": "A 50-year-old veteran who recently left military service",
-          "correct": true,
-          "rationale": "Veterans are considered a vulnerable population."
+          "text": "A 45-year-old client who has a high income and no chronic illness",
+          "correct": false,
+          "rationale": "A steady income and no chronic illness are not barriers to resources, so this client is not in a vulnerable population."
         }
       ],
-      "explanation": "Vulnerable populations face barriers to social, economic, and environmental resources and include people living in poverty, older adults, people with chronic illness or disabilities, pregnant teens, and veterans."
+      "explanation": "Vulnerable populations face barriers to social, economic, and environmental resources and include people living in poverty, older adults, people with chronic illness or disabilities, and pregnant teens."
     },
     {
       "id": "nur114-u2-dei-019",
@@ -7664,30 +7664,30 @@
         {
           "text": "Wear the CPAP device while sleeping.",
           "correct": true,
-          "rationale": "CPAP (continuous positive airway pressure) keeps the airway open during sleep."
+          "rationale": ""
         },
         {
           "text": "Follow a healthy weight-loss program.",
           "correct": true,
-          "rationale": "Weight loss reduces tissue around the airway that contributes to collapse."
+          "rationale": ""
         },
         {
           "text": "Avoid alcohol.",
           "correct": true,
-          "rationale": "Alcohol relaxes the airway muscles and worsens obstruction."
+          "rationale": ""
         },
         {
-          "text": "Take a sedative at bedtime to sleep more deeply.",
-          "correct": false,
-          "rationale": "Sedatives relax the airway muscles and can make apnea episodes worse."
+          "text": "Stop smoking.",
+          "correct": true,
+          "rationale": ""
         },
         {
           "text": "Sleep on your back.",
           "correct": false,
-          "rationale": "Lying on the back lets the airway collapse more easily and can worsen OSA."
+          "rationale": ""
         }
       ],
-      "explanation": "CPAP (continuous positive airway pressure), weight loss, and avoiding alcohol are key parts of treating obstructive sleep apnea (OSA), along with not smoking. Sedatives relax the airway muscles, and sleeping on the back lets the airway collapse more easily."
+      "explanation": "CPAP is the most widely recommended treatment for OSA, along with weight loss and avoiding smoking and alcohol. Sleeping on the back can worsen OSA."
     },
     {
       "id": "nur114-u2-comfort-rest-sleep-028",
@@ -8491,30 +8491,30 @@
         {
           "text": "Decreases energy",
           "correct": false,
-          "rationale": "Regular exercise increases energy rather than draining it."
+          "rationale": ""
         },
         {
           "text": "Increases mood",
           "correct": true,
-          "rationale": "Exercise improves mood."
+          "rationale": ""
         },
         {
           "text": "Inhibits the release of endorphins",
           "correct": false,
-          "rationale": "Exercise releases endorphins; it does not block them."
+          "rationale": ""
         },
         {
-          "text": "Works for stress only when done at high intensity",
-          "correct": false,
-          "rationale": "Moderate activity also lowers stress; high intensity is not required."
+          "text": "Decreases stress",
+          "correct": true,
+          "rationale": ""
         },
         {
           "text": "Improves sleep",
           "correct": true,
-          "rationale": "Regular exercise improves sleep quality."
+          "rationale": ""
         }
       ],
-      "explanation": "Exercise improves mood and sleep, and it also raises energy, lowers stress, and releases endorphins. Moderate activity is enough to get these benefits."
+      "explanation": "Exercise increases mood and energy, decreases stress, improves sleep, and releases endorphins."
     },
     {
       "id": "nur114-u2-stress-coping-012",
@@ -8762,30 +8762,30 @@
         {
           "text": "Acting on a suicide threat",
           "correct": true,
-          "rationale": "Acting on a suicide threat puts the client's life at immediate risk."
+          "rationale": ""
         },
         {
-          "text": "Crying while talking about a recent job loss",
-          "correct": false,
-          "rationale": "Crying about a loss is an expected emotional response, not by itself an emergency."
+          "text": "Throwing and breaking items",
+          "correct": true,
+          "rationale": ""
         },
         {
           "text": "Threatening to harm others",
           "correct": true,
-          "rationale": "Threats of harm to others are a safety emergency."
+          "rationale": ""
         },
         {
           "text": "Hostile and belligerent behavior",
           "correct": true,
-          "rationale": "Hostility and belligerence are signs that the situation may become unsafe."
+          "rationale": ""
         },
         {
           "text": "Asking to speak with a chaplain",
           "correct": false,
-          "rationale": "Seeking spiritual support is a healthy coping step, not an emergency."
+          "rationale": ""
         }
       ],
-      "explanation": "Signs of a mental health emergency include acting on a suicide threat, threatening to harm others, and hostile or belligerent behavior. Crying about a loss and asking for spiritual support are expected responses, not emergencies."
+      "explanation": "Signs of a mental health emergency include acting on a suicide threat, hostile or belligerent behavior, throwing or breaking items, and threatening harm."
     },
     {
       "id": "nur114-u2-stress-coping-020",

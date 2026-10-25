@@ -1103,9 +1103,9 @@
      "rationale": "Extra volume causes a full, bounding pulse."
     },
     {
-     "text": "Urine specific gravity of 1.035",
-     "correct": false,
-     "rationale": "Concentrated urine (1.030 or higher) points to dehydration; overload gives dilute urine."
+     "text": "Edema of the ankles",
+     "correct": true,
+     "rationale": "Excess fluid collects in the tissues."
     },
     {
      "text": "Low blood pressure",
@@ -1201,9 +1201,9 @@
      "rationale": "Limiting fluid and sodium helps reduce overload."
     },
     {
-     "text": "Hold the prescribed diuretic until the edema is gone",
-     "correct": false,
-     "rationale": "Diuretics are given to remove extra fluid, so holding them would let overload continue."
+     "text": "Monitor lung sounds",
+     "correct": true,
+     "rationale": "Crackles show fluid in the lungs."
     },
     {
      "text": "Encourage extra oral fluids",
@@ -1736,9 +1736,9 @@
      "rationale": "Regular electrolyte labs are part of monitoring."
     },
     {
-     "text": "Weekly weights taken at different times of day",
-     "correct": false,
-     "rationale": "Weights should be daily, at the same time and on the same scale, to track fluid shifts."
+     "text": "Urine volume and concentration",
+     "correct": true,
+     "rationale": "Low volume and high specific gravity point to deficit."
     },
     {
      "text": "Hearing acuity",
@@ -2595,9 +2595,9 @@
      "rationale": "Dialysis removes potassium when the kidneys can't."
     },
     {
-     "text": "Spironolactone to increase potassium excretion",
-     "correct": false,
-     "rationale": "Spironolactone is potassium-sparing and can raise potassium further; loop diuretics are used instead."
+     "text": "Stopping potassium supplements",
+     "correct": true,
+     "rationale": "Potassium intake should be stopped."
     },
     {
      "text": "A diet high in bananas and potatoes",
@@ -2698,9 +2698,9 @@
      "rationale": "Avocados are high in potassium."
     },
     {
-     "text": "Oranges and orange juice",
-     "correct": true,
-     "rationale": "Oranges and orange juice are high in potassium."
+     "text": "White rice",
+     "correct": false,
+     "rationale": "White rice is low in potassium."
     }
    ]
   },
@@ -3356,9 +3356,9 @@
      "rationale": "Dizziness is listed with high magnesium."
     },
     {
-     "text": "Tachycardia and high blood pressure",
-     "correct": false,
-     "rationale": "These go with low magnesium; high magnesium slows the heart and lowers blood pressure."
+     "text": "Confusion",
+     "correct": true,
+     "rationale": "High magnesium can cause confusion."
     },
     {
      "text": "Muscle spasticity and seizures",
@@ -3387,9 +3387,9 @@
      "rationale": "Malabsorption lowers magnesium."
     },
     {
-     "text": "Overuse of magnesium-containing antacids or laxatives",
-     "correct": false,
-     "rationale": "Extra magnesium from antacids or laxatives raises magnesium, causing hypermagnesemia."
+     "text": "Certain medications, such as diuretics",
+     "correct": true,
+     "rationale": "Some medications cause magnesium loss."
     },
     {
      "text": "Alcohol use disorder",
@@ -4339,29 +4339,29 @@
    "prompt": "A nurse is starting a peripheral IV. Which actions are appropriate? Select all that apply.",
    "options": [
     {
-     "text": "Insert the catheter bevel down at a 45° angle",
-     "correct": false,
-     "rationale": "The catheter goes in bevel up at 10–30° to avoid going through the back wall of the vein."
+     "text": "Start with distal veins on the nondominant arm",
+     "correct": true,
+     "rationale": "Distal sites first saves proximal sites for later."
+    },
+    {
+     "text": "Clip hair at the site if needed",
+     "correct": true,
+     "rationale": "Clipping avoids skin abrasions."
+    },
+    {
+     "text": "Insert the catheter bevel up at a 10–30° angle",
+     "correct": true,
+     "rationale": "This angle lowers the risk of going through the back wall of the vein."
     },
     {
      "text": "Shave the site to improve dressing adhesion",
      "correct": false,
-     "rationale": "Shaving causes microabrasions and raises infection risk; clip hair instead."
-    },
-    {
-     "text": "Choose a vein at the site of a recent infiltration",
-     "correct": false,
-     "rationale": "Veins with a recent infiltration should be avoided."
-    },
-    {
-     "text": "Start with distal veins on the nondominant arm",
-     "correct": true,
-     "rationale": "Starting distal saves proximal sites for later."
+     "rationale": "Shaving causes microabrasions and raises infection risk."
     },
     {
      "text": "Use the arm on the side of a mastectomy",
      "correct": false,
-     "rationale": "Avoid an arm on the side of a mastectomy."
+     "rationale": "Avoid an arm with lymph nodes removed."
     }
    ]
   },
@@ -4541,9 +4541,9 @@
      "rationale": "Neck veins distend with excess volume."
     },
     {
-     "text": "Weak, thready pulse",
-     "correct": false,
-     "rationale": "A weak, thready pulse points to fluid deficit; overload causes a bounding pulse and tachycardia."
+     "text": "Shortness of breath",
+     "correct": true,
+     "rationale": "Fluid in the lungs makes breathing hard."
     },
     {
      "text": "Bradycardia",
@@ -5232,19 +5232,19 @@
      "rationale": "The kidneys generate bicarbonate (base)."
     },
     {
-     "text": "Blow off carbon dioxide",
-     "correct": false,
-     "rationale": "The lungs blow off CO2."
-    },
-    {
-     "text": "Regulate pH by releasing antidiuretic hormone",
-     "correct": false,
-     "rationale": "ADH comes from the posterior pituitary and controls water, not pH."
-    },
-    {
      "text": "Hold on to existing bicarbonate",
      "correct": true,
      "rationale": "The kidneys reabsorb bicarbonate."
+    },
+    {
+     "text": "Excrete hydrogen ions",
+     "correct": true,
+     "rationale": "The kidneys get rid of acid as hydrogen ions."
+    },
+    {
+     "text": "Blow off carbon dioxide",
+     "correct": false,
+     "rationale": "The lungs blow off CO2."
     },
     {
      "text": "Produce carbonic acid from oxygen",
@@ -5995,9 +5995,9 @@
      "rationale": "Gastric suction removes acid."
     },
     {
-     "text": "Hyperventilation from anxiety",
-     "correct": false,
-     "rationale": "Fast breathing blows off CO2 and causes respiratory alkalosis, not metabolic alkalosis."
+     "text": "Overuse of antacids",
+     "correct": true,
+     "rationale": "Antacids add base."
     },
     {
      "text": "Severe diarrhea",
@@ -6182,24 +6182,24 @@
    "prompt": "Which nutrients supply energy? Select all that apply.",
    "options": [
     {
-     "text": "Vitamins",
-     "correct": false,
-     "rationale": "Vitamins regulate body processes but don't supply energy."
-    },
-    {
      "text": "Carbohydrates",
      "correct": true,
-     "rationale": "Carbs are the primary fuel source."
+     "rationale": "Carbs supply energy."
     },
     {
-     "text": "Minerals",
-     "correct": false,
-     "rationale": "Minerals regulate body processes but don't supply energy."
+     "text": "Proteins",
+     "correct": true,
+     "rationale": "Proteins can supply energy."
     },
     {
      "text": "Lipids",
      "correct": true,
      "rationale": "Fats supply energy."
+    },
+    {
+     "text": "Vitamins",
+     "correct": false,
+     "rationale": "Vitamins regulate body processes."
     },
     {
      "text": "Water",
@@ -6980,24 +6980,24 @@
    "prompt": "Which are functions of water in the body? Select all that apply.",
    "options": [
     {
-     "text": "Stored in fat for later use",
-     "correct": false,
-     "rationale": "Water isn't stored for later use."
-    },
-    {
      "text": "Solvent for chemical processes",
      "correct": true,
      "rationale": "Water dissolves substances for chemical reactions."
     },
     {
-     "text": "Main fuel source for the brain",
-     "correct": false,
-     "rationale": "Carbohydrates are the main fuel source; water has no calories."
-    },
-    {
      "text": "Regulates body temperature",
      "correct": true,
      "rationale": "Sweat evaporation cools the body."
+    },
+    {
+     "text": "Aids digestion and absorption",
+     "correct": true,
+     "rationale": "Water helps digestion, absorption, circulation and excretion."
+    },
+    {
+     "text": "Stored in fat for later use",
+     "correct": false,
+     "rationale": "Water isn't stored for later use."
     },
     {
      "text": "Provides 4 calories per gram",
@@ -7522,9 +7522,9 @@
      "rationale": "Calcium needs increase as absorption decreases."
     },
     {
-     "text": "They need less fiber because digestion slows",
-     "correct": false,
-     "rationale": "Older adults still need fiber and bulk to support slower GI function."
+     "text": "They need fiber for GI function",
+     "correct": true,
+     "rationale": "Fiber and bulk help GI function."
     },
     {
      "text": "They need fewer vitamins and minerals than younger adults",
@@ -8012,14 +8012,14 @@
      "rationale": "Small bites are easier to swallow safely."
     },
     {
-     "text": "Have the client tilt the head back to swallow",
-     "correct": false,
-     "rationale": "Tilting the head back opens the airway; tucking the chin is what protects it."
+     "text": "Remind the client to tuck their chin to swallow",
+     "correct": true,
+     "rationale": "Chin-tuck narrows the airway entrance."
     },
     {
-     "text": "Give a prescribed sedative just before the meal to calm the client",
-     "correct": false,
-     "rationale": "Sedatives before meals lower alertness and raise aspiration risk."
+     "text": "Check the mouth for pocketed food after eating",
+     "correct": true,
+     "rationale": "Pocketed food can be aspirated later."
     },
     {
      "text": "Offer a straw for liquids",
@@ -8494,24 +8494,24 @@
    "prompt": "Which tubes are used for short-term enteral feeding? Select all that apply.",
    "options": [
     {
-     "text": "PEG tube",
-     "correct": false,
-     "rationale": "A PEG is a gastrostomy tube used long-term."
-    },
-    {
      "text": "Nasogastric tube",
      "correct": true,
-     "rationale": "NG tubes are used short-term."
-    },
-    {
-     "text": "Jejunostomy (J-tube)",
-     "correct": false,
-     "rationale": "A J-tube goes through the abdominal wall and is used long-term."
+     "rationale": "NG tubes are short-term."
     },
     {
      "text": "Nasoduodenal tube",
      "correct": true,
-     "rationale": "Nasal tubes such as nasoduodenal tubes are used short-term."
+     "rationale": "Nasoduodenal tubes are short-term."
+    },
+    {
+     "text": "Nasojejunal tube",
+     "correct": true,
+     "rationale": "Nasojejunal tubes are short-term."
+    },
+    {
+     "text": "PEG tube",
+     "correct": false,
+     "rationale": "A PEG is a gastrostomy tube used long-term."
     },
     {
      "text": "Central venous catheter",
@@ -8743,9 +8743,9 @@
      "rationale": "Check before every medication."
     },
     {
-     "text": "Only if the client reports discomfort",
-     "correct": false,
-     "rationale": "Tubes can move without symptoms, so placement is checked on a schedule, not only with complaints."
+     "text": "At regular intervals during continuous feedings",
+     "correct": true,
+     "rationale": "Tubes can move during continuous feeds."
     },
     {
      "text": "Only when the tube is removed",
@@ -10509,9 +10509,14 @@
    "prompt": "A nurse is preparing to insert an NG tube for gastric decompression. Which actions should the nurse take before beginning? Select all that apply.",
    "options": [
     {
-     "text": "Place the client supine with the head of the bed flat",
-     "correct": false,
-     "rationale": "The client should be in high-Fowler's position to lower the risk of vomiting and aspiration."
+     "text": "Review a signal the client can use if in distress",
+     "correct": true,
+     "rationale": "Lets the client stop the procedure."
+    },
+    {
+     "text": "Lay a towel across the client's chest",
+     "correct": true,
+     "rationale": "Keeps the area clean and protects the gown."
     },
     {
      "text": "Give oral pain medication",
@@ -10519,14 +10524,9 @@
      "rationale": "Suction would remove it from the stomach."
     },
     {
-     "text": "Review a signal the client can use if in distress",
-     "correct": true,
-     "rationale": "An agreed signal lets the client stop the procedure."
-    },
-    {
      "text": "Get a small-bore, weighted-tip feeding tube",
      "correct": false,
-     "rationale": "Decompression uses a large-bore single- or double-lumen tube; small-bore weighted tubes are for feeding."
+     "rationale": "Decompression uses a double-lumen, single-lumen or intestinal decompression tube; weighted small-bore tubes are for feeding."
     },
     {
      "text": "Have a petroleum-based lubricant ready",
@@ -10927,9 +10927,9 @@
      "rationale": "Walnuts contain omega-3s."
     },
     {
-     "text": "Flaxseed",
-     "correct": true,
-     "rationale": "Flaxseed is a plant source of omega-3 fatty acids."
+     "text": "Butter",
+     "correct": false,
+     "rationale": "Butter is mostly saturated fat."
     }
    ]
   },
@@ -10994,9 +10994,9 @@
      "rationale": "Brussels sprouts are high in vitamin C."
     },
     {
-     "text": "Potatoes",
-     "correct": true,
-     "rationale": "Potatoes provide vitamin C."
+     "text": "Butter",
+     "correct": false,
+     "rationale": "Butter isn't a vitamin C source."
     }
    ]
   },
@@ -11123,29 +11123,29 @@
    "prompt": "Which foods are high-glycemic and raise blood glucose quickly? Select all that apply.",
    "options": [
     {
-     "text": "Lentils",
-     "correct": false,
-     "rationale": "Legumes are low-glycemic."
-    },
-    {
      "text": "White bread",
      "correct": true,
      "rationale": "Refined grains raise glucose quickly."
     },
     {
-     "text": "Blueberries",
+     "text": "Potatoes",
+     "correct": true,
+     "rationale": "Potatoes have a high glycemic index."
+    },
+    {
+     "text": "Processed snack foods",
+     "correct": true,
+     "rationale": "Processed snacks spike glucose."
+    },
+    {
+     "text": "Lentils",
      "correct": false,
-     "rationale": "Most fruits, including blueberries, are low-glycemic."
+     "rationale": "Legumes are low-glycemic."
     },
     {
      "text": "Broccoli",
      "correct": false,
      "rationale": "Vegetables are low-glycemic."
-    },
-    {
-     "text": "Potatoes",
-     "correct": true,
-     "rationale": "Potatoes have a high glycemic index."
     }
    ]
   },
@@ -11169,9 +11169,9 @@
      "rationale": "Cookies are empty calories."
     },
     {
-     "text": "Baked potatoes",
-     "correct": false,
-     "rationale": "Baked potatoes are a healthy complex carbohydrate, not empty calories."
+     "text": "Sweetened drinks",
+     "correct": true,
+     "rationale": "Sugary drinks are empty calories."
     },
     {
      "text": "Fresh vegetables",
@@ -11838,24 +11838,24 @@
    "prompt": "Which are sources of iodine? Select all that apply.",
    "options": [
     {
-     "text": "Apples",
-     "correct": false,
-     "rationale": "Apples aren't an iodine source."
-    },
-    {
      "text": "Seafood",
      "correct": true,
      "rationale": "Seafood provides iodine."
     },
     {
-     "text": "Olive oil",
-     "correct": false,
-     "rationale": "Olive oil is a healthy fat, not an iodine source."
-    },
-    {
      "text": "Iodized salt",
      "correct": true,
      "rationale": "Salt is fortified with iodine."
+    },
+    {
+     "text": "Dairy products",
+     "correct": true,
+     "rationale": "Dairy provides iodine."
+    },
+    {
+     "text": "Apples",
+     "correct": false,
+     "rationale": "Apples aren't an iodine source."
     },
     {
      "text": "Rice",
@@ -12347,9 +12347,9 @@
      "rationale": "Flaxseed contains omega-3s."
     },
     {
-     "text": "Coconut oil",
-     "correct": false,
-     "rationale": "Coconut oil is mostly saturated fat and isn't an omega-3 source."
+     "text": "Fish oil",
+     "correct": true,
+     "rationale": "Fish oil is a concentrated omega-3 source."
     },
     {
      "text": "White bread",
@@ -12794,9 +12794,9 @@
    "prompt": "A nurse is assessing a client's stool. Which characteristics should the nurse assess? Select all that apply.",
    "options": [
     {
-     "text": "Specific gravity",
-     "correct": false,
-     "rationale": "Specific gravity is checked on urine, not stool."
+     "text": "Volume",
+     "correct": true,
+     "rationale": "Amount is part of a stool assessment."
     },
     {
      "text": "Color",
@@ -12804,14 +12804,9 @@
      "rationale": "Color can point to bleeding (red, black) or other problems."
     },
     {
-     "text": "Temperature",
-     "correct": false,
-     "rationale": "Stool temperature isn't part of a stool assessment."
-    },
-    {
-     "text": "Glucose checked with a reagent strip",
-     "correct": false,
-     "rationale": "Reagent strips check urine for glucose; this isn't part of a stool assessment."
+     "text": "Odor",
+     "correct": true,
+     "rationale": "An unusual odor can suggest infection or malabsorption."
     },
     {
      "text": "Consistency",
@@ -12819,9 +12814,14 @@
      "rationale": "Consistency (hard, formed, loose, watery) shows constipation or diarrhea."
     },
     {
-     "text": "Osmolality",
+     "text": "Shape",
+     "correct": true,
+     "rationale": "Shape is part of a stool assessment and is used on the Bristol Stool Chart."
+    },
+    {
+     "text": "Temperature",
      "correct": false,
-     "rationale": "Osmolality is measured in serum or urine, not as part of a stool assessment."
+     "rationale": "Stool temperature isn't part of a stool assessment."
     },
     {
      "text": "pH measured at the bedside",
@@ -14116,14 +14116,14 @@
      "rationale": "The bowel above the blockage fills with fluid and gas."
     },
     {
-     "text": "Soft, flat abdomen",
-     "correct": false,
-     "rationale": "The bowel above a blockage fills with fluid and gas, so the abdomen distends."
+     "text": "Abdominal pain",
+     "correct": true,
+     "rationale": "Pressure and stretching cause pain."
     },
     {
-     "text": "Regular passage of flatus and formed stool",
-     "correct": false,
-     "rationale": "Gas and stool can't get past a blockage, so severe constipation with no flatus is expected."
+     "text": "Severe constipation with no flatus",
+     "correct": true,
+     "rationale": "Nothing can pass the blockage."
     },
     {
      "text": "Frequent watery stools",
@@ -15918,34 +15918,34 @@
    "prompt": "A nurse is teaching a client with an ileostomy about food blockage. Which manifestations should the client report? Select all that apply.",
    "options": [
     {
-     "text": "Dark green, loose output",
-     "correct": false,
-     "rationale": "This is typical ileostomy drainage."
-    },
-    {
      "text": "Abdominal cramping",
      "correct": true,
      "rationale": "Cramping is a sign of blockage."
     },
     {
-     "text": "Output that thickens after eating applesauce or rice",
+     "text": "Nausea and vomiting",
+     "correct": true,
+     "rationale": "These are signs of blockage."
+    },
+    {
+     "text": "A swollen stoma",
+     "correct": true,
+     "rationale": "Swelling of the stoma is a sign of blockage."
+    },
+    {
+     "text": "No ileostomy output for at least 6 hours",
+     "correct": true,
+     "rationale": "No output for 6 hours or more suggests blockage."
+    },
+    {
+     "text": "Dark green, loose output",
      "correct": false,
-     "rationale": "These foods are expected to thicken ileostomy output."
+     "rationale": "This is typical ileostomy drainage."
     },
     {
      "text": "A pink, moist stoma",
      "correct": false,
      "rationale": "This is expected."
-    },
-    {
-     "text": "Up to 2,000 mL of output a day in the first weeks after surgery",
-     "correct": false,
-     "rationale": "High output early after surgery is expected; the client watches for dehydration."
-    },
-    {
-     "text": "Nausea and vomiting",
-     "correct": true,
-     "rationale": "These are signs of blockage."
     }
    ]
   },
@@ -16610,29 +16610,29 @@
    "prompt": "A nurse is preparing to insert an NG tube for gastric decompression. Which actions should the nurse take? Select all that apply.",
    "options": [
     {
-     "text": "Measure the tube from the tip of the nose to the umbilicus",
-     "correct": false,
-     "rationale": "The tube is measured from the tip of the nose to the earlobe, then to the xiphoid process."
-    },
-    {
-     "text": "Help the client into a left side-lying position",
-     "correct": false,
-     "rationale": "High-Fowler's position is used to lower the risk of vomiting and aspiration."
-    },
-    {
-     "text": "Give oral pain medication first",
-     "correct": false,
-     "rationale": "The tube will suction the medication out of the stomach."
-    },
-    {
      "text": "Agree on a signal the client can use to show distress",
      "correct": true,
      "rationale": "A hand signal lets the client stop the procedure."
     },
     {
-     "text": "Choose the nostril that looks narrower so the tube fits snugly",
+     "text": "Place a towel across the client's chest",
+     "correct": true,
+     "rationale": "This keeps the area clean and protects the gown."
+    },
+    {
+     "text": "Help the client into high-Fowler's position if possible",
+     "correct": true,
+     "rationale": "Sitting upright reduces the risk of vomiting and aspiration."
+    },
+    {
+     "text": "Check the nares for the clearer side",
+     "correct": true,
+     "rationale": "Assessing the nares helps avoid a deviated septum or obstruction."
+    },
+    {
+     "text": "Give oral pain medication first",
      "correct": false,
-     "rationale": "The nurse checks the nares and uses the clearer side to avoid an obstruction."
+     "rationale": "The tube will suction the medication out of the stomach."
     },
     {
      "text": "Use a petroleum-based lubricant",
@@ -17325,24 +17325,9 @@
    "prompt": "Which are functions of the kidneys? Select all that apply.",
    "options": [
     {
-     "text": "Producing insulin",
-     "correct": false,
-     "rationale": "Insulin is made by the pancreas."
-    },
-    {
      "text": "Filtering waste and toxins from the blood",
      "correct": true,
      "rationale": "This is the main job of the kidneys."
-    },
-    {
-     "text": "Storing urine until it is voided",
-     "correct": false,
-     "rationale": "The bladder stores urine."
-    },
-    {
-     "text": "Producing antidiuretic hormone (ADH)",
-     "correct": false,
-     "rationale": "ADH comes from the posterior pituitary; it acts on the kidneys."
     },
     {
      "text": "Balancing fluids and electrolytes",
@@ -17350,9 +17335,24 @@
      "rationale": "The kidneys regulate fluid and electrolyte levels."
     },
     {
-     "text": "Absorbing most nutrients from digested food",
+     "text": "Helping keep acid-base balance",
+     "correct": true,
+     "rationale": "The kidneys help maintain acid-base balance."
+    },
+    {
+     "text": "Making hormones that help control blood pressure",
+     "correct": true,
+     "rationale": "The kidneys produce renin."
+    },
+    {
+     "text": "Making erythropoietin for red blood cell production",
+     "correct": true,
+     "rationale": "Erythropoietin stimulates red blood cell production."
+    },
+    {
+     "text": "Producing insulin",
      "correct": false,
-     "rationale": "The small intestine absorbs most nutrients."
+     "rationale": "Insulin is made by the pancreas."
     },
     {
      "text": "Producing bile",
@@ -18258,34 +18258,34 @@
    "prompt": "A nurse is starting a bladder-retraining program for a client with urge incontinence. Which actions should the nurse take? Select all that apply.",
    "options": [
     {
-     "text": "Restrict fluids during the day",
-     "correct": false,
-     "rationale": "Daytime fluids are encouraged; limit them before bed instead."
-    },
-    {
      "text": "Have the client record urination times",
      "correct": true,
      "rationale": "A record shows progress toward 4-hour intervals."
     },
     {
-     "text": "Lengthen the interval by 1 hour every day, even if accidents occur",
-     "correct": false,
-     "rationale": "Intervals are lengthened slowly (5–15 minutes) after 3 days without accidents."
+     "text": "Gradually increase the time between voids",
+     "correct": true,
+     "rationale": "Slowly lengthening intervals retrains the bladder."
     },
     {
-     "text": "Base the schedule only on the times the client already stays dry",
+     "text": "Remind the client to hold urine until the scheduled time",
+     "correct": true,
+     "rationale": "Holding helps the bladder stretch and suppresses urgency."
+    },
+    {
+     "text": "Teach distraction and relaxation to get through an urge",
+     "correct": true,
+     "rationale": "These help the client wait for the scheduled time."
+    },
+    {
+     "text": "Restrict fluids during the day",
      "correct": false,
-     "rationale": "Following the client's own pattern is habit training, used for clients with limited cognitive ability."
+     "rationale": "Daytime fluids are encouraged; limit them before bed instead."
     },
     {
      "text": "Have the client void every time an urge is felt",
      "correct": false,
      "rationale": "That reinforces urgency and frequency."
-    },
-    {
-     "text": "Gradually increase the time between voids",
-     "correct": true,
-     "rationale": "Slowly lengthening intervals retrains the bladder."
     }
    ]
   },
@@ -18991,29 +18991,29 @@
    "prompt": "Which manifestations are typical of a kidney stone? Select all that apply.",
    "options": [
     {
-     "text": "Painless, bright-yellow urine",
-     "correct": false,
-     "rationale": "Stones are usually very painful."
-    },
-    {
      "text": "Sharp flank pain that travels toward the groin",
      "correct": true,
      "rationale": "Stones cause colicky pain along the urinary tract."
     },
     {
-     "text": "Fever as an expected finding with an uncomplicated stone",
-     "correct": false,
-     "rationale": "Fever with a stone suggests infection and isn't expected."
-    },
-    {
-     "text": "Pitting edema of the legs",
-     "correct": false,
-     "rationale": "Edema points to fluid overload, not a kidney stone."
-    },
-    {
      "text": "Blood in the urine",
      "correct": true,
      "rationale": "Stones scrape the lining and cause hematuria."
+    },
+    {
+     "text": "Nausea and vomiting",
+     "correct": true,
+     "rationale": "Severe pain often causes nausea and vomiting."
+    },
+    {
+     "text": "Urinary frequency and urgency",
+     "correct": true,
+     "rationale": "Stones can irritate the bladder."
+    },
+    {
+     "text": "Painless, bright-yellow urine",
+     "correct": false,
+     "rationale": "Stones are usually very painful."
     },
     {
      "text": "Constipation as the main symptom",
@@ -19715,24 +19715,9 @@
    "prompt": "Which are risk factors for CAUTI? Select all that apply.",
    "options": [
     {
-     "text": "Keeping the bag below the bladder",
-     "correct": false,
-     "rationale": "This prevents reflux and lowers risk."
-    },
-    {
      "text": "A longer time with the catheter in place",
      "correct": true,
      "rationale": "Risk rises the longer the catheter stays."
-    },
-    {
-     "text": "Removing the catheter as soon as it's no longer needed",
-     "correct": false,
-     "rationale": "Prompt removal lowers risk."
-    },
-    {
-     "text": "Using sterile technique for insertion",
-     "correct": false,
-     "rationale": "Sterile insertion lowers risk."
     },
     {
      "text": "Opening the closed drainage system",
@@ -19740,9 +19725,24 @@
      "rationale": "Breaks in the system let bacteria in."
     },
     {
-     "text": "Assessing the need for the catheter every day",
+     "text": "Routine catheter changes",
+     "correct": true,
+     "rationale": "Changing on a schedule adds risk."
+    },
+    {
+     "text": "Irrigating the catheter",
+     "correct": true,
+     "rationale": "Irrigation opens the system."
+    },
+    {
+     "text": "Keeping the bag below the bladder",
      "correct": false,
-     "rationale": "Daily review leads to earlier removal and lowers risk."
+     "rationale": "This prevents reflux and lowers risk."
+    },
+    {
+     "text": "Using sterile technique for insertion",
+     "correct": false,
+     "rationale": "Sterile insertion lowers risk."
     }
    ]
   },
@@ -20686,24 +20686,9 @@
    "prompt": "Which findings in a client with a urinary diversion should the nurse report? Select all that apply.",
    "options": [
     {
-     "text": "Small amount of mucus in urine from an ileal conduit",
-     "correct": false,
-     "rationale": "This is expected because the conduit is made from intestine."
-    },
-    {
      "text": "A dusky or cyanotic stoma",
      "correct": true,
      "rationale": "This suggests poor perfusion."
-    },
-    {
-     "text": "Urine draining continuously from an ileal conduit stoma",
-     "correct": false,
-     "rationale": "An ileal conduit isn't continent, so constant drainage into the pouch is expected."
-    },
-    {
-     "text": "Pink, moist stoma",
-     "correct": false,
-     "rationale": "This is expected."
     },
     {
      "text": "Inability to pass a catheter into a continent reservoir",
@@ -20711,9 +20696,24 @@
      "rationale": "This can mean obstruction or overdistention."
     },
     {
-     "text": "Mild stoma swelling in the first weeks after surgery",
+     "text": "Fever with cloudy, foul-smelling urine",
+     "correct": true,
+     "rationale": "These suggest infection."
+    },
+    {
+     "text": "New confusion in an older adult",
+     "correct": true,
+     "rationale": "Confusion can be a sign of UTI in older adults."
+    },
+    {
+     "text": "Small amount of mucus in urine from an ileal conduit",
      "correct": false,
-     "rationale": "New stomas are swollen at first and shrink over the following weeks."
+     "rationale": "This is expected."
+    },
+    {
+     "text": "Pink, moist stoma",
+     "correct": false,
+     "rationale": "This is expected."
     }
    ]
   },
