@@ -5309,37 +5309,6 @@
    ]
   },
   {
-   "id": "nur114-u4-acid-base-008",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Acid-Base Balance",
-   "category": "Acid-Base Basics",
-   "type": "mc",
-   "prompt": "Which system corrects an acid-base imbalance faster?",
-   "options": [
-    {
-     "text": "The lungs, within minutes to hours",
-     "correct": true,
-     "rationale": "The lungs respond quickly; the kidneys take hours to days."
-    },
-    {
-     "text": "The kidneys, within minutes",
-     "correct": false,
-     "rationale": "The kidneys take hours to days."
-    },
-    {
-     "text": "They respond at exactly the same speed",
-     "correct": false,
-     "rationale": "The lungs respond much faster."
-    },
-    {
-     "text": "Neither responds; only medications correct it",
-     "correct": false,
-     "rationale": "The body compensates on its own."
-    }
-   ]
-  },
-  {
    "id": "nur114-u4-acid-base-009",
    "course": "NUR 114",
    "unit": 4,
@@ -5994,37 +5963,6 @@
      "text": "Diabetic ketoacidosis",
      "correct": false,
      "rationale": "DKA causes acidosis."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-acid-base-029",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Acid-Base Balance",
-   "category": "Causes & Care",
-   "type": "mc",
-   "prompt": "A client in diabetic ketoacidosis has deep, rapid breathing. What is the purpose of this breathing pattern?",
-   "options": [
-    {
-     "text": "To blow off CO2 and raise the pH",
-     "correct": true,
-     "rationale": "Kussmaul respirations are the lungs compensating for metabolic acidosis."
-    },
-    {
-     "text": "To take in more oxygen for the brain",
-     "correct": false,
-     "rationale": "The main purpose is to get rid of acid as CO2."
-    },
-    {
-     "text": "To retain CO2 and lower the pH",
-     "correct": false,
-     "rationale": "The body is trying to raise the pH."
-    },
-    {
-     "text": "It is caused by anxiety",
-     "correct": false,
-     "rationale": "It's compensation for acidosis."
     }
    ]
   },
