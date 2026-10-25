@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priority Setting &amp; Managing Care &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Priority Setting &amp; Managing Care &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-1-intro-to-nursing/priority-care-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Priority Setting &amp; Managing Care &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-01" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=25"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Priority Setting &amp; Managing Care</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  priority: {label:"Priority Setting", hue:"red"},
+  managing: {label:"Managing Care &amp; Delegation", hue:"blue"},
+  pcc: {label:"Patient-Centered Care", hue:"magenta"},
+  culture: {label:"Culture &amp; Spirituality", hue:"yellow"}
+};
+var CARDS = [
+[1, "priority", "Maslow's hierarchy (first to last)", "Physiological → safety → love and belonging → esteem → self-actualization"],
+[2, "priority", "Physiological needs", "Air, water, food, housing, sleep, sexual activity. Airway comes first"],
+[3, "priority", "ABCDE", "Airway, Breathing, Circulation, Disability (neuro), Exposure"],
+[4, "priority", "Why assess ABCs before a neuro exam?", "Airway, breathing and circulation problems can change neurological findings"],
+[5, "priority", "Breathing assessment", "Rate, depth, ease; accessory muscles; lung sounds; oxygen saturation"],
+[6, "priority", "Circulation assessment", "Pulse rate and strength, BP (blood pressure), capillary refill, skin tone, urine output; control bleeding"],
+[7, "priority", "Disability assessment", "Alert and oriented? Arousable? Responds to painful stimuli? Pupils, blood sugar"],
+[8, "priority", "Signs of severe airway obstruction", "Can't speak or cry, clutching the throat, high-pitched wheezing, cyanosis, weak cough, loss of consciousness"],
+[9, "priority", "Acute vs chronic", "Acute (sudden) problems usually come first"],
+[10, "priority", "Least restrictive, least invasive", "Try the gentlest option that works first: reorientation and a sitter before restraints"],
+[11, "priority", "Safety and risk reduction", "Whatever poses the greatest immediate risk comes first"],
+[12, "priority", "Triage: red", "Emergent: life-threatening, needs care now"],
+[13, "priority", "Triage: yellow", "Urgent or delayed: serious, can wait briefly"],
+[14, "priority", "Triage: green", "Nonurgent or minimal: minor, can wait hours or days"],
+[15, "priority", "Triage: black", "Expectant: deceased or not expected to survive; comfort measures"],
+[16, "priority", "Rationing", "Deciding how to use resources too scarce to meet every need"],
+[17, "managing", "Time management matrix", "Urgent + important: do. Important, not urgent: decide (schedule). Urgent, not important: delegate. Neither: delete"],
+[18, "managing", "Five rights of delegation", "Right task, right circumstance, right person, right directions and communication, right supervision and evaluation"],
+[19, "managing", "Who is accountable after delegating?", "The nurse who delegated"],
+[20, "managing", "Right circumstance", "Delegate only when the situation is appropriate and the client is stable"],
+[21, "managing", "What can't be delegated", "Assessment, analysis, planning and evaluation"],
+[22, "managing", "I-SBAR-R", "Identify, Situation, Background, Assessment, Recommendation, Read back"],
+[23, "managing", "SOAP", "Subjective, Objective, Assessment, Plan"],
+[24, "managing", "When does discharge planning start?", "On admission; it continues throughout the stay"],
+[25, "managing", "IDEAL discharge planning", "Include client and caregivers, Discuss (meds, home life, warning signs, test results, follow-up), Educate, Assess the teaching, Listen to goals"],
+[26, "managing", "Teach-back", "The client explains the teaching in their own words to show understanding"],
+[27, "managing", "Acuity", "How complex a client's needs are; used to make assignments"],
+[28, "managing", "Assignment types", "Direct (specific clients), area (a zone), group (by location or acuity), team nursing (shared tasks)"],
+[29, "managing", "STAMP", "Early signs of agitation: Staring, Tone and volume of voice, Anxiety, Mumbling, Pacing"],
+[30, "managing", "SBIRT", "Screening, Brief Intervention and Referral to Treatment for risky alcohol and drug use"],
+[31, "pcc", "Patient-centered care", "Puts the client at the center of care"],
+[32, "pcc", "Cornerstone of patient-centered care", "Client preferences: endorsing participation, promoting understanding, sharing information"],
+[33, "pcc", "Watson's theory of human caring", "Healing mind, body and spirit through human connection; ten caritas processes; nurses must care for themselves too"],
+[34, "pcc", "Swanson's five caring processes", "Maintaining belief, knowing, being with, doing for, enabling"],
+[35, "pcc", "Doing for", "Doing what the client would do for themself if they could"],
+[36, "pcc", "Enabling", "Guiding the client and family through events with information and support"],
+[37, "pcc", "Being with", "Being emotionally and physically present"],
+[38, "pcc", "Caring behaviors", "Listening, touch (ask permission first), being present, providing comfort, showing compassion"],
+[39, "pcc", "Why ask before touching?", "Touch without consent can be battery, and touch preferences vary by culture"],
+[40, "pcc", "Palliative care", "Interprofessional symptom management for serious illness to keep the best quality of life"],
+[41, "pcc", "Medically futile", "Treatment that can't cure or extend life"],
+[42, "culture", "Culturally competent care", "Evidence-based care that fits the client's values, beliefs and practices. Don't assume: ask"],
+[43, "culture", "Cultural awareness", "Self-assessment of your own culture and biases"],
+[44, "culture", "Acculturation", "Taking on another group's cultural traits"],
+[45, "culture", "Jehovah's Witnesses", "Usually decline blood transfusions"],
+[46, "culture", "Muslim dietary practice", "Halal meat; avoid pork"],
+[47, "culture", "Eye contact", "Varies by culture: may be avoided out of respect, seen as rude, or avoided between genders"],
+[48, "culture", "Generation X communication", "Quick, direct; may question providers"],
+[49, "culture", "Baby boomer communication", "Face-to-face, formal, attentive listening"],
+[50, "culture", "Spiritual well-being", "Contentment with who one is and one's belonging in the universe"],
+[51, "culture", "Spiritual distress", "Questioning life's meaning or beliefs, or anger at a higher power: despair, anger, fear"],
+[52, "culture", "FICA", "Faith and belief, Importance, Community, Address in care"],
+[53, "culture", "HOPE", "Hope sources, Organized religion, Personal spirituality and practices, Effects on care and end of life"],
+[54, "culture", "Pastoral care", "Chaplains who give spiritual support to clients, families and staff of any belief"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

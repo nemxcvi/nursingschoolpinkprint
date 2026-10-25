@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundations &amp; the Nursing Process &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Foundations &amp; the Nursing Process &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-1-intro-to-nursing/foundations-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Foundations &amp; the Nursing Process &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-01" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=25"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Foundations &amp; the Nursing Process</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  profession: {label:"Profession &amp; Regulation", hue:"blue"},
+  judgment: {label:"Clinical Judgment", hue:"violet"},
+  process: {label:"Nursing Process", hue:"green"},
+  promotion: {label:"Health Promotion &amp; Prevention", hue:"orange"}
+};
+var CARDS = [
+[1, "profession", "ANA (American Nurses Association) definition of nursing", "The art and science of caring: protecting and promoting health, preventing illness and injury, easing suffering, diagnosing and treating human responses, and advocating for clients and communities"],
+[2, "profession", "Roles of the nurse", "Caregiver, educator, advocate, counselor, leader; also case manager, researcher, manager and change agent"],
+[3, "profession", "Case manager", "Coordinates care among several health professionals"],
+[4, "profession", "Change agent", "Helps nursing practice adapt to better meet client needs"],
+[5, "profession", "Layers of nursing regulation (broad to personal)", "Code of Ethics → Scope and Standards of Practice → Nurse Practice Act → facility policies and procedures → self-determination"],
+[6, "profession", "Nurse Practice Act", "State law that sets licensure, scope of practice, approved programs and rules nurses must follow; differs by state"],
+[7, "profession", "Board of Nursing", "Each state's regulatory body: sets practice rules, approves nursing programs, grants licenses, handles discipline. In Maryland, the Maryland Board of Nursing"],
+[8, "profession", "Scope of practice", "What a licensed nurse is competent and permitted to do"],
+[9, "profession", "Standards of care", "The minimum care a professional must give, compared with peers of similar education and experience"],
+[10, "profession", "Standards of practice vs standards of professional performance", "Practice: competent care using the nursing process. Professional performance: competent professional behavior"],
+[11, "profession", "NLC (Nurse Licensure Compact)", "One license lets a nurse practice in every state that joined the compact"],
+[12, "profession", "Credentialing", "Formal check and recognition of a person's qualifications and competence"],
+[13, "profession", "NCLEX (National Council Licensure Examination)", "The exam graduates pass to be licensed: NCLEX-RN or NCLEX-PN"],
+[14, "profession", "ACEN and CCNE", "Accreditation Commission for Education in Nursing and Commission on Collegiate Nursing Education: they accredit nursing schools"],
+[15, "profession", "QSEN (Quality and Safety Education for Nursing) competencies", "Patient-centered care, teamwork and collaboration, evidence-based practice, quality improvement, safety, informatics"],
+[16, "profession", "NLN (National League for Nursing) core values", "Caring, integrity, diversity, excellence"],
+[17, "profession", "NSNA (National Student Nurses' Association)", "Founded 1952 for nursing students. Core values: advocacy, leadership and autonomy, professionalism, care, diversity, quality education"],
+[18, "profession", "Florence Nightingale", "Crimean War (1854–1856): data linking unclean conditions to wound infection, an early form of evidence-based practice; \"the lady with the lamp\""],
+[19, "profession", "Clara Barton", "Served on battlefields; started the American Red Cross"],
+[20, "profession", "Dorothea Dix", "A teacher, not a nurse: pushed for formal nurse training and mental health reform"],
+[21, "profession", "Ildaura Murillo-Rohde", "Founded the National Association of Hispanic Nurses"],
+[22, "profession", "Eddie Bernice Johnson", "First registered nurse elected to the U.S. Congress"],
+[23, "judgment", "Clinical judgment model: the six steps", "Recognize cues → analyze cues → prioritize hypotheses → generate solutions → take action → evaluate outcomes"],
+[24, "judgment", "Recognize cues", "Pick out the relevant, important information from different sources"],
+[25, "judgment", "Prioritize hypotheses", "Rank the client's possible problems by urgency, likelihood and risk"],
+[26, "judgment", "Nursing process vs clinical judgment", "The nursing process is what we do; clinical judgment is how we think while doing it"],
+[27, "judgment", "Bow tie item", "Choose the condition in the middle, actions on one side and parameters to monitor on the other"],
+[28, "judgment", "Fill-in-the-blank item", "Type the answer into a box; mostly math"],
+[29, "judgment", "Cloze item", "Fill blanks in a sentence or table from drop-down choices"],
+[30, "process", "Nursing process steps", "ADPIE: Assessment, Diagnosis (Analysis), Planning, Implementation, Evaluation"],
+[31, "process", "Objective data", "Measurable facts the nurse observes: BP (blood pressure) 120/80, 500 mL clear yellow urine, skin warm and dry"],
+[32, "process", "Subjective data", "What the client reports; document in quotation marks in their exact words: \"It burns when I urinate\""],
+[33, "process", "Sources of assessment data", "Health history interview, physical assessment, medical record, family or support person"],
+[34, "process", "Nursing diagnosis", "A clinical judgment about the client's response to a health condition; not a medical diagnosis. Standardized by NANDA-I (North American Nursing Diagnosis Association International)"],
+[35, "process", "Medical vs nursing diagnosis", "Medical: the disease (pneumonia), physician-led. Nursing: the human response (impaired gas exchange), nurse-led"],
+[36, "process", "PES format", "Problem related to Etiology as evidenced by Signs and symptoms"],
+[37, "process", "Actual nursing diagnosis", "Problem r/t (related to) cause AEB (as evidenced by) signs and symptoms"],
+[38, "process", "\"Risk for\" nursing diagnosis", "Risk for problem r/t risk factors. No AEB: the problem hasn't happened"],
+[39, "process", "SMART goals", "Specific, Measurable, Achievable, Relevant, Time-bound"],
+[40, "process", "Short-term vs long-term goal", "Short: days (remain afebrile during hospitalization). Long: weeks to months (no surgical site infection within 30 days)"],
+[41, "process", "Words that make a goal unmeasurable", "Understand, feel, tolerate better"],
+[42, "process", "Every intervention needs", "An evidence-based rationale (the \"why\")"],
+[43, "process", "Direct vs indirect care", "Direct: at the bedside. Indirect: away from the bedside (calling the provider, charting)"],
+[44, "process", "Evaluation", "Was the goal met? Continue, modify or discontinue the intervention; document the client's response"],
+[45, "process", "Plan of care (POC)", "Built with the nursing process; tells the team what to focus on each shift"],
+[46, "promotion", "Health promotion", "Helping people gain control over and improve their health: education, health literacy, supportive environments, public policy, referrals"],
+[47, "promotion", "Dimensions of wellness", "Spiritual, emotional, physical, environmental"],
+[48, "promotion", "Illness–wellness continuum", "Toward wellness: self-checks, learning, new behaviors. Toward illness: dysfunction, treating symptoms, early demise"],
+[49, "promotion", "Modifiable risk factors", "Can be changed: inactivity, smoking, alcohol, unhealthy diet, high BP, uncontrolled diabetes, unsafe behaviors"],
+[50, "promotion", "Nonmodifiable risk factors", "Can't be changed: age, sex, genetics or family history, race and ethnicity"],
+[51, "promotion", "Primary prevention", "Prevents disease from starting: vaccines, behavior change, banning dangerous substances"],
+[52, "promotion", "Secondary prevention", "Screening to catch disease early: BP checks, cholesterol labs, colonoscopy, mammogram"],
+[53, "promotion", "Tertiary prevention", "Controls effects of existing disease and restores function: physical therapy, cardiac rehab, self-care teaching"],
+[54, "promotion", "Quaternary prevention", "Protects clients from too much medical intervention"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

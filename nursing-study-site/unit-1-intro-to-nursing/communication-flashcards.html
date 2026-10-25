@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Communication, Documentation &amp; EBP &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Communication, Documentation &amp; EBP &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-1-intro-to-nursing/communication-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Communication, Documentation &amp; EBP &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-01" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=25"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Communication, Documentation &amp; EBP</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  comm: {label:"Communication", hue:"magenta"},
+  team: {label:"Teamwork", hue:"green"},
+  doc: {label:"Documentation", hue:"blue"},
+  ebp: {label:"Evidence-Based Practice", hue:"orange"}
+};
+var CARDS = [
+[1, "comm", "Modes of communication", "Verbal, nonverbal, written, electronic"],
+[2, "comm", "Levels of communication", "Verbal, physical (body language), auditory (tone), energetic (presence), emotional"],
+[3, "comm", "Assertive", "Honest, clear, \"I\" statements, self-advocates; the most effective style"],
+[4, "comm", "Aggressive", "\"You\" statements, controlling, interruptive, verbally abusive"],
+[5, "comm", "Passive", "Avoids conflict and self-advocacy; anxious"],
+[6, "comm", "Passive-aggressive", "Indirect anger; resentful, sarcastic"],
+[7, "comm", "Shannon-Weaver model", "Sender, encoder, channel, decoder, receiver, noise"],
+[8, "comm", "Noise", "Anything that interferes with the message"],
+[9, "comm", "Newcomb's ABX model", "A (sender), B (receiver), X (the topic)"],
+[10, "comm", "Berlo's SMCR model", "Sender, Message, Channel, Receiver; one way, no feedback"],
+[11, "comm", "Therapeutic techniques", "Active listening, open-ended questions, reflection, restating, paraphrasing, summarizing, affirmations, providing information"],
+[12, "comm", "Nontherapeutic responses", "Judgmental \"why\" questions, false reassurance, giving advice, changing the subject, \"I know exactly how you feel\""],
+[13, "comm", "OARS (motivational interviewing)", "Open-ended questions, Affirmations, Reflective listening, Summarizing"],
+[14, "comm", "Language barrier", "Use a certified medical interpreter, never family"],
+[15, "comm", "Hearing loss", "Face the client, speak clearly, reduce noise, write key points"],
+[16, "team", "TeamSTEPPS skills", "Leadership, communication, situation monitoring, mutual support"],
+[17, "team", "IPEC (Interprofessional Education Collaborative) competencies", "Values and ethics, roles and responsibilities, interprofessional communication, teams and teamwork"],
+[18, "team", "Consultation vs referral", "Consult: advice from another provider; original provider keeps the client. Referral: the specialist takes over that part of care"],
+[19, "team", "Closed-loop communication", "The receiver confirms the message was received and understood"],
+[20, "team", "I-SBAR-R Background", "History, medications, advance directives"],
+[21, "team", "Handoff report", "Structured report when care changes hands; best at the bedside"],
+[22, "team", "Lateral vs vertical violence", "Lateral: peer to peer. Vertical: between supervisor and employee"],
+[23, "team", "Bullying", "Repeated, unwelcome actions meant to harm, humiliate or distress"],
+[24, "team", "Uncivil behaviors", "Embarrassing others, gossip, eye rolling, sarcasm, raised voice, avoiding handoff, refusing to help"],
+[25, "team", "Accommodating", "Low concern for self, high for others; keeps the peace"],
+[26, "team", "Collaborating", "Creative solution acceptable to everyone"],
+[27, "team", "Compromising", "Meeting in the middle; temporary fix"],
+[28, "team", "Avoiding", "Leaves it to others; useful short term when anger is intense"],
+[29, "team", "Competing", "Uses power or pressure to reach the goal"],
+[30, "team", "Cognitive rehearsal", "Mentally practicing a stressful situation ahead of time"],
+[31, "team", "Emotional intelligence", "Self-awareness, self-regulation, motivation, empathy, social skills"],
+[32, "doc", "Informatics", "Using information and technology to communicate, manage knowledge, reduce errors and support decisions"],
+[33, "doc", "EHR (electronic health record)", "Real-time digital chart shared by the team"],
+[34, "doc", "CPOE (computerized provider order entry)", "Providers enter orders electronically to reduce errors"],
+[35, "doc", "Source-oriented records", "Organized by discipline"],
+[36, "doc", "Problem-oriented records (POMR)", "Organized around client problems: database, problem list, plan, progress notes"],
+[37, "doc", "PIE", "Problem, Intervention, Evaluation"],
+[38, "doc", "Focus charting", "DAR: Data, Action, Response"],
+[39, "doc", "Charting by exception", "Only significant findings or changes from the norm"],
+[40, "doc", "FACT", "Factual, Accurate, Complete, Timely"],
+[41, "doc", "Correcting a paper chart error", "Single line through it, label it an error, initials and date"],
+[42, "doc", "Verbal and telephone orders", "Write down, read back, provider cosigns later"],
+[43, "doc", "Military time: p.m.", "Add 12 to the hour: 4:30 p.m. → 1630"],
+[44, "doc", "Do not write U or IU", "Write \"unit\""],
+[45, "doc", "Do not write qd or qod", "Write \"daily\" or \"every other day\""],
+[46, "doc", "Do not write cc", "Write mL"],
+[47, "doc", "Trailing and leading zeros", "Never 5.0 mg (read as 50); always 0.5 mg (not .5)"],
+[48, "doc", "Common HIPAA violations", "Unsupervised access, careless disposal, denying client access, disclosing PHI (protected health information), losing PHI"],
+[49, "ebp", "Evidence-based practice", "Current research + expert knowledge + client values to guide care"],
+[50, "ebp", "Spirit of inquiry", "Wanting to know the best way to care for clients"],
+[51, "ebp", "Six steps of EBP", "Identify problem → search evidence → evaluate → implement → review effectiveness → disseminate"],
+[52, "ebp", "PICOT", "Population, Intervention, Comparison, Outcome, Time"],
+[53, "ebp", "Strongest evidence", "Systematic reviews of RCTs (randomized controlled trials)"],
+[54, "ebp", "Weakest evidence", "Background information and expert opinion"],
+[55, "ebp", "Quantitative research", "Numbers that measure outcomes"],
+[56, "ebp", "Qualitative research", "Narratives that explain experiences"],
+[57, "ebp", "Mixed methods", "Combines qualitative and quantitative"],
+[58, "ebp", "Translational research", "How best to put EBP into practice"],
+[59, "ebp", "Critical appraisal", "Judging a study's validity, reliability and fit"],
+[60, "ebp", "Theory-practice gap", "The gap between research and what's done at the bedside"],
+[61, "ebp", "Clinical practice guidelines", "Evidence-based recommendations for managing disease and prevention"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

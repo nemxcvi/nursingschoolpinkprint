@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professionalism, Ethics &amp; Legal &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Professionalism, Ethics &amp; Legal &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-1-intro-to-nursing/ethics-legal-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Professionalism, Ethics &amp; Legal &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-01" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=25"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Professionalism, Ethics &amp; Legal</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  prof: {label:"Professionalism", hue:"blue"},
+  lead: {label:"Leadership", hue:"green"},
+  ethics: {label:"Ethics", hue:"violet"},
+  legal: {label:"Legal", hue:"red"}
+};
+var CARDS = [
+[1, "prof", "Professionalism", "Actions, behaviors and attitudes that reflect the profession's core values, ethical principles and regulations"],
+[2, "prof", "Inner processes", "Beliefs, values, attitudes, accountability, integrity, ability to reflect"],
+[3, "prof", "Outer processes", "Following the code of conduct, clear communication, client-centered care, continuing education, professional organizations"],
+[4, "prof", "Benner's levels (1982)", "Novice → advanced beginner → competent → proficient → expert"],
+[5, "prof", "Novice", "No experience; must be taught the rules and steps"],
+[6, "prof", "Advanced beginner", "Shows skills but still needs prompting and support"],
+[7, "prof", "Competent", "Makes plans and decisions; works efficiently and safely"],
+[8, "prof", "Proficient", "Sees the whole situation and adapts to the unexpected"],
+[9, "prof", "Expert", "Mastery; acts fluently without conscious effort"],
+[10, "prof", "Accountability", "A legal obligation with a moral and ethical commitment to do the right thing every time"],
+[11, "prof", "Responsibility", "An obligation to do work using sound professional judgment"],
+[12, "lead", "Transactional leadership", "Clear standards; rewards and punishments. Pro: structure. Con: limits creativity"],
+[13, "lead", "Transformational leadership", "Inspires with vision. Pro: growth and teamwork. Con: burnout"],
+[14, "lead", "Laissez-faire leadership", "Hands off. Pro: great for skilled staff. Con: poor results with inexperienced staff"],
+[15, "lead", "Bureaucratic leadership", "Strict rules and policies. Pro: safety through rules. Con: stifles creativity"],
+[16, "lead", "Situational leadership", "Changes style to fit the situation"],
+[17, "lead", "Chain of command", "Formal reporting structure; escalate one level at a time (charge nurse, unit director, and up)"],
+[18, "lead", "Shared governance", "Nurses at every level share decisions about practice, quality and staffing"],
+[19, "ethics", "Ethics vs morality", "Ethics: principles guiding a person's or group's behavior. Morality: one person's sense of right and wrong"],
+[20, "ethics", "Autonomy", "The client makes their own informed decisions"],
+[21, "ethics", "Beneficence", "Doing good; acting in the client's best interest"],
+[22, "ethics", "Nonmaleficence", "Doing no harm (checking allergies before a medication)"],
+[23, "ethics", "Veracity", "Telling the truth"],
+[24, "ethics", "Fidelity", "Keeping promises"],
+[25, "ethics", "Justice", "Treating every client fairly"],
+[26, "ethics", "Professional nursing values", "Altruism, human dignity, integrity, autonomy, social justice"],
+[27, "ethics", "Altruism", "Selfless concern for others"],
+[28, "ethics", "Ethical dilemma", "A choice where no option may be fully ethically acceptable"],
+[29, "ethics", "Ethical decision-making steps", "Define the issue → identify stakeholders → gather information → reflect on biases → identify principles → consult resources"],
+[30, "ethics", "When the family can't agree about life support", "Refer to the ethics committee"],
+[31, "ethics", "Code of Ethics", "ANA (American Nurses Association) rules on privacy, conduct and behavior that protect clients and the profession"],
+[32, "ethics", "Nightingale Pledge (1893)", "A nursing oath based on the Hippocratic Oath, recited at pinning"],
+[33, "legal", "EMTALA (Emergency Medical Treatment and Labor Act)", "Emergency care for everyone regardless of ability to pay"],
+[34, "legal", "HIPAA (Health Insurance Portability and Accountability Act)", "Protects PHI (protected health information)"],
+[35, "legal", "HIPAA Privacy Rule", "Standards for how PHI in any form is used and shared"],
+[36, "legal", "HIPAA Security Rule", "Safeguards for electronic PHI"],
+[37, "legal", "Breach Notification Rule", "Clients must be told when unsecured PHI is breached"],
+[38, "legal", "HITECH Act (2009)", "Health Information Technology for Economic and Clinical Health Act: encourages safe use of electronic health records"],
+[39, "legal", "Criminal vs civil law", "Criminal: offenses against the public, beyond a reasonable doubt. Civil: disputes between individuals, such as negligence"],
+[40, "legal", "Negligence", "Failing to act as a reasonable, prudent person would (unintentional)"],
+[41, "legal", "Malpractice", "Negligence by a professional (unintentional)"],
+[42, "legal", "Assault vs battery", "Assault: a threat. Battery: touching without consent"],
+[43, "legal", "Defamation", "False statements that damage a reputation: slander (spoken), libel (written)"],
+[44, "legal", "Invasion of privacy", "Sharing private information without permission (intentional tort)"],
+[45, "legal", "Nurse's role in informed consent", "Witness the signature and confirm understanding; the provider explains the procedure, benefits, risks and alternatives"],
+[46, "legal", "Implied consent", "Assumed in an emergency when the client can't consent"],
+[47, "legal", "Advance directive", "The client's written wishes for care if they can't decide later"],
+[48, "legal", "Good Samaritan laws", "Protect people who give emergency help in good faith within their training"],
+[49, "legal", "Whistleblowing", "Reporting unsafe or illegal practice to authorities"],
+[50, "legal", "Mandatory reporting", "Suspected abuse or neglect and certain communicable diseases"],
+[51, "legal", "Just culture", "Reviewing errors to fix systems rather than blame people"],
+[52, "legal", "Client abandonment", "Leaving clients without handing off care"],
+[53, "legal", "Breaches of nursing practice", "Breaking confidentiality, falsifying records, working fatigued, substance use disorder"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>

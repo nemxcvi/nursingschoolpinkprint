@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Assessment, Vital Signs &amp; Pain &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Health Assessment, Vital Signs &amp; Pain &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-1-intro-to-nursing/vitals-pain-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Health Assessment, Vital Signs &amp; Pain &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-01" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=25"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Health Assessment, Vital Signs &amp; Pain</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  assessment: {label:"Health Assessment", hue:"green"},
+  pulse: {label:"Pulse &amp; Blood Pressure", hue:"red"},
+  temp: {label:"Temperature, Respirations &amp; SpO2", hue:"aqua"},
+  pain: {label:"Pain", hue:"violet"}
+};
+var CARDS = [
+[1, "assessment", "Order of assessment techniques", "Inspection → palpation → percussion → auscultation (the abdomen is the exception)"],
+[2, "assessment", "Start the assessment with", "The least invasive tasks: health history and general survey, then the physical exam"],
+[3, "assessment", "Back (dorsal) of the hand", "Checks temperature"],
+[4, "assessment", "Palm of the hand", "Checks vibration"],
+[5, "assessment", "Fingertips", "Check pulses, position, texture, turgor, size and consistency"],
+[6, "assessment", "Tender areas", "Palpate them last"],
+[7, "assessment", "Fist percussion", "Checks tenderness over the kidneys, liver and gallbladder"],
+[8, "assessment", "Chief concern", "Why the client sought care, in their own words, in quotation marks"],
+[9, "assessment", "Review of systems", "Questions about every body system to find existing problems"],
+[10, "assessment", "General survey", "Appearance, LOC (level of consciousness), body structure, mobility, behavior, vital signs"],
+[11, "pulse", "Expected adult heart rate", "60–100 beats a minute"],
+[12, "pulse", "Bradycardia", "Under 60. Causes: very fit, hypothermia, medications, hypothyroidism, chronic severe pain, relaxation"],
+[13, "pulse", "Tachycardia", "Over 100. Causes: exercise, fever, pain, anxiety, anemia, hypoxia, hyperthyroidism, shock, medications"],
+[14, "pulse", "Counting a pulse", "30 seconds × 2 if regular; a full minute if irregular"],
+[15, "pulse", "Pulse grades", "0 absent, 1+ weak, 2+ normal, 3+ increased, 4+ bounding"],
+[16, "pulse", "Apical pulse site", "5th intercostal space, midclavicular line"],
+[17, "pulse", "Pulse deficit", "Apical rate minus radial rate"],
+[18, "pulse", "S1 and S2", "S1 \"lub\": mitral and tricuspid valves close. S2 \"dub\": aortic and pulmonic valves close"],
+[19, "pulse", "Signs of low cardiac output", "Dizziness, low BP (blood pressure), chest pain, fainting"],
+[20, "pulse", "Normal BP", "Less than 120 and less than 80 mm Hg"],
+[21, "pulse", "Elevated BP", "120–129 and less than 80"],
+[22, "pulse", "Stage 1 hypertension", "130–139 or 80–89"],
+[23, "pulse", "Stage 2 hypertension", "140 or higher, or 90 or higher"],
+[24, "pulse", "Hypertensive emergency", "Higher than 180 and/or higher than 120: call the provider now"],
+[25, "pulse", "BP formula", "Cardiac output × systemic vascular resistance. Cardiac output = stroke volume × heart rate"],
+[26, "pulse", "Cuff too small / too large", "Too small: falsely high. Too large: falsely low"],
+[27, "pulse", "Pulse pressure", "Systolic minus diastolic: 140/90 → 50"],
+[28, "pulse", "Orthostatic hypotension", "Systolic drop of 20+ or diastolic drop of 10+ within 1–3 minutes of sitting or standing, with a faster pulse and dizziness"],
+[29, "pulse", "Intrinsic vs extrinsic BP factors", "Intrinsic: age, ethnicity, genetics, hormones. Extrinsic: weight, stimulants, sodium, stress, activity, anxiety"],
+[30, "temp", "Expected temperature", "36–38 °C (96.8–100.4 °F); average 37 °C (98.6 °F)"],
+[31, "temp", "Fever", "Above 38 °C (100.4 °F)"],
+[32, "temp", "Hyperthermia", "40 °C (104 °F) or higher"],
+[33, "temp", "Hypothermia", "Below 35 °C (95 °F)"],
+[34, "temp", "Core temperature sites", "Rectal, tympanic, temporal artery, pulmonary artery, esophagus, bladder"],
+[35, "temp", "Surface temperature sites", "Skin, mouth, axillae"],
+[36, "temp", "Oral temperature after a hot or cold drink", "Wait 15–30 minutes"],
+[37, "temp", "Tympanic temperature in adults", "Pull the pinna up and back; earwax or infection can alter it"],
+[38, "temp", "Temporal artery temperature", "Center of the forehead; sweat and head coverings alter it"],
+[39, "temp", "Expected respiratory rate", "12–20 a minute"],
+[40, "temp", "Bradypnea / tachypnea", "Regular but under 12 / regular but over 20"],
+[41, "temp", "Apnea / dyspnea", "No breathing / difficult breathing"],
+[42, "temp", "Cheyne-Stokes", "Shallow breaths growing deeper, then periods of apnea"],
+[43, "temp", "Kussmaul", "Deep, rapid breathing"],
+[44, "temp", "SpO2 (oxygen saturation by pulse oximetry)", "Expected 95–100%; below 95% is low"],
+[45, "temp", "SaO2", "Arterial oxygen saturation: oxygen bound to hemoglobin"],
+[46, "pain", "Definition of pain", "Whatever the client says it is: an unpleasant sensory and emotional experience tied to actual or potential tissue damage"],
+[47, "pain", "Pain threshold", "The point where a stimulus is first felt as pain"],
+[48, "pain", "Pain tolerance", "How much pain the client is willing to accept"],
+[49, "pain", "Acute pain", "Predictable end; less than 6 months"],
+[50, "pain", "Chronic pain", "Constant or recurring with no expected end; longer than 6 months"],
+[51, "pain", "Nociceptive pain", "From tissue damage"],
+[52, "pain", "Neuropathic pain", "From nerve damage; burning, shooting"],
+[53, "pain", "Biopsychosocial model", "Biological, psychological and social factors all shape pain"],
+[54, "pain", "PQRST", "Provocation, Quality, Region, Severity, Timing"],
+[55, "pain", "FLACC scale", "Face, Legs, Activity, Cry, Consolability; each 0–2, total 0–10; for clients who can't communicate pain"],
+[56, "pain", "Other pain scales", "Numeric 0–10, visual analog, FACES, nonverbal pain scale"],
+[57, "pain", "Nonpharmacologic pain relief", "Positioning, heat, cold, massage, TENS (transcutaneous electrical nerve stimulation), distraction, relaxation, music, therapeutic touch"],
+[58, "pain", "Common opioids", "Morphine, hydromorphone, fentanyl"],
+[59, "pain", "Vital sign most affected by opioids", "Respiratory rate"],
+[60, "pain", "Naloxone", "Reverses opioids and brings the respiratory rate back up"],
+[61, "pain", "Nonopioid analgesics", "NSAIDs (nonsteroidal anti-inflammatory drugs), acetaminophen, local anesthetics"],
+[62, "pain", "Adjuvant analgesics", "Work on the source of pain: antidepressants, corticosteroids, botulinum toxin"],
+[63, "pain", "PCA (patient-controlled analgesia)", "A pump the client uses to give themself IV (intravenous) pain medication"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
