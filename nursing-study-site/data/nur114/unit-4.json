@@ -3582,7 +3582,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "dragdrop",
-   "prompt": "Match each imbalance to its typical cause. Move the imbalances usually caused by a LOSS of fluid or electrolytes through the GI tract or diuretics to the answer box.",
+   "prompt": "Move the imbalances that are usually caused by losing fluid or electrolytes through the GI tract or diuretics to the answer box.",
    "leftLabel": "Imbalances",
    "rightLabel": "Caused by GI or diuretic loss",
    "options": [
@@ -3614,7 +3614,7 @@
     {
      "text": "Hypercalcemia",
      "correct": false,
-     "rationale": "High calcium usually comes from cancer or hyperparathyroidism."
+     "rationale": "High calcium usually comes from cancer, not from losses."
     }
    ]
   },
