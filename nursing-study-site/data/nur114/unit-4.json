@@ -17180,6 +17180,115 @@
    ]
   },
   {
+   "id": "nur114-u4-bowel-elimination-141",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Enemas, Laxatives & Bowel Care",
+   "type": "mc",
+   "prompt": "A nurse is giving a cleansing enema to an adult client. How far should the nurse insert the tube?",
+   "options": [
+    {
+     "text": "3 inches (7.5 cm)",
+     "correct": true,
+     "rationale": "About 3 inches places the tip past the anal sphincter into the rectum; the adult range is 3 to 4 in (7.5 to 10 cm)."
+    },
+    {
+     "text": "1 inch (2.5 cm)",
+     "correct": false,
+     "rationale": "That's too shallow: the tip may not pass the sphincter, and the solution leaks out."
+    },
+    {
+     "text": "6 inches (15 cm)",
+     "correct": false,
+     "rationale": "That's too deep and risks injuring the rectal wall."
+    },
+    {
+     "text": "10 inches (25 cm)",
+     "correct": false,
+     "rationale": "That's far too deep and could perforate the bowel."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-bowel-elimination-142",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Enemas, Laxatives & Bowel Care",
+   "type": "sata",
+   "prompt": "A nurse is observing a student prepare to give an adult client a cleansing enema. Which actions by the student are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "Positions the client on the left side with the right knee flexed",
+     "correct": true,
+     "rationale": "Left Sims' follows the curve of the sigmoid colon."
+    },
+    {
+     "text": "Inserts the lubricated tube about 3 inches",
+     "correct": true,
+     "rationale": "About 3 inches is right for an adult (range 3 to 4 in, or 7.5 to 10 cm)."
+    },
+    {
+     "text": "Points the tube toward the umbilicus",
+     "correct": true,
+     "rationale": "This follows the direction of the rectum."
+    },
+    {
+     "text": "Inserts the tube 6 inches so the solution reaches the colon",
+     "correct": false,
+     "rationale": "Six inches is too deep and can injure the rectal wall."
+    },
+    {
+     "text": "Inserts the tube only 1 inch to keep the client comfortable",
+     "correct": false,
+     "rationale": "One inch is too shallow; the solution will leak out."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-bowel-elimination-143",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Enemas, Laxatives & Bowel Care",
+   "type": "cloze",
+   "prompt": "A nurse is preparing to give an adult client an enema.",
+   "sentence": "The nurse places the client on the {1} side and inserts the tube about {2}.",
+   "options": [
+    {
+     "text": "left",
+     "correct": true,
+     "rationale": "Left side-lying (Sims') lets the solution flow with the curve of the sigmoid colon.",
+     "blank": 1
+    },
+    {
+     "text": "right",
+     "correct": false,
+     "rationale": "The right side works against the curve of the colon.",
+     "blank": 1
+    },
+    {
+     "text": "3 inches (7.5 cm)",
+     "correct": true,
+     "rationale": "About 3 inches is right for an adult (range 3 to 4 in).",
+     "blank": 2
+    },
+    {
+     "text": "1 inch (2.5 cm)",
+     "correct": false,
+     "rationale": "Too shallow: the solution leaks out.",
+     "blank": 2
+    },
+    {
+     "text": "6 inches (15 cm)",
+     "correct": false,
+     "rationale": "Too deep: risks injuring the rectal wall.",
+     "blank": 2
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-urinary-elimination-001",
    "course": "NUR 114",
    "unit": 4,

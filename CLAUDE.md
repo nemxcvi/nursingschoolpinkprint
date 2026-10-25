@@ -46,10 +46,6 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 - Keep wording plain and accurate. Prefer dropping a forced mnemonic to keeping a confusing one.
 - Study guide boxes tagged **ATI extra · not tested** are background only: never write quiz questions or flashcards from them. Use the tag only when the owner says the instructor told the class to keep a topic to what's on the slides (or closely related to it). That's rare: five instructors take turns lecturing, each with a different style, so don't carry one lecture's scope note over to other topics or weeks. Week 8 uses it for IV solutions, blood products, and acid-base causes and compensation. Plain **ATI extra** boxes can be tested.
 
-## Instructor flags waiting for upcoming content
-
-- **Enemas (Unit 4, Week 9):** the lecturer called **3 inches** the "magic number" for how far an enema tube is inserted in an adult (likely a test question). When the Week 9 content is added, put it in an Instructor flagged box in the study guide, a flashcard, and a few quiz questions (distractors like 1 inch and 6 inches). The standard adult range is 3–4 inches (7.5–10 cm), left Sims' position. Remove this note once it's in.
-
 ## Reminders for next semester (NUR 121)
 
 - **When work starts on sheet 02 (NUR 121), put the unit mastery bars back on the homepage** for tracked visitors. They were taken off in October 2026 only because NUR 114 was already halfway through, so bars on the early units looked odd and unfinished. The code to restore is the unit-card part of `home()` in `nursing-study-site/js/my-study.js` as of commit `c4c0a7d` (the thin `bar(st, {thin: true})` plus "% mastered →" in each card's `.pp-card-bottom`, opening `journal.html#unit-N`, the Journal's Progress tab), and the `e2e-mystudy.js` check "homepage: mastery bars on units 1-3".
