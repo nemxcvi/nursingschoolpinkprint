@@ -157,8 +157,9 @@ function initPracticeQuiz(bank, catLabels, opts){
      and the newer one (stem, options flagged correct: true with their own rationale,
      optional summary). After this, every question has:
        id, prompt, options [{id, text, correct, rationale}], correct [ids],
-       multi (more than one correct answer), summary, explanation (older question-level text)
-     and type is "dragdrop", "order", or else "sata"/"mc" decided by how many answers are correct.
+       multi (select all that apply), summary, explanation (older question-level text)
+     and type is "dragdrop", "order", "sata" when marked so (any number correct), or else
+     "sata"/"mc" decided by how many answers are correct.
      Ordered response ("order"): options are listed in the correct order; every one is
      marked correct and q.correct keeps that order.
      Drop-down ("cloze"): q.sentence holds {1}, {2}... and each option has a blank number;
@@ -181,7 +182,8 @@ function initPracticeQuiz(bank, catLabels, opts){
         return {id: id, text: o.text, correct: ordered || o.correct === true || listed.indexOf(id) !== -1, rationale: rationale, blank: o.blank};
       });
       q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.id; });
-      q.multi = q.correct.length > 1;
+      /* A question marked "sata" stays select-all even with one correct answer, like the real exam */
+      q.multi = q.type === "sata" || q.correct.length > 1;
       if (q.type !== "dragdrop" && q.type !== "cloze" && !ordered) q.type = q.multi ? "sata" : "mc";
       if (q.correct.length === 0) console.warn("[quiz] question " + q.id + " has no correct option: " + q.prompt);
       if (gaps.length) missingRationale.push({q: q, ids: gaps});
