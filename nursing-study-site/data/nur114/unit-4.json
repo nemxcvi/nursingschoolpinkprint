@@ -14789,17 +14789,17 @@
    "prompt": "How far should the nurse insert the rectal tube for an adult cleansing enema?",
    "options": [
     {
-     "text": "7.5 to 10 cm (3 to 4 in)",
+     "text": "3 inches (7.5 cm)",
      "correct": true,
-     "rationale": "Insert the tube 7.5 to 10 cm (3 to 4 in), pointed toward the umbilicus."
+     "rationale": "Insert the tube 3 inches (7.5 cm), pointed toward the umbilicus."
     },
     {
-     "text": "1 to 2 cm (0.5 to 1 in)",
+     "text": "1 inch (2.5 cm)",
      "correct": false,
      "rationale": "That's too shallow; the solution would leak out."
     },
     {
-     "text": "15 to 20 cm (6 to 8 in)",
+     "text": "6 inches (15 cm)",
      "correct": false,
      "rationale": "That's too deep and risks injuring the rectal lining."
     },
@@ -14890,7 +14890,7 @@
      "rationale": "Lubrication makes insertion more comfortable."
     },
     {
-     "text": "Slowly insert the tube 7.5 to 10 cm (3 to 4 in)",
+     "text": "Slowly insert the tube 3 inches (7.5 cm)",
      "rationale": "Slow insertion protects the rectal lining."
     },
     {
@@ -16960,19 +16960,19 @@
    "sentence": "The nurse inserts the tube {1} and raises the bag {2} above the anus.",
    "options": [
     {
-     "text": "7.5 to 10 cm (3 to 4 in)",
+     "text": "3 inches (7.5 cm)",
      "correct": true,
      "rationale": "This is the adult insertion depth.",
      "blank": 1
     },
     {
-     "text": "15 to 20 cm (6 to 8 in)",
+     "text": "6 inches (15 cm)",
      "correct": false,
      "rationale": "That's too deep and risks injury.",
      "blank": 1
     },
     {
-     "text": "1 cm (0.5 in)",
+     "text": "1 inch (2.5 cm)",
      "correct": false,
      "rationale": "That's too shallow.",
      "blank": 1
@@ -17180,37 +17180,6 @@
    ]
   },
   {
-   "id": "nur114-u4-bowel-elimination-141",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Bowel Elimination",
-   "category": "Enemas, Laxatives & Bowel Care",
-   "type": "mc",
-   "prompt": "A nurse is giving a cleansing enema to an adult client. How far should the nurse insert the tube?",
-   "options": [
-    {
-     "text": "3 inches (7.5 cm)",
-     "correct": true,
-     "rationale": "About 3 inches places the tip past the anal sphincter into the rectum; the adult range is 3 to 4 in (7.5 to 10 cm)."
-    },
-    {
-     "text": "1 inch (2.5 cm)",
-     "correct": false,
-     "rationale": "That's too shallow: the tip may not pass the sphincter, and the solution leaks out."
-    },
-    {
-     "text": "6 inches (15 cm)",
-     "correct": false,
-     "rationale": "That's too deep and risks injuring the rectal wall."
-    },
-    {
-     "text": "10 inches (25 cm)",
-     "correct": false,
-     "rationale": "That's far too deep and could perforate the bowel."
-    }
-   ]
-  },
-  {
    "id": "nur114-u4-bowel-elimination-142",
    "course": "NUR 114",
    "unit": 4,
@@ -17225,9 +17194,9 @@
      "rationale": "Left Sims' follows the curve of the sigmoid colon."
     },
     {
-     "text": "Inserts the lubricated tube about 3 inches",
+     "text": "Inserts the lubricated tube 3 inches",
      "correct": true,
-     "rationale": "About 3 inches is right for an adult (range 3 to 4 in, or 7.5 to 10 cm)."
+     "rationale": "3 inches is right for an adult."
     },
     {
      "text": "Points the tube toward the umbilicus",
@@ -17271,7 +17240,7 @@
     {
      "text": "3 inches (7.5 cm)",
      "correct": true,
-     "rationale": "About 3 inches is right for an adult (range 3 to 4 in).",
+     "rationale": "3 inches is right for an adult.",
      "blank": 2
     },
     {
