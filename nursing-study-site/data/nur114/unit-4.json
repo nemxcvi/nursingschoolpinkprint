@@ -21344,6 +21344,37 @@
    ]
   },
   {
+   "id": "nur114-u4-urinary-elimination-124",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Urinary Elimination",
+   "category": "Catheters & CAUTI",
+   "type": "mc",
+   "prompt": "A nurse is inserting a urinary catheter in a female client and can't clearly see the urethral opening. What should the nurse ask the client to do?",
+   "options": [
+    {
+     "text": "Bear down",
+     "correct": true,
+     "rationale": "Bearing down makes the urethral opening easier to see."
+    },
+    {
+     "text": "Take slow, deep breaths and relax the legs completely",
+     "correct": false,
+     "rationale": "Relaxing helps comfort, but it doesn't expose the urethral opening."
+    },
+    {
+     "text": "Cough forcefully",
+     "correct": false,
+     "rationale": "Coughing can break the sterile field and doesn't help locate the opening."
+    },
+    {
+     "text": "Turn onto the left side",
+     "correct": false,
+     "rationale": "Turning onto the side doesn't expose the urethral opening."
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-med-math-001",
    "course": "NUR 114",
    "unit": 4,
