@@ -8797,7 +8797,7 @@
     {
      "text": "The tube may not be in the stomach",
      "correct": true,
-     "rationale": "A pH of 7 or higher suggests intestinal or respiratory placement."
+     "rationale": "Stomach contents are about pH 1–4, so 7.5 means the tube may not be in the stomach; check placement before using it."
     },
     {
      "text": "The tube is in the stomach",
@@ -8971,7 +8971,7 @@
     {
      "text": "7 or higher",
      "correct": false,
-     "rationale": "pH 7 or higher suggests the tube isn't in the stomach.",
+     "rationale": "Stomach contents are acidic (about pH 1–4); a pH this high means the tube may not be in the stomach.",
      "blank": 2
     }
    ]
