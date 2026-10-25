@@ -198,6 +198,10 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 
 /* Connecting the dots: connection cards, week links, See more */
 .legend .lg-conn{background:var(--card);border-color:var(--label);color:var(--label)}
+.upto{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:18px 0 0;padding:8px 14px;border:1.5px solid var(--label);background:var(--card);color:var(--label);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.upto[hidden]{display:none}
+.upto b{font-weight:600}
+.upto a{color:var(--heading);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .legend .lg-week{background:var(--card);border-color:var(--label);color:var(--label);border-style:dashed}
 a.wk{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--label);border:1.5px dashed var(--label);padding:0 6px;margin:0 1px;vertical-align:1px;white-space:nowrap;line-height:1.6}
 a.wk:hover{background:var(--pill)}
@@ -226,7 +230,7 @@ a.wk:hover{background:var(--pill)}
   <h1>Connecting The Dots</h1>
   <p class="lede">Drafted from every week's modules and powerpoints, scaled down for exam crams. Use the mnemonics and memory tricks to lock in lists, then hit the quick checks at the end of each topic.</p>
   <p class="key-note">Each topic takes something you already learned and shows where it shows up next, so you can answer questions that mix units. Tap a week tag to jump to where it was first covered.</p>
-  <p id="upto-note" class="box note" hidden style="max-width:60ch"><span class="tag">Filtered</span>Showing connections through <b>Week N</b>, the guide you came from, so nothing from later weeks shows up. <a href="connecting-the-dots.html">Show all weeks &rarr;</a></p>
+  <p id="upto-note" class="upto" hidden><i class="ti ti-filter" aria-hidden="true"></i><span>Showing Week <b>N</b> &amp; earlier</span><a href="connecting-the-dots.html">Show all weeks &rarr;</a></p>
   <div class="legend" aria-label="Key">
     <span class="lg-conn">Connection</span>
     <span class="lg-week">Week tag: links to the guide</span>
@@ -871,7 +875,7 @@ a.wk:hover{background:var(--pill)}
   /* Week tags in headings that point past the filter */
   main.querySelectorAll("th a.wk").forEach(function(a){ var r = /week(\d+)-study-guide/.exec(a.getAttribute("href")); if (r && +r[1] > upto) hide(a); });
   var note = document.getElementById("upto-note");
-  note.querySelector("b").textContent = "Week " + upto;
+  note.querySelector("b").textContent = upto;
   note.hidden = false;
 })();
 </script>
