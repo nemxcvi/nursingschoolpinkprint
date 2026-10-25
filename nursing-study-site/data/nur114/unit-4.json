@@ -10976,37 +10976,37 @@
    "topic": "Food Sources",
    "category": "Special Situations",
    "type": "sata",
-   "prompt": "A client has hypoglycemia (blood glucose 62 mg/dL) and is alert. Which items give about 15 g of fast-acting carbohydrate? Select all that apply.",
+   "prompt": "A client's blood glucose is 62 mg/dL and the client is alert. Which items can the nurse give to raise the client's blood glucose quickly? Select all that apply.",
    "options": [
     {
-     "text": "4 oz of fruit juice",
+     "text": "Fruit juice",
      "correct": true,
-     "rationale": "4 oz of juice is about 15 g of carbohydrate."
+     "rationale": "Juice is mostly sugar, so it raises blood glucose quickly."
     },
     {
-     "text": "4 oz of regular soda",
+     "text": "Regular soda",
      "correct": true,
-     "rationale": "Regular (not diet) soda works."
+     "rationale": "Regular (not diet) soda has sugar that raises blood glucose quickly."
     },
     {
-     "text": "1 tablespoon of honey",
+     "text": "Honey",
      "correct": true,
-     "rationale": "One tablespoon of honey provides about 15 g."
+     "rationale": "Honey is sugar and raises blood glucose quickly."
     },
     {
      "text": "Glucose tablets",
      "correct": true,
-     "rationale": "Glucose tablets are a standard treatment."
+     "rationale": "Glucose tablets are pure sugar made to treat low blood glucose."
     },
     {
-     "text": "4 oz of diet soda",
+     "text": "Diet soda",
      "correct": false,
-     "rationale": "Diet soda has no sugar."
+     "rationale": "Diet soda has no sugar, so it won't raise blood glucose."
     },
     {
      "text": "A slice of cheese",
      "correct": false,
-     "rationale": "Cheese is protein and fat, not fast-acting carbohydrate."
+     "rationale": "Cheese is protein and fat, which raise blood glucose slowly, if at all."
     }
    ]
   },
