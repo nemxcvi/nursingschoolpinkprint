@@ -25,7 +25,7 @@
 <div class="pp-wrap">
 
   <div id="site-header" data-mode="full" data-sheet="nur114"></div>
-  <script src="assets/site-data.js?v=25"></script>
+  <script src="assets/site-data.js?v=26"></script>
   <script src="js/tracking.js?v=15"></script>
   <script src="assets/header.js?v=14"></script>
   <script src="js/progress.js?v=8"></script>
@@ -272,6 +272,12 @@ function renderLibrary(){
   var html = "<div class='ledger-wrap'>" +
     "<div class='lib-head'><div><p class='ledger-eyebrow'>Library</p><h1 class='ledger-h1'>" + t.title + "</h1></div>" +
     "<p class='lib-totals'>" + totals + "</p></div>";
+
+  if (t.key === "studyguides" && !state.unit && SITE.connectDots){
+    html += "<a class='ledger-feature is-pill' href='" + SITE.connectDots.href + "'><i class='ti ti-route' aria-hidden='true'></i>" +
+      "<span><span class='lf-title'>" + SITE.connectDots.title + "</span><span class='lf-sub'>" + esc(SITE.connectDots.meta) + "</span></span>" +
+      "<span class='lbtn btn-primary'>Open &rarr;</span></a>";
+  }
 
   if (t.key === "quizzes" && !state.unit){
     html += "<a class='ledger-feature is-pill' href='" + MIX_ALL.href + "'><i class='ti ti-arrows-shuffle' aria-hidden='true'></i>" +

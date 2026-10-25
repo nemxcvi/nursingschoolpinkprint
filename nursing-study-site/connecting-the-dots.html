@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Connecting the dots &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Connecting the dots &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/connecting-the-dots">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Connecting the dots &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+<style>
+/* Connecting the dots: same components as the weekly guides, plus connection cards and week links */
+:root{
+  /* guide-specific accents only; base colors below reuse the site's own theme variables */
+  --flag:#0F6E62; --flag-bg:#DDF3EE;
+  --hook:#FFF4D6; --hook-line:#E9C766; --known:#E8E4FF; --known-line:#8D7CE6;
+  --side:#1E5FA8; --side-bg:#E1EEFB; --red:#B3261E; --red-bg:#FDE7E5;
+}
+[data-theme="dark"]{
+  --flag:#7FE0CF; --flag-bg:#123A34;
+  --hook:#3A2E12; --hook-line:#B8963A; --known:#262045; --known-line:#9D8FF0;
+  --side:#9CC4F5; --side-bg:#15263D; --red:#FF8A80; --red-bg:#3D1512;
+}
+.gwrap{max-width:980px;margin:0 auto;padding:0 20px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + var(--cbar-h) + 64px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.guide-body{font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.6;}
+.guide-body h1,.guide-body h2,.guide-body h3{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+.guide-body a{color:var(--label)}
+.guide-body :focus-visible{outline:2px solid var(--label);outline-offset:3px}
+
+/* Hero */
+.guide-hero{padding-top:36px;padding-bottom:32px}
+.guide-hero .course{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);margin:0 0 14px}
+.guide-hero h1{font-size:clamp(36px,7vw,64px);letter-spacing:-.01em;color:var(--heading)}
+.guide-hero p.lede{max-width:60ch;color:var(--muted);margin:18px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.legend span{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1.5px solid;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.lg-known{background:var(--known);border-color:var(--known-line)}
+.lg-hook{background:var(--hook);border-color:var(--hook-line)}
+.lg-flag{background:var(--flag-bg);border-color:var(--flag);color:var(--flag)}
+
+/* In-guide topic nav */
+nav.topics{position:sticky;top:var(--cbar-h);z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(6px);border-block:1.5px solid var(--border)}
+nav.topics .gwrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.topics .gwrap::-webkit-scrollbar{display:none}
+nav.topics a{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-decoration:none;color:var(--label);padding:9px 14px;border:1.5px solid var(--border)}
+nav.topics a:hover{background:var(--pill)}
+
+/* Sections */
+section.topic{padding:48px 0 20px}
+.topic-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1.5px solid var(--border);padding-bottom:10px;margin-bottom:28px}
+.topic-head h2{font-size:clamp(30px,5vw,46px);color:var(--label)}
+.topic-head p{margin:0;color:var(--muted);font-style:italic}
+/* Tables */
+.tbl{overflow-x:auto;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--card);margin:14px 0}
+.tbl table{border-collapse:collapse;width:100%;font-size:16px}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--border)}
+.tbl th{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:17px;background:color-mix(in srgb,var(--pill) 60%,var(--card));color:var(--heading)}
+.tbl tr:last-child td{border-bottom:none}
+
+/* Quick checks */
+.gcheck{margin:26px 0 8px;display:grid;gap:10px}
+.gcheck h3{margin:0 0 4px;font-size:22px}
+.guide-body details{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:12px 16px}
+.guide-body summary{cursor:pointer;font-weight:600;list-style:none;color:var(--text)}
+.guide-body summary::-webkit-details-marker{display:none}
+.guide-body summary::after{content:" Show answer";font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;color:var(--label);margin-left:8px}
+.guide-body details[open] summary::after{content:" Hide"}
+.guide-body details p{margin:10px 0 0}
+
+/* Slides content: marks material from the instructor's slides (same tag as Week 4) */
+:root{--slides:#B23E0B;--slides-bg:#FDE4D3}
+[data-theme="dark"]{--slides:#FF976A;--slides-bg:#3F190B}
+.gslides{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slides);background:var(--slides-bg);border:1.5px solid var(--slides);padding:2px 8px;vertical-align:middle;margin-right:6px}
+.gslides.inl{margin:0 0 0 6px;font-size:10px;padding:1px 6px;font-style:normal;line-height:1.4}
+.lg-slides{background:var(--slides-bg);border-color:var(--slides);color:var(--slides)}
+.guide-footer{padding-top:24px;padding-bottom:60px;color:var(--muted);font-size:15px}:root{--l-epi:#F6C9B5;--l-derm:#EFA3A6;--l-fat:#F7E3A1;--l-musc:#C9737C;--l-bone:#EDE7DA;--wound:#8E1F3A}
+[data-theme="dark"]{--l-epi:#9C6A5A;--l-derm:#8F4E55;--l-fat:#8C7A3F;--l-musc:#6E343C;--l-bone:#6F6A5F;--wound:#F28AB5}
+.legend .lg-note{background:var(--side-bg);border-color:var(--side);color:var(--side)}
+.guide-body h4{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15}
+.gsub > h3{margin:0 0 10px}
+.guide-body td:first-child{font-weight:600}
+.guide-footer .box p{margin:4px 0}
+
+/* Week 6 layouts, drawn with the site and key colors */
+
+.gsub{margin-top:40px}
+.gsub > h3{font-size:28px;margin-bottom:10px}
+.guide-body h4{font-size:20px;margin:22px 0 8px}
+.guide-body p{margin:10px 0}
+.guide-body ul.tight{margin:8px 0;padding-left:22px}
+.guide-body ul.tight li{margin:3px 0}
+
+/* Callouts */
+.box{border:1.5px solid;padding:12px 16px;margin:14px 0;font-size:16.5px}
+.box .tag{display:block;padding:0;border:none;min-height:0;background:none;letter-spacing:.06em;text-transform:uppercase;font-size:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;margin-bottom:4px}
+.box p{margin:4px 0}
+.box ul{margin:4px 0;padding-left:20px}
+.known{background:var(--known);border-color:var(--known-line)}
+.known .tag{color:var(--muted)}
+.hook{background:var(--hook);border-color:var(--hook-line);border-width:2px;border-style:dashed}
+.hook .tag{color:var(--muted)}
+.flag{background:var(--flag-bg);border-color:var(--flag)}
+.flag .tag{color:var(--flag)}
+.note{background:var(--side-bg);border-color:var(--side)}
+.note .tag{color:var(--side)}
+.slides{background:var(--slides-bg);border-color:var(--slides)}
+.slides .tag{color:var(--slides)}
+.nc{background:var(--red-bg);border-color:var(--red)}
+.nc .tag{color:var(--red)}
+
+/* Two/three column panels */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:1.5px solid var(--border);background:var(--card);margin:12px 0}
+.cols > div{padding:14px 16px}
+.cols > div + div{border-left:1.5px dashed var(--border)}
+@media (max-width:640px){.cols > div + div{border-left:none;border-top:1.5px dashed var(--border)}}
+.cols h4{margin:0 0 6px}
+.cols ul{margin:0;padding-left:20px;font-size:16px}
+
+.signs{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:2px solid var(--flag);background:var(--card);margin:8px 0}
+.signs div{padding:12px 10px;text-align:center}
+.signs div + div{border-left:1.5px solid var(--flag)}
+.signs b{display:block;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:22px;color:var(--flag);line-height:1.1}
+.signs span{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-top:4px}
+@media (max-width:640px){.signs{grid-template-columns:1fr}.signs div + div{border-left:none;border-top:1.5px solid var(--flag)}}
+
+/* Chain loop */
+.loop{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);background:var(--card);margin:14px 0}
+.loop div{padding:14px;border-bottom:1.5px solid var(--border);position:relative}
+.loop div:nth-child(3n+1),.loop div:nth-child(3n+2){border-right:1.5px solid var(--border)}
+.loop div:nth-child(n+4){border-bottom:none}
+.loop b{display:block;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:21px;color:var(--label)}
+.loop small{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.loop span{display:block;font-size:15.5px;margin-top:4px}
+.loop-foot{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin-top:-6px}
+@media (max-width:640px){.loop{grid-template-columns:1fr}.loop div{border-right:none !important;border-bottom:1.5px solid var(--border) !important}.loop div:last-child{border-bottom:none !important}}
+
+/* Sequences */
+ol.seq{counter-reset:s;list-style:none;padding:0;margin:12px 0;display:grid;gap:0;border:1.5px solid var(--border);background:var(--card)}
+ol.seq li{counter-increment:s;display:flex;gap:12px;align-items:baseline;padding:10px 14px;font-size:16.5px}
+ol.seq li + li{border-top:1px solid var(--border)}
+ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;font-size:22px;color:var(--label);min-width:22px}
+.strip{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0;border:1.5px solid var(--border);background:var(--card)}
+.strip span{padding:8px 12px;font-size:15.5px;display:flex;align-items:center}
+.strip span + span{border-left:1.5px solid var(--border)}
+.strip span.arrow{color:var(--label);font-family:'IBM Plex Mono',monospace;border-left:none;padding:8px 4px}
+.strip span.arrow + span{border-left:none}
+.strip-label{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin:16px 0 0}
+
+/* Timeline */
+.timeline{border:1.5px solid var(--border);background:var(--card);padding:14px 16px;margin:12px 0}
+.tl-row{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;margin:8px 0;font-size:15px}
+.tl-track{position:relative;height:26px;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),var(--border) calc(10% - 1px) 10%)}
+.tl-bar{position:absolute;top:3px;bottom:3px;background:var(--border);color:var(--fill-text);font-family:'IBM Plex Mono',monospace;font-size:12px;display:flex;align-items:center;padding:0 6px;white-space:nowrap;overflow:hidden}
+.tl-scale{display:grid;grid-template-columns:150px 1fr;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.tl-scale div:last-child{display:flex;justify-content:space-between}
+@media (max-width:560px){.tl-row,.tl-scale{grid-template-columns:1fr}.tl-scale div:first-child{display:none}}
+
+/* Figures */
+.guide-body figure{margin:14px 0;border:1.5px solid var(--border);background:var(--card);padding:12px}
+.guide-body figcaption{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin-top:8px}
+.svg-text{font-family:'IBM Plex Mono',monospace;fill:var(--text)}
+.svg-title{font-family:'Young Serif',Georgia,serif;fill:var(--label)}
+
+.pic{max-width:100%;margin:14px 0}
+.pic img,.gallery img{display:block;width:100%;height:auto;background:#fff}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--min,170px),1fr));gap:10px;border:1.5px solid var(--border);background:var(--card);padding:10px;margin:14px 0}
+.gallery figure{margin:0;border:none;padding:0;background:none}
+.gallery img{height:170px;object-fit:contain}
+.gallery figcaption{margin-top:6px}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(var(--min,240px),100%),1fr));gap:12px;border:1.5px solid var(--border);background:var(--card);padding:10px;margin:14px 0}
+.pics figure{margin:0}
+.pics img{display:block;width:100%;height:auto;background:#fff}
+.pics figcaption{margin-top:6px}
+.guide-footer .credits{font-size:13px}
+.credit{display:block;font-size:12px;color:var(--muted);font-style:italic}
+.pq{display:flex;flex-direction:column;gap:8px}
+.pq img{height:190px;object-fit:cover}
+.pq details{padding:8px 10px;font-size:15px}
+
+.guide-hero p.key-note{max-width:60ch;color:var(--muted);font-size:15.5px;font-style:italic;margin:10px 0 0}
+
+/* Connecting the dots: connection cards, week links, See more */
+.legend .lg-conn{background:var(--card);border-color:var(--label);color:var(--label)}
+.legend .lg-week{background:var(--card);border-color:var(--label);color:var(--label);border-style:dashed}
+a.wk{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--label);border:1.5px dashed var(--label);padding:0 6px;margin:0 1px;vertical-align:1px;white-space:nowrap;line-height:1.6}
+a.wk:hover{background:var(--pill)}
+.dot{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--border);border-left:5px solid var(--label);background:var(--card);margin:14px 0}
+.dot > div{padding:12px 16px}
+.dot > div + div{border-left:1.5px dashed var(--border)}
+.dot p{margin:0;font-size:16.5px}
+.dot ul.tight{margin:0;font-size:16px}
+.dot .lbl{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.dot .to .lbl{color:var(--label)}
+@media (max-width:640px){.dot{grid-template-columns:1fr}.dot > div + div{border-left:none;border-top:1.5px dashed var(--border)}}
+.see{background:var(--card);border-color:var(--label)}
+.see .tag{color:var(--label)}
+.strip span a.wk{margin-left:4px}
+</style>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-type="studyguides"></div>
+<script src="assets/site-data.js?v=26"></script>
+<script src="js/tracking.js?v=15"></script>
+<script src="assets/header.js?v=14"></script>
+<script src="js/progress.js?v=8"></script>
+<div class="guide-body">
+<header class="guide-hero gwrap">
+  <p class="course">NUR 114 &middot; All units</p>
+  <h1>Connecting the dots</h1>
+  <p class="lede">Drafted from the Week 1–9 modules and powerpoints, scaled down for exam crams. Use the mnemonics and memory tricks to lock in lists, then hit the quick checks at the end of each topic.</p>
+  <p class="key-note">Covers all weeks. Each topic takes something you already learned and shows where it shows up next, so you can answer questions that mix units. Tap a week tag to jump to where it was first covered.</p>
+  <div class="legend" aria-label="Key">
+    <span class="lg-conn">Connection</span>
+    <span class="lg-week">Week tag: links to the guide</span>
+    <span class="lg-known">Known mnemonic</span>
+    <span class="lg-hook">Memory hook made for this guide</span>
+    <span class="lg-note">Side note</span>
+  </div>
+</header>
+
+<nav class="topics" aria-label="Topics">
+  <div class="gwrap">
+    <a href="#how">How to connect</a>
+    <a href="#numbers">Numbers that repeat</a>
+    <a href="#stress">Stress hormones</a>
+    <a href="#oxygen">Oxygen</a>
+    <a href="#immobility">Immobility</a>
+    <a href="#fluid">Too dry, too wet</a>
+    <a href="#losses">Fluid losses</a>
+    <a href="#potassium">Potassium</a>
+    <a href="#kidneys">Kidneys</a>
+    <a href="#infection">Infection</a>
+    <a href="#healing">Healing</a>
+    <a href="#bleeding">Bleeding risk</a>
+    <a href="#meds">Medications</a>
+    <a href="#positions">Positions</a>
+    <a href="#older">Older adults</a>
+    <a href="#people">People skills</a>
+    <a href="#cases">Case walk-throughs</a>
+  </div>
+</nav>
+
+<main class="gwrap">
+
+<!-- ===================== HOW TO CONNECT ===================== -->
+<section class="topic" id="how">
+  <div class="topic-head"><h2>How to connect the dots</h2><p>The thinking behind questions that mix topics.</p></div>
+
+  <div class="gsub">
+    <h3>Ask "what does this do to the body?"</h3>
+    <p>Most mixed questions take a fact you learned in one setting and drop it into another. If you know <b>what something does</b>, not just where you learned it, you can follow it anywhere. Run every new situation through the clinical judgment model <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#judgment">Week 2</a>: what are the cues, what do they connect to, what's most dangerous, what do I do?</p>
+    <div class="dot">
+      <div><span class="lbl">You learned</span><p>Epinephrine drives fight or flight: heart rate, BP (blood pressure) and cardiac output go up <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#stress">Week 5</a>.</p></div>
+      <div class="to"><span class="lbl">Connect it</span><p>So when the heart stops in cardiac arrest, epinephrine is given during CPR (cardiopulmonary resuscitation) to stimulate the heart and tighten blood vessels, pushing blood to the heart and brain. Same hormone, new situation.</p></div>
+    </div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Learn the job, not the chapter.</b> For every hormone, drug, lab or position, ask "what does it do?" Then ask "where else would I want that, or fear that?"</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Assess first, unless something is hurting the client right now</h3>
+    <p>"Assess first" is the default in every unit. The exception: if something you're doing or giving is causing harm, <b>stop it first</b>, then assess.</p>
+    <div class="cols">
+      <div><h4>Assess first</h4><ul>
+        <li>Fall history: fall-risk assessment <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></li>
+        <li>Before first walking a client: mobility assessment, dangle at the bedside <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#promoting">Week 4</a></li>
+        <li>Before a tube feeding or medication: check placement <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a></li>
+        <li>Suspected retention: bladder scan before a catheter <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#incontinence">Week 9</a></li>
+        <li>Before teaching: readiness, pain treated <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#education">Week 4</a></li>
+        <li>Crisis: assess safety and self-harm risk <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#stress">Week 5</a></li>
+        <li>Before food after a seizure: gag reflex <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></li>
+      </ul></div>
+      <div class="to"><h4>Stop it first</h4><ul>
+        <li>IV (intravenous) site cool, pale, swollen: stop the infusion <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a></li>
+        <li>Transfusion reaction: stop the transfusion <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a></li>
+        <li>Coughing or choking during a tube feeding: stop the feeding <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a></li>
+        <li>Heart rate drops during disimpaction or an enema: stop <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a></li>
+        <li>Restraint cutting off circulation: remove it <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></li>
+        <li>Tenderness on palpation: stop palpating, notify <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></li>
+      </ul></div>
+    </div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>If it's going in and it's hurting, stop it.</b> Fluids, blood, formula, an enema, a restraint: stop the source of harm, then assess.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Priority rules that apply everywhere</h3>
+    <div class="tbl"><table>
+      <tr><th>Rule</th><th>Where it shows up</th></tr>
+      <tr><td>Airway, breathing, circulation first <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#priority">Week 2</a></td><td>Seizure: side-lying, suction <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a> · first aid primary survey <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a> · aspiration during feeding <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a> · stridor is an emergency <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td></tr>
+      <tr><td>The ABCs (airway, breathing, circulation) change neuro findings <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#priority">Week 2</a></td><td>A confused client may be hypoxic, dehydrated or low on sodium before anything else <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a></td></tr>
+      <tr><td>Physiological before safety before belonging (Maslow) <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#priority">Week 2</a></td><td>Treat pain before teaching <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#education">Week 4</a> · find out why a client refuses a bath before pushing hygiene <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a></td></tr>
+      <tr><td>Least restrictive first <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#priority">Week 2</a></td><td>Reorient, sitter, alarm before restraints <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a> · fiber and fluids before laxatives, enemas last <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a> · external catheter before an indwelling one <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#catheters">Week 9</a></td></tr>
+      <tr><td>Acute and unstable before chronic and stable <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#priority">Week 2</a></td><td>New confusion beats chronic pain; sudden BP drop beats a routine dressing change</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Who can do what</h3>
+    <p>Delegation rules <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#managing">Week 2</a> show up in every unit. The nurse keeps <b>assessment, analysis, planning, evaluation, teaching and anything for an unstable client</b>.</p>
+    <div class="tbl"><table>
+      <tr><th>Task</th><th>UAP (unlicensed assistive personnel)?</th><th>See</th></tr>
+      <tr><td>Oxygen saturation reading, vital signs on a stable client</td><td>Yes</td><td><a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#managing">Week 2</a></td></tr>
+      <tr><td>Collecting stool for occult blood; urine specimens</td><td>Yes (collection only)</td><td><a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a></td></tr>
+      <tr><td>Point-of-care occult blood test, throat culture, nasal swab</td><td>No</td><td><a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a></td></tr>
+      <tr><td>Measuring NG (nasogastric) output, oral care</td><td>Yes</td><td><a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ng">Week 9</a></td></tr>
+      <tr><td>Tube feedings, NG insertion and maintenance</td><td>No</td><td><a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ng">Week 9</a></td></tr>
+      <tr><td>Helping a stable client walk; hygiene</td><td>Yes</td><td><a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#promoting">Week 4</a></td></tr>
+      <tr><td>Reinforcing teaching</td><td>PN (practical nurse), after the RN (registered nurse) teaches</td><td><a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#education">Week 4</a></td></tr>
+    </table></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client receiving IV fluids develops a cool, pale, swollen site. First action?</summary><p>Stop the infusion. Something going in is causing harm.</p></details>
+    <details><summary>A newly confused older adult: what three things do you think about before blaming dementia?</summary><p>Low oxygen, fluid or electrolyte problems (dehydration, sodium), and infection such as a UTI (urinary tract infection).</p></details>
+    <details><summary>Which comes first for a client who wants to learn insulin injections but is in pain 8/10?</summary><p>Treat the pain. A physiological need comes before learning, and pain blocks learning.</p></details>
+  </div>
+</section>
+
+<!-- ===================== NUMBERS ===================== -->
+<section class="topic" id="numbers">
+  <div class="topic-head"><h2>Numbers that repeat</h2><p>One normal range, many chapters.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Value</th><th>Normal</th><th>Where it comes back</th></tr>
+    <tr><td>WBC (white blood cell) count</td><td>5,000–10,000/mm³</td><td>Lab ranges <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · above 10,000 means infection or inflammation <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a> · rises with wound infection <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></td></tr>
+    <tr><td>Albumin</td><td>3.5–5 g/dL</td><td>Lab ranges <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · below 3.5 raises wound risk <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> · shows nutrition over the past few weeks; low protein → edema <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a></td></tr>
+    <tr><td>BUN (blood urea nitrogen)</td><td>10–20 mg/dL</td><td>Lab ranges <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · rises with fluid deficit, falls with overload <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a> · kidney function <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#uti">Week 9</a></td></tr>
+    <tr><td>Hct (hematocrit)</td><td>F 37–47% · M 42–52%</td><td>Lab ranges <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · rises when dry (hemoconcentration), falls when overloaded or bleeding <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a></td></tr>
+    <tr><td>Glucose (fasting)</td><td>74–106 mg/dL</td><td>Lab ranges <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · retest a meter reading under 60 or over 400 <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a> · under 70: 15 g fast carbs <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a> · check with TPN (total parenteral nutrition) and tube feedings <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a></td></tr>
+    <tr><td>Sodium · potassium</td><td>136–145 · 3.5–5 mEq/L</td><td>Lab ranges <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · sodium 120 is a critical result <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a> · highs and lows <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a></td></tr>
+    <tr><td>Bicarbonate</td><td>CMP (comprehensive metabolic panel) 23–30 · ABG (arterial blood gas) 22–26 mEq/L</td><td>Same chemical, two tests: the CMP's "CO2" (carbon dioxide content) is bicarbonate <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · the ABG range is the one for acid-base questions <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#acidbase">Week 8</a></td></tr>
+    <tr><td>Platelets</td><td>150,000–400,000/mm³</td><td>Lab ranges <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · low platelets: electric razor <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a></td></tr>
+    <tr><td>Urine specific gravity</td><td>1.005–1.030</td><td>Dipstick <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a> · 1.030+ is dehydration, 1.005 or less is overload <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a></td></tr>
+    <tr><td>Urine output</td><td>At least 30 mL/hr</td><td>Report less <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a> · under 30 for 2+ hours <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a> · after urostomy surgery <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#diversions">Week 9</a></td></tr>
+    <tr><td>Respirations · heart rate · SpO2 (oxygen saturation)</td><td>12–20 · 60–100 · 95–100%</td><td>Vital signs <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a> · rate and breath sounds <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a> · ABG and oxygenation <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#acidbase">Week 8</a></td></tr>
+    <tr><td>Bowel sounds</td><td>5–35 a minute</td><td>Abdominal exam <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a> · ileus and obstruction <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#gi">Week 9</a></td></tr>
+    <tr><td>Capillary refill</td><td>Under 3 seconds</td><td>Skin and circulation <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a> · slow when fluid is low <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a></td></tr>
+    <tr><td>Daily fluids</td><td>About 2,500–3,500 mL</td><td>Wound healing needs 2,500+ <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> · adult intake <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a> · UTI teaching 2,000–3,000 <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#uti">Week 9</a></td></tr>
+    <tr><td>Every 2 hours</td><td>&nbsp;</td><td>Turn and reposition <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> · restraints off 15 minutes <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+  </table></div>
+  <div class="box hook"><span class="tag">Memory hook</span><p><b>Thirty shows up everywhere:</b> 30 mL/hr of urine, 30 mL water flushes, 30 mL in an ounce, head of bed at least 30° for tube feedings.</p></div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>An ABG shows HCO3– (bicarbonate) 24 and a CMP shows bicarbonate 28. Are both normal?</summary><p>Yes. ABG range 22–26, CMP range 23–30. Same chemical, different tests.</p></details>
+    <details><summary>Albumin 2.9 g/dL. Name two problems you'd watch for.</summary><p>Poor wound healing and pressure injuries, and edema from fluid leaking out of the vessels.</p></details>
+  </div>
+</section>
+
+<!-- ===================== STRESS HORMONES ===================== -->
+<section class="topic" id="stress">
+  <div class="topic-head"><h2>Stress hormones &amp; the nervous system</h2><p>Fight or flight, cortisol and the vagus nerve explain findings in every unit.</p></div>
+
+  <div class="gsub">
+    <h3>Epinephrine (fight or flight)</h3>
+    <div class="dot">
+      <div><span class="lbl">You learned</span><p>The SAM (sympathetic-adrenal-medullary) system releases epinephrine and norepinephrine in seconds: HR (heart rate), BP, cardiac output and blood glucose go up; pupils and bronchi dilate; digestion slows <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#stress">Week 5</a>.</p></div>
+      <div class="to"><span class="lbl">Connect it</span><ul class="tight">
+        <li><b>Cardiac arrest:</b> epinephrine is given during CPR to restart and support the heart.</li>
+        <li><b>Severe allergic reaction (anaphylaxis)</b>, such as during a blood transfusion <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a>: epinephrine opens the airways and raises BP.</li>
+        <li><b>Pain, fear and anxiety</b> are on the tachycardia list <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a> because they trigger the same response.</li>
+        <li><b>Glucose rises</b> with stress, so stressed or ill clients with diabetes run high.</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Cortisol and corticosteroids</h3>
+    <div class="dot">
+      <div><span class="lbl">You learned</span><p>Short-term cortisol helps; chronic cortisol suppresses immunity, slows healing and drives inflammation <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#stress">Week 5</a>.</p></div>
+      <div class="to"><span class="lbl">Connect it</span><ul class="tight">
+        <li><b>Corticosteroid medications</b> act like cortisol: they make a client a more <b>susceptible host</b> for infection <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a> and <b>block collagen</b>, delaying wound healing <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a>.</li>
+        <li>An older adult on steroids may show a serious infection with only mild signs, since inflammation is dampened.</li>
+        <li>Long-term steroids are on the lists for low potassium and low calcium <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a>.</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>The vagus nerve: "bear down, slow down"</h3>
+    <div class="dot">
+      <div><span class="lbl">You learned</span><p>CN X (cranial nerve 10, the vagus) is both sensory and motor; with CN IX it controls swallowing and the gag reflex <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7</a>. In the resistance stage, the parasympathetic system calms the body down <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#stress">Week 5</a>.</p></div>
+      <div class="to"><span class="lbl">Connect it</span><ul class="tight">
+        <li>Rectal stimulation fires the vagus: <b>stop a disimpaction if the heart rate drops</b> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a>; a slowing pulse during an enema means stop <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelcare">Week 9</a>.</li>
+        <li>Straining (Valsalva) can cause bradycardia, low BP and fainting <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a>, so constipation is a cardiac safety issue too.</li>
+        <li>Never press both carotids at once: heart rate and BP can drop <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a>.</li>
+        <li><b>Gag reflex</b> = CN IX and X: check it before food after a seizure <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a>, before NG insertion <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a>, and before oral care on an unconscious client <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a>.</li>
+      </ul></div>
+    </div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Bear down, slow down.</b> Straining or rectal stimulation fires the vagus nerve, and the heart slows.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Stress, mood and the gut, lungs and sleep</h3>
+    <ul class="tight">
+      <li>Stress <b>speeds</b> peristalsis (diarrhea, IBS [irritable bowel syndrome] flares); depression <b>slows</b> it (constipation) <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#gi">Week 9</a>.</li>
+      <li>Anxiety or panic → hyperventilation → blows off CO2 (carbon dioxide) → <b>respiratory alkalosis</b> <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#acidbase">Week 8</a>.</li>
+      <li>Stage 3 sleep repairs tissue and boosts immunity <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#sleep">Week 5</a>, which is why cluster care protects healing <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a>.</li>
+      <li>Pain and anxiety block learning <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#education">Week 4</a> and sleep <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#sleep">Week 5</a>, so treat them first.</li>
+    </ul>
+  </div>
+
+  <div class="box see"><span class="tag">See more</span><ul>
+    <li><a href="unit-2-basic-human-needs/week5-study-guide.html#stress">Week 5 · Stress &amp; coping: fight or flight, cortisol, GAS (general adaptation syndrome)</a></li>
+    <li><a href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7 · Cranial nerves</a> · <a href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9 · Constipation, impaction and vagal response</a></li>
+  </ul></div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Which hormone from the fight-or-flight response is given during CPR?</summary><p>Epinephrine: it stimulates the heart and tightens vessels to push blood to the heart and brain.</p></details>
+    <details><summary>A client on long-term prednisone (a corticosteroid) has a wound that won't heal. Connect it.</summary><p>Corticosteroids act like chronic cortisol: they block collagen and suppress immunity, delaying healing and raising infection risk.</p></details>
+    <details><summary>During a digital disimpaction the heart rate drops from 78 to 50. Why, and what do you do?</summary><p>Rectal stimulation triggered the vagus nerve. Stop the procedure and check the client.</p></details>
+    <details><summary>A client having a panic attack reports tingling fingers and lightheadedness. Which ABG pattern?</summary><p>Respiratory alkalosis: fast breathing blows off CO2.</p></details>
+  </div>
+</section>
+
+<!-- ===================== OXYGEN ===================== -->
+<section class="topic" id="oxygen">
+  <div class="topic-head"><h2>Oxygen from start to finish</h2><p>Hemoglobin, breathing, blood flow and healing are one chain.</p></div>
+  <p class="strip-label">The oxygen chain</p>
+  <div class="strip"><span>Airway open</span><span class="arrow">→</span><span>Lungs expand</span><span class="arrow">→</span><span>Oxygen binds hemoglobin</span><span class="arrow">→</span><span>Heart pumps it</span><span class="arrow">→</span><span>Tissues use it</span></div>
+  <div class="tbl"><table>
+    <tr><th>Break in the chain</th><th>Cause from earlier units</th><th>What you see</th></tr>
+    <tr><td>Airway</td><td>Aspiration with dysphagia <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a> · obstruction <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#priority">Week 2</a></td><td>Coughing, choking, can't speak, stridor <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td></tr>
+    <tr><td>Lungs</td><td>Atelectasis and pneumonia from bed rest <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a> · opioids slow breathing <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#pain">Week 2</a></td><td>Diminished sounds, crackles <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a> · respiratory acidosis <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#acidbase">Week 8</a></td></tr>
+    <tr><td>Hemoglobin</td><td>Low Hgb (hemoglobin) <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · iron deficiency <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#foods">Week 8</a> · kidney failure lowers red cell production <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a></td><td>Pallor <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> · fast heart rate <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a> · fatigue</td></tr>
+    <tr><td>Pump and vessels</td><td>Fluid deficit <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a> · heart failure</td><td>Weak pulse, slow capillary refill, low BP</td></tr>
+    <tr><td>Tissues</td><td>Pressure over bony prominences <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> · arterial insufficiency <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td><td>Pressure injury, delayed healing (the H in DIDN'T HEAL is hypoxia) <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></td></tr>
+  </table></div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>Cyanosis signals hypoxia and is the priority skin finding <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>Cyanosis is a late sign of a broken chain. Earlier clues are a rising respiratory rate, a rising heart rate, restlessness or new confusion, and SpO2 under 95% <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a>.</p></div>
+  </div>
+  <ul class="tight">
+    <li>Incentive spirometer, deep breathing and turning every 2 hours prevent atelectasis <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a>.</li>
+    <li>Head of bed up helps lungs expand: Fowler's <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#promoting">Week 4</a>, orthopneic for COPD (chronic obstructive pulmonary disease) <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a>.</li>
+    <li>Home oxygen is a fire risk: no smoking, flames 10 ft away <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a>.</li>
+    <li>Iron carries oxygen in hemoglobin, and vitamin C helps absorb iron <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a>.</li>
+  </ul>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client on bed rest after surgery has diminished breath sounds at the bases and SpO2 92%. Likely cause and prevention?</summary><p>Atelectasis from shallow breathing. Incentive spirometer, deep breathing and coughing, turning every 2 hours, head of bed raised.</p></details>
+    <details><summary>Why does a client with anemia have a fast heart rate?</summary><p>Less hemoglobin carries less oxygen, so the heart speeds up to deliver more.</p></details>
+  </div>
+</section>
+
+<!-- ===================== IMMOBILITY ===================== -->
+<section class="topic" id="immobility">
+  <div class="topic-head"><h2>The immobility chain reaction</h2><p>Bed rest touches every system you've studied since.</p></div>
+  <div class="tbl"><table>
+    <tr><th>System</th><th>What bed rest does <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a></th><th>How you find it</th><th>Where it leads</th></tr>
+    <tr><td>Skin</td><td>Pressure blocks blood flow over bony prominences</td><td>Nonblanchable redness; Braden score; staging <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></td><td>Needs protein and calories <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a>; moisture from incontinence makes it worse <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a></td></tr>
+    <tr><td>Veins</td><td>Venous stasis → DVT (deep vein thrombosis)</td><td>One swollen leg: compare limbs <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7</a></td><td>PE (pulmonary embolism); anticoagulants → bleeding precautions (see Bleeding risk)</td></tr>
+    <tr><td>BP</td><td>Orthostatic hypotension</td><td>Lying vs standing BP <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a></td><td>Falls <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Lungs</td><td>Shallow breathing; secretions pool</td><td>Diminished sounds, crackles, dullness <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td><td>Atelectasis, pneumonia, fever, high WBC <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a></td></tr>
+    <tr><td>Gut</td><td>Slow peristalsis</td><td>Hypoactive bowel sounds; Bristol types 1–2 <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#gi">Week 9</a></td><td>Impaction with liquid stool leaking around it <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a></td></tr>
+    <tr><td>Urinary</td><td>Urine pools; no gravity</td><td>Bladder scan; distention <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#incontinence">Week 9</a></td><td>Retention, stones, UTI <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#uti">Week 9</a></td></tr>
+    <tr><td>Muscles and bones</td><td>Atrophy, contractures, foot drop, bone loss</td><td>Strength grades 0–5, ROM (range of motion) <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td><td>Falls, fractures; high calcium from bones <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a></td></tr>
+    <tr><td>Mind</td><td>Isolation, depression</td><td>Mood every shift <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a></td><td>Depression slows the gut <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#gi">Week 9</a> and sleep <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#sleep">Week 5</a></td></tr>
+  </table></div>
+  <div class="box hook"><span class="tag">Memory hook</span><p><b>Turn, move, drink.</b> Turning every 2 hours protects skin and lungs; moving protects muscles, bones, veins and bowels; fluids thin mucus, soften stool and keep urine flowing.</p></div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Day 4 of bed rest: no bowel movement, hypoactive bowel sounds, and a small amount of liquid stool. What do you suspect?</summary><p>Fecal impaction: liquid stool leaks around the hard mass.</p></details>
+    <details><summary>One calf is swollen and warm. Which unit's assessment tells you what to do, and what is it?</summary><p>Edema assessment: always compare with the other limb. One-sided swelling suggests DVT; report it.</p></details>
+  </div>
+</section>
+
+<!-- ===================== FLUID ===================== -->
+<section class="topic" id="fluid">
+  <div class="topic-head"><h2>Too dry, too wet</h2><p>The same assessments from Units 1–3 tell you which way the fluid went.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Finding</th><th>Too dry (deficit)</th><th>Too wet (overload)</th><th>Learned in</th></tr>
+    <tr><td>Pulse</td><td>Fast, weak, thready (1+)</td><td>Bounding (4+)</td><td><a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td></tr>
+    <tr><td>BP</td><td>Low; drops on standing</td><td>High</td><td><a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a></td></tr>
+    <tr><td>Neck veins</td><td>Flat</td><td>Distended (JVD, jugular venous distention)</td><td><a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td></tr>
+    <tr><td>Lungs</td><td>Clear</td><td>Crackles, shortness of breath</td><td><a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td></tr>
+    <tr><td>Skin</td><td>Tenting, dry mouth, slow capillary refill</td><td>Pitting edema 1+ to 4+</td><td><a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7</a></td></tr>
+    <tr><td>Urine</td><td>Low output, dark amber, specific gravity 1.030+</td><td>Dilute, specific gravity 1.005 or less</td><td><a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a></td></tr>
+    <tr><td>Labs</td><td>Hct, BUN and sodium up</td><td>Hct and BUN down</td><td><a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a></td></tr>
+    <tr><td>Weight</td><td>Quick loss</td><td>Quick gain</td><td><a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a></td></tr>
+    <tr><td>Mind and bowels</td><td>Confusion, constipation</td><td>Confusion</td><td><a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a></td></tr>
+  </table></div>
+  <div class="box hook"><span class="tag">Memory hook</span><p><b>Dry is fast and flat; wet is bounding and bulging.</b> A fast, weak pulse with flat neck veins means the tank is low. A bounding pulse, bulging neck veins and crackles mean it's overfull.</p></div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>Treat a deficit with isotonic IV fluids <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a> and overload with diuretics <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>Each treatment has its own downstream risk. IV fluids given too fast cause <b>circulatory overload</b> <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a>. Diuretics cause <b>low potassium</b> <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a>, <b>orthostatic hypotension</b> and falls <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a>, and should be taken in the morning to avoid nighttime trips to the bathroom <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a>.</p></div>
+  </div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>Orthostatic hypotension raises fall risk; dangle first <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#promoting">Week 4</a> <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>Any dehydrated client is an orthostatic, high-fall-risk client. Older adults also have a weaker thirst sense and unreliable skin turgor, so use other signs <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a>.</p></div>
+  </div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Pulse 118 and weak, BP 92/58, urine dark with specific gravity 1.034. Which way did the fluid go?</summary><p>Fluid volume deficit.</p></details>
+    <details><summary>During IV fluids, a client develops crackles, distended neck veins and a bounding pulse. First actions?</summary><p>Slow the IV, raise the head of the bed, and notify the provider: circulatory overload.</p></details>
+  </div>
+</section>
+
+<!-- ===================== GI LOSSES ===================== -->
+<section class="topic" id="losses">
+  <div class="topic-head"><h2>What leaves takes something with it</h2><p>Where fluid is lost decides which electrolytes and which acid-base problem follow.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Loss</th><th>Fluid</th><th>Electrolytes</th><th>Acid-base</th><th>Also watch</th></tr>
+    <tr><td>Diarrhea</td><td>Deficit</td><td>Low potassium</td><td>Metabolic acidosis (bicarbonate lost in stool)</td><td>Perianal skin breakdown <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a>; C. diff (Clostridioides difficile) after antibiotics <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a></td></tr>
+    <tr><td>Vomiting or NG suction</td><td>Deficit</td><td>Low potassium and sodium</td><td>Metabolic alkalosis (stomach acid lost)</td><td>Count NG drainage as output; report coffee-ground drainage <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ng">Week 9</a></td></tr>
+    <tr><td>New ileostomy</td><td>Deficit (up to 2,000 mL a day)</td><td>Sodium and potassium loss</td><td>&nbsp;</td><td>Thirst, dizziness on standing <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ostomies">Week 9</a></td></tr>
+    <tr><td>Laxative overuse</td><td>Deficit</td><td>Low potassium, low calcium</td><td>&nbsp;</td><td>Weakens the bowel's natural response <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelcare">Week 9</a></td></tr>
+  </table></div>
+  <div class="box hook"><span class="tag">Memory hook</span><p><b>Lose from the top, lose acid (alkalosis). Lose from the bottom, lose base (acidosis).</b></p></div>
+  <p class="strip-label">One antibiotic, five units</p>
+  <div class="strip"><span>Antibiotic for infection <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a></span><span class="arrow">→</span><span>Gut bacteria disturbed → watery diarrhea <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a></span><span class="arrow">→</span><span>Contact precautions, soap and water for C. diff <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a></span><span class="arrow">→</span><span>Fluids and potassium <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a></span><span class="arrow">→</span><span>Skin care and barrier <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a></span></div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client with prolonged vomiting: pH 7.50, HCO3– 31. Interpret and connect.</summary><p>Metabolic alkalosis from losing stomach acid. Expect low potassium and a fluid deficit too.</p></details>
+    <details><summary>Watery diarrhea 4 times a day after antibiotics. Precautions and hand hygiene?</summary><p>Contact precautions until C. diff is ruled out, and soap and water: alcohol doesn't remove spores.</p></details>
+  </div>
+</section>
+
+<!-- ===================== POTASSIUM ===================== -->
+<section class="topic" id="potassium">
+  <div class="topic-head"><h2>Potassium, start to finish</h2><p>The electrolyte that connects the gut, the kidneys, the heart and the menu.</p></div>
+  <div class="cols">
+    <div><h4>Low (under 3.5)</h4><ul>
+      <li>Causes: loop and thiazide diuretics <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a>, diarrhea, vomiting, NG suction <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a></li>
+      <li>Signs: muscle weakness, leg cramps, dysrhythmias; can cause <b>ileus</b> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelconditions">Week 9</a></li>
+      <li>Raises digoxin toxicity risk</li>
+      <li>Add foods: bananas, baked potatoes, oranges, spinach <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#foods">Week 8</a></li>
+      <li>IV potassium: diluted, on a pump, 10–20 mEq per hour, never IV push <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a></li>
+    </ul></div>
+    <div><h4>High (over 5)</h4><ul>
+      <li>Cause: kidney failure; potassium-sparing diuretics</li>
+      <li>Signs: weakness, paralysis, life-threatening dysrhythmias</li>
+      <li>Renal diet limits potassium; avoid salt substitutes <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#foods">Week 8</a></li>
+      <li>Treat: sodium polystyrene sulfonate, also given as a retention enema <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelcare">Week 9</a>; insulin moves potassium into cells, so check glucose <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a></li>
+    </ul></div>
+  </div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>Urine output under 30 mL/hr gets reported <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>Kidneys have to be working before potassium is given. Low output means potassium can build up, so check urine output before giving it.</p></div>
+  </div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client on furosemide has leg cramps, weakness and hypoactive bowel sounds. Connect it.</summary><p>Loop diuretic → low potassium → muscle weakness, cramps and slowed bowel (ileus risk).</p></details>
+    <details><summary>Which enema lowers potassium?</summary><p>A medicated retention enema with sodium polystyrene sulfonate.</p></details>
+  </div>
+</section>
+
+<!-- ===================== KIDNEYS ===================== -->
+<section class="topic" id="kidneys">
+  <div class="topic-head"><h2>The kidneys are the hub</h2><p>When they fail, what they'd remove stays and what they'd make goes missing.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Kidney job <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a></th><th>When it fails</th><th>Connects to</th></tr>
+    <tr><td>Filter waste</td><td>BUN and creatinine rise</td><td>Lab ranges <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a></td></tr>
+    <tr><td>Control fluid volume (with ADH, antidiuretic hormone)</td><td>Fluid overload, low urine output</td><td><a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a></td></tr>
+    <tr><td>Remove potassium and magnesium</td><td>High potassium, high magnesium (absent reflexes)</td><td><a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a> · reflexes <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7</a></td></tr>
+    <tr><td>Make and keep bicarbonate; excrete acid</td><td>Metabolic acidosis</td><td><a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#acidbase">Week 8</a></td></tr>
+    <tr><td>Make erythropoietin (red blood cells)</td><td>Anemia, low Hgb</td><td><a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> · Oxygen section</td></tr>
+    <tr><td>Activate vitamin D</td><td>Poor calcium absorption</td><td><a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a></td></tr>
+    <tr><td>Renin raises BP</td><td>Hypertension</td><td><a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a></td></tr>
+  </table></div>
+  <div class="box hook"><span class="tag">Memory hook</span><p><b>Failing kidneys keep the bad and lose the good:</b> they keep fluid, potassium, magnesium, acid and waste, and lose red cell production and active vitamin D.</p></div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>Hypertonic sodium phosphate enemas are avoided with kidney impairment <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelcare">Week 9</a>; high magnesium comes from kidney disease and too many magnesium laxatives or antacids <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>For a constipated client with kidney failure, steer away from products that add phosphate or magnesium. The renal diet limits sodium, potassium and phosphorus for the same reason <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#foods">Week 8</a>.</p></div>
+  </div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client with kidney failure: potassium 6.0, absent reflexes, pH 7.30 with low bicarbonate, Hgb 9. Connect each one.</summary><p>Potassium and magnesium build up (absent reflexes = high magnesium); the kidneys can't keep bicarbonate (metabolic acidosis); less erythropoietin means anemia.</p></details>
+    <details><summary>Which snack fits a renal diet: banana, orange juice, or strawberries?</summary><p>Strawberries: lower in potassium.</p></details>
+  </div>
+</section>
+
+<!-- ===================== INFECTION ===================== -->
+<section class="topic" id="infection">
+  <div class="topic-head"><h2>Infection and devices</h2><p>Every line, tube and drain is an open door.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Device or site</th><th>Infection it risks</th><th>How you keep the door closed</th></tr>
+    <tr><td>Indwelling urinary catheter</td><td>CAUTI (catheter-associated urinary tract infection): the most common HAI (health care–associated infection) site <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a></td><td>Only when needed, sterile insertion, closed system, bag below the bladder, daily catheter care, remove early <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#catheters">Week 9</a> <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a></td></tr>
+    <tr><td>Peripheral IV</td><td>Phlebitis, site infection</td><td>Site changes per policy, watch for warmth and redness <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a></td></tr>
+    <tr><td>Central line, TPN</td><td>CLABSI (central line–associated bloodstream infection)</td><td>Sterile technique, scrub the hub, dressing every 7 days <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a></td></tr>
+    <tr><td>Feeding tube, ventilator, poor oral care</td><td>Aspiration pneumonia, VAP (ventilator-associated pneumonia)</td><td>Head of bed up, placement checks, oral care <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a> <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a></td></tr>
+    <tr><td>Incision, wound, drain</td><td>SSI (surgical site infection)</td><td>Asepsis, chlorhexidine wipes, splint when coughing <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></td></tr>
+  </table></div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>The five cardinal signs of inflammation: heat, redness, swelling, pain, loss of function <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>Phlebitis is inflammation of a vein: warm, red, painful <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a>. Infiltration is fluid in the tissue: cool and pale. "Hot means inflamed, cold means leaked."</p></div>
+  </div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>Systemic infection brings fever, fast heart and breathing rates, and a WBC over 10,000 <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a> <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>Older adults may show only <b>new confusion, falls or incontinence</b> <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#uti">Week 9</a>. A catheter plus new confusion: think CAUTI. A fever over 104 °F (40 °C) with low BP: possible sepsis, report now <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a>.</p></div>
+  </div>
+  <ul class="tight">
+    <li><b>Culture before antibiotics</b> everywhere: wounds <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a>, urine <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#specimens">Week 9</a>, blood.</li>
+    <li>Front-to-back perineal care <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a> and voiding after intercourse <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#uti">Week 9</a> both keep stool bacteria out of the urethra.</li>
+    <li>Finish every antibiotic course: it prevents MDROs (multidrug-resistant organisms) <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a>.</li>
+  </ul>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>An older adult with a 4-day-old indwelling catheter becomes confused and incontinent around the catheter. Next steps?</summary><p>Suspect CAUTI: check vital signs, get a urine specimen from the sampling port before antibiotics, notify the provider, and ask whether the catheter is still needed.</p></details>
+    <details><summary>Which chain-of-infection link does a closed catheter drainage system break?</summary><p>Portal of entry (and mode of transmission): it keeps bacteria from getting into the urinary tract.</p></details>
+  </div>
+</section>
+
+<!-- ===================== HEALING ===================== -->
+<section class="topic" id="healing">
+  <div class="topic-head"><h2>Healing runs on nutrition</h2><p>The wound chapter and the nutrition chapter describe the same process.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Healing needs <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></th><th>Where you get it <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#foods">Week 8</a></th></tr>
+    <tr><td>Protein (albumin 3.5+, prealbumin 19–38)</td><td>Beef, poultry, fish, eggs, milk; beans and nuts</td></tr>
+    <tr><td>Vitamin C (collagen)</td><td>Citrus, berries, tomatoes, potatoes</td></tr>
+    <tr><td>Vitamin A</td><td>Liver, dairy, sweet potatoes, leafy greens</td></tr>
+    <tr><td>Zinc</td><td>Meats, fish, whole grains</td></tr>
+    <tr><td>Fluid 2,500+ mL and 1,500+ kcal a day</td><td>Unless restricted</td></tr>
+    <tr><td>Oxygen</td><td>Hemoglobin and blood flow (see Oxygen)</td></tr>
+  </table></div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>Bed rest lowers appetite and causes malnutrition <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>Malnutrition → low albumin → slow healing and pressure injuries <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> → fluid leaks from vessels → edema <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a>. Use prealbumin to judge current nutrition.</p></div>
+  </div>
+  <p><b>What slows healing across units:</b> diabetes and high glucose <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a>, chronic stress and corticosteroids <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#stress">Week 5</a>, smoking, older age, immobility, infection, and low hemoglobin. Vitamin C helps healing but is stopped 3 days before an occult blood test <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a>.</p>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client with a stage 3 pressure injury: which lab best shows whether nutrition is improving this week?</summary><p>Prealbumin: it reflects current nutrition; albumin reflects the past few weeks.</p></details>
+  </div>
+</section>
+
+<!-- ===================== BLEEDING ===================== -->
+<section class="topic" id="bleeding">
+  <div class="topic-head"><h2>Bleeding risk</h2><p>Why the client is on an anticoagulant, and what it changes everywhere else.</p></div>
+  <p>Anticoagulants prevent DVT in immobile clients <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a>. Low platelets (under 150,000) <a class="wk" href="unit-1-intro-to-nursing/cbc-cmp-lab-values.html">Labs</a> carry the same precautions.</p>
+  <div class="tbl"><table>
+    <tr><th>Situation</th><th>What changes</th></tr>
+    <tr><td>Shaving</td><td>Electric razor <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Nail care</td><td>Extra caution <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a></td></tr>
+    <tr><td>Starting an IV</td><td>BP cuff instead of a tourniquet, smaller catheter <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a></td></tr>
+    <tr><td>Occult blood test</td><td>Stop anticoagulants, aspirin and NSAIDs (nonsteroidal anti-inflammatory drugs) 7 days before <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a></td></tr>
+    <tr><td>Diet</td><td>Keep vitamin K intake steady on warfarin <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#foods">Week 8</a></td></tr>
+    <tr><td>After surgery</td><td>Higher hematoma risk; hemorrhage risk peaks 24–48 hours <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></td></tr>
+    <tr><td>Medication safety</td><td>Monitor weight, kidney and liver labs <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Stool</td><td>Black, tarry = upper GI (gastrointestinal) bleeding; bright red = lower <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#stooltests">Week 9</a></td></tr>
+  </table></div>
+  <div class="dot">
+    <div><span class="lbl">You learned</span><p>Large intestine bacteria make vitamin K, needed for clotting <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#gi">Week 9</a>.</p></div>
+    <div class="to"><span class="lbl">Connect it</span><p>Vitamin K reverses some anticoagulants and weakens warfarin, which is why diet must stay steady <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a>.</p></div>
+  </div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A client on warfarin needs a shave and a new IV. Two changes?</summary><p>Electric razor; BP cuff instead of a tourniquet and a smaller catheter.</p></details>
+  </div>
+</section>
+
+<!-- ===================== MEDICATIONS ===================== -->
+<section class="topic" id="meds">
+  <div class="topic-head"><h2>Medications that cross units</h2><p>Know what a drug does and its effects show up everywhere.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Medication</th><th>Shows up as</th></tr>
+    <tr><td>Opioids</td><td>Slow breathing, the vital sign to watch <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#pain">Week 2</a> → respiratory acidosis <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#acidbase">Week 8</a> · constipation <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a> · urinary retention <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#incontinence">Week 9</a> · ileus <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelconditions">Week 9</a> · central sleep apnea in overdose <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#sleep">Week 5</a> · reversed by naloxone <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#pain">Week 2</a></td></tr>
+    <tr><td>OTC (over-the-counter) antihistamines, anticholinergics</td><td>"Can't see, can't pee, can't spit, can't poop" <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#sleep">Week 5</a> → urinary retention <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a> and constipation <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a></td></tr>
+    <tr><td>Diuretics</td><td>Low potassium <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a> · fluid deficit <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a> · urgency and incontinence; take in the morning <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a></td></tr>
+    <tr><td>Antibiotics</td><td>Culture first <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a> · diarrhea and C. diff <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a> · finish the course <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a></td></tr>
+    <tr><td>Benzodiazepines</td><td>Short-term sleep aid <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#sleep">Week 5</a> · stop seizures <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a> · a chemical restraint <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Corticosteroids</td><td>Infection risk, slow healing <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> · low potassium <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a></td></tr>
+    <tr><td>Insulin</td><td>Moves potassium into cells (treats high potassium), so watch for low glucose <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a> · glucose checks with tube feedings and TPN <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a></td></tr>
+    <tr><td>Oral iron</td><td>Constipation and black stool <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a> · stopped before an occult blood test <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#specimen">Week 6</a></td></tr>
+    <tr><td>Antacids</td><td>Aluminum and calcium: constipation · magnesium: diarrhea <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a> · too many: metabolic alkalosis <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#acidbase">Week 8</a></td></tr>
+    <tr><td>Epinephrine</td><td>Fight or flight <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#stress">Week 5</a> · cardiac arrest and anaphylaxis (see Stress hormones)</td></tr>
+  </table></div>
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>An older adult takes diphenhydramine to sleep and now can't urinate. Connect it.</summary><p>Antihistamines are anticholinergic: "can't pee." It causes urinary retention.</p></details>
+    <details><summary>Name four problems an opioid can cause in four different units.</summary><p>Slow breathing (vital signs), respiratory acidosis (acid-base), constipation (immobility and bowel), urinary retention (urinary).</p></details>
+  </div>
+</section>
+
+<!-- ===================== POSITIONS ===================== -->
+<section class="topic" id="positions">
+  <div class="topic-head"><h2>Positions across units</h2><p>Same bed, different reasons.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Position</th><th>Used for</th></tr>
+    <tr><td>Semi-Fowler's (30–45°)</td><td>Tube feedings: during, and at least 30° for 1 hour after <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a> · fluid overload <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a> · checking JVD <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a></td></tr>
+    <tr><td>High-Fowler's / upright</td><td>NG insertion <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a> · eating with dysphagia, then 45°+ for 1 hour <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a> · severe dyspnea <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Head of bed 30° or lower</td><td>Prevents shear and pressure injuries <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></td></tr>
+    <tr><td>Left side (Sims')</td><td>Enema, disimpaction <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelcare">Week 9</a> <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#promoting">Week 4</a></td></tr>
+    <tr><td>Side-lying</td><td>Seizure <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a> · oral care for an unconscious client <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#hygiene">Week 4</a> · suspected aspiration during feeding <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#tubes">Week 8</a></td></tr>
+    <tr><td>Supine, knees bent</td><td>Abdominal exam <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-2">Week 7</a> · evisceration <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></td></tr>
+    <tr><td>Knee-chest</td><td>Ileostomy food blockage <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ostomies">Week 9</a></td></tr>
+    <tr><td>Modified Trendelenburg</td><td>Hypovolemia <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+  </table></div>
+  <div class="box note"><span class="tag">Side note</span><p>A tube-fed client at risk for pressure injury: the feeding rule needs at least 30°, and the pressure rule says 30° or lower. They meet at 30°.</p></div>
+</section>
+
+<!-- ===================== OLDER ADULTS ===================== -->
+<section class="topic" id="older">
+  <div class="topic-head"><h2>Older adults across units</h2><p>One aging change explains findings in several chapters.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Change</th><th>Leads to</th></tr>
+    <tr><td>Weaker thirst, less body water</td><td>Dehydration; turgor unreliable <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7</a></td></tr>
+    <tr><td>Infection shows as confusion, falls, incontinence</td><td>Missed UTIs and pneumonia <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#uti">Week 9</a></td></tr>
+    <tr><td>Slower peristalsis</td><td>Constipation and impaction <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#gi">Week 9</a></td></tr>
+    <tr><td>Fewer nephrons, smaller bladder</td><td>Nocturia → night falls <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#urinary">Week 9</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Thin, fragile skin</td><td>Skin tears from tape, pressure injuries <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a></td></tr>
+    <tr><td>Less stage 3 sleep, wakes more</td><td>Fatigue <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#sleep">Week 5</a></td></tr>
+    <tr><td>Kyphosis, less muscle, slow TUG (timed up and go) over 12 seconds</td><td>Fall risk <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#promoting">Week 4</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Presbycusis (high-frequency hearing loss)</td><td>Check for earwax first; face the client when teaching <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7</a> <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#education">Week 4</a></td></tr>
+    <tr><td>Lower metabolism, poorer absorption</td><td>Fewer calories, more calcium <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a></td></tr>
+  </table></div>
+  <div class="box hook"><span class="tag">Memory hook</span><p><b>New confusion is a clue, not a diagnosis.</b> Check oxygen, fluid and sodium, infection, and new medications.</p></div>
+</section>
+
+<!-- ===================== PEOPLE SKILLS ===================== -->
+<section class="topic" id="people">
+  <div class="topic-head"><h2>People skills that carry across</h2><p>Communication, teaching, ethics and safety rules apply to every procedure.</p></div>
+  <div class="tbl"><table>
+    <tr><th>Rule</th><th>Learned</th><th>Shows up again</th></tr>
+    <tr><td>Certified interpreter, never family</td><td><a class="wk" href="unit-1-intro-to-nursing/week3-study-guide.html#communication">Week 3</a></td><td>Client teaching <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#education">Week 4</a> · DEI (diversity, equity and inclusion) <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#dei">Week 5</a> · discharge</td></tr>
+    <tr><td>Teach-back, return demonstration</td><td><a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#managing">Week 2</a> <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#education">Week 4</a></td><td>Ostomy pouch changes <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ostomies">Week 9</a> · glucometer · call light <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Don't assume: ask</td><td><a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#pcc">Week 2</a> <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#dei">Week 5</a></td><td>Food and religion <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a> · reading labels without glasses <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#nutrition">Week 8</a></td></tr>
+    <tr><td>Touch without consent is battery</td><td><a class="wk" href="unit-1-intro-to-nursing/week3-study-guide.html#legal">Week 3</a></td><td>Ask before care <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#pcc">Week 2</a> · restraints need an order <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>Informed consent: provider explains, nurse witnesses</td><td><a class="wk" href="unit-1-intro-to-nursing/week3-study-guide.html#legal">Week 3</a></td><td>Surgery and procedures <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a> · blood transfusion <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#iv">Week 8</a></td></tr>
+    <tr><td>Least restrictive first</td><td><a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#priority">Week 2</a></td><td>Restraint alternatives <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>FACT: factual, accurate, complete, timely</td><td><a class="wk" href="unit-1-intro-to-nursing/week3-study-guide.html#documentation">Week 3</a></td><td>Seizures, restraints <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a> · wound measurements <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a> · I&amp;O (intake and output) <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a></td></tr>
+    <tr><td>I-SBAR-R (identify, situation, background, assessment, recommendation, read back)</td><td><a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#managing">Week 2</a> <a class="wk" href="unit-1-intro-to-nursing/week3-study-guide.html#teamwork">Week 3</a></td><td>Calling a rapid response, critical results <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a></td></tr>
+    <tr><td>HIPAA (Health Insurance Portability and Accountability Act)</td><td><a class="wk" href="unit-1-intro-to-nursing/week3-study-guide.html#legal">Week 3</a></td><td>Specimen labels, handoffs, social media</td></tr>
+    <tr><td>Body image and self-esteem</td><td><a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#self-concept">Week 5</a></td><td>A client who won't look at a new stoma <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ostomies">Week 9</a></td></tr>
+  </table></div>
+</section>
+
+<!-- ===================== CASES ===================== -->
+<section class="topic" id="cases">
+  <div class="topic-head"><h2>Case walk-throughs</h2><p>Each step pulls from a different unit.</p></div>
+
+  <div class="gsub">
+    <h3>Case 1 · Mr. Jones after hip surgery</h3>
+    <p>Mr. Jones, 78, had hip surgery <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#process">Week 2</a>. He's on bed rest, takes opioids and has an indwelling catheter.</p>
+    <div class="gcheck">
+      <details><summary>Day 1: temperature 39.0 °C, pulse 122. What do you think about?</summary><p>Fever with tachycardia after surgery: infection is possible. Check the incision, lungs and urine; report it <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a>.</p></details>
+      <details><summary>Day 3: no bowel movement, hypoactive bowel sounds, distended abdomen, no flatus.</summary><p>Opioids plus immobility plus surgery slow the gut: constipation or ileus. Check potassium too, since low potassium can cause ileus <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelconditions">Week 9</a>.</p></details>
+      <details><summary>Day 3: suddenly confused, cloudy urine.</summary><p>Think CAUTI. Urine from the sampling port before antibiotics; ask whether the catheter is still needed <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#catheters">Week 9</a>.</p></details>
+      <details><summary>First time up: lying 130/80, standing 106/72, dizzy.</summary><p>Orthostatic hypotension (systolic dropped 24). Sit him back down; he's a high fall risk <a class="wk" href="unit-1-intro-to-nursing/week2-study-guide.html#vitals">Week 2</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#safety">Week 7</a>.</p></details>
+      <details><summary>His left calf is swollen; the right is not.</summary><p>One-sided swelling: possible DVT. Report it <a class="wk" href="unit-3-skin-wounds-diagnostics/week7-study-guide.html#assessment-1">Week 7</a> <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#immobility">Week 4</a>.</p></details>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Case 2 · Diarrhea after antibiotics</h3>
+    <p>A client has had watery stools 5 times a day since finishing antibiotics.</p>
+    <div class="gcheck">
+      <details><summary>Precautions and hand hygiene?</summary><p>Contact precautions until C. diff results; soap and water <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#infection">Week 6</a>.</p></details>
+      <details><summary>Potassium 3.1. Signs to watch?</summary><p>Weakness, leg cramps, dysrhythmias <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a>.</p></details>
+      <details><summary>pH 7.32, PaCO2 (partial pressure of carbon dioxide) 40, HCO3– 18.</summary><p>Metabolic acidosis: bicarbonate lost in stool <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#acidbase">Week 8</a>.</p></details>
+      <details><summary>Urine output 20 mL/hr for 3 hours, specific gravity 1.034.</summary><p>Fluid deficit. Report it; expect isotonic IV fluids <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a>.</p></details>
+      <details><summary>Red, moist perianal skin.</summary><p>Moisture-associated skin damage: clean after each stool and apply a barrier; inspect for pressure injury <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowel">Week 9</a> <a class="wk" href="unit-3-skin-wounds-diagnostics/week6-study-guide.html#tissue">Week 6</a>.</p></details>
+      <details><summary>Oral potassium chloride 40 mEq ordered; available 20 mEq/15 mL. How many mL?</summary><p>40 × 15 ÷ 20 = 30 mL <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#medmath">Week 9</a>.</p></details>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Case 3 · A new ileostomy</h3>
+    <div class="gcheck">
+      <details><summary>The stoma looks dusky purple.</summary><p>Poor blood supply: report it right away <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ostomies">Week 9</a>.</p></details>
+      <details><summary>Output is high and the client is thirsty and dizzy when standing.</summary><p>Fluid, sodium and potassium loss; orthostatic risk <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#ostomies">Week 9</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a>.</p></details>
+      <details><summary>The client won't look at the stoma.</summary><p>Body image and negative self-esteem: let them express feelings, don't force teaching yet <a class="wk" href="unit-2-basic-human-needs/week5-study-guide.html#self-concept">Week 5</a>.</p></details>
+      <details><summary>How do you teach the pouch change?</summary><p>Psychomotor domain: demonstration and return demonstration <a class="wk" href="unit-2-basic-human-needs/week4-study-guide.html#education">Week 4</a>.</p></details>
+      <details><summary>The client's daughter offers to interpret.</summary><p>Get a certified medical interpreter <a class="wk" href="unit-1-intro-to-nursing/week3-study-guide.html#communication">Week 3</a>.</p></details>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Case 4 · Kidney failure</h3>
+    <div class="gcheck">
+      <details><summary>Crackles, distended neck veins, 3+ edema, weight up 2 kg.</summary><p>Fluid overload: semi-Fowler's, daily weights, fluid and sodium restriction, diuretics as ordered <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#fluids">Week 8</a>.</p></details>
+      <details><summary>Potassium 6.0 and absent patellar reflexes.</summary><p>High potassium (dysrhythmia risk) and high magnesium <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a>.</p></details>
+      <details><summary>The client asks for a salt substitute.</summary><p>No: salt substitutes contain potassium <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#foods">Week 8</a>.</p></details>
+      <details><summary>The client is constipated. Which product would you question?</summary><p>A magnesium laxative or a sodium phosphate enema: failing kidneys can't clear the magnesium or phosphate <a class="wk" href="unit-4-fluids-nutrition-med-math/week9-study-guide.html#bowelcare">Week 9</a> <a class="wk" href="unit-4-fluids-nutrition-med-math/week8-study-guide.html#electrolytes">Week 8</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="guide-footer gwrap">
+  <p>Built from the Week 1–9 study guides, lecture slides and ATI modules. Updated as new weeks are added. Where it goes beyond a weekly guide, it applies something you've already learned to a new situation.</p>
+</footer>
+
+</div>
+
+<script src="assets/theme.js?v=6"></script>
+</body>
+</html>

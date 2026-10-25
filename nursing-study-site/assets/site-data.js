@@ -86,6 +86,7 @@ var SITE = {
     {title:"Week 9 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-04", href:"unit-4-fluids-nutrition-med-math/week9-study-guide.html", meta:"Bowel & urinary elimination, ostomies, catheters & med math · quick checks"}
   ],
   mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html", meta:"Random from every quiz on the site"},
+  connectDots: {title:"Connecting the dots", type:"studyguide", href:"connecting-the-dots.html", meta:"How every unit links together · covers all weeks"},
 
   /* The three content types, keyed by the name used in URLs (?type=...) */
   types: [
