@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Week 3 study guide &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Week 3 study guide &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-1-intro-to-nursing/week3-study-guide">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Week 3 study guide &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+<style>
+/* Week 3: same components and styles as the Week 6 guide */
+:root{
+  /* guide-specific accents only; base colors below reuse the site's own theme variables */
+  --flag:#0F6E62; --flag-bg:#DDF3EE;
+  --hook:#FFF4D6; --hook-line:#E9C766; --known:#E8E4FF; --known-line:#8D7CE6;
+  --side:#1E5FA8; --side-bg:#E1EEFB; --red:#B3261E; --red-bg:#FDE7E5;
+}
+[data-theme="dark"]{
+  --flag:#7FE0CF; --flag-bg:#123A34;
+  --hook:#3A2E12; --hook-line:#B8963A; --known:#262045; --known-line:#9D8FF0;
+  --side:#9CC4F5; --side-bg:#15263D; --red:#FF8A80; --red-bg:#3D1512;
+}
+.gwrap{max-width:980px;margin:0 auto;padding:0 20px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + var(--cbar-h) + 64px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.guide-body{font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.6;}
+.guide-body h1,.guide-body h2,.guide-body h3{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+.guide-body a{color:var(--label)}
+.guide-body :focus-visible{outline:2px solid var(--label);outline-offset:3px}
+
+/* Hero */
+.guide-hero{padding-top:36px;padding-bottom:32px}
+.guide-hero .course{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);margin:0 0 14px}
+.guide-hero h1{font-size:clamp(36px,7vw,64px);letter-spacing:-.01em;color:var(--heading)}
+.guide-hero p.lede{max-width:60ch;color:var(--muted);margin:18px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.legend span{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1.5px solid;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.lg-known{background:var(--known);border-color:var(--known-line)}
+.lg-hook{background:var(--hook);border-color:var(--hook-line)}
+.lg-flag{background:var(--flag-bg);border-color:var(--flag);color:var(--flag)}
+
+/* In-guide topic nav */
+nav.topics{position:sticky;top:var(--cbar-h);z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(6px);border-block:1.5px solid var(--border)}
+nav.topics .gwrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.topics .gwrap::-webkit-scrollbar{display:none}
+nav.topics a{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-decoration:none;color:var(--label);padding:9px 14px;border:1.5px solid var(--border)}
+nav.topics a:hover{background:var(--pill)}
+
+/* Sections */
+section.topic{padding:48px 0 20px}
+.topic-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1.5px solid var(--border);padding-bottom:10px;margin-bottom:28px}
+.topic-head h2{font-size:clamp(30px,5vw,46px);color:var(--label)}
+.topic-head p{margin:0;color:var(--muted);font-style:italic}
+/* Tables */
+.tbl{overflow-x:auto;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--card);margin:14px 0}
+.tbl table{border-collapse:collapse;width:100%;font-size:16px}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--border)}
+.tbl th{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:17px;background:color-mix(in srgb,var(--pill) 60%,var(--card));color:var(--heading)}
+.tbl tr:last-child td{border-bottom:none}
+
+/* Quick checks */
+.gcheck{margin:26px 0 8px;display:grid;gap:10px}
+.gcheck h3{margin:0 0 4px;font-size:22px}
+.guide-body details{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:12px 16px}
+.guide-body summary{cursor:pointer;font-weight:600;list-style:none;color:var(--text)}
+.guide-body summary::-webkit-details-marker{display:none}
+.guide-body summary::after{content:" Show answer";font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;color:var(--label);margin-left:8px}
+.guide-body details[open] summary::after{content:" Hide"}
+.guide-body details p{margin:10px 0 0}
+
+/* Slides content: marks material from the instructor's slides (same tag as Week 4) */
+:root{--slides:#B23E0B;--slides-bg:#FDE4D3}
+[data-theme="dark"]{--slides:#FF976A;--slides-bg:#3F190B}
+.gslides{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slides);background:var(--slides-bg);border:1.5px solid var(--slides);padding:2px 8px;vertical-align:middle;margin-right:6px}
+.gslides.inl{margin:0 0 0 6px;font-size:10px;padding:1px 6px;font-style:normal;line-height:1.4}
+.lg-slides{background:var(--slides-bg);border-color:var(--slides);color:var(--slides)}
+.guide-footer{padding-top:24px;padding-bottom:60px;color:var(--muted);font-size:15px}:root{--l-epi:#F6C9B5;--l-derm:#EFA3A6;--l-fat:#F7E3A1;--l-musc:#C9737C;--l-bone:#EDE7DA;--wound:#8E1F3A}
+[data-theme="dark"]{--l-epi:#9C6A5A;--l-derm:#8F4E55;--l-fat:#8C7A3F;--l-musc:#6E343C;--l-bone:#6F6A5F;--wound:#F28AB5}
+.legend .lg-note{background:var(--side-bg);border-color:var(--side);color:var(--side)}
+.guide-body h4{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15}
+.gsub > h3{margin:0 0 10px}
+.guide-body td:first-child{font-weight:600}
+.guide-footer .box p{margin:4px 0}
+
+/* Week 6 layouts, drawn with the site and key colors */
+
+.gsub{margin-top:40px}
+.gsub > h3{font-size:28px;margin-bottom:10px}
+.guide-body h4{font-size:20px;margin:22px 0 8px}
+.guide-body p{margin:10px 0}
+.guide-body ul.tight{margin:8px 0;padding-left:22px}
+.guide-body ul.tight li{margin:3px 0}
+
+/* Callouts */
+.box{border:1.5px solid;padding:12px 16px;margin:14px 0;font-size:16.5px}
+.box .tag{display:block;padding:0;border:none;min-height:0;background:none;letter-spacing:.06em;text-transform:uppercase;font-size:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;margin-bottom:4px}
+.box p{margin:4px 0}
+.box ul{margin:4px 0;padding-left:20px}
+.known{background:var(--known);border-color:var(--known-line)}
+.known .tag{color:var(--muted)}
+.hook{background:var(--hook);border-color:var(--hook-line);border-width:2px;border-style:dashed}
+.hook .tag{color:var(--muted)}
+.flag{background:var(--flag-bg);border-color:var(--flag)}
+.flag .tag{color:var(--flag)}
+.note{background:var(--side-bg);border-color:var(--side)}
+.note .tag{color:var(--side)}
+.slides{background:var(--slides-bg);border-color:var(--slides)}
+.slides .tag{color:var(--slides)}
+.nc{background:var(--red-bg);border-color:var(--red)}
+.nc .tag{color:var(--red)}
+
+/* Two/three column panels */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:1.5px solid var(--border);background:var(--card);margin:12px 0}
+.cols > div{padding:14px 16px}
+.cols > div + div{border-left:1.5px dashed var(--border)}
+@media (max-width:640px){.cols > div + div{border-left:none;border-top:1.5px dashed var(--border)}}
+.cols h4{margin:0 0 6px}
+.cols ul{margin:0;padding-left:20px;font-size:16px}
+
+.signs{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:2px solid var(--flag);background:var(--card);margin:8px 0}
+.signs div{padding:12px 10px;text-align:center}
+.signs div + div{border-left:1.5px solid var(--flag)}
+.signs b{display:block;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:22px;color:var(--flag);line-height:1.1}
+.signs span{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-top:4px}
+@media (max-width:640px){.signs{grid-template-columns:1fr}.signs div + div{border-left:none;border-top:1.5px solid var(--flag)}}
+
+/* Chain loop */
+.loop{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);background:var(--card);margin:14px 0}
+.loop div{padding:14px;border-bottom:1.5px solid var(--border);position:relative}
+.loop div:nth-child(3n+1),.loop div:nth-child(3n+2){border-right:1.5px solid var(--border)}
+.loop div:nth-child(n+4){border-bottom:none}
+.loop b{display:block;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:21px;color:var(--label)}
+.loop small{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.loop span{display:block;font-size:15.5px;margin-top:4px}
+.loop-foot{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin-top:-6px}
+@media (max-width:640px){.loop{grid-template-columns:1fr}.loop div{border-right:none !important;border-bottom:1.5px solid var(--border) !important}.loop div:last-child{border-bottom:none !important}}
+
+/* Sequences */
+ol.seq{counter-reset:s;list-style:none;padding:0;margin:12px 0;display:grid;gap:0;border:1.5px solid var(--border);background:var(--card)}
+ol.seq li{counter-increment:s;display:flex;gap:12px;align-items:baseline;padding:10px 14px;font-size:16.5px}
+ol.seq li + li{border-top:1px solid var(--border)}
+ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;font-size:22px;color:var(--label);min-width:22px}
+.strip{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0;border:1.5px solid var(--border);background:var(--card)}
+.strip span{padding:8px 12px;font-size:15.5px;display:flex;align-items:center}
+.strip span + span{border-left:1.5px solid var(--border)}
+.strip span.arrow{color:var(--label);font-family:'IBM Plex Mono',monospace;border-left:none;padding:8px 4px}
+.strip span.arrow + span{border-left:none}
+.strip-label{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin:16px 0 0}
+
+/* Timeline */
+.timeline{border:1.5px solid var(--border);background:var(--card);padding:14px 16px;margin:12px 0}
+.tl-row{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;margin:8px 0;font-size:15px}
+.tl-track{position:relative;height:26px;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),var(--border) calc(10% - 1px) 10%)}
+.tl-bar{position:absolute;top:3px;bottom:3px;background:var(--border);color:var(--fill-text);font-family:'IBM Plex Mono',monospace;font-size:12px;display:flex;align-items:center;padding:0 6px;white-space:nowrap;overflow:hidden}
+.tl-scale{display:grid;grid-template-columns:150px 1fr;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.tl-scale div:last-child{display:flex;justify-content:space-between}
+@media (max-width:560px){.tl-row,.tl-scale{grid-template-columns:1fr}.tl-scale div:first-child{display:none}}
+
+/* Figures */
+.guide-body figure{margin:14px 0;border:1.5px solid var(--border);background:var(--card);padding:12px}
+.guide-body figcaption{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin-top:8px}
+.svg-text{font-family:'IBM Plex Mono',monospace;fill:var(--text)}
+.svg-title{font-family:'Young Serif',Georgia,serif;fill:var(--label)}
+
+.pic{max-width:100%;margin:14px 0}
+.pic img,.gallery img{display:block;width:100%;height:auto;background:#fff}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--min,170px),1fr));gap:10px;border:1.5px solid var(--border);background:var(--card);padding:10px;margin:14px 0}
+.gallery figure{margin:0;border:none;padding:0;background:none}
+.gallery img{height:170px;object-fit:contain}
+.gallery figcaption{margin-top:6px}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(var(--min,240px),100%),1fr));gap:12px;border:1.5px solid var(--border);background:var(--card);padding:10px;margin:14px 0}
+.pics figure{margin:0}
+.pics img{display:block;width:100%;height:auto;background:#fff}
+.pics figcaption{margin-top:6px}
+.guide-footer .credits{font-size:13px}
+.credit{display:block;font-size:12px;color:var(--muted);font-style:italic}
+.pq{display:flex;flex-direction:column;gap:8px}
+.pq img{height:190px;object-fit:cover}
+.pq details{padding:8px 10px;font-size:15px}
+
+.guide-hero p.key-note{max-width:60ch;color:var(--muted);font-size:15.5px;font-style:italic;margin:10px 0 0}
+
+</style>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-01" data-type="studyguides"></div>
+<script src="../assets/site-data.js?v=24"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="guide-body">
+<header class="guide-hero gwrap">
+  <p class="course">NUR 114 &middot; Unit 1 &middot; Week 3</p>
+  <h1>Professionalism, ethics &amp; communication</h1>
+  <p class="lede">Drafted from the Week 3 modules and powerpoints, scaled down for exam crams. Use the mnemonics and memory tricks to lock in lists, then hit the quick checks at the end of each topic.</p>
+  <div class="legend" aria-label="Key">
+    <span class="lg-slides">Slides content</span>
+    <span class="lg-known">Known mnemonic</span>
+    <span class="lg-hook">Memory hook made for this guide</span>
+    <span class="lg-note">Side note</span>
+  </div>
+</header>
+
+<nav class="topics" aria-label="Topics">
+  <div class="gwrap">
+    <a href="#professionalism">Professionalism</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#ethics">Ethics</a>
+    <a href="#legal">Legal</a>
+    <a href="#communication">Communication</a>
+    <a href="#teamwork">Teamwork</a>
+    <a href="#documentation">Documentation</a>
+    <a href="#ebp">Evidence-based practice</a>
+  </div>
+</nav>
+
+<main class="gwrap">
+
+<!-- ===================== PROFESSIONALISM ===================== -->
+<section class="topic" id="professionalism">
+  <div class="topic-head"><h2>Professionalism</h2><p>Actions, behaviors and attitudes, from novice to expert.</p></div>
+
+  <div class="gsub">
+    <h3>What it means<span class="gslides inl">Slides content</span></h3>
+    <p><b>Professionalism</b> (ATI): the actions, behaviors and attitudes that reflect the profession's core values, ethical principles and regulatory guidelines. <b>Unprofessionalism:</b> conduct that doesn't follow the standards of practice or the Code of Ethics.</p>
+    <div class="cols">
+      <div><h4>Inner processes</h4><p style="font-size:16px">Your own beliefs, values, attitudes, accountability, integrity and ability to reflect.</p></div>
+      <div><h4>Outer processes</h4><p style="font-size:16px">How you act: following the code of conduct, communicating clearly, client-centered care, continuing education, professional organizations.</p></div>
+    </div>
+    <figure class="pic" style="max-width:520px"><img src="week3-img/regulation-steps.png" alt="Levels of nursing regulation as steps: nursing regulatory body (NCSBN, education, licensure), nurse practice act (laws governing practice), professional organizations (standards of practice, code of ethics), facility (policy and procedures), individual (self-regulation, professionalism)" loading="lazy"><figcaption>Where the rules come from, from the regulatory body up to you <span class="credit">Data from the National Council of State Boards of Nursing, 2020</span></figcaption></figure>
+  </div>
+
+  <div class="gsub">
+    <h3>Benner's novice to expert (1982)<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Level</th><th>Description</th></tr>
+      <tr><td>Novice</td><td>No experience; must be taught the rules and steps, with rationale and consequences</td></tr>
+      <tr><td>Advanced beginner</td><td>Shows skills but still needs prompting and support</td></tr>
+      <tr><td>Competent</td><td>Makes plans and decisions; works efficiently and safely</td></tr>
+      <tr><td>Proficient</td><td>Sees the whole situation from start to finish; adapts to the unexpected</td></tr>
+      <tr><td>Expert</td><td>Mastery; multitasks easily and acts fluently without conscious effort</td></tr>
+    </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>"Nurses Always Climb Past Excuses":</b> Novice, Advanced beginner, Competent, Proficient, Expert.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Accountability vs responsibility<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><h4>Accountability</h4><p style="font-size:16px">A <b>legal obligation</b> with a moral and ethical commitment to do the right thing <b>every time, in every situation</b>. "If not you, then who?"</p></div>
+      <div><h4>Responsibility</h4><p style="font-size:16px">An obligation to do work, duties or tasks using sound professional judgment.</p></div>
+    </div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Responsibility is the task; accountability is answering for it.</b> You can delegate a task, but you stay accountable for it.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A nurse sees the whole situation and adapts when things change, but still thinks it through. Which Benner level?</summary><p>Proficient.</p></details>
+    <details><summary>Which term is "a legal obligation with a moral and ethical commitment to do the right thing every time"?</summary><p>Accountability.</p></details>
+  </div>
+</section>
+
+<!-- ===================== LEADERSHIP ===================== -->
+<section class="topic" id="leadership">
+  <div class="topic-head"><h2>Leadership &amp; the organization</h2><p>Leadership styles, nursing roles, chain of command and shared governance.</p></div>
+
+  <div class="gsub">
+    <h3>Leadership styles<span class="gslides inl">Slides content</span></h3>
+    <p>A leader influences and inspires; a manager organizes the work. One person can be both.</p>
+    <div class="tbl"><table>
+      <tr><th>Style</th><th>How it works</th><th>Pros</th><th>Cons</th></tr>
+      <tr><td>Transactional</td><td>Clear standards; rewards and punishments</td><td>Structure; short-term goals met</td><td>Limits creativity; motivation tied to rewards</td></tr>
+      <tr><td>Transformational</td><td>Inspires with vision and passion</td><td>Growth and teamwork</td><td>Can cause burnout; needs constant communication</td></tr>
+      <tr><td>Laissez-faire</td><td>Hands off; gives resources and lets staff work</td><td>Great for skilled staff</td><td>Poor results with inexperienced staff; leader seems absent</td></tr>
+      <tr><td>Bureaucratic</td><td>Strict rules and policies</td><td>Safety and quality through rules</td><td>Stifles creativity; negative atmosphere</td></tr>
+      <tr><td>Situational</td><td>Changes style to fit the situation</td><td>Flexible</td><td>Hard to apply to everyone</td></tr>
+    </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Transactional trades</b> (do this, get that). <b>Transformational transforms</b> (inspires). <b>Laissez-faire lets it be.</b></p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>The nurse's role in the organization<span class="gslides inl">Slides content</span></h3>
+    <div class="pics" style="--min:260px">
+      <figure><img src="week3-img/nurse-roles.png" alt="The nurse at the center of many roles: caregiver, care coordinator, researcher, mentor, leader, counselor, educator, change agent, advocate and critical thinker" loading="lazy"><figcaption>Nursing roles</figcaption></figure>
+      <figure><img src="week3-img/chain-of-command.png" alt="Chain of command: chief executive officer; chief nursing, financial and medical officers; divisional directors; hospital supervisor, unit director and charge nurse; registered nurses and PNs; assistive personnel" loading="lazy"><figcaption>Chain of command: a formal reporting structure from registered nurses up to executive leadership</figcaption></figure>
+      <figure><img src="week3-img/shared-governance.png" alt="Shared governance at the center, surrounded by caring, navigation, leading and knowing, then councils such as professional practice, quality and safety, informatics, staffing, recruitment, research and EBP, and education, inside the council of chief nursing officers" loading="lazy"><figcaption>Shared governance: staff nurses share decisions through councils</figcaption></figure>
+    </div>
+    <ul class="tight">
+      <li>Roles: caregiver, care coordinator (case manager), educator, advocate, counselor, leader, mentor, researcher, change agent, critical thinker.</li>
+      <li><b>Chain of command:</b> report a concern to the next person up (for example charge nurse, then unit director, then supervisor) when it isn't resolved. AP means assistive personnel; PN, practical nurse; RN, registered nurse.</li>
+      <li><b>Shared governance:</b> nurses at every level share decision making about practice, quality and staffing.</li>
+    </ul>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A manager lets an experienced team decide how to run the unit and steps in only when asked. Which style?</summary><p>Laissez-faire.</p></details>
+    <details><summary>A nurse's concern isn't resolved by the charge nurse. What next?</summary><p>Follow the chain of command to the next level, such as the unit director.</p></details>
+  </div>
+</section>
+
+<!-- ===================== ETHICS ===================== -->
+<section class="topic" id="ethics">
+  <div class="topic-head"><h2>Ethics</h2><p>Principles, values, and how a team works through a dilemma.</p></div>
+
+  <div class="gsub">
+    <h3>Terms</h3>
+    <ul class="tight">
+      <li><b>Ethics:</b> principles that guide the moral behavior of a person or group. <b>Morality:</b> one person's own sense of right and wrong.</li>
+      <li><b>Code of Ethics</b> (ANA, American Nurses Association): rules for nurses on client privacy, conduct and behavior that protect clients and the profession.</li>
+      <li><b>Nightingale Pledge</b> (1893): a nursing oath based on the Hippocratic Oath, often recited at pinning; stresses ethics, safety and avoiding harm.</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>Ethical principles<span class="gslides inl">Slides content</span></h3>
+    <figure class="pic" style="max-width:300px"><img src="week3-img/ethical-principles.jpg" alt="Signpost with the ethical principles: autonomy, beneficence, nonmaleficence, veracity, fidelity, justice" loading="lazy"></figure>
+    <div class="tbl"><table>
+          <tr><th>Principle</th><th>Means</th><th>Example</th></tr>
+          <tr><td>Autonomy</td><td>The client makes their own informed decisions</td><td>Supporting a client who declines surgery after hearing the risks</td></tr>
+          <tr><td>Beneficence</td><td>Doing good; acting in the client's best interest</td><td>Getting pain medication for a client in pain</td></tr>
+          <tr><td>Nonmaleficence</td><td>Doing no harm</td><td>Checking allergies before a new medication</td></tr>
+          <tr><td>Veracity</td><td>Telling the truth</td><td>Answering a client's questions honestly</td></tr>
+          <tr><td>Fidelity</td><td>Keeping promises; being faithful to commitments</td><td>Coming back with the blanket you said you'd bring</td></tr>
+          <tr><td>Justice</td><td>Treating every client fairly</td><td>The same quality of care regardless of insurance</td></tr>
+        </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Bene = good, mal = bad.</b> Beneficence does good; nonmaleficence avoids bad (harm). <b>Veracity = verity</b> (truth). <b>Fidelity = faithful</b> (keep your word).</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Professional nursing values<span class="gslides inl">Slides content</span></h3>
+    <figure class="pic" style="max-width:520px"><img src="week3-img/nursing-values.png" alt="Five core nursing values: altruism, human dignity, integrity, autonomy and social justice" loading="lazy"></figure>
+    <div class="tbl"><table>
+      <tr><th>Value</th><th>Means</th></tr>
+      <tr><td>Altruism</td><td>Selfless concern for others</td></tr>
+      <tr><td>Human dignity</td><td>Respect for every person's worth</td></tr>
+      <tr><td>Integrity</td><td>Honesty and strong moral principles</td></tr>
+      <tr><td>Autonomy</td><td>Respecting a person's right to decide</td></tr>
+      <tr><td>Social justice</td><td>Fairness and advocacy for equal care</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Ethical dilemmas and decision making<span class="gslides inl">Slides content</span></h3>
+    <p>An <b>ethical dilemma</b> is a choice where no option may be fully ethically acceptable. <b>Ethical decision making</b> works through the options using ethical principles.</p>
+    <ol class="seq">
+      <li><span><b>Define the issue and assess risks:</b> recognize when something feels off; handle urgent legal or reporting issues</span></li>
+      <li><span><b>Identify stakeholders:</b> everyone relevant to the situation</span></li>
+      <li><span><b>Gather information</b> to inform the decision</span></li>
+      <li><span><b>Reflect on personal biases</b> about the people involved</span></li>
+      <li><span><b>Identify core principles and standards:</b> professional codes, plus personal, religious, legal or organizational ethics</span></li>
+      <li><span><b>Consult resources:</b> research, decision-making models, trusted colleagues</span></li>
+    </ol>
+    <div class="box slides"><span class="tag">Slides content</span><p><b>Cynthia Parker, 19,</b> has been unresponsive on a ventilator since a motorcycle crash 3 months ago and isn't expected to wake. Her mother wants to continue everything; her father believes she wouldn't want to live on a machine. The nurse acknowledges how hard this is, offers to answer questions, tells the provider about the family's feelings, and <b>starts a referral to the ethics committee</b>, which includes the provider, nurse, parents and the rest of the team.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>The nurse checks allergies before giving a new medication. Which principle?</summary><p>Nonmaleficence (do no harm).</p></details>
+    <details><summary>A client declines a recommended surgery and the nurse supports the choice. Which principle?</summary><p>Autonomy.</p></details>
+    <details><summary>Two parents disagree about withdrawing life support. What resource does the nurse bring in?</summary><p>The ethics committee.</p></details>
+  </div>
+</section>
+
+<!-- ===================== LEGAL ===================== -->
+<section class="topic" id="legal">
+  <div class="topic-head"><h2>Legal considerations</h2><p>The laws, consents and reporting duties nurses work under.</p></div>
+
+  <div class="gsub">
+    <h3>Laws to know<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Law</th><th>What it does</th></tr>
+      <tr><td>EMTALA (Emergency Medical Treatment and Labor Act)</td><td>Everyone gets emergency care regardless of insurance or ability to pay</td></tr>
+      <tr><td>HIPAA (Health Insurance Portability and Accountability Act, 1996)</td><td>Protects a client's PHI (protected health information)</td></tr>
+      <tr><td>HITECH (Health Information Technology for Economic and Clinical Health Act, 2009)</td><td>Encourages facilities to use electronic health records safely</td></tr>
+    </table></div>
+    <div class="tbl"><table>
+      <tr><th>HIPAA rule</th><th>Does</th></tr>
+      <tr><td>Privacy Rule</td><td>Sets the standards for how PHI in any form can be used and shared</td></tr>
+      <tr><td>Security Rule</td><td>Sets safeguards for electronic PHI</td></tr>
+      <tr><td>Breach Notification Rule</td><td>Requires telling clients when unsecured PHI is breached</td></tr>
+    </table></div>
+    <p><b>Common HIPAA violations:</b> unsupervised access to PHI, careless data disposal, denying clients access to their own PHI, disclosing PHI, losing PHI. Discussing a client in the elevator, posting a client's wound on social media, or opening the chart of a client you aren't caring for are all violations.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Criminal, civil and tort law</h3>
+    <div class="cols">
+      <div><h4>Criminal law</h4><p style="font-size:16px">Offenses against the public (practicing without a license, abuse); proven "beyond a reasonable doubt."</p></div>
+      <div><h4>Civil law</h4><p style="font-size:16px">Disputes between individuals (negligence, malpractice); aims to compensate the victim. A nurse can face both for the same incident.</p></div>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Tort</th><th>Type</th><th>Means</th></tr>
+      <tr><td>Negligence</td><td>Unintentional</td><td>Failing to act as a reasonable, prudent person would</td></tr>
+      <tr><td>Malpractice</td><td>Unintentional</td><td>Negligence by a professional, such as a nurse</td></tr>
+      <tr><td>Assault</td><td>Intentional</td><td>Threatening to touch or harm</td></tr>
+      <tr><td>Battery</td><td>Intentional</td><td>Touching without consent</td></tr>
+      <tr><td>Invasion of privacy</td><td>Intentional</td><td>Sharing private information without permission</td></tr>
+      <tr><td>Defamation</td><td>Intentional</td><td>False statements that damage a reputation (slander spoken, libel written)</td></tr>
+    </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Assault is the threat; battery is the touch.</b></p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>The nurse's legal duties<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Topic</th><th>Key points</th></tr>
+      <tr><td>Informed consent</td><td>The provider explains the procedure, benefits, risks and alternatives. The nurse <b>witnesses the signature and confirms the client understands</b>; if they don't, the nurse tells the provider</td></tr>
+      <tr><td>Implied consent</td><td>Consent assumed in an emergency when the client can't give it</td></tr>
+      <tr><td>Minor consent</td><td>A parent or guardian usually consents for clients under 18, with legal exceptions</td></tr>
+      <tr><td>Advance directives</td><td>The client's written wishes for care if they can't decide (living will, health care proxy)</td></tr>
+      <tr><td>Good Samaritan laws</td><td>Protect people who give emergency help in good faith, within their training, outside work</td></tr>
+      <tr><td>Whistleblowing</td><td>Reporting unsafe or illegal practice (such as a colleague's unsafe medication habits) to authorities</td></tr>
+      <tr><td>Mandatory reporting</td><td>Suspected maltreatment (abuse, neglect) and certain communicable diseases must be reported</td></tr>
+      <tr><td>Incident reporting</td><td>Report sentinel events and errors; a <b>just culture</b> focuses on fixing systems, not blaming people</td></tr>
+      <tr><td>Social media</td><td>Never post client information or pictures</td></tr>
+    </table></div>
+    <div class="cols">
+      <div><h4>Workforce issues</h4><p style="font-size:16px">Client abandonment (leaving clients without a handoff), nurse-to-client ratios, delegation.</p></div>
+      <div><h4>Breaches of practice</h4><p style="font-size:16px">Breaking confidentiality, falsifying records, working while fatigued, substance use disorder. The standard of care is shaped by the Code of Ethics, the ANA Scope and Standards, and the Nurse Practice Act.</p></div>
+    </div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A nurse restrains a client without an order or consent. Which tort?</summary><p>Battery (touching without consent).</p></details>
+    <details><summary>What is the nurse's role in informed consent?</summary><p>Witness the client's signature and confirm the client understands.</p></details>
+    <details><summary>A nurse reports a colleague's unsafe medication practice to administration. What is this?</summary><p>Whistleblowing.</p></details>
+    <details><summary>Which HIPAA rule covers safeguards for electronic records?</summary><p>The Security Rule.</p></details>
+  </div>
+</section>
+
+<!-- ===================== COMMUNICATION ===================== -->
+<section class="topic" id="communication">
+  <div class="topic-head"><h2>Communication</h2><p>Models, styles, and what helps or blocks a therapeutic conversation.</p></div>
+
+  <div class="gsub">
+    <h3>Modes and styles<span class="gslides inl">Slides content</span></h3>
+    <div class="pics" style="--min:280px">
+      <figure><img src="week3-img/communication-modes.jpg" alt="Two nurses showing the modes of communication: verbal, nonverbal, written and electronic" loading="lazy"><figcaption>Modes: verbal, nonverbal, written, electronic</figcaption></figure>
+      <figure><img src="week3-img/communication-styles.png" alt="Communication styles: aggressive (you statements, verbally abusive, controlling, interruptive), passive-aggressive (indirect anger, feels powerless, resentful, sarcastic), assertive (honest and clear, self-advocates, I statements), passive (avoids conflict, anxious, avoids self-advocacy)" loading="lazy"><figcaption>Styles: assertive is the most effective</figcaption></figure>
+    </div>
+    <ul class="tight">
+      <li><b>Levels of communication:</b> verbal (words), physical (body language), auditory (tone, volume, pace), energetic (presence) and emotional (feelings).</li>
+      <li><b>Assertive:</b> honest, clear, "I" statements, respects everyone's needs. <b>Aggressive:</b> "you" statements, controlling, interrupts. <b>Passive:</b> avoids conflict and self-advocacy. <b>Passive-aggressive:</b> looks passive but shows anger indirectly (sarcasm, resentment).</li>
+      <li><b>Influencers:</b> cognitive, intellectual or developmental (dementia, autism spectrum disorder); psychosocial and physiological (hearing or vision loss, fatigue, anxiety, fear); situational and environmental (noise, lighting); cultural and demographic.</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>Communication models<span class="gslides inl">Slides content</span></h3>
+    <div class="pics" style="--min:280px">
+      <figure><img src="week3-img/shannon-weaver.png" alt="Shannon-Weaver model: a sender encodes a message, the receiver decodes it, noise interferes, and feedback returns to the sender" loading="lazy"><figcaption>Shannon-Weaver: sender, encoder, channel, decoder, receiver, noise</figcaption></figure>
+      <figure><img src="week3-img/shannon-weaver-modified.jpg" alt="Modified Shannon-Weaver model with a nurse as sender and a client as receiver, each with a realm of understanding, plus noise and feedback" loading="lazy"><figcaption>The modified model adds feedback and each person's realm of understanding</figcaption></figure>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Model</th><th>Parts</th></tr>
+      <tr><td>Shannon-Weaver (1948)</td><td><b>Sender, encoder, channel, decoder, receiver, noise.</b> Linear; noise is anything that gets in the way (distractions, technical problems)</td></tr>
+      <tr><td>Newcomb's ABX</td><td>A (sender), B (receiver), X (the topic); communication in a social setting</td></tr>
+      <tr><td>Berlo's SMCR</td><td>Sender, Message, Channel, Receiver; one way, no feedback</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Therapeutic vs nontherapeutic<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><h4>Therapeutic</h4><ul>
+        <li><b>Active listening:</b> full attention to words and nonverbal cues</li>
+        <li><b>Open-ended questions:</b> "How would you describe your pain?" "Tell me more about what's worrying you."</li>
+        <li><b>Reflection:</b> mirroring feelings back</li>
+        <li><b>Restating, paraphrasing, summarizing:</b> "So what I'm hearing is that the pain gets worse at night."</li>
+        <li><b>Affirmations; providing information</b></li>
+        <li><b>Empathy:</b> understanding another's feelings</li>
+      </ul></div>
+      <div><h4>Nontherapeutic</h4><ul>
+        <li><b>Dismissive or challenging, judgmental:</b> "Why didn't you take your medication?"</li>
+        <li><b>Minimizing, false reassurance:</b> "Don't worry, things will get better soon."</li>
+        <li><b>Giving advice:</b> "You should…"</li>
+        <li><b>Changing the subject</b></li>
+        <li><b>Taking the focus off the client:</b> "I know exactly how you feel."</li>
+      </ul></div>
+    </div>
+    <div class="box known"><span class="tag">Known mnemonic</span><p><b>OARS</b> for motivational interviewing (helping a client make their own positive changes): <b>O</b>pen-ended questions, <b>A</b>ffirmations, <b>R</b>eflective listening, <b>S</b>ummarizing.</p></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>"Why" puts clients on trial.</b> Questions that start with "why" sound like blame, so they block communication.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Barriers and how to overcome them<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Barrier</th><th>What helps</th></tr>
+      <tr><td>Vision loss</td><td>Large print, good lighting, describe what you're doing</td></tr>
+      <tr><td>Hearing loss</td><td>Face the client, speak clearly, reduce background noise, write key points</td></tr>
+      <tr><td>Language</td><td>A certified medical interpreter, never family</td></tr>
+      <tr><td>Culture</td><td>Ask about preferences; eye contact and touch vary</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>"So what I'm hearing is that the pain gets worse at night and eases with rest." Which technique?</summary><p>Restating or paraphrasing.</p></details>
+    <details><summary>A client says, "I'm scared about my surgery." Best response?</summary><p>"Tell me more about what's worrying you." It's open-ended and keeps the focus on the client.</p></details>
+    <details><summary>Which model includes sender, encoder, channel, decoder, receiver and noise?</summary><p>Shannon-Weaver.</p></details>
+    <details><summary>Which style uses "I" statements and is the most effective?</summary><p>Assertive.</p></details>
+  </div>
+</section>
+
+<!-- ===================== TEAMWORK ===================== -->
+<section class="topic" id="teamwork">
+  <div class="topic-head"><h2>Collaboration &amp; teamwork</h2><p>Working with the team, handing off safely, and handling conflict.</p></div>
+
+  <div class="gsub">
+    <h3>Collaborative health care<span class="gslides inl">Slides content</span></h3>
+    <p>A client-centered approach where different health care teams work toward a common goal. <b>Interprofessional collaboration:</b> two or more professionals share assessment data, plan care and include the client and family in decisions.</p>
+    <div class="cols">
+      <div><figure class="pic" style="margin:0;border:none;padding:0"><img src="week3-img/teamstepps.png" alt="TeamSTEPPS: leadership, communication, situation monitoring and mutual support overlap inside the patient care team, linked to knowledge, attitudes and performance" loading="lazy"><figcaption>TeamSTEPPS</figcaption></figure></div>
+      <div>
+        <p style="font-size:16px"><b>TeamSTEPPS: four key skills</b></p>
+        <ul class="tight" style="font-size:16px">
+          <li><b>Leadership:</b> guiding and coordinating the team</li>
+          <li><b>Communication:</b> sharing information clearly</li>
+          <li><b>Situation monitoring:</b> staying aware of the team and client</li>
+          <li><b>Mutual support:</b> helping and giving feedback</li>
+        </ul>
+        <p style="font-size:16px"><b>IPEC (Interprofessional Education Collaborative) competencies:</b> values and ethics, roles and responsibilities, interprofessional communication, teams and teamwork.</p>
+      </div>
+    </div>
+    <p><b>What affects collaboration:</b> individual traits (age, gender, personality, experience), professional roles (unclear roles, overlapping care), how people interact (attitudes, cohesion, shared goals, sharing knowledge) and the organization (resources, network size, leadership).</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Consult vs referral; discharge planning<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><h4>Consultation</h4><p style="font-size:16px">A provider asks another provider in a different specialty for advice on the best care. The original provider keeps the client.</p></div>
+      <div><h4>Referral</h4><p style="font-size:16px">A provider sends the client to a specialist and hands over responsibility for that part of care.</p></div>
+    </div>
+    <div class="pics" style="--min:280px">
+      <figure><img src="week3-img/referral-process.png" alt="Referral process cycle: primary care provider orders a referral, communicates it to the specialist, referral is authorized, appointment scheduled, consult occurs, specialist communicates the plan to the client and the primary care provider, who acknowledges it and communicates the plan to the client and family" loading="lazy"><figcaption>The referral loop starts and ends with the PCP (primary care provider)</figcaption></figure>
+      <figure><img src="week3-img/discharge-instructions.png" alt="Discharge instructions infographic: consider language barriers, health literacy and autonomy; include diagnosis, prognosis, follow-up and when to return; give written instructions, teach, and collaborate with the team" loading="lazy"><figcaption>Safe discharge instructions <span class="credit">Kevin Lam, CanadiEM and McGill, from the slides</span></figcaption></figure>
+    </div>
+    <p><b>Discharge planning covers:</b> home and the PCP, medications, education, follow-up appointments, when to call the provider, and readiness for discharge.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Methods of communication<span class="gslides inl">Slides content</span></h3>
+    <ul class="tight">
+      <li><b>Closed-loop communication:</b> standard terms and steps so the receiver confirms the message was received and understood correctly.</li>
+      <li><b>ISBARR (I-SBAR-R):</b> Identify, Situation, Background, Assessment, Recommendation, Read back. Background is history, medications and advance directives, such as "admitted 2 days ago for pneumonia, history of heart failure."</li>
+      <li><b>Handoff report:</b> a structured report when care passes to another provider; best done at the bedside.</li>
+      <li><b>Care transitions:</b> moving a client between providers or settings. Secure messaging apps (such as TigerConnect) are another channel.</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>Incivility and conflict<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><h4>Uncivil behaviors</h4><ul>
+        <li>Embarrassing someone in front of others; rudeness; gossip</li>
+        <li>Eye rolling, sarcasm, a raised voice or bad tone</li>
+        <li>Avoiding taking handoff from someone</li>
+        <li>Leaving someone out of a care decision</li>
+        <li>Calling someone incompetent; refusing to help</li>
+      </ul></div>
+      <div><h4>Kinds</h4><ul>
+        <li><b>Lateral (horizontal) violence:</b> peer to peer</li>
+        <li><b>Vertical violence:</b> between a supervisor and an employee</li>
+        <li><b>Bullying:</b> repeated, unwelcome actions meant to harm, humiliate or distress</li>
+        <li><b>Zero-tolerance policy:</b> no incivility, bullying, harassment or violence at all</li>
+      </ul></div>
+    </div>
+    <p><b>Facility changes that prevent incivility:</b> leaders own zero tolerance; onboarding teaches acceptable language and how to report; training for everyone; shared language about workplace violence; a culture of accountability; act on reports and share the results.</p>
+    <h4>Five ways to manage conflict</h4>
+    <div class="tbl"><table>
+      <tr><th>Approach</th><th>Means</th><th>The slide's office-cake example</th></tr>
+      <tr><td>Accommodating</td><td>Low concern for self, high for others; keeps the peace</td><td>"I may be allergic to chocolate, but I only care if you're all happy."</td></tr>
+      <tr><td>Collaborating</td><td>Creative, open-minded; a solution everyone accepts</td><td>"Three are allergic to chocolate and four are on diets. How about strawberry shortcake?"</td></tr>
+      <tr><td>Compromising</td><td>Meeting in the middle; a temporary fix that protects the relationship</td><td>"Why don't we get two cakes, a pound cake and a chocolate cake?"</td></tr>
+      <tr><td>Avoiding</td><td>Low concern for self and others; leaves it for someone else. Useful when anger is intense</td><td>"I don't care about cake. I'll bring my own yogurt."</td></tr>
+      <tr><td>Competing</td><td>Uses power or pressure to get the goal</td><td>"I'm on a diet and no one can agree, so no cake."</td></tr>
+    </table></div>
+    <ul class="tight">
+      <li><b>Cognitive rehearsal:</b> picturing a stressful situation ahead of time and practicing how to respond.</li>
+      <li><b>Emotional intelligence:</b> recognizing, understanding and managing emotions: self-awareness, self-regulation, motivation, empathy and social skills.</li>
+    </ul>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A charge nurse keeps belittling a staff nurse. Lateral or vertical violence?</summary><p>Vertical (supervisor to employee).</p></details>
+    <details><summary>Which conflict approach finds a creative answer that works for everyone?</summary><p>Collaborating.</p></details>
+    <details><summary>Consult or referral: the specialist takes over that part of the client's care.</summary><p>Referral.</p></details>
+    <details><summary>Name the four TeamSTEPPS skills.</summary><p>Leadership, communication, situation monitoring, mutual support.</p></details>
+  </div>
+</section>
+
+<!-- ===================== DOCUMENTATION ===================== -->
+<section class="topic" id="documentation">
+  <div class="topic-head"><h2>Documentation &amp; informatics</h2><p>Charting methods, FACT, military time, and abbreviations to avoid.</p></div>
+
+  <div class="gsub">
+    <h3>Informatics<span class="gslides inl">Slides content</span></h3>
+    <p>Using information and technology to communicate, manage knowledge, reduce errors and support decisions. Examples: simulation, clinical information systems, monitors, glucometers, the EHR (electronic health record) and eMAR (electronic medication administration record), clinical pathways, telehealth. Concerns include errors in the EHR or eMAR, personal devices and privacy.</p>
+    <ul class="tight">
+      <li><b>EHR:</b> a real-time digital chart the whole team can share (history, diagnoses, allergies, test results). Facilities also need a plan for documenting during EHR downtime.</li>
+      <li><b>CPOE (computerized provider order entry):</b> providers enter orders electronically, which cuts errors.</li>
+      <li><b>Health literacy:</b> whether the client can get, read and understand health information. Use plain language.</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>Documentation methods<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Method</th><th>How it's organized</th></tr>
+      <tr><td>Source-oriented</td><td>By discipline: nursing, lab, and so on</td></tr>
+      <tr><td>Problem-oriented (POMR)</td><td>Around client problems: database, problem list, plan, progress notes</td></tr>
+      <tr><td>SOAP</td><td>Subjective, Objective, Assessment, Plan</td></tr>
+      <tr><td>PIE</td><td>Problem, Intervention, Evaluation</td></tr>
+      <tr><td>Focus charting (DAR)</td><td>Data, Action, Response about one focus</td></tr>
+      <tr><td>Charting by exception (CBE)</td><td>Only significant findings or changes from the norm</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gsub">
+    <h3>FACT<span class="gslides inl">Slides content</span></h3>
+    <div class="box known"><span class="tag">Known mnemonic</span><p><b>FACT:</b> Factual, Accurate, Complete, Timely. Concrete and objective, precisely measured, thorough, and recorded as close to the time of care as possible.</p></div>
+    <div class="tbl"><table>
+      <tr><th>Entry from the slides</th><th>Shows</th></tr>
+      <tr><td>"Lungs clear to auscultation bilaterally; respirations even and unlabored. No accessory muscle use observed."</td><td><b>Factual:</b> what was observed, no opinions</td></tr>
+      <tr><td>"Oral temperature 38.2 °C (100.8 °F) at 1410; heart rate 112/min; BP (blood pressure) 98/56 mm Hg."</td><td><b>Accurate:</b> exact measurements</td></tr>
+      <tr><td>"SB, RN, administered acetaminophen 650 mg PO (by mouth) at 1420 for headache pain 6/10. Reassessment at 1500: pain 2/10; client denies nausea."</td><td><b>Complete:</b> who, what, when, why and the response</td></tr>
+      <tr><td>"0815: Client reported dizziness when standing. 0820: Assisted to sit; orthostatic vitals obtained. 0828: Provider notified."</td><td><b>Timely:</b> each step charted as it happened</td></tr>
+    </table></div>
+    <ul class="tight">
+      <li>Write what you can measure: "Client ate 50% of breakfast," not "ate well."</li>
+      <li>Paper chart error: draw a single line through it, label it an error, and add your initials and the date. Never erase or cover it.</li>
+      <li><b>Verbal and telephone orders</b> carry risk: write them down, <b>read them back</b>, and the provider cosigns later.</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>Military time<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><figure class="pic" style="margin:0;border:none;padding:0;max-width:240px"><img src="week3-img/military-clock.jpg" alt="Clock face showing 1 to 12 on the outside and 13 to 24 on the inside" loading="lazy"></figure></div>
+      <div>
+        <p style="font-size:16px">A 24-hour clock removes the a.m./p.m. mix-up: is "10:00" 1000 or 2200? It cuts documentation errors and is used everywhere in health care.</p>
+        <ul class="tight" style="font-size:16px">
+          <li>a.m.: drop the colon, four digits: 9:15 a.m. → 0915</li>
+          <li>p.m.: add 12: 2:20 p.m. → 1420</li>
+          <li>Back to 12-hour: subtract 12 from 1300 and later: 1930 → 7:30 p.m.</li>
+        </ul>
+        <p style="font-size:16px">More practice is in the <a href="../unit-4-fluids-nutrition-med-math/week9-study-guide.html#medmath">Week 9 med math section</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Abbreviations: "Do Not Use"<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Don't write</th><th>Problem</th><th>Write instead</th></tr>
+      <tr><td>U, u</td><td>Read as 0, 4 or cc</td><td>"unit"</td></tr>
+      <tr><td>IU</td><td>Read as IV or the number 10</td><td>"unit(s)"</td></tr>
+      <tr><td>cc</td><td>Read as u (units)</td><td>mL</td></tr>
+      <tr><td>qd, QD</td><td>Read as q.i.d. (four times a day)</td><td>"daily"</td></tr>
+      <tr><td>qod, QOD</td><td>Read as q.i.d.</td><td>"every other day"</td></tr>
+      <tr><td>qhs</td><td>Read as every hour</td><td>"bedtime"</td></tr>
+      <tr><td>SC, SQ, sub q</td><td>SC read as SL (sublingual); SQ read as "5 every"</td><td>SUBQ, "subcutaneous"</td></tr>
+      <tr><td>TIW</td><td>Read as three times a day or twice a week</td><td>"three times weekly"</td></tr>
+      <tr><td>D/C</td><td>Discharge or discontinue?</td><td>"discharge" or "discontinue"</td></tr>
+      <tr><td>MS, MSO4, MgSO4</td><td>Morphine sulfate and magnesium sulfate get confused</td><td>Write the drug name</td></tr>
+      <tr><td>per os</td><td>Read as left eye</td><td>PO, "by mouth"</td></tr>
+      <tr><td>Trailing zero (5.0 mg)</td><td>Decimal missed: read as 50</td><td>5 mg</td></tr>
+      <tr><td>No leading zero (.5 mg)</td><td>Decimal missed: read as 5</td><td>0.5 mg</td></tr>
+    </table></div>
+    <p>Acceptable abbreviations are on the <a href="general-abbreviations.html">General</a> and <a href="charting-abbreviations.html">Charting abbreviations</a> flashcards.</p>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Which charting method records only findings that differ from the norm?</summary><p>Charting by exception.</p></details>
+    <details><summary>Correct entry: "Client ate well" or "Client ate 50% of breakfast"?</summary><p>"Client ate 50% of breakfast." It's measurable.</p></details>
+    <details><summary>How do you fix an error on a paper chart?</summary><p>A single line through it, labeled as an error, with your initials and the date.</p></details>
+    <details><summary>Convert 11:45 p.m. to military time.</summary><p>2345.</p></details>
+    <details><summary>A provider writes "5.0 mg." What's the danger?</summary><p>A missed decimal makes it look like 50 mg. Never use a trailing zero.</p></details>
+  </div>
+</section>
+
+<!-- ===================== EBP ===================== -->
+<section class="topic" id="ebp">
+  <div class="topic-head"><h2>Evidence-based practice</h2><p>Why we do what we do, and how to find the best evidence.</p></div>
+
+  <div class="gsub">
+    <h3>What EBP is<span class="gslides inl">Slides content</span></h3>
+    <p>EBP (evidence-based practice) uses current research, expert knowledge and what matters to clients to make care decisions. It starts with a <b>spirit of inquiry</b>: wanting to know the best way to care for clients. Real examples: oxygen use in hypoxia, antibiotic stewardship, alarm fatigue protocols, fall prevention guidelines, pain management.</p>
+    <h4>Six steps of EBP</h4>
+    <ol class="seq">
+      <li><span><b>Identify the problem</b> (and write a PICOT question)</span></li>
+      <li><span><b>Search</b> for credible evidence (review of literature)</span></li>
+      <li><span><b>Evaluate</b> the findings</span></li>
+      <li><span><b>Implement</b> the recommendations</span></li>
+      <li><span><b>Review</b> how well they worked</span></li>
+      <li><span><b>Disseminate</b> (share) the results</span></li>
+    </ol>
+    <div class="box known"><span class="tag">Known mnemonic</span><p><b>PICOT:</b> <b>P</b>opulation, <b>I</b>ntervention, <b>C</b>omparison, <b>O</b>utcome, <b>T</b>ime (optional). "In older adults on a medical unit (P), does hourly rounding (I) compared with usual care (C) reduce falls (O) over 3 months (T)?"</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Levels of evidence<span class="gslides inl">Slides content</span></h3>
+    <figure class="pic" style="max-width:560px"><img src="week3-img/evidence-pyramid.png" alt="Evidence pyramid from lowest to highest quality: background information and expert opinion; case-controlled studies and case series; cohort studies; randomized controlled trials; critically appraised individual articles; critically appraised topics; systematic reviews at the top" loading="lazy"><figcaption>Quality of evidence rises toward the top. Systematic reviews of RCTs (randomized controlled trials) are strongest; expert opinion is weakest.</figcaption></figure>
+    <div class="tbl"><table>
+      <tr><th>Research type</th><th>Means</th></tr>
+      <tr><td>Quantitative</td><td>Numbers that measure the outcome of interventions</td></tr>
+      <tr><td>Qualitative</td><td>Narratives that explain people's experiences</td></tr>
+      <tr><td>Mixed methods</td><td>Both, combining experiences with generalizable numbers</td></tr>
+      <tr><td>Translational</td><td>How best to put EBP into practice across settings</td></tr>
+    </table></div>
+    <ul class="tight">
+      <li><b>Credible sources:</b> scholarly databases, peer-reviewed journals (reviewed by experts with similar training), abstracts; be cautious with websites; cite in APA (American Psychological Association) or AMA (American Medical Association) style.</li>
+      <li><b>Critical appraisal:</b> judging a study's validity, reliability and fit for your question.</li>
+      <li><b>Clinical practice guidelines:</b> evidence-based recommendations for managing diseases and prevention.</li>
+      <li><b>Theory-practice gap:</b> the gap between what research knows and what's done at the bedside.</li>
+      <li><b>Nursing research follows the nursing process:</b> assess (identify the problem), analyze (form the question), plan (design the method), implement (recruit and collect data), evaluate (analyze and share).</li>
+    </ul>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Which source gives the strongest evidence?</summary><p>A systematic review of randomized controlled trials.</p></details>
+    <details><summary>In PICOT, what is the T?</summary><p>Time.</p></details>
+    <details><summary>A study interviews nurses about how burnout feels. Quantitative or qualitative?</summary><p>Qualitative.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer class="guide-footer gwrap">
+  <p>Built from the Week 3 lecture slides and the ATI Fundamentals modules on professionalism and leadership, ethical and legal considerations, communication, collaboration and teamwork, documentation, and evidence-based practice.</p>
+  <p class="credits">Pictures are from the course slides.</p>
+</footer>
+
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+</body>
+</html>

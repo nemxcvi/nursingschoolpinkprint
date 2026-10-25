@@ -19,6 +19,8 @@ var SITE = {
     {title:"CBC/CMP Adult Lab Value Ranges", type:"flashcards", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/cbc-cmp-lab-values.html", count:29},
     {title:"Nursing Fundamentals practice quiz", type:"quiz", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/nursing-fundamentals-quiz.html", count:40, note:"Session or mastery rounds"},
     {title:"CBC/CMP practice quiz", type:"quiz", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/cbc-cmp-quiz.html", count:40},
+    {title:"Week 2 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/week2-study-guide.html", meta:"Nursing process, priorities, health promotion, vital signs & pain · mnemonics & quick checks"},
+    {title:"Week 3 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-01", href:"unit-1-intro-to-nursing/week3-study-guide.html", meta:"Professionalism, ethics & law, communication, teamwork, documentation & EBP · mnemonics & quick checks"},
     {title:"Mobility", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/mobility-flashcards.html", count:56},
     {title:"Mobility practice quiz", type:"quiz", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/mobility-quiz.html", count:40},
     {title:"Hygiene", type:"flashcards", sheet:"nur114", unit:"U-02", href:"unit-2-basic-human-needs/hygiene-flashcards.html", count:43},

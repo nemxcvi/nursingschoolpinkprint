@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Week 2 study guide &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Week 2 study guide &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-1-intro-to-nursing/week2-study-guide">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Week 2 study guide &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=122">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+<style>
+/* Week 2: same components and styles as the Week 6 guide */
+:root{
+  /* guide-specific accents only; base colors below reuse the site's own theme variables */
+  --flag:#0F6E62; --flag-bg:#DDF3EE;
+  --hook:#FFF4D6; --hook-line:#E9C766; --known:#E8E4FF; --known-line:#8D7CE6;
+  --side:#1E5FA8; --side-bg:#E1EEFB; --red:#B3261E; --red-bg:#FDE7E5;
+}
+[data-theme="dark"]{
+  --flag:#7FE0CF; --flag-bg:#123A34;
+  --hook:#3A2E12; --hook-line:#B8963A; --known:#262045; --known-line:#9D8FF0;
+  --side:#9CC4F5; --side-bg:#15263D; --red:#FF8A80; --red-bg:#3D1512;
+}
+.gwrap{max-width:980px;margin:0 auto;padding:0 20px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + var(--cbar-h) + 64px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.guide-body{font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.6;}
+.guide-body h1,.guide-body h2,.guide-body h3{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+.guide-body a{color:var(--label)}
+.guide-body :focus-visible{outline:2px solid var(--label);outline-offset:3px}
+
+/* Hero */
+.guide-hero{padding-top:36px;padding-bottom:32px}
+.guide-hero .course{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);margin:0 0 14px}
+.guide-hero h1{font-size:clamp(36px,7vw,64px);letter-spacing:-.01em;color:var(--heading)}
+.guide-hero p.lede{max-width:60ch;color:var(--muted);margin:18px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.legend span{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1.5px solid;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.lg-known{background:var(--known);border-color:var(--known-line)}
+.lg-hook{background:var(--hook);border-color:var(--hook-line)}
+.lg-flag{background:var(--flag-bg);border-color:var(--flag);color:var(--flag)}
+
+/* In-guide topic nav */
+nav.topics{position:sticky;top:var(--cbar-h);z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(6px);border-block:1.5px solid var(--border)}
+nav.topics .gwrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.topics .gwrap::-webkit-scrollbar{display:none}
+nav.topics a{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-decoration:none;color:var(--label);padding:9px 14px;border:1.5px solid var(--border)}
+nav.topics a:hover{background:var(--pill)}
+
+/* Sections */
+section.topic{padding:48px 0 20px}
+.topic-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1.5px solid var(--border);padding-bottom:10px;margin-bottom:28px}
+.topic-head h2{font-size:clamp(30px,5vw,46px);color:var(--label)}
+.topic-head p{margin:0;color:var(--muted);font-style:italic}
+/* Tables */
+.tbl{overflow-x:auto;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--card);margin:14px 0}
+.tbl table{border-collapse:collapse;width:100%;font-size:16px}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--border)}
+.tbl th{font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:17px;background:color-mix(in srgb,var(--pill) 60%,var(--card));color:var(--heading)}
+.tbl tr:last-child td{border-bottom:none}
+
+/* Quick checks */
+.gcheck{margin:26px 0 8px;display:grid;gap:10px}
+.gcheck h3{margin:0 0 4px;font-size:22px}
+.guide-body details{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:12px 16px}
+.guide-body summary{cursor:pointer;font-weight:600;list-style:none;color:var(--text)}
+.guide-body summary::-webkit-details-marker{display:none}
+.guide-body summary::after{content:" Show answer";font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;color:var(--label);margin-left:8px}
+.guide-body details[open] summary::after{content:" Hide"}
+.guide-body details p{margin:10px 0 0}
+
+/* Slides content: marks material from the instructor's slides (same tag as Week 4) */
+:root{--slides:#B23E0B;--slides-bg:#FDE4D3}
+[data-theme="dark"]{--slides:#FF976A;--slides-bg:#3F190B}
+.gslides{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slides);background:var(--slides-bg);border:1.5px solid var(--slides);padding:2px 8px;vertical-align:middle;margin-right:6px}
+.gslides.inl{margin:0 0 0 6px;font-size:10px;padding:1px 6px;font-style:normal;line-height:1.4}
+.lg-slides{background:var(--slides-bg);border-color:var(--slides);color:var(--slides)}
+.guide-footer{padding-top:24px;padding-bottom:60px;color:var(--muted);font-size:15px}:root{--l-epi:#F6C9B5;--l-derm:#EFA3A6;--l-fat:#F7E3A1;--l-musc:#C9737C;--l-bone:#EDE7DA;--wound:#8E1F3A}
+[data-theme="dark"]{--l-epi:#9C6A5A;--l-derm:#8F4E55;--l-fat:#8C7A3F;--l-musc:#6E343C;--l-bone:#6F6A5F;--wound:#F28AB5}
+.legend .lg-note{background:var(--side-bg);border-color:var(--side);color:var(--side)}
+.guide-body h4{font-family:'Young Serif',Georgia,serif;font-weight:400;line-height:1.15}
+.gsub > h3{margin:0 0 10px}
+.guide-body td:first-child{font-weight:600}
+.guide-footer .box p{margin:4px 0}
+
+/* Week 6 layouts, drawn with the site and key colors */
+
+.gsub{margin-top:40px}
+.gsub > h3{font-size:28px;margin-bottom:10px}
+.guide-body h4{font-size:20px;margin:22px 0 8px}
+.guide-body p{margin:10px 0}
+.guide-body ul.tight{margin:8px 0;padding-left:22px}
+.guide-body ul.tight li{margin:3px 0}
+
+/* Callouts */
+.box{border:1.5px solid;padding:12px 16px;margin:14px 0;font-size:16.5px}
+.box .tag{display:block;padding:0;border:none;min-height:0;background:none;letter-spacing:.06em;text-transform:uppercase;font-size:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;margin-bottom:4px}
+.box p{margin:4px 0}
+.box ul{margin:4px 0;padding-left:20px}
+.known{background:var(--known);border-color:var(--known-line)}
+.known .tag{color:var(--muted)}
+.hook{background:var(--hook);border-color:var(--hook-line);border-width:2px;border-style:dashed}
+.hook .tag{color:var(--muted)}
+.flag{background:var(--flag-bg);border-color:var(--flag)}
+.flag .tag{color:var(--flag)}
+.note{background:var(--side-bg);border-color:var(--side)}
+.note .tag{color:var(--side)}
+.slides{background:var(--slides-bg);border-color:var(--slides)}
+.slides .tag{color:var(--slides)}
+.nc{background:var(--red-bg);border-color:var(--red)}
+.nc .tag{color:var(--red)}
+
+/* Two/three column panels */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:1.5px solid var(--border);background:var(--card);margin:12px 0}
+.cols > div{padding:14px 16px}
+.cols > div + div{border-left:1.5px dashed var(--border)}
+@media (max-width:640px){.cols > div + div{border-left:none;border-top:1.5px dashed var(--border)}}
+.cols h4{margin:0 0 6px}
+.cols ul{margin:0;padding-left:20px;font-size:16px}
+
+.signs{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:2px solid var(--flag);background:var(--card);margin:8px 0}
+.signs div{padding:12px 10px;text-align:center}
+.signs div + div{border-left:1.5px solid var(--flag)}
+.signs b{display:block;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:22px;color:var(--flag);line-height:1.1}
+.signs span{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-top:4px}
+@media (max-width:640px){.signs{grid-template-columns:1fr}.signs div + div{border-left:none;border-top:1.5px solid var(--flag)}}
+
+/* Chain loop */
+.loop{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--border);background:var(--card);margin:14px 0}
+.loop div{padding:14px;border-bottom:1.5px solid var(--border);position:relative}
+.loop div:nth-child(3n+1),.loop div:nth-child(3n+2){border-right:1.5px solid var(--border)}
+.loop div:nth-child(n+4){border-bottom:none}
+.loop b{display:block;font-family:'Young Serif',Georgia,serif;font-weight:400;font-size:21px;color:var(--label)}
+.loop small{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.loop span{display:block;font-size:15.5px;margin-top:4px}
+.loop-foot{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin-top:-6px}
+@media (max-width:640px){.loop{grid-template-columns:1fr}.loop div{border-right:none !important;border-bottom:1.5px solid var(--border) !important}.loop div:last-child{border-bottom:none !important}}
+
+/* Sequences */
+ol.seq{counter-reset:s;list-style:none;padding:0;margin:12px 0;display:grid;gap:0;border:1.5px solid var(--border);background:var(--card)}
+ol.seq li{counter-increment:s;display:flex;gap:12px;align-items:baseline;padding:10px 14px;font-size:16.5px}
+ol.seq li + li{border-top:1px solid var(--border)}
+ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;font-size:22px;color:var(--label);min-width:22px}
+.strip{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0;border:1.5px solid var(--border);background:var(--card)}
+.strip span{padding:8px 12px;font-size:15.5px;display:flex;align-items:center}
+.strip span + span{border-left:1.5px solid var(--border)}
+.strip span.arrow{color:var(--label);font-family:'IBM Plex Mono',monospace;border-left:none;padding:8px 4px}
+.strip span.arrow + span{border-left:none}
+.strip-label{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin:16px 0 0}
+
+/* Timeline */
+.timeline{border:1.5px solid var(--border);background:var(--card);padding:14px 16px;margin:12px 0}
+.tl-row{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;margin:8px 0;font-size:15px}
+.tl-track{position:relative;height:26px;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),var(--border) calc(10% - 1px) 10%)}
+.tl-bar{position:absolute;top:3px;bottom:3px;background:var(--border);color:var(--fill-text);font-family:'IBM Plex Mono',monospace;font-size:12px;display:flex;align-items:center;padding:0 6px;white-space:nowrap;overflow:hidden}
+.tl-scale{display:grid;grid-template-columns:150px 1fr;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.tl-scale div:last-child{display:flex;justify-content:space-between}
+@media (max-width:560px){.tl-row,.tl-scale{grid-template-columns:1fr}.tl-scale div:first-child{display:none}}
+
+/* Figures */
+.guide-body figure{margin:14px 0;border:1.5px solid var(--border);background:var(--card);padding:12px}
+.guide-body figcaption{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);margin-top:8px}
+.svg-text{font-family:'IBM Plex Mono',monospace;fill:var(--text)}
+.svg-title{font-family:'Young Serif',Georgia,serif;fill:var(--label)}
+
+.pic{max-width:100%;margin:14px 0}
+.pic img,.gallery img{display:block;width:100%;height:auto;background:#fff}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--min,170px),1fr));gap:10px;border:1.5px solid var(--border);background:var(--card);padding:10px;margin:14px 0}
+.gallery figure{margin:0;border:none;padding:0;background:none}
+.gallery img{height:170px;object-fit:contain}
+.gallery figcaption{margin-top:6px}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(var(--min,240px),100%),1fr));gap:12px;border:1.5px solid var(--border);background:var(--card);padding:10px;margin:14px 0}
+.pics figure{margin:0}
+.pics img{display:block;width:100%;height:auto;background:#fff}
+.pics figcaption{margin-top:6px}
+.guide-footer .credits{font-size:13px}
+.credit{display:block;font-size:12px;color:var(--muted);font-style:italic}
+.pq{display:flex;flex-direction:column;gap:8px}
+.pq img{height:190px;object-fit:cover}
+.pq details{padding:8px 10px;font-size:15px}
+
+.guide-hero p.key-note{max-width:60ch;color:var(--muted);font-size:15.5px;font-style:italic;margin:10px 0 0}
+
+</style>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-01" data-type="studyguides"></div>
+<script src="../assets/site-data.js?v=24"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=14"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="guide-body">
+<header class="guide-hero gwrap">
+  <p class="course">NUR 114 &middot; Unit 1 &middot; Week 2</p>
+  <h1>Foundations, priorities &amp; vital signs</h1>
+  <p class="lede">Drafted from the Week 2 modules and powerpoints, scaled down for exam crams. Use the mnemonics and memory tricks to lock in lists, then hit the quick checks at the end of each topic.</p>
+  <div class="legend" aria-label="Key">
+    <span class="lg-slides">Slides content</span>
+    <span class="lg-known">Known mnemonic</span>
+    <span class="lg-hook">Memory hook made for this guide</span>
+    <span class="lg-note">Side note</span>
+  </div>
+</header>
+
+<nav class="topics" aria-label="Topics">
+  <div class="gwrap">
+    <a href="#profession">The profession</a>
+    <a href="#judgment">Clinical judgment</a>
+    <a href="#process">Nursing process</a>
+    <a href="#priority">Priority setting</a>
+    <a href="#health">Health promotion</a>
+    <a href="#managing">Managing care</a>
+    <a href="#pcc">Patient-centered care</a>
+    <a href="#assessment">Health assessment</a>
+    <a href="#vitals">Vital signs</a>
+    <a href="#pain">Pain</a>
+  </div>
+</nav>
+
+<main class="gwrap">
+
+<!-- ===================== THE PROFESSION ===================== -->
+<section class="topic" id="profession">
+  <div class="topic-head"><h2>Nursing as a profession</h2><p>What nurses do, who regulates them, and the groups that shape the work.</p></div>
+
+  <div class="gsub">
+    <h3>What nursing is<span class="gslides inl">Slides content</span></h3>
+    <p>The ANA (American Nurses Association) defines nursing as the art and science of caring: protecting, promoting and optimizing health and function; preventing illness and injury; helping healing; easing suffering through compassionate presence; diagnosing and treating <b>human responses</b>; and advocating for individuals, families, groups, communities and populations.</p>
+    <div class="cols">
+      <div>
+        <h4>Roles of the nurse</h4>
+        <ul>
+          <li><b>Caregiver:</b> gives direct client care</li>
+          <li><b>Educator:</b> teaches clients and families</li>
+          <li><b>Advocate:</b> supports clients' rights and choices</li>
+          <li><b>Counselor:</b> gives emotional support</li>
+          <li><b>Leader:</b> oversees nursing staff</li>
+          <li>Also: <b>case manager</b> (coordinates care among professionals), <b>researcher</b>, <b>manager</b>, <b>change agent</b> (helps practice adapt to client needs)</li>
+        </ul>
+      </div>
+      <div>
+        <figure class="pic" style="margin:0;border:none;padding:0"><img src="week2-img/nurse-roles.jpg" alt="Roles of a nurse: caregiver, educator, advocate, counselor and leader, each with an icon" loading="lazy"><figcaption>Roles of a nurse</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>How practice is regulated<span class="gslides inl">Slides content</span></h3>
+    <p>The model of professional nursing practice regulation answers the who, what, when, where and why of practice, so care is knowledgeable, safe and complete. From the broadest layer to the most personal:</p>
+    <div class="tbl"><table>
+      <tr><th>Layer</th><th>What it is</th></tr>
+      <tr><td>Code of Ethics for Nurses</td><td>The values, obligations to clients and ideals of the profession (ANA)</td></tr>
+      <tr><td>Scope and Standards of Practice</td><td>Statements that describe a competent level of care and professionalism</td></tr>
+      <tr><td>Nurse Practice Act (NPA)</td><td>State law on what nurses may do: licensure, scope, approved programs. It differs from state to state</td></tr>
+      <tr><td>Policies and procedures</td><td>Rules set by each facility or organization</td></tr>
+      <tr><td>Self-determination</td><td>Each nurse's own responsibility to act professionally within their role</td></tr>
+    </table></div>
+    <ul class="tight">
+      <li><b>BON (Board of Nursing):</b> each state's regulatory body. It sets practice rules, approves nursing programs, grants licenses and handles discipline. Here it's the <b>Maryland Board of Nursing</b>, and licensure and renewal rules vary by jurisdiction.</li>
+      <li><b>NCLEX (National Council Licensure Examination):</b> the exam graduates pass to be licensed (NCLEX-RN or NCLEX-PN).</li>
+      <li><b>NLC (Nurse Licensure Compact):</b> one license lets a nurse practice in every state that joined the compact.</li>
+      <li><b>Scope of practice:</b> what a licensed nurse is competent and permitted to do. <b>Standards of care:</b> the minimum care a professional must give, compared with peers of similar education and experience.</li>
+      <li><b>Standards of practice</b> describe competent care using the nursing process; <b>standards of professional performance</b> describe competent professional behavior.</li>
+      <li><b>ACEN (Accreditation Commission for Education in Nursing)</b> and <b>CCNE (Commission on Collegiate Nursing Education)</b> accredit nursing schools.</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>Organizations and competencies</h3>
+    <div class="cols">
+      <div><h4>ANA</h4><p style="font-size:16px">Founded 1896. Represents the interests of nurses; writes the Code of Ethics. Runs Healthy Nurse, Healthy Nation (2017) to promote healthy lifestyles for nurses.</p></div>
+      <div><h4>NLN (National League for Nursing)</h4><p style="font-size:16px">Promotes excellence in nursing education. Four core values: <b>caring, integrity, diversity and excellence</b>.</p></div>
+      <div><h4>NSNA (National Student Nurses' Association)</h4><p style="font-size:16px">Founded 1952 for students. Six core values: advocacy, leadership and autonomy, professionalism, care, diversity and quality education.</p></div>
+    </div>
+    <h4>QSEN (Quality and Safety Education for Nursing)</h4>
+    <p>The knowledge, skills and attitudes every prelicensure student should have. Six competencies:</p>
+    <div class="tbl"><table>
+      <tr><th>Competency</th><th>Means</th></tr>
+      <tr><td>Patient-centered care</td><td>Care based on the client's physical, psychological, social, spiritual and cultural needs</td></tr>
+      <tr><td>Teamwork and collaboration</td><td>Working in partnership with the interprofessional team</td></tr>
+      <tr><td>Evidence-based practice (EBP)</td><td>Using client data, current research and credible sources for clinical judgment</td></tr>
+      <tr><td>Quality improvement (QI)</td><td>Making and carrying out plans to improve care</td></tr>
+      <tr><td>Safety</td><td>Lowering the risk of harm to clients, self and others</td></tr>
+      <tr><td>Informatics</td><td>Using information technology to communicate and support care</td></tr>
+    </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>"Patients Trust Every Quality Safe Interaction":</b> Patient-centered care, Teamwork, EBP, QI, Safety, Informatics.</p></div>
+    <p class="strip-label">Your program's organizing framework<span class="gslides inl">Slides content</span></p>
+    <p>Human flourishing (client-centered care), nursing judgment (safety standards and information), professional identity (teamwork and collaboration) and spirit of inquiry (quality improvement and evidence-based practice). Core values: diversity, patient-centeredness, ethics, caring, integrity, excellence and holism.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>People who shaped nursing</h3>
+    <div class="tbl"><table>
+      <tr><th>Who</th><th>Known for</th></tr>
+      <tr><td>Florence Nightingale</td><td>Crimean War (1854–1856): collected and reported data linking unclean conditions to wound infections, an early form of evidence-based practice. "The lady with the lamp"</td></tr>
+      <tr><td>Clara Barton</td><td>Served on battlefields and started the American Red Cross</td></tr>
+      <tr><td>Dorothea Dix</td><td>A teacher, not a nurse: pushed for formal nurse training and for mental health reform</td></tr>
+      <tr><td>Ildaura Murillo-Rohde</td><td>Founded the National Association of Hispanic Nurses</td></tr>
+      <tr><td>Eddie Bernice Johnson</td><td>First registered nurse elected to the U.S. Congress; introduced the STEM (science, technology, engineering and mathematics) Education Act in 2012</td></tr>
+    </table></div>
+    <p>The first U.S. school of nursing opened in 1872.</p>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Which document is state law and changes from state to state?</summary><p>The Nurse Practice Act.</p></details>
+    <details><summary>Which group grants licenses and handles discipline?</summary><p>The state Board of Nursing (here, the Maryland Board of Nursing).</p></details>
+    <details><summary>A nurse moves to another compact state without getting a new license. What allows this?</summary><p>The Nurse Licensure Compact.</p></details>
+    <details><summary>Name the six QSEN competencies.</summary><p>Patient-centered care, teamwork and collaboration, evidence-based practice, quality improvement, safety, informatics.</p></details>
+  </div>
+</section>
+
+<!-- ===================== CLINICAL JUDGMENT ===================== -->
+<section class="topic" id="judgment">
+  <div class="topic-head"><h2>Clinical judgment &amp; the NCLEX</h2><p>How a nurse thinks, and how test questions are built around it.</p></div>
+
+  <div class="gsub">
+    <h3>The clinical judgment model<span class="gslides inl">Slides content</span></h3>
+    <ol class="seq">
+      <li><span><b>Recognize cues:</b> pick out relevant, important information from different sources</span></li>
+      <li><span><b>Analyze cues:</b> organize and connect them to the client's clinical picture</span></li>
+      <li><span><b>Prioritize hypotheses:</b> rank the possible problems by urgency, likelihood and risk</span></li>
+      <li><span><b>Generate solutions:</b> set expected outcomes and the interventions to reach them</span></li>
+      <li><span><b>Take action:</b> carry out the solutions for the highest priority</span></li>
+      <li><span><b>Evaluate outcomes:</b> compare what happened with what you expected</span></li>
+    </ol>
+    <div class="box slides"><span class="tag">Slides content</span><p>These frameworks don't compete: the <b>nursing process dictates what we do</b>; <b>clinical judgment defines how we think</b> while doing it.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>NGN (Next Generation NCLEX) question types<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Type</th><th>What you do</th></tr>
+      <tr><td>Multiple choice</td><td>One question, four choices: pick the best one</td></tr>
+      <tr><td>Multiple response</td><td>Select all that apply</td></tr>
+      <tr><td>Drop-down and cloze</td><td>Fill blanks in a sentence or table from a menu of choices</td></tr>
+      <tr><td>Highlight</td><td>Highlight the findings in a chart or note that answer the question</td></tr>
+      <tr><td>Hot spot</td><td>Click the right spot on a picture</td></tr>
+      <tr><td>Fill in the blank</td><td>Type the answer; mostly math</td></tr>
+      <tr><td>Bow tie</td><td>Pick the condition in the middle, actions on one side and parameters to monitor on the other</td></tr>
+      <tr><td>Case studies</td><td>Pull the pertinent information from a client chart to answer several questions</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Which clinical judgment step ranks the client's possible problems?</summary><p>Prioritize hypotheses.</p></details>
+    <details><summary>Nursing process vs clinical judgment: which is "what we do" and which is "how we think"?</summary><p>The nursing process is what we do; clinical judgment is how we think while doing it.</p></details>
+  </div>
+</section>
+
+<!-- ===================== NURSING PROCESS ===================== -->
+<section class="topic" id="process">
+  <div class="topic-head"><h2>The nursing process</h2><p>Five steps that build the plan of care, shift by shift.</p></div>
+
+  <div class="gsub">
+    <h3>Five steps<span class="gslides inl">Slides content</span></h3>
+    <figure class="pic" style="max-width:420px"><img src="week2-img/nursing-process-pie.jpg" alt="Steps in the nursing process: A Delicious PIE (Assessment, Diagnosis, Planning, Implementation, Evaluation) and An Apple PIE (Assessment, Analysis, Planning, Implementation, Evaluation)" loading="lazy"><figcaption>Two versions of the same five steps</figcaption></figure>
+    <div class="box known"><span class="tag">Known mnemonic</span><p><b>ADPIE</b> (A Delicious PIE) or <b>AAPIE</b> (An Apple PIE): Assessment, Diagnosis (Analysis), Planning, Implementation, Evaluation. Diagnosis and analysis are the same step under two names.</p></div>
+    <p>The nursing process builds the <b>plan of care (POC)</b>: how we know what to focus on each shift to restore or improve the client's condition. The whole interprofessional team uses it.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>1 · Assessment<span class="gslides inl">Slides content</span></h3>
+    <p>The nurse collects, organizes and validates data from the health history (interview), the physical assessment, the medical record, and objective and subjective data.</p>
+    <div class="cols">
+      <div><h4>Objective data</h4><ul>
+        <li>Measurable, factual; observed by the nurse through the senses (inspection, auscultation, palpation, smell)</li>
+        <li>Examples: BP (blood pressure) 120/80; pulse 100, regular; 500 mL clear yellow urine; total cholesterol 275; skin warm and dry</li>
+        <li>Vital signs are objective data</li>
+      </ul></div>
+      <div><h4>Subjective data</h4><ul>
+        <li>What the client (or family) reports; collected in the interview</li>
+        <li>Document in quotation marks, in the client's exact words when possible</li>
+        <li>Examples: "It feels like someone is sitting on my chest." "It burns when I urinate." "I feel like I'm going to be sick."</li>
+      </ul></div>
+    </div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Subjective is Said; Objective is Observed.</b> If only the client can tell you (pain, nausea, itching), it's subjective.</p></div>
+    <p><b>Lab results</b> are part of a full assessment. Values differ between facilities, so this course uses the <b>ATI values</b>, adult ranges only, for the CBC (complete blood count) and CMP (comprehensive metabolic panel). See the <a href="cbc-cmp-lab-values.html">CBC/CMP flashcards</a>.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>2 · Analysis (nursing diagnosis)<span class="gslides inl">Slides content</span></h3>
+    <p>A <b>nursing diagnosis</b> is a clinical judgment about a person's <b>response</b> to an actual or potential health condition. NANDA-I (North American Nursing Diagnosis Association International) develops and standardizes them. It is <b>not</b> a medical diagnosis.</p>
+    <figure class="pic"><img src="week2-img/medical-vs-nursing-diagnosis.jpg" alt="Table comparing medical and nursing diagnoses: a medical diagnosis identifies a disease and is physician-led (fractured neck of femur, pneumonia); a nursing diagnosis identifies the human response and is nurse-led (impaired physical mobility, impaired gas exchange)" loading="lazy"><figcaption>Medical diagnosis = the disease. Nursing diagnosis = the client's response to it.</figcaption></figure>
+    <figure class="pic"><img src="week2-img/pes-diagnosis.jpg" alt="PES structure for a nursing diagnosis: Problem, related to Etiology (cause), as evidenced by Signs and symptoms. Example: Ineffective breathing pattern related to airway obstruction as evidenced by low oxygen saturation" loading="lazy"><figcaption>PES: problem + cause + evidence</figcaption></figure>
+    <div class="cols">
+      <div><h4>Actual diagnosis</h4><p style="font-size:16px">Something happening now.<br><b>Problem r/t (related to) cause AEB (as evidenced by) signs and symptoms.</b><br><i>Impaired physical mobility r/t pain in lower extremities AEB client rating pain 8/10 and reluctance to walk.</i></p></div>
+      <div><h4>"Risk for" diagnosis</h4><p style="font-size:16px">A problem that hasn't happened yet but could, because of risk factors.<br><b>Risk for problem r/t risk factors.</b> No AEB: there are no signs yet.<br><i>Risk for infection r/t surgical incision and compromised immune system.</i></p></div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>3 · Planning<span class="gslides inl">Slides content</span></h3>
+    <p>Generate solutions: set goals and choose individualized, evidence-based interventions. Goals are written in SMART format and can be short or long term.</p>
+    <div class="cols">
+      <div>
+        <figure class="pic" style="margin:0;border:none;padding:0;max-width:320px"><img src="week2-img/smart-goals.jpg" alt="SMART goals wheel: specific, measurable, achievable, relevant, time-bound" loading="lazy"></figure>
+      </div>
+      <div>
+        <div class="box known" style="margin-top:0"><span class="tag">Known mnemonic</span><p><b>SMART:</b> Specific, Measurable, Achievable (attainable), Relevant (realistic), Time-bound.</p></div>
+        <p style="font-size:16px"><b>Short term</b> (days): "The client will remain afebrile during hospitalization."<br><b>Long term</b> (weeks to months): "The client will show no signs or symptoms of a surgical site infection within 30 days of surgery."</p>
+      </div>
+    </div>
+    <p>A measurable goal names an observable behavior and a time frame: "The client will walk 100 feet in the hallway with a walker by the end of the shift." Words like "understand," "feel" or "tolerate better" can't be measured.</p>
+    <p><b>Every intervention gets a rationale</b> (the "why"), and it must be evidence based. Example: clean the incision with chlorhexidine every shift as ordered, because chlorhexidine lowers infection risk by reducing bacteria.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>4 · Implementation and 5 · Evaluation<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><h4>Implementation (take action)</h4><ul>
+        <li>Carry out the planned interventions: give medications, reinforce teaching, reposition</li>
+        <li><b>Direct care:</b> at the bedside. <b>Indirect care:</b> away from the bedside (calling the provider, charting)</li>
+      </ul></div>
+      <div><h4>Evaluation</h4><ul>
+        <li>Was each intervention effective? Was the goal met?</li>
+        <li>Continue, modify or discontinue the intervention</li>
+        <li>Document the client's response: what they said (subjective) and what you observed (objective)</li>
+      </ul></div>
+    </div>
+    <div class="box note"><span class="tag">Side note</span><p>Writing goals is planning. Doing the intervention is implementation. Watching the client walk 50 feet to see whether the day-3 goal was met is <b>evaluation</b>.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Let's practice: Mr. Jones<span class="gslides inl">Slides content</span></h3>
+    <p>Mr. Jones, 78, came to the emergency department last night after falling and breaking his hip, and had it surgically repaired. The UAP (unlicensed assistive personnel) reports: temperature 39.0 °C (102.2 °F), pulse 122, respirations 16, BP 140/90, pain 4/10.</p>
+    <details><summary>Which findings are outside the expected range?</summary><p>Temperature (fever is above 38 °C), pulse (tachycardia is above 100) and BP (140/90 is stage 2 hypertension). Respirations of 16 are within 12–20. A fever with a fast heart rate after surgery needs follow-up and a report to the provider.</p></details>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>"I feel sick to my stomach." Subjective or objective?</summary><p>Subjective: only the client can report it.</p></details>
+    <details><summary>Why does a "risk for" diagnosis have no AEB part?</summary><p>The problem hasn't happened, so there are no signs or symptoms to list, only risk factors.</p></details>
+    <details><summary>Which nursing process step identifies outcomes and the interventions to reach them?</summary><p>Planning.</p></details>
+    <details><summary>"The client will understand the diet." What's wrong with this goal?</summary><p>It isn't measurable and has no time frame.</p></details>
+  </div>
+</section>
+
+<!-- ===================== PRIORITY ===================== -->
+<section class="topic" id="priority">
+  <div class="topic-head"><h2>Priority setting</h2><p>Deciding who and what comes first. A lack of prioritization harms clients.</p></div>
+
+  <div class="gsub">
+    <h3>Maslow's hierarchy of needs<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><figure class="pic" style="margin:0;border:none;padding:0;max-width:380px"><img src="week2-img/maslow.png" alt="Maslow's hierarchy of needs pyramid: physiological needs at the base, then safety, love, esteem, and self-actualization at the top" loading="lazy"></figure></div>
+      <div>
+        <p style="font-size:16px"><b>Meet the lower, most basic needs first.</b></p>
+        <ol class="seq" style="font-size:15.5px">
+          <li><span><b>Physiological:</b> air, water, food, housing, sleep, sexual activity. Airway comes first</span></li>
+          <li><span><b>Safety:</b> a secure place to live, work and play</span></li>
+          <li><span><b>Love and belonging:</b> giving and receiving love</span></li>
+          <li><span><b>Esteem:</b> a high self-image</span></li>
+          <li><span><b>Self-actualization:</b> achievement and mastery</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>ABCDE for acutely ill clients<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><figure class="pic" style="margin:0;border:none;padding:0;max-width:340px"><img src="week2-img/abcde.jpg" alt="ABCDE: Airway (clear and protected), Breathing (rate, effort, oxygen saturation), Circulation (pulse, BP, skin color, capillary refill, bleeding), Disability (quick neuro check, pupils, blood sugar), Exposure (look for hidden problems, prevent hypothermia). Reassess after every intervention" loading="lazy"></figure></div>
+      <div>
+        <div class="tbl" style="margin-top:0"><table>
+          <tr><th>Step</th><th>Assess</th></tr>
+          <tr><td>Airway</td><td>Clear and protected</td></tr>
+          <tr><td>Breathing</td><td>Rate, depth, ease; accessory muscles; lung sounds; oxygen saturation</td></tr>
+          <tr><td>Circulation</td><td>Pulse rate and strength, BP, capillary refill, skin tone, urine output; control bleeding</td></tr>
+          <tr><td>Disability</td><td>Alert and oriented? Arousable? Responds to painful stimuli? Pupils, blood sugar</td></tr>
+          <tr><td>Exposure</td><td>Look for hidden injuries while keeping the client warm</td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div class="box slides"><span class="tag">Slides content</span><p><b>Assess the ABCs first, because they can change neurological findings.</b> A client who isn't getting enough oxygen or blood flow can look confused. Reassess after every intervention; if you find a problem at any step, treat it before moving on.</p></div>
+    <figure class="pic" style="max-width:340px"><img src="week2-img/airway-obstruction.jpg" alt="Signs of severe airway obstruction: difficulty breathing, inability to speak or cry, bluish skin (cyanosis), high-pitched wheezing, clutching the throat, loss of consciousness, weak or ineffective cough" loading="lazy"><figcaption>Signs of severe airway obstruction</figcaption></figure>
+  </div>
+
+  <div class="gsub">
+    <h3>Other ways to set priorities<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Framework</th><th>Goes first</th></tr>
+      <tr><td>Acute vs chronic</td><td>The sudden (acute) problem</td></tr>
+      <tr><td>Urgent vs nonurgent</td><td>The urgent need</td></tr>
+      <tr><td>Unstable vs stable</td><td>The unstable client</td></tr>
+      <tr><td>Safety and risk reduction</td><td>Whatever poses the greatest immediate risk to physical or psychological well-being</td></tr>
+      <tr><td>Least restrictive / least invasive</td><td>The gentlest intervention that still works: reorientation and a sitter before restraints</td></tr>
+      <tr><td>Survival potential</td><td>Clients most likely to survive with prompt care</td></tr>
+    </table></div>
+    <h4>Triage colors</h4>
+    <div class="tbl"><table>
+      <tr><th>Color</th><th>Category</th><th>Means</th></tr>
+      <tr><td>Red</td><td>Emergent</td><td>Life-threatening; needs care now</td></tr>
+      <tr><td>Yellow</td><td>Urgent or delayed</td><td>Serious, but can wait briefly</td></tr>
+      <tr><td>Green</td><td>Nonurgent or minimal</td><td>Minor; can wait hours or days</td></tr>
+      <tr><td>Black</td><td>Expectant</td><td>Deceased or not expected to survive; comfort measures</td></tr>
+    </table></div>
+    <p><b>Rationing:</b> deciding how to use resources that are too scarce to meet every need.</p>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>What is the first step in the ABCDE approach for an acutely ill client?</summary><p>Assess the airway.</p></details>
+    <details><summary>Which findings guide the nurse's decisions about a client's status: level of consciousness, skin color, vital signs, room decorations?</summary><p>Level of consciousness, skin color and vital signs.</p></details>
+    <details><summary>Which is NOT an effective priority-setting practice: applying Maslow, ignoring nonurgent needs, reducing injury risk first, ranking client acuity?</summary><p>Ignoring nonurgent needs. They come later, but they still get met.</p></details>
+    <details><summary>A postoperative client needs airway clearance, pain relief, a visit from family and help choosing a menu. Which first?</summary><p>Airway clearance: a physiological need, and airway comes first.</p></details>
+  </div>
+</section>
+
+<!-- ===================== HEALTH PROMOTION ===================== -->
+<section class="topic" id="health">
+  <div class="topic-head"><h2>Health promotion &amp; disease prevention</h2><p>Keeping people well, catching disease early, and limiting its damage.</p></div>
+
+  <div class="gsub">
+    <h3>Terms<span class="gslides inl">Slides content</span></h3>
+    <ul class="tight">
+      <li><b>Health promotion:</b> helping people gain control over and improve their health. Tools on the slides: client education, health literacy, supportive environments, public policy, referrals.</li>
+      <li><b>Wellness:</b> a positive state of health, with spiritual, emotional, physical and environmental dimensions.</li>
+      <li><b>Disease prevention:</b> measures that limit exposure to, or the effects of, illness or disease.</li>
+      <li><b>Health education:</b> learning experiences that build knowledge or shape attitudes. <b>Health outcomes:</b> the results of promotion and prevention.</li>
+    </ul>
+    <figure class="pic" style="max-width:620px"><img src="week2-img/illness-wellness.jpg" alt="Illness-wellness continuum: from early demise through dysfunction and manifestation of illness, past awareness that something is not right, up through self-checks, acquiring knowledge and new behaviors toward wellness" loading="lazy"><figcaption>The illness–wellness continuum (John W. Travis): moving toward wellness means taking control of health; moving down means shifting to treating symptoms</figcaption></figure>
+  </div>
+
+  <div class="gsub">
+    <h3>What affects health<span class="gslides inl">Slides content</span></h3>
+    <figure class="pic" style="max-width:520px"><img src="week2-img/health-factors.jpg" alt="Factors that affect health: access to urgent care and preventive care, clean environment, safety and security, family wellness, mental health, food and fitness, healthy teeth and gums, sexual and reproductive health, society influences, substance abuse, tobacco use" loading="lazy"><figcaption>Genetics, biology, personal choices, environment and money all shape health</figcaption></figure>
+    <div class="cols">
+      <div><h4>Modifiable risk factors</h4><p style="font-size:16px">Can be controlled: physical inactivity, smoking, alcohol, unhealthy (high-fat) diet, high BP, uncontrolled diabetes, unsafe behaviors (no seat belt, texting while driving).</p></div>
+      <div><h4>Nonmodifiable risk factors</h4><p style="font-size:16px">Can't be controlled: age, sex (gender), genetics and family history, race and ethnicity.</p></div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Levels of prevention<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Level</th><th>Goal</th><th>Examples</th></tr>
+      <tr><td>Primary</td><td>Lower the risk of getting a disease at all</td><td>Vaccines, changing behavior, banning dangerous substances</td></tr>
+      <tr><td>Secondary</td><td>Screen to catch disease early, before symptoms</td><td>BP checks, cholesterol labs, colonoscopies, mammograms</td></tr>
+      <tr><td>Tertiary</td><td>Control a disease's chronic effects and return to the best function</td><td>Physical therapy, cardiac rehab, self-care teaching to prevent complications</td></tr>
+      <tr><td>Quaternary</td><td>Protect clients from too much medical intervention</td><td>Avoiding tests or treatments that would do more harm than good</td></tr>
+    </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Prevent, screen, rehab, hold back.</b> Primary prevents it, secondary screens for it, tertiary rehabs it, quaternary holds back on overtreatment.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A flu vaccine is which level of prevention?</summary><p>Primary.</p></details>
+    <details><summary>A mammogram?</summary><p>Secondary: screening for early detection.</p></details>
+    <details><summary>Cardiac rehab after a heart attack?</summary><p>Tertiary.</p></details>
+    <details><summary>Is family history a modifiable risk factor?</summary><p>No, it's nonmodifiable.</p></details>
+  </div>
+</section>
+
+<!-- ===================== MANAGING CARE ===================== -->
+<section class="topic" id="managing">
+  <div class="topic-head"><h2>Managing client care</h2><p>Time management, communication tools, discharge planning and delegation.</p></div>
+
+  <div class="gsub">
+    <h3>Time management<span class="gslides inl">Slides content</span></h3>
+    <p>Plan your day; make lists and prioritize; focus on what's important and limit distractions; delegate safely; take a break when possible; it's OK to say "no"; take care of yourself.</p>
+    <div class="tbl"><table>
+      <tr><th></th><th>Urgent</th><th>Not urgent</th></tr>
+      <tr><td>Important</td><td><b>Do</b> it now</td><td><b>Decide:</b> schedule a time to do it</td></tr>
+      <tr><td>Not important</td><td><b>Delegate:</b> who can do it for you?</td><td><b>Delete:</b> eliminate it</td></tr>
+    </table></div>
+    <p><b>Client assignments</b> divide care among staff by <b>acuity</b> (how complex a client's needs are): direct (specific clients, like 1 nurse to 2 clients in an ICU [intensive care unit]), area (a zone), group (clients grouped by location or acuity) or team nursing (several nurses share the tasks).</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Communication tools<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><h4>I-SBAR-R</h4>
+        <ul>
+          <li><b>I</b>dentify yourself and the client</li>
+          <li><b>S</b>ituation: "The client has nausea after surgery."</li>
+          <li><b>B</b>ackground: history, IV (intravenous) fluids, NPO (nothing by mouth) status</li>
+          <li><b>A</b>ssessment: "Vomited 100 mL twice; bowel sounds absent."</li>
+          <li><b>R</b>ecommendation: what you need</li>
+          <li><b>R</b>ead back the order to confirm it</li>
+        </ul>
+      </div>
+      <div><h4>SOAP note</h4>
+        <ul>
+          <li><b>S</b>ubjective: "Client states nausea and vomiting after surgery."</li>
+          <li><b>O</b>bjective: HR (heart rate) 85, RR (respiratory rate) 16, BP 140/70; vomited 100 mL twice; absent bowel sounds</li>
+          <li><b>A</b>ssessment: postoperative nausea and vomiting</li>
+          <li><b>P</b>lan: provider called for a new antiemetic, NPO, NG (nasogastric) tube</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box note"><span class="tag">Side note</span><p>Week 3 covers I-SBAR-R, handoff and documentation in more depth.</p></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Discharge planning<span class="gslides inl">Slides content</span></h3>
+    <p>Discharge planning is <b>ongoing: it starts the moment the client is admitted</b> and continues through the whole stay. It decides what support the client needs to move to another facility or home.</p>
+    <div class="box known"><span class="tag">Known mnemonic</span><p><b>IDEAL discharge planning:</b> <b>I</b>nclude the client and caregivers. <b>D</b>iscuss five key areas: medications, home life, warning signs, test results and follow-up. <b>E</b>ducate on the condition, the discharge and next steps. <b>A</b>ssess how well the teaching worked. <b>L</b>isten to the client's goals and preferences.</p></div>
+    <p><b>Teach-back:</b> the client explains the teaching back in their own words, showing what they understood.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Delegation<span class="gslides inl">Slides content</span></h3>
+    <p>Delegating hands a client care task to another team member who is competent and within their scope. <b>The nurse who delegates stays responsible and accountable</b> for the task being done correctly and on time.</p>
+    <div class="tbl"><table>
+      <tr><th>Right</th><th>Ask yourself</th></tr>
+      <tr><td>Right task</td><td>Is it part of the delegatee's role and competency?</td></tr>
+      <tr><td>Right circumstance</td><td>Is it appropriate here? Is the client stable?</td></tr>
+      <tr><td>Right person</td><td>Is this person trained and competent?</td></tr>
+      <tr><td>Right directions and communication</td><td>Clear instructions; open communication</td></tr>
+      <tr><td>Right supervision and evaluation</td><td>Check that it was done correctly and safely</td></tr>
+    </table></div>
+    <p>Example: a UAP can take an oxygen saturation reading, so they bring a <b>pulse oximeter</b> into the room.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Other terms from the module</h3>
+    <ul class="tight">
+      <li><b>STAMP</b> (early signs of agitation or aggression): Staring, Tone and volume of voice, Anxiety, Mumbling, Pacing. Tools that measure aggression: the Overt Aggression Scale and the Broset Violence Checklist.</li>
+      <li><b>SBIRT:</b> Screening, Brief Intervention and Referral to Treatment, for risky alcohol and drug use. <b>OUD (opioid use disorder)</b> cascade of care: prevention, identification, treatment, recovery.</li>
+      <li><b>IPEC (Interprofessional Education Collaborative) core values:</b> values and ethics, roles and responsibilities, interprofessional communication, teams and teamwork.</li>
+      <li><b>Nonadherence (noncompliance):</b> not following the plan.</li>
+    </ul>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>When does discharge planning start?</summary><p>On admission.</p></details>
+    <details><summary>The client is unstable. Can you delegate their vital signs to the UAP?</summary><p>No. It fails "right circumstance": delegate only when the client is stable.</p></details>
+    <details><summary>In I-SBAR-R, what does the second R stand for?</summary><p>Read back.</p></details>
+    <details><summary>Important but not urgent: which box of the time management matrix?</summary><p>Decide: schedule it.</p></details>
+  </div>
+</section>
+
+<!-- ===================== PATIENT-CENTERED CARE ===================== -->
+<section class="topic" id="pcc">
+  <div class="topic-head"><h2>Patient-centered care &amp; caring</h2><p>The client at the center: caring theories, culture and spirituality.</p></div>
+
+  <div class="gsub">
+    <h3>Patient-centered care<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><figure class="pic" style="margin:0;border:none;padding:0;max-width:320px"><img src="week2-img/person-centered-care.jpg" alt="Person-centered care at the center, surrounded by: improves quality of life, supports independence, promotes well-being, honors one's choice, promotes respect and dignity, empowers the recipient of the care" loading="lazy"></figure></div>
+      <div>
+        <p style="font-size:16px">Patient-centered care puts the client at the center of care. <b>Client preferences are its cornerstone:</b></p>
+        <ul class="tight" style="font-size:16px">
+          <li><b>Endorsing participation:</b> a safe space to share needs and feelings; advocate when they can't</li>
+          <li><b>Promoting understanding:</b> correct wrong information (online searches, patient portals)</li>
+          <li><b>Sharing information:</b> eases powerlessness and lets clients make informed decisions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Caring theories<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><h4>Watson's theory of human caring</h4><p style="font-size:16px">Holistic healing of mind, body and spirit through human-to-human connection. Nurses must care for themselves to care for others. Ten <b>caritas processes</b> give a shared language for caring moments (embrace, inspire, trust, nurture, forgive, deepen, balance, co-create, minister, open).</p></div>
+      <div><h4>Swanson's theory of caring</h4>
+        <ul>
+          <li><b>Maintaining belief:</b> a hopeful attitude; finding meaning; asking about faith</li>
+          <li><b>Knowing:</b> understanding the situation, both yours and the client's view</li>
+          <li><b>Being with:</b> emotionally and physically present</li>
+          <li><b>Doing for:</b> doing what the client would do for themself if they could</li>
+          <li><b>Enabling:</b> guiding the client and family through events with information and support</li>
+        </ul>
+      </div>
+    </div>
+    <h4>Caring behaviors</h4>
+    <ul class="tight">
+      <li><b>Listening:</b> careful, active, empathetic</li>
+      <li><b>Touch:</b> expressive touch shows compassion. <b>Ask permission first</b> (touching without consent can be battery) and respect cultural preferences</li>
+      <li><b>Being present:</b> show up, listen, don't multitask</li>
+      <li><b>Providing comfort:</b> nonpharmacologic measures for pain and anxiety (warm blankets, fluffing pillows, repositioning, bedtime rituals)</li>
+      <li><b>Showing compassion:</b> know your own feelings before trying to help others</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>Culturally competent care<span class="gslides inl">Slides content</span></h3>
+    <p>Culturally competent care is evidence-based care that fits the client's cultural values, beliefs, worldview and practices. It helps reduce health care disparities. <b>Don't assume: ask.</b></p>
+    <ul class="tight">
+      <li>"Do you have any ethnic, spiritual or racial affiliation you identify with?"</li>
+      <li>"Do you have any beliefs and practices related to health or illness?"</li>
+      <li>"Do you follow any food preferences or prohibitions as part of your culture?"</li>
+    </ul>
+    <div class="tbl"><table>
+      <tr><th>Practice</th><th>Examples from the slides</th></tr>
+      <tr><td>Decision making</td><td>Who makes family decisions varies by culture</td></tr>
+      <tr><td>Diet</td><td>Some Buddhists are vegetarian or avoid certain meats; Hindus may avoid meat; Muslims eat halal meat and avoid pork</td></tr>
+      <tr><td>Blood</td><td>Jehovah's Witnesses usually don't accept blood transfusions</td></tr>
+      <tr><td>Eye contact</td><td>East Asian and Latin American clients may avoid it out of respect; Native American clients may find it rude; Middle Eastern clients may avoid it between genders</td></tr>
+    </table></div>
+    <p><b>Cultural awareness</b> (checking your own culture and biases), <b>knowledge</b> (learning about others), <b>skill</b> (assessing accurately), <b>encounters</b> (interacting across cultures) and <b>desire</b> (wanting to connect) build competence. <b>Acculturation</b> is taking on another group's cultural traits.</p>
+    <h4>Communication by generation</h4>
+    <div class="tbl"><table>
+      <tr><th>Generation</th><th>Tends to prefer</th></tr>
+      <tr><td>Silent generation and baby boomers (1945–1964)</td><td>Face-to-face, formal communication and attentive listening</td></tr>
+      <tr><td>Generation X (1965–1980)</td><td>Quick, direct communication; may question providers</td></tr>
+      <tr><td>Millennials (1981–1997)</td><td>Digital communication and regular feedback</td></tr>
+      <tr><td>Generation Z (1995–2009)</td><td>Very tech-savvy; expect instant feedback</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Spiritual care<span class="gslides inl">Slides content</span></h3>
+    <p><b>Spiritual well-being</b> is satisfaction and contentment with who one is and where one belongs in the universe. A spiritual assessment is part of holistic care. <b>Spiritual distress</b> is questioning life's meaning or one's beliefs, or anger at a higher power, shown as despair, anger, uncertainty or fear. Nurses listen and support, and can consult <b>pastoral care</b> (chaplains).</p>
+    <div class="cols">
+      <div><div class="box known" style="margin:0"><span class="tag">Known mnemonic</span><p><b>FICA:</b> <b>F</b>aith and belief ("What beliefs help you cope?"), <b>I</b>mportance, <b>C</b>ommunity, <b>A</b>ddress in care.</p></div></div>
+      <div><div class="box known" style="margin:0"><span class="tag">Known mnemonic</span><p><b>HOPE:</b> sources of <b>H</b>ope, <b>O</b>rganized religion, <b>P</b>ersonal spirituality and practices, <b>E</b>ffects on care and end-of-life issues.</p></div></div>
+    </div>
+    <ul class="tight">
+      <li><b>Palliative care:</b> interprofessional symptom management for chronic or life-threatening illness, keeping the best possible quality of life.</li>
+      <li><b>Medically futile:</b> treatment that can't cure or extend life. <b>Potentially inappropriate treatment:</b> may not be futile but may not fit the client.</li>
+      <li><b>Quality of life:</b> fulfilling the client's own purpose and meaning.</li>
+    </ul>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Before using touch to comfort a client, what should the nurse do?</summary><p>Ask permission, and consider cultural preferences.</p></details>
+    <details><summary>Which Swanson process is doing for a client what they would do for themself if they could?</summary><p>Doing for.</p></details>
+    <details><summary>A client is a Jehovah's Witness. Which treatment do you check about first?</summary><p>Blood transfusions.</p></details>
+    <details><summary>A client is angry at God after a diagnosis and asks "why me?" What is this, and who can help?</summary><p>Spiritual distress. Listen and support, and offer pastoral care.</p></details>
+  </div>
+</section>
+
+<!-- ===================== HEALTH ASSESSMENT ===================== -->
+<section class="topic" id="assessment">
+  <div class="topic-head"><h2>Intro to health assessment</h2><p>The interview, the health history and the four assessment techniques.</p></div>
+
+  <div class="gsub">
+    <h3>Setting up the interview<span class="gslides inl">Slides content</span></h3>
+    <ul class="tight">
+      <li>Use therapeutic communication: introduce yourself, eye contact as appropriate, ask what the client would like to be called</li>
+      <li>Comfort, privacy and confidentiality: a warm, well-lit room, door or curtain closed</li>
+      <li><b>Start with the least invasive tasks:</b> health history and general survey first, then the physical assessment</li>
+      <li>Watch nonverbal cues: what is the body language telling you?</li>
+      <li>Avoid medical terms ("high blood pressure," not "hypertension"); use an interpreter as needed</li>
+    </ul>
+  </div>
+
+  <div class="gsub">
+    <h3>The health history<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Part</th><th>Includes</th></tr>
+      <tr><td>Demographics</td><td>Age, address, gender, preferred pronouns, occupation, emergency contact, advance directives</td></tr>
+      <tr><td>Source of history</td><td>Client, family or records; how reliable is the historian?</td></tr>
+      <tr><td>Chief concern</td><td>Why the client came, in their own words, in quotation marks</td></tr>
+      <tr><td>History of present illness</td><td>Timeline and details: nature, duration, quality</td></tr>
+      <tr><td>Past health history and current status</td><td>Childhood illnesses, surgeries, chronic conditions, allergies, medications, habits, substance use</td></tr>
+      <tr><td>Family history</td><td>Grandparents, parents, siblings, children, grandchildren</td></tr>
+      <tr><td>Psychosocial</td><td>Relationships, support, work or living concerns, finances, education, ADLs (activities of daily living), spiritual health</td></tr>
+      <tr><td>Health promotion behaviors</td><td>Exercise, diet, awareness of risk factors, prevention (sunscreen, seat belts)</td></tr>
+      <tr><td>Review of systems</td><td>Questions about every body system, head to toe, to find existing problems</td></tr>
+    </table></div>
+  </div>
+
+  <div class="gsub">
+    <h3>The four techniques<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Technique</th><th>Key points</th></tr>
+      <tr><td>Inspection</td><td>Always first; starts the moment you walk in. Use every sense: odors, how the client sounds (clear speech, coughing, wheezing), grooming, season-appropriate dress, bruises, wounds, symmetry</td></tr>
+      <tr><td>Palpation</td><td>Touch for size, consistency, texture, temperature, location, tenderness. <b>Back (dorsal) of the hand for temperature</b>; palm for vibration; fingertips for pulses, position, texture, turgor, size. Light palpation (up to 1 cm) before deep. <b>Palpate tender areas last</b></td></tr>
+      <tr><td>Percussion</td><td>Tapping to find size, location, tenderness, and air vs solid underneath. Direct (strike the body), indirect (strike your own finger on the body), fist (tenderness over the kidneys, liver, gallbladder)</td></tr>
+      <tr><td>Auscultation</td><td>Listening with your ears, a stethoscope or a Doppler; most often the heart and lungs</td></tr>
+    </table></div>
+    <h4>General survey</h4>
+    <p>Physical appearance (age, sex, LOC [level of consciousness], skin color, signs of abuse or distress), body structure (height, weight, symmetry, nutrition, posture), mobility (gait, range of motion), behavior (expression, mood, speech, dress, hygiene, odors) and vital signs.</p>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Which technique comes first?</summary><p>Inspection.</p></details>
+    <details><summary>Which part of the hand checks temperature?</summary><p>The back (dorsal side).</p></details>
+    <details><summary>When do you palpate a tender area?</summary><p>Last.</p></details>
+  </div>
+</section>
+
+<!-- ===================== VITAL SIGNS ===================== -->
+<section class="topic" id="vitals">
+  <div class="topic-head"><h2>Vital signs</h2><p>Pulse, temperature, respirations, oxygen saturation and blood pressure.</p></div>
+
+  <p>Vital signs measure the body's most basic functions: to check general health, detect problems and track response to treatment. They're objective data and a baseline for spotting trends. The nurse finds expected and unexpected findings, intervenes, evaluates and documents promptly.</p>
+
+  <div class="signs" aria-label="Expected adult ranges">
+    <div><b>60–100</b><span>Pulse /min</span></div>
+    <div><b>12–20</b><span>Respirations /min</span></div>
+    <div><b>36–38 °C</b><span>Temperature</span></div>
+    <div><b>95–100%</b><span>SpO2 (oxygen saturation)</span></div>
+    <div><b>&lt;120/80</b><span>BP mm Hg</span></div>
+  </div>
+
+  <div class="gsub">
+    <h3>Pulse<span class="gslides inl">Slides content</span></h3>
+    <ul class="tight">
+      <li><b>Rate:</b> beats per minute. <b>Rhythm:</b> regular intervals. <b>Strength:</b> the volume of blood the left ventricle pushes out, graded 0 to 4+, with <b>2+ expected</b>. <b>Equality:</b> the same on both sides.</li>
+      <li>Count 30 seconds and double it; count a <b>full minute if irregular</b>.</li>
+      <li><b>Apical pulse:</b> at the apex, 5th intercostal space at the midclavicular line. S1 ("lub") is the mitral and tricuspid valves closing; S2 ("dub") is the aortic and pulmonic valves closing.</li>
+      <li><b>Pulse deficit:</b> apical rate minus radial rate. A difference means beats aren't reaching the periphery.</li>
+    </ul>
+    <div class="cols">
+      <div>
+        <div class="tbl" style="margin-top:0"><table>
+          <tr><th>Grade</th><th>Pulse</th></tr>
+          <tr><td>0</td><td>Absent, can't feel it</td></tr>
+          <tr><td>1+</td><td>Weak, diminished</td></tr>
+          <tr><td>2+</td><td>Normal</td></tr>
+          <tr><td>3+</td><td>Increased, strong</td></tr>
+          <tr><td>4+</td><td>Bounding</td></tr>
+        </table></div>
+      </div>
+      <div><figure class="pic" style="margin:0;border:none;padding:0;max-width:300px"><img src="week2-img/pulse-sites.jpg" alt="Pulse sites on the body: temporal, carotid, apical, brachial, radial, femoral, popliteal, posterior tibial and pedal" loading="lazy"><figcaption>Pulse sites <span class="credit">Blamb/Shutterstock, from the slides</span></figcaption></figure></div>
+    </div>
+    <div class="cols">
+      <div><h4>Bradycardia (under 60)</h4>
+        <p style="font-size:15.5px"><b>Causes:</b> very fit, hypothermia, medications, chronic severe pain, hypothyroidism, relaxation</p>
+        <p style="font-size:15.5px"><b>Nursing:</b> protect from injury; watch for medication effects and low cardiac output (dizziness, low BP, chest pain, fainting)</p>
+      </div>
+      <div><h4>Tachycardia (over 100)</h4>
+        <p style="font-size:15.5px"><b>Causes:</b> exercise, fever or heat, medications, position changes, acute pain, hyperthyroidism, anemia, hypoxia, stress, anxiety, fear, shock</p>
+        <p style="font-size:15.5px"><b>Nursing:</b> look for the cause (pain? fever? anxiety?); protect from injury; watch for medication effects and low cardiac output</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Temperature<span class="gslides inl">Slides content</span></h3>
+    <p>The balance between heat the body makes and heat it loses.</p>
+    <div class="tbl"><table>
+      <tr><th>Term</th><th>Range</th></tr>
+      <tr><td>Expected (afebrile)</td><td>36–38 °C (96.8–100.4 °F); average about 37 °C (98.6 °F)</td></tr>
+      <tr><td>Fever</td><td>Above 38 °C (100.4 °F)</td></tr>
+      <tr><td>Hyperthermia</td><td>40 °C (104 °F) or higher</td></tr>
+      <tr><td>Hypothermia</td><td>Below 35 °C (95 °F)</td></tr>
+    </table></div>
+    <div class="cols">
+      <div><h4>Core sites</h4><p style="font-size:16px">Rectum, tympanic membrane, temporal artery, pulmonary artery, esophagus, bladder</p></div>
+      <div><h4>Surface sites</h4><p style="font-size:16px">Skin, mouth, axillae</p></div>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Site</th><th>How</th><th>Watch out for</th></tr>
+      <tr><td>Oral</td><td>Under the tongue in the pocket beside the frenulum</td><td>Recent food, drink, gum or smoking: <b>wait 15–30 minutes</b></td></tr>
+      <tr><td>Tympanic</td><td>Pull the adult pinna up and back; aim slightly forward</td><td>Earwax or ear infection</td></tr>
+      <tr><td>Temporal artery</td><td>Center of the forehead, above the eyebrows</td><td>Sweat, head coverings</td></tr>
+      <tr><td>Axillary</td><td>Center of the axilla</td><td>Slower; affected by room temperature</td></tr>
+      <tr><td>Rectal</td><td>Insert about 3.5 cm (1.5 in) toward the umbilicus</td><td>Very accurate but uncomfortable; avoid with some rectal conditions</td></tr>
+    </table></div>
+    <p><b>Factors:</b> hormones, exercise and activity, dehydration, illness, injury, recent food or drink, smoking, environment and circadian rhythm.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Respirations<span class="gslides inl">Slides content</span></h3>
+    <div class="tbl"><table>
+      <tr><th>Term</th><th>Means</th></tr>
+      <tr><td>Eupnea</td><td>Normal: quiet, effortless, 12–20 a minute</td></tr>
+      <tr><td>Bradypnea</td><td>Regular but under 12</td></tr>
+      <tr><td>Tachypnea</td><td>Regular but over 20</td></tr>
+      <tr><td>Apnea</td><td>Periods of no breathing</td></tr>
+      <tr><td>Dyspnea</td><td>Difficult or labored breathing</td></tr>
+      <tr><td>Cheyne-Stokes</td><td>Cycles of shallow breaths growing deeper, then periods of apnea</td></tr>
+      <tr><td>Kussmaul</td><td>Deep, rapid breathing</td></tr>
+    </table></div>
+    <p>One inspiration plus one expiration is one breath. Count 30 seconds and double it; a full minute if abnormal. <b>Factors:</b> age, sex, pain, anxiety, smoking, body position, medications, neurologic injury, illness and how well the blood carries oxygen.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Oxygen saturation<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div>
+        <p style="font-size:16px"><b>SaO2</b> (arterial oxygen saturation) is how much oxygen is bound to hemoglobin in red blood cells. Measured by <b>pulse oximetry</b> it's called <b>SpO2</b>.</p>
+        <ul class="tight" style="font-size:16px">
+          <li>Expected: <b>95–100%</b>. Below 95% is low (hypoxia)</li>
+          <li>Pulse oximetry: quick and noninvasive (finger, toe, earlobe); preferred for routine checks</li>
+          <li>ABG (arterial blood gas): a blood sample; more invasive but measures directly</li>
+        </ul>
+      </div>
+      <div><figure class="pic" style="margin:0;border:none;padding:0"><img src="week2-img/hemoglobin.jpg" alt="Hemoglobin picks up oxygen in the lungs, oxygen binds to hemoglobin in red blood cells, and oxygen is released to tissue cells" loading="lazy"><figcaption>Oxygen rides on hemoglobin from the lungs to the tissues</figcaption></figure></div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Blood pressure<span class="gslides inl">Slides content</span></h3>
+    <p>The force of circulating blood on the vessel walls, in mm Hg, written systolic/diastolic. <b>Systolic:</b> the peak pressure when the heart contracts. <b>Diastolic:</b> the pressure while the heart relaxes and fills. <b>BP = cardiac output × systemic vascular resistance</b>, so anything that changes either one changes BP. Cardiac output = stroke volume × heart rate.</p>
+    <div class="tbl"><table>
+      <tr><th>Category</th><th>Systolic</th><th></th><th>Diastolic</th></tr>
+      <tr><td>Normal</td><td>Less than 120</td><td>and</td><td>Less than 80</td></tr>
+      <tr><td>Elevated</td><td>120–129</td><td>and</td><td>Less than 80</td></tr>
+      <tr><td>Hypertension stage 1</td><td>130–139</td><td>or</td><td>80–89</td></tr>
+      <tr><td>Hypertension stage 2</td><td>140 or higher</td><td>or</td><td>90 or higher</td></tr>
+      <tr><td>Hypertensive emergency (call the provider now)</td><td>Higher than 180</td><td>and/or</td><td>Higher than 120</td></tr>
+    </table></div>
+    <div class="cols">
+      <div><h4>Intrinsic (nonmodifiable)</h4><p style="font-size:16px">Age, ethnicity, genetics, hormones</p></div>
+      <div><h4>Extrinsic (modifiable)</h4><p style="font-size:16px">Weight, stimulants, sodium intake, stress, activity level, anxiety and fear</p></div>
+    </div>
+    <ul class="tight">
+      <li><b>Cuff too small or narrow → falsely high.</b> Too large → falsely low.</li>
+      <li><b>Pulse pressure</b> = systolic minus diastolic: 140/90 → 50.</li>
+      <li>Equipment: sphygmomanometer (BP cuff) and stethoscope; Korotkoff sounds are the sounds of blood through the partly squeezed artery.</li>
+    </ul>
+    <h4>Orthostatic (postural) hypotension</h4>
+    <p>BP drops and the heart rate rises to compensate when the client moves from lying to sitting or sitting to standing: a <b>systolic drop of 20 mm Hg or more, or a diastolic drop of 10 or more, within 1–3 minutes</b>. The client feels dizzy and may faint. Causes include dehydration, hypotension, heart failure and nervous system disorders. Have the client change positions slowly and protect them from falls.</p>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Too small reads too high.</b> A tight cuff has to squeeze harder to close the artery.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>Heart rate 110, regular. How do you document it?</summary><p>Tachycardia (over 100).</p></details>
+    <details><summary>Respiratory rate 8. What's the term?</summary><p>Bradypnea (regular, under 12).</p></details>
+    <details><summary>A client just drank ice water. How long before an oral temperature?</summary><p>15–30 minutes.</p></details>
+    <details><summary>BP 140/90. What's the pulse pressure?</summary><p>50 mm Hg.</p></details>
+    <details><summary>Lying 128/78; two minutes after standing 100/70, pulse up, client dizzy. What is it?</summary><p>Orthostatic hypotension: systolic dropped 28 mm Hg within 1–3 minutes.</p></details>
+    <details><summary>Apical 88, radial 80. Pulse deficit?</summary><p>8 (apical minus radial).</p></details>
+    <details><summary>Which adult vital signs are outside the expected range: HR 52, RR 24, temperature 38.4 °C, SpO2 96%?</summary><p>HR 52 (bradycardia), RR 24 (tachypnea) and 38.4 °C (fever). SpO2 96% is expected.</p></details>
+  </div>
+</section>
+
+<!-- ===================== PAIN ===================== -->
+<section class="topic" id="pain">
+  <div class="topic-head"><h2>Pain</h2><p>Pain is subjective, and it is whatever the client says it is.</p></div>
+
+  <div class="gsub">
+    <h3>What pain is<span class="gslides inl">Slides content</span></h3>
+    <p>"An unpleasant sensory and emotional experience associated with, or resembling that associated with, actual or potential tissue damage." <b>Pain threshold:</b> the point where a stimulus is felt as pain. <b>Pain tolerance:</b> how much the client is willing to accept.</p>
+    <figure class="pic" style="max-width:560px"><img src="week2-img/pain-biopsychosocial.jpg" alt="Biopsychosocial model of pain: psychological factors (mood, catastrophizing, stress, coping), biological factors (disease severity, nociception, inflammation, brain function) and social factors (culture, social environment, economics, social support) all feed into pain" loading="lazy"><figcaption>The biopsychosocial model: body, mind and social life all shape pain</figcaption></figure>
+    <div class="tbl"><table>
+      <tr><th>Type</th><th>Means</th></tr>
+      <tr><td>Acute</td><td>Sudden or slow onset with a predictable end; <b>less than 6 months</b></td></tr>
+      <tr><td>Chronic</td><td>Constant or recurring with no expected end; <b>longer than 6 months</b></td></tr>
+      <tr><td>Nociceptive</td><td>From <b>tissue</b> damage (skin, joints, muscles, organs); can be referred</td></tr>
+      <tr><td>Neuropathic</td><td>From <b>nerve</b> damage; intense, burning, shooting</td></tr>
+      <tr><td>Cancer pain</td><td>Tumor, bone and treatment-related pain</td></tr>
+    </table></div>
+    <p><b>Words clients use:</b> aching, throbbing, stabbing, pounding, sharp, gripping, dull, tearing, radiating, cutting, burning, scalding.</p>
+  </div>
+
+  <div class="gsub">
+    <h3>Assessing pain<span class="gslides inl">Slides content</span></h3>
+    <div class="cols">
+      <div><figure class="pic" style="margin:0;border:none;padding:0"><img src="week2-img/pqrst.jpg" alt="PQRST pain assessment: Provocation (what triggers it or makes it better), Quality (what it feels like), Region (where it is, does it spread), Severity (0 to 10), Timing (when it occurs, how long it lasts)" loading="lazy"></figure></div>
+      <div>
+        <div class="box known" style="margin-top:0"><span class="tag">Known mnemonic</span><p><b>PQRST:</b> <b>P</b>rovocation or precipitating cause, <b>Q</b>uality, <b>R</b>egion, <b>S</b>everity (0–10), <b>T</b>iming.</p></div>
+        <h4>Scales</h4>
+        <ul class="tight" style="font-size:16px">
+          <li><b>Numeric rating scale:</b> 0–10</li>
+          <li><b>Visual analog scale:</b> a mark on a line</li>
+          <li><b>FACES scale:</b> faces for clients with communication barriers</li>
+          <li><b>Nonverbal pain scale:</b> for clients who can't report pain verbally</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Treating pain</h3>
+    <div class="cols">
+      <div><h4>Nonpharmacologic</h4><ul>
+        <li><b>Positioning</b> to relieve pressure</li>
+        <li><b>Cutaneous stimulation:</b> heat, cold, massage, touch, acupuncture, TENS (transcutaneous electrical nerve stimulation)</li>
+        <li><b>Cognitive:</b> distraction, relaxation, music</li>
+        <li><b>Therapeutic touch:</b> hands on or near the body</li>
+      </ul></div>
+      <div><h4>Medications</h4><ul>
+        <li><b>Opioids</b> (morphine, hydromorphone, fentanyl): most prescribed for pain; act on opioid receptors in the brain and spinal cord. Risk: sedation and <b>respiratory depression</b></li>
+        <li><b>Naloxone</b> reverses opioids and brings the respiratory rate back up</li>
+        <li><b>Nonopioids:</b> NSAIDs (nonsteroidal anti-inflammatory drugs), acetaminophen, local anesthetics</li>
+        <li><b>Adjuvants:</b> work on the pain source (antidepressants, corticosteroids, botulinum toxin)</li>
+        <li><b>PCA (patient-controlled analgesia):</b> a pump the client controls</li>
+      </ul></div>
+    </div>
+    <p><b>Routes:</b> PO (by mouth), IM (intramuscular), IV, PR (per rectum), topical.</p>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Opioids slow the breath.</b> After giving an opioid, the respiratory rate is the vital sign to watch.</p></div>
+  </div>
+
+  <div class="gcheck">
+    <h3>Quick check</h3>
+    <details><summary>A nurse gives an opioid for pain 6/10. Which vital sign is most affected?</summary><p>Respiratory rate.</p></details>
+    <details><summary>Nociceptive vs neuropathic: which is nerve damage?</summary><p>Neuropathic. Nociceptive is tissue damage.</p></details>
+    <details><summary>Pain that has lasted 8 months: acute or chronic?</summary><p>Chronic (longer than 6 months).</p></details>
+    <details><summary>Which medication reverses opioid respiratory depression?</summary><p>Naloxone.</p></details>
+    <details><summary>Who decides how much pain the client has?</summary><p>The client. Pain is whatever the client says it is.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer class="guide-footer gwrap">
+  <p>Built from the Week 2 lecture slides and the ATI Fundamentals modules on nursing foundations, scope and standards, health promotion, priority setting, managing client care, patient-centered care, vital signs and pain. Child-focused material (pediatric pain scales, child lab ranges) is left out.</p>
+  <p class="credits">Pictures are from the course slides (pulse sites: Blamb/Shutterstock).</p>
+</footer>
+
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+</body>
+</html>
