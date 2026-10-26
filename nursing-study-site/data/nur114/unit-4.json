@@ -19646,7 +19646,7 @@
     {
      "text": "Suprapubic catheter",
      "correct": true,
-     "rationale": "A provider places a suprapubic catheter surgically through the abdominal wall."
+     "rationale": "A provider places a suprapubic catheter surgically through a cystostomy in the abdominal wall."
     },
     {
      "text": "Straight catheter",
@@ -20328,7 +20328,7 @@
     {
      "text": "Cystostomy",
      "correct": true,
-     "rationale": "A cystostomy is used when urethral catheterization isn't possible."
+     "rationale": "A cystostomy is a surgical opening into the bladder that holds a suprapubic catheter; it's used when urethral catheterization isn't possible."
     },
     {
      "text": "Nephrostomy",
