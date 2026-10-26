@@ -45,6 +45,12 @@
         "<span><span class='lf-title'>Mix all</span><span class='lf-sub'>" + esc(sub ? sub.textContent : "") + "</span></span>" +
         "<span class='lbtn btn-primary'>Start &rarr;</span></a>";
     }
+    /* Connecting The Dots links every unit, so it leads the Study guides tab like the library's pill */
+    if (t.key === "studyguides" && SITE.connectDots){
+      html += "<a class='ledger-feature is-pill' href='../" + SITE.connectDots.href + "'><i class='ti ti-route' aria-hidden='true'></i>" +
+        "<span><span class='lf-title'>" + esc(SITE.connectDots.title) + "</span><span class='lf-sub'>" + esc(SITE.connectDots.meta) + "</span></span>" +
+        "<span class='lbtn btn-primary'>Open &rarr;</span></a>";
+    }
     if (items.length) html += "<div class='ledger'>" + items.map(function(w, i){ return libraryRow(w, i, t); }).join("") + "</div>";
     else html += "<div class='ledger ledger-empty'><p>No " + LABELS[current] + " for this unit yet.</p></div>";
     lib.innerHTML = html;

@@ -273,7 +273,8 @@ function renderLibrary(){
     "<div class='lib-head'><div><p class='ledger-eyebrow'>Library</p><h1 class='ledger-h1'>" + t.title + "</h1></div>" +
     "<p class='lib-totals'>" + totals + "</p></div>";
 
-  if (t.key === "studyguides" && !state.unit && SITE.connectDots){
+  /* Connecting The Dots covers every unit, so it shows on unit-filtered guide lists too */
+  if (t.key === "studyguides" && SITE.connectDots){
     html += "<a class='ledger-feature is-pill' href='" + SITE.connectDots.href + "'><i class='ti ti-route' aria-hidden='true'></i>" +
       "<span><span class='lf-title'>" + SITE.connectDots.title + "</span><span class='lf-sub'>" + esc(SITE.connectDots.meta) + "</span></span>" +
       "<span class='lbtn btn-primary'>Open &rarr;</span></a>";
