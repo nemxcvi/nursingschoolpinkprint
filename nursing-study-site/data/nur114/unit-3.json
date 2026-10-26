@@ -251,7 +251,7 @@
         {
           "text": "A client who takes a proton pump inhibitor daily",
           "correct": true,
-          "rationale": "Gastric suppressants such as proton pump inhibitors are listed among medications that increase host susceptibility."
+          "rationale": "Gastric acid suppressants such as proton pump inhibitors increase host susceptibility."
         },
         {
           "text": "A client who is receiving radiation therapy",
@@ -269,9 +269,9 @@
           "rationale": "Corticosteroids suppress the immune response and increase susceptibility."
         },
         {
-          "text": "A client who has received all recommended immunizations",
-          "correct": false,
-          "rationale": "Immunizations decrease susceptibility by strengthening the host's defenses."
+          "text": "A client who had hip replacement surgery 2 days ago",
+          "correct": true,
+          "rationale": "Recent surgery and an artificial joint both increase susceptibility to infection."
         },
         {
           "text": "A client who eats a balanced diet and sleeps well",
@@ -433,17 +433,17 @@
         {
           "text": "Stomach acid",
           "correct": true,
-          "rationale": "The GI tract secretes acids and enzymes that destroy or neutralize some invaders."
+          "rationale": "The GI (gastrointestinal) tract secretes acids and enzymes that destroy or neutralize some invaders."
         },
         {
-          "text": "Cilia in the respiratory tract",
-          "correct": true,
-          "rationale": "Cilia help keep particulates from entering the body."
+          "text": "Dry mucous membranes",
+          "correct": false,
+          "rationale": "Moist mucous membranes trap organisms. Dryness weakens this barrier, which is why oxygen is humidified."
         },
         {
-          "text": "Tears",
-          "correct": true,
-          "rationale": "Tears, along with sweat and WBCs, help remove waste from the body."
+          "text": "Fever",
+          "correct": false,
+          "rationale": "Fever is a body-wide response to infection, not a physical or chemical barrier."
         },
         {
           "text": "Antibodies",
@@ -3176,9 +3176,9 @@
           "rationale": "Clients in bed should be repositioned at least every 2 hours to relieve pressure."
         },
         {
-          "text": "Keep the head of the bed at 30 degrees or lower unless contraindicated",
-          "correct": true,
-          "rationale": "Keeping the head of the bed low reduces shear and sacral pressure."
+          "text": "Keep the head of the bed at 45 degrees or higher",
+          "correct": false,
+          "rationale": "Raising the head of the bed increases shear and sacral pressure. Keep it at 30 degrees or lower unless contraindicated."
         },
         {
           "text": "Lift rather than pull the client up in bed",
@@ -3186,9 +3186,9 @@
           "rationale": "Pulling creates friction that damages the epidermis."
         },
         {
-          "text": "Have the client sit on a gel cushion when in a chair",
-          "correct": true,
-          "rationale": "Gel, air, or foam cushions redistribute weight away from the ischial areas."
+          "text": "Have the client sit on a donut-shaped ring cushion when in a chair",
+          "correct": false,
+          "rationale": "Ring cushions concentrate pressure around the area and reduce blood flow. Use a gel, air, or foam cushion."
         },
         {
           "text": "Massage reddened bony prominences",
@@ -3201,9 +3201,9 @@
           "rationale": "Powder and cornstarch are abrasive and can be aspirated."
         },
         {
-          "text": "Reposition the client every 3 hours while in bed",
+          "text": "Reposition the client every 2 hours while in a chair",
           "correct": false,
-          "rationale": "Every 3 hours is not frequent enough. Reposition at least every 2 hours."
+          "rationale": "Clients in a chair need repositioning at least every hour, and weight shifts every 15 minutes if able."
         }
       ]
     },
@@ -3325,9 +3325,9 @@
           "rationale": "The conjunctiva is one of the areas to check for cyanosis."
         },
         {
-          "text": "Palms and soles",
-          "correct": true,
-          "rationale": "Palms and soles have lighter pigmentation, making color changes easier to see."
+          "text": "Sclera",
+          "correct": false,
+          "rationale": "The sclera is checked for jaundice. Cyanosis is seen in the conjunctiva, mucosa, lips, and nail beds."
         },
         {
           "text": "Nail beds",
@@ -6923,14 +6923,14 @@
           "rationale": "The whisper test checks hearing, CN VIII."
         },
         {
-          "text": "Shoulder shrug: CN XII",
-          "correct": false,
-          "rationale": "The shoulder shrug tests CN XI. CN XII is tested with tongue movement."
+          "text": "Shoulder shrug: CN XI",
+          "correct": true,
+          "rationale": "The shoulder shrug tests CN XI, the spinal accessory nerve."
         },
         {
-          "text": "Smiling and raising the eyebrows: CN V",
-          "correct": false,
-          "rationale": "Smiling and raising the eyebrows test CN VII. CN V is tested with light touch on the face."
+          "text": "Smiling and raising the eyebrows: CN VII",
+          "correct": true,
+          "rationale": "Smiling and raising the eyebrows test the facial muscles, controlled by CN VII."
         },
         {
           "text": "Identifying a scent: CN II",
@@ -7000,9 +7000,9 @@
           "rationale": "Fremitus should be symmetric."
         },
         {
-          "text": "Crackles that don't clear with coughing",
-          "correct": false,
-          "rationale": "Crackles are adventitious sounds and unexpected."
+          "text": "Bronchovesicular sounds over the main bronchi",
+          "correct": true,
+          "rationale": "Medium-pitched, blowing bronchovesicular sounds are expected over the main bronchi."
         },
         {
           "text": "Hyperresonance",
@@ -8073,37 +8073,37 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Heart & Peripheral Vascular",
       "type": "sata",
-      "prompt": "A nurse is assessing a client's lower-extremity pulses. Which pulses should the nurse assess? Select all that apply.",
+      "prompt": "A nurse is reviewing pulse sites before a peripheral vascular assessment. Which pairings of pulse and location are correct? Select all that apply.",
       "options": [
         {
-          "text": "Femoral",
+          "text": "Femoral: in the groin",
           "correct": true,
-          "rationale": "The femoral pulse is in the groin and is part of the lower-extremity pulse check."
+          "rationale": "The femoral pulse is palpated in the groin."
         },
         {
-          "text": "Popliteal",
+          "text": "Popliteal: behind the knee",
           "correct": true,
           "rationale": "The popliteal pulse is behind the knee."
         },
         {
-          "text": "Dorsalis pedis (pedal)",
+          "text": "Dorsalis pedis (pedal): top of the foot",
           "correct": true,
           "rationale": "The pedal pulse is on the top of the foot."
         },
         {
-          "text": "Posterior tibial",
+          "text": "Posterior tibial: behind and below the inner ankle bone",
           "correct": true,
           "rationale": "The posterior tibial pulse is behind and below the inner ankle bone."
         },
         {
-          "text": "Radial",
-          "correct": false,
-          "rationale": "The radial pulse is an upper-extremity pulse."
+          "text": "Radial: thumb side of the inner wrist",
+          "correct": true,
+          "rationale": "The radial pulse is on the thumb side of the inner wrist."
         },
         {
-          "text": "Temporal",
+          "text": "Temporal: behind the ear",
           "correct": false,
-          "rationale": "The temporal pulse is on the head, over the temple."
+          "rationale": "The temporal pulse is over the temple, in front of the ear."
         }
       ]
     },
@@ -8495,9 +8495,9 @@
       "prompt": "Which client situations should prompt the nurse to call the rapid response team? Select all that apply.",
       "options": [
         {
-          "text": "Oxygen saturation stays low despite oxygen",
-          "correct": true,
-          "rationale": "Low SpO2 despite oxygenation efforts warrants the RRT."
+          "text": "Oxygen saturation of 95% on 2 L of oxygen",
+          "correct": false,
+          "rationale": "This saturation is within the expected range on oxygen, so it does not call for the RRT (rapid response team)."
         },
         {
           "text": "New-onset seizure",
@@ -8505,9 +8505,9 @@
           "rationale": "A seizure warrants the RRT."
         },
         {
-          "text": "Chest pain not relieved by nitroglycerin",
-          "correct": true,
-          "rationale": "Unrelieved chest pain warrants the RRT."
+          "text": "Chest pain that went away after one dose of nitroglycerin",
+          "correct": false,
+          "rationale": "Relieved chest pain is reported to the provider. The RRT is called for chest pain that continues despite nitroglycerin."
         },
         {
           "text": "Sudden change in mental status",
@@ -8520,9 +8520,9 @@
           "rationale": "A single high glucose is assessed and reported to the provider, not an RRT call."
         },
         {
-          "text": "Client asks for pain medication",
+          "text": "Blood pressure of 128/82 mm Hg after walking in the hall",
           "correct": false,
-          "rationale": "A routine request is handled by the nurse."
+          "rationale": "A stable blood pressure after activity is not a sudden vital sign change."
         }
       ]
     },
@@ -8914,14 +8914,9 @@
       "prompt": "A nurse is applying wrist restraints to a client. Which actions should the nurse take? Select all that apply.",
       "options": [
         {
-          "text": "Pad bony prominences",
+          "text": "Tie the restraint to the movable part of the bed frame",
           "correct": true,
-          "rationale": "Padding prevents skin breakdown under the restraint."
-        },
-        {
-          "text": "Make sure two fingers fit between the restraint and the wrist",
-          "correct": true,
-          "rationale": "This prevents impaired circulation while keeping the restraint secure."
+          "rationale": "The bed frame moves with the bed, so the restraint doesn't tighten."
         },
         {
           "text": "Use a quick-release knot",
@@ -8929,9 +8924,14 @@
           "rationale": "A quick-release knot allows fast removal in an emergency."
         },
         {
-          "text": "Tie the restraint to the movable part of the bed frame",
-          "correct": true,
-          "rationale": "The bed frame moves with the bed, so the restraint doesn't tighten."
+          "text": "Fasten the buckle on the inside of the wrist",
+          "correct": false,
+          "rationale": "The fastener goes on the outside, out of the client's reach."
+        },
+        {
+          "text": "Remove each restraint for 15 minutes every 4 hours",
+          "correct": false,
+          "rationale": "Each restraint is removed for 15 minutes every 2 hours, or per policy, to check skin and circulation."
         },
         {
           "text": "Tie the restraint to the side rail",
@@ -8939,9 +8939,9 @@
           "rationale": "Raising or lowering the rail can injure the client."
         },
         {
-          "text": "Apply the restraint as tightly as possible",
+          "text": "Apply the restraint snugly so no fingers fit underneath",
           "correct": false,
-          "rationale": "Overly tight restraints impair circulation and cause skin injury."
+          "rationale": "Two fingers should fit under the restraint to prevent impaired circulation."
         }
       ]
     },

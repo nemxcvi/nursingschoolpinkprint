@@ -106,6 +106,8 @@ section.topic{padding:48px 0 20px}
 .guide-body p{margin:10px 0}
 .guide-body ul.tight{margin:8px 0;padding-left:22px}
 .guide-body ul.tight li{margin:3px 0}
+.guide-body td ul.tight{margin:0;padding-left:18px}
+.guide-body td ul.tight li:first-child{margin-top:0}
 
 /* Callouts */
 .box{border:1.5px solid;padding:12px 16px;margin:14px 0;font-size:16.5px}
@@ -193,7 +195,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-04" data-type="studyguides"></div>
-<script src="../assets/site-data.js?v=28"></script>
+<script src="../assets/site-data.js?v=32"></script>
 <script src="../js/tracking.js?v=15"></script>
 <script src="../assets/header.js?v=15"></script>
 <script src="../js/progress.js?v=8"></script>
@@ -350,7 +352,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       </div>
     </div>
     <div class="box note"><span class="tag">Side note</span><p>One slide lists magnesium as 1.3–2.1 mg/dL, but the magnesium slides and ATI use <b>mEq/L</b>. This guide uses mEq/L.</p></div>
-    <div class="box note"><span class="tag">ATI extra</span><p>ATI also lists <b>chloride 98–106 mEq/L</b> and <b>phosphorus 3–4.5 mg/dL</b>. <b>Sodium</b> is the main electrolyte <b>outside</b> the cells (ECF); <b>potassium</b> is the main one <b>inside</b> the cells (ICF). Positive ions (cations): sodium, potassium, calcium, magnesium. Negative ions (anions): chloride, phosphate, bicarbonate. Highest risk for imbalances: older adults and clients with chronic illness or cognitive disorders.</p></div>
+    <div class="box note"><span class="tag">ATI extra</span><ul><li><b>More normal ranges:</b> chloride 98–106 mEq/L, phosphorus 3–4.5 mg/dL</li><li><b>Sodium</b> is the main electrolyte <b>outside</b> the cells (ECF); <b>potassium</b> is the main one <b>inside</b> the cells (ICF)</li><li><b>Positive ions (cations):</b> sodium, potassium, calcium, magnesium</li><li><b>Negative ions (anions):</b> chloride, phosphate, bicarbonate</li><li><b>Highest risk for imbalances:</b> older adults and clients with chronic illness or cognitive disorders</li></ul></div>
   </div>
 
   <div class="gsub">
@@ -419,9 +421,13 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Magnesium is a brake.</b> Too much brake: everything slows (weak, dizzy, reflexes fade). Too little brake: nerves overreact (spasticity, seizures).</p></div>
     <div class="box note"><span class="tag">ATI extra</span><p>Low magnesium often comes with low calcium and low potassium, and can also cause positive Trousseau's and Chvostek's signs. High magnesium can slow breathing and heart rate; check reflexes and report absent ones. Calcium gluconate treats severe high magnesium (and protects the heart in high potassium).</p>
       <ul>
-        <li><b>Hypomagnesemia causes:</b> alcohol use disorder, diarrhea, diuretics, PPIs (proton pump inhibitors), malnutrition. Signs: <b>hyperactive</b> reflexes, tremors, tetany, high BP, tachycardia, dysrhythmias. Oral magnesium can cause diarrhea.</li>
+        <li><b>Hypomagnesemia causes:</b> alcohol use disorder, diarrhea, diuretics, PPIs (proton pump inhibitors), malnutrition</li>
+        <li><b>Hypomagnesemia signs:</b> <b>hyperactive</b> reflexes, tremors, tetany, high BP, tachycardia, dysrhythmias. Oral magnesium can cause diarrhea.</li>
         <li><b>IV magnesium is a high-alert medication:</b> double-check the dose with another nurse. Given too fast, it causes flushing, sweating and slowed breathing.</li>
-        <li><b>Hypermagnesemia causes:</b> kidney disease, and too many magnesium laxatives or antacids. Check the <b>patellar reflex</b>: absent = high magnesium. Severe: slow, shallow breathing, bradycardia, low BP, cardiac arrest. Stop magnesium sources, loop diuretics, calcium gluconate, dialysis if the kidneys can't clear it.</li>
+        <li><b>Hypermagnesemia causes:</b> kidney disease, and too many magnesium laxatives or antacids</li>
+        <li><b>Hypermagnesemia check:</b> the <b>patellar reflex</b>; absent = high magnesium</li>
+        <li><b>Severe hypermagnesemia:</b> slow, shallow breathing, bradycardia, low BP, cardiac arrest</li>
+        <li><b>Hypermagnesemia treatment:</b> stop magnesium sources; loop diuretics, calcium gluconate, dialysis if the kidneys can't clear it</li>
       </ul>
     </div>
   </div>
@@ -542,6 +548,22 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>Platelets</td><td>Thrombocytes: stop or prevent bleeding</td><td>Organ transplants, cancer treatment, surgery</td></tr>
     </table></div>
     <div class="box slides"><span class="tag">Slides content</span><p><b>Universal donor: O–</b> · <b>Universal recipient: AB+</b></p></div>
+    <div class="box note"><span class="tag">ATI extra · blood type compatibility</span>
+      <p>A blood type is the letter (A, B, AB or O) plus the <b>Rh factor</b>: positive (+) if the Rh protein is present, negative (–) if not. Matching matters because the immune system attacks red cells with markers it doesn't have.</p>
+      <div class="tbl"><table>
+        <tr><th>Client's type</th><th>Can receive red cells from</th><th>Can donate red cells to</th></tr>
+        <tr><td>O–</td><td>O– only</td><td><b>Everyone</b> (universal donor)</td></tr>
+        <tr><td>O+</td><td>O–, O+</td><td>O+, A+, B+, AB+</td></tr>
+        <tr><td>A–</td><td>A–, O–</td><td>A–, A+, AB–, AB+</td></tr>
+        <tr><td>A+</td><td>A–, A+, O–, O+</td><td>A+, AB+</td></tr>
+        <tr><td>B–</td><td>B–, O–</td><td>B–, B+, AB–, AB+</td></tr>
+        <tr><td>B+</td><td>B–, B+, O–, O+</td><td>B+, AB+</td></tr>
+        <tr><td>AB–</td><td>A–, B–, AB–, O–</td><td>AB–, AB+</td></tr>
+        <tr><td>AB+</td><td><b>Everyone</b> (universal recipient)</td><td>AB+ only</td></tr>
+      </table></div>
+      <p><b>Most common:</b> O+. <b>Least common:</b> AB–. O– is used in emergencies when the client's type isn't known yet.</p>
+    </div>
+    <div class="box hook"><span class="tag">Memory hook</span><p>To find who a client can <b>receive</b> from, check two things: <b>(1) the letter:</b> the same letter or O (AB takes any letter); <b>(2) the sign:</b> a negative client takes only negative blood, while a positive client takes either. Example: A+ → A or O, + or – → A–, A+, O–, O+.</p></div>
     <div class="box note"><span class="tag">ATI extra</span><ul><li>Consent first; 18–20 gauge IV already in place</li><li>Two nurses check the unit against the client at the bedside</li><li>Only <b>0.9% normal saline</b> runs with blood</li><li><b>Stay with the client the first 15 minutes</b> (most reactions happen then); vital signs before, at 15 min, and per policy</li><li>Finish within <b>4 hours</b></li><li>Reaction (fever, chills, back pain, hives, dyspnea, low BP): <b>stop the transfusion</b>, keep the vein open with normal saline through new tubing, notify the provider, send the bag back to the blood bank</li></ul>
     </div>
     <div class="box note" data-quiz="skip"><span class="tag">ATI extra</span><ul><li>Blood is <b>typed and crossmatched</b> first. PRBCs are usually given when Hgb (hemoglobin) drops to 7–8 g/dL; each unit raises Hgb about 1 g/dL and Hct about 3%</li><li>Change blood tubing after every unit or every 4 hours. Never give IV medications through a line running blood</li></ul>
@@ -678,7 +700,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <h3>Energy balance &amp; metabolism<span class="gslides inl">Slides content</span></h3>
     <div class="box flag"><span class="tag">Instructor flagged</span><p>The average person needs about <b>2,000 calories a day</b> to maintain their weight.</p></div>
     <ul class="tight"><li>Calories are the energy stored in food, used for walking, breathing and thinking</li><li>Calories in must equal calories burned. Too few = <b>undernourished</b>; too many = <b>obesity</b></li><li><b>Basal metabolism:</b> energy for the body's involuntary activities at rest (the body still needs calories at rest)</li><li>Men usually have a higher BMR (basal metabolic rate) because of more muscle mass</li><li><b>Increase BMR:</b> growth, infection, fever, emotional stress, extreme temperatures, some hormones (healing increases the body's work)</li><li><b>Decrease BMR:</b> aging, prolonged fasting, too little sleep</li></ul>
-    <div class="box note"><span class="tag">ATI extra</span><p>Carbohydrates and protein give <b>4 kcal per gram</b>; fat gives <b>9 kcal per gram</b>. No more than <b>35%</b> of calories should come from fat. Extra glucose is stored as <b>glycogen</b> in the liver and muscles as backup energy. A healthy weight-loss pace is <b>1–2 lb a week</b>, and losing just 5–10% of body weight improves BP, blood glucose and cholesterol. Adults need 150 minutes of moderate activity a week plus 2 days of muscle strengthening.</p></div>
+    <div class="box note"><span class="tag">ATI extra</span><p>No more than <b>35%</b> of calories should come from fat. Extra glucose is stored as <b>glycogen</b> in the liver and muscles as backup energy. A healthy weight-loss pace is <b>1–2 lb a week</b>, and losing just 5–10% of body weight improves BP, blood glucose and cholesterol. Adults need 150 minutes of moderate activity a week plus 2 days of muscle strengthening.</p></div>
   </div>
 
   <div class="gsub">
@@ -713,10 +735,20 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <div class="box flag"><span class="tag">Instructor flagged</span><p>You don't need the specifics of each vitamin, but know the <b>types</b> and <b>what they do for the body</b>. You don't need to memorize the mineral chart.</p></div>
     <p><b>Vitamins</b> are organic compounds needed in small amounts for metabolism of carbs, proteins and fat. Fresh foods have more than processed ones, because light, heat, air and preparation destroy vitamins.</p>
     <div class="cols">
-      <div><h4>Water-soluble: B &amp; C</h4><ul><li>Absorbed straight into the bloodstream</li><li><b>Not stored</b>, so a deficiency shows up sooner</li><li><b>C:</b> collagen, antioxidant, immune function, helps absorb iron</li><li><b>B:</b> energy, brain function, cell metabolism</li></ul></div>
-      <div><h4>Fat-soluble: A, D, E, K</h4><ul><li>Absorbed with fat into the lymph; carried on proteins</li><li><b>Stored</b> in the liver and fat, so excess can cause <b>toxicity</b></li><li><b>A:</b> vision, skin and mucous membranes, immunity</li><li><b>D:</b> calcium and phosphorus metabolism; calcium absorption</li><li><b>E:</b> antioxidant that protects vitamin A; fights infection</li><li><b>K:</b> blood clotting proteins (antidote for some anticoagulants)</li></ul></div>
+      <div><h4>Water-soluble: B &amp; C</h4><ul><li>Absorbed straight into the bloodstream</li><li><b>Not stored</b>: extra leaves in the urine, so the body needs a steady supply and a deficiency shows up sooner</li></ul></div>
+      <div><h4>Fat-soluble: A, D, E, K</h4><ul><li>Absorbed with fat into the lymph, then carried on proteins</li><li><b>Stored</b> in the liver and fat, so too much can build up to <b>toxic</b> levels</li></ul></div>
     </div>
-    <div class="box hook"><span class="tag">Memory hook</span><p><b>Fat-soluble vitamins "ADEK" stick around in fat; B and C "wash out" with water.</b></p></div>
+    <h4>What each vitamin does</h4>
+    <div class="tbl"><table>
+      <tr><th>Vitamin</th><th>What it does for the body</th><th>Why it matters for nursing</th></tr>
+      <tr><td>B (B complex)<br><small>water-soluble</small></td><td>Helps with <b>energy</b>, <b>brain function</b> and <b>cell metabolism</b></td><td>Clients with alcohol use disorder often run low on B vitamins, which shows up as fatigue and confusion</td></tr>
+      <tr><td>C<br><small>water-soluble</small></td><td>Needed to make <b>collagen</b> (the protein in skin, gums and healing wounds); an <b>antioxidant</b>; supports <b>immune function</b>; helps the body <b>absorb iron</b></td><td>Needed for <b>wound healing</b>. Too little causes swollen, bleeding gums and slow healing</td></tr>
+      <tr><td>A<br><small>fat-soluble</small></td><td>Affects <b>vision</b> (visual acuity), the <b>skin and mucous membranes</b>, and <b>immune function</b></td><td>Helps wound healing and infection defense. Because it's stored, too much can be toxic</td></tr>
+      <tr><td>D<br><small>fat-soluble</small></td><td>Needed for <b>calcium and phosphorus</b> metabolism; helps the body <b>absorb calcium</b></td><td>Low vitamin D leads to <b>low calcium</b> and bone loss, a special concern for older adults</td></tr>
+      <tr><td>E<br><small>fat-soluble</small></td><td>An <b>antioxidant</b> that protects vitamin A; helps <b>fight infection</b></td><td>Part of protecting cells and fighting infection</td></tr>
+      <tr><td>K<br><small>fat-soluble</small></td><td>Helps make the proteins needed for <b>blood clotting</b></td><td>The <b>antidote for warfarin</b>. Clients on warfarin keep their vitamin K intake steady. Too little vitamin K means easy bleeding and bruising</td></tr>
+    </table></div>
+    <div class="box hook"><span class="tag">Memory hook</span><p><b>Fat-soluble vitamins "ADEK" stick around in fat; B and C "wash out" with water.</b> <b>C</b> is for <b>collagen</b> (healing); <b>K</b> is for <b>clotting</b>; <b>D</b> is for bones (it brings in calcium).</p></div>
     <p><b>Minerals</b> (inorganic; usually carry a + or – charge) help hydration, metabolism, fluid regulation, nerve impulses, energy, and healthy bones, teeth and blood. Processing doesn't usually destroy them unless food is overcooked or soaked. They're mostly absorbed in the small intestine. Iron carries oxygen (hemoglobin).</p>
     <h4>Water: an essential nutrient</h4>
     <ul class="tight"><li>50–60% of body weight; two-thirds of it is inside cells (ICF)</li><li>A solvent for chemical processes; helps digestion, absorption, circulation and excretion</li><li>Regulates temperature through sweat evaporation; isn't stored</li><li>Intake usually equals output</li></ul>
@@ -738,7 +770,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <p><b>Food labels:</b> serving size, calories, % Daily Value, breakdown of nutrients. Reading labels lets nurses help clients choose better.</p>
     <div class="box flag"><span class="tag">Instructor flagged · client teaching</span><p>Don't assume a client can read a food label (for example, without their glasses). Ask whether they need help.</p></div>
     <p><b>Factors that affect nutrition:</b> physical factors, illness or trauma (healing), medications, megadoses of supplements (can affect other processes), alcohol use disorder (toxic to the GI tract; B vitamins are needed to absorb it), social determinants of health and money (food deserts), and culture, religion and traditions.</p>
-    <div class="box flag"><span class="tag">Instructor flagged</span><p>Don't assume: ask about money, food access, culture and religion.</p></div>
+    <div class="box flag"><span class="tag">Instructor flagged</span><p>Ask the client about these factors instead of assuming: whether they can afford food, whether they can get to a grocery store, and any cultural or religious food practices.</p></div>
     <div class="box note"><span class="tag">ATI extra · reading a label</span><ul>
       <li>Everything on the label is <b>per serving</b>. Eat two servings, double every number.</li>
       <li><b>%DV (percent Daily Value):</b> <b>5% or less = low</b>, <b>20% or more = high</b>. Choose high %DV for fiber, vitamin D, calcium, potassium and iron; low %DV for sodium, added sugars and saturated fat.</li>
@@ -790,18 +822,18 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
   <div class="gsub">
     <h3>Therapeutic diets<span class="gslides inl">Slides content</span></h3>
     <div class="tbl"><table>
-      <tr><th>Diet</th><th>What it is</th><th>Notes</th></tr>
-      <tr><td>Regular</td><td>Healthy foods from all food groups</td><td>No restrictions</td></tr>
-      <tr><td>Clear liquid</td><td><b>See-through</b>: water, tea, coffee, broth, carbonated drinks, popsicles, gelatin, clear fruit juices</td><td>Fluids and some electrolytes; minimal digestion; reintroduces the GI tract slowly; <b>short-term</b> (not true nutrition)</td></tr>
-      <tr><td>Full liquid</td><td>All clear liquids <b>plus</b> anything pourable at room temperature: milk, soups, pudding, yogurt, custard, plain frozen desserts, vegetable juices</td><td>The step up from clear; oral or facial surgery</td></tr>
-      <tr><td>Soft</td><td>Soft, easy to swallow and digest; <b>no</b> most raw fruits and vegetables, seeds, nuts, dried fruit</td><td>Trouble chewing (no teeth or dentures) or swallowing; can be long-term</td></tr>
-      <tr><td>Pureed</td><td>Soft, smooth, <b>no chewing</b> needed</td><td></td></tr>
-      <tr><td>NPO (nothing by mouth)</td><td>No food or drink</td><td>May allow meds with small sips of water, unless fully NPO</td></tr>
-      <tr><td>Heart healthy</td><td>Limit sodium and unhealthy fat</td><td></td></tr>
-      <tr><td>Renal</td><td>Limit <b>sodium, potassium, phosphorus</b></td><td></td></tr>
-      <tr><td>Consistent carbohydrate</td><td>Controls carb intake</td><td>Diabetes</td></tr>
-      <tr><td>High-fiber</td><td>Whole grains, fruits</td><td></td></tr>
-      <tr><td>Low-residue</td><td>Easy to digest, <b>low fiber</b></td><td></td></tr>
+      <tr><th>Diet</th><th>What it is</th><th>Who it's for &amp; notes</th></tr>
+      <tr><td>Regular</td><td>Healthy foods from all food groups</td><td>No special needs; no restrictions</td></tr>
+      <tr><td>Clear liquid</td><td><b>See-through</b>: water, tea, coffee, broth, carbonated drinks, popsicles, gelatin, clear fruit juices</td><td>Before or after surgery and some tests, or while the GI tract recovers from vomiting or diarrhea. Fluids and some electrolytes; minimal digestion; leaves almost no residue; reintroduces the GI tract slowly; <b>short-term</b> (not true nutrition). No red dye: it can look like blood</td></tr>
+      <tr><td>Full liquid</td><td>All clear liquids <b>plus</b> anything pourable at room temperature: milk, soups, pudding, yogurt, custard, plain frozen desserts, vegetable juices</td><td>The step up from clear liquids, such as after abdominal surgery; oral or facial surgery; can't chew solid food</td></tr>
+      <tr><td>Soft</td><td>Foods that are soft and easy to swallow and digest. <b>Leaves out</b> most raw fruits and vegetables, seeds, nuts and dried fruit</td><td>Trouble chewing (no teeth or dentures) or swallowing; after jaw, mouth or abdominal surgery; can be long-term</td></tr>
+      <tr><td>Pureed</td><td>Soft, smooth, <b>no chewing</b> needed</td><td>Dysphagia (difficulty swallowing) or trouble chewing; recent oral surgery; numbness in the mouth</td></tr>
+      <tr><td>NPO (nothing by mouth)</td><td>No food or drink</td><td>Before surgery or a test that needs an empty stomach, or when the client can't swallow safely. May allow meds with small sips of water, unless fully NPO; restarting food needs a provider's order</td></tr>
+      <tr><td>Heart healthy</td><td>Limit sodium and unhealthy fat</td><td>High blood pressure, heart disease, high cholesterol. Less sodium means less fluid held in the body, which helps heart failure and fluid overload</td></tr>
+      <tr><td>Renal</td><td>Limit <b>sodium, potassium, phosphorus</b></td><td>Kidney disease: damaged kidneys can't clear these, so they build up in the blood</td></tr>
+      <tr><td>Consistent carbohydrate</td><td>Controls carb intake</td><td>Diabetes: about the same amount of carbohydrate at each meal keeps blood glucose steady and matches diabetes medications</td></tr>
+      <tr><td>High-fiber</td><td>Whole grains, fruits</td><td>Prevents <b>constipation</b> and hemorrhoids; lowers cholesterol; helps control blood glucose; lowers the risk of colorectal cancer, heart disease, obesity and type 2 diabetes. Drink plenty of fluids with it</td></tr>
+      <tr><td>Low-residue</td><td>Easy to digest, <b>low fiber</b></td><td>Less stool and less work for the bowel: diarrhea, a bowel flare-up, before and after bowel procedures or surgery</td></tr>
     </table></div>
     <div class="box hook"><span class="tag">Memory hook</span><p><b>Clear = can see through it. Full = can pour it. Renal = "SPP":</b> limit Sodium, Potassium, Phosphorus.</p></div>
     <div class="box note"><span class="tag">ATI extra</span><ul>
@@ -866,9 +898,9 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <div class="tbl"><table>
       <tr><th>High in</th><th>Foods</th><th>Teach for</th></tr>
       <tr><td>Potassium</td><td>Baked potato, prune juice, plain nonfat yogurt, white beans, sweet potato, banana, spinach, salmon, avocado, oranges, cantaloupe, dark leafy greens</td><td>Add for hypokalemia; limit for hyperkalemia and kidney disease</td></tr>
-      <tr><td>Sodium</td><td>Roasted ham, frozen shrimp, frozen pizza, canned soup, vegetable juice, cottage cheese, instant pudding, soy sauce, lunch meat, hot dogs, bacon, sausage</td><td>Limit on low-sodium and heart-healthy diets</td></tr>
-      <tr><td>Calcium</td><td>Cheese, plain nonfat yogurt, almond milk, calcium-fortified orange juice and cereals, soymilk, milk, broccoli, leafy greens, legumes, almonds</td><td>Add for hypocalcemia and bone health</td></tr>
-      <tr><td>Magnesium</td><td>Cooked spinach, pumpkin seeds, black beans, soybeans, cashews and other nuts, dark chocolate, avocado, tofu, salmon, banana</td><td>Add for hypomagnesemia</td></tr>
+      <tr><td>Sodium</td><td>Roasted ham, frozen shrimp, frozen pizza, canned soup, vegetable juice, cottage cheese, instant pudding, soy sauce, lunch meat, hot dogs, bacon, sausage</td><td>Limit for hypernatremia and on low-sodium, heart-healthy and renal diets</td></tr>
+      <tr><td>Calcium</td><td>Cheese, plain nonfat yogurt, almond milk, calcium-fortified orange juice and cereals, soymilk, milk, broccoli, leafy greens, legumes, almonds</td><td>Add for hypocalcemia and bone health; limit for hypercalcemia</td></tr>
+      <tr><td>Magnesium</td><td>Cooked spinach, pumpkin seeds, black beans, soybeans, cashews and other nuts, dark chocolate, avocado, tofu, salmon, banana</td><td>Add for hypomagnesemia; limit for hypermagnesemia and kidney disease</td></tr>
     </table></div>
     <p><b>Lower-sodium swaps:</b> fresh shrimp instead of frozen, low-sodium vegetable juice, regular (not instant) pudding, "no salt added" canned foods. <b>Salt substitutes</b> usually contain potassium: avoid them with hyperkalemia or kidney disease.</p>
     <h4>Energy nutrients</h4>
@@ -878,7 +910,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <div><h4>Fats</h4><ul><li><b>Healthy:</b> olive oil, avocado, salmon, nuts; omega-3s in fish oil, walnuts, flaxseed</li><li><b>Saturated:</b> cheese, butter, whole milk, most animal fat</li><li><b>Trans:</b> processed foods with partially hydrogenated oils</li></ul></div>
     </div>
     <h4>Vitamins &amp; minerals</h4>
-    <div class="tbl"><table>
+    <div class="tbl" data-quiz="skip"><table>
       <tr><th>Nutrient</th><th>Foods</th></tr>
       <tr><td>Vitamin C</td><td>Citrus, strawberries and berries, tomatoes, Brussels sprouts, spinach, potatoes</td></tr>
       <tr><td>Vitamin K</td><td>Spinach, kale, parsley, liver, butter (keep intake steady on warfarin)</td></tr>
@@ -893,10 +925,10 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     <h4>Fiber &amp; blood glucose</h4>
     <div class="cols">
       <div><h4>High fiber</h4><ul><li>Whole grains: bran flakes, barley, oatmeal, oat bran muffin, brown rice, whole-wheat spaghetti, whole-wheat bread, rye bread, air-popped popcorn</li><li>Legumes: lentils, black beans, lima beans, baked beans, split peas, green peas</li><li>Fruit: raspberries, strawberries, pears and apples with skin, bananas, oranges, dried figs, raisins</li><li>Vegetables: broccoli, Brussels sprouts, artichoke, turnip greens, sweet corn, carrots, potato with skin, tomato paste</li><li>Nuts: almonds, pistachios, pecans</li></ul></div>
-      <div><h4>Low residue (low fiber)</h4><ul><li>Dairy (custard, yogurt), eggs, ripe bananas</li><li><b>Not allowed:</b> barley, oats, lentils, black beans, raw broccoli, cabbage</li></ul></div>
+      <div><h4>Low residue (low fiber)</h4><ul><li>Dairy (custard, yogurt), eggs, ripe bananas</li><li><b>Avoid anything high in fiber</b>, such as whole grains (barley, oats), legumes (lentils, black beans), raw or gas-producing vegetables (raw broccoli, cabbage), nuts, seeds and fruit skins</li></ul></div>
       <div><h4>Glycemic index</h4><ul><li><b>High:</b> potatoes, white bread, processed snacks; pictured on the slide: bread, cake, watermelon, beer, doughnuts</li><li><b>Medium</b> (slide picture): papaya, banana, croissant, coconut, beet, pumpkin</li><li><b>Low:</b> legumes, vegetables, fruits, whole grains; pictured: oranges, tomatoes, broccoli, blueberries, strawberries, avocado, plums</li></ul></div>
     </div>
-    <p><b>Calorie density</b> (slide picture of 500 calories): a little oil barely covers the bottom of the stomach, then cheese, then meat; potatoes, beans and rice fill more; fruits and vegetables fill it. Low-calorie-dense foods let a client eat more and feel full for fewer calories. French fries are a high-calorie-dense food.</p>
+    <figure class="pic" style="max-width:420px"><img src="week8-img/09.jpg" alt="Calorie density: what 500 calories look like in the stomach. Oil barely covers the bottom, then cheese and meat; potatoes, beans and rice fill more; fruits and vegetables fill it" loading="lazy"><figcaption>What 500 calories look like</figcaption></figure>
     <h4>Foods by diet</h4>
     <div class="tbl"><table>
       <tr><th>Diet</th><th>Foods</th></tr>
@@ -904,8 +936,8 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <tr><td>Full liquid</td><td>All clear liquids plus milk, strained soups, pudding, yogurt, custard, ice cream, milkshakes, vegetable juice</td></tr>
       <tr><td>Soft</td><td>Well-cooked vegetables, low-fiber cereal, tender meat or fish, pancakes, creamy peanut butter, cooked fruit without skin or seeds</td></tr>
       <tr><td>Pureed</td><td>Pudding, mashed potatoes, yogurt, pureed meats, broth, ice cream</td></tr>
-      <tr><td>Renal: limit potassium</td><td>Dried beans, prune juice, tomatoes and tomato sauce or juice, oranges and orange juice, spinach, collards, kale, Swiss chard; also granola, bran cereals, molasses, and salt substitutes or "lite salt". Lower-potassium: white bread, strawberries, eggs. Soak and drain potatoes and sweet potatoes before cooking</td></tr>
-      <tr><td>Renal: limit phosphorus</td><td>Dairy (1 cup of milk or 1 oz of yogurt or cheese a day); dried beans, mushrooms, broccoli, Brussels sprouts (1 cup a week each); bran, wheat cereals, granola, oatmeal (1 serving a week); white bread instead of whole grain; avoid beer and colas or root beer (clear sodas are OK)</td></tr>
+      <tr><td>Renal: limit potassium</td><td><ul class="tight"><li><b>Limit:</b> dried beans, prune juice, tomatoes and tomato sauce or juice, oranges and orange juice, spinach, collards, kale, Swiss chard, granola, bran cereals, molasses</li><li><b>Avoid:</b> salt substitutes and "lite salt" (they're made with potassium)</li><li><b>Lower-potassium choices:</b> white bread, strawberries, eggs</li><li><b>Tip:</b> soak and drain potatoes and sweet potatoes before cooking</li></ul></td></tr>
+      <tr><td>Renal: limit phosphorus</td><td><ul class="tight"><li><b>Limit:</b> dairy, dried beans, mushrooms, broccoli, Brussels sprouts, bran and wheat cereals, granola, oatmeal</li><li><b>Avoid:</b> beer, colas and root beer (clear sodas are OK)</li><li><b>Tip:</b> choose white bread instead of whole grain</li></ul></td></tr>
       <tr><td>Heart healthy</td><td>Fruits, vegetables, whole grains, lean meats, fish, skim milk, no-salt-added canned foods</td></tr>
     </table></div>
     <div class="box note"><span class="tag">ATI extra · why the foods matter</span>
@@ -918,25 +950,11 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
         <tr><td>Whole grains</td><td>Lower the risk of heart disease, stroke and diabetes; help lower cholesterol and weight</td></tr>
         <tr><td>Fiber</td><td>Lowers cholesterol and helps control blood glucose; lowers the risk of constipation, hemorrhoids, colorectal cancer, heart disease, hypertension, obesity, stroke and type 2 diabetes; keeps you full longer</td></tr>
         <tr><td>Added sugars, sweetened drinks</td><td>Dental caries (cavities)</td></tr>
-        <tr><td>Vitamin C foods (tomatoes, leafy greens, strawberries, potatoes)</td><td>Healthy gums; too little vitamin C irritates the gums</td></tr>
-        <tr><td>Calcium and vitamin D</td><td>Bone strength; prevent bone loss (osteoporosis), especially in older adults</td></tr>
-        <tr><td>Omega-3s (flaxseed, walnuts, fish oil, wild salmon), berries, whole grains</td><td>Brain health: less fatigue, better memory and concentration. Mediterranean, DASH (Dietary Approaches to Stop Hypertension) and MIND diets support the brain. Omega-3s also lower triglycerides and BP</td></tr>
-        <tr><td>Antioxidant foods (vegetables, fruits, whole grains, nuts, seeds)</td><td>Protect cells from free radicals linked to cancer and heart disease</td></tr>
-        <tr><td>Biotin (egg yolks, whole grains, fish, seeds, nuts, sweet potatoes, broccoli, cauliflower, most meats), B vitamins, zinc, iron</td><td>Hair growth and a healthy scalp</td></tr>
-        <tr><td>Vitamins A, C, D, E; 5+ servings of fruits and vegetables a day</td><td>Skin health; may delay signs of skin aging</td></tr>
-        <tr><td>Vitamin K foods</td><td>Weaken warfarin; keep intake steady</td></tr>
         <tr><td>Broth for vomiting or diarrhea</td><td>Replaces sodium but not enough water, so dehydration can continue. Drinks with electrolytes and glucose (sports drinks) come first for oral rehydration</td></tr>
         <tr><td>Overeating, inactivity (obesity)</td><td>Diabetes, high BP, some cancers, osteoarthritis, high cholesterol. Clients with obesity can still be malnourished if their food is low in nutrients</td></tr>
       </table></div>
     </div>
-    <div class="box note"><span class="tag">ATI extra · blood glucose</span><p><b>Fasting glucose</b> (nothing by mouth for at least 8 hours): <b>74–106 mg/dL</b>. Two hours after eating: under 140.</p><p><b>Hypoglycemia (glucose under 70 mg/dL):</b> give 15 g of fast carbohydrate (glucose tablets or gel, 4 oz regular soda or juice, 1 tablespoon honey, or hard candy), recheck in 15 minutes, and repeat until it's at least 70. Then a meal or snack.</p>
-      <div class="tbl"><table>
-        <tr><th>Insulin</th><th>Starts</th><th>Peaks</th><th>Lasts</th></tr>
-        <tr><td>Rapid-acting</td><td>15–30 min</td><td>30 min–3 hr</td><td>3–5 hr</td></tr>
-        <tr><td>Regular (short-acting)</td><td>30 min–1 hr</td><td>2–4 hr</td><td>4–12 hr</td></tr>
-        <tr><td>Intermediate-acting</td><td>1–2 hr</td><td>4–12 hr</td><td>14–24 hr</td></tr>
-        <tr><td>Long-acting</td><td>2–4 hr</td><td>No real peak</td><td>Up to 24 hr</td></tr>
-      </table></div>
+    <div class="box note"><span class="tag">ATI extra · blood glucose</span><p><b>Fasting glucose</b> (nothing by mouth for at least 8 hours): <b>74–106 mg/dL</b>. Two hours after a meal, blood glucose should be back <b>under 140 mg/dL</b>.</p><p><b>Hypoglycemia (glucose under 70 mg/dL):</b> give something with sugar that raises glucose quickly (glucose tablets or gel, regular soda, juice, honey, or hard candy), recheck in 15 minutes, and repeat until it's at least 70. Then a meal or snack.</p>
       <p>Check glucose before giving insulin. Inject at 90° (45° if the client has little fat under the skin), at least 2 in from the navel, away from scars or bruised, lumpy or numb skin.</p>
     </div>
   </div>
@@ -990,15 +1008,8 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       </ol>
     </div>
     <div class="box note"><span class="tag">ATI extra</span>
-      <div class="tbl"><table>
-        <tr><th>Aspirate</th><th>pH</th><th>Looks like</th></tr>
-        <tr><td>Stomach (fasting 4+ hours)</td><td><b>1–4</b></td><td>Grassy green, off-white or tan; watery</td></tr>
-        <tr><td>Stomach, during continuous feeding</td><td>Often 5 or higher</td><td>Formula mixes with stomach acid</td></tr>
-        <tr><td>Intestine</td><td>7 or higher</td><td>Light to golden yellow or brownish green (bile); syrupy</td></tr>
-        <tr><td>Respiratory</td><td>Above 6</td><td>Clear</td></tr>
-      </table></div>
       <p><b>Don't rely on listening</b> over the stomach while pushing air: you can hear air even if the tube is in the lung. Capnography (CO2 detection) means the tube is in the airway: remove it. No fluid? Turn the client side to side and try more air.</p>
-      <p>Extra risk of a misplaced tube: decreased LOC, weak cough or gag, recently removed breathing tube, agitation. Mark the tube where it leaves the nose and document the length.</p>
+      <p>Extra risk of a misplaced tube: decreased LOC, weak cough or gag, recently removed breathing tube, agitation.</p>
     </div>
   </div>
 
@@ -1008,7 +1019,7 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       <div><h4>Continuous</h4><ul><li>Gradual, steady delivery</li><li><b>Requires a feeding pump</b></li></ul></div>
       <div><h4>Intermittent (bolus)</h4><ul><li>Equal portions at regular times</li><li>Pump, gravity, or syringe</li><li>Flush with water after each bolus</li></ul></div>
     </div>
-    <ul class="tight"><li>Check tube placement first</li><li>Client upright: <b>head of bed 30–45° during</b> feedings, and at least <b>30° for 1 hour after</b></li><li>Watch for feeding intolerance: gastric distention, abdominal discomfort, nausea, vomiting, diarrhea, reflux (make sure it's true diarrhea)</li><li>Change the system and tubing every <b>24 hours</b></li></ul>
+    <ul class="tight"><li>Check tube placement first</li><li>Client upright: <b>head of bed 30–45° during</b> feedings, and at least <b>30° for 1 hour after</b></li><li>Watch for feeding intolerance: gastric distention, abdominal discomfort, nausea, vomiting, diarrhea, reflux</li><li>Change the system and tubing every <b>24 hours</b></li></ul>
     <h4>Complications</h4>
     <div class="cols">
       <div><ul><li><b>Aspiration</b></li><li><b>Clogged tube</b>: crush medications thoroughly and flush</li><li>Nasal erosion or pressure injury</li><li>Diarrhea</li></ul></div>
@@ -1016,14 +1027,14 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
     </div>
     <div class="box note"><span class="tag">ATI extra</span><p>Check residuals every 4–6 hours for tubes in the stomach; return the residual unless it's large (over 250 mL: follow protocol). Use a 50–60 mL syringe on small-bore tubes (smaller syringes can collapse them). Hang only 4 hours of formula at a time (the NG chapter says to follow the manufacturer's hang time and to discard refrigerated unused formula after 24 hours); formula at room temperature; wipe the can top with alcohol; label the bag and tubing. Check blood glucose every 4–6 hours until the full rate is tolerated for 24 hours. Don't delegate tube feedings. Flush with water before and after each intermittent feeding, every 4 hours during continuous feeds, and after medications and residual checks. The skills module allows 30–50 mL; the flagged steps above use 30 mL. Listen for bowel sounds first as a baseline (absent sounds alone don't stop a feeding).</p>
       <div class="tbl"><table>
-        <tr><th>Formula</th><th>kcal/mL</th><th>For</th></tr>
-        <tr><td>Polymeric (whole nutrients)</td><td>1–2</td><td>Clients who can digest and absorb whole nutrients</td></tr>
-        <tr><td>Modular</td><td>3.8–4</td><td>One nutrient (protein, fat, glucose) added to supplement; not complete nutrition</td></tr>
-        <tr><td>Elemental (predigested)</td><td>1–3</td><td>A partly working GI tract</td></tr>
-        <tr><td>Specialty</td><td>1–2</td><td>Specific illnesses: liver failure, lung disease, diabetes</td></tr>
+        <tr><th>Formula</th><th>For</th></tr>
+        <tr><td>Polymeric (whole nutrients)</td><td>Clients who can digest and absorb whole nutrients</td></tr>
+        <tr><td>Modular</td><td>One nutrient (protein, fat, glucose) added to supplement; not complete nutrition</td></tr>
+        <tr><td>Elemental (predigested)</td><td>A partly working GI tract</td></tr>
+        <tr><td>Specialty</td><td>Specific illnesses: liver failure, lung disease, diabetes</td></tr>
       </table></div>
       <p><b>Schedules:</b> intermittent (bolus, by syringe or pump), continuous (pump only), or <b>cyclic</b> (a set block each day, such as 2100 to 0900).</p>
-      <p><b>Most common complications:</b> displaced tube, aspiration, diarrhea. Diarrhea: ask about a slower rate, diluting or changing the formula, fiber, or lactose-free formula; keep the formula and tubing clean. <b>Skin:</b> protect the nose with a skin adhesive under the tape and shift the tube's position often. <b>Feelings:</b> tube feeding can bring isolation and body-image worries; offer privacy or company during feedings, listen, and teach the family.</p>
+      <ul class="tight"><li><b>Most common complications:</b> displaced tube, aspiration, diarrhea</li><li><b>Diarrhea:</b> ask about a slower rate, diluting or changing the formula, fiber, or lactose-free formula; keep the formula and tubing clean</li><li><b>Skin:</b> protect the nose with a skin adhesive under the tape and shift the tube's position often</li><li><b>Feelings:</b> tube feeding can bring isolation and body-image worries; offer privacy or company during feedings, listen, and teach the family</li></ul>
     </div>
   </div>
 
@@ -1039,6 +1050,8 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
 
   <div class="gsub">
     <h3>NG tubes: insertion, suction &amp; removal</h3>
+    <div class="box flag"><span class="tag">Instructor flagged</span><p>For an NG tube going into the <b>stomach</b>: measure from the <b>tip of the nose → earlobe → xiphoid process</b>, then <b>add 10 cm</b>.</p></div>
+    <div class="box note"><span class="tag">Side note</span><p>ATI measures nose → earlobe → xiphoid process and stops there. This guide follows the extra 10 cm your instructor gave.</p></div>
     <div class="box note"><span class="tag">ATI extra · skills module</span>
       <h4 style="margin-top:4px">Insertion</h4>
       <ul class="tight">
@@ -1065,6 +1078,21 @@ ol.seq li::before{content:counter(s);font-family:'Young Serif',Georgia,serif;fon
       </ul>
       <p><b>Gastric lavage</b> (irrigating the stomach) uses a large-bore tube, mostly in the emergency department. It isn't routine for poisoning anymore. Never leave the client alone during it.</p>
     </div>
+  </div>
+
+  <div class="gsub">
+    <h3>Tubes at a glance</h3>
+    <div class="tbl"><table>
+      <tr><th>Tube</th><th>Goes where</th><th>Used for</th><th>Key points</th></tr>
+      <tr><td>NG (nasogastric), small-bore</td><td>Nose → stomach</td><td>Short-term feeding (under about 4 weeks)</td><td>Measure nose → earlobe → xiphoid, then add 10 cm; X-ray before the first feeding</td></tr>
+      <tr><td>Nasoduodenal / nasojejunal</td><td>Nose → past the stomach into the small intestine</td><td>Short-term feeding when the stomach shouldn't be used (slow stomach emptying, reflux, past aspiration pneumonia)</td><td>Longer measurement; lower aspiration risk</td></tr>
+      <tr><td>G-tube / PEG</td><td>Through the abdominal wall into the stomach</td><td>Long-term feeding</td><td>PEG is the most common placement; watch the site for infection</td></tr>
+      <tr><td>J-tube (jejunostomy)</td><td>Through the abdominal wall into the jejunum</td><td>Long-term feeding</td><td>Feeds past the stomach</td></tr>
+      <tr><td>Levin (single-lumen NG)</td><td>Nose → stomach</td><td>Decompression (removing air and fluid)</td><td><b>Low intermittent</b> suction</td></tr>
+      <tr><td>Salem sump (double-lumen NG)</td><td>Nose → stomach</td><td>Decompression</td><td>Blue air vent: <b>never clamp it</b>; keep it above the stomach</td></tr>
+      <tr><td>Large-bore orogastric or NG</td><td>Mouth or nose → stomach</td><td>Lavage (washing out the stomach)</td><td>Emergency use; never leave the client alone</td></tr>
+    </table></div>
+    <p><b>Needs a pump:</b> continuous tube feedings and IV potassium; an IV pump also helps prevent fluid overload. <b>No pump needed:</b> an intermittent (bolus) tube feeding can run by gravity or syringe.</p>
   </div>
 
   <div class="gsub">

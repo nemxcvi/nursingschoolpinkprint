@@ -208,29 +208,29 @@
    "prompt": "Which fluids are transcellular fluids? Select all that apply.",
    "options": [
     {
-     "text": "Cerebrospinal fluid",
-     "correct": true,
-     "rationale": "Cerebrospinal fluid is a specialized transcellular fluid."
-    },
-    {
-     "text": "Pleural fluid",
-     "correct": true,
-     "rationale": "Pleural fluid is a transcellular fluid."
-    },
-    {
-     "text": "Synovial fluid",
-     "correct": true,
-     "rationale": "Joint (synovial) fluid is a transcellular fluid."
-    },
-    {
      "text": "Plasma",
      "correct": false,
      "rationale": "Plasma is intravascular fluid."
     },
     {
+     "text": "Cerebrospinal fluid",
+     "correct": true,
+     "rationale": "Cerebrospinal fluid is a specialized transcellular fluid."
+    },
+    {
+     "text": "Fluid inside red blood cells",
+     "correct": false,
+     "rationale": "Fluid inside any cell is intracellular fluid."
+    },
+    {
      "text": "Lymph",
      "correct": false,
      "rationale": "Lymph is part of the interstitial fluid."
+    },
+    {
+     "text": "Pleural fluid",
+     "correct": true,
+     "rationale": "Pleural fluid is a transcellular fluid."
     }
    ]
   },
@@ -555,9 +555,9 @@
      "rationale": "Fluids such as synovial fluid lubricate the body."
     },
     {
-     "text": "Transport hormones and enzymes",
-     "correct": true,
-     "rationale": "Hormones, enzymes, platelets and blood cells travel in body fluids."
+     "text": "Insulate the body by storing heat",
+     "correct": false,
+     "rationale": "Body fat, not body fluid, insulates the body."
     },
     {
      "text": "Store glucose for later energy use",
@@ -715,9 +715,9 @@
      "rationale": "Burns cause large fluid losses."
     },
     {
-     "text": "Diuretic therapy",
-     "correct": true,
-     "rationale": "Diuretics increase urine output and fluid loss."
+     "text": "Heart failure",
+     "correct": false,
+     "rationale": "Heart failure causes the body to retain fluid, leading to overload."
     },
     {
      "text": "Kidney failure",
@@ -798,29 +798,29 @@
    "prompt": "A client has untreated hypovolemia. Which findings does the nurse expect? Select all that apply.",
    "options": [
     {
+     "text": "Distended neck veins",
+     "correct": false,
+     "rationale": "Low volume makes neck veins flat; distended neck veins point to fluid overload."
+    },
+    {
      "text": "Tachycardia",
      "correct": true,
      "rationale": "The heart speeds up to maintain cardiac output."
     },
     {
-     "text": "Decreased urine output",
-     "correct": true,
-     "rationale": "The kidneys conserve fluid, causing oliguria."
-    },
-    {
-     "text": "Flattened neck veins",
-     "correct": true,
-     "rationale": "Low volume makes neck veins flat."
-    },
-    {
-     "text": "Delayed capillary refill",
-     "correct": true,
-     "rationale": "Poor perfusion slows capillary refill."
-    },
-    {
      "text": "Elevated blood pressure",
      "correct": false,
      "rationale": "Hypovolemia lowers blood pressure."
+    },
+    {
+     "text": "Slow respiratory rate",
+     "correct": false,
+     "rationale": "Breathing speeds up (tachypnea) with untreated hypovolemia."
+    },
+    {
+     "text": "Decreased urine output",
+     "correct": true,
+     "rationale": "The kidneys conserve fluid, causing oliguria."
     },
     {
      "text": "Bounding pulse",
@@ -1414,9 +1414,9 @@
      "rationale": "Anything the client drinks is intake."
     },
     {
-     "text": "Ice cream",
-     "correct": true,
-     "rationale": "Foods that are liquid at room temperature count as intake."
+     "text": "Mashed potatoes",
+     "correct": false,
+     "rationale": "Only foods that are liquid at room temperature count as intake; mashed potatoes are a solid."
     },
     {
      "text": "Wound drainage",
@@ -1866,9 +1866,9 @@
      "rationale": "Nerve impulses and muscle contraction depend on electrolytes."
     },
     {
-     "text": "Producing red blood cells",
-     "correct": false,
-     "rationale": "Red blood cells are made in the bone marrow, stimulated by erythropoietin."
+     "text": "Moving waste out of cells",
+     "correct": true,
+     "rationale": "Electrolytes help move waste out of cells as well as nutrients in."
     }
    ]
   },
@@ -2105,9 +2105,9 @@
      "rationale": "Low sodium affects muscle function."
     },
     {
-     "text": "Lethargy",
-     "correct": true,
-     "rationale": "Hyponatremia causes lethargy."
+     "text": "Warm, flushed skin and fever",
+     "correct": false,
+     "rationale": "Warm, flushed skin and fever go with hypernatremia, not low sodium."
     },
     {
      "text": "Intense thirst with dry, sticky mucous membranes",
@@ -2198,9 +2198,9 @@
      "rationale": "Hypernatremia can cause hallucinations and delusions."
     },
     {
-     "text": "Possible seizures",
-     "correct": true,
-     "rationale": "Severe hypernatremia can cause seizures."
+     "text": "Moist mucous membranes",
+     "correct": false,
+     "rationale": "High sodium pulls water out of cells, leaving dry, sticky mucous membranes."
     },
     {
      "text": "Thirst",
@@ -2544,29 +2544,29 @@
    "prompt": "Which are safe practices for IV potassium? Select all that apply.",
    "options": [
     {
-     "text": "Dilute it in a compatible IV solution",
-     "correct": true,
-     "rationale": "IV potassium is always diluted."
-    },
-    {
-     "text": "Infuse it on an IV pump",
-     "correct": true,
-     "rationale": "A pump controls the rate of a high-alert medication."
-    },
-    {
-     "text": "Monitor the client's cardiac rhythm",
-     "correct": true,
-     "rationale": "Continuous ECG monitoring watches for dysrhythmias."
-    },
-    {
      "text": "Give it by IV push to replace it quickly",
      "correct": false,
      "rationale": "IV push potassium can cause cardiac arrest."
     },
     {
+     "text": "Dilute it in a compatible IV solution",
+     "correct": true,
+     "rationale": "IV potassium is always diluted."
+    },
+    {
+     "text": "Infuse it at 10–20 mEq per minute",
+     "correct": false,
+     "rationale": "The rate is 10–20 mEq per hour; per minute is far too fast."
+    },
+    {
      "text": "Mix it into whatever IV bag is running without checking compatibility",
      "correct": false,
      "rationale": "Compatibility must always be checked."
+    },
+    {
+     "text": "Infuse it on an IV pump",
+     "correct": true,
+     "rationale": "A pump controls the rate of a high-alert medication."
     }
    ]
   },
@@ -2985,9 +2985,9 @@
      "rationale": "Low calcium causes muscle cramps and spasms."
     },
     {
-     "text": "Seizures",
-     "correct": true,
-     "rationale": "Severe hypocalcemia can cause seizures."
+     "text": "Hypoactive deep tendon reflexes",
+     "correct": false,
+     "rationale": "Low calcium makes nerves fire too easily, so reflexes are hyperactive."
     },
     {
      "text": "Positive Trousseau's sign",
@@ -3212,24 +3212,24 @@
    "prompt": "Calcium's roles in the body include which? Select all that apply.",
    "options": [
     {
+     "text": "Helping move glucose into cells",
+     "correct": false,
+     "rationale": "Insulin moves glucose into cells."
+    },
+    {
      "text": "Keeping bones and teeth hard",
      "correct": true,
      "rationale": "Most calcium is stored in bones and teeth."
     },
     {
-     "text": "Helping muscles move",
-     "correct": true,
-     "rationale": "Calcium is needed for muscle contraction."
+     "text": "Carrying oxygen to tissues",
+     "correct": false,
+     "rationale": "Iron in hemoglobin carries oxygen."
     },
     {
      "text": "Helping nerves carry messages",
      "correct": true,
      "rationale": "Calcium supports nerve transmission."
-    },
-    {
-     "text": "Carrying oxygen to tissues",
-     "correct": false,
-     "rationale": "Iron in hemoglobin carries oxygen."
     },
     {
      "text": "Breaking down fats",
@@ -3582,7 +3582,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "dragdrop",
-   "prompt": "Match each imbalance to its typical cause. Move the imbalances usually caused by a LOSS of fluid or electrolytes through the GI tract or diuretics to the answer box.",
+   "prompt": "Move the imbalances that are usually caused by losing fluid or electrolytes through the GI tract or diuretics to the answer box.",
    "leftLabel": "Imbalances",
    "rightLabel": "Caused by GI or diuretic loss",
    "options": [
@@ -3614,7 +3614,7 @@
     {
      "text": "Hypercalcemia",
      "correct": false,
-     "rationale": "High calcium usually comes from cancer or hyperparathyroidism."
+     "rationale": "High calcium usually comes from cancer, not from losses."
     }
    ]
   },
@@ -3775,29 +3775,29 @@
    "prompt": "Which IV solutions are hypertonic? Select all that apply.",
    "options": [
     {
+     "text": "Lactated Ringer's",
+     "correct": false,
+     "rationale": "Lactated Ringer's is isotonic."
+    },
+    {
      "text": "3% sodium chloride",
      "correct": true,
      "rationale": "3% saline is hypertonic."
     },
     {
-     "text": "Dextrose 5% in normal saline (D5NS)",
-     "correct": true,
-     "rationale": "D5NS is hypertonic."
+     "text": "0.9% sodium chloride",
+     "correct": false,
+     "rationale": "Normal saline is isotonic."
+    },
+    {
+     "text": "0.33% sodium chloride",
+     "correct": false,
+     "rationale": "0.33% saline is hypotonic."
     },
     {
      "text": "Dextrose 10% in water",
      "correct": true,
      "rationale": "D10W is hypertonic."
-    },
-    {
-     "text": "Dextrose 5% in lactated Ringer's",
-     "correct": true,
-     "rationale": "D5LR is hypertonic."
-    },
-    {
-     "text": "Lactated Ringer's",
-     "correct": false,
-     "rationale": "Lactated Ringer's is isotonic."
     },
     {
      "text": "0.45% sodium chloride",
@@ -4114,7 +4114,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Access Devices",
    "type": "mc",
-   "prompt": "According to the facility policy taught in class, how often is a peripheral IV site changed?",
+   "prompt": "A nurse is caring for a client who has a peripheral IV catheter. Per facility policy, how often should the nurse plan to change the IV site?",
    "options": [
     {
      "text": "Every 96 hours",
@@ -4210,24 +4210,24 @@
    "prompt": "Which are central venous access devices (CVADs)? Select all that apply.",
    "options": [
     {
+     "text": "Midline catheter",
+     "correct": false,
+     "rationale": "A midline is longer than a peripheral IV, but its tip stays in a peripheral arm vein."
+    },
+    {
      "text": "Peripherally inserted central catheter (PICC)",
      "correct": true,
      "rationale": "A PICC enters a peripheral vein but its tip lies in a central vein."
     },
     {
-     "text": "Implanted port",
-     "correct": true,
-     "rationale": "An implanted port is a CVAD."
-    },
-    {
-     "text": "Tunneled central venous catheter",
-     "correct": true,
-     "rationale": "Tunneled catheters are CVADs."
-    },
-    {
      "text": "20-gauge catheter in the forearm",
      "correct": false,
      "rationale": "That's a peripheral IV."
+    },
+    {
+     "text": "Implanted port",
+     "correct": true,
+     "rationale": "An implanted port is a CVAD."
     },
     {
      "text": "22-gauge catheter in the hand",
@@ -4998,9 +4998,9 @@
      "rationale": "Most reactions occur early."
     },
     {
-     "text": "Complete the transfusion within 4 hours",
-     "correct": true,
-     "rationale": "Blood should be infused within 4 hours."
+     "text": "Complete the transfusion within 6 hours",
+     "correct": false,
+     "rationale": "A unit of blood must finish within 4 hours of starting."
     },
     {
      "text": "Run the blood with lactated Ringer's",
@@ -6067,9 +6067,9 @@
      "rationale": "Diet changes are listed nursing interventions."
     },
     {
-     "text": "Client and family teaching",
-     "correct": true,
-     "rationale": "Teaching helps prevent recurrence."
+     "text": "Holding all IV fluids until the pH returns to normal",
+     "correct": false,
+     "rationale": "IV therapy is one of the ways imbalances are corrected, so it isn't routinely held."
     },
     {
      "text": "Encouraging rapid breathing for all clients",
@@ -6302,37 +6302,6 @@
    ]
   },
   {
-   "id": "nur114-u4-nutrition-006",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Nutrition",
-   "category": "Nutrients & Energy",
-   "type": "mc",
-   "prompt": "How many calories does 1 gram of fat provide?",
-   "options": [
-    {
-     "text": "9",
-     "correct": true,
-     "rationale": "Fat gives 9 kcal per gram."
-    },
-    {
-     "text": "4",
-     "correct": false,
-     "rationale": "Carbs and protein give 4 kcal per gram."
-    },
-    {
-     "text": "7",
-     "correct": false,
-     "rationale": "7 kcal per gram is alcohol."
-    },
-    {
-     "text": "2",
-     "correct": false,
-     "rationale": "No energy nutrient gives 2 kcal per gram."
-    }
-   ]
-  },
-  {
    "id": "nur114-u4-nutrition-007",
    "course": "NUR 114",
    "unit": 4,
@@ -6373,9 +6342,24 @@
    "prompt": "Which factors increase the basal metabolic rate? Select all that apply.",
    "options": [
     {
+     "text": "Aging",
+     "correct": false,
+     "rationale": "Aging decreases BMR."
+    },
+    {
      "text": "Fever",
      "correct": true,
      "rationale": "Fever increases metabolic demand."
+    },
+    {
+     "text": "Too little sleep",
+     "correct": false,
+     "rationale": "Too little sleep decreases BMR."
+    },
+    {
+     "text": "Prolonged fasting",
+     "correct": false,
+     "rationale": "Fasting decreases BMR."
     },
     {
      "text": "Infection",
@@ -6383,24 +6367,9 @@
      "rationale": "Fighting infection raises BMR."
     },
     {
-     "text": "Growth",
-     "correct": true,
-     "rationale": "Growth raises energy needs."
-    },
-    {
-     "text": "Emotional stress",
-     "correct": true,
-     "rationale": "Stress raises BMR."
-    },
-    {
-     "text": "Aging",
+     "text": "Loss of muscle mass",
      "correct": false,
-     "rationale": "Aging decreases BMR."
-    },
-    {
-     "text": "Prolonged fasting",
-     "correct": false,
-     "rationale": "Fasting decreases BMR."
+     "rationale": "Less muscle lowers BMR; more muscle mass is why men usually have a higher BMR."
     }
    ]
   },
@@ -7000,9 +6969,9 @@
      "rationale": "Water isn't stored for later use."
     },
     {
-     "text": "Provides 4 calories per gram",
+     "text": "Stores extra energy for later use",
      "correct": false,
-     "rationale": "Water has no calories."
+     "rationale": "Water isn't stored for energy; the body stores extra energy as glycogen and fat."
     }
    ]
   },
@@ -7368,9 +7337,9 @@
      "rationale": "Hair is one of the first things the body sacrifices."
     },
     {
-     "text": "Brittle nails",
-     "correct": true,
-     "rationale": "Nails weaken with poor nutrition."
+     "text": "Firm, well-developed muscles",
+     "correct": false,
+     "rationale": "Malnutrition causes flaccid, weak muscles."
     },
     {
      "text": "Weight loss",
@@ -7414,14 +7383,14 @@
      "rationale": "Chewing, swallowing and teeth affect intake."
     },
     {
-     "text": "Income and food budget",
-     "correct": true,
-     "rationale": "Money affects access to food."
+     "text": "Blood type and Rh factor",
+     "correct": false,
+     "rationale": "Blood type doesn't show nutritional status or intake."
     },
     {
-     "text": "Cultural and religious food practices",
-     "correct": true,
-     "rationale": "Culture and religion affect food choices."
+     "text": "Pupil size and reaction to light",
+     "correct": false,
+     "rationale": "Pupil checks are part of a neurological assessment, not a nutritional one."
     },
     {
      "text": "Snellen visual acuity score",
@@ -8120,9 +8089,9 @@
      "rationale": "Throat clearing is a sign."
     },
     {
-     "text": "Gagging",
-     "correct": true,
-     "rationale": "Gagging is a sign."
+     "text": "A clear voice after swallowing",
+     "correct": false,
+     "rationale": "A clear voice is expected; a wet or gurgly voice can signal aspiration."
     },
     {
      "text": "Increased appetite",
@@ -8313,9 +8282,9 @@
      "rationale": "Involving the client supports independence."
     },
     {
-     "text": "Offer the restroom and hand washing first",
-     "correct": true,
-     "rationale": "These come before the meal."
+     "text": "Offer the restroom and hand washing after the meal is finished",
+     "correct": false,
+     "rationale": "Toileting and hand washing should be offered before the meal, not after."
     },
     {
      "text": "Feed quickly so the food stays warm",
@@ -8797,7 +8766,7 @@
     {
      "text": "The tube may not be in the stomach",
      "correct": true,
-     "rationale": "A pH of 7 or higher suggests intestinal or respiratory placement."
+     "rationale": "Stomach contents are about pH 1–4, so 7.5 means the tube may not be in the stomach; check placement before using it."
     },
     {
      "text": "The tube is in the stomach",
@@ -8971,7 +8940,7 @@
     {
      "text": "7 or higher",
      "correct": false,
-     "rationale": "pH 7 or higher suggests the tube isn't in the stomach.",
+     "rationale": "Stomach contents are acidic (about pH 1–4); a pH this high means the tube may not be in the stomach.",
      "blank": 2
     }
    ]
@@ -9125,9 +9094,9 @@
      "rationale": "Diarrhea can signal intolerance."
     },
     {
-     "text": "Abdominal discomfort",
-     "correct": true,
-     "rationale": "Discomfort is a sign."
+     "text": "One formed stool a day",
+     "correct": false,
+     "rationale": "A regular formed stool shows the feeding is being tolerated."
     },
     {
      "text": "Active bowel sounds",
@@ -9236,37 +9205,6 @@
      "text": "Only when it looks dirty",
      "correct": false,
      "rationale": "It's changed on a schedule."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-enteral-parenteral-026",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Enteral & Parenteral Nutrition",
-   "category": "Giving Feedings",
-   "type": "mc",
-   "prompt": "A client receiving tube feedings has loose stools. What should the nurse do first?",
-   "options": [
-    {
-     "text": "Confirm it is true diarrhea before acting",
-     "correct": true,
-     "rationale": "Check that it's actually diarrhea, then talk to the provider about rate or formula changes."
-    },
-    {
-     "text": "Stop the feeding permanently",
-     "correct": false,
-     "rationale": "Stopping permanently isn't the first step."
-    },
-    {
-     "text": "Double the feeding rate",
-     "correct": false,
-     "rationale": "Faster feeding can worsen diarrhea."
-    },
-    {
-     "text": "Give an antidiarrheal without an order",
-     "correct": false,
-     "rationale": "Medications require a prescription."
     }
    ]
   },
@@ -9409,7 +9347,7 @@
    "prompt": "How is the length of a nasogastric tube measured before insertion?",
    "options": [
     {
-     "text": "Tip of the nose to the earlobe to the xiphoid process",
+     "text": "Tip of the nose to the earlobe to the xiphoid process, then add 10 cm",
      "correct": true,
      "rationale": "This measures the distance to the stomach."
     },
@@ -9475,7 +9413,7 @@
      "rationale": "Positioning comes first."
     },
     {
-     "text": "Measure from the nose to the earlobe to the xiphoid process and mark the tube",
+     "text": "Measure from the nose to the earlobe to the xiphoid process, add 10 cm, and mark the tube",
      "rationale": "Measure before inserting."
     },
     {
@@ -10052,7 +9990,7 @@
     {
      "text": "blood clots in the legs",
      "correct": false,
-     "rationale": "This isn't the common TPN problem taught here.",
+     "rationale": "Leg clots aren't the typical TPN problem; TPN's high dextrose load makes glucose problems the main concern.",
      "blank": 2
     }
    ]
@@ -10389,7 +10327,7 @@
     {
      "text": "Elemental formula",
      "correct": true,
-     "rationale": "Elemental formulas are predigested (1 to 3 kcal/mL) and easier to absorb."
+     "rationale": "Elemental formulas are predigested, so they are easier to absorb."
     },
     {
      "text": "Standard (polymeric) formula",
@@ -10416,7 +10354,7 @@
    "category": "Feeding Tubes",
    "type": "cloze",
    "prompt": "A nurse is reviewing enteral formulas.",
-   "sentence": "A {1} formula supplies whole nutrients at 1 to 2 kcal/mL, while a {2} formula supplies a single macronutrient as a supplement.",
+   "sentence": "A {1} formula supplies whole nutrients, while a {2} formula supplies a single macronutrient as a supplement.",
    "options": [
     {
      "text": "standard (polymeric)",
@@ -10439,7 +10377,7 @@
     {
      "text": "modular",
      "correct": true,
-     "rationale": "Modular formulas (3.8 to 4 kcal/mL) add one nutrient such as protein.",
+     "rationale": "Modular formulas add one nutrient, such as protein.",
      "blank": 2
     },
     {
@@ -10607,24 +10545,19 @@
    "prompt": "A client with hypokalemia asks which foods to add. Which are high in potassium? Select all that apply.",
    "options": [
     {
+     "text": "Eggs",
+     "correct": false,
+     "rationale": "Eggs are low in potassium."
+    },
+    {
      "text": "Baked potato",
      "correct": true,
      "rationale": "A baked potato is high in potassium."
     },
     {
-     "text": "Banana",
-     "correct": true,
-     "rationale": "Bananas are high in potassium."
-    },
-    {
-     "text": "Spinach",
-     "correct": true,
-     "rationale": "Spinach is high in potassium."
-    },
-    {
-     "text": "Salmon",
-     "correct": true,
-     "rationale": "Salmon is high in potassium."
+     "text": "Cottage cheese",
+     "correct": false,
+     "rationale": "Cottage cheese is high in sodium, not potassium."
     },
     {
      "text": "White bread",
@@ -10632,9 +10565,14 @@
      "rationale": "White bread is low in potassium."
     },
     {
-     "text": "Eggs",
+     "text": "Strawberries",
      "correct": false,
-     "rationale": "Eggs are low in potassium."
+     "rationale": "Strawberries are a lower-potassium fruit."
+    },
+    {
+     "text": "Banana",
+     "correct": true,
+     "rationale": "Bananas are high in potassium."
     }
    ]
   },
@@ -10694,9 +10632,9 @@
      "rationale": "Frozen pizza is high in sodium."
     },
     {
-     "text": "Hot dogs and lunch meat",
-     "correct": true,
-     "rationale": "Processed meats are high in sodium."
+     "text": "Fresh shrimp",
+     "correct": false,
+     "rationale": "Fresh shrimp is the lower-sodium swap for frozen shrimp, which is high in sodium."
     },
     {
      "text": "Fresh fruit",
@@ -10730,9 +10668,9 @@
      "rationale": "Fortified juice provides calcium."
     },
     {
-     "text": "Cheese",
-     "correct": true,
-     "rationale": "Cheese is high in calcium."
+     "text": "Apples",
+     "correct": false,
+     "rationale": "Apples aren't a significant calcium source."
     },
     {
      "text": "White rice",
@@ -10766,9 +10704,9 @@
      "rationale": "Legumes are high in magnesium."
     },
     {
-     "text": "Cashews",
-     "correct": true,
-     "rationale": "Nuts are high in magnesium."
+     "text": "Egg whites",
+     "correct": false,
+     "rationale": "Egg whites are a protein source but are low in magnesium."
     },
     {
      "text": "Butter",
@@ -10835,29 +10773,29 @@
    "prompt": "Which are healthy sources of carbohydrates? Select all that apply.",
    "options": [
     {
-     "text": "Whole-grain bread",
-     "correct": true,
-     "rationale": "Whole grains are healthy carbs with fiber."
-    },
-    {
-     "text": "Brown rice",
-     "correct": true,
-     "rationale": "Brown rice is a whole grain."
-    },
-    {
-     "text": "Baked potato",
-     "correct": true,
-     "rationale": "Potatoes are a healthy plant carb source."
-    },
-    {
      "text": "Sugar-sweetened soda",
      "correct": false,
      "rationale": "Soda is added sugar with empty calories."
     },
     {
+     "text": "Potato chips",
+     "correct": false,
+     "rationale": "Chips are processed foods with empty calories."
+    },
+    {
+     "text": "Whole-grain bread",
+     "correct": true,
+     "rationale": "Whole grains are healthy carbs with fiber."
+    },
+    {
      "text": "Cookies",
      "correct": false,
      "rationale": "Cookies are processed foods with empty calories."
+    },
+    {
+     "text": "Brown rice",
+     "correct": true,
+     "rationale": "Brown rice is a whole grain."
     }
    ]
   },
@@ -10965,78 +10903,6 @@
    ]
   },
   {
-   "id": "nur114-u4-nutrition-053",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "sata",
-   "prompt": "Which foods are good sources of vitamin C? Select all that apply.",
-   "options": [
-    {
-     "text": "Citrus fruits",
-     "correct": true,
-     "rationale": "Oranges and other citrus are high in vitamin C."
-    },
-    {
-     "text": "Strawberries",
-     "correct": true,
-     "rationale": "Berries are good vitamin C sources."
-    },
-    {
-     "text": "Tomatoes",
-     "correct": true,
-     "rationale": "Tomatoes provide vitamin C."
-    },
-    {
-     "text": "Brussels sprouts",
-     "correct": true,
-     "rationale": "Brussels sprouts are high in vitamin C."
-    },
-    {
-     "text": "Butter",
-     "correct": false,
-     "rationale": "Butter isn't a vitamin C source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-nutrition-054",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "sata",
-   "prompt": "Which foods are high in iron? Select all that apply.",
-   "options": [
-    {
-     "text": "Red meat",
-     "correct": true,
-     "rationale": "Red meat is high in iron."
-    },
-    {
-     "text": "Organ meats such as liver",
-     "correct": true,
-     "rationale": "Organ meats are very high in iron."
-    },
-    {
-     "text": "Leafy green vegetables",
-     "correct": true,
-     "rationale": "Leafy greens provide iron."
-    },
-    {
-     "text": "Iron-fortified cereal",
-     "correct": true,
-     "rationale": "Fortified foods provide iron."
-    },
-    {
-     "text": "Cucumber",
-     "correct": false,
-     "rationale": "Cucumbers aren't a good iron source."
-    }
-   ]
-  },
-  {
    "id": "nur114-u4-nutrition-055",
    "course": "NUR 114",
    "unit": 4,
@@ -11079,37 +10945,37 @@
    "topic": "Food Sources",
    "category": "Special Situations",
    "type": "sata",
-   "prompt": "A client has hypoglycemia (blood glucose 62 mg/dL) and is alert. Which items give about 15 g of fast-acting carbohydrate? Select all that apply.",
+   "prompt": "A client's blood glucose is 62 mg/dL and the client is alert. Which items can the nurse give to raise the client's blood glucose quickly? Select all that apply.",
    "options": [
     {
-     "text": "4 oz of fruit juice",
+     "text": "Fruit juice",
      "correct": true,
-     "rationale": "4 oz of juice is about 15 g of carbohydrate."
+     "rationale": "Juice is mostly sugar, so it raises blood glucose quickly."
     },
     {
-     "text": "4 oz of regular soda",
+     "text": "Regular soda",
      "correct": true,
-     "rationale": "Regular (not diet) soda works."
+     "rationale": "Regular (not diet) soda has sugar that raises blood glucose quickly."
     },
     {
-     "text": "1 tablespoon of honey",
+     "text": "Honey",
      "correct": true,
-     "rationale": "One tablespoon of honey provides about 15 g."
+     "rationale": "Honey is sugar and raises blood glucose quickly."
     },
     {
      "text": "Glucose tablets",
      "correct": true,
-     "rationale": "Glucose tablets are a standard treatment."
+     "rationale": "Glucose tablets are pure sugar made to treat low blood glucose."
     },
     {
-     "text": "4 oz of diet soda",
+     "text": "Diet soda",
      "correct": false,
-     "rationale": "Diet soda has no sugar."
+     "rationale": "Diet soda has no sugar, so it won't raise blood glucose."
     },
     {
      "text": "A slice of cheese",
      "correct": false,
-     "rationale": "Cheese is protein and fat, not fast-acting carbohydrate."
+     "rationale": "Cheese is protein and fat, which raise blood glucose slowly, if at all."
     }
    ]
   },
@@ -11210,9 +11076,9 @@
      "rationale": "Bran and granola are high in phosphorus."
     },
     {
-     "text": "Beer",
-     "correct": true,
-     "rationale": "Beer should be avoided."
+     "text": "Clear lemon-lime soda",
+     "correct": false,
+     "rationale": "Clear sodas are low in phosphorus and are the preferred choice over colas."
     },
     {
      "text": "White bread",
@@ -11249,6 +11115,224 @@
      "text": "Add a salt substitute for flavor",
      "correct": false,
      "rationale": "Salt substitutes contain potassium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-088",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Vitamins, Minerals & Water",
+   "type": "mc",
+   "prompt": "Which vitamin supports vision and keeps the skin and mucous membranes healthy?",
+   "options": [
+    {
+     "text": "Vitamin A",
+     "correct": true,
+     "rationale": "Vitamin A affects vision, the skin and mucous membranes, and immune function."
+    },
+    {
+     "text": "Vitamin K",
+     "correct": false,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting."
+    },
+    {
+     "text": "Vitamin D",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium."
+    },
+    {
+     "text": "Vitamin B",
+     "correct": false,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-089",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Vitamins, Minerals & Water",
+   "type": "sata",
+   "prompt": "Which are functions of the B vitamins? Select all that apply.",
+   "options": [
+    {
+     "text": "Energy",
+     "correct": true,
+     "rationale": "B vitamins help the body get energy from food."
+    },
+    {
+     "text": "Brain function",
+     "correct": true,
+     "rationale": "B vitamins support brain and nerve function."
+    },
+    {
+     "text": "Cell metabolism",
+     "correct": true,
+     "rationale": "B vitamins are needed for cell metabolism."
+    },
+    {
+     "text": "Blood clotting",
+     "correct": false,
+     "rationale": "Blood clotting depends on vitamin K."
+    },
+    {
+     "text": "Calcium absorption",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-090",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Vitamins, Minerals & Water",
+   "type": "mc",
+   "prompt": "Which vitamin is an antioxidant that protects vitamin A and helps the body fight infection?",
+   "options": [
+    {
+     "text": "Vitamin E",
+     "correct": true,
+     "rationale": "Vitamin E is an antioxidant that protects vitamin A and helps fight infection."
+    },
+    {
+     "text": "Vitamin K",
+     "correct": false,
+     "rationale": "Vitamin K is needed for blood clotting."
+    },
+    {
+     "text": "Vitamin D",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium."
+    },
+    {
+     "text": "Vitamin B",
+     "correct": false,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-091",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Vitamins, Minerals & Water",
+   "type": "cloze",
+   "prompt": "A nurse is teaching a client what vitamins do for the body.",
+   "sentence": "Vitamin {1} helps the blood clot. Vitamin {2} helps the body absorb calcium. Vitamin {3} is needed to make collagen for healing wounds. Vitamin {4} supports vision and the skin and mucous membranes. Vitamin {5} helps with energy, brain function and cell metabolism. Vitamin {6} is an antioxidant that protects vitamin A.",
+   "options": [
+    {
+     "text": "K",
+     "correct": true,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
+     "blank": 1
+    },
+    {
+     "text": "A",
+     "correct": false,
+     "rationale": "Vitamin A supports vision, the skin and mucous membranes, and immune function.",
+     "blank": 1
+    },
+    {
+     "text": "E",
+     "correct": false,
+     "rationale": "Vitamin E is an antioxidant that protects vitamin A and helps fight infection.",
+     "blank": 1
+    },
+    {
+     "text": "D",
+     "correct": true,
+     "rationale": "Vitamin D helps the body absorb calcium.",
+     "blank": 2
+    },
+    {
+     "text": "B",
+     "correct": false,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism.",
+     "blank": 2
+    },
+    {
+     "text": "K",
+     "correct": false,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
+     "blank": 2
+    },
+    {
+     "text": "C",
+     "correct": true,
+     "rationale": "Vitamin C is needed to make collagen and helps the body absorb iron.",
+     "blank": 3
+    },
+    {
+     "text": "D",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium.",
+     "blank": 3
+    },
+    {
+     "text": "E",
+     "correct": false,
+     "rationale": "Vitamin E is an antioxidant that protects vitamin A and helps fight infection.",
+     "blank": 3
+    },
+    {
+     "text": "A",
+     "correct": true,
+     "rationale": "Vitamin A supports vision, the skin and mucous membranes, and immune function.",
+     "blank": 4
+    },
+    {
+     "text": "K",
+     "correct": false,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
+     "blank": 4
+    },
+    {
+     "text": "B",
+     "correct": false,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism.",
+     "blank": 4
+    },
+    {
+     "text": "B",
+     "correct": true,
+     "rationale": "B vitamins help with energy, brain function and cell metabolism.",
+     "blank": 5
+    },
+    {
+     "text": "C",
+     "correct": false,
+     "rationale": "Vitamin C is needed to make collagen and helps the body absorb iron.",
+     "blank": 5
+    },
+    {
+     "text": "D",
+     "correct": false,
+     "rationale": "Vitamin D helps the body absorb calcium.",
+     "blank": 5
+    },
+    {
+     "text": "E",
+     "correct": true,
+     "rationale": "Vitamin E is an antioxidant that protects vitamin A and helps fight infection.",
+     "blank": 6
+    },
+    {
+     "text": "A",
+     "correct": false,
+     "rationale": "Vitamin A supports vision, the skin and mucous membranes, and immune function.",
+     "blank": 6
+    },
+    {
+     "text": "K",
+     "correct": false,
+     "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
+     "blank": 6
     }
    ]
   },
@@ -11602,197 +11686,6 @@
    ]
   },
   {
-   "id": "nur114-u4-food-sources-011",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "mc",
-   "prompt": "Which food is a good source of vitamin D?",
-   "options": [
-    {
-     "text": "Milk",
-     "correct": true,
-     "rationale": "Milk, eggs, fish oil and dairy provide vitamin D, along with sunlight."
-    },
-    {
-     "text": "Orange juice that isn't fortified",
-     "correct": false,
-     "rationale": "Plain orange juice provides vitamin C, not D."
-    },
-    {
-     "text": "Lettuce",
-     "correct": false,
-     "rationale": "Lettuce isn't a vitamin D source."
-    },
-    {
-     "text": "White rice",
-     "correct": false,
-     "rationale": "Rice isn't a vitamin D source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-food-sources-012",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "mc",
-   "prompt": "Which is a nonfood source of vitamin D?",
-   "options": [
-    {
-     "text": "Sunlight",
-     "correct": true,
-     "rationale": "The skin makes vitamin D with sun exposure."
-    },
-    {
-     "text": "Drinking water",
-     "correct": false,
-     "rationale": "Water doesn't provide vitamin D."
-    },
-    {
-     "text": "Exercise",
-     "correct": false,
-     "rationale": "Exercise doesn't create vitamin D."
-    },
-    {
-     "text": "Sleep",
-     "correct": false,
-     "rationale": "Sleep doesn't provide vitamin D."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-food-sources-013",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "sata",
-   "prompt": "Which foods are good sources of folate? Select all that apply.",
-   "options": [
-    {
-     "text": "Leafy green vegetables",
-     "correct": true,
-     "rationale": "Leafy greens are rich in folate."
-    },
-    {
-     "text": "Orange juice",
-     "correct": true,
-     "rationale": "Orange juice provides folate."
-    },
-    {
-     "text": "Beans",
-     "correct": true,
-     "rationale": "Beans are a folate source."
-    },
-    {
-     "text": "Eggs",
-     "correct": true,
-     "rationale": "Eggs provide folate."
-    },
-    {
-     "text": "Butter",
-     "correct": false,
-     "rationale": "Butter isn't a folate source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-food-sources-014",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "mc",
-   "prompt": "Which food provides vitamin B12?",
-   "options": [
-    {
-     "text": "Beef",
-     "correct": true,
-     "rationale": "B12 comes from animal foods like beef, clams, salmon, milk and yogurt."
-    },
-    {
-     "text": "Spinach",
-     "correct": false,
-     "rationale": "Plant foods don't naturally provide B12."
-    },
-    {
-     "text": "Apples",
-     "correct": false,
-     "rationale": "Fruit isn't a B12 source."
-    },
-    {
-     "text": "White rice",
-     "correct": false,
-     "rationale": "Rice isn't a B12 source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-food-sources-015",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "mc",
-   "prompt": "Which foods are sources of vitamin A?",
-   "options": [
-    {
-     "text": "Sweet potatoes and green leafy vegetables",
-     "correct": true,
-     "rationale": "Vitamin A comes from sweet potatoes, leafy greens, liver, fish liver oil and dairy."
-    },
-    {
-     "text": "Citrus fruits",
-     "correct": false,
-     "rationale": "Citrus is known for vitamin C."
-    },
-    {
-     "text": "White bread",
-     "correct": false,
-     "rationale": "White bread isn't a vitamin A source."
-    },
-    {
-     "text": "Black coffee",
-     "correct": false,
-     "rationale": "Coffee isn't a vitamin A source."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-food-sources-016",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "mc",
-   "prompt": "Which food is a source of vitamin E?",
-   "options": [
-    {
-     "text": "Almonds",
-     "correct": true,
-     "rationale": "Almonds, wheat germ, sunflower seeds and spinach provide vitamin E."
-    },
-    {
-     "text": "Skim milk",
-     "correct": false,
-     "rationale": "Skim milk isn't a vitamin E source."
-    },
-    {
-     "text": "Chicken broth",
-     "correct": false,
-     "rationale": "Broth isn't a vitamin E source."
-    },
-    {
-     "text": "Gelatin",
-     "correct": false,
-     "rationale": "Gelatin isn't a vitamin E source."
-    }
-   ]
-  },
-  {
    "id": "nur114-u4-food-sources-017",
    "course": "NUR 114",
    "unit": 4,
@@ -11825,42 +11718,6 @@
      "correct": false,
      "rationale": "A sudden increase would lower warfarin's effect.",
      "blank": 2
-    }
-   ]
-  },
-  {
-   "id": "nur114-u4-food-sources-018",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Food Sources",
-   "category": "Vitamin & Mineral Foods",
-   "type": "sata",
-   "prompt": "Which are sources of iodine? Select all that apply.",
-   "options": [
-    {
-     "text": "Seafood",
-     "correct": true,
-     "rationale": "Seafood provides iodine."
-    },
-    {
-     "text": "Iodized salt",
-     "correct": true,
-     "rationale": "Salt is fortified with iodine."
-    },
-    {
-     "text": "Dairy products",
-     "correct": true,
-     "rationale": "Dairy provides iodine."
-    },
-    {
-     "text": "Apples",
-     "correct": false,
-     "rationale": "Apples aren't an iodine source."
-    },
-    {
-     "text": "Rice",
-     "correct": false,
-     "rationale": "Rice isn't an iodine source."
     }
    ]
   },
@@ -11910,29 +11767,29 @@
    "prompt": "Which foods are low-glycemic? Select all that apply.",
    "options": [
     {
-     "text": "Lentils",
-     "correct": true,
-     "rationale": "Legumes raise blood glucose slowly."
-    },
-    {
-     "text": "Broccoli",
-     "correct": true,
-     "rationale": "Vegetables are low-glycemic."
-    },
-    {
-     "text": "Whole grains",
-     "correct": true,
-     "rationale": "Whole grains raise glucose slowly."
-    },
-    {
      "text": "White bread",
      "correct": false,
      "rationale": "White bread spikes glucose."
     },
     {
-     "text": "Potato chips",
+     "text": "Lentils",
+     "correct": true,
+     "rationale": "Legumes raise blood glucose slowly."
+    },
+    {
+     "text": "Watermelon",
      "correct": false,
-     "rationale": "Processed snacks spike glucose."
+     "rationale": "Watermelon has a high glycemic index."
+    },
+    {
+     "text": "Potatoes",
+     "correct": false,
+     "rationale": "Potatoes have a high glycemic index."
+    },
+    {
+     "text": "Broccoli",
+     "correct": true,
+     "rationale": "Vegetables are low-glycemic."
     }
    ]
   },
@@ -12076,9 +11933,9 @@
      "rationale": "Pureed meat provides protein without chewing."
     },
     {
-     "text": "Yogurt",
-     "correct": true,
-     "rationale": "Smooth and needs no chewing."
+     "text": "Diced cooked carrots",
+     "correct": false,
+     "rationale": "Diced foods fit a mechanical soft diet; a pureed diet must be smooth."
     },
     {
      "text": "Grilled chicken strips",
@@ -12305,7 +12162,7 @@
    "prompt": "A client's blood glucose is 58 mg/dL and they are alert. Place the nurse's actions in order.",
    "options": [
     {
-     "text": "Give 15 g of fast carbohydrate, such as 4 oz of juice",
+     "text": "Give something with sugar, such as juice",
      "rationale": "Raise the glucose first."
     },
     {
@@ -12313,7 +12170,7 @@
      "rationale": "Check whether it's back to at least 70 mg/dL."
     },
     {
-     "text": "Repeat 15 g if glucose is still below 70 mg/dL",
+     "text": "Give more sugar if glucose is still below 70 mg/dL",
      "rationale": "Repeat until it's at least 70."
     },
     {
@@ -12419,9 +12276,9 @@
      "rationale": "Juice can be thickened."
     },
     {
-     "text": "Nutritional supplements",
-     "correct": true,
-     "rationale": "Supplements can be thickened."
+     "text": "Gelatin",
+     "correct": false,
+     "rationale": "Gelatin melts into a thin liquid in the mouth, so it's treated as a thin liquid on a dysphagia diet."
     },
     {
      "text": "Ice chips",
@@ -12840,34 +12697,34 @@
    "prompt": "A nurse is teaching an older adult client about age-related changes that raise the risk of constipation. Which should the nurse include? Select all that apply.",
    "options": [
     {
-     "text": "Slower peristalsis",
-     "correct": true,
-     "rationale": "Peristalsis slows with age, so stool moves through more slowly."
-    },
-    {
-     "text": "Decreased bowel muscle tone",
-     "correct": true,
-     "rationale": "Weaker bowel muscle tone makes evacuation harder."
-    },
-    {
-     "text": "Lower fluid and fiber intake",
-     "correct": true,
-     "rationale": "Older adults often eat less fiber and drink less fluid."
-    },
-    {
-     "text": "Less physical activity",
-     "correct": true,
-     "rationale": "Inactivity slows bowel activity."
-    },
-    {
      "text": "Faster stomach emptying",
      "correct": false,
      "rationale": "Stomach emptying slows with age; it doesn't speed up."
     },
     {
+     "text": "Slower peristalsis",
+     "correct": true,
+     "rationale": "Peristalsis slows with age, so stool moves through more slowly."
+    },
+    {
+     "text": "Higher fiber intake than younger adults",
+     "correct": false,
+     "rationale": "Older adults often eat less fiber and drink less fluid, which adds to constipation."
+    },
+    {
+     "text": "Tighter anal sphincters",
+     "correct": false,
+     "rationale": "The sphincters relax with age; they don't tighten."
+    },
+    {
      "text": "More lactase in the small intestine",
      "correct": false,
      "rationale": "Lactase decreases with age, which can lead to lactose intolerance."
+    },
+    {
+     "text": "Decreased bowel muscle tone",
+     "correct": true,
+     "rationale": "Weaker bowel muscle tone makes evacuation harder."
     }
    ]
   },
@@ -13456,14 +13313,9 @@
    "prompt": "A client has had watery diarrhea for 3 days. Which findings should the nurse expect? Select all that apply.",
    "options": [
     {
-     "text": "Hypotension",
-     "correct": true,
-     "rationale": "Fluid loss lowers blood volume and blood pressure."
-    },
-    {
-     "text": "Elevated temperature",
-     "correct": true,
-     "rationale": "Dehydration can raise body temperature."
+     "text": "Hyperkalemia",
+     "correct": false,
+     "rationale": "Diarrhea causes potassium loss, so hypokalemia is expected."
     },
     {
      "text": "Poor skin turgor",
@@ -13471,19 +13323,24 @@
      "rationale": "Tented skin is a classic sign of dehydration."
     },
     {
-     "text": "Rapid, weak pulse",
-     "correct": true,
-     "rationale": "The heart speeds up to make up for low blood volume."
-    },
-    {
      "text": "Bradycardia",
      "correct": false,
      "rationale": "Dehydration causes tachycardia, not bradycardia."
     },
     {
+     "text": "Urine specific gravity of 1.003",
+     "correct": false,
+     "rationale": "Dehydration makes urine concentrated, with a specific gravity of 1.030 or higher."
+    },
+    {
      "text": "Peripheral edema",
      "correct": false,
      "rationale": "Edema is a sign of fluid excess, not loss."
+    },
+    {
+     "text": "Rapid, weak pulse",
+     "correct": true,
+     "rationale": "The heart speeds up to make up for low blood volume."
     }
    ]
   },
@@ -15660,24 +15517,14 @@
    "prompt": "A nurse is assessing clients with bowel diversions. Which findings should the nurse report to the provider? Select all that apply.",
    "options": [
     {
+     "text": "A slightly swollen stoma in the first week after surgery",
+     "correct": false,
+     "rationale": "New stomas are swollen and shrink over the following weeks."
+    },
+    {
      "text": "A dusky or cyanotic stoma",
      "correct": true,
      "rationale": "This suggests poor blood flow and risk of necrosis."
-    },
-    {
-     "text": "A brown or black stoma",
-     "correct": true,
-     "rationale": "Brown or black stoma tissue can mean necrosis."
-    },
-    {
-     "text": "New abdominal distention and cramping with no ostomy output",
-     "correct": true,
-     "rationale": "This can mean an obstruction or stoma blockage."
-    },
-    {
-     "text": "A separation of the stoma from the skin",
-     "correct": true,
-     "rationale": "Mucocutaneous separation needs follow-up."
     },
     {
      "text": "A pink, moist stoma with intact skin around it",
@@ -15685,9 +15532,19 @@
      "rationale": "This is expected."
     },
     {
+     "text": "Liquid, dark green output from an ileostomy",
+     "correct": false,
+     "rationale": "This is typical ileostomy output."
+    },
+    {
      "text": "Bowel sounds after meals",
      "correct": false,
      "rationale": "Bowel sounds are expected."
+    },
+    {
+     "text": "New abdominal distention and cramping with no ostomy output",
+     "correct": true,
+     "rationale": "This can mean an obstruction or stoma blockage."
     }
    ]
   },
@@ -16651,9 +16508,9 @@
    "prompt": "How should the nurse measure the length of an NG tube before insertion?",
    "options": [
     {
-     "text": "Tip of the nose to the earlobe, then to the xiphoid process",
+     "text": "Tip of the nose to the earlobe to the xiphoid process, then add 10 cm",
      "correct": true,
-     "rationale": "This measurement approximates the distance to the stomach."
+     "rationale": "This measurement approximates the distance into the stomach."
     },
     {
      "text": "Tip of the nose to the umbilicus",
@@ -17761,34 +17618,34 @@
    "prompt": "Which can cause urinary retention? Select all that apply.",
    "options": [
     {
-     "text": "Anticholinergic medications",
-     "correct": true,
-     "rationale": "Anticholinergics relax the bladder muscle and cause retention."
-    },
-    {
-     "text": "Antihistamines",
-     "correct": true,
-     "rationale": "Antihistamines can cause retention."
-    },
-    {
-     "text": "Opioids",
-     "correct": true,
-     "rationale": "Opioids impair bladder emptying."
-    },
-    {
-     "text": "An enlarged prostate",
-     "correct": true,
-     "rationale": "BPH (benign prostatic hyperplasia) can block the bladder outlet."
-    },
-    {
      "text": "Loop diuretics",
      "correct": false,
      "rationale": "Diuretics increase urine output."
     },
     {
+     "text": "Anticholinergic medications",
+     "correct": true,
+     "rationale": "Anticholinergics relax the bladder muscle and cause retention."
+    },
+    {
+     "text": "Weak pelvic floor muscles after childbirth",
+     "correct": false,
+     "rationale": "A weak pelvic floor causes stress incontinence, not retention."
+    },
+    {
      "text": "Caffeine",
      "correct": false,
      "rationale": "Caffeine increases urination."
+    },
+    {
+     "text": "Thiazide diuretics",
+     "correct": false,
+     "rationale": "Thiazide diuretics increase urine output."
+    },
+    {
+     "text": "An enlarged prostate",
+     "correct": true,
+     "rationale": "BPH (benign prostatic hyperplasia) can block the bladder outlet."
     }
    ]
   },
@@ -18749,39 +18606,39 @@
    "prompt": "A nurse is teaching a client with recurrent UTIs (urinary tract infections). Which instructions should the nurse include? Select all that apply.",
    "options": [
     {
+     "text": "Take bubble baths to soothe the urethra",
+     "correct": false,
+     "rationale": "Bubble baths can irritate the urethra and should be avoided."
+    },
+    {
      "text": "Urinate after sexual intercourse",
      "correct": true,
      "rationale": "Voiding flushes bacteria out of the urethra."
     },
     {
-     "text": "Wipe the perineum from front to back",
-     "correct": true,
-     "rationale": "This keeps bacteria from the anus away from the urethra."
-    },
-    {
-     "text": "Avoid bubble baths",
-     "correct": true,
-     "rationale": "Bubble baths can irritate the urethra."
-    },
-    {
-     "text": "Wear cotton underwear",
-     "correct": true,
-     "rationale": "Cotton breathes and keeps the area drier."
-    },
-    {
-     "text": "Drink 2,000 to 3,000 mL of fluid a day unless restricted",
-     "correct": true,
-     "rationale": "Fluids flush bacteria from the urinary tract."
-    },
-    {
      "text": "Drink at least 1 L of fluid a day",
      "correct": false,
-     "rationale": "1 L isn't enough; aim for 2 to 3 L."
+     "rationale": "1 L isn't enough; aim for 2,000 to 3,000 mL a day unless restricted."
+    },
+    {
+     "text": "Wear tight-fitting pants to support the pelvic area",
+     "correct": false,
+     "rationale": "Tight pants trap moisture and heat; loose clothing is recommended."
     },
     {
      "text": "Wear nylon underwear",
      "correct": false,
-     "rationale": "Nylon traps moisture."
+     "rationale": "Nylon traps moisture; cotton underwear is recommended."
+    },
+    {
+     "text": "Stop the antibiotic once the symptoms go away",
+     "correct": false,
+     "rationale": "The client should finish all of the antibiotic."
+    },
+    {
+     "text": "Wipe the perineum from front to back",
+     "correct": true,
+     "rationale": "This keeps bacteria from the anus away from the urethra."
     }
    ]
   },
@@ -18857,29 +18714,29 @@
    "prompt": "Which manifestations are typical of a UTI? Select all that apply.",
    "options": [
     {
+     "text": "Hesitancy with a weak urine stream",
+     "correct": false,
+     "rationale": "Hesitancy and a weak stream point to urinary retention; a UTI causes urgency and frequency."
+    },
+    {
      "text": "Burning or painful urination",
      "correct": true,
      "rationale": "Dysuria is a classic sign."
     },
     {
-     "text": "Urgency and frequency with small volumes",
-     "correct": true,
-     "rationale": "Bladder irritation causes urgency and frequency."
+     "text": "Large volumes of clear urine",
+     "correct": false,
+     "rationale": "That's not typical of a UTI."
     },
     {
-     "text": "Suprapubic discomfort",
-     "correct": true,
-     "rationale": "Bladder inflammation causes discomfort above the pubic bone."
+     "text": "Orange-red urine after taking phenazopyridine",
+     "correct": false,
+     "rationale": "Phenazopyridine colors the urine orange-red; the color comes from the drug, not the infection."
     },
     {
      "text": "Cloudy, foul-smelling urine",
      "correct": true,
      "rationale": "Bacteria and WBCs (white blood cells) change the urine."
-    },
-    {
-     "text": "Large volumes of clear urine",
-     "correct": false,
-     "rationale": "That's not typical of a UTI."
     },
     {
      "text": "Bradycardia",
@@ -19094,29 +18951,29 @@
    "prompt": "Which are major risk factors for chronic kidney disease? Select all that apply.",
    "options": [
     {
+     "text": "Asthma",
+     "correct": false,
+     "rationale": "Asthma isn't a major risk factor for CKD (chronic kidney disease)."
+    },
+    {
      "text": "Diabetes mellitus",
      "correct": true,
      "rationale": "Diabetes is a leading cause of CKD."
     },
     {
-     "text": "Hypertension",
-     "correct": true,
-     "rationale": "High blood pressure damages the kidneys."
-    },
-    {
-     "text": "Heart failure",
-     "correct": true,
-     "rationale": "Heart disease raises CKD risk."
-    },
-    {
-     "text": "Family history of CKD",
-     "correct": true,
-     "rationale": "Family history raises risk."
-    },
-    {
      "text": "Regular exercise",
      "correct": false,
      "rationale": "Exercise is protective."
+    },
+    {
+     "text": "Never having smoked",
+     "correct": false,
+     "rationale": "Smoking is a risk factor; never smoking lowers risk."
+    },
+    {
+     "text": "Hypertension",
+     "correct": true,
+     "rationale": "High blood pressure damages the kidneys."
     },
     {
      "text": "Low-sodium diet",
@@ -19669,39 +19526,39 @@
    "prompt": "A nurse is caring for a client with an indwelling urinary catheter. Which actions reduce the risk of CAUTI (catheter-associated urinary tract infection)? Select all that apply.",
    "options": [
     {
+     "text": "Empty the bag when it is three-quarters full",
+     "correct": false,
+     "rationale": "That's too full; empty it before it is half full."
+    },
+    {
      "text": "Keep the drainage bag below the level of the bladder",
      "correct": true,
      "rationale": "This prevents urine from flowing back into the bladder."
     },
     {
-     "text": "Assess daily whether the catheter is still needed",
-     "correct": true,
-     "rationale": "The sooner it comes out, the lower the risk."
-    },
-    {
-     "text": "Keep the drainage system closed",
-     "correct": true,
-     "rationale": "Opening the system lets bacteria in."
-    },
-    {
-     "text": "Empty the bag before it is half full",
-     "correct": true,
-     "rationale": "An overfull bag can leak or reflux."
-    },
-    {
-     "text": "Give perineal care routinely and after soiling",
-     "correct": true,
-     "rationale": "Hygiene reduces bacteria near the catheter."
-    },
-    {
-     "text": "Empty the bag when it is three-quarters full",
+     "text": "Change the catheter on a routine schedule",
      "correct": false,
-     "rationale": "That's too full."
+     "rationale": "Routine catheter changes raise the risk of CAUTI."
+    },
+    {
+     "text": "Clean the meatus with an alcohol-based antiseptic",
+     "correct": false,
+     "rationale": "Catheter care uses soap and water, not antiseptics or alcohol."
+    },
+    {
+     "text": "Irrigate the catheter daily to keep it flowing",
+     "correct": false,
+     "rationale": "Irrigation opens the system and raises the risk of CAUTI."
     },
     {
      "text": "Rest the bag on the floor when the client sits in a chair",
      "correct": false,
      "rationale": "The floor contaminates the bag."
+    },
+    {
+     "text": "Keep the drainage system closed",
+     "correct": true,
+     "rationale": "Opening the system lets bacteria in."
     }
    ]
   },
@@ -24217,24 +24074,24 @@
    "calc": true,
    "options": [
     {
+     "text": "Give 3 tablets now and 3 tablets later so they are easier to swallow",
+     "correct": false,
+     "rationale": "Splitting the dose changes the prescribed schedule and doesn't fix a possible calculation error."
+    },
+    {
      "text": "Recheck the calculation",
      "correct": true,
      "rationale": "An unusual number of tablets is a red flag for a math or conversion error."
     },
     {
-     "text": "Verify the units in the prescription and on the label",
-     "correct": true,
-     "rationale": "Mismatched units (mg vs mcg) are a common cause of errors."
-    },
-    {
-     "text": "Ask another nurse or the pharmacist to double-check if unsure",
-     "correct": true,
-     "rationale": "A second check catches errors."
-    },
-    {
      "text": "Give the 6 tablets without checking",
      "correct": false,
      "rationale": "Unusual amounts should always be verified."
+    },
+    {
+     "text": "Verify the units in the prescription and on the label",
+     "correct": true,
+     "rationale": "Mismatched units (mg vs mcg) are a common cause of errors."
     },
     {
      "text": "Round down to 1 tablet",
