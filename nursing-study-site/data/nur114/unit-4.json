@@ -9209,37 +9209,6 @@
    ]
   },
   {
-   "id": "nur114-u4-enteral-parenteral-026",
-   "course": "NUR 114",
-   "unit": 4,
-   "topic": "Enteral & Parenteral Nutrition",
-   "category": "Giving Feedings",
-   "type": "mc",
-   "prompt": "A client receiving tube feedings has loose stools. What should the nurse do first?",
-   "options": [
-    {
-     "text": "Confirm it is true diarrhea before acting",
-     "correct": true,
-     "rationale": "Check that it's actually diarrhea, then talk to the provider about rate or formula changes."
-    },
-    {
-     "text": "Stop the feeding permanently",
-     "correct": false,
-     "rationale": "Stopping permanently isn't the first step."
-    },
-    {
-     "text": "Double the feeding rate",
-     "correct": false,
-     "rationale": "Faster feeding can worsen diarrhea."
-    },
-    {
-     "text": "Give an antidiarrheal without an order",
-     "correct": false,
-     "rationale": "Medications require a prescription."
-    }
-   ]
-  },
-  {
    "id": "nur114-u4-enteral-parenteral-027",
    "course": "NUR 114",
    "unit": 4,
