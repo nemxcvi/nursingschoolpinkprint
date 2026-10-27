@@ -204,7 +204,7 @@
    "topic": "Pharmacology Principles",
    "category": "Names & Categories",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing medication name pairs. Match each brand name to its generic name. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing medication name pairs. Match each brand name to its generic name. Move each answer that belongs into its box. Not every answer will be used.",
    "leftLabel": "Brand names",
    "buckets": [
     "acetaminophen",
@@ -5254,7 +5254,7 @@
    "topic": "Medication Administration",
    "category": "Dispensing & Labels",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing the medication label shown. Sort each item into the right box. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing the medication label shown. Sort the items into the right boxes. Move each answer that belongs into its box. Not every answer will be used.",
    "leftLabel": "Label items",
    "buckets": [
     "Brand name",
@@ -9290,9 +9290,15 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Desired over have: 30 mg ÷ 15 mg × 1 tablet = 2"
-   ],
-   "summary": "Makes sense: each tablet has 15 mg, and the order is 30 mg."
+    {
+     "setups": {
+      "rp": "[[15 mg|1 tablet]] = [[30 mg|X]]  →  15X = 30  →  X = 2",
+      "dh": "[[30 mg|15 mg]] × 1 tablet = 2",
+      "da": "X tablets = [[1 tablet|15 mg]] × [[30 mg|1]] = 2"
+     }
+    },
+    "Makes sense: each tablet has 15 mg, and the order is 30 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-002",
@@ -9308,9 +9314,15 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Desired over have: 50 mg ÷ 25 mg × 1 tablet = 2"
-   ],
-   "summary": "Makes sense: each tablet has 25 mg, and the order is 50 mg."
+    {
+     "setups": {
+      "rp": "[[25 mg|1 tablet]] = [[50 mg|X]]  →  25X = 50  →  X = 2",
+      "dh": "[[50 mg|25 mg]] × 1 tablet = 2",
+      "da": "X tablets = [[1 tablet|25 mg]] × [[50 mg|1]] = 2"
+     }
+    },
+    "Makes sense: each tablet has 25 mg, and the order is 50 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-003",
@@ -9327,9 +9339,15 @@
    "exact": 2.0,
    "steps": [
     "Convert mg to mcg (bigger to smaller, multiply): 0.1 mg × 1,000 = 100 mcg",
-    "Desired over have: 100 mcg ÷ 50 mcg × 1 tablet = 2"
-   ],
-   "summary": "Makes sense: each tablet has 50 mcg, and the order is 100 mcg."
+    {
+     "setups": {
+      "rp": "[[50 mcg|1 tablet]] = [[100 mcg|X]]  →  50X = 100  →  X = 2",
+      "dh": "[[100 mcg|50 mcg]] × 1 tablet = 2",
+      "da": "X tablets = [[1 tablet|50 mcg]] × [[1,000 mcg|1 mg]] × [[0.1 mg|1]] = 2"
+     }
+    },
+    "Makes sense: each tablet has 50 mcg, and the order is 100 mcg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-004",
@@ -9345,9 +9363,15 @@
    "round": "tenth",
    "exact": 1.5,
    "steps": [
-    "Desired over have: 60 mg ÷ 40 mg × 1 tablet = 1.5"
-   ],
-   "summary": "Makes sense: each tablet has 40 mg, and the order is 60 mg."
+    {
+     "setups": {
+      "rp": "[[40 mg|1 tablet]] = [[60 mg|X]]  →  40X = 60  →  X = 1.5",
+      "dh": "[[60 mg|40 mg]] × 1 tablet = 1.5",
+      "da": "X tablets = [[1 tablet|40 mg]] × [[60 mg|1]] = 1.5"
+     }
+    },
+    "Makes sense: each tablet has 40 mg, and the order is 60 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-005",
@@ -9363,9 +9387,15 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Desired over have: 650 mg ÷ 325 mg × 1 tablet = 2"
-   ],
-   "summary": "Makes sense: each tablet has 325 mg, and the order is 650 mg."
+    {
+     "setups": {
+      "rp": "[[325 mg|1 tablet]] = [[650 mg|X]]  →  325X = 650  →  X = 2",
+      "dh": "[[650 mg|325 mg]] × 1 tablet = 2",
+      "da": "X tablets = [[1 tablet|325 mg]] × [[650 mg|1]] = 2"
+     }
+    },
+    "Makes sense: each tablet has 325 mg, and the order is 650 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-006",
@@ -9382,9 +9412,15 @@
    "exact": 2.0,
    "steps": [
     "Convert g to mg (bigger to smaller, multiply): 0.5 g × 1,000 = 500 mg",
-    "Desired over have: 500 mg ÷ 250 mg × 1 capsule = 2"
-   ],
-   "summary": "Makes sense: each capsule has 250 mg, and the order is 500 mg."
+    {
+     "setups": {
+      "rp": "[[250 mg|1 capsule]] = [[500 mg|X]]  →  250X = 500  →  X = 2",
+      "dh": "[[500 mg|250 mg]] × 1 capsule = 2",
+      "da": "X capsules = [[1 capsule|250 mg]] × [[1,000 mg|1 g]] × [[0.5 g|1]] = 2"
+     }
+    },
+    "Makes sense: each capsule has 250 mg, and the order is 500 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-007",
@@ -9401,9 +9437,15 @@
    "exact": 2.0,
    "steps": [
     "Convert mg to mcg (bigger to smaller, multiply): 0.25 mg × 1,000 = 250 mcg",
-    "Desired over have: 250 mcg ÷ 125 mcg × 1 tablet = 2"
-   ],
-   "summary": "Makes sense: each tablet has 125 mcg, and the order is 250 mcg."
+    {
+     "setups": {
+      "rp": "[[125 mcg|1 tablet]] = [[250 mcg|X]]  →  125X = 250  →  X = 2",
+      "dh": "[[250 mcg|125 mcg]] × 1 tablet = 2",
+      "da": "X tablets = [[1 tablet|125 mcg]] × [[1,000 mcg|1 mg]] × [[0.25 mg|1]] = 2"
+     }
+    },
+    "Makes sense: each tablet has 125 mcg, and the order is 250 mcg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-008",
@@ -9419,9 +9461,15 @@
    "round": "tenth",
    "exact": 1.5,
    "steps": [
-    "Desired over have: 7.5 mg ÷ 5 mg × 1 tablet = 1.5"
-   ],
-   "summary": "Makes sense: each tablet has 5 mg, and the order is 7.5 mg."
+    {
+     "setups": {
+      "rp": "[[5 mg|1 tablet]] = [[7.5 mg|X]]  →  5X = 7.5  →  X = 1.5",
+      "dh": "[[7.5 mg|5 mg]] × 1 tablet = 1.5",
+      "da": "X tablets = [[1 tablet|5 mg]] × [[7.5 mg|1]] = 1.5"
+     }
+    },
+    "Makes sense: each tablet has 5 mg, and the order is 7.5 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-009",
@@ -9437,9 +9485,15 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Desired over have: 2 mg ÷ 1 mg × 1 tablet = 2"
-   ],
-   "summary": "Makes sense: each tablet has 1 mg, and the order is 2 mg."
+    {
+     "setups": {
+      "rp": "[[1 mg|1 tablet]] = [[2 mg|X]]  →  1X = 2  →  X = 2",
+      "dh": "[[2 mg|1 mg]] × 1 tablet = 2",
+      "da": "X tablets = [[1 tablet|1 mg]] × [[2 mg|1]] = 2"
+     }
+    },
+    "Makes sense: each tablet has 1 mg, and the order is 2 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-010",
@@ -9455,9 +9509,15 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Desired over have: 4 mg ÷ 2 mg × 1 tablet = 2"
-   ],
-   "summary": "Makes sense: each tablet has 2 mg, and the order is 4 mg."
+    {
+     "setups": {
+      "rp": "[[2 mg|1 tablet]] = [[4 mg|X]]  →  2X = 4  →  X = 2",
+      "dh": "[[4 mg|2 mg]] × 1 tablet = 2",
+      "da": "X tablets = [[1 tablet|2 mg]] × [[4 mg|1]] = 2"
+     }
+    },
+    "Makes sense: each tablet has 2 mg, and the order is 4 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-011",
@@ -9474,9 +9534,15 @@
    "exact": 3.0,
    "steps": [
     "Convert g to mg (bigger to smaller, multiply): 0.3 g × 1,000 = 300 mg",
-    "Desired over have: 300 mg ÷ 100 mg × 1 capsule = 3"
-   ],
-   "summary": "Makes sense: each capsule has 100 mg, and the order is 300 mg."
+    {
+     "setups": {
+      "rp": "[[100 mg|1 capsule]] = [[300 mg|X]]  →  100X = 300  →  X = 3",
+      "dh": "[[300 mg|100 mg]] × 1 capsule = 3",
+      "da": "X capsules = [[1 capsule|100 mg]] × [[1,000 mg|1 g]] × [[0.3 g|1]] = 3"
+     }
+    },
+    "Makes sense: each capsule has 100 mg, and the order is 300 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-012",
@@ -9492,9 +9558,15 @@
    "round": "whole",
    "exact": 3.0,
    "steps": [
-    "Desired over have: 7.5 mg ÷ 2.5 mg × 1 tablet = 3"
-   ],
-   "summary": "Makes sense: each tablet has 2.5 mg, and the order is 7.5 mg."
+    {
+     "setups": {
+      "rp": "[[2.5 mg|1 tablet]] = [[7.5 mg|X]]  →  2.5X = 7.5  →  X = 3",
+      "dh": "[[7.5 mg|2.5 mg]] × 1 tablet = 3",
+      "da": "X tablets = [[1 tablet|2.5 mg]] × [[7.5 mg|1]] = 3"
+     }
+    },
+    "Makes sense: each tablet has 2.5 mg, and the order is 7.5 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-013",
@@ -9510,9 +9582,15 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Desired over have: 40 mEq ÷ 20 mEq × 1 tablet = 2"
-   ],
-   "summary": "Makes sense: each tablet has 20 mEq, and the order is 40 mEq."
+    {
+     "setups": {
+      "rp": "[[20 mEq|1 tablet]] = [[40 mEq|X]]  →  20X = 40  →  X = 2",
+      "dh": "[[40 mEq|20 mEq]] × 1 tablet = 2",
+      "da": "X tablets = [[1 tablet|20 mEq]] × [[40 mEq|1]] = 2"
+     }
+    },
+    "Makes sense: each tablet has 20 mEq, and the order is 40 mEq."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-014",
@@ -9529,9 +9607,15 @@
    "exact": 2.0,
    "steps": [
     "Convert g to mg (bigger to smaller, multiply): 1 g × 1,000 = 1,000 mg",
-    "Desired over have: 1,000 mg ÷ 500 mg × 1 capsule = 2"
-   ],
-   "summary": "Makes sense: each capsule has 500 mg, and the order is 1,000 mg."
+    {
+     "setups": {
+      "rp": "[[500 mg|1 capsule]] = [[1,000 mg|X]]  →  500X = 1,000  →  X = 2",
+      "dh": "[[1,000 mg|500 mg]] × 1 capsule = 2",
+      "da": "X capsules = [[1 capsule|500 mg]] × [[1,000 mg|1 g]] × [[1 g|1]] = 2"
+     }
+    },
+    "Makes sense: each capsule has 500 mg, and the order is 1,000 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-015",
@@ -9547,9 +9631,15 @@
    "round": "tenth",
    "exact": 0.5,
    "steps": [
-    "Desired over have: 5 mg ÷ 10 mg × 1 tablet = 0.5"
-   ],
-   "summary": "Makes sense: each tablet has 10 mg, and the order is 5 mg."
+    {
+     "setups": {
+      "rp": "[[10 mg|1 tablet]] = [[5 mg|X]]  →  10X = 5  →  X = 0.5",
+      "dh": "[[5 mg|10 mg]] × 1 tablet = 0.5",
+      "da": "X tablets = [[1 tablet|10 mg]] × [[5 mg|1]] = 0.5"
+     }
+    },
+    "Makes sense: each tablet has 10 mg, and the order is 5 mg."
+   ]
   },
   {
    "id": "nur114-u5-med-calc-016",
@@ -9565,7 +9655,14 @@
    "round": "tenth",
    "exact": 10.0,
    "steps": [
-    "Desired over have: 400 mg ÷ 200 mg × 5 mL = 10 mL"
+    {
+     "setups": {
+      "rp": "[[200 mg|5 mL]] = [[400 mg|X]]  →  200X = 2,000  →  X = 10",
+      "dh": "[[400 mg|200 mg]] × 5 mL = 10",
+      "da": "X mL = [[5 mL|200 mg]] × [[400 mg|1]] = 10"
+     }
+    },
+    "Makes sense: there are 200 mg in 5 mL, and the order is 400 mg."
    ]
   },
   {
@@ -9583,7 +9680,14 @@
    "exact": 5.0,
    "steps": [
     "Convert g to mg (bigger to smaller, multiply): 0.25 g × 1,000 = 250 mg",
-    "Desired over have: 250 mg ÷ 250 mg × 5 mL = 5 mL"
+    {
+     "setups": {
+      "rp": "[[250 mg|5 mL]] = [[250 mg|X]]  →  250X = 1,250  →  X = 5",
+      "dh": "[[250 mg|250 mg]] × 5 mL = 5",
+      "da": "X mL = [[5 mL|250 mg]] × [[1,000 mg|1 g]] × [[0.25 g|1]] = 5"
+     }
+    },
+    "Makes sense: there are 250 mg in 5 mL, and the order is 250 mg."
    ]
   },
   {
@@ -9600,7 +9704,14 @@
    "round": "whole",
    "exact": 8.0,
    "steps": [
-    "Desired over have: 80 mg ÷ 10 mg × 1 mL = 8 mL"
+    {
+     "setups": {
+      "rp": "[[10 mg|1 mL]] = [[80 mg|X]]  →  10X = 80  →  X = 8",
+      "dh": "[[80 mg|10 mg]] × 1 mL = 8",
+      "da": "X mL = [[1 mL|10 mg]] × [[80 mg|1]] = 8"
+     }
+    },
+    "Makes sense: there are 10 mg in 1 mL, and the order is 80 mg."
    ]
   },
   {
@@ -9617,8 +9728,15 @@
    "round": "tenth",
    "exact": 20.3125,
    "steps": [
-    "Desired over have: 650 mg ÷ 160 mg × 5 mL = 20.3125 mL",
-    "Round to the nearest tenth: the hundredths digit is 1, so leave it (20.3)."
+    {
+     "setups": {
+      "rp": "[[160 mg|5 mL]] = [[650 mg|X]]  →  160X = 3,250  →  X = 20.3125",
+      "dh": "[[650 mg|160 mg]] × 5 mL = 20.3125",
+      "da": "X mL = [[5 mL|160 mg]] × [[650 mg|1]] = 20.3125"
+     }
+    },
+    "Round to the nearest tenth: the hundredths digit is 1, so leave it (20.3).",
+    "Makes sense: there are 160 mg in 5 mL, and the order is 650 mg."
    ]
   },
   {
@@ -9635,7 +9753,14 @@
    "round": "whole",
    "exact": 30.0,
    "steps": [
-    "Desired over have: 20 g ÷ 10 g × 15 mL = 30 mL"
+    {
+     "setups": {
+      "rp": "[[10 g|15 mL]] = [[20 g|X]]  →  10X = 300  →  X = 30",
+      "dh": "[[20 g|10 g]] × 15 mL = 30",
+      "da": "X mL = [[15 mL|10 g]] × [[20 g|1]] = 30"
+     }
+    },
+    "Makes sense: there are 10 g in 15 mL, and the order is 20 g."
    ]
   },
   {
@@ -9652,7 +9777,14 @@
    "round": "tenth",
    "exact": 5.0,
    "steps": [
-    "Desired over have: 125 mg ÷ 25 mg × 1 mL = 5 mL"
+    {
+     "setups": {
+      "rp": "[[25 mg|1 mL]] = [[125 mg|X]]  →  25X = 125  →  X = 5",
+      "dh": "[[125 mg|25 mg]] × 1 mL = 5",
+      "da": "X mL = [[1 mL|25 mg]] × [[125 mg|1]] = 5"
+     }
+    },
+    "Makes sense: there are 25 mg in 1 mL, and the order is 125 mg."
    ]
   },
   {
@@ -9669,7 +9801,14 @@
    "round": "tenth",
    "exact": 7.5,
    "steps": [
-    "Desired over have: 375 mg ÷ 250 mg × 5 mL = 7.5 mL"
+    {
+     "setups": {
+      "rp": "[[250 mg|5 mL]] = [[375 mg|X]]  →  250X = 1,875  →  X = 7.5",
+      "dh": "[[375 mg|250 mg]] × 5 mL = 7.5",
+      "da": "X mL = [[5 mL|250 mg]] × [[375 mg|1]] = 7.5"
+     }
+    },
+    "Makes sense: there are 250 mg in 5 mL, and the order is 375 mg."
    ]
   },
   {
@@ -9686,7 +9825,14 @@
    "round": "tenth",
    "exact": 7.5,
    "steps": [
-    "Desired over have: 20 mEq ÷ 40 mEq × 15 mL = 7.5 mL"
+    {
+     "setups": {
+      "rp": "[[40 mEq|15 mL]] = [[20 mEq|X]]  →  40X = 300  →  X = 7.5",
+      "dh": "[[20 mEq|40 mEq]] × 15 mL = 7.5",
+      "da": "X mL = [[15 mL|40 mEq]] × [[20 mEq|1]] = 7.5"
+     }
+    },
+    "Makes sense: there are 40 mEq in 15 mL, and the order is 20 mEq."
    ]
   },
   {
@@ -9704,7 +9850,14 @@
    "exact": 2.5,
    "steps": [
     "Convert mcg to mg (smaller to bigger, divide): 125 mcg ÷ 1,000 = 0.125 mg",
-    "Desired over have: 0.125 mg ÷ 0.05 mg × 1 mL = 2.5 mL"
+    {
+     "setups": {
+      "rp": "[[0.05 mg|1 mL]] = [[0.125 mg|X]]  →  0.05X = 0.125  →  X = 2.5",
+      "dh": "[[0.125 mg|0.05 mg]] × 1 mL = 2.5",
+      "da": "X mL = [[1 mL|0.05 mg]] × [[1 mg|1,000 mcg]] × [[125 mcg|1]] = 2.5"
+     }
+    },
+    "Makes sense: there are 0.05 mg in 1 mL, and the order is 0.125 mg."
    ]
   },
   {
@@ -9721,7 +9874,14 @@
    "round": "whole",
    "exact": 10.0,
    "steps": [
-    "Desired over have: 500 mg ÷ 250 mg × 5 mL = 10 mL"
+    {
+     "setups": {
+      "rp": "[[250 mg|5 mL]] = [[500 mg|X]]  →  250X = 2,500  →  X = 10",
+      "dh": "[[500 mg|250 mg]] × 5 mL = 10",
+      "da": "X mL = [[5 mL|250 mg]] × [[500 mg|1]] = 10"
+     }
+    },
+    "Makes sense: there are 250 mg in 5 mL, and the order is 500 mg."
    ]
   },
   {
@@ -9738,7 +9898,14 @@
    "round": "tenth",
    "exact": 0.8,
    "steps": [
-    "Desired over have: 8,000 units ÷ 10,000 units × 1 mL = 0.8 mL"
+    {
+     "setups": {
+      "rp": "[[10,000 units|1 mL]] = [[8,000 units|X]]  →  10,000X = 8,000  →  X = 0.8",
+      "dh": "[[8,000 units|10,000 units]] × 1 mL = 0.8",
+      "da": "X mL = [[1 mL|10,000 units]] × [[8,000 units|1]] = 0.8"
+     }
+    },
+    "Makes sense: there are 10,000 units in 1 mL, and the order is 8,000 units."
    ]
   },
   {
@@ -9755,7 +9922,14 @@
    "round": "hundredth",
    "exact": 0.5,
    "steps": [
-    "Desired over have: 5,000 units ÷ 10,000 units × 1 mL = 0.5 mL"
+    {
+     "setups": {
+      "rp": "[[10,000 units|1 mL]] = [[5,000 units|X]]  →  10,000X = 5,000  →  X = 0.5",
+      "dh": "[[5,000 units|10,000 units]] × 1 mL = 0.5",
+      "da": "X mL = [[1 mL|10,000 units]] × [[5,000 units|1]] = 0.5"
+     }
+    },
+    "Makes sense: there are 10,000 units in 1 mL, and the order is 5,000 units."
    ]
   },
   {
@@ -9772,8 +9946,15 @@
    "round": "tenth",
    "exact": 0.75,
    "steps": [
-    "Desired over have: 15,000 units ÷ 20,000 units × 1 mL = 0.75 mL",
-    "Round to the nearest tenth: the hundredths digit is 5, so round up (0.8)."
+    {
+     "setups": {
+      "rp": "[[20,000 units|1 mL]] = [[15,000 units|X]]  →  20,000X = 15,000  →  X = 0.75",
+      "dh": "[[15,000 units|20,000 units]] × 1 mL = 0.75",
+      "da": "X mL = [[1 mL|20,000 units]] × [[15,000 units|1]] = 0.75"
+     }
+    },
+    "Round to the nearest tenth: the hundredths digit is 5, so round up (0.8).",
+    "Makes sense: there are 20,000 units in 1 mL, and the order is 15,000 units."
    ]
   },
   {
@@ -9790,7 +9971,14 @@
    "round": "tenth",
    "exact": 0.4,
    "steps": [
-    "Desired over have: 4 mg ÷ 10 mg × 1 mL = 0.4 mL"
+    {
+     "setups": {
+      "rp": "[[10 mg|1 mL]] = [[4 mg|X]]  →  10X = 4  →  X = 0.4",
+      "dh": "[[4 mg|10 mg]] × 1 mL = 0.4",
+      "da": "X mL = [[1 mL|10 mg]] × [[4 mg|1]] = 0.4"
+     }
+    },
+    "Makes sense: there are 10 mg in 1 mL, and the order is 4 mg."
    ]
   },
   {
@@ -9807,7 +9995,14 @@
    "round": "tenth",
    "exact": 0.5,
    "steps": [
-    "Desired over have: 25 mg ÷ 50 mg × 1 mL = 0.5 mL"
+    {
+     "setups": {
+      "rp": "[[50 mg|1 mL]] = [[25 mg|X]]  →  50X = 25  →  X = 0.5",
+      "dh": "[[25 mg|50 mg]] × 1 mL = 0.5",
+      "da": "X mL = [[1 mL|50 mg]] × [[25 mg|1]] = 0.5"
+     }
+    },
+    "Makes sense: there are 50 mg in 1 mL, and the order is 25 mg."
    ]
   },
   {
@@ -9824,7 +10019,14 @@
    "round": "tenth",
    "exact": 0.5,
    "steps": [
-    "Desired over have: 12.5 mg ÷ 25 mg × 1 mL = 0.5 mL"
+    {
+     "setups": {
+      "rp": "[[25 mg|1 mL]] = [[12.5 mg|X]]  →  25X = 12.5  →  X = 0.5",
+      "dh": "[[12.5 mg|25 mg]] × 1 mL = 0.5",
+      "da": "X mL = [[1 mL|25 mg]] × [[12.5 mg|1]] = 0.5"
+     }
+    },
+    "Makes sense: there are 25 mg in 1 mL, and the order is 12.5 mg."
    ]
   },
   {
@@ -9841,7 +10043,14 @@
    "round": "hundredth",
    "exact": 0.75,
    "steps": [
-    "Desired over have: 1.5 mg ÷ 2 mg × 1 mL = 0.75 mL"
+    {
+     "setups": {
+      "rp": "[[2 mg|1 mL]] = [[1.5 mg|X]]  →  2X = 1.5  →  X = 0.75",
+      "dh": "[[1.5 mg|2 mg]] × 1 mL = 0.75",
+      "da": "X mL = [[1 mL|2 mg]] × [[1.5 mg|1]] = 0.75"
+     }
+    },
+    "Makes sense: there are 2 mg in 1 mL, and the order is 1.5 mg."
    ]
   },
   {
@@ -9858,7 +10067,14 @@
    "round": "tenth",
    "exact": 0.5,
    "steps": [
-    "Desired over have: 15 mg ÷ 30 mg × 1 mL = 0.5 mL"
+    {
+     "setups": {
+      "rp": "[[30 mg|1 mL]] = [[15 mg|X]]  →  30X = 15  →  X = 0.5",
+      "dh": "[[15 mg|30 mg]] × 1 mL = 0.5",
+      "da": "X mL = [[1 mL|30 mg]] × [[15 mg|1]] = 0.5"
+     }
+    },
+    "Makes sense: there are 30 mg in 1 mL, and the order is 15 mg."
    ]
   },
   {
@@ -9875,7 +10091,14 @@
    "round": "tenth",
    "exact": 1.5,
    "steps": [
-    "Desired over have: 6 mg ÷ 4 mg × 1 mL = 1.5 mL"
+    {
+     "setups": {
+      "rp": "[[4 mg|1 mL]] = [[6 mg|X]]  →  4X = 6  →  X = 1.5",
+      "dh": "[[6 mg|4 mg]] × 1 mL = 1.5",
+      "da": "X mL = [[1 mL|4 mg]] × [[6 mg|1]] = 1.5"
+     }
+    },
+    "Makes sense: there are 4 mg in 1 mL, and the order is 6 mg."
    ]
   },
   {
@@ -9892,7 +10115,14 @@
    "round": "tenth",
    "exact": 0.4,
    "steps": [
-    "Desired over have: 40 mg ÷ 100 mg × 1 mL = 0.4 mL"
+    {
+     "setups": {
+      "rp": "[[100 mg|1 mL]] = [[40 mg|X]]  →  100X = 40  →  X = 0.4",
+      "dh": "[[40 mg|100 mg]] × 1 mL = 0.4",
+      "da": "X mL = [[1 mL|100 mg]] × [[40 mg|1]] = 0.4"
+     }
+    },
+    "Makes sense: there are 100 mg in 1 mL, and the order is 40 mg."
    ]
   },
   {
@@ -9909,7 +10139,14 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Desired over have: 4 mg ÷ 2 mg × 1 mL = 2 mL"
+    {
+     "setups": {
+      "rp": "[[2 mg|1 mL]] = [[4 mg|X]]  →  2X = 4  →  X = 2",
+      "dh": "[[4 mg|2 mg]] × 1 mL = 2",
+      "da": "X mL = [[1 mL|2 mg]] × [[4 mg|1]] = 2"
+     }
+    },
+    "Makes sense: there are 2 mg in 1 mL, and the order is 4 mg."
    ]
   },
   {
@@ -9927,7 +10164,14 @@
    "exact": 10.0,
    "steps": [
     "From the label, the dosage strength (have) is 350 mg in 5 mL",
-    "Desired over have: 700 mg ÷ 350 mg × 5 mL = 10 mL"
+    {
+     "setups": {
+      "rp": "[[350 mg|5 mL]] = [[700 mg|X]]  →  350X = 3,500  →  X = 10",
+      "dh": "[[700 mg|350 mg]] × 5 mL = 10",
+      "da": "X mL = [[5 mL|350 mg]] × [[700 mg|1]] = 10"
+     }
+    },
+    "Makes sense: 700 mg is 2 times 350 mg, so 10 mL."
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
    "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
@@ -9947,7 +10191,14 @@
    "exact": 7.5,
    "steps": [
     "From the label, the dosage strength (have) is 350 mg in 5 mL",
-    "Desired over have: 525 mg ÷ 350 mg × 5 mL = 7.5 mL"
+    {
+     "setups": {
+      "rp": "[[350 mg|5 mL]] = [[525 mg|X]]  →  350X = 2,625  →  X = 7.5",
+      "dh": "[[525 mg|350 mg]] × 5 mL = 7.5",
+      "da": "X mL = [[5 mL|350 mg]] × [[525 mg|1]] = 7.5"
+     }
+    },
+    "Makes sense: 525 mg is 1.5 times 350 mg, so 7.5 mL."
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
    "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
@@ -9967,7 +10218,14 @@
    "exact": 12.5,
    "steps": [
     "From the label, the dosage strength (have) is 350 mg in 5 mL",
-    "Desired over have: 875 mg ÷ 350 mg × 5 mL = 12.5 mL"
+    {
+     "setups": {
+      "rp": "[[350 mg|5 mL]] = [[875 mg|X]]  →  350X = 4,375  →  X = 12.5",
+      "dh": "[[875 mg|350 mg]] × 5 mL = 12.5",
+      "da": "X mL = [[5 mL|350 mg]] × [[875 mg|1]] = 12.5"
+     }
+    },
+    "Makes sense: 875 mg is 2.5 times 350 mg, so 12.5 mL."
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
    "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
@@ -9987,7 +10245,14 @@
    "exact": 2.0,
    "steps": [
     "From the label, each delayed-release capsule has 30 mg",
-    "60 mg ÷ 30 mg × 1 capsule = 2 capsules"
+    {
+     "setups": {
+      "rp": "[[30 mg|1 capsule]] = [[60 mg|X]]  →  30X = 60  →  X = 2",
+      "dh": "[[60 mg|30 mg]] × 1 capsule = 2",
+      "da": "X capsules = [[1 capsule|30 mg]] × [[60 mg|1]] = 2"
+     }
+    },
+    "Makes sense: two 30 mg capsules make 60 mg."
    ],
    "summary": "Delayed-release capsules are swallowed whole.",
    "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
@@ -10727,7 +10992,14 @@
    "steps": [
     "165 ÷ 2.2 = 75 kg",
     "75 kg × 1 mg/kg = 75 mg",
-    "75 mg ÷ 100 mg × 1 mL = 0.75 mL"
+    {
+     "setups": {
+      "rp": "[[100 mg|1 mL]] = [[75 mg|X]]  →  100X = 75  →  X = 0.75",
+      "dh": "[[75 mg|100 mg]] × 1 mL = 0.75",
+      "da": "X mL = [[1 mL|100 mg]] × [[1 mg|1 kg]] × [[1 kg|2.2 lb]] × [[165 lb|1]] = 0.75"
+     }
+    },
+    "Makes sense: 75 mg is less than the 100 mg in 1 mL, so less than 1 mL."
    ]
   },
   {
@@ -10747,7 +11019,14 @@
     "22 ÷ 2.2 = 10 kg",
     "10 kg × 8 mg/kg/day = 80 mg/day",
     "Every 12 hr = 2 doses: 80 ÷ 2 = 40 mg per dose",
-    "40 mg ÷ 100 mg × 5 mL = 2 mL"
+    {
+     "setups": {
+      "rp": "[[100 mg|5 mL]] = [[40 mg|X]]  →  100X = 200  →  X = 2",
+      "dh": "[[40 mg|100 mg]] × 5 mL = 2",
+      "da": "X mL = [[5 mL|100 mg]] × [[8 mg|1 kg]] × [[1 kg|2.2 lb]] × [[22 lb|1 day]] × [[1 day|2 doses]] = 2"
+     }
+    },
+    "Makes sense: 40 mg is less than half of the 100 mg in 5 mL."
    ]
   },
   {
@@ -10767,7 +11046,14 @@
     "44 ÷ 2.2 = 20 kg",
     "20 kg × 20 mg/kg/day = 400 mg/day",
     "Every 12 hr = 2 doses: 400 ÷ 2 = 200 mg per dose",
-    "200 mg ÷ 250 mg × 5 mL = 4 mL"
+    {
+     "setups": {
+      "rp": "[[250 mg|5 mL]] = [[200 mg|X]]  →  250X = 1,000  →  X = 4",
+      "dh": "[[200 mg|250 mg]] × 5 mL = 4",
+      "da": "X mL = [[5 mL|250 mg]] × [[20 mg|1 kg]] × [[1 kg|2.2 lb]] × [[44 lb|1 day]] × [[1 day|2 doses]] = 4"
+     }
+    },
+    "Makes sense: 200 mg is a little less than the 250 mg in 5 mL."
    ]
   },
   {
@@ -10897,8 +11183,15 @@
    "steps": [
     "113.6 kg × 40 mg/kg/day = 4,544 mg/day",
     "Every 6 hr = 4 doses: 4,544 ÷ 4 = 1,136 mg per dose",
-    "1,136 mg ÷ 250 mg × 5 mL = 22.72 mL",
-    "Round to the nearest whole number: the tenths digit is 7, so round up (23)."
+    {
+     "setups": {
+      "rp": "[[250 mg|5 mL]] = [[1,136 mg|X]]  →  250X = 5,680  →  X = 22.72",
+      "dh": "[[1,136 mg|250 mg]] × 5 mL = 22.72",
+      "da": "X mL = [[5 mL|250 mg]] × [[40 mg|1 kg]] × [[113.6 kg|1 day]] × [[1 day|4 doses]] = 22.72"
+     }
+    },
+    "Round to the nearest whole number: the tenths digit is 7, so round up (23).",
+    "Makes sense: 1,136 mg is about 4.5 times 250 mg, so about 4.5 × 5 mL."
    ]
   },
   {
@@ -11006,7 +11299,14 @@
    "exact": 20.0,
    "steps": [
     "The 1,000 mg is already the amount for each dose (BID means each dose is 1,000 mg)",
-    "1,000 mg ÷ 250 mg × 5 mL = 20 mL"
+    {
+     "setups": {
+      "rp": "[[250 mg|5 mL]] = [[1,000 mg|X]]  →  250X = 5,000  →  X = 20",
+      "dh": "[[1,000 mg|250 mg]] × 5 mL = 20",
+      "da": "X mL = [[5 mL|250 mg]] × [[1,000 mg|1 dose]] = 20"
+     }
+    },
+    "Makes sense: 1,000 mg is 4 times 250 mg, so 4 × 5 mL."
    ]
   },
   {
@@ -11026,7 +11326,14 @@
     "154 ÷ 2.2 = 70 kg",
     "70 kg × 30 mg/kg/day = 2,100 mg/day",
     "Every 12 hr = 2 doses: 2,100 ÷ 2 = 1,050 mg",
-    "1,050 mg ÷ 250 mg × 5 mL = 21 mL"
+    {
+     "setups": {
+      "rp": "[[250 mg|5 mL]] = [[1,050 mg|X]]  →  250X = 5,250  →  X = 21",
+      "dh": "[[1,050 mg|250 mg]] × 5 mL = 21",
+      "da": "X mL = [[5 mL|250 mg]] × [[30 mg|1 kg]] × [[1 kg|2.2 lb]] × [[154 lb|1 day]] × [[1 day|2 doses]] = 21"
+     }
+    },
+    "Makes sense: 1,050 mg is 4.2 times 250 mg, so 4.2 × 5 mL."
    ]
   },
   {
@@ -11791,8 +12098,15 @@
    "steps": [
     "198 ÷ 2.2 = 90 kg",
     "90 kg × 80 units/kg = 7,200 units",
-    "7,200 ÷ 5,000 × 1 mL = 1.44 mL",
-    "Round to the nearest tenth: the hundredths digit is 4, so leave it (1.4)."
+    {
+     "setups": {
+      "rp": "[[5,000 units|1 mL]] = [[7,200 units|X]]  →  5,000X = 7,200  →  X = 1.44",
+      "dh": "[[7,200 units|5,000 units]] × 1 mL = 1.44",
+      "da": "X mL = [[1 mL|5,000 units]] × [[80 units|1 kg]] × [[1 kg|2.2 lb]] × [[198 lb|1]] = 1.44"
+     }
+    },
+    "Round to the nearest tenth: the hundredths digit is 4, so leave it (1.4).",
+    "Makes sense: 7,200 units is a bit more than the 5,000 units in 1 mL."
    ]
   },
   {
@@ -12099,7 +12413,7 @@
    "topic": "Medication Calculations",
    "category": "Labels & Rounding",
    "type": "dragdrop",
-   "prompt": "A nurse is teaching a newly hired nurse about the parts of a medication label. Sort each item into the right box. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is teaching a newly hired nurse about the parts of a medication label. Sort the items into the right boxes. Move each answer that belongs into its box. Not every answer will be used.",
    "calc": false,
    "leftLabel": "Label items",
    "buckets": [

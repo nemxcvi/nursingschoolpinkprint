@@ -280,9 +280,23 @@ var Challenges = (function(){
       return g;
     }).sort(function(a, b){ return a.acc - b.acc || b.count - a.count; });
   }
+  /* Worked steps as plain text: [[top|bottom]] fractions become (top ÷ bottom); the setup step
+     shows the student's chosen method (Tracking.calcMethod), or all three */
+  function stepsText(q){
+    var names = {rp: "Ratio and proportion", dh: "Desired over have", da: "Dimensional analysis"};
+    var flat = function(t){ return String(t).replace(/\[\[([^|\]]*)\|([^\]]*)\]\]/g, "($1 ÷ $2)"); };
+    var pick = typeof Tracking !== "undefined" && Tracking.calcMethod ? Tracking.calcMethod() : "";
+    var out = [];
+    (q.steps || []).forEach(function(s){
+      if (s && s.setups){
+        ["rp", "dh", "da"].forEach(function(m){ if (s.setups[m] && (!pick || pick === m)) out.push(names[m] + ": " + flat(s.setups[m])); });
+      } else out.push(flat(s));
+    });
+    return out;
+  }
   function rationaleHtml(q){
     if (q.type === "fill") return '<div class="ch-answer"><span class="ch-eyebrow">Correct answer</span><p><strong>' + esc(q.answer + (q.answerUnit ? " " + q.answerUnit : "")) + "</strong></p>" +
-      (q.steps || []).map(function(s){ return '<p class="ch-expl">' + esc(s) + "</p>"; }).join("") + "</div>";
+      stepsText(q).map(function(s){ return '<p class="ch-expl">' + esc(s) + "</p>"; }).join("") + "</div>";
     var right = (q.options || []).filter(function(o){ return o.correct || o.bucket || o.col != null; });
     var strip = function(t){ return String(t || "").replace(/^\s*(Correct|Incorrect)[.:!]?\s*/i, ""); };
     var order = q.type === "order";

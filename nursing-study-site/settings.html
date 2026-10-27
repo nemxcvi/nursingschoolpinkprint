@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
 <meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/style.css?v=125">
+<link rel="stylesheet" href="assets/style.css?v=126">
 <script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
 </head>
 <body>
@@ -88,6 +88,13 @@
       </div>
       <div class="tp-seg" id="se-daily" role="radiogroup" aria-labelledby="se-dailylabel"></div>
     </div>
+    <div class="tp-feature se-method">
+      <div class="tp-feature-text">
+        <span class="tp-feature-name" id="se-methodlabel">Med math setup</span>
+        <span class="tp-hint">The calculation method shown in the worked steps after a med math question. You only need one; All shows all three.</span>
+      </div>
+      <div class="se-methodseg" id="se-method" role="radiogroup" aria-labelledby="se-methodlabel"></div>
+    </div>
   </section>
   </div>
 
@@ -137,12 +144,12 @@
   </section>
 </div>
 <script src="assets/vendor/qrcode.js?v=1"></script>
-<script src="js/tracking.js?v=15"></script>
+<script src="js/tracking.js?v=16"></script>
 <script src="js/progress.js?v=8"></script>
 <script src="js/tracking-ui.js?v=2"></script>
 <script src="assets/site-data.js?v=39"></script>
 <script src="js/study.js?v=7"></script>
-<script src="js/my-study.js?v=32"></script>
+<script src="js/my-study.js?v=33"></script>
 <script>
 (function(){
   if (!Tracking.isOn()){ location.replace("start-tracking.html"); return; }
@@ -343,6 +350,22 @@
   }
   syncDaily();
   document.addEventListener("pinkprint-synced", syncDaily);
+
+  /* Med math setup shown in quiz feedback: saved as soon as it's tapped */
+  function syncMethod(){
+    var cur = Tracking.calcMethod();
+    $("se-method").innerHTML = "";
+    [["rp", "Ratio & proportion"], ["dh", "Desired over have"], ["da", "Dimensional analysis"], ["", "All"]].forEach(function(m){
+      var b = TrackingUI.el("button", m[0] === cur ? "is-on" : "", m[1]);
+      b.type = "button";
+      b.setAttribute("role", "radio");
+      b.setAttribute("aria-checked", m[0] === cur ? "true" : "false");
+      b.addEventListener("click", function(){ Tracking.setCalcMethod(m[0]); syncMethod(); });
+      $("se-method").appendChild(b);
+    });
+  }
+  syncMethod();
+  document.addEventListener("pinkprint-synced", syncMethod);
 
   /* Study features */
   FEATURES.forEach(function(f){

@@ -23,6 +23,8 @@
      breaksOff          true = holiday break weeks are skipped. Missing/false = the weekly goal still
                         counts during breaks (hit grows the streak, miss only pauses): on by default.
                         (Replaces the old break goal menu; any saved breakGoal is ignored.)
+     calcMethod         med math setup shown in quiz feedback: "rp" (ratio and proportion), "dh" (desired
+                        over have), "da" (dimensional analysis). Missing/empty = all three.
      knownCounts        {topicKey: questions} seen last time, for "12 new questions" labels
      activity           {deviceId: {date: answers}}: each device counts its own answers (goals, streaks)
      settingsAt         when any of the settings above last changed (for merging devices)
@@ -115,7 +117,7 @@
   /* Settings that travel between devices (everything else in the saved state stays on the device) */
   var SYNCED = ["nickname", "goal", "features", "nicknameTicket", "finishedSessions", "codeReminderDone", "noteReminderDone", "startedOn",
                 "scores", "gradeHidden", "dashName", "busyWeeks", "breaksOff", "knownCounts", "challenges", "ownerProof",
-                "dailySize", "readinessChecks"];
+                "dailySize", "readinessChecks", "calcMethod"];
 
   function subtle(){ return cryptoObj().subtle; }
   function utf8(s){ return new TextEncoder().encode(s); }
@@ -693,6 +695,20 @@
   /* ---------- Challenges (phase 6) ----------
      Each challenge this person made or joined is saved with its own random ticket, which is the
      only way to submit a score, see scores or delete it. */
+  /* Med math setup to show in quiz feedback ("rp", "dh", "da", or "" for all three). Tracked
+     students sync it; guests keep it on this device only, like the theme. */
+  var CALC_KEY = "calcMethod", CALC_OK = ["rp", "dh", "da"];
+  api.calcMethod = function(){
+    var s = api.state(), m;
+    if (s) m = s.calcMethod;
+    else { try { m = localStorage.getItem(CALC_KEY); } catch (e) {} }
+    return CALC_OK.indexOf(m) !== -1 ? m : "";
+  };
+  api.setCalcMethod = function(m){
+    m = CALC_OK.indexOf(m) !== -1 ? m : "";
+    if (api.state()) { api.update({calcMethod: m}); return; }
+    try { if (m) localStorage.setItem(CALC_KEY, m); else localStorage.removeItem(CALC_KEY); } catch (e) {}
+  };
   /* Today's plan size (questions a day) */
   api.dailySize = function(){
     var s = api.state();

@@ -186,7 +186,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       if (q.type === "fill"){
         q.answer = String(q.answer);
         q.options = []; q.correct = [q.answer]; q.multi = false;
-        q.steps = Array.isArray(q.steps) ? q.steps.map(String) : [];
+        q.steps = Array.isArray(q.steps) ? q.steps.map(function(st){ return st && st.setups ? st : String(st); }) : [];
         return;
       }
       var listed = Array.isArray(q.correct) ? q.correct.map(String) : [];
@@ -1488,11 +1488,84 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (q.steps.length) out.appendChild(fillSteps(q));
     optsEl.appendChild(out);
   }
+  /* Worked steps: numbered lines, with the setup step shown three ways (ratio and proportion,
+     desired over have, dimensional analysis) behind tabs. Students only need one method; the
+     tab they pick is remembered (Tracking.calcMethod) and every setup on the page follows it.
+     In the math text, [[top|bottom]] is drawn as a stacked fraction. */
+  var METHODS = [["rp", "Ratio & proportion"], ["dh", "Desired over have"], ["da", "Dimensional analysis"], ["", "All"]];
+  function calcMethod(){ return typeof Tracking !== "undefined" && Tracking.calcMethod ? Tracking.calcMethod() : ""; }
+  function mathText(el, text){
+    String(text).split(/(\[\[[^\]]*\]\])/).forEach(function(part){
+      var m = /^\[\[([^|\]]*)\|([^\]]*)\]\]$/.exec(part);
+      if (!m){ if (part) el.appendChild(document.createTextNode(part)); return; }
+      var f = document.createElement("span");
+      f.className = "pq-frac";
+      [m[1], m[2]].forEach(function(t){ var x = document.createElement("span"); x.textContent = t; f.appendChild(x); });
+      el.appendChild(f);
+    });
+    return el;
+  }
+  function drawSetups(box, setups){
+    var pick = calcMethod();
+    box.querySelectorAll(".pq-meth-tab").forEach(function(b){
+      var on = b.getAttribute("data-m") === pick;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    var body = box.querySelector(".pq-setup-list");
+    body.innerHTML = "";
+    METHODS.forEach(function(m){
+      if (!m[0] || !setups[m[0]] || (pick && pick !== m[0])) return;
+      var one = document.createElement("div");
+      one.className = "pq-setup";
+      var lab = document.createElement("span");
+      lab.className = "pq-setup-label";
+      lab.textContent = m[1];
+      one.appendChild(lab);
+      one.appendChild(mathText(document.createElement("div"), setups[m[0]])).className = "pq-setup-math";
+      body.appendChild(one);
+    });
+  }
+  function setupBlock(setups){
+    var box = document.createElement("div");
+    box.className = "pq-setups";
+    var tabs = document.createElement("div");
+    tabs.className = "pq-meth-tabs";
+    tabs.setAttribute("role", "group");
+    tabs.setAttribute("aria-label", "Show my setup");
+    var lbl = document.createElement("span");
+    lbl.className = "pq-meth-label";
+    lbl.textContent = "Show my setup";
+    tabs.appendChild(lbl);
+    METHODS.forEach(function(m){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "pq-meth-tab"; b.textContent = m[1];
+      b.setAttribute("data-m", m[0]);
+      b.addEventListener("click", function(){
+        if (typeof Tracking !== "undefined" && Tracking.setCalcMethod) Tracking.setCalcMethod(m[0]);
+        document.querySelectorAll(".pq-setups").forEach(function(other){ drawSetups(other, other._setups); });
+      });
+      tabs.appendChild(b);
+    });
+    box.appendChild(tabs);
+    var list = document.createElement("div");
+    list.className = "pq-setup-list";
+    box.appendChild(list);
+    box._setups = setups;
+    drawSetups(box, setups);
+    return box;
+  }
   function fillSteps(q){
-    var ol = document.createElement("ol");
-    ol.className = "pq-fill-steps";
-    q.steps.forEach(function(s){ var li = document.createElement("li"); li.textContent = s; ol.appendChild(li); });
-    return ol;
+    var wrap = document.createElement("div");
+    wrap.className = "pq-fill-stepwrap";
+    var ol = null, n = 0;
+    q.steps.forEach(function(s){
+      if (s && s.setups){ wrap.appendChild(setupBlock(s.setups)); ol = null; return; }
+      if (!ol){ ol = document.createElement("ol"); ol.className = "pq-fill-steps"; ol.start = n + 1; wrap.appendChild(ol); }
+      n++;
+      var li = document.createElement("li"); li.textContent = s; ol.appendChild(li);
+    });
+    return wrap;
   }
 
   /* ---------- Check answer (every type) ---------- */

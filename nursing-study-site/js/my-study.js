@@ -460,9 +460,23 @@ var MyStudy = (function(){
   function joinTexts(q, texts){
     return q.type === "order" ? texts.map(function(t, i){ return (i + 1) + ". " + t; }).join(" \u2192 ") : texts.join("; ");
   }
+  /* Worked steps as plain text: [[top|bottom]] fractions become (top ÷ bottom); the setup step
+     shows the student's chosen method (Tracking.calcMethod), or all three */
+  function stepsText(q){
+    var names = {rp: "Ratio and proportion", dh: "Desired over have", da: "Dimensional analysis"};
+    var flat = function(t){ return String(t).replace(/\[\[([^|\]]*)\|([^\]]*)\]\]/g, "($1 ÷ $2)"); };
+    var pick = typeof Tracking !== "undefined" && Tracking.calcMethod ? Tracking.calcMethod() : "";
+    var out = [];
+    (q.steps || []).forEach(function(s){
+      if (s && s.setups){
+        ["rp", "dh", "da"].forEach(function(m){ if (s.setups[m] && (!pick || pick === m)) out.push(names[m] + ": " + flat(s.setups[m])); });
+      } else out.push(flat(s));
+    });
+    return out;
+  }
   function rationale(q){
     if (q.explanation) return q.explanation;
-    if (q.type === "fill") return [q.summary].concat(q.steps || []).filter(Boolean).join(" ");
+    if (q.type === "fill") return [q.summary].concat(stepsText(q)).filter(Boolean).join(" ");
     return q.options.filter(function(o){ return o.correct && o.rationale; }).map(function(o){ return o.rationale.replace(PREFIX_RE, ""); }).join(" ");
   }
 

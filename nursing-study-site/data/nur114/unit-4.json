@@ -3938,7 +3938,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "dragdrop",
-   "prompt": "A nurse is caring for clients who have electrolyte imbalances. Sort each finding into the imbalance it best matches. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is caring for clients who have electrolyte imbalances. Sort the findings into the imbalance each best matches. Move each answer that belongs into its box. Not every answer will be used.",
    "leftLabel": "Findings",
    "buckets": [
     "Hyperkalemia",
@@ -5489,7 +5489,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Complications",
    "type": "dragdrop",
-   "prompt": "A nurse is assessing several clients' peripheral IV sites. Sort each finding into the complication it suggests. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is assessing several clients' peripheral IV sites. Sort the findings into the complication each suggests. Move each answer that belongs into its box. Not every answer will be used.",
    "leftLabel": "Findings",
    "buckets": [
     "Infiltration",
@@ -12377,7 +12377,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "dragdrop",
-   "prompt": "A nurse is checking meal trays. Sort each item by the most limited diet it's allowed on. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is checking meal trays. Sort the items by the most limited diet each is allowed on. Move each answer that belongs into its box. Not every answer will be used.",
    "leftLabel": "Items",
    "buckets": [
     "Clear liquid",
