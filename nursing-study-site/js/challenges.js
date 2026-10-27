@@ -281,6 +281,8 @@ var Challenges = (function(){
     }).sort(function(a, b){ return a.acc - b.acc || b.count - a.count; });
   }
   function rationaleHtml(q){
+    if (q.type === "fill") return '<div class="ch-answer"><span class="ch-eyebrow">Correct answer</span><p><strong>' + esc(q.answer + (q.unit ? " " + q.unit : "")) + "</strong></p>" +
+      (q.steps || []).map(function(s){ return '<p class="ch-expl">' + esc(s) + "</p>"; }).join("") + "</div>";
     var right = (q.options || []).filter(function(o){ return o.correct || o.bucket || o.col != null; });
     var strip = function(t){ return String(t || "").replace(/^\s*(Correct|Incorrect)[.:!]?\s*/i, ""); };
     var order = q.type === "order";

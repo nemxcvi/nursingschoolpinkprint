@@ -448,8 +448,11 @@ var MyStudy = (function(){
   function letterIndex(id){ return "abcdefghijklmnopqrstuvwxyz".indexOf(String(id)); }
   /* Drag and drop into several boxes saves "id@N"; show the text with its box */
   function boxName(q, n){ var l = q.buckets || q.columns; return n && l ? " \u2192 " + l[n - 1] : ""; }
-  function optionTexts(q, ids){ return (ids || []).map(function(id){ var p = String(id).split("@"), o = q.options[letterIndex(p[0])]; return o ? o.text + boxName(q, Number(p[1])) : ""; }).filter(Boolean); }
+  /* Typed answers (med math) save the typed number itself */
+  function fillText(q, v){ return v + (q.unit ? " " + q.unit : ""); }
+  function optionTexts(q, ids){ if (q.type === "fill") return (ids || []).map(function(v){ return fillText(q, v); }); return (ids || []).map(function(id){ var p = String(id).split("@"), o = q.options[letterIndex(p[0])]; return o ? o.text + boxName(q, Number(p[1])) : ""; }).filter(Boolean); }
   function correctTexts(q){
+    if (q.type === "fill") return [fillText(q, q.answer)];
     if (q.type === "matrix") return q.options.map(function(o){ return o.text + " \u2192 " + [].concat(o.col).map(function(c){ return q.columns[c - 1]; }).join(" and "); });
     return q.options.filter(function(o){ return o.correct || o.bucket; }).map(function(o){ return o.text + boxName(q, o.bucket); });
   }
@@ -459,6 +462,7 @@ var MyStudy = (function(){
   }
   function rationale(q){
     if (q.explanation) return q.explanation;
+    if (q.type === "fill") return [q.summary].concat(q.steps || []).filter(Boolean).join(" ");
     return q.options.filter(function(o){ return o.correct && o.rationale; }).map(function(o){ return o.rationale.replace(PREFIX_RE, ""); }).join(" ");
   }
 

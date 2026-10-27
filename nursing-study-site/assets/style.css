@@ -450,6 +450,20 @@ h2{font-size:20px;}
 .pq-mx-cell.is-wrong{background:color-mix(in srgb,var(--danger-border) 16%,var(--card));}
 .pq-mx-label .pq-option.is-correct,.pq-mx-label .pq-option.is-wrong,.pq-mx-label .pq-option.is-missed{border:0;}
 .pq-cloze-results{display:grid;gap:8px;margin-top:14px;}
+/* Typed answer: one number box with the unit beside it; after checking, the answer, why it was wrong and the worked steps */
+.pq-fill{display:flex;align-items:center;gap:10px;margin:4px 0 6px;}
+.pq-fill-in{width:9em;max-width:100%;padding:10px 12px;font-family:'IBM Plex Mono',monospace;font-size:20px;line-height:1.2;border:1.5px solid var(--border);border-radius:0;background:var(--card);color:var(--text);}
+.pq-fill-in:focus-visible{outline:2px solid var(--label);outline-offset:2px;}
+.pq-fill-in:disabled{opacity:1;}
+.pq-fill-in.is-right{border-color:var(--success-border);background:color-mix(in srgb,var(--success-border) 14%,var(--card));}
+.pq-fill-in.is-wrong{border-color:var(--danger-border);background:color-mix(in srgb,var(--danger-border) 14%,var(--card));}
+.pq-fill-unit{font-family:'IBM Plex Sans',sans-serif;font-size:17px;color:var(--text);}
+.pq-fill-result{margin-top:12px;font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.55;color:var(--text);}
+.pq-fill-answer,.pq-fill-why{margin:0 0 6px;}
+.pq-fill-answer strong{color:var(--success-text);font-weight:600;}
+.pq-fill-why{color:var(--danger-text);}
+.pq-fill-steps{margin:8px 0 0;padding-left:1.4em;display:grid;gap:4px;}
+.pq-review-item .pq-fill-steps{font-size:14px;color:var(--text2);}
 .pq-cloze-blank{margin:8px 0 0;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label);}
 /* Result states after checking (every question type) */
 .pq-option.is-graded{align-items:flex-start;}

@@ -170,7 +170,11 @@ function initPracticeQuiz(bank, catLabels, opts){
      is a list of "id@N" placements, and q.correct holds the right ones.
      Matrix / grid ("matrix"): q.columns names the choices; each option is a row with col: N
      (one right column) or col: [N, M] (q.multi: check every column that applies). Answers
-     are "id@N" cells, graded all-or-nothing like the other types. */
+     are "id@N" cells, graded all-or-nothing like the other types.
+     Typed answer ("fill"): no options; q.answer is the exact number to type (leading zero,
+     no trailing zero, no commas), q.unit is shown beside the box, q.round is "whole", "tenth"
+     or "hundredth", q.exact is the unrounded result and q.steps lists the worked setup. The
+     answer is the typed text itself. */
   function normalizeBank(bank){
     var missingRationale = [];
     bank.forEach(function(q, qi){
@@ -179,6 +183,12 @@ function initPracticeQuiz(bank, catLabels, opts){
       var qText = q.explanation != null ? q.explanation : q.rationale;
       q.explanation = qText ? String(qText).replace(PREFIX_RE, "") : "";
       q.summary = q.summary ? String(q.summary) : "";
+      if (q.type === "fill"){
+        q.answer = String(q.answer);
+        q.options = []; q.correct = [q.answer]; q.multi = false;
+        q.steps = Array.isArray(q.steps) ? q.steps.map(String) : [];
+        return;
+      }
       var listed = Array.isArray(q.correct) ? q.correct.map(String) : [];
       var gaps = [];
       var ordered = q.type === "order";
@@ -213,6 +223,10 @@ function initPracticeQuiz(bank, catLabels, opts){
      Each option also gets its result state and the prefix shown before its rationale. */
   function gradeQuestion(q, selected){
     var states = {}, allRight = true;
+    if (q.type === "fill"){
+      var typed = String(selected[0] == null ? "" : selected[0]);
+      return {correct: typed === q.answer, states: states, reason: typed === q.answer ? "" : fillReason(q, typed)};
+    }
     /* Ordered response: right only when every option is in its exact spot */
     if (q.type === "order"){
       q.correct.forEach(function(id, i){
@@ -261,6 +275,29 @@ function initPracticeQuiz(bank, catLabels, opts){
 
   function isMultiDD(q){ return q.type === "dragdrop" && Array.isArray(q.buckets) && q.buckets.length > 0; }
 
+  /* Why a typed answer is wrong: the number is right but written wrong (missing leading zero,
+     trailing zero), it's rounded to the wrong place or the wrong way, or the math is off */
+  var ROUND_PLACES = {whole: 0, tenth: 1, hundredth: 2};
+  var ROUND_NAMES = {whole: "the nearest whole number", tenth: "the nearest tenth", hundredth: "the nearest hundredth"};
+  function fillReason(q, typed){
+    if (typed !== "" && Number(typed) === Number(q.answer)){
+      if (typed.charAt(0) === ".") return "Missing leading zero: write " + q.answer + ", not " + typed + ".";
+      if (typed.indexOf(".") !== -1 && /0$|\.$/.test(typed)) return "Trailing zero: write " + q.answer + ", not " + typed + ".";
+      return "Write the number as " + q.answer + ".";
+    }
+    if (q.exact != null && typed !== ""){
+      var x = Number(q.exact), v = Number(typed), place = ROUND_PLACES[q.round];
+      var near = function(a, b){ return Math.abs(a - b) < 1e-9; };
+      var cut = function(d){ var f = Math.pow(10, d); return Math.floor(x * f + 1e-9) / f; };
+      var round = function(d){ var f = Math.pow(10, d); return Math.round(x * f + 1e-9) / f; };
+      if (place != null && near(v, cut(place)) && !near(cut(place), round(place)))
+        return "Rounding: the digit after the " + (place === 0 ? "ones place" : place === 1 ? "tenths place" : "hundredths place") + " is 5 or more, so round up.";
+      if (near(v, x) || [0, 1, 2].some(function(d){ return d !== place && near(v, round(d)); }))
+        return "Rounding: the question asks you to round to " + (ROUND_NAMES[q.round] || "the place it gives") + ".";
+    }
+    return "Recheck the setup and the math.";
+  }
+
   function shuffle(arr){
     var a = arr.slice();
     for (var i = a.length - 1; i > 0; i--){
@@ -305,19 +342,26 @@ function initPracticeQuiz(bank, catLabels, opts){
      when the bank has any), and multiple choice fills the rest. If a bank is short on a type, its spare slots go to the
      others. Within each type, questions are still spread across categories. */
   var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15, order: 0.1, cloze: 0.1, matrix: 0.1};
+  /* Typed answers (med math) get about 15% of a mixed quiz. In a bank that is mostly typed
+     answers (a calculations topic) they share the multiple-choice slots instead, so the
+     session stays mostly math. */
+  var FILL_SHARE = 0.15;
   /* `pickFn(list, n)` chooses n questions from one type's list (spread over categories by default) */
   function mixedSample(source, count, pickFn){
     pickFn = pickFn || stratifiedSample;
     count = Math.min(count, source.length);
     var byType = {};
     source.forEach(function(q){ (byType[q.type] = byType[q.type] || []).push(q); });
+    var shares = {};
+    Object.keys(TYPE_SHARE).forEach(function(t){ shares[t] = TYPE_SHARE[t]; });
+    if (byType.fill && byType.fill.length * 2 <= source.length) shares.fill = FILL_SHARE;
     var quota = {}, used = 0;
-    Object.keys(TYPE_SHARE).forEach(function(t){
+    Object.keys(shares).forEach(function(t){
       if (!byType[t]) return;
-      quota[t] = Math.min(byType[t].length, Math.max(1, Math.ceil(count * TYPE_SHARE[t])));
+      quota[t] = Math.min(byType[t].length, Math.max(1, Math.ceil(count * shares[t])));
       used += quota[t];
     });
-    var rest = Object.keys(byType).filter(function(t){ return !(t in TYPE_SHARE); });
+    var rest = Object.keys(byType).filter(function(t){ return !(t in shares); });
     var restPool = [];
     rest.forEach(function(t){ restPool = restPool.concat(byType[t]); });
     var restCount = Math.min(restPool.length, Math.max(0, count - used));
@@ -739,6 +783,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       : q.type === "order" ? "put in order · drag, or use the arrows"
       : q.type === "cloze" ? "drop-down · choose an option for each blank"
       : q.type === "matrix" ? (q.multi ? "matrix · check every box that applies in each row" : "matrix · choose one in each row")
+      : q.type === "fill" ? "fill in the blank · type the number only"
       : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
     showQuestionImage(q);
@@ -750,6 +795,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (q.type === "order"){ renderOrder(q); return; }
     if (q.type === "cloze"){ renderCloze(q); return; }
     if (q.type === "matrix"){ renderMatrix(q); return; }
+    if (q.type === "fill"){ renderFill(q); return; }
 
     /* One correct answer: radio-style single select. More than one: checkboxes. */
     errEl.textContent = q.multi ? "Select at least one answer first" : "Select an answer first";
@@ -1371,6 +1417,84 @@ function initPracticeQuiz(bank, catLabels, opts){
     optsEl.querySelector(".pq-mx").classList.add("is-done");
   }
 
+  /* ---------- Typed answer ----------
+     One box that takes only digits and one decimal point (like the NCLEX answer box: no
+     commas, letters or units), with the unit beside it. Phones open the number keypad.
+     Enter in the box checks the answer (Shift+Enter: "I guessed"). */
+  function fillInput(){ return optsEl.querySelector(".pq-fill-in"); }
+  function renderFill(q){
+    optsEl.innerHTML = "";
+    optsEl.removeAttribute("role");
+    optsEl.removeAttribute("aria-label");
+    var wrap = document.createElement("div");
+    wrap.className = "pq-fill";
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "pq-fill-in";
+    input.setAttribute("inputmode", "decimal");
+    input.setAttribute("autocomplete", "off");
+    input.setAttribute("spellcheck", "false");
+    input.setAttribute("aria-label", "Answer" + (q.unit ? " in " + q.unit : ""));
+    input.addEventListener("input", function(){
+      var v = input.value.replace(/[^0-9.]/g, ""), dot = v.indexOf(".");
+      if (dot !== -1) v = v.slice(0, dot + 1) + v.slice(dot + 1).replace(/\./g, "");
+      if (v !== input.value) input.value = v;
+      errEl.style.display = "none";
+      document.getElementById("pq-submit").disabled = v === "";
+    });
+    input.addEventListener("keydown", function(e){
+      if (e.key !== "Enter" || answered) return;
+      e.preventDefault();
+      var submit = document.getElementById("pq-submit");
+      if (submit.disabled){ errEl.style.display = "block"; return; }
+      if (useSure && e.shiftKey) pendingSure = false;
+      submit.click();
+      pendingSure = true;
+    });
+    wrap.appendChild(input);
+    if (q.unit){
+      var unit = document.createElement("span");
+      unit.className = "pq-fill-unit";
+      unit.textContent = q.unit;
+      wrap.appendChild(unit);
+    }
+    optsEl.appendChild(wrap);
+    errEl.textContent = "Type your answer first";
+    document.getElementById("pq-submit").disabled = true;
+    document.getElementById("pq-hint").innerHTML = "<span>Numbers and a decimal point only</span>" + checkHint();
+    if (window.matchMedia && window.matchMedia("(hover: hover)").matches) input.focus({preventScroll: true});
+  }
+  /* After checking: the box shows right or wrong, then the correct answer, why it was wrong,
+     and the worked setup */
+  function fillShowResults(q, graded){
+    var input = fillInput();
+    input.disabled = true;
+    input.classList.add(graded.correct ? "is-right" : "is-wrong");
+    var out = document.createElement("div");
+    out.className = "pq-fill-result";
+    if (!graded.correct){
+      var ans = document.createElement("p");
+      ans.className = "pq-fill-answer";
+      ans.innerHTML = "<strong>Answer:</strong> ";
+      ans.appendChild(document.createTextNode(q.answer + (q.unit ? " " + q.unit : "")));
+      out.appendChild(ans);
+      if (graded.reason){
+        var why = document.createElement("p");
+        why.className = "pq-fill-why";
+        why.textContent = graded.reason;
+        out.appendChild(why);
+      }
+    }
+    if (q.steps.length) out.appendChild(fillSteps(q));
+    optsEl.appendChild(out);
+  }
+  function fillSteps(q){
+    var ol = document.createElement("ol");
+    ol.className = "pq-fill-steps";
+    q.steps.forEach(function(s){ var li = document.createElement("li"); li.textContent = s; ol.appendChild(li); });
+    return ol;
+  }
+
   /* ---------- Check answer (every type) ---------- */
   document.getElementById("pq-submit").addEventListener("click", function(){
     if (answered) return;
@@ -1379,6 +1503,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (q.type === "order") userSelection = ordIds();
     if (q.type === "cloze") userSelection = clozeIds();
     if (q.type === "matrix") userSelection = mxIds();
+    if (q.type === "fill") userSelection = fillInput().value ? [fillInput().value] : [];
     if (userSelection.length === 0){
       errEl.style.display = "block";
       return;
@@ -1427,6 +1552,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (q.type === "order"){ ordList().classList.add("is-done"); ordSync(); }
     if (q.type === "cloze") clozeShowResults(graded);
     if (q.type === "matrix") mxShowResults(q);
+    if (q.type === "fill") fillShowResults(q, graded);
 
     /* Heading, then the optional summary, then any older question-level explanation */
     fbEl.className = "pq-feedback " + (isCorrect ? "is-correct" : "is-wrong");
@@ -1480,6 +1606,7 @@ function initPracticeQuiz(bank, catLabels, opts){
 
   /* Ordered response reads as numbered steps: "1. First → 2. Second" */
   function optText(q, ids){
+    if (q.type === "fill") return ids.map(function(v){ return v + (q.unit ? " " + q.unit : ""); }).join(", ");
     var order = q.type === "order";
     return ids.map(function(id, i){
       var p = String(id).split("@");
@@ -1501,6 +1628,16 @@ function initPracticeQuiz(bank, catLabels, opts){
       item.appendChild(line);
     });
     var graded = gradeQuestion(q, selection);
+    if (q.type === "fill"){
+      if (graded.reason){
+        var why = document.createElement("div");
+        why.className = "pq-review-rat is-wrong";
+        why.textContent = graded.reason;
+        item.appendChild(why);
+      }
+      if (q.steps.length) item.appendChild(fillSteps(q));
+      return;
+    }
     q.options.forEach(function(o){
       var res = graded.states[o.id];
       if (!o.rationale || res.state === "neutral") return;
