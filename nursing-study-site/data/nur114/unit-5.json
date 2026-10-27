@@ -1,0 +1,3417 @@
+{
+ "course": "NUR 114",
+ "unit": 5,
+ "name": "Gas Exchange & Med Admin",
+ "topics": [
+  {
+   "topic": "Medication Calculations",
+   "slug": "med-calc",
+   "quiz": "unit-5-gas-exchange-med-admin/med-calc-quiz.html",
+   "mixLabel": "Med Calculations",
+   "categories": [
+    "Labels & Rounding",
+    "Conversions & Equivalents",
+    "Solid & Liquid Doses",
+    "Weight-Based & Divided Doses",
+    "Safe Dose Ranges",
+    "IV Flow Rates & Infusions"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "nur114-u5-med-calc-001",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer ketorolac 30 mg PO. Available is ketorolac 15 mg/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Desired over have: 30 mg ÷ 15 mg × 1 tablet = 2"
+   ],
+   "summary": "Makes sense: each tablet has 15 mg, and the order is 30 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-002",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer metoprolol tartrate 50 mg PO. Available is metoprolol tartrate 25 mg/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Desired over have: 50 mg ÷ 25 mg × 1 tablet = 2"
+   ],
+   "summary": "Makes sense: each tablet has 25 mg, and the order is 50 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-003",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer levothyroxine 0.1 mg PO. Available is levothyroxine 50 mcg/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Convert mg to mcg (bigger to smaller, multiply): 0.1 mg × 1,000 = 100 mcg",
+    "Desired over have: 100 mcg ÷ 50 mcg × 1 tablet = 2"
+   ],
+   "summary": "Makes sense: each tablet has 50 mcg, and the order is 100 mcg."
+  },
+  {
+   "id": "nur114-u5-med-calc-004",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer furosemide 60 mg PO. Available is furosemide 40 mg/tablet. How many tablets should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "1.5",
+   "answerUnit": "tablets",
+   "round": "tenth",
+   "exact": 1.5,
+   "steps": [
+    "Desired over have: 60 mg ÷ 40 mg × 1 tablet = 1.5"
+   ],
+   "summary": "Makes sense: each tablet has 40 mg, and the order is 60 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-005",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer acetaminophen 650 mg PO. Available is acetaminophen 325 mg/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Desired over have: 650 mg ÷ 325 mg × 1 tablet = 2"
+   ],
+   "summary": "Makes sense: each tablet has 325 mg, and the order is 650 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-006",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer cephalexin 0.5 g PO. Available is cephalexin 250 mg/capsule. How many capsules should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "capsules",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Convert g to mg (bigger to smaller, multiply): 0.5 g × 1,000 = 500 mg",
+    "Desired over have: 500 mg ÷ 250 mg × 1 capsule = 2"
+   ],
+   "summary": "Makes sense: each capsule has 250 mg, and the order is 500 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-007",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer digoxin 0.25 mg PO. Available is digoxin 125 mcg/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Convert mg to mcg (bigger to smaller, multiply): 0.25 mg × 1,000 = 250 mcg",
+    "Desired over have: 250 mcg ÷ 125 mcg × 1 tablet = 2"
+   ],
+   "summary": "Makes sense: each tablet has 125 mcg, and the order is 250 mcg."
+  },
+  {
+   "id": "nur114-u5-med-calc-008",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer prednisone 7.5 mg PO. Available is prednisone 5 mg/tablet. How many tablets should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "1.5",
+   "answerUnit": "tablets",
+   "round": "tenth",
+   "exact": 1.5,
+   "steps": [
+    "Desired over have: 7.5 mg ÷ 5 mg × 1 tablet = 1.5"
+   ],
+   "summary": "Makes sense: each tablet has 5 mg, and the order is 7.5 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-009",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer haloperidol 2 mg PO. Available is haloperidol 1 mg/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Desired over have: 2 mg ÷ 1 mg × 1 tablet = 2"
+   ],
+   "summary": "Makes sense: each tablet has 1 mg, and the order is 2 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-010",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer dexamethasone 4 mg PO. Available is dexamethasone 2 mg/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Desired over have: 4 mg ÷ 2 mg × 1 tablet = 2"
+   ],
+   "summary": "Makes sense: each tablet has 2 mg, and the order is 4 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-011",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer phenytoin 0.3 g PO. Available is phenytoin 100 mg/capsule. How many capsules should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "3",
+   "answerUnit": "capsules",
+   "round": "whole",
+   "exact": 3.0,
+   "steps": [
+    "Convert g to mg (bigger to smaller, multiply): 0.3 g × 1,000 = 300 mg",
+    "Desired over have: 300 mg ÷ 100 mg × 1 capsule = 3"
+   ],
+   "summary": "Makes sense: each capsule has 100 mg, and the order is 300 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-012",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer warfarin 7.5 mg PO. Available is warfarin 2.5 mg/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "3",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 3.0,
+   "steps": [
+    "Desired over have: 7.5 mg ÷ 2.5 mg × 1 tablet = 3"
+   ],
+   "summary": "Makes sense: each tablet has 2.5 mg, and the order is 7.5 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-013",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer potassium chloride extended-release 40 mEq PO. Available is potassium chloride extended-release 20 mEq/tablet. How many tablets should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tablets",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Desired over have: 40 mEq ÷ 20 mEq × 1 tablet = 2"
+   ],
+   "summary": "Makes sense: each tablet has 20 mEq, and the order is 40 mEq."
+  },
+  {
+   "id": "nur114-u5-med-calc-014",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer amoxicillin 1 g PO. Available is amoxicillin 500 mg/capsule. How many capsules should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "capsules",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Convert g to mg (bigger to smaller, multiply): 1 g × 1,000 = 1,000 mg",
+    "Desired over have: 1,000 mg ÷ 500 mg × 1 capsule = 2"
+   ],
+   "summary": "Makes sense: each capsule has 500 mg, and the order is 1,000 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-015",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer lisinopril 5 mg PO. Available is lisinopril 10 mg/tablet. How many tablets should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "0.5",
+   "answerUnit": "tablets",
+   "round": "tenth",
+   "exact": 0.5,
+   "steps": [
+    "Desired over have: 5 mg ÷ 10 mg × 1 tablet = 0.5"
+   ],
+   "summary": "Makes sense: each tablet has 10 mg, and the order is 5 mg."
+  },
+  {
+   "id": "nur114-u5-med-calc-016",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer amoxicillin 400 mg PO. Available is amoxicillin oral suspension 200 mg/5 mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "10",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 10.0,
+   "steps": [
+    "Desired over have: 400 mg ÷ 200 mg × 5 mL = 10 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-017",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer amoxicillin 0.25 g PO. Available is amoxicillin oral suspension 250 mg/5 mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 5.0,
+   "steps": [
+    "Convert g to mg (bigger to smaller, multiply): 0.25 g × 1,000 = 250 mg",
+    "Desired over have: 250 mg ÷ 250 mg × 5 mL = 5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-018",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer furosemide 80 mg PO. Available is furosemide oral solution 10 mg/mL. How many mL should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "8",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 8.0,
+   "steps": [
+    "Desired over have: 80 mg ÷ 10 mg × 1 mL = 8 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-019",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer acetaminophen 650 mg PO. Available is acetaminophen oral solution 160 mg/5 mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "20.3",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 20.3125,
+   "steps": [
+    "Desired over have: 650 mg ÷ 160 mg × 5 mL = 20.3125 mL",
+    "Round to the nearest tenth: the hundredths digit is 1, so leave it (20.3)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-020",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer lactulose 20 g PO. Available is lactulose oral solution 10 g/15 mL. How many mL should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "30",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 30.0,
+   "steps": [
+    "Desired over have: 20 g ÷ 10 g × 15 mL = 30 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-021",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer vancomycin 125 mg PO. Available is vancomycin oral solution 25 mg/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 5.0,
+   "steps": [
+    "Desired over have: 125 mg ÷ 25 mg × 1 mL = 5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-022",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer cefaclor 375 mg PO. Available is cefaclor oral suspension 250 mg/5 mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "7.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 7.5,
+   "steps": [
+    "Desired over have: 375 mg ÷ 250 mg × 5 mL = 7.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-023",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer potassium chloride 20 mEq PO. Available is potassium chloride oral solution 40 mEq/15 mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "7.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 7.5,
+   "steps": [
+    "Desired over have: 20 mEq ÷ 40 mEq × 15 mL = 7.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-024",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer digoxin 125 mcg PO. Available is digoxin elixir 0.05 mg/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "2.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 2.5,
+   "steps": [
+    "Convert mcg to mg (smaller to bigger, divide): 125 mcg ÷ 1,000 = 0.125 mg",
+    "Desired over have: 0.125 mg ÷ 0.05 mg × 1 mL = 2.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-025",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer valproic acid 500 mg PO. Available is valproic acid syrup 250 mg/5 mL. How many mL should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "10",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 10.0,
+   "steps": [
+    "Desired over have: 500 mg ÷ 250 mg × 5 mL = 10 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-026",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer heparin 8,000 units subcutaneously. Available is heparin injection 10,000 units/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "0.8",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 0.8,
+   "steps": [
+    "Desired over have: 8,000 units ÷ 10,000 units × 1 mL = 0.8 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-027",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer heparin 5,000 units subcutaneously. Available is heparin injection 10,000 units/mL. How many mL should the nurse administer? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "0.5",
+   "answerUnit": "mL",
+   "round": "hundredth",
+   "exact": 0.5,
+   "steps": [
+    "Desired over have: 5,000 units ÷ 10,000 units × 1 mL = 0.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-028",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer heparin 15,000 units subcutaneously. Available is heparin injection 20,000 units/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "0.8",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 0.75,
+   "steps": [
+    "Desired over have: 15,000 units ÷ 20,000 units × 1 mL = 0.75 mL",
+    "Round to the nearest tenth: the hundredths digit is 5, so round up (0.8)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-029",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer morphine 4 mg IV. Available is morphine injection 10 mg/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "0.4",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 0.4,
+   "steps": [
+    "Desired over have: 4 mg ÷ 10 mg × 1 mL = 0.4 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-030",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer meperidine 25 mg IM. Available is meperidine injection 50 mg/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "0.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 0.5,
+   "steps": [
+    "Desired over have: 25 mg ÷ 50 mg × 1 mL = 0.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-031",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer promethazine 12.5 mg IM. Available is promethazine injection 25 mg/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "0.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 0.5,
+   "steps": [
+    "Desired over have: 12.5 mg ÷ 25 mg × 1 mL = 0.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-032",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer hydromorphone 1.5 mg IV. Available is hydromorphone injection 2 mg/mL. How many mL should the nurse administer? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "0.75",
+   "answerUnit": "mL",
+   "round": "hundredth",
+   "exact": 0.75,
+   "steps": [
+    "Desired over have: 1.5 mg ÷ 2 mg × 1 mL = 0.75 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-033",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer ketorolac 15 mg IM. Available is ketorolac injection 30 mg/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "0.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 0.5,
+   "steps": [
+    "Desired over have: 15 mg ÷ 30 mg × 1 mL = 0.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-034",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer dexamethasone 6 mg IV. Available is dexamethasone injection 4 mg/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "1.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 1.5,
+   "steps": [
+    "Desired over have: 6 mg ÷ 4 mg × 1 mL = 1.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-035",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer enoxaparin 40 mg subcutaneously. Available is enoxaparin injection 100 mg/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "0.4",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 0.4,
+   "steps": [
+    "Desired over have: 40 mg ÷ 100 mg × 1 mL = 0.4 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-036",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer ondansetron 4 mg IV. Available is ondansetron injection 2 mg/mL. How many mL should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Desired over have: 4 mg ÷ 2 mg × 1 mL = 2 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-037",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer mixturezole difakate 700 mg PO. The nurse reviews the medication label shown. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "10",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 10.0,
+   "steps": [
+    "From the label, the dosage strength (have) is 350 mg in 5 mL",
+    "Desired over have: 700 mg ÷ 350 mg × 5 mL = 10 mL"
+   ],
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
+   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+  },
+  {
+   "id": "nur114-u5-med-calc-038",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer mixturezole difakate 525 mg PO. The nurse reviews the medication label shown. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "7.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 7.5,
+   "steps": [
+    "From the label, the dosage strength (have) is 350 mg in 5 mL",
+    "Desired over have: 525 mg ÷ 350 mg × 5 mL = 7.5 mL"
+   ],
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
+   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+  },
+  {
+   "id": "nur114-u5-med-calc-039",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer mixturezole difakate 875 mg PO. The nurse reviews the medication label shown. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "12.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 12.5,
+   "steps": [
+    "From the label, the dosage strength (have) is 350 mg in 5 mL",
+    "Desired over have: 875 mg ÷ 350 mg × 5 mL = 12.5 mL"
+   ],
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
+   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+  },
+  {
+   "id": "nur114-u5-med-calc-040",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer lansoprazole 60 mg PO daily. The nurse reviews the medication label shown. How many capsules should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "capsules",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "From the label, each delayed-release capsule has 30 mg",
+    "60 mg ÷ 30 mg × 1 capsule = 2 capsules"
+   ],
+   "summary": "Delayed-release capsules are swallowed whole.",
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
+   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
+  },
+  {
+   "id": "nur114-u5-med-calc-041",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a liquid medication prescribed as 3 Tbsp PO. How many mL should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "45",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 45.0,
+   "steps": [
+    "1 Tbsp = 15 mL",
+    "Bigger unit to smaller: 3 × 15 = 45 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-042",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a liquid medication prescribed as 2 tsp PO. How many mL should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "10",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 10.0,
+   "steps": [
+    "1 tsp = 5 mL",
+    "Bigger unit to smaller: 2 × 5 = 10 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-043",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a liquid medication prescribed as 1.5 oz PO. How many mL should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "45",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 45.0,
+   "steps": [
+    "1 oz = 30 mL",
+    "Bigger unit to smaller: 1.5 × 30 = 45 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-044",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a liquid medication prescribed as 2.5 tsp PO. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "12.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 12.5,
+   "steps": [
+    "1 tsp = 5 mL",
+    "Bigger unit to smaller: 2.5 × 5 = 12.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-045",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a liquid medication prescribed as 4 oz PO. How many mL should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "120",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 120.0,
+   "steps": [
+    "1 oz = 30 mL",
+    "Bigger unit to smaller: 4 × 30 = 120 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-046",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a liquid medication prescribed as 0.5 Tbsp PO. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "7.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 7.5,
+   "steps": [
+    "1 Tbsp = 15 mL",
+    "Bigger unit to smaller: 0.5 × 15 = 7.5 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-047",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is teaching a client who will take 30 mL of a liquid medication at home with a household measure. How many tablespoons should the client take? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "Tbsp",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "1 Tbsp = 15 mL",
+    "Smaller unit to bigger: 30 ÷ 15 = 2 Tbsp"
+   ],
+   "summary": "Teach the client to use a calibrated dosing cup or spoon, not a kitchen spoon."
+  },
+  {
+   "id": "nur114-u5-med-calc-048",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is teaching a client who will take 15 mL of a liquid medication at home with a household measure. How many teaspoons should the client take? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "3",
+   "answerUnit": "tsp",
+   "round": "whole",
+   "exact": 3.0,
+   "steps": [
+    "1 tsp = 5 mL",
+    "Smaller unit to bigger: 15 ÷ 5 = 3 tsp"
+   ],
+   "summary": "Teach the client to use a calibrated dosing cup or spoon, not a kitchen spoon."
+  },
+  {
+   "id": "nur114-u5-med-calc-049",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is teaching a client who will take 60 mL of a liquid medication at home with a household measure. How many ounces should the client take? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "oz",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "1 oz = 30 mL",
+    "Smaller unit to bigger: 60 ÷ 30 = 2 oz"
+   ],
+   "summary": "Teach the client to use a calibrated dosing cup or spoon, not a kitchen spoon."
+  },
+  {
+   "id": "nur114-u5-med-calc-050",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is teaching a client who will take 10 mL of a liquid medication at home with a household measure. How many teaspoons should the client take? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "tsp",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "1 tsp = 5 mL",
+    "Smaller unit to bigger: 10 ÷ 5 = 2 tsp"
+   ],
+   "summary": "Teach the client to use a calibrated dosing cup or spoon, not a kitchen spoon."
+  },
+  {
+   "id": "nur114-u5-med-calc-051",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a medication prescribed as 500 mg. How many mcg is this dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "500000",
+   "answerUnit": "mcg",
+   "round": "whole",
+   "exact": 500000.0,
+   "steps": [
+    "Convert mg to mcg (bigger to smaller, multiply): 500 mg × 1,000 = 500,000 mcg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-052",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a medication prescribed as 0.2 g. How many mg is this dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "200",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 200.0,
+   "steps": [
+    "Convert g to mg (bigger to smaller, multiply): 0.2 g × 1,000 = 200 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-053",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a medication prescribed as 1.5 g. How many mg is this dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "1500",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 1500.0,
+   "steps": [
+    "Convert g to mg (bigger to smaller, multiply): 1.5 g × 1,000 = 1,500 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-054",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a medication prescribed as 250 mcg. How many mg is this dose? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "0.25",
+   "answerUnit": "mg",
+   "round": "hundredth",
+   "exact": 0.25,
+   "steps": [
+    "Convert mcg to mg (smaller to bigger, divide): 250 mcg ÷ 1,000 = 0.25 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-055",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a medication prescribed as 0.125 mg. How many mcg is this dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "125",
+   "answerUnit": "mcg",
+   "round": "whole",
+   "exact": 125.0,
+   "steps": [
+    "Convert mg to mcg (bigger to smaller, multiply): 0.125 mg × 1,000 = 125 mcg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-056",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a medication prescribed as 2,000 mg. How many g is this dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "g",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "Convert mg to g (smaller to bigger, divide): 2,000 mg ÷ 1,000 = 2 g"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-057",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a medication prescribed as 750 mg. How many g is this dose? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "0.75",
+   "answerUnit": "g",
+   "round": "hundredth",
+   "exact": 0.75,
+   "steps": [
+    "Convert mg to g (smaller to bigger, divide): 750 mg ÷ 1,000 = 0.75 g"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-058",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer a medication prescribed as 0.1 mg. How many mcg is this dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "100",
+   "answerUnit": "mcg",
+   "round": "whole",
+   "exact": 100.0,
+   "steps": [
+    "Convert mg to mcg (bigger to smaller, multiply): 0.1 mg × 1,000 = 100 mcg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-059",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is converting 0.5 L to mL. How many mL is this? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "500",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 500.0,
+   "steps": [
+    "Bigger to smaller, multiply: 0.5 × 1,000 = 500"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-060",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is converting 1,250 mL to L. How many L is this? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "1.25",
+   "answerUnit": "L",
+   "round": "hundredth",
+   "exact": 1.25,
+   "steps": [
+    "Smaller to bigger, divide: 1,250 ÷ 1,000 = 1.25"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-061",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is converting 3 kg to g. How many g is this? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "3000",
+   "answerUnit": "g",
+   "round": "whole",
+   "exact": 3000.0,
+   "steps": [
+    "Bigger to smaller, multiply: 3 × 1,000 = 3,000"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-062",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 75.4 kg. How many pounds does the client weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "165.9",
+   "answerUnit": "lb",
+   "round": "tenth",
+   "exact": 165.88,
+   "steps": [
+    "kg to lb: multiply by 2.2",
+    "75.4 × 2.2 = 165.88",
+    "Round to the nearest tenth: the hundredths digit is 8, so round up (165.9)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-063",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is weighing an infant who weighs 10 lb 3 oz. How many pounds does the infant weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "10.2",
+   "answerUnit": "lb",
+   "round": "tenth",
+   "exact": 10.1875,
+   "steps": [
+    "Ounces to pounds: 3 ÷ 16 = 0.1875",
+    "Add the pounds: 10 + 0.1875 = 10.1875",
+    "Round to the nearest tenth: the hundredths digit is 8, so round up (10.2)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-064",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is calculating a medication dose for a child who weighs 50 lb 7 oz. How many kilograms does the child weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "22.9",
+   "answerUnit": "kg",
+   "round": "tenth",
+   "exact": 22.926136363636363,
+   "steps": [
+    "Ounces to pounds first: 7 ÷ 16 = 0.4375, so 50.4375 lb (don't round yet)",
+    "Pounds to kilograms: 50.4375 ÷ 2.2 = 22.9261…",
+    "Round to the nearest tenth: the hundredths digit is 2, so leave it (22.9)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-065",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing a weight-based medication for a client who weighs 176 lb. How many kilograms does the client weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "80",
+   "answerUnit": "kg",
+   "round": "tenth",
+   "exact": 80.0,
+   "steps": [
+    "lb to kg: divide by 2.2",
+    "176 ÷ 2.2 = 80"
+   ],
+   "summary": "The kilogram number is always smaller than the pound number."
+  },
+  {
+   "id": "nur114-u5-med-calc-066",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing a weight-based medication for a client who weighs 154 lb. How many kilograms does the client weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "70",
+   "answerUnit": "kg",
+   "round": "tenth",
+   "exact": 70.0,
+   "steps": [
+    "lb to kg: divide by 2.2",
+    "154 ÷ 2.2 = 70"
+   ],
+   "summary": "The kilogram number is always smaller than the pound number."
+  },
+  {
+   "id": "nur114-u5-med-calc-067",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing a weight-based medication for a client who weighs 210 lb. How many kilograms does the client weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "95.5",
+   "answerUnit": "kg",
+   "round": "tenth",
+   "exact": 95.45454545454545,
+   "steps": [
+    "lb to kg: divide by 2.2",
+    "210 ÷ 2.2 = 95.4545…",
+    "Round to the nearest tenth: the hundredths digit is 5, so round up (95.5)."
+   ],
+   "summary": "The kilogram number is always smaller than the pound number."
+  },
+  {
+   "id": "nur114-u5-med-calc-068",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing a weight-based medication for a client who weighs 187 lb. How many kilograms does the client weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "85",
+   "answerUnit": "kg",
+   "round": "tenth",
+   "exact": 85.0,
+   "steps": [
+    "lb to kg: divide by 2.2",
+    "187 ÷ 2.2 = 85"
+   ],
+   "summary": "The kilogram number is always smaller than the pound number."
+  },
+  {
+   "id": "nur114-u5-med-calc-069",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is preparing a weight-based medication for a client who weighs 132 lb 8 oz. How many kilograms does the client weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "60.2",
+   "answerUnit": "kg",
+   "round": "tenth",
+   "exact": 60.22727272727273,
+   "steps": [
+    "Ounces to pounds first: 8 ÷ 16 = 0.5, so 132.5 lb",
+    "Pounds to kilograms: 132.5 ÷ 2.2 = 60.2272…",
+    "Round to the nearest tenth: the hundredths digit is 2, so leave it (60.2)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-070",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 63.5 kg. How many pounds does the client weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "139.7",
+   "answerUnit": "lb",
+   "round": "tenth",
+   "exact": 139.7,
+   "steps": [
+    "kg to lb: multiply by 2.2",
+    "63.5 × 2.2 = 139.7"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-071",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 25 kg and has a prescription for amoxicillin oral suspension 30 mg/kg/day PO. How many mg of amoxicillin should the client receive each day? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "750",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 750.0,
+   "steps": [
+    "Multiply kg by the dose: 25 kg × 30 mg/kg/day = 750 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-072",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 155 lb and has a prescription for enoxaparin 1.5 mg/kg subcutaneously daily. How many mg of enoxaparin should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "106",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 105.68181818181819,
+   "steps": [
+    "Pounds to kilograms: 155 ÷ 2.2 = 70.4545… kg (don't round yet)",
+    "Multiply kg by the dose: 70.4545… kg × 1.5 mg/kg = 105.6818… mg",
+    "Round to the nearest whole number: the tenths digit is 6, so round up (106)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-073",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 50 kg and has a prescription for medication X 25 mcg/kg IV once. How many mcg should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "1250",
+   "answerUnit": "mcg",
+   "round": "whole",
+   "exact": 1250.0,
+   "steps": [
+    "Multiply kg by the dose: 50 kg × 25 mcg/kg = 1,250 mcg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-074",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 176 lb and has a prescription for enoxaparin 1 mg/kg subcutaneously every 12 hr. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "80",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 80.0,
+   "steps": [
+    "Pounds to kilograms: 176 ÷ 2.2 = 80 kg (don't round yet)",
+    "Multiply kg by the dose: 80 kg × 1 mg/kg = 80 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-075",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 70 kg and has a prescription for vancomycin 15 mg/kg IV every 12 hr. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "1050",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 1050.0,
+   "steps": [
+    "Multiply kg by the dose: 70 kg × 15 mg/kg = 1,050 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-076",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 143 lb and has a prescription for gentamicin 5 mg/kg IV once daily. How many mg should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "325",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 325.0,
+   "steps": [
+    "Pounds to kilograms: 143 ÷ 2.2 = 65 kg (don't round yet)",
+    "Multiply kg by the dose: 65 kg × 5 mg/kg = 325 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-077",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 60 kg and has a prescription for acetaminophen 15 mg/kg PO every 6 hr PRN for fever. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "900",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 900.0,
+   "steps": [
+    "Multiply kg by the dose: 60 kg × 15 mg/kg = 900 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-078",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 187 lb and has a prescription for heparin 80 units/kg IV bolus. How many units should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "6800",
+   "answerUnit": "units",
+   "round": "whole",
+   "exact": 6800.0,
+   "steps": [
+    "Pounds to kilograms: 187 ÷ 2.2 = 85 kg (don't round yet)",
+    "Multiply kg by the dose: 85 kg × 80 units/kg = 6,800 units"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-079",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 220 lb and has a prescription for vancomycin 20 mg/kg IV once. How many mg should the nurse administer? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2000",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 2000.0,
+   "steps": [
+    "Pounds to kilograms: 220 ÷ 2.2 = 100 kg (don't round yet)",
+    "Multiply kg by the dose: 100 kg × 20 mg/kg = 2,000 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-080",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 66 kg and has a prescription for ondansetron 0.15 mg/kg IV once. How many mg should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "9.9",
+   "answerUnit": "mg",
+   "round": "tenth",
+   "exact": 9.9,
+   "steps": [
+    "Multiply kg by the dose: 66 kg × 0.15 mg/kg = 9.9 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-081",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 165 lb and has a prescription for enoxaparin 1 mg/kg subcutaneously every 12 hr. Available is enoxaparin 100 mg/mL. How many mL should the nurse administer? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "0.75",
+   "answerUnit": "mL",
+   "round": "hundredth",
+   "exact": 0.75,
+   "steps": [
+    "165 ÷ 2.2 = 75 kg",
+    "75 kg × 1 mg/kg = 75 mg",
+    "75 mg ÷ 100 mg × 1 mL = 0.75 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-082",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer cefixime 8 mg/kg/day PO, divided equally every 12 hr, to a toddler who weighs 22 lb. Available is cefixime suspension 100 mg/5 mL. How many mL should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "2",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 2.0,
+   "steps": [
+    "22 ÷ 2.2 = 10 kg",
+    "10 kg × 8 mg/kg/day = 80 mg/day",
+    "Every 12 hr = 2 doses: 80 ÷ 2 = 40 mg per dose",
+    "40 mg ÷ 100 mg × 5 mL = 2 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-083",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer amoxicillin 20 mg/kg/day PO, divided equally every 12 hr, to a client who weighs 44 lb. Available is amoxicillin suspension 250 mg/5 mL. How many mL should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "4",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 4.0,
+   "steps": [
+    "44 ÷ 2.2 = 20 kg",
+    "20 kg × 20 mg/kg/day = 400 mg/day",
+    "Every 12 hr = 2 doses: 400 ÷ 2 = 200 mg per dose",
+    "200 mg ÷ 250 mg × 5 mL = 4 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-084",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 86 kg and has a prescription for vancomycin oral suspension 40 mg/kg/day in 3 divided doses. How many mg should the client receive in a day? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "3440",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 3440.0,
+   "steps": [
+    "86 kg × 40 mg/kg/day = 3,440 mg/day"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-085",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 86 kg and has a prescription for vancomycin oral suspension 40 mg/kg/day in 3 divided doses. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "1147",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 1146.6666666666667,
+   "steps": [
+    "86 kg × 40 mg/kg/day = 3,440 mg/day",
+    "3 divided doses: 3,440 ÷ 3 = 1,146.6666…",
+    "Round to the nearest whole number: the tenths digit is 6, so round up (1,147)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-086",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 200 lb and has a prescription for enoxaparin 1.5 mg/kg/day, administered BID,. How many mg should the client receive in 24 hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "136",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 136.36363636363637,
+   "steps": [
+    "200 ÷ 2.2 = 90.9090… kg",
+    "90.9090… kg × 1.5 mg/kg/day = 136.3636… mg/day",
+    "Round to the nearest whole number: the tenths digit is 3, so leave it (136)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-087",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 200 lb and has a prescription for enoxaparin 1.5 mg/kg/day, administered BID,. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "68",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 68.18181818181819,
+   "steps": [
+    "200 ÷ 2.2 = 90.9090… kg",
+    "90.9090… kg × 1.5 = 136.3636… mg/day",
+    "BID = 2 doses: 136.3636… ÷ 2 = 68.1818… mg",
+    "Round to the nearest whole number: the tenths digit is 1, so leave it (68)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-088",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 250 lb and has a prescription for vancomycin oral suspension 40 mg/kg/day divided every 6 hr. How many kilograms does the client weigh? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "113.6",
+   "answerUnit": "kg",
+   "round": "tenth",
+   "exact": 113.63636363636364,
+   "steps": [
+    "250 ÷ 2.2 = 113.6363…",
+    "Round to the nearest tenth: the hundredths digit is 3, so leave it (113.6)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-089",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 250 lb (113.6 kg) and has a prescription for vancomycin oral suspension 40 mg/kg/day divided every 6 hr. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "1136",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 1136.0,
+   "steps": [
+    "113.6 kg × 40 mg/kg/day = 4,544 mg/day",
+    "Every 6 hr = 4 doses: 4,544 ÷ 4 = 1,136 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-090",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 250 lb (113.6 kg) and has a prescription for vancomycin oral suspension 40 mg/kg/day divided every 6 hr. Available is vancomycin oral suspension 250 mg/5 mL. How many mL should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "23",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 22.72,
+   "steps": [
+    "113.6 kg × 40 mg/kg/day = 4,544 mg/day",
+    "Every 6 hr = 4 doses: 4,544 ÷ 4 = 1,136 mg per dose",
+    "1,136 mg ÷ 250 mg × 5 mL = 22.72 mL",
+    "Round to the nearest whole number: the tenths digit is 7, so round up (23)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-091",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who is prescribed a medication 2,400 mg PO daily in 4 divided doses. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "600",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 600.0,
+   "steps": [
+    "4 doses a day",
+    "2,400 mg ÷ 4 = 600 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-092",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who is prescribed a medication 1,200 mg PO daily divided every 8 hr. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "400",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 400.0,
+   "steps": [
+    "Every 8 hr: 24 ÷ 8 = 3 doses a day",
+    "1,200 mg ÷ 3 = 400 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-093",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who is prescribed a medication 2,000 mg PO daily divided every 6 hr. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "500",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 500.0,
+   "steps": [
+    "Every 6 hr: 24 ÷ 6 = 4 doses a day",
+    "2,000 mg ÷ 4 = 500 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-094",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who is prescribed a medication 900 mg PO daily divided TID (three times a day). How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "300",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 300.0,
+   "steps": [
+    "3 doses a day",
+    "900 mg ÷ 3 = 300 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-095",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who is prescribed a medication 750 mg PO daily divided every 12 hr. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "375",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 375.0,
+   "steps": [
+    "Every 12 hr: 24 ÷ 12 = 2 doses a day",
+    "750 mg ÷ 2 = 375 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-096",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who is prescribed a medication 1,000 mg PO BID. Available is the medication 250 mg/5 mL. How many mL should the nurse administer with each dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "20",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 20.0,
+   "steps": [
+    "The 1,000 mg is already the amount for each dose (BID means each dose is 1,000 mg)",
+    "1,000 mg ÷ 250 mg × 5 mL = 20 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-097",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 154 lb and has a prescription for a medication 30 mg/kg/day PO divided every 12 hr. Available is the medication 250 mg/5 mL. How many mL should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "21",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 21.0,
+   "steps": [
+    "154 ÷ 2.2 = 70 kg",
+    "70 kg × 30 mg/kg/day = 2,100 mg/day",
+    "Every 12 hr = 2 doses: 2,100 ÷ 2 = 1,050 mg",
+    "1,050 mg ÷ 250 mg × 5 mL = 21 mL"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-098",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 75 kg and has a prescription for a medication 60 mg/kg/day IV divided every 8 hr. How many mg should the nurse administer per dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "1500",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 1500.0,
+   "steps": [
+    "75 kg × 60 mg/kg/day = 4,500 mg/day",
+    "Every 8 hr: 24 ÷ 8 = 3 doses",
+    "4,500 ÷ 3 = 1,500 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-099",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "fill",
+   "prompt": "A nurse is scheduling a medication prescribed every 4 hr around the clock. How many doses will the client receive in 24 hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "6",
+   "answerUnit": "doses",
+   "round": "whole",
+   "exact": 6.0,
+   "steps": [
+    "24 hr ÷ 4 hr = 6 doses"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-100",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is checking a prescription for medication X 350 mg for a client who weighs 23 kg. The recommended dose is 7.5 to 15 mg/kg/dose. What is the lowest safe dose for this client in mg? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "172.5",
+   "answerUnit": "mg",
+   "round": "tenth",
+   "exact": 172.5,
+   "steps": [
+    "23 kg × 7.5 mg/kg = 172.5 mg"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-101",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is checking a prescription for medication X 350 mg for a client who weighs 23 kg. The recommended dose is 7.5 to 15 mg/kg/dose. What is the highest safe dose for this client in mg? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "345",
+   "answerUnit": "mg",
+   "round": "tenth",
+   "exact": 345.0,
+   "steps": [
+    "23 kg × 15 mg/kg = 345 mg"
+   ],
+   "summary": "The prescribed 350 mg is above 345 mg, so it isn't safe; hold it and contact the provider."
+  },
+  {
+   "id": "nur114-u5-med-calc-102",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is reviewing a prescription for cefaclor. The recommended adult dose is 250 to 500 mg every 8 hr. What is the maximum safe daily dose in mg? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "1500",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 1500.0,
+   "steps": [
+    "Every 8 hr = 3 doses a day",
+    "500 mg × 3 = 1,500 mg/day"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-103",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is reviewing a prescription for cefaclor. The recommended adult dose is 250 to 500 mg every 8 hr. What is the minimum daily dose in mg? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "750",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 750.0,
+   "steps": [
+    "Every 8 hr = 3 doses a day",
+    "250 mg × 3 = 750 mg/day"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-104",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is checking a weight-based prescription for a client who weighs 75 lb. The recommended dose is 20 to 30 mg/kg once daily. What is the maximum safe dose for this client in mg? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "1022.7",
+   "answerUnit": "mg",
+   "round": "tenth",
+   "exact": 1022.7272727272727,
+   "steps": [
+    "75 ÷ 2.2 = 34.0909… kg",
+    "34.0909… kg × 30 mg/kg = 1,022.7272… mg",
+    "Round to the nearest tenth: the hundredths digit is 2, so leave it (1,022.7)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-105",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is checking a weight-based prescription for a client who weighs 75 lb. The recommended dose is 20 to 30 mg/kg once daily. What is the minimum dose for this client in mg? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "681.8",
+   "answerUnit": "mg",
+   "round": "tenth",
+   "exact": 681.8181818181819,
+   "steps": [
+    "75 ÷ 2.2 = 34.0909… kg",
+    "34.0909… kg × 20 mg/kg = 681.8181… mg",
+    "Round to the nearest tenth: the hundredths digit is 1, so leave it (681.8)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-106",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is reviewing a gentamicin prescription for a client who weighs 70 kg. The recommended dose is 3 to 5 mg/kg/day. What is the maximum safe daily dose in mg? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "350",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 350.0,
+   "steps": [
+    "70 kg × 5 mg/kg/day = 350 mg/day"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-107",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is reviewing a prescription for ketorolac 30 mg IM every 4 hr PRN for moderate pain. If every dose is given, how many mg will the client receive in 24 hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "180",
+   "answerUnit": "mg",
+   "round": "whole",
+   "exact": 180.0,
+   "steps": [
+    "Every 4 hr: 24 ÷ 4 = 6 doses",
+    "30 mg × 6 = 180 mg"
+   ],
+   "summary": "The maximum is 120 mg/day, so this order isn't safe."
+  },
+  {
+   "id": "nur114-u5-med-calc-108",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "fill",
+   "prompt": "A nurse is reviewing a prescription for acetaminophen 650 mg PO every 6 hr. How many grams will the client receive in 24 hr if every dose is given? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "2.6",
+   "answerUnit": "g",
+   "round": "tenth",
+   "exact": 2.6,
+   "steps": [
+    "Every 6 hr = 4 doses",
+    "650 mg × 4 = 2,600 mg",
+    "mg to g: 2,600 ÷ 1,000 = 2.6 g"
+   ],
+   "summary": "That's under the usual adult maximum of 4 g a day."
+  },
+  {
+   "id": "nur114-u5-med-calc-109",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer dextrose 5% in water (D5W) 500 mL IV to infuse over 4 hr. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "125",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 125.0,
+   "steps": [
+    "mL/hr = volume ÷ time: 500 mL ÷ 4 hr = 125"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-110",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer 0.9% sodium chloride (0.9% NaCl) 100 mL IV to infuse over 6 hr. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "17",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 16.666666666666668,
+   "steps": [
+    "mL/hr = volume ÷ time: 100 mL ÷ 6 hr = 16.6666…",
+    "Round to the nearest whole number: the tenths digit is 6, so round up (17)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-111",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer cefotaxime 1 g in 100 mL 0.9% NaCl IV to infuse over 45 min. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "133",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 133.33333333333334,
+   "steps": [
+    "Change minutes to hours by multiplying by 60 min/hr: 100 mL ÷ 45 min × 60 min/hr = 133.3333…",
+    "Round to the nearest whole number: the tenths digit is 3, so leave it (133)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-112",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer clindamycin 200 mg in 100 mL 0.9% NaCl IV to infuse over 30 min. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "200",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 200.0,
+   "steps": [
+    "Change minutes to hours by multiplying by 60 min/hr: 100 mL ÷ 30 min × 60 min/hr = 200"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-113",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer 0.9% NaCl 1,000 mL IV to infuse over 8 hr. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "125",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 125.0,
+   "steps": [
+    "mL/hr = volume ÷ time: 1,000 mL ÷ 8 hr = 125"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-114",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer lactated Ringer's (LR) 1,000 mL IV to infuse over 12 hr. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "83",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 83.33333333333333,
+   "steps": [
+    "mL/hr = volume ÷ time: 1,000 mL ÷ 12 hr = 83.3333…",
+    "Round to the nearest whole number: the tenths digit is 3, so leave it (83)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-115",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer vancomycin 1.5 g in 250 mL 0.9% NaCl IV to infuse over 2 hr. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "125",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 125.0,
+   "steps": [
+    "mL/hr = volume ÷ time: 250 mL ÷ 2 hr = 125"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-116",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer ampicillin 1 g in 50 mL 0.9% NaCl IV to infuse over 20 min. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "150",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 150.0,
+   "steps": [
+    "Change minutes to hours by multiplying by 60 min/hr: 50 mL ÷ 20 min × 60 min/hr = 150"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-117",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer 0.45% sodium chloride 1 L IV to infuse over 10 hr. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "100",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 100.0,
+   "steps": [
+    "1 L = 1,000 mL",
+    "mL/hr = volume ÷ time: 1,000 mL ÷ 10 hr = 100"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-118",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer famotidine 20 mg in 50 mL 0.9% NaCl IV to infuse over 15 min. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "200",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 200.0,
+   "steps": [
+    "Change minutes to hours by multiplying by 60 min/hr: 50 mL ÷ 15 min × 60 min/hr = 200"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-119",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer D5W 750 mL IV to infuse over 6 hr. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "125",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 125.0,
+   "steps": [
+    "mL/hr = volume ÷ time: 750 mL ÷ 6 hr = 125"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-120",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer 0.9% NaCl 150 mL IV to infuse over 90 min. The nurse should set the IV infusion pump to deliver how many mL/hr? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "100",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 100.0,
+   "steps": [
+    "Change minutes to hours by multiplying by 60 min/hr: 150 mL ÷ 90 min × 60 min/hr = 100"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-121",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer lactated Ringer's (LR) 1,500 mL IV to infuse over 10 hr using manual IV tubing with a drop factor of 15 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "38",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 37.5,
+   "steps": [
+    "Hours to minutes: 10 hr × 60 = 600 min",
+    "gtt/min = volume × drop factor ÷ minutes: 1,500 × 15 ÷ 600 = 37.5",
+    "Round to the nearest whole number: the tenths digit is 5, so round up (38)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-122",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer famotidine 20 mg in 100 mL 0.9% NaCl IV to infuse over 30 min using manual IV tubing with a drop factor of 10 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "33",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 33.333333333333336,
+   "steps": [
+    "gtt/min = volume × drop factor ÷ minutes: 100 × 10 ÷ 30 = 33.3333…",
+    "Round to the nearest whole number: the tenths digit is 3, so leave it (33)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-123",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer vancomycin 1 g in 100 mL dextrose 5% in water (D5W) IV to infuse over 45 min using manual IV tubing with a drop factor of 10 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "22",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 22.22222222222222,
+   "steps": [
+    "gtt/min = volume × drop factor ÷ minutes: 100 × 10 ÷ 45 = 22.2222…",
+    "Round to the nearest whole number: the tenths digit is 2, so leave it (22)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-124",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer 250 mL of IV fluid to infuse over 2 hr using manual IV tubing with a drop factor of 60 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "125",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 125.0,
+   "steps": [
+    "Hours to minutes: 2 hr × 60 = 120 min",
+    "gtt/min = volume × drop factor ÷ minutes: 250 × 60 ÷ 120 = 125"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-125",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer 0.9% NaCl 1,000 mL IV to infuse over 8 hr using manual IV tubing with a drop factor of 20 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "42",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 41.666666666666664,
+   "steps": [
+    "Hours to minutes: 8 hr × 60 = 480 min",
+    "gtt/min = volume × drop factor ÷ minutes: 1,000 × 20 ÷ 480 = 41.6666…",
+    "Round to the nearest whole number: the tenths digit is 6, so round up (42)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-126",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer D5W 500 mL IV to infuse over 4 hr using manual IV tubing with a drop factor of 15 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "31",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 31.25,
+   "steps": [
+    "Hours to minutes: 4 hr × 60 = 240 min",
+    "gtt/min = volume × drop factor ÷ minutes: 500 × 15 ÷ 240 = 31.25",
+    "Round to the nearest whole number: the tenths digit is 2, so leave it (31)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-127",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer cefazolin 1 g in 100 mL 0.9% NaCl IV to infuse over 1 hr using manual IV tubing with a drop factor of 10 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "17",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 16.666666666666668,
+   "steps": [
+    "Hours to minutes: 1 hr × 60 = 60 min",
+    "gtt/min = volume × drop factor ÷ minutes: 100 × 10 ÷ 60 = 16.6666…",
+    "Round to the nearest whole number: the tenths digit is 6, so round up (17)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-128",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer LR 1,000 mL IV to infuse over 6 hr using manual IV tubing with a drop factor of 15 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "42",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 41.666666666666664,
+   "steps": [
+    "Hours to minutes: 6 hr × 60 = 360 min",
+    "gtt/min = volume × drop factor ÷ minutes: 1,000 × 15 ÷ 360 = 41.6666…",
+    "Round to the nearest whole number: the tenths digit is 6, so round up (42)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-129",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer an antibiotic in 50 mL 0.9% NaCl IV to infuse over 30 min using manual IV tubing with a drop factor of 60 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "100",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 100.0,
+   "steps": [
+    "gtt/min = volume × drop factor ÷ minutes: 50 × 60 ÷ 30 = 100"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-130",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is preparing to administer 0.9% NaCl 750 mL IV to infuse over 5 hr using manual IV tubing with a drop factor of 20 gtt/mL. The nurse should adjust the manual IV infusion to deliver how many gtt/min? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "50",
+   "answerUnit": "gtt/min",
+   "round": "whole",
+   "exact": 50.0,
+   "steps": [
+    "Hours to minutes: 5 hr × 60 = 300 min",
+    "gtt/min = volume × drop factor ÷ minutes: 750 × 20 ÷ 300 = 50"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-131",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 150 lb and has a prescription for a heparin infusion at 10 units/kg/hr. Available is heparin 2,500 units/100 mL. How many mL/hr should the nurse set the pump to deliver? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "27",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 27.272727272727273,
+   "steps": [
+    "150 ÷ 2.2 = 68.1818… kg",
+    "68.1818… kg × 10 units/kg/hr = 681.8181… units/hr",
+    "Concentration: 2,500 units ÷ 100 mL = 25 units/mL",
+    "681.8181… units/hr ÷ 25 units/mL = 27.2727… mL/hr",
+    "Round to the nearest whole number: the tenths digit is 2, so leave it (27)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-132",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 80 kg and has a prescription for a heparin infusion at 18 units/kg/hr. Available is heparin 25,000 units in 500 mL D5W. How many mL/hr should the nurse set the pump to deliver? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "29",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 28.8,
+   "steps": [
+    "80 kg × 18 units/kg/hr = 1,440 units/hr",
+    "Concentration: 25,000 ÷ 500 = 50 units/mL",
+    "1,440 ÷ 50 = 28.8 mL/hr",
+    "Round to the nearest whole number: the tenths digit is 8, so round up (29)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-133",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 176 lb and has a prescription for a heparin infusion at 12 units/kg/hr. Available is heparin 25,000 units in 500 mL. How many mL/hr should the nurse set the pump to deliver? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "19",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 19.2,
+   "steps": [
+    "176 ÷ 2.2 = 80 kg",
+    "80 kg × 12 units/kg/hr = 960 units/hr",
+    "Concentration: 25,000 ÷ 500 = 50 units/mL",
+    "960 ÷ 50 = 19.2 mL/hr",
+    "Round to the nearest whole number: the tenths digit is 2, so leave it (19)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-134",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who has a prescription for a heparin infusion at 1,000 units/hr. Available is heparin 25,000 units in 250 mL. How many mL/hr should the nurse set the pump to deliver? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "10",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 10.0,
+   "steps": [
+    "Concentration: 25,000 ÷ 250 = 100 units/mL",
+    "1,000 units/hr ÷ 100 units/mL = 10 mL/hr"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-135",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who has a prescription for a heparin infusion at 800 units/hr. Available is heparin 20,000 units in 500 mL. How many mL/hr should the nurse set the pump to deliver? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "20",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 20.0,
+   "steps": [
+    "Concentration: 20,000 ÷ 500 = 40 units/mL",
+    "800 ÷ 40 = 20 mL/hr"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-136",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 90 kg and has a prescription for regular insulin IV at 0.1 units/kg/hr. Available is regular insulin 100 units in 100 mL 0.9% NaCl. How many mL/hr should the nurse set the pump to deliver? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "9",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 9.0,
+   "steps": [
+    "90 kg × 0.1 units/kg/hr = 9 units/hr",
+    "Concentration: 100 ÷ 100 = 1 unit/mL",
+    "9 ÷ 1 = 9 mL/hr"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-137",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who has a heparin infusion of 25,000 units in 500 mL running at 15 mL/hr. How many units/hr is the client receiving? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "750",
+   "answerUnit": "units/hr",
+   "round": "whole",
+   "exact": 750.0,
+   "steps": [
+    "Concentration: 25,000 ÷ 500 = 50 units/mL",
+    "15 mL/hr × 50 units/mL = 750 units/hr"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-138",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who has a prescription for magnesium sulfate 2 g/hr IV. Available is magnesium sulfate 40 g in 1,000 mL. How many mL/hr should the nurse set the pump to deliver? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "50",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 50.0,
+   "steps": [
+    "Concentration: 40 g ÷ 1,000 mL = 0.04 g/mL",
+    "2 g/hr ÷ 0.04 g/mL = 50 mL/hr"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-139",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who weighs 198 lb and has a prescription for a heparin bolus of 80 units/kg IV. Available is heparin 5,000 units/mL. How many mL should the nurse administer? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "1.4",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 1.44,
+   "steps": [
+    "198 ÷ 2.2 = 90 kg",
+    "90 kg × 80 units/kg = 7,200 units",
+    "7,200 ÷ 5,000 × 1 mL = 1.44 mL",
+    "Round to the nearest tenth: the hundredths digit is 4, so leave it (1.4)."
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-140",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "fill",
+   "prompt": "A nurse is caring for a client who has a prescription for regular insulin IV at 5 units/hr. Available is regular insulin 100 units in 100 mL 0.9% NaCl. How many mL/hr should the nurse set the pump to deliver? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "5",
+   "answerUnit": "mL/hr",
+   "round": "whole",
+   "exact": 5.0,
+   "steps": [
+    "Concentration: 100 units ÷ 100 mL = 1 unit/mL",
+    "5 units/hr ÷ 1 unit/mL = 5 mL/hr"
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-141",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "fill",
+   "prompt": "A nurse calculates a dose of 0.746 mL. How should the nurse record the dose? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "0.75",
+   "answerUnit": "mL",
+   "round": "hundredth",
+   "exact": 0.746,
+   "steps": [
+    "Look at the digit to the right of the hundredths place",
+    "Round to the nearest hundredth: the thousandths digit is 6, so round up (0.75)."
+   ],
+   "summary": "Use a leading zero for doses less than 1 and no trailing zero."
+  },
+  {
+   "id": "nur114-u5-med-calc-142",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "fill",
+   "prompt": "A nurse calculates a dose of 0.743 mL. How should the nurse record the dose? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "0.74",
+   "answerUnit": "mL",
+   "round": "hundredth",
+   "exact": 0.743,
+   "steps": [
+    "Look at the digit to the right of the hundredths place",
+    "Round to the nearest hundredth: the thousandths digit is 3, so leave it (0.74)."
+   ],
+   "summary": "Use a leading zero for doses less than 1 and no trailing zero."
+  },
+  {
+   "id": "nur114-u5-med-calc-143",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "fill",
+   "prompt": "A nurse calculates a dose of 7.48 mL. How should the nurse record the dose? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "7.5",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 7.48,
+   "steps": [
+    "Look at the digit to the right of the tenths place",
+    "Round to the nearest tenth: the hundredths digit is 8, so round up (7.5)."
+   ],
+   "summary": "Use a leading zero for doses less than 1 and no trailing zero."
+  },
+  {
+   "id": "nur114-u5-med-calc-144",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "fill",
+   "prompt": "A nurse calculates a dose of 1.25 mL. How should the nurse record the dose? Round to the nearest tenth.",
+   "calc": true,
+   "answer": "1.3",
+   "answerUnit": "mL",
+   "round": "tenth",
+   "exact": 1.25,
+   "steps": [
+    "Look at the digit to the right of the tenths place",
+    "Round to the nearest tenth: the hundredths digit is 5, so round up (1.3)."
+   ],
+   "summary": "Use a leading zero for doses less than 1 and no trailing zero."
+  },
+  {
+   "id": "nur114-u5-med-calc-145",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "fill",
+   "prompt": "A nurse calculates a dose of 0.333 mL. How should the nurse record the dose? Round to the nearest hundredth.",
+   "calc": true,
+   "answer": "0.33",
+   "answerUnit": "mL",
+   "round": "hundredth",
+   "exact": 0.333,
+   "steps": [
+    "Look at the digit to the right of the hundredths place",
+    "Round to the nearest hundredth: the thousandths digit is 3, so leave it (0.33)."
+   ],
+   "summary": "Use a leading zero for doses less than 1 and no trailing zero."
+  },
+  {
+   "id": "nur114-u5-med-calc-146",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "fill",
+   "prompt": "A nurse calculates a dose of 37.5 mL. How should the nurse record the dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "38",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 37.5,
+   "steps": [
+    "Look at the digit to the right of the ones place",
+    "Round to the nearest whole number: the tenths digit is 5, so round up (38)."
+   ],
+   "summary": "Use a leading zero for doses less than 1 and no trailing zero."
+  },
+  {
+   "id": "nur114-u5-med-calc-147",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "fill",
+   "prompt": "A nurse calculates a dose of 22.72 mL. How should the nurse record the dose? Round to the nearest whole number.",
+   "calc": true,
+   "answer": "23",
+   "answerUnit": "mL",
+   "round": "whole",
+   "exact": 22.72,
+   "steps": [
+    "Look at the digit to the right of the ones place",
+    "Round to the nearest whole number: the tenths digit is 7, so round up (23)."
+   ],
+   "summary": "Use a leading zero for doses less than 1 and no trailing zero."
+  },
+  {
+   "id": "nur114-u5-med-calc-148",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "mc",
+   "prompt": "A nurse is preparing to administer an oral solution and reviews the medication label shown. Which information on the label is the dosage strength the nurse uses as the available amount?",
+   "calc": false,
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
+   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated",
+   "options": [
+    {
+     "text": "350 mg/5 mL",
+     "correct": true,
+     "rationale": "The dosage strength (the \"have\") tells how much drug is in a set volume: 350 mg in each 5 mL."
+    },
+    {
+     "text": "100 mL",
+     "correct": false,
+     "rationale": "100 mL is the total volume in the bottle after reconstitution, not the strength."
+    },
+    {
+     "text": "7 g",
+     "correct": false,
+     "rationale": "7 g is the total amount of drug in the whole bottle."
+    },
+    {
+     "text": "80 mL",
+     "correct": false,
+     "rationale": "80 mL is the water added to reconstitute the powder."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-149",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "sata",
+   "prompt": "A nurse reconstitutes the oral solution shown on the label. Which actions should the nurse take? Select all that apply.",
+   "calc": false,
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
+   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated",
+   "options": [
+    {
+     "text": "Add 80 mL of water to the bottle",
+     "correct": true,
+     "rationale": "The label's reconstitution directions call for 80 mL of water."
+    },
+    {
+     "text": "Shake the bottle well before each dose",
+     "correct": true,
+     "rationale": "The label says to shake well before each use."
+    },
+    {
+     "text": "Store the bottle in the refrigerator",
+     "correct": true,
+     "rationale": "The label says to keep it refrigerated at 35 to 46 °F."
+    },
+    {
+     "text": "Discard the solution 30 days after it's mixed",
+     "correct": false,
+     "rationale": "The label says to discard it 14 days after preparation."
+    },
+    {
+     "text": "Store the bottle in a sunny window",
+     "correct": false,
+     "rationale": "The label says to keep it away from light."
+    },
+    {
+     "text": "Write the date it was mixed on the bottle",
+     "correct": true,
+     "rationale": "The discard date is counted from preparation, so the mixing date has to be known."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-150",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "mc",
+   "prompt": "A nurse is preparing a client's morning medications and reviews the medication label shown. Which information should the nurse identify as the generic name?",
+   "calc": false,
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
+   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only",
+   "options": [
+    {
+     "text": "lansoprazole",
+     "correct": true,
+     "rationale": "Lansoprazole is the generic name; it's printed under the brand name. When written, generic names are lowercase."
+    },
+    {
+     "text": "Prevacid",
+     "correct": false,
+     "rationale": "Prevacid® is the brand (trade) name, shown with ®."
+    },
+    {
+     "text": "Takeda",
+     "correct": false,
+     "rationale": "Takeda is the company that distributes the drug."
+    },
+    {
+     "text": "Delayed-release",
+     "correct": false,
+     "rationale": "Delayed-release describes the form of the capsule."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-151",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "mc",
+   "prompt": "A client who has trouble swallowing is prescribed the medication shown on the label. Which action should the nurse take?",
+   "calc": false,
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
+   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only",
+   "options": [
+    {
+     "text": "Contact the provider to ask for a different form of the medication",
+     "correct": true,
+     "rationale": "These are delayed-release capsules, which must not be opened, crushed or chewed; ask for a form the client can swallow."
+    },
+    {
+     "text": "Crush the capsule contents and mix them with applesauce",
+     "correct": false,
+     "rationale": "Crushing a delayed-release form changes how the drug is released and can cause an incorrect dose."
+    },
+    {
+     "text": "Give half of a capsule at a time",
+     "correct": false,
+     "rationale": "Capsules can't be split, and splitting changes the dose."
+    },
+    {
+     "text": "Hold the medication until the client can swallow",
+     "correct": false,
+     "rationale": "Holding it without telling the provider leaves the client untreated."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-152",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "dragdrop",
+   "prompt": "A nurse is teaching a newly hired nurse about the parts of a medication label. Sort each item into the right box. Move each answer to the box where it belongs.",
+   "calc": false,
+   "leftLabel": "Label items",
+   "buckets": [
+    "Identifies the drug",
+    "Needed to calculate the dose"
+   ],
+   "options": [
+    {
+     "text": "Brand name",
+     "correct": true,
+     "bucket": 1,
+     "rationale": "The brand name identifies the drug."
+    },
+    {
+     "text": "Generic name",
+     "correct": true,
+     "bucket": 1,
+     "rationale": "The generic name identifies the drug."
+    },
+    {
+     "text": "Dosage strength (such as 20 mg/tablet)",
+     "correct": true,
+     "bucket": 2,
+     "rationale": "The strength is the \"have\" in every calculation."
+    },
+    {
+     "text": "Form (tablet, capsule, solution)",
+     "correct": true,
+     "bucket": 2,
+     "rationale": "The form is the quantity unit the answer is in."
+    },
+    {
+     "text": "Lot number",
+     "correct": false,
+     "rationale": "The lot number tracks the batch for recalls; it isn't used to name or calculate the drug."
+    },
+    {
+     "text": "Bar code",
+     "correct": false,
+     "rationale": "The bar code is scanned at the bedside; it isn't used to calculate the dose."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-153",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "mc",
+   "prompt": "A nurse is documenting a calculated dose of five-tenths of a milliliter. Which entry is correct?",
+   "calc": false,
+   "options": [
+    {
+     "text": "0.5 mL",
+     "correct": true,
+     "rationale": "A leading zero makes the decimal point easy to see."
+    },
+    {
+     "text": ".5 mL",
+     "correct": false,
+     "rationale": "Without a leading zero, the decimal can be missed and read as 5 mL, a tenfold overdose."
+    },
+    {
+     "text": "0.50 mL",
+     "correct": false,
+     "rationale": "A trailing zero is never used; it can be misread as 50."
+    },
+    {
+     "text": "5.0 mL",
+     "correct": false,
+     "rationale": "This is a different dose (5 mL), and it has a trailing zero."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-154",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Labels & Rounding",
+   "type": "mc",
+   "prompt": "A nurse is calculating a weight-based dose for a client who weighs 155 lb. When should the nurse round?",
+   "calc": false,
+   "options": [
+    {
+     "text": "Only at the final answer, unless the question says to round a step",
+     "correct": true,
+     "rationale": "Rounding the weight early carries the error into the dose."
+    },
+    {
+     "text": "After converting the weight to kilograms",
+     "correct": false,
+     "rationale": "Carry the unrounded kilograms through, unless directed to round them."
+    },
+    {
+     "text": "At each step, to the nearest whole number",
+     "correct": false,
+     "rationale": "Rounding every step adds error."
+    },
+    {
+     "text": "Before converting pounds to kilograms",
+     "correct": false,
+     "rationale": "155 lb is already a whole number; rounding happens at the end."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-155",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "sata",
+   "prompt": "A nurse calculates that a client needs 8 tablets for a single dose of an oral medication. Which actions should the nurse take? Select all that apply.",
+   "calc": true,
+   "options": [
+    {
+     "text": "Recheck the calculation",
+     "correct": true,
+     "rationale": "An unusual number of tablets is a red flag for a math or conversion error."
+    },
+    {
+     "text": "Check that the units on the prescription and the label match",
+     "correct": true,
+     "rationale": "A g/mg or mg/mcg mix-up is a common cause of a dose that doesn't make sense."
+    },
+    {
+     "text": "Ask another nurse to double-check the calculation",
+     "correct": true,
+     "rationale": "A second check catches errors before the drug reaches the client."
+    },
+    {
+     "text": "Give the 8 tablets because the math was done carefully",
+     "correct": false,
+     "rationale": "Always ask whether the answer makes sense before giving it."
+    },
+    {
+     "text": "Give 4 tablets now and 4 later",
+     "correct": false,
+     "rationale": "That changes the prescribed schedule and doesn't fix a possible error."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-156",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "order",
+   "prompt": "A nurse is preparing to administer phenytoin 0.2 g PO. Available is phenytoin 100 mg/capsule. Place the nurse's calculation steps in order.",
+   "calc": true,
+   "options": [
+    {
+     "text": "Identify the unit to calculate (capsules)",
+     "rationale": "Start with what the answer is measured in."
+    },
+    {
+     "text": "Convert 0.2 g to 200 mg so the units match",
+     "rationale": "The desired dose and the available dose must be in the same unit."
+    },
+    {
+     "text": "Set up the equation: 200 mg ÷ 100 mg × 1 capsule",
+     "rationale": "Desired over have, times the quantity."
+    },
+    {
+     "text": "Solve: 2 capsules",
+     "rationale": "200 ÷ 100 = 2."
+    },
+    {
+     "text": "Check that the answer makes sense",
+     "rationale": "200 mg is two 100 mg capsules, so 2 capsules makes sense."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-157",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Solid & Liquid Doses",
+   "type": "cloze",
+   "prompt": "A nurse is setting up a dosage calculation using ratio and proportion.",
+   "calc": true,
+   "sentence": "The nurse places {1} over the quantity on one side of the equation and {2} over X on the other.",
+   "options": [
+    {
+     "text": "the dose available (have)",
+     "correct": true,
+     "blank": 1,
+     "rationale": "Have over quantity is the label's ratio, such as 250 mg/5 mL."
+    },
+    {
+     "text": "the dose prescribed (desired)",
+     "correct": false,
+     "blank": 1,
+     "rationale": "The desired dose goes over X."
+    },
+    {
+     "text": "the client's weight",
+     "correct": false,
+     "blank": 1,
+     "rationale": "Weight is used only to find a weight-based dose."
+    },
+    {
+     "text": "the dose prescribed (desired)",
+     "correct": true,
+     "blank": 2,
+     "rationale": "Desired over X is the ratio you solve for."
+    },
+    {
+     "text": "the dose available (have)",
+     "correct": false,
+     "blank": 2,
+     "rationale": "Have goes over the quantity."
+    },
+    {
+     "text": "the drop factor",
+     "correct": false,
+     "blank": 2,
+     "rationale": "The drop factor is used only for gtt/min."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-158",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Weight-Based & Divided Doses",
+   "type": "order",
+   "prompt": "A nurse is calculating a divided dose for a client whose weight is recorded in pounds and ounces. Place the steps in order.",
+   "calc": true,
+   "options": [
+    {
+     "text": "Convert the ounces to pounds and add them to the pounds",
+     "rationale": "Ounces are converted to pounds before pounds to kilograms."
+    },
+    {
+     "text": "Divide the pounds by 2.2 to get kilograms",
+     "rationale": "Weight-based doses use kilograms."
+    },
+    {
+     "text": "Multiply the kilograms by the mg/kg/day to get the total daily dose",
+     "rationale": "This is the amount for 24 hours."
+    },
+    {
+     "text": "Divide the daily dose by the number of doses a day",
+     "rationale": "This gives the amount for each dose."
+    },
+    {
+     "text": "Round the final answer as directed",
+     "rationale": "Round only at the end."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-159",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing several ketorolac prescriptions. The recommended dose is 15 to 30 mg IM, not to exceed 120 mg/day. For each prescription, choose whether it is within the safe dose.",
+   "calc": true,
+   "columns": [
+    "Safe",
+    "Not safe"
+   ],
+   "options": [
+    {
+     "text": "Ketorolac 30 mg IM every 6 hr",
+     "correct": true,
+     "col": 1,
+     "rationale": "4 doses × 30 mg = 120 mg/day, which doesn't exceed the limit."
+    },
+    {
+     "text": "Ketorolac 30 mg IM every 4 hr PRN",
+     "correct": true,
+     "col": 2,
+     "rationale": "Up to 6 doses × 30 mg = 180 mg/day, over 120 mg."
+    },
+    {
+     "text": "Ketorolac 15 mg IM every 6 hr",
+     "correct": true,
+     "col": 1,
+     "rationale": "4 × 15 mg = 60 mg/day, within range."
+    },
+    {
+     "text": "Ketorolac 60 mg IM every 6 hr",
+     "correct": true,
+     "col": 2,
+     "rationale": "60 mg is above the 30 mg single-dose maximum (and 240 mg/day)."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-160",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "mc",
+   "prompt": "A nurse is reviewing a prescription for medication X 350 mg for a client who weighs 23 kg. The recommended dose is 7.5 to 15 mg/kg/dose. Which action should the nurse take?",
+   "calc": true,
+   "options": [
+    {
+     "text": "Hold the medication and contact the provider",
+     "correct": true,
+     "rationale": "The safe range is 172.5 to 345 mg; 350 mg is above it, so clarify before giving it."
+    },
+    {
+     "text": "Administer the dose as prescribed",
+     "correct": false,
+     "rationale": "350 mg exceeds the 345 mg maximum."
+    },
+    {
+     "text": "Administer 345 mg instead",
+     "correct": false,
+     "rationale": "Nurses can't change a prescribed dose; contact the provider."
+    },
+    {
+     "text": "Administer half the dose now and half later",
+     "correct": false,
+     "rationale": "Splitting changes the order without addressing the unsafe dose."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-161",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "mc",
+   "prompt": "A nurse is reviewing a prescription for medication X 850 mg once daily for a client who weighs 75 lb. The recommended dose is 20 to 30 mg/kg once daily. Which conclusion is correct?",
+   "calc": true,
+   "options": [
+    {
+     "text": "The dose is safe because it falls between 681.8 mg and 1,022.7 mg",
+     "correct": true,
+     "rationale": "75 ÷ 2.2 = 34.09 kg; × 20 = 681.8 mg and × 30 = 1,022.7 mg. 850 mg is in range."
+    },
+    {
+     "text": "The dose is too high because it's more than 30 mg",
+     "correct": false,
+     "rationale": "30 mg is per kilogram, not the total dose."
+    },
+    {
+     "text": "The dose is too low because it's less than 1,500 mg",
+     "correct": false,
+     "rationale": "This uses the weight in pounds (75 × 20 = 1,500); convert to kilograms first."
+    },
+    {
+     "text": "The safety can't be judged without the client's age",
+     "correct": false,
+     "rationale": "The range is by weight, so the weight is enough."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-162",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Safe Dose Ranges",
+   "type": "dragdrop",
+   "prompt": "A nurse is checking whether a prescribed dose is safe. Which actions are part of checking a safe dose range? Move the correct answers to the answer box.",
+   "calc": true,
+   "leftLabel": "Actions",
+   "rightLabel": "Safe dose check",
+   "options": [
+    {
+     "text": "Look up the recommended dose in a current drug reference",
+     "correct": true,
+     "rationale": "The check starts with a reliable, up-to-date reference."
+    },
+    {
+     "text": "Convert the client's weight to kilograms",
+     "correct": true,
+     "rationale": "Most ranges are by kilogram."
+    },
+    {
+     "text": "Multiply the weight by the lowest and highest recommended doses",
+     "correct": true,
+     "rationale": "This gives the safe range for this client."
+    },
+    {
+     "text": "Compare the prescribed dose using the same terms (per dose or per day)",
+     "correct": true,
+     "rationale": "A per-day range has to be compared with a per-day total."
+    },
+    {
+     "text": "Give the dose and then check the range",
+     "correct": false,
+     "rationale": "The check comes before the dose is given."
+    },
+    {
+     "text": "Lower the dose yourself if it's too high",
+     "correct": false,
+     "rationale": "Only the provider changes the prescription; hold it and contact them."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-163",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "cloze",
+   "prompt": "A nurse is setting up a manual IV infusion without a pump.",
+   "calc": true,
+   "sentence": "The nurse calculates gtt/min by multiplying the volume by the {1} and dividing by the time in {2}.",
+   "options": [
+    {
+     "text": "drop factor",
+     "correct": true,
+     "blank": 1,
+     "rationale": "The drop factor (gtt/mL) is on the tubing package."
+    },
+    {
+     "text": "client's weight",
+     "correct": false,
+     "blank": 1,
+     "rationale": "Weight isn't part of a gravity drip rate."
+    },
+    {
+     "text": "concentration",
+     "correct": false,
+     "blank": 1,
+     "rationale": "Concentration is used for medication infusions by dose."
+    },
+    {
+     "text": "minutes",
+     "correct": true,
+     "blank": 2,
+     "rationale": "Drops are counted per minute."
+    },
+    {
+     "text": "hours",
+     "correct": false,
+     "blank": 2,
+     "rationale": "Hours are used for mL/hr on a pump."
+    },
+    {
+     "text": "seconds",
+     "correct": false,
+     "blank": 2,
+     "rationale": "Rates are counted per minute."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-164",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "IV Flow Rates & Infusions",
+   "type": "matrix",
+   "prompt": "A nurse is preparing several IV infusions. For each item, choose the unit the nurse calculates.",
+   "calc": true,
+   "columns": [
+    "mL/hr",
+    "gtt/min"
+   ],
+   "options": [
+    {
+     "text": "Setting an electronic infusion pump",
+     "correct": true,
+     "col": 1,
+     "rationale": "Pumps are set in mL per hour."
+    },
+    {
+     "text": "Regulating gravity tubing with a roller clamp",
+     "correct": true,
+     "col": 2,
+     "rationale": "Without a pump, drops are counted per minute."
+    },
+    {
+     "text": "A heparin infusion ordered in units/kg/hr on a pump",
+     "correct": true,
+     "col": 1,
+     "rationale": "The units per hour are turned into mL per hour for the pump."
+    },
+    {
+     "text": "Counting drops in the drip chamber for 1 minute",
+     "correct": true,
+     "col": 2,
+     "rationale": "That count is the gtt/min rate."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-165",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "dragdrop",
+   "prompt": "A nurse is teaching a client how to measure a liquid medication. Which amounts are equal to 15 mL? Move the correct answers to the answer box.",
+   "calc": true,
+   "leftLabel": "Amounts",
+   "rightLabel": "15 mL",
+   "options": [
+    {
+     "text": "1 Tbsp",
+     "correct": true,
+     "rationale": "1 Tbsp = 15 mL."
+    },
+    {
+     "text": "3 tsp",
+     "correct": true,
+     "rationale": "3 × 5 mL = 15 mL."
+    },
+    {
+     "text": "0.5 oz",
+     "correct": true,
+     "rationale": "0.5 × 30 mL = 15 mL."
+    },
+    {
+     "text": "1 oz",
+     "correct": false,
+     "rationale": "1 oz = 30 mL."
+    },
+    {
+     "text": "2 tsp",
+     "correct": false,
+     "rationale": "2 tsp = 10 mL."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-calc-166",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Calculations",
+   "category": "Conversions & Equivalents",
+   "type": "sata",
+   "prompt": "A nurse is converting a client's weight of 154 lb for a weight-based dose. Which statements are correct? Select all that apply.",
+   "calc": true,
+   "options": [
+    {
+     "text": "Divide 154 by 2.2",
+     "correct": true,
+     "rationale": "Pounds to kilograms: divide by 2.2."
+    },
+    {
+     "text": "The client weighs 70 kg",
+     "correct": true,
+     "rationale": "154 ÷ 2.2 = 70."
+    },
+    {
+     "text": "The kilogram number should be larger than the pound number",
+     "correct": false,
+     "rationale": "A kilogram is heavier than a pound, so the kg number is smaller."
+    },
+    {
+     "text": "Multiply 154 by 2.2",
+     "correct": false,
+     "rationale": "Multiplying converts kilograms to pounds."
+    },
+    {
+     "text": "Use the weight the provider used for the prescription",
+     "correct": true,
+     "rationale": "Some doses use the admission weight; ask if unsure."
+    }
+   ]
+  }
+ ]
+}

@@ -449,7 +449,7 @@ var MyStudy = (function(){
   /* Drag and drop into several boxes saves "id@N"; show the text with its box */
   function boxName(q, n){ var l = q.buckets || q.columns; return n && l ? " \u2192 " + l[n - 1] : ""; }
   /* Typed answers (med math) save the typed number itself */
-  function fillText(q, v){ return v + (q.unit ? " " + q.unit : ""); }
+  function fillText(q, v){ return v + (q.answerUnit ? " " + q.answerUnit : ""); }
   function optionTexts(q, ids){ if (q.type === "fill") return (ids || []).map(function(v){ return fillText(q, v); }); return (ids || []).map(function(id){ var p = String(id).split("@"), o = q.options[letterIndex(p[0])]; return o ? o.text + boxName(q, Number(p[1])) : ""; }).filter(Boolean); }
   function correctTexts(q){
     if (q.type === "fill") return [fillText(q, q.answer)];

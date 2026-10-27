@@ -172,7 +172,7 @@ function initPracticeQuiz(bank, catLabels, opts){
      (one right column) or col: [N, M] (q.multi: check every column that applies). Answers
      are "id@N" cells, graded all-or-nothing like the other types.
      Typed answer ("fill"): no options; q.answer is the exact number to type (leading zero,
-     no trailing zero, no commas), q.unit is shown beside the box, q.round is "whole", "tenth"
+     no trailing zero, no commas), q.answerUnit is shown beside the box, q.round is "whole", "tenth"
      or "hundredth", q.exact is the unrounded result and q.steps lists the worked setup. The
      answer is the typed text itself. */
   function normalizeBank(bank){
@@ -1434,7 +1434,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     input.setAttribute("inputmode", "decimal");
     input.setAttribute("autocomplete", "off");
     input.setAttribute("spellcheck", "false");
-    input.setAttribute("aria-label", "Answer" + (q.unit ? " in " + q.unit : ""));
+    input.setAttribute("aria-label", "Answer" + (q.answerUnit ? " in " + q.answerUnit : ""));
     input.addEventListener("input", function(){
       var v = input.value.replace(/[^0-9.]/g, ""), dot = v.indexOf(".");
       if (dot !== -1) v = v.slice(0, dot + 1) + v.slice(dot + 1).replace(/\./g, "");
@@ -1452,10 +1452,10 @@ function initPracticeQuiz(bank, catLabels, opts){
       pendingSure = true;
     });
     wrap.appendChild(input);
-    if (q.unit){
+    if (q.answerUnit){
       var unit = document.createElement("span");
       unit.className = "pq-fill-unit";
-      unit.textContent = q.unit;
+      unit.textContent = q.answerUnit;
       wrap.appendChild(unit);
     }
     optsEl.appendChild(wrap);
@@ -1476,7 +1476,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       var ans = document.createElement("p");
       ans.className = "pq-fill-answer";
       ans.innerHTML = "<strong>Answer:</strong> ";
-      ans.appendChild(document.createTextNode(q.answer + (q.unit ? " " + q.unit : "")));
+      ans.appendChild(document.createTextNode(q.answer + (q.answerUnit ? " " + q.answerUnit : "")));
       out.appendChild(ans);
       if (graded.reason){
         var why = document.createElement("p");
@@ -1606,7 +1606,7 @@ function initPracticeQuiz(bank, catLabels, opts){
 
   /* Ordered response reads as numbered steps: "1. First → 2. Second" */
   function optText(q, ids){
-    if (q.type === "fill") return ids.map(function(v){ return v + (q.unit ? " " + q.unit : ""); }).join(", ");
+    if (q.type === "fill") return ids.map(function(v){ return v + (q.answerUnit ? " " + q.answerUnit : ""); }).join(", ");
     var order = q.type === "order";
     return ids.map(function(id, i){
       var p = String(id).split("@");
