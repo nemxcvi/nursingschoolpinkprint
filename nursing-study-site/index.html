@@ -25,7 +25,7 @@
 <div class="pp-wrap">
 
   <div id="site-header" data-mode="full" data-sheet="nur114"></div>
-  <script src="assets/site-data.js?v=37"></script>
+  <script src="assets/site-data.js?v=38"></script>
   <script src="js/tracking.js?v=15"></script>
   <script src="assets/header.js?v=15"></script>
   <script src="js/progress.js?v=8"></script>
@@ -65,14 +65,14 @@
       <div class="pp-card-bottom"><span class="pp-line"></span><span data-widget-count="U-03">16 widgets</span></div>
     </a>
     <a class="pp-card" href="unit-4-fluids-nutrition-med-math/">
-      <div class="pp-card-top"><span>U-04</span><span>In progress</span></div>
+      <div class="pp-card-top"><span>U-04</span><span>Ready</span></div>
       <div class="pp-card-mid"><i class="ti ti-droplet" aria-hidden="true"></i><h2>Fluids, Nutrition &amp; Med Math</h2></div>
       <div class="pp-card-bottom"><span class="pp-line"></span><span data-widget-count="U-04">22 widgets</span></div>
     </a>
-    <a class="pp-card draft" href="unit-5-gas-exchange-med-admin/">
-      <div class="pp-card-top"><span>U-05</span><span>In draft</span></div>
+    <a class="pp-card" href="unit-5-gas-exchange-med-admin/">
+      <div class="pp-card-top"><span>U-05</span><span>In progress</span></div>
       <div class="pp-card-mid"><i class="ti ti-lungs" aria-hidden="true"></i><h2>Gas Exchange &amp; Med Admin</h2></div>
-      <div class="pp-card-bottom"><span class="pp-line"></span><span>Coming soon</span></div>
+      <div class="pp-card-bottom"><span class="pp-line"></span><span data-widget-count="U-05">7 widgets</span></div>
     </a>
     <a class="pp-card draft" href="unit-6-pharmacology-med-admin/">
       <div class="pp-card-top"><span>U-06</span><span>In draft</span></div>
@@ -208,10 +208,28 @@ var QUOTES = [
   }, 8000);
 })();
 
-/* Unit cards: widget counts come from site-data.js so they never go stale */
-document.querySelectorAll("[data-widget-count]").forEach(function(el){
-  el.textContent = SITE.plural(SITE.widgetsFor(SITE.currentSheet, el.getAttribute("data-widget-count")).length, ["widget","widgets"]);
-});
+/* Unit cards: widget counts and the Ready / In progress / In draft label come from site-data.js
+   (SITE.unitStatus) so they never go stale. A unit whose exam is over counts as Ready, so the
+   exam dates are fetched first; if they can't load, only the study-guide rule is used. */
+(function(){
+  function draw(exams){
+    var today = new Date(), iso = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+    document.querySelectorAll("#unitgrid .pp-card").forEach(function(card){
+      var code = card.querySelector(".pp-card-top span").textContent.trim();
+      var u = SITE.getUnit(SITE.currentSheet, code);
+      if (!u) return;
+      var exam = (exams || []).filter(function(e){ return e.units && e.units.length === 1 && e.units[0] === u.num; })[0];
+      var label = SITE.unitStatus(SITE.currentSheet, code, exam && exam.date, iso);
+      card.querySelectorAll(".pp-card-top span")[1].textContent = label;
+      card.classList.toggle("draft", label === "In draft");
+      var count = card.querySelector(".pp-card-bottom span:last-child");
+      var n = SITE.widgetsFor(SITE.currentSheet, code).length;
+      count.textContent = n ? SITE.plural(n, ["widget","widgets"]) : "Coming soon";
+    });
+  }
+  fetch("data/" + SITE.currentSheet + "/exams.json").then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){ draw(d && d.exams); }, function(){ draw(null); });
+})();
 
 var MIX_ALL = SITE.mixAll;
 var TAGS = ["flashcards","quizzes","studyguides"];

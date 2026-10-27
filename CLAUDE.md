@@ -22,7 +22,7 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 
 ## Site structure
 
-- `nursing-study-site/assets/site-data.js` is the single source of truth for courses, units, widgets and search. Adding a page means adding it here too.
+- `nursing-study-site/assets/site-data.js` is the single source of truth for courses, units, widgets and search. Adding a page means adding it here too. The homepage unit cards read it too: the widget count and the label come from `SITE.unitStatus` ("In draft" with no widgets, dashed card; "Ready" once every week in the unit's `weeks` range has a `weekN-study-guide.html` widget or the unit's exam in `exams.json` is over; otherwise "In progress"). A unit can pin its label with `status` in `SITE.sheets` (Unit 1 does, since Week 1 has no guide). Keep the static labels in `index.html` matching, as the first paint.
 - Units live in `nursing-study-site/unit-N-<slug>/`, each with an `index.html` plus flashcard, quiz and study-guide pages.
 - Shared code and styles are in `nursing-study-site/assets/` (`style.css`, `header.js`, `flashcards.js`, `practice-quiz.js`, `quiz.js`, `theme.js`, `unit-filter.js`). Pages load them with `?v=N` cache-busters. When you change a shared file, bump its `?v=` number on **every** page that loads it.
 - Themes: light/dark plus pink/blue palettes, stored in `localStorage` (see the inline script in each page's `<head>`).

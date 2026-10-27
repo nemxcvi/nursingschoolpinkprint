@@ -4,7 +4,7 @@ var SITE = {
   currentSheet: "nur114",
   sheets: [
     {id:"nur114", num:"01", code:"NUR 114", units:[
-      {code:"U-01", num:1, weeks:"1–3", name:"Intro to Nursing", slug:"unit-1-intro-to-nursing/"},
+      {code:"U-01", num:1, weeks:"1–3", name:"Intro to Nursing", slug:"unit-1-intro-to-nursing/", status:"Ready"},
       {code:"U-02", num:2, weeks:"4–5", name:"Basic Human Needs", slug:"unit-2-basic-human-needs/"},
       {code:"U-03", num:3, weeks:"6–7", name:"Skin, Wounds & Diagnostics", slug:"unit-3-skin-wounds-diagnostics/"},
       {code:"U-04", num:4, weeks:"8–9", name:"Fluids, Nutrition & Med Math", slug:"unit-4-fluids-nutrition-med-math/"},
@@ -145,6 +145,24 @@ SITE.search = function(q, typeKey){
 };
 
 /* Display helpers for the library rows */
+/* A unit's label on the homepage cards, worked out from its widgets so it never goes stale:
+   "In draft" with no widgets yet; "Ready" once every week in its range has a study guide, or once
+   its exam (exams.json date, passed in as examDate) is over; otherwise "In progress".
+   A unit can force a label with status:"Ready" (or any text) in SITE.sheets. */
+SITE.unitStatus = function(sheetId, code, examDate, today){
+  var u = SITE.getUnit(sheetId, code);
+  var ws = SITE.widgetsFor(sheetId, code);
+  if (!u || ws.length === 0) return "In draft";
+  if (u.status) return u.status;
+  if (examDate && today && examDate < today) return "Ready";
+  var m = String(u.weeks).match(/(\d+)\D+(\d+)/) || String(u.weeks).match(/(\d+)/);
+  var from = +m[1], to = +(m[2] || m[1]);
+  for (var w = from; w <= to; w++){
+    var re = new RegExp("week" + w + "-study-guide\\.html");
+    if (!ws.some(function(x){ return x.type === "studyguide" && re.test(x.href); })) return "In progress";
+  }
+  return "Ready";
+};
 SITE.plural = function(n, words){ return n + " " + (n === 1 ? words[0] : words[1]); };
 SITE.shortTitle = function(w){ return w.type === "quiz" ? w.title.replace(/ practice quiz$/i, "") : w.title; };
 SITE.metaLine = function(w){
