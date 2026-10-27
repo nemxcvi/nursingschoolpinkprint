@@ -3935,6 +3935,94 @@
       ]
     },
     {
+      "id": "nur114-u2-mobility-110",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Mobility",
+      "category": "Positioning & ROM",
+      "type": "matrix",
+      "prompt": "A nurse is positioning several clients. For each client need, choose the position that fits best.",
+      "columns": [
+        "Fowler's",
+        "Prone",
+        "Left Sims'",
+        "Trendelenburg"
+      ],
+      "options": [
+        {
+          "text": "Trouble taking deep breaths",
+          "correct": true,
+          "rationale": "Raising the head of the bed lets the lungs expand.",
+          "col": 1
+        },
+        {
+          "text": "Prevent hip and knee contractures",
+          "correct": true,
+          "rationale": "Prone fully extends the hips and knees.",
+          "col": 2
+        },
+        {
+          "text": "Receive an enema",
+          "correct": true,
+          "rationale": "Left Sims' is used for enemas.",
+          "col": 3
+        },
+        {
+          "text": "Drain the lower lung lobes",
+          "correct": true,
+          "rationale": "Foot of the bed higher drains the lower lobes.",
+          "col": 4
+        }
+      ],
+      "rowLabel": "Need"
+    },
+    {
+      "id": "nur114-u2-mobility-111",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Mobility",
+      "category": "Heat/cold & venous return",
+      "type": "matrix",
+      "prompt": "A nurse is reviewing a client's chart before applying heat. For each finding, choose whether heat is safe or should be held.",
+      "columns": [
+        "Safe to apply",
+        "Hold heat"
+      ],
+      "options": [
+        {
+          "text": "Stiff lower back from chronic strain",
+          "correct": true,
+          "rationale": "Heat relaxes muscles and eases stiffness.",
+          "col": 1
+        },
+        {
+          "text": "Ankle sprain 3 hours ago",
+          "correct": true,
+          "rationale": "No heat in the first 24 hours of an injury.",
+          "col": 2
+        },
+        {
+          "text": "Metal knee implant at the site",
+          "correct": true,
+          "rationale": "No heat over metal devices.",
+          "col": 2
+        },
+        {
+          "text": "Active bleeding at the site",
+          "correct": true,
+          "rationale": "Heat increases bleeding.",
+          "col": 2
+        },
+        {
+          "text": "Tense shoulder muscles",
+          "correct": true,
+          "rationale": "Heat relaxes muscles.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Finding"
+    },
+    {
       "id": "nur114-u2-hygiene-001",
       "course": "NUR 114",
       "unit": 2,
@@ -7289,6 +7377,98 @@
       ]
     },
     {
+      "id": "nur114-u2-hygiene-098",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Hygiene",
+      "category": "Foot & nail care",
+      "type": "matrix",
+      "prompt": "A nurse is reinforcing foot care with a client who has diabetes. For each instruction, choose whether it is correct or incorrect.",
+      "columns": [
+        "Correct",
+        "Incorrect"
+      ],
+      "options": [
+        {
+          "text": "Wash your feet every day in warm water",
+          "correct": true,
+          "rationale": "Warm, not hot, water.",
+          "col": 1
+        },
+        {
+          "text": "Soak your feet for 20 minutes each night",
+          "correct": true,
+          "rationale": "Soaking dries the skin.",
+          "col": 2
+        },
+        {
+          "text": "Put lotion between your toes",
+          "correct": true,
+          "rationale": "Lotion goes on the feet, not between the toes.",
+          "col": 2
+        },
+        {
+          "text": "Check your feet daily for cuts and blisters",
+          "correct": true,
+          "rationale": "Inspection catches problems early.",
+          "col": 1
+        },
+        {
+          "text": "Dry carefully between your toes",
+          "correct": true,
+          "rationale": "Drying prevents moisture buildup.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Instruction"
+    },
+    {
+      "id": "nur114-u2-hygiene-099",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Hygiene",
+      "category": "Perineal care",
+      "type": "matrix",
+      "prompt": "A nurse is observing an assistive personnel give perineal and catheter care. For each action, choose whether it is correct or incorrect.",
+      "columns": [
+        "Correct",
+        "Incorrect"
+      ],
+      "options": [
+        {
+          "text": "Washing a female client front to back",
+          "correct": true,
+          "rationale": "Front to back lowers UTI risk.",
+          "col": 1
+        },
+        {
+          "text": "Leaving the foreskin retracted after cleaning",
+          "correct": true,
+          "rationale": "The foreskin must be returned.",
+          "col": 2
+        },
+        {
+          "text": "Cleaning the catheter moving away from the body",
+          "correct": true,
+          "rationale": "Away from the body keeps germs off the meatus.",
+          "col": 1
+        },
+        {
+          "text": "Using sterile gloves for routine catheter care",
+          "correct": true,
+          "rationale": "Clean gloves are used.",
+          "col": 2
+        },
+        {
+          "text": "Using cotton swabs to clean the meatus",
+          "correct": true,
+          "rationale": "Cotton swabs aren't used.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Action"
+    },
+    {
       "id": "nur114-u2-client-education-001",
       "course": "NUR 114",
       "unit": 2,
@@ -10344,6 +10524,52 @@
       ]
     },
     {
+      "id": "nur114-u2-client-education-088",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Client Education",
+      "category": "Barriers to learning",
+      "type": "matrix",
+      "prompt": "A nurse is teaching a client who has hearing loss. For each action, choose whether it is effective or ineffective.",
+      "columns": [
+        "Effective",
+        "Ineffective"
+      ],
+      "options": [
+        {
+          "text": "Face the client while speaking",
+          "correct": true,
+          "rationale": "The client can see your face and lips.",
+          "col": 1
+        },
+        {
+          "text": "Shout so the client can hear",
+          "correct": true,
+          "rationale": "Shouting distorts speech.",
+          "col": 2
+        },
+        {
+          "text": "Turn off the TV",
+          "correct": true,
+          "rationale": "Less background noise helps.",
+          "col": 1
+        },
+        {
+          "text": "Talk faster to save time",
+          "correct": true,
+          "rationale": "Speeding up is harder to follow.",
+          "col": 2
+        },
+        {
+          "text": "Keep hands away from the face",
+          "correct": true,
+          "rationale": "Hands block lip movements.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Action"
+    },
+    {
       "id": "nur114-u2-dei-001",
       "course": "NUR 114",
       "unit": 2,
@@ -12427,6 +12653,52 @@
           "rationale": "That's explicit bias."
         }
       ]
+    },
+    {
+      "id": "nur114-u2-dei-061",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Diversity, Equity, and Inclusion",
+      "category": "Cultural Assessment & Communication",
+      "type": "matrix",
+      "prompt": "A nurse is admitting a client who speaks limited English. For each action, choose whether it is appropriate or inappropriate.",
+      "columns": [
+        "Appropriate",
+        "Inappropriate"
+      ],
+      "options": [
+        {
+          "text": "Request a certified medical interpreter",
+          "correct": true,
+          "rationale": "Always a certified interpreter.",
+          "col": 1
+        },
+        {
+          "text": "Ask the client's adult daughter to interpret",
+          "correct": true,
+          "rationale": "Family can omit or alter information.",
+          "col": 2
+        },
+        {
+          "text": "Give written instructions in the client's language",
+          "correct": true,
+          "rationale": "Written instructions back up teaching.",
+          "col": 1
+        },
+        {
+          "text": "Ask a bilingual coworker from another unit to interpret",
+          "correct": true,
+          "rationale": "Other staff aren't certified interpreters.",
+          "col": 2
+        },
+        {
+          "text": "Ask how the client prefers to be addressed",
+          "correct": true,
+          "rationale": "Name or gender may differ from records.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Action"
     },
     {
       "id": "nur114-u2-self-concept-001",
@@ -14887,6 +15159,52 @@
           "blank": 2
         }
       ]
+    },
+    {
+      "id": "nur114-u2-self-concept-070",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Self-Concept",
+      "category": "Nursing Process",
+      "type": "matrix",
+      "prompt": "A nurse is evaluating a client after an amputation. For each finding, choose whether it shows the plan for self-concept is working.",
+      "columns": [
+        "Working",
+        "Not yet"
+      ],
+      "options": [
+        {
+          "text": "States, \"I'm learning to accept my body.\"",
+          "correct": true,
+          "rationale": "Verbalizing self-acceptance.",
+          "col": 1
+        },
+        {
+          "text": "Keeps the residual limb covered and won't look at it",
+          "correct": true,
+          "rationale": "Avoidance means not yet.",
+          "col": 2
+        },
+        {
+          "text": "Uses healthy coping in physical therapy",
+          "correct": true,
+          "rationale": "Healthy coping.",
+          "col": 1
+        },
+        {
+          "text": "Says, \"I'm useless now.\"",
+          "correct": true,
+          "rationale": "Negative self-talk is a red flag.",
+          "col": 2
+        },
+        {
+          "text": "Asks about a support group",
+          "correct": true,
+          "rationale": "Seeking support is healthy coping.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Finding"
     },
     {
       "id": "nur114-u2-comfort-rest-sleep-001",
@@ -17481,6 +17799,58 @@
           "blank": 2
         }
       ]
+    },
+    {
+      "id": "nur114-u2-comfort-rest-sleep-074",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Comfort, Rest & Sleep",
+      "category": "Sleep Promotion & Comfort",
+      "type": "matrix",
+      "prompt": "A nurse is reviewing a client's sleep habits. For each habit, choose whether it promotes or disrupts sleep.",
+      "columns": [
+        "Promotes sleep",
+        "Disrupts sleep"
+      ],
+      "options": [
+        {
+          "text": "Same bedtime and wake time every day",
+          "correct": true,
+          "rationale": "A steady schedule supports the circadian rhythm.",
+          "col": 1
+        },
+        {
+          "text": "Coffee at 9 p.m. for a 10 p.m. bedtime",
+          "correct": true,
+          "rationale": "No caffeine 4–6 hours before bed.",
+          "col": 2
+        },
+        {
+          "text": "Toast with peanut butter at bedtime",
+          "correct": true,
+          "rationale": "A carb plus protein.",
+          "col": 1
+        },
+        {
+          "text": "Watching TV in bed",
+          "correct": true,
+          "rationale": "The bed is for sleep and sex only.",
+          "col": 2
+        },
+        {
+          "text": "Exercising right before bed",
+          "correct": true,
+          "rationale": "Exercise helps, just not right before bed.",
+          "col": 2
+        },
+        {
+          "text": "A dark, quiet, cool room",
+          "correct": true,
+          "rationale": "This supports sleep.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Habit"
     },
     {
       "id": "nur114-u2-stress-coping-001",
@@ -20159,6 +20529,52 @@
           "blank": 2
         }
       ]
+    },
+    {
+      "id": "nur114-u2-stress-coping-078",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Stress and Coping",
+      "category": "Coping & Defense Mechanisms",
+      "type": "matrix",
+      "prompt": "A nurse is assessing a client's coping after a job loss. For each strategy, choose whether it is adaptive or maladaptive.",
+      "columns": [
+        "Adaptive",
+        "Maladaptive"
+      ],
+      "options": [
+        {
+          "text": "Going for a walk",
+          "correct": true,
+          "rationale": "Helps now and later.",
+          "col": 1
+        },
+        {
+          "text": "Drinking alcohol every night",
+          "correct": true,
+          "rationale": "Helps now, hurts later.",
+          "col": 2
+        },
+        {
+          "text": "Making a budget and applying for jobs",
+          "correct": true,
+          "rationale": "Problem-focused and adaptive.",
+          "col": 1
+        },
+        {
+          "text": "Withdrawing from friends",
+          "correct": true,
+          "rationale": "Helps now, hurts later.",
+          "col": 2
+        },
+        {
+          "text": "Smoking after a hard day",
+          "correct": true,
+          "rationale": "Helps now, hurts later.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Strategy"
     }
   ]
 }

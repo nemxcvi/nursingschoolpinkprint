@@ -1552,6 +1552,53 @@
       ]
     },
     {
+      "id": "nur114-u1-cbc-cmp-043",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": "CBC+CMP combined",
+      "type": "matrix",
+      "prompt": "A nurse is reviewing an adult client's morning labs. For each result, choose whether it is low, within the expected range, or high.",
+      "columns": [
+        "Low",
+        "Within range",
+        "High"
+      ],
+      "options": [
+        {
+          "text": "Potassium 2.8 mEq/L",
+          "correct": true,
+          "rationale": "Expected is 3.5–5.0.",
+          "col": 1
+        },
+        {
+          "text": "Sodium 140 mEq/L",
+          "correct": true,
+          "rationale": "Expected is 136–145.",
+          "col": 2
+        },
+        {
+          "text": "White blood cell count 16,000/mm3",
+          "correct": true,
+          "rationale": "Above 10,000 is high.",
+          "col": 3
+        },
+        {
+          "text": "Hemoglobin 9 g/dL in an adult female",
+          "correct": true,
+          "rationale": "Below the expected range.",
+          "col": 1
+        },
+        {
+          "text": "Platelets 250,000/mm3",
+          "correct": true,
+          "rationale": "Expected is 150,000–400,000.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Lab result"
+    },
+    {
       "id": "nur114-u1-nursing-fundamentals-001",
       "course": "NUR 114",
       "unit": 1,
@@ -4592,6 +4639,52 @@
       ]
     },
     {
+      "id": "nur114-u1-foundations-049",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Foundations & the Nursing Process",
+      "category": "Clinical Judgment & Nursing Process",
+      "type": "matrix",
+      "prompt": "A nurse is collecting data during a client's admission. For each item, choose whether it is subjective or objective data.",
+      "columns": [
+        "Subjective",
+        "Objective"
+      ],
+      "options": [
+        {
+          "text": "\"My chest feels tight.\"",
+          "correct": true,
+          "rationale": "What the client says is subjective.",
+          "col": 1
+        },
+        {
+          "text": "Blood pressure 138/86 mm Hg",
+          "correct": true,
+          "rationale": "Measured data is objective.",
+          "col": 2
+        },
+        {
+          "text": "Client reports nausea",
+          "correct": true,
+          "rationale": "A symptom only the client can describe.",
+          "col": 1
+        },
+        {
+          "text": "500 mL of clear yellow urine",
+          "correct": true,
+          "rationale": "Measured output is objective.",
+          "col": 2
+        },
+        {
+          "text": "Skin warm and dry",
+          "correct": true,
+          "rationale": "Observed data is objective.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Data"
+    },
+    {
       "id": "nur114-u1-priority-care-001",
       "course": "NUR 114",
       "unit": 1,
@@ -6266,6 +6359,52 @@
           "blank": 2
         }
       ]
+    },
+    {
+      "id": "nur114-u1-priority-care-049",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Priority Setting & Managing Care",
+      "category": "Delegation & Managing Care",
+      "type": "matrix",
+      "prompt": "A nurse is planning care for a stable client. For each task, choose whether it can be delegated to unlicensed assistive personnel (UAP).",
+      "columns": [
+        "Can delegate",
+        "Can't delegate"
+      ],
+      "options": [
+        {
+          "text": "Measuring urine output",
+          "correct": true,
+          "rationale": "Routine measurements can be delegated.",
+          "col": 1
+        },
+        {
+          "text": "Assessing a new report of chest pain",
+          "correct": true,
+          "rationale": "Assessment is a nursing task.",
+          "col": 2
+        },
+        {
+          "text": "Helping the client walk to the bathroom",
+          "correct": true,
+          "rationale": "Ambulating a stable client can be delegated.",
+          "col": 1
+        },
+        {
+          "text": "Teaching about a new medication",
+          "correct": true,
+          "rationale": "Teaching stays with the nurse.",
+          "col": 2
+        },
+        {
+          "text": "Obtaining vital signs",
+          "correct": true,
+          "rationale": "Routine vitals on a stable client can be delegated.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Task"
     },
     {
       "id": "nur114-u1-vitals-pain-001",
@@ -8133,6 +8272,52 @@
       ]
     },
     {
+      "id": "nur114-u1-vitals-pain-052",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Health Assessment, Vital Signs & Pain",
+      "category": "Vital Signs",
+      "type": "matrix",
+      "prompt": "A nurse is reviewing an adult client's vital signs. For each finding, choose whether it is within or outside the expected range.",
+      "columns": [
+        "Within range",
+        "Outside range"
+      ],
+      "options": [
+        {
+          "text": "Heart rate 76/min",
+          "correct": true,
+          "rationale": "60–100 is expected.",
+          "col": 1
+        },
+        {
+          "text": "Respiratory rate 26/min",
+          "correct": true,
+          "rationale": "12–20 is expected.",
+          "col": 2
+        },
+        {
+          "text": "Oxygen saturation (SpO2) 97%",
+          "correct": true,
+          "rationale": "95–100% is expected.",
+          "col": 1
+        },
+        {
+          "text": "Temperature 38.4°C (101.1°F)",
+          "correct": true,
+          "rationale": "That's a fever.",
+          "col": 2
+        },
+        {
+          "text": "Heart rate 48/min",
+          "correct": true,
+          "rationale": "Under 60 is bradycardia.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Finding"
+    },
+    {
       "id": "nur114-u1-ethics-legal-001",
       "course": "NUR 114",
       "unit": 1,
@@ -9660,6 +9845,48 @@
           "blank": 3
         }
       ]
+    },
+    {
+      "id": "nur114-u1-ethics-legal-045",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Professionalism, Ethics & Legal",
+      "category": "Ethics",
+      "type": "matrix",
+      "prompt": "A nurse is reviewing ethical principles. For each nurse action, choose the principle it shows.",
+      "columns": [
+        "Autonomy",
+        "Beneficence",
+        "Justice",
+        "Veracity"
+      ],
+      "options": [
+        {
+          "text": "Supports a client's decision to refuse surgery",
+          "correct": true,
+          "rationale": "Respecting the client's own choice is autonomy.",
+          "col": 1
+        },
+        {
+          "text": "Stays late to help a frightened client",
+          "correct": true,
+          "rationale": "Doing good is beneficence.",
+          "col": 2
+        },
+        {
+          "text": "Gives the same quality of care to every client",
+          "correct": true,
+          "rationale": "Fairness is justice.",
+          "col": 3
+        },
+        {
+          "text": "Answers a client's question about a diagnosis truthfully",
+          "correct": true,
+          "rationale": "Telling the truth is veracity.",
+          "col": 4
+        }
+      ],
+      "rowLabel": "Action"
     },
     {
       "id": "nur114-u1-communication-001",
@@ -11395,6 +11622,52 @@
           "bucket": 2
         }
       ]
+    },
+    {
+      "id": "nur114-u1-communication-047",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Communication, Documentation & EBP",
+      "category": "Communication",
+      "type": "matrix",
+      "prompt": "A nurse is talking with a client who is anxious. For each statement, choose whether it is therapeutic or nontherapeutic.",
+      "columns": [
+        "Therapeutic",
+        "Nontherapeutic"
+      ],
+      "options": [
+        {
+          "text": "\"Tell me more about what's worrying you.\"",
+          "correct": true,
+          "rationale": "An open-ended question.",
+          "col": 1
+        },
+        {
+          "text": "\"Don't worry. Everything will be fine.\"",
+          "correct": true,
+          "rationale": "False reassurance.",
+          "col": 2
+        },
+        {
+          "text": "\"You seem upset.\"",
+          "correct": true,
+          "rationale": "Naming the feeling.",
+          "col": 1
+        },
+        {
+          "text": "\"Why did you stop taking your medicine?\"",
+          "correct": true,
+          "rationale": "\"Why\" questions feel like blame.",
+          "col": 2
+        },
+        {
+          "text": "\"If I were you, I'd have the surgery.\"",
+          "correct": true,
+          "rationale": "Giving advice.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Statement"
     }
   ]
 }

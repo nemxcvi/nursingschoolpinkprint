@@ -435,6 +435,20 @@ h2{font-size:20px;}
 .pq-cloze-table th{padding:8px 10px;border:1.5px solid var(--border);background:color-mix(in srgb,var(--pill) 50%,var(--card));font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);text-align:left;}
 .pq-cloze-table td{padding:8px 10px;border:1.5px solid var(--border);vertical-align:middle;}
 .pq-cloze-table .pq-cloze-sel{margin:0;width:100%;}
+.pq-mx-wrap{overflow-x:auto;}
+.pq-mx{width:100%;border-collapse:collapse;font-family:'IBM Plex Sans',sans-serif;color:var(--text);}
+.pq-mx th{padding:8px 6px;border:1.5px solid var(--border);background:color-mix(in srgb,var(--pill) 50%,var(--card));font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--label);text-align:center;vertical-align:bottom;}
+.pq-mx th:first-child{text-align:left;}
+.pq-mx td{border:1.5px solid var(--border);vertical-align:middle;}
+.pq-mx-label{padding:0;min-width:180px;}
+.pq-mx-label .pq-option{border:0;background:transparent;min-height:0;padding:10px 12px;}
+.pq-mx-cell{text-align:center;width:1%;min-width:64px;background:var(--card);}
+.pq-mx-hit{display:flex;align-items:center;justify-content:center;min-height:48px;cursor:pointer;}
+.pq-mx-in{width:20px;height:20px;accent-color:var(--label);cursor:pointer;margin:0;}
+.pq-mx-in:disabled{cursor:default;}
+.pq-mx-cell.is-key{background:color-mix(in srgb,var(--success-border) 18%,var(--card));box-shadow:inset 0 0 0 2px var(--success-border);}
+.pq-mx-cell.is-wrong{background:color-mix(in srgb,var(--danger-border) 16%,var(--card));}
+.pq-mx-label .pq-option.is-correct,.pq-mx-label .pq-option.is-wrong,.pq-mx-label .pq-option.is-missed{border:0;}
 .pq-cloze-results{display:grid;gap:8px;margin-top:14px;}
 .pq-cloze-blank{margin:8px 0 0;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label);}
 /* Result states after checking (every question type) */

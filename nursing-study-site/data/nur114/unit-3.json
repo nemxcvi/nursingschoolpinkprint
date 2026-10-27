@@ -4332,6 +4332,105 @@
       ]
     },
     {
+      "id": "nur114-u3-infection-control-121",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Infection Control & Isolation",
+      "category": "Precautions & PPE",
+      "type": "matrix",
+      "prompt": "A nurse is caring for several clients on isolation precautions. For each client, check the personal protective equipment (PPE) the nurse should put on before entering the room.",
+      "columns": [
+        "Gown",
+        "Gloves",
+        "Surgical mask",
+        "N95 respirator"
+      ],
+      "options": [
+        {
+          "text": "Client who has Clostridioides difficile (C. difficile)",
+          "correct": true,
+          "rationale": "Contact precautions: gown and gloves on entry.",
+          "col": [
+            1,
+            2
+          ]
+        },
+        {
+          "text": "Client who has influenza",
+          "correct": true,
+          "rationale": "Droplet precautions: surgical mask (gown and gloves only if touching secretions).",
+          "col": [
+            3
+          ]
+        },
+        {
+          "text": "Client who has pulmonary tuberculosis",
+          "correct": true,
+          "rationale": "Airborne precautions: fit-tested N95.",
+          "col": [
+            4
+          ]
+        },
+        {
+          "text": "Client who has methicillin-resistant Staphylococcus aureus (MRSA) in a wound",
+          "correct": true,
+          "rationale": "Contact precautions: gown and gloves on entry.",
+          "col": [
+            1,
+            2
+          ]
+        }
+      ],
+      "multi": true,
+      "rowLabel": "Client"
+    },
+    {
+      "id": "nur114-u3-infection-control-122",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Infection Control & Isolation",
+      "category": "Inflammation & Stages",
+      "type": "matrix",
+      "prompt": "A nurse is assessing a client who has an infected leg wound. For each finding, choose whether it suggests a local or a systemic infection.",
+      "columns": [
+        "Local",
+        "Systemic"
+      ],
+      "options": [
+        {
+          "text": "Redness and swelling around the wound",
+          "correct": true,
+          "rationale": "Local signs stay at the site.",
+          "col": 1
+        },
+        {
+          "text": "Tenderness at the wound",
+          "correct": true,
+          "rationale": "Local pain and tenderness.",
+          "col": 1
+        },
+        {
+          "text": "Temperature 38.9°C (102°F)",
+          "correct": true,
+          "rationale": "Fever is systemic.",
+          "col": 2
+        },
+        {
+          "text": "Heart rate 112/min",
+          "correct": true,
+          "rationale": "A fast heart rate is systemic.",
+          "col": 2
+        },
+        {
+          "text": "Enlarged lymph nodes",
+          "correct": true,
+          "rationale": "Enlarged nodes are systemic.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Finding"
+    },
+    {
       "id": "nur114-u3-specimen-collection-001",
       "course": "NUR 114",
       "unit": 3,
@@ -7600,6 +7699,98 @@
           "rationale": "Water doesn't affect the test."
         }
       ]
+    },
+    {
+      "id": "nur114-u3-specimen-collection-095",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Specimen Collection",
+      "category": "Urine",
+      "type": "matrix",
+      "prompt": "A nurse is collecting urine specimens. For each action, choose whether it is correct or incorrect.",
+      "columns": [
+        "Correct",
+        "Incorrect"
+      ],
+      "options": [
+        {
+          "text": "Drawing urine from the sampling port of an indwelling catheter with a syringe",
+          "correct": true,
+          "rationale": "Use the sampling port after clamping and wiping it.",
+          "col": 1
+        },
+        {
+          "text": "Pouring urine from a catheter bag that has been in place 3 days",
+          "correct": true,
+          "rationale": "Bag urine is concentrated or contaminated.",
+          "col": 2
+        },
+        {
+          "text": "Discarding the first void when starting a 24-hour urine collection",
+          "correct": true,
+          "rationale": "Toss the first, keep the last.",
+          "col": 1
+        },
+        {
+          "text": "Collecting the very first stream for a clean-catch specimen",
+          "correct": true,
+          "rationale": "The first stream goes in the toilet.",
+          "col": 2
+        },
+        {
+          "text": "Keeping a urine specimen on ice until transport",
+          "correct": true,
+          "rationale": "Refrigerate or keep on ice.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Action"
+    },
+    {
+      "id": "nur114-u3-specimen-collection-096",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Specimen Collection",
+      "category": "Blood Specimens",
+      "type": "matrix",
+      "prompt": "A nurse is obtaining a capillary blood glucose. For each action, choose whether it is correct or incorrect.",
+      "columns": [
+        "Correct",
+        "Incorrect"
+      ],
+      "options": [
+        {
+          "text": "Using the side of the fingertip",
+          "correct": true,
+          "rationale": "The side has fewer nerves.",
+          "col": 1
+        },
+        {
+          "text": "Squeezing the finger hard to get more blood",
+          "correct": true,
+          "rationale": "Milking can lyse cells and alter results.",
+          "col": 2
+        },
+        {
+          "text": "Wiping away the first drop",
+          "correct": true,
+          "rationale": "The first drop is wiped away.",
+          "col": 1
+        },
+        {
+          "text": "Retesting a reading of 420 mg/dL",
+          "correct": true,
+          "rationale": "Readings above 400 are retested.",
+          "col": 1
+        },
+        {
+          "text": "Storing the strips in an open container",
+          "correct": true,
+          "rationale": "Strips are stored closed.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Action"
     },
     {
       "id": "nur114-u3-tissue-integrity-001",
@@ -12259,6 +12450,104 @@
       ]
     },
     {
+      "id": "nur114-u3-tissue-integrity-132",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Tissue Integrity",
+      "category": "Pressure Injuries",
+      "type": "matrix",
+      "prompt": "A nurse is planning care to prevent pressure injuries. For each intervention, choose whether it is indicated or contraindicated.",
+      "columns": [
+        "Indicated",
+        "Contraindicated"
+      ],
+      "options": [
+        {
+          "text": "Reposition at least every 2 hours in bed",
+          "correct": true,
+          "rationale": "Repositioning prevents pressure injury.",
+          "col": 1
+        },
+        {
+          "text": "Massage reddened bony prominences",
+          "correct": true,
+          "rationale": "Never massage bony prominences.",
+          "col": 2
+        },
+        {
+          "text": "Float the heels off the bed",
+          "correct": true,
+          "rationale": "Raising the heels relieves pressure.",
+          "col": 1
+        },
+        {
+          "text": "Apply cornstarch after bathing",
+          "correct": true,
+          "rationale": "Never use powder or cornstarch.",
+          "col": 2
+        },
+        {
+          "text": "Use a 20 to 30 degree side-lying tilt",
+          "correct": true,
+          "rationale": "This keeps pressure off the hip.",
+          "col": 1
+        },
+        {
+          "text": "Keep the head of the bed at 45 degrees or higher",
+          "correct": true,
+          "rationale": "Higher angles cause shear; keep it at 30° or lower.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Intervention"
+    },
+    {
+      "id": "nur114-u3-tissue-integrity-133",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Tissue Integrity",
+      "category": "Wound Assessment",
+      "type": "matrix",
+      "prompt": "A nurse is assessing several surgical wounds. For each finding, choose whether the nurse should document it as expected or report it.",
+      "columns": [
+        "Expected",
+        "Report"
+      ],
+      "options": [
+        {
+          "text": "Bright pink incision on postoperative day 8",
+          "correct": true,
+          "rationale": "Bright pink is expected days 5–14.",
+          "col": 1
+        },
+        {
+          "text": "Thick, green, foul-smelling drainage",
+          "correct": true,
+          "rationale": "Purulent drainage means infection.",
+          "col": 2
+        },
+        {
+          "text": "Drainage changing from sanguineous to serosanguineous",
+          "correct": true,
+          "rationale": "This is the expected progression.",
+          "col": 1
+        },
+        {
+          "text": "A sudden, large increase in drain output",
+          "correct": true,
+          "rationale": "A big change in amount is reported.",
+          "col": 2
+        },
+        {
+          "text": "Separated wound edges with organs visible",
+          "correct": true,
+          "rationale": "Evisceration is an emergency.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Finding"
+    },
+    {
       "id": "nur114-u3-assess-integ-heent-neuro-001",
       "course": "NUR 114",
       "unit": 3,
@@ -15539,6 +15828,104 @@
       ]
     },
     {
+      "id": "nur114-u3-assess-integ-heent-neuro-092",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Integumentary, HEENT & Neuro",
+      "category": "HEENT",
+      "type": "matrix",
+      "prompt": "A nurse is performing a head and neck exam. For each finding, choose whether it is expected or unexpected.",
+      "columns": [
+        "Expected",
+        "Unexpected"
+      ],
+      "options": [
+        {
+          "text": "Pearly gray tympanic membrane with a cone of light",
+          "correct": true,
+          "rationale": "This is expected.",
+          "col": 1
+        },
+        {
+          "text": "Red, bulging tympanic membrane",
+          "correct": true,
+          "rationale": "This suggests a middle ear infection.",
+          "col": 2
+        },
+        {
+          "text": "Thyroid rises when the client swallows",
+          "correct": true,
+          "rationale": "A normal thyroid rises with swallowing.",
+          "col": 1
+        },
+        {
+          "text": "Tender, enlarged lymph nodes under the jaw",
+          "correct": true,
+          "rationale": "Nodes shouldn't be palpable or tender.",
+          "col": 2
+        },
+        {
+          "text": "Septum midline with patent nares",
+          "correct": true,
+          "rationale": "This is expected.",
+          "col": 1
+        },
+        {
+          "text": "Drooping upper eyelid",
+          "correct": true,
+          "rationale": "Ptosis is unexpected.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Finding"
+    },
+    {
+      "id": "nur114-u3-assess-integ-heent-neuro-093",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Integumentary, HEENT & Neuro",
+      "category": "Basics & Integumentary",
+      "type": "matrix",
+      "prompt": "A nurse is assessing an older adult client's skin. For each finding, choose whether it is an expected aging change or not expected.",
+      "columns": [
+        "Expected with aging",
+        "Not expected"
+      ],
+      "options": [
+        {
+          "text": "Thin, dry, wrinkled skin",
+          "correct": true,
+          "rationale": "Expected with aging.",
+          "col": 1
+        },
+        {
+          "text": "Thick, slow-growing nails",
+          "correct": true,
+          "rationale": "Expected with aging.",
+          "col": 1
+        },
+        {
+          "text": "Petechiae on the forearms",
+          "correct": true,
+          "rationale": "Petechiae are not expected with aging.",
+          "col": 2
+        },
+        {
+          "text": "A raised hematoma on the shin",
+          "correct": true,
+          "rationale": "Hematomas are not expected with aging.",
+          "col": 2
+        },
+        {
+          "text": "Thinning hair",
+          "correct": true,
+          "rationale": "Expected with aging.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Finding"
+    },
+    {
       "id": "nur114-u3-cranial-nerves-001",
       "course": "NUR 114",
       "unit": 3,
@@ -17566,6 +17953,54 @@
           "bucket": 3
         }
       ]
+    },
+    {
+      "id": "nur114-u3-cranial-nerves-058",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Cranial Nerves",
+      "category": "Names & Types",
+      "type": "matrix",
+      "prompt": "A nurse is completing a cranial nerve assessment. For each test, choose the nerve being tested.",
+      "columns": [
+        "CN II",
+        "CN V",
+        "CN VII",
+        "CN VIII"
+      ],
+      "options": [
+        {
+          "text": "Snellen chart",
+          "correct": true,
+          "rationale": "Vision is CN II.",
+          "col": 1
+        },
+        {
+          "text": "Cotton swab on the forehead, cheeks, and chin",
+          "correct": true,
+          "rationale": "Facial sensation is CN V.",
+          "col": 2
+        },
+        {
+          "text": "Smiling and puffing out the cheeks",
+          "correct": true,
+          "rationale": "Facial movement is CN VII.",
+          "col": 3
+        },
+        {
+          "text": "Whisper test",
+          "correct": true,
+          "rationale": "Hearing is CN VIII.",
+          "col": 4
+        },
+        {
+          "text": "Clenching the teeth while the nurse feels the jaw",
+          "correct": true,
+          "rationale": "CN V motor.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Test"
     },
     {
       "id": "nur114-u3-assess-thorax-cv-abd-msk-001",
@@ -21253,6 +21688,104 @@
           "bucket": 3
         }
       ]
+    },
+    {
+      "id": "nur114-u3-assess-thorax-cv-abd-msk-106",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
+      "category": "Thorax & Lungs",
+      "type": "matrix",
+      "prompt": "A nurse is assessing an adult client's chest. For each finding, choose whether it is expected or unexpected.",
+      "columns": [
+        "Expected",
+        "Unexpected"
+      ],
+      "options": [
+        {
+          "text": "Vesicular sounds over the lung bases",
+          "correct": true,
+          "rationale": "Expected over the periphery.",
+          "col": 1
+        },
+        {
+          "text": "Bronchial sounds over the trachea",
+          "correct": true,
+          "rationale": "Expected over the trachea.",
+          "col": 1
+        },
+        {
+          "text": "Hyperresonance over the left lung",
+          "correct": true,
+          "rationale": "Suggests trapped air, such as pneumothorax.",
+          "col": 2
+        },
+        {
+          "text": "Retractions between the ribs",
+          "correct": true,
+          "rationale": "Retractions show increased work of breathing.",
+          "col": 2
+        },
+        {
+          "text": "Symmetric tactile fremitus",
+          "correct": true,
+          "rationale": "Fremitus should be symmetric.",
+          "col": 1
+        },
+        {
+          "text": "Stridor",
+          "correct": true,
+          "rationale": "Stridor is an emergency.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Finding"
+    },
+    {
+      "id": "nur114-u3-assess-thorax-cv-abd-msk-107",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
+      "category": "Abdomen",
+      "type": "matrix",
+      "prompt": "A nurse is assessing a client's abdomen. For each action, choose whether it is appropriate or inappropriate.",
+      "columns": [
+        "Appropriate",
+        "Inappropriate"
+      ],
+      "options": [
+        {
+          "text": "Auscultating before palpating",
+          "correct": true,
+          "rationale": "Touching first changes bowel sounds.",
+          "col": 1
+        },
+        {
+          "text": "Listening RLQ, RUQ, LUQ, then LLQ",
+          "correct": true,
+          "rationale": "That's the order.",
+          "col": 1
+        },
+        {
+          "text": "Deep palpating a tender area",
+          "correct": true,
+          "rationale": "Never deep palpate a tender area.",
+          "col": 2
+        },
+        {
+          "text": "Having the client void before the exam",
+          "correct": true,
+          "rationale": "An empty bladder helps the exam.",
+          "col": 1
+        },
+        {
+          "text": "Documenting absent bowel sounds after 1 minute",
+          "correct": true,
+          "rationale": "Listen at least 5 minutes.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Action"
     },
     {
       "id": "nur114-u3-safety-001",
@@ -26427,6 +26960,110 @@
           "blank": 2
         }
       ]
+    },
+    {
+      "id": "nur114-u3-safety-151",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Safety",
+      "category": "Restraints & Seizures",
+      "type": "matrix",
+      "prompt": "A nurse is caring for a client in soft wrist restraints. For each action, choose whether it is appropriate or inappropriate.",
+      "columns": [
+        "Appropriate",
+        "Inappropriate"
+      ],
+      "options": [
+        {
+          "text": "Tie the restraint to the movable bed frame",
+          "correct": true,
+          "rationale": "Tie to the frame, never the rail.",
+          "col": 1
+        },
+        {
+          "text": "Tie the restraint to the side rail",
+          "correct": true,
+          "rationale": "Moving the rail can injure the client.",
+          "col": 2
+        },
+        {
+          "text": "Use a quick-release knot",
+          "correct": true,
+          "rationale": "Quick release allows fast removal.",
+          "col": 1
+        },
+        {
+          "text": "Remove each restraint 15 minutes every 2 hours",
+          "correct": true,
+          "rationale": "This is part of ongoing care.",
+          "col": 1
+        },
+        {
+          "text": "Write a PRN restraint order for future agitation",
+          "correct": true,
+          "rationale": "No PRN restraint orders.",
+          "col": 2
+        },
+        {
+          "text": "Fasten it so no fingers fit underneath",
+          "correct": true,
+          "rationale": "Two fingers should fit.",
+          "col": 2
+        }
+      ],
+      "rowLabel": "Action"
+    },
+    {
+      "id": "nur114-u3-safety-152",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Safety",
+      "category": "Communication & Unexpected Events",
+      "type": "matrix",
+      "prompt": "A nurse is caring for several clients. For each situation, choose whether the nurse should call the rapid response team.",
+      "columns": [
+        "Call the team",
+        "Don't call"
+      ],
+      "options": [
+        {
+          "text": "Oxygen saturation (SpO2) 86% despite oxygen",
+          "correct": true,
+          "rationale": "Low SpO2 despite oxygen.",
+          "col": 1
+        },
+        {
+          "text": "Chest pain that continues after nitroglycerin",
+          "correct": true,
+          "rationale": "Chest pain despite nitroglycerin.",
+          "col": 1
+        },
+        {
+          "text": "A new seizure",
+          "correct": true,
+          "rationale": "Seizure.",
+          "col": 1
+        },
+        {
+          "text": "One high blood glucose reading",
+          "correct": true,
+          "rationale": "Not for a single high glucose.",
+          "col": 2
+        },
+        {
+          "text": "SpO2 95% on 2 L of oxygen",
+          "correct": true,
+          "rationale": "That's an expected reading.",
+          "col": 2
+        },
+        {
+          "text": "The nurse is worried about the client",
+          "correct": true,
+          "rationale": "Any staff concern.",
+          "col": 1
+        }
+      ],
+      "rowLabel": "Situation"
     }
   ]
 }

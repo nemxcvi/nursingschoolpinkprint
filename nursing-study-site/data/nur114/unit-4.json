@@ -1906,6 +1906,58 @@
    ]
   },
   {
+   "id": "nur114-u4-fluid-balance-054",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Fluid Balance & Imbalances",
+   "category": "Hypervolemia",
+   "type": "matrix",
+   "prompt": "A nurse is assessing several clients. For each finding, choose whether it suggests fluid volume deficit or fluid volume excess.",
+   "columns": [
+    "Deficit",
+    "Excess"
+   ],
+   "options": [
+    {
+     "text": "Dry mucous membranes",
+     "correct": true,
+     "rationale": "Early sign of fluid deficit.",
+     "col": 1
+    },
+    {
+     "text": "Crackles in the lungs",
+     "correct": true,
+     "rationale": "Fluid backs up into the lungs.",
+     "col": 2
+    },
+    {
+     "text": "Weak, thready pulse",
+     "correct": true,
+     "rationale": "Low volume weakens the pulse.",
+     "col": 1
+    },
+    {
+     "text": "Bounding pulse",
+     "correct": true,
+     "rationale": "Extra volume fills the pulse.",
+     "col": 2
+    },
+    {
+     "text": "Urine specific gravity 1.035",
+     "correct": true,
+     "rationale": "Concentrated urine suggests deficit.",
+     "col": 1
+    },
+    {
+     "text": "Weight gain of 2 kg in 2 days",
+     "correct": true,
+     "rationale": "Rapid gain is fluid.",
+     "col": 2
+    }
+   ],
+   "rowLabel": "Finding"
+  },
+  {
    "id": "nur114-u4-electrolytes-001",
    "course": "NUR 114",
    "unit": 4,
@@ -3932,6 +3984,53 @@
    ]
   },
   {
+   "id": "nur114-u4-electrolytes-059",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Electrolytes",
+   "category": "Electrolyte Basics",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing an adult client's electrolytes. For each result, choose whether it is low, within the expected range, or high.",
+   "columns": [
+    "Low",
+    "Within range",
+    "High"
+   ],
+   "options": [
+    {
+     "text": "Sodium 130 mEq/L",
+     "correct": true,
+     "rationale": "Expected is 136–145.",
+     "col": 1
+    },
+    {
+     "text": "Potassium 5.6 mEq/L",
+     "correct": true,
+     "rationale": "Expected is 3.5–5.",
+     "col": 3
+    },
+    {
+     "text": "Calcium 9.8 mg/dL",
+     "correct": true,
+     "rationale": "Expected is 9–10.5.",
+     "col": 2
+    },
+    {
+     "text": "Magnesium 1.1 mEq/L",
+     "correct": true,
+     "rationale": "Expected is 1.3–2.1.",
+     "col": 1
+    },
+    {
+     "text": "Potassium 4.0 mEq/L",
+     "correct": true,
+     "rationale": "Within range.",
+     "col": 2
+    }
+   ],
+   "rowLabel": "Result"
+  },
+  {
    "id": "nur114-u4-iv-therapy-001",
    "course": "NUR 114",
    "unit": 4,
@@ -5478,6 +5577,254 @@
    ]
   },
   {
+   "id": "nur114-u4-iv-therapy-047",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "IV Therapy & Blood Transfusions",
+   "category": "IV Solutions",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing the IV solutions on the unit. For each solution, choose its tonicity.",
+   "columns": [
+    "Isotonic",
+    "Hypotonic",
+    "Hypertonic"
+   ],
+   "options": [
+    {
+     "text": "0.9% sodium chloride (normal saline)",
+     "correct": true,
+     "rationale": "0.9% NS has the same osmolality as blood.",
+     "col": 1
+    },
+    {
+     "text": "Lactated Ringer's",
+     "correct": true,
+     "rationale": "Lactated Ringer's is isotonic.",
+     "col": 1
+    },
+    {
+     "text": "0.45% sodium chloride",
+     "correct": true,
+     "rationale": "0.45% NS is hypotonic.",
+     "col": 2
+    },
+    {
+     "text": "0.33% sodium chloride",
+     "correct": true,
+     "rationale": "0.33% NS is hypotonic.",
+     "col": 2
+    },
+    {
+     "text": "3% sodium chloride",
+     "correct": true,
+     "rationale": "3% NaCl is hypertonic.",
+     "col": 3
+    },
+    {
+     "text": "Dextrose 10% in water (D10W)",
+     "correct": true,
+     "rationale": "D10W is hypertonic.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Solution"
+  },
+  {
+   "id": "nur114-u4-iv-therapy-048",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "IV Therapy & Blood Transfusions",
+   "category": "IV Solutions",
+   "type": "matrix",
+   "prompt": "A nurse is teaching a group of nursing students about IV solutions. For each statement, choose the type of solution it describes.",
+   "columns": [
+    "Isotonic",
+    "Hypotonic",
+    "Hypertonic"
+   ],
+   "options": [
+    {
+     "text": "No fluid shift; adds volume to the vessels",
+     "correct": true,
+     "rationale": "Isotonic stays outside the cells and adds volume.",
+     "col": 1
+    },
+    {
+     "text": "Water moves into the cells, which can swell",
+     "correct": true,
+     "rationale": "hypO: \"Oh, cells swell.\"",
+     "col": 2
+    },
+    {
+     "text": "Water is pulled out of the cells into the vessels",
+     "correct": true,
+     "rationale": "hypER: cells shrivel.",
+     "col": 3
+    },
+    {
+     "text": "Given for hypovolemia from bleeding",
+     "correct": true,
+     "rationale": "Isotonic fluids treat low blood volume.",
+     "col": 1
+    },
+    {
+     "text": "Given to correct high serum electrolyte levels",
+     "correct": true,
+     "rationale": "Hypotonic fluids dilute high levels.",
+     "col": 2
+    },
+    {
+     "text": "Given for hypoglycemia",
+     "correct": true,
+     "rationale": "Hypertonic dextrose solutions treat low glucose.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Statement"
+  },
+  {
+   "id": "nur114-u4-iv-therapy-049",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "IV Therapy & Blood Transfusions",
+   "category": "IV Solutions",
+   "type": "dragdrop",
+   "prompt": "A nurse is matching IV solutions to client needs. Sort each client into the type of solution that fits. Move each answer to the box where it belongs.",
+   "leftLabel": "Clients",
+   "buckets": [
+    "Isotonic",
+    "Hypotonic",
+    "Hypertonic"
+   ],
+   "options": [
+    {
+     "text": "Client who has low blood volume after a hemorrhage",
+     "correct": true,
+     "rationale": "Isotonic fluids replace volume.",
+     "bucket": 1
+    },
+    {
+     "text": "Client who is dehydrated and hypotensive",
+     "correct": true,
+     "rationale": "Isotonic fluids increase ECF volume.",
+     "bucket": 1
+    },
+    {
+     "text": "Client who has a high serum sodium",
+     "correct": true,
+     "rationale": "Hypotonic fluids correct high electrolyte levels.",
+     "bucket": 2
+    },
+    {
+     "text": "Client who has a low serum sodium",
+     "correct": true,
+     "rationale": "Hypertonic fluids correct low electrolyte levels.",
+     "bucket": 3
+    },
+    {
+     "text": "Client who has low blood glucose",
+     "correct": true,
+     "rationale": "Hypertonic dextrose solutions treat hypoglycemia.",
+     "bucket": 3
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-iv-therapy-050",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "IV Therapy & Blood Transfusions",
+   "category": "IV Solutions",
+   "type": "cloze",
+   "prompt": "A nurse is caring for a client who lost a large amount of blood during a car crash and has a low blood pressure.",
+   "sentence": "The nurse should expect to give an {1} solution such as {2}.",
+   "options": [
+    {
+     "text": "isotonic",
+     "correct": true,
+     "rationale": "Isotonic fluids increase volume in hypovolemia.",
+     "blank": 1
+    },
+    {
+     "text": "hypotonic",
+     "correct": false,
+     "rationale": "Hypotonic fluids move water into the cells.",
+     "blank": 1
+    },
+    {
+     "text": "hypertonic",
+     "correct": false,
+     "rationale": "Hypertonic fluids are for low electrolytes or hypoglycemia.",
+     "blank": 1
+    },
+    {
+     "text": "0.9% sodium chloride",
+     "correct": true,
+     "rationale": "0.9% NS is isotonic.",
+     "blank": 2
+    },
+    {
+     "text": "0.45% sodium chloride",
+     "correct": false,
+     "rationale": "0.45% NS is hypotonic.",
+     "blank": 2
+    },
+    {
+     "text": "3% sodium chloride",
+     "correct": false,
+     "rationale": "3% NaCl is hypertonic.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-iv-therapy-051",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "IV Therapy & Blood Transfusions",
+   "category": "IV Complications",
+   "type": "matrix",
+   "prompt": "A nurse is assessing several clients' IV sites. For each finding, choose the complication it suggests.",
+   "columns": [
+    "Infiltration",
+    "Phlebitis",
+    "Circulatory overload"
+   ],
+   "options": [
+    {
+     "text": "Cool, pale, swollen skin around the site",
+     "correct": true,
+     "rationale": "Fluid in the tissue.",
+     "col": 1
+    },
+    {
+     "text": "Warmth and a red streak along the vein",
+     "correct": true,
+     "rationale": "Inflammation of the vein.",
+     "col": 2
+    },
+    {
+     "text": "Crackles and distended neck veins",
+     "correct": true,
+     "rationale": "Too much fluid in the circulation.",
+     "col": 3
+    },
+    {
+     "text": "Damp dressing with local swelling",
+     "correct": true,
+     "rationale": "Fluid leaking into tissue.",
+     "col": 1
+    },
+    {
+     "text": "Rising blood pressure and shortness of breath",
+     "correct": true,
+     "rationale": "Too much fluid, too fast.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Finding"
+  },
+  {
    "id": "nur114-u4-acid-base-001",
    "course": "NUR 114",
    "unit": 4,
@@ -6646,6 +6993,53 @@
      "bucket": 2
     }
    ]
+  },
+  {
+   "id": "nur114-u4-acid-base-036",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Acid-Base Balance",
+   "category": "ABG Interpretation",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing a client's arterial blood gas values. For each value, choose whether it is low, within the expected range, or high.",
+   "columns": [
+    "Low",
+    "Within range",
+    "High"
+   ],
+   "options": [
+    {
+     "text": "pH 7.30",
+     "correct": true,
+     "rationale": "Expected is 7.35–7.45.",
+     "col": 1
+    },
+    {
+     "text": "PaCO2 52 mm Hg",
+     "correct": true,
+     "rationale": "Expected is 35–45.",
+     "col": 3
+    },
+    {
+     "text": "HCO3– 24 mEq/L",
+     "correct": true,
+     "rationale": "Expected is 22–26.",
+     "col": 2
+    },
+    {
+     "text": "pH 7.49",
+     "correct": true,
+     "rationale": "Above 7.45 is high.",
+     "col": 3
+    },
+    {
+     "text": "HCO3– 18 mEq/L",
+     "correct": true,
+     "rationale": "Below 22 is low.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Value"
   },
   {
    "id": "nur114-u4-nutrition-001",
@@ -11130,6 +11524,52 @@
    ]
   },
   {
+   "id": "nur114-u4-enteral-parenteral-070",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Giving Feedings",
+   "type": "matrix",
+   "prompt": "A nurse is caring for a client who receives intermittent tube feedings. For each action, choose whether it is correct or incorrect.",
+   "columns": [
+    "Correct",
+    "Incorrect"
+   ],
+   "options": [
+    {
+     "text": "Raise the head of the bed to 30 to 45 degrees",
+     "correct": true,
+     "rationale": "Lowers aspiration risk.",
+     "col": 1
+    },
+    {
+     "text": "Give the formula cold from the refrigerator",
+     "correct": true,
+     "rationale": "Cold formula causes cramping.",
+     "col": 2
+    },
+    {
+     "text": "Flush with 30 mL of water before and after medications",
+     "correct": true,
+     "rationale": "Prevents clogging.",
+     "col": 1
+    },
+    {
+     "text": "Lay the client flat right after the feeding",
+     "correct": true,
+     "rationale": "Keep the head of the bed up 1 hour.",
+     "col": 2
+    },
+    {
+     "text": "Confirm placement before the feeding",
+     "correct": true,
+     "rationale": "Check placement before each feeding.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Action"
+  },
+  {
    "id": "nur114-u4-nutrition-043",
    "course": "NUR 114",
    "unit": 4,
@@ -12028,6 +12468,58 @@
      "blank": 2
     }
    ]
+  },
+  {
+   "id": "nur114-u4-nutrition-094",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Therapeutic Diets",
+   "type": "matrix",
+   "prompt": "A nurse is checking a client's tray. For each item, choose whether it is allowed on a clear liquid diet.",
+   "columns": [
+    "Allowed",
+    "Not allowed"
+   ],
+   "options": [
+    {
+     "text": "Broth",
+     "correct": true,
+     "rationale": "Clear liquid.",
+     "col": 1
+    },
+    {
+     "text": "Gelatin",
+     "correct": true,
+     "rationale": "Clear liquid.",
+     "col": 1
+    },
+    {
+     "text": "Vanilla pudding",
+     "correct": true,
+     "rationale": "Pudding is a full liquid.",
+     "col": 2
+    },
+    {
+     "text": "Orange juice with pulp",
+     "correct": true,
+     "rationale": "Pulp isn't clear.",
+     "col": 2
+    },
+    {
+     "text": "Tea",
+     "correct": true,
+     "rationale": "Clear liquid.",
+     "col": 1
+    },
+    {
+     "text": "Ice cream",
+     "correct": true,
+     "rationale": "Ice cream is a full liquid.",
+     "col": 2
+    }
+   ],
+   "rowLabel": "Item"
   },
   {
    "id": "nur114-u4-food-sources-001",
@@ -17953,6 +18445,52 @@
    ]
   },
   {
+   "id": "nur114-u4-bowel-elimination-147",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Ostomies",
+   "type": "matrix",
+   "prompt": "A nurse is assessing several stomas. For each finding, choose whether it is expected or should be reported.",
+   "columns": [
+    "Expected",
+    "Report"
+   ],
+   "options": [
+    {
+     "text": "Pink to red, moist, shiny stoma",
+     "correct": true,
+     "rationale": "A healthy stoma.",
+     "col": 1
+    },
+    {
+     "text": "Dusky purple stoma",
+     "correct": true,
+     "rationale": "Poor blood supply.",
+     "col": 2
+    },
+    {
+     "text": "Liquid output from a new ileostomy",
+     "correct": true,
+     "rationale": "Ileostomy output is liquid.",
+     "col": 1
+    },
+    {
+     "text": "Black stoma",
+     "correct": true,
+     "rationale": "Necrosis.",
+     "col": 2
+    },
+    {
+     "text": "Mild swelling in the first weeks after surgery",
+     "correct": true,
+     "rationale": "Expected early after surgery.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Finding"
+  },
+  {
    "id": "nur114-u4-urinary-elimination-001",
    "course": "NUR 114",
    "unit": 4,
@@ -22046,6 +22584,53 @@
    ]
   },
   {
+   "id": "nur114-u4-urinary-elimination-127",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Urinary Elimination",
+   "category": "UTIs & Urinary Conditions",
+   "type": "matrix",
+   "prompt": "A nurse is assessing several clients. For each finding, choose the condition it most suggests.",
+   "columns": [
+    "Urinary tract infection",
+    "Kidney stone",
+    "Urinary retention"
+   ],
+   "options": [
+    {
+     "text": "Burning with urination and cloudy urine",
+     "correct": true,
+     "rationale": "Typical of a UTI.",
+     "col": 1
+    },
+    {
+     "text": "Sharp flank pain that travels to the groin",
+     "correct": true,
+     "rationale": "Typical of a kidney stone.",
+     "col": 2
+    },
+    {
+     "text": "Distended bladder and suprapubic discomfort",
+     "correct": true,
+     "rationale": "Typical of retention.",
+     "col": 3
+    },
+    {
+     "text": "Blood in the urine with severe flank pain",
+     "correct": true,
+     "rationale": "Typical of a stone.",
+     "col": 2
+    },
+    {
+     "text": "Frequent small voids and a weak stream",
+     "correct": true,
+     "rationale": "Typical of retention.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Finding"
+  },
+  {
    "id": "nur114-u4-med-math-001",
    "course": "NUR 114",
    "unit": 4,
@@ -25557,6 +26142,48 @@
      "blank": 4
     }
    ]
+  },
+  {
+   "id": "nur114-u4-med-math-101",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Abbreviations",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing a client's medication orders. For each abbreviation, choose its meaning.",
+   "columns": [
+    "Before meals",
+    "After meals",
+    "As needed",
+    "Three times a day"
+   ],
+   "options": [
+    {
+     "text": "AC",
+     "correct": true,
+     "rationale": "AC means before meals.",
+     "col": 1
+    },
+    {
+     "text": "PC",
+     "correct": true,
+     "rationale": "PC means after meals.",
+     "col": 2
+    },
+    {
+     "text": "PRN",
+     "correct": true,
+     "rationale": "PRN means as needed.",
+     "col": 3
+    },
+    {
+     "text": "TID",
+     "correct": true,
+     "rationale": "TID means three times a day.",
+     "col": 4
+    }
+   ],
+   "rowLabel": "Abbreviation"
   }
  ]
 }

@@ -447,9 +447,12 @@ var MyStudy = (function(){
   var journalState = {tab: "progress", scrollTo: "", unit: "", topic: "", sort: "missed", showResolved: false};
   function letterIndex(id){ return "abcdefghijklmnopqrstuvwxyz".indexOf(String(id)); }
   /* Drag and drop into several boxes saves "id@N"; show the text with its box */
-  function boxName(q, n){ return n && q.buckets ? " \u2192 " + q.buckets[n - 1] : ""; }
+  function boxName(q, n){ var l = q.buckets || q.columns; return n && l ? " \u2192 " + l[n - 1] : ""; }
   function optionTexts(q, ids){ return (ids || []).map(function(id){ var p = String(id).split("@"), o = q.options[letterIndex(p[0])]; return o ? o.text + boxName(q, Number(p[1])) : ""; }).filter(Boolean); }
-  function correctTexts(q){ return q.options.filter(function(o){ return o.correct || o.bucket; }).map(function(o){ return o.text + boxName(q, o.bucket); }); }
+  function correctTexts(q){
+    if (q.type === "matrix") return q.options.map(function(o){ return o.text + " \u2192 " + [].concat(o.col).map(function(c){ return q.columns[c - 1]; }).join(" and "); });
+    return q.options.filter(function(o){ return o.correct || o.bucket; }).map(function(o){ return o.text + boxName(q, o.bucket); });
+  }
   /* Ordered response shows numbered steps; other types a plain list */
   function joinTexts(q, texts){
     return q.type === "order" ? texts.map(function(t, i){ return (i + 1) + ". " + t; }).join(" \u2192 ") : texts.join("; ");

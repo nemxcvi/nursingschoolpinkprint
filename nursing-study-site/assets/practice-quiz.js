@@ -167,7 +167,10 @@ function initPracticeQuiz(bank, catLabels, opts){
      table puts the blanks in q.table ({head: [...], rows: [[cell, "{1}"], ...]}) instead.
      Drag and drop into several boxes: q.buckets lists the box names, and each option that
      belongs in a box has bucket: N (1-based); options with no bucket stay out. The answer
-     is a list of "id@N" placements, and q.correct holds the right ones. */
+     is a list of "id@N" placements, and q.correct holds the right ones.
+     Matrix / grid ("matrix"): q.columns names the choices; each option is a row with col: N
+     (one right column) or col: [N, M] (q.multi: check every column that applies). Answers
+     are "id@N" cells, graded all-or-nothing like the other types. */
   function normalizeBank(bank){
     var missingRationale = [];
     bank.forEach(function(q, qi){
@@ -183,12 +186,16 @@ function initPracticeQuiz(bank, catLabels, opts){
         var id = o.id != null ? String(o.id) : (i < LETTERS.length ? LETTERS.charAt(i).toLowerCase() : "o" + i);
         var rationale = o.rationale ? String(o.rationale).replace(PREFIX_RE, "") : "";
         if (!rationale) gaps.push(id);
-        return {id: id, text: o.text, correct: ordered || o.bucket != null || o.correct === true || listed.indexOf(id) !== -1, rationale: rationale, blank: o.blank, bucket: o.bucket != null ? Number(o.bucket) : undefined};
+        var cols = o.col == null ? undefined : [].concat(o.col).map(Number);
+        return {id: id, text: o.text, correct: ordered || cols != null || o.bucket != null || o.correct === true || listed.indexOf(id) !== -1, rationale: rationale, blank: o.blank, bucket: o.bucket != null ? Number(o.bucket) : undefined, cols: cols};
       });
-      q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return isMultiDD(q) ? o.id + "@" + o.bucket : o.id; });
+      if (q.type === "matrix"){
+        q.correct = [];
+        q.options.forEach(function(o){ (o.cols || []).forEach(function(c){ q.correct.push(o.id + "@" + c); }); });
+      } else q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return isMultiDD(q) ? o.id + "@" + o.bucket : o.id; });
       /* A question marked "sata" stays select-all even with one correct answer, like the real exam */
-      q.multi = q.type === "sata" || q.correct.length > 1;
-      if (q.type !== "dragdrop" && q.type !== "cloze" && !ordered) q.type = q.multi ? "sata" : "mc";
+      q.multi = q.type === "matrix" ? q.multi === true : (q.type === "sata" || q.correct.length > 1);
+      if (q.type !== "dragdrop" && q.type !== "cloze" && q.type !== "matrix" && !ordered) q.type = q.multi ? "sata" : "mc";
       if (q.correct.length === 0) console.warn("[quiz] question " + q.id + " has no correct option: " + q.prompt);
       if (gaps.length) missingRationale.push({q: q, ids: gaps});
     });
@@ -213,6 +220,20 @@ function initPracticeQuiz(bank, catLabels, opts){
         if (!ok) allRight = false;
         states[id] = {state: ok ? "correct" : "wrong", chosen: true,
           prefix: ok ? "Step " + (i + 1) + "." : "Step " + (i + 1) + (at === -1 ? "." : " (you had " + (at + 1) + ").")};
+      });
+      return {correct: allRight, states: states};
+    }
+    /* Matrix: each row is right only when its checked cells match its right column(s) exactly */
+    if (q.type === "matrix"){
+      var cells = {};
+      selected.forEach(function(s){ var p = String(s).split("@"); (cells[p[0]] = cells[p[0]] || []).push(Number(p[1])); });
+      q.options.forEach(function(o){
+        var mine = (cells[o.id] || []).slice().sort().join(), key = (o.cols || []).slice().sort().join();
+        var ok = mine === key;
+        if (!ok) allRight = false;
+        var names = (o.cols || []).map(function(c){ return q.columns[c - 1]; }).join(" and ");
+        states[o.id] = {state: ok ? "correct" : mine ? "wrong" : "missed", chosen: !!mine,
+          prefix: ok ? "Correct." : (mine ? "Incorrect." : "Missed.") + " Answer: " + names + "."};
       });
       return {correct: allRight, states: states};
     }
@@ -283,7 +304,7 @@ function initPracticeQuiz(bank, catLabels, opts){
      get about 15% of the questions, ordered response and drop-down about 10% each (at least one of each
      when the bank has any), and multiple choice fills the rest. If a bank is short on a type, its spare slots go to the
      others. Within each type, questions are still spread across categories. */
-  var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15, order: 0.1, cloze: 0.1};
+  var TYPE_SHARE = {dragdrop: 0.15, sata: 0.15, order: 0.1, cloze: 0.1, matrix: 0.1};
   /* `pickFn(list, n)` chooses n questions from one type's list (spread over categories by default) */
   function mixedSample(source, count, pickFn){
     pickFn = pickFn || stratifiedSample;
@@ -716,7 +737,9 @@ function initPracticeQuiz(bank, catLabels, opts){
     document.getElementById("pq-progress-bar").style.width = Math.round((currentRoundIndex / list.length) * 100) + "%";
     document.getElementById("pq-type-label").textContent = q.type === "dragdrop" ? "drag and drop · or tap an option, then a box"
       : q.type === "order" ? "put in order · drag, or use the arrows"
-      : q.type === "cloze" ? "drop-down · choose an option for each blank" : q.multi ? "select all that apply" : "select one";
+      : q.type === "cloze" ? "drop-down · choose an option for each blank"
+      : q.type === "matrix" ? (q.multi ? "matrix · check every box that applies in each row" : "matrix · choose one in each row")
+      : q.multi ? "select all that apply" : "select one";
     document.getElementById("pq-prompt").textContent = q.prompt;
     showQuestionImage(q);
     calc.sync(q);
@@ -726,6 +749,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (q.type === "dragdrop"){ renderDragDrop(q); return; }
     if (q.type === "order"){ renderOrder(q); return; }
     if (q.type === "cloze"){ renderCloze(q); return; }
+    if (q.type === "matrix"){ renderMatrix(q); return; }
 
     /* One correct answer: radio-style single select. More than one: checkboxes. */
     errEl.textContent = q.multi ? "Select at least one answer first" : "Select an answer first";
@@ -1280,6 +1304,73 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (res) res.classList.remove("hidden");
   }
 
+  /* ---------- Matrix / grid ----------
+     A table: one row per option (in a shuffled order), one column per choice. Single-choice
+     matrices use radio buttons per row; q.multi uses checkboxes. Check answer waits until
+     every row has a choice. After checking, each row shows its result and rationale, and the
+     right cells are outlined. */
+  function mxInputs(){ return Array.prototype.slice.call(optsEl.querySelectorAll(".pq-mx-in")); }
+  function mxIds(){ return mxInputs().filter(function(i){ return i.checked; }).map(function(i){ return i.value; }); }
+  function mxSync(){
+    var rows = optsEl.querySelectorAll(".pq-mx-row"), done = true;
+    rows.forEach(function(r){ if (!r.querySelector(".pq-mx-in:checked")) done = false; });
+    document.getElementById("pq-submit").disabled = !done;
+  }
+  function renderMatrix(q){
+    optsEl.innerHTML = "";
+    optsEl.removeAttribute("role");
+    optsEl.removeAttribute("aria-label");
+    var scroll = document.createElement("div");
+    scroll.className = "pq-mx-wrap";
+    var table = document.createElement("table");
+    table.className = "pq-mx";
+    var head = table.createTHead().insertRow();
+    var corner = document.createElement("th");
+    corner.textContent = q.rowLabel || "";
+    head.appendChild(corner);
+    q.columns.forEach(function(c){ var th = document.createElement("th"); th.scope = "col"; th.textContent = c; head.appendChild(th); });
+    var body = table.createTBody();
+    currentDisplayOptions.forEach(function(opt, i){
+      var tr = body.insertRow();
+      tr.className = "pq-mx-row";
+      var lab = tr.insertCell();
+      lab.className = "pq-mx-label";
+      lab.appendChild(buildOption(opt, i, "div"));
+      q.columns.forEach(function(c, ci){
+        var td = tr.insertCell();
+        td.className = "pq-mx-cell";
+        var input = document.createElement("input");
+        input.type = q.multi ? "checkbox" : "radio";
+        input.name = "mx-" + opt.id;
+        input.className = "pq-mx-in";
+        input.value = opt.id + "@" + (ci + 1);
+        input.setAttribute("aria-label", opt.text + ": " + c);
+        input.addEventListener("change", function(){ errEl.style.display = "none"; mxSync(); });
+        var lbl = document.createElement("label");
+        lbl.className = "pq-mx-hit";
+        lbl.appendChild(input);
+        td.appendChild(lbl);
+      });
+    });
+    scroll.appendChild(table);
+    optsEl.appendChild(scroll);
+    errEl.textContent = "Choose an answer in every row";
+    document.getElementById("pq-submit").disabled = true;
+    document.getElementById("pq-hint").innerHTML = "<span>Tab &middot; move &middot; Space &middot; choose</span>" + checkHint();
+  }
+  function mxShowResults(q){
+    mxInputs().forEach(function(input){
+      input.disabled = true;
+      var p = input.value.split("@");
+      var o = q.options.filter(function(x){ return x.id === p[0]; })[0];
+      var key = o && o.cols && o.cols.indexOf(Number(p[1])) !== -1;
+      var td = input.closest(".pq-mx-cell");
+      if (key) td.classList.add("is-key");
+      if (input.checked && !key) td.classList.add("is-wrong");
+    });
+    optsEl.querySelector(".pq-mx").classList.add("is-done");
+  }
+
   /* ---------- Check answer (every type) ---------- */
   document.getElementById("pq-submit").addEventListener("click", function(){
     if (answered) return;
@@ -1287,6 +1378,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (q.type === "dragdrop") userSelection = ddAnswerIds();
     if (q.type === "order") userSelection = ordIds();
     if (q.type === "cloze") userSelection = clozeIds();
+    if (q.type === "matrix") userSelection = mxIds();
     if (userSelection.length === 0){
       errEl.style.display = "block";
       return;
@@ -1334,6 +1426,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     if (q.type === "dragdrop") ddBoxes().forEach(function(b){ b.classList.add("is-done"); });
     if (q.type === "order"){ ordList().classList.add("is-done"); ordSync(); }
     if (q.type === "cloze") clozeShowResults(graded);
+    if (q.type === "matrix") mxShowResults(q);
 
     /* Heading, then the optional summary, then any older question-level explanation */
     fbEl.className = "pq-feedback " + (isCorrect ? "is-correct" : "is-wrong");
@@ -1391,7 +1484,8 @@ function initPracticeQuiz(bank, catLabels, opts){
     return ids.map(function(id, i){
       var p = String(id).split("@");
       var opt = q.options.filter(function(o){ return o.id === p[0]; })[0];
-      var box = p[1] && q.buckets ? " \u2192 " + q.buckets[Number(p[1]) - 1] : "";
+      var labels = q.buckets || q.columns;
+      var box = p[1] && labels ? " \u2192 " + labels[Number(p[1]) - 1] : "";
       return (order ? (i + 1) + ". " : "") + (opt ? opt.text : id) + box;
     }).join(order ? " \u2192 " : ", ");
   }
@@ -1946,7 +2040,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     e.preventDefault();
     /* Ordered response: the number is the spot, not the option's starting letter */
     if (q.type === "order"){ if (/[1-9]/.test(k)) ordPick(ordItems()[idx]); return; }
-    if (q.type === "cloze") return;
+    if (q.type === "cloze" || q.type === "matrix") return;
     var el = optsEl.querySelector('.pq-option[data-opt="' + currentDisplayOptions[idx].id + '"]');
     if (!el) return;
     if (q.type === "dragdrop") ddMove(el, ddOtherBox(el));
