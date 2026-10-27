@@ -12277,55 +12277,6 @@
    ]
   },
   {
-   "id": "nur114-u5-med-calc-157",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Medication Calculations",
-   "category": "Solid & Liquid Doses",
-   "type": "cloze",
-   "prompt": "A nurse is setting up a dosage calculation using ratio and proportion.",
-   "calc": true,
-   "sentence": "The nurse places {1} over the quantity on one side of the equation and {2} over X on the other.",
-   "options": [
-    {
-     "text": "the dose available (have)",
-     "correct": true,
-     "blank": 1,
-     "rationale": "Have over quantity is the label's ratio, such as 250 mg/5 mL."
-    },
-    {
-     "text": "the dose prescribed (desired)",
-     "correct": false,
-     "blank": 1,
-     "rationale": "The desired dose goes over X."
-    },
-    {
-     "text": "the client's weight",
-     "correct": false,
-     "blank": 1,
-     "rationale": "Weight is used only to find a weight-based dose."
-    },
-    {
-     "text": "the dose prescribed (desired)",
-     "correct": true,
-     "blank": 2,
-     "rationale": "Desired over X is the ratio you solve for."
-    },
-    {
-     "text": "the dose available (have)",
-     "correct": false,
-     "blank": 2,
-     "rationale": "Have goes over the quantity."
-    },
-    {
-     "text": "the drop factor",
-     "correct": false,
-     "blank": 2,
-     "rationale": "The drop factor is used only for gtt/min."
-    }
-   ]
-  },
-  {
    "id": "nur114-u5-med-calc-158",
    "course": "NUR 114",
    "unit": 5,
