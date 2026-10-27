@@ -1332,7 +1332,7 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
     </div>
     <p>Check it: going to a <b>smaller</b> unit, the number gets <b>bigger</b> (0.5 g is 500 mg); going to a <b>bigger</b> unit, the number gets <b>smaller</b>.</p>
     <div class="calc">
-      <div class="calc-head"><b>Metric/household</b><span>Type 5</span></div>
+      <div class="calc-head"><b>Metric/household: bigger to smaller</b><span>Type 5</span></div>
       <p class="calc-q">Give 3 Tbsp of a medication. How many mL?</p>
       <ol class="seq"><li>1 Tbsp = 15 mL. Tbsp to mL is bigger to smaller, so the number gets bigger</li></ol>
       <div class="meth">
@@ -1343,7 +1343,19 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
       <p class="calc-ans">Answer: <span class="eq">45 mL</span></p>
     </div>
     <div class="calc">
-      <div class="calc-head"><b>Equivalent dosage</b><span>Type 6</span></div>
+      <div class="calc-head"><b>Metric/household: smaller to bigger</b><span>Type 5</span></div>
+      <p class="calc-q">Give 30 mL of a medication. How many Tbsp?</p>
+      <ol class="seq"><li>1 Tbsp = 15 mL. mL to Tbsp is smaller to bigger, so divide</li></ol>
+      <div class="meth">
+        <div><b>Ratio and proportion</b><p><span class="frac"><span>1 Tbsp</span><span>15 mL</span></span> = <span class="frac"><span>X</span><span>30 mL</span></span> <span class="arr">→</span> 15X = 30 <span class="arr">→</span> X = 2</p></div>
+        <div><b>Desired over have</b><p><span class="frac"><span>30 mL</span><span>15 mL</span></span> × 1 Tbsp = 2</p></div>
+        <div><b>Dimensional analysis</b><p>X Tbsp = <span class="frac"><span>1 Tbsp</span><span>15 mL</span></span> × <span class="frac"><span>30 mL</span><span>1</span></span> = 2</p></div>
+      </div>
+      <p class="calc-post">Makes sense: going to the bigger unit, the number got smaller (30 mL is 2 Tbsp).</p>
+      <p class="calc-ans">Answer: <span class="eq">2 Tbsp</span></p>
+    </div>
+    <div class="calc">
+      <div class="calc-head"><b>Equivalent dosage: bigger to smaller</b><span>Type 6</span></div>
       <p class="calc-q">Give 500 mg of a medication. How many mcg is that?</p>
       <ol class="seq"><li>1 mg = 1,000 mcg. mg to mcg is bigger to smaller, so multiply</li></ol>
       <div class="meth">
