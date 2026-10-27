@@ -4,6 +4,22 @@
  "name": "Gas Exchange & Med Admin",
  "topics": [
   {
+   "topic": "Pharmacology Principles",
+   "slug": "pharm-principles",
+   "quiz": "unit-5-gas-exchange-med-admin/pharm-principles-quiz.html",
+   "mixLabel": "Pharmacology",
+   "categories": [
+    "Names & Categories",
+    "Forms & Absorption",
+    "Pharmacokinetics",
+    "Half-Life & Drug Levels",
+    "Pharmacodynamics",
+    "Adverse Effects & Toxicity",
+    "Precautions & Interactions",
+    "Client Teaching"
+   ]
+  },
+  {
    "topic": "Medication Calculations",
    "slug": "med-calc",
    "quiz": "unit-5-gas-exchange-med-admin/med-calc-quiz.html",
@@ -19,6 +35,4256 @@
   }
  ],
  "questions": [
+  {
+   "id": "nur114-u5-pharm-principles-001",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "sata",
+   "prompt": "A client asks a nurse about generic medications. Which statements should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "They have the same chemical composition as the brand-name medication",
+     "correct": true,
+     "rationale": "Generic and brand forms contain the same active ingredient and have the same effects."
+    },
+    {
+     "text": "They are usually less expensive than the brand-name medication",
+     "correct": true,
+     "rationale": "Generics usually cost less, which is why they're prescribed most often."
+    },
+    {
+     "text": "One medication may have several brand names",
+     "correct": true,
+     "rationale": "Each manufacturer can give the same drug its own brand name (ibuprofen is Advil, Motrin, Nuprin)."
+    },
+    {
+     "text": "One medication may have several generic names",
+     "correct": false,
+     "rationale": "A medication has only one generic name."
+    },
+    {
+     "text": "They have a greater potential for abuse than the brand-name medication",
+     "correct": false,
+     "rationale": "There is no difference in abuse or dependence potential between generic and brand forms."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-002",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A nurse is reviewing a client's medication list. Which entry is written as a generic name?",
+   "options": [
+    {
+     "text": "acetaminophen",
+     "correct": true,
+     "rationale": "Generic names are written in lowercase; acetaminophen is the generic for Tylenol."
+    },
+    {
+     "text": "Tylenol",
+     "correct": false,
+     "rationale": "Tylenol is a brand name: capitalized and proprietary."
+    },
+    {
+     "text": "Motrin",
+     "correct": false,
+     "rationale": "Motrin is a brand name for ibuprofen."
+    },
+    {
+     "text": "Dilaudid",
+     "correct": false,
+     "rationale": "Dilaudid is a brand name for hydromorphone."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-003",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A client who will take the licensing exam asks which medication names the exam uses. Which response by the nurse is correct?",
+   "options": [
+    {
+     "text": "\"It uses generic names. If a brand name appears, the generic name is given with it.\"",
+     "correct": true,
+     "rationale": "The NCLEX uses generic names, and pairs any brand name with its generic."
+    },
+    {
+     "text": "\"It uses brand names only.\"",
+     "correct": false,
+     "rationale": "Brand names vary by manufacturer, so the exam relies on generic names."
+    },
+    {
+     "text": "\"It uses chemical names.\"",
+     "correct": false,
+     "rationale": "Chemical names are rarely used in practice or on the exam."
+    },
+    {
+     "text": "\"It uses whichever name the manufacturer prefers.\"",
+     "correct": false,
+     "rationale": "The exam uses the one official generic name."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-004",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "matrix",
+   "prompt": "A nurse is teaching a newly hired nurse about medication names. For each name, choose whether it is a generic or a brand name.",
+   "columns": [
+    "Generic",
+    "Brand"
+   ],
+   "options": [
+    {
+     "text": "Protonix",
+     "correct": true,
+     "rationale": "Protonix® is the brand name for pantoprazole.",
+     "col": 2
+    },
+    {
+     "text": "docusate sodium",
+     "correct": true,
+     "rationale": "Docusate sodium is the generic name for Colace.",
+     "col": 1
+    },
+    {
+     "text": "hydromorphone",
+     "correct": true,
+     "rationale": "Hydromorphone is the generic name for Dilaudid.",
+     "col": 1
+    },
+    {
+     "text": "Motrin",
+     "correct": true,
+     "rationale": "Motrin® is a brand name for ibuprofen.",
+     "col": 2
+    },
+    {
+     "text": "lansoprazole",
+     "correct": true,
+     "rationale": "Lansoprazole is the generic name for Prevacid.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Name"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-005",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing medication name pairs. Match each brand name to its generic name. Move each answer to the box where it belongs.",
+   "leftLabel": "Brand names",
+   "buckets": [
+    "acetaminophen",
+    "pantoprazole",
+    "docusate sodium"
+   ],
+   "options": [
+    {
+     "text": "Tylenol",
+     "correct": true,
+     "rationale": "Tylenol is the brand name for acetaminophen.",
+     "bucket": 1
+    },
+    {
+     "text": "Protonix",
+     "correct": true,
+     "rationale": "Protonix is the brand name for pantoprazole.",
+     "bucket": 2
+    },
+    {
+     "text": "Colace",
+     "correct": true,
+     "rationale": "Colace is the brand name for docusate sodium.",
+     "bucket": 3
+    },
+    {
+     "text": "Dilaudid",
+     "correct": false,
+     "rationale": "Dilaudid is hydromorphone, so it doesn't belong in any of these boxes."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-006",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A client asks a nurse why a new medication is only sold under its brand name. Which response by the nurse is accurate?",
+   "options": [
+    {
+     "text": "\"The brand is protected by a patent; a generic can be made after the patent expires.\"",
+     "correct": true,
+     "rationale": "A new drug is sold under its brand name until its patent runs out."
+    },
+    {
+     "text": "\"Generic versions are never made for new medications.\"",
+     "correct": false,
+     "rationale": "Generics often become available once the patent expires."
+    },
+    {
+     "text": "\"Brand-name medications are always stronger than generics.\"",
+     "correct": false,
+     "rationale": "Generics have the same active ingredient and therapeutic effect."
+    },
+    {
+     "text": "\"The FDA doesn't allow generic medications for most drugs.\"",
+     "correct": false,
+     "rationale": "The FDA approves generics once therapeutic equivalence is shown."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-007",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A nurse is explaining the difference between prescription and over-the-counter medications. Which statement is accurate?",
+   "options": [
+    {
+     "text": "A prescription medication is considered potentially harmful if taken without a provider's supervision",
+     "correct": true,
+     "rationale": "That's why it requires a prescription from a licensed provider."
+    },
+    {
+     "text": "An over-the-counter medication can't cause harm",
+     "correct": false,
+     "rationale": "OTC drugs are relatively safe, but they can still interact or be taken incorrectly."
+    },
+    {
+     "text": "A prescription medication can never become over the counter",
+     "correct": false,
+     "rationale": "Some drugs are moved to OTC status as more is learned about their safety."
+    },
+    {
+     "text": "Over-the-counter medications can only be bought in pharmacies",
+     "correct": false,
+     "rationale": "They're sold in grocery stores, retail stores and online too."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-008",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "sata",
+   "prompt": "A nurse is taking a medication history for a client being admitted. Which substances should the nurse ask about? Select all that apply.",
+   "options": [
+    {
+     "text": "Prescription medications",
+     "correct": true,
+     "rationale": "Every current prescription is part of the history."
+    },
+    {
+     "text": "Over-the-counter medications",
+     "correct": true,
+     "rationale": "Clients often forget to mention OTC drugs, which can interact with prescriptions."
+    },
+    {
+     "text": "Herbal supplements",
+     "correct": true,
+     "rationale": "Herbal products count as medications and can interact, even though the FDA doesn't regulate them."
+    },
+    {
+     "text": "Vitamins",
+     "correct": true,
+     "rationale": "Vitamins and supplements are counted as medications in the history."
+    },
+    {
+     "text": "Medication allergies and past reactions",
+     "correct": true,
+     "rationale": "Allergies and prior reactions guide safe prescribing."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-009",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A client says, \"I don't take any medications, just ginkgo biloba and a daily vitamin.\" Which response by the nurse is best?",
+   "options": [
+    {
+     "text": "\"Supplements count as medications too, so I'll add them to your list.\"",
+     "correct": true,
+     "rationale": "Supplements and herbal remedies can interact with prescribed drugs, so they belong on the medication list."
+    },
+    {
+     "text": "\"Supplements don't need to be listed because they're natural.\"",
+     "correct": false,
+     "rationale": "Natural products can still interact; ginkgo, for example, raises bleeding risk with aspirin."
+    },
+    {
+     "text": "\"You'll have to stop those while you're here.\"",
+     "correct": false,
+     "rationale": "The nurse doesn't stop them; the provider decides after reviewing the list."
+    },
+    {
+     "text": "\"Those are fine because the FDA regulates them.\"",
+     "correct": false,
+     "rationale": "The FDA doesn't regulate supplements the way it regulates drugs."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-010",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A client brings their own medications from home to the hospital. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Send the medications to the hospital pharmacist for approval before they're used",
+     "correct": true,
+     "rationale": "Home medications have to be verified and approved by the pharmacist before use."
+    },
+    {
+     "text": "Let the client keep taking them at the bedside",
+     "correct": false,
+     "rationale": "Unverified medications at the bedside can lead to double doses or interactions."
+    },
+    {
+     "text": "Throw the medications away",
+     "correct": false,
+     "rationale": "They belong to the client; they're sent to pharmacy or home, not discarded."
+    },
+    {
+     "text": "Give them along with the hospital's doses",
+     "correct": false,
+     "rationale": "That risks duplicate dosing; they must be approved first."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-011",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A nurse is teaching about medication categories. Which statement about the prototype of a category is correct?",
+   "options": [
+    {
+     "text": "It is the medication in the category that providers prescribe most often",
+     "correct": true,
+     "rationale": "The prototype is the most commonly prescribed drug in a category and is studied in the most detail."
+    },
+    {
+     "text": "It is the newest medication in the category",
+     "correct": false,
+     "rationale": "The prototype is chosen by how often it's prescribed, not how new it is."
+    },
+    {
+     "text": "It is the only medication in the category that works",
+     "correct": false,
+     "rationale": "Drugs in a category usually work the same way."
+    },
+    {
+     "text": "It is always available over the counter",
+     "correct": false,
+     "rationale": "Prototypes can be prescription or OTC."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-012",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing the parts of a medication's name.",
+   "sentence": "Generic names are written in {1}, and a medication can have {2} generic name(s).",
+   "options": [
+    {
+     "text": "lowercase letters",
+     "correct": true,
+     "rationale": "Generic names aren't capitalized.",
+     "blank": 1
+    },
+    {
+     "text": "capital letters",
+     "correct": false,
+     "rationale": "Brand names are capitalized.",
+     "blank": 1
+    },
+    {
+     "text": "italics",
+     "correct": false,
+     "rationale": "Names aren't defined by italics.",
+     "blank": 1
+    },
+    {
+     "text": "only one",
+     "correct": true,
+     "rationale": "Every medication has a single generic name.",
+     "blank": 2
+    },
+    {
+     "text": "several",
+     "correct": false,
+     "rationale": "A drug can have several brand names, but only one generic name.",
+     "blank": 2
+    },
+    {
+     "text": "no",
+     "correct": false,
+     "rationale": "Every medication has a generic name.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-013",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "mc",
+   "prompt": "A nurse is preparing to administer an enteric-coated tablet. The client asks why it has a coating. Which response is correct?",
+   "options": [
+    {
+     "text": "\"The coating keeps it from dissolving until it reaches your small intestine, which protects your stomach.\"",
+     "correct": true,
+     "rationale": "Enteric coatings dissolve in the intestine, not the stomach."
+    },
+    {
+     "text": "\"The coating makes it work faster.\"",
+     "correct": false,
+     "rationale": "The coating delays release; it doesn't speed it up."
+    },
+    {
+     "text": "\"The coating lets it dissolve under your tongue.\"",
+     "correct": false,
+     "rationale": "That describes a sublingual tablet."
+    },
+    {
+     "text": "\"The coating releases the drug over 24 hours.\"",
+     "correct": false,
+     "rationale": "That describes an extended-release form."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-014",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing a client's oral medications. For each abbreviation, choose what the form does.",
+   "columns": [
+    "Delays release until the intestine",
+    "Releases slowly over time",
+    "Dissolves in the mouth"
+   ],
+   "options": [
+    {
+     "text": "EC",
+     "correct": true,
+     "rationale": "Enteric-coated tablets dissolve in the small intestine.",
+     "col": 1
+    },
+    {
+     "text": "XL",
+     "correct": true,
+     "rationale": "Extended length (extended-release) releases the drug over time.",
+     "col": 2
+    },
+    {
+     "text": "SR",
+     "correct": true,
+     "rationale": "Sustained release releases the drug over time.",
+     "col": 2
+    },
+    {
+     "text": "ODT",
+     "correct": true,
+     "rationale": "Orally disintegrating tablets dissolve in the mouth.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Abbreviation"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-015",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "mc",
+   "prompt": "A nurse is comparing medication routes. Which route provides immediate and complete absorption?",
+   "options": [
+    {
+     "text": "Intravenous",
+     "correct": true,
+     "rationale": "IV drugs go straight into the blood, so absorption is immediate and complete."
+    },
+    {
+     "text": "Intramuscular",
+     "correct": false,
+     "rationale": "IM absorption varies with solubility and blood flow."
+    },
+    {
+     "text": "Subcutaneous",
+     "correct": false,
+     "rationale": "Subcutaneous absorption varies with solubility and blood flow."
+    },
+    {
+     "text": "Oral",
+     "correct": false,
+     "rationale": "Oral absorption is slower and highly variable."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-016",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "sata",
+   "prompt": "A nurse is caring for a client who has poor peripheral circulation and is prescribed an IM medication. Which statements about absorption are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "Poor blood flow at the site slows absorption",
+     "correct": true,
+     "rationale": "Low perfusion at the injection site slows how fast the drug enters the blood."
+    },
+    {
+     "text": "A poorly water-soluble drug is absorbed more slowly",
+     "correct": true,
+     "rationale": "Poor solubility slows absorption from muscle and subcutaneous tissue."
+    },
+    {
+     "text": "A highly water-soluble drug at a well-perfused site is absorbed quickly",
+     "correct": true,
+     "rationale": "Water-soluble drugs at well-perfused sites absorb fast (10 to 30 minutes)."
+    },
+    {
+     "text": "The onset is always immediate",
+     "correct": false,
+     "rationale": "Only IV is immediate; IM onset varies."
+    },
+    {
+     "text": "Absorption is the same as with an IV dose",
+     "correct": false,
+     "rationale": "IV absorption is immediate and complete; IM is variable."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-017",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "mc",
+   "prompt": "A client asks a nurse why a transdermal patch takes longer to start working than a tablet. Which response is correct?",
+   "options": [
+    {
+     "text": "\"Patches release medication slowly through the skin, so they start later but last longer.\"",
+     "correct": true,
+     "rationale": "Topical and transdermal drugs have a slower onset and longer duration."
+    },
+    {
+     "text": "\"Patches only have a local effect.\"",
+     "correct": false,
+     "rationale": "Transdermal patches produce systemic effects."
+    },
+    {
+     "text": "\"Patches are absorbed faster than tablets.\"",
+     "correct": false,
+     "rationale": "Absorption through the skin is slow and gradual."
+    },
+    {
+     "text": "\"The patch has to be replaced every hour to work.\"",
+     "correct": false,
+     "rationale": "Patches deliver a steady dose over a long time."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-018",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "dragdrop",
+   "prompt": "A nurse is sorting routes of administration. Place each route in the correct group. Move each answer to the box where it belongs.",
+   "leftLabel": "Routes",
+   "buckets": [
+    "Parenteral",
+    "Nonparenteral"
+   ],
+   "options": [
+    {
+     "text": "Intramuscular",
+     "correct": true,
+     "rationale": "IM is an injection, so it's parenteral.",
+     "bucket": 1
+    },
+    {
+     "text": "Subcutaneous",
+     "correct": true,
+     "rationale": "Subcutaneous injections are parenteral.",
+     "bucket": 1
+    },
+    {
+     "text": "Intravenous",
+     "correct": true,
+     "rationale": "IV is parenteral.",
+     "bucket": 1
+    },
+    {
+     "text": "Sublingual",
+     "correct": true,
+     "rationale": "Sublingual is placed under the tongue: nonparenteral.",
+     "bucket": 2
+    },
+    {
+     "text": "Transdermal",
+     "correct": true,
+     "rationale": "Patches go on the skin: nonparenteral.",
+     "bucket": 2
+    },
+    {
+     "text": "Rectal",
+     "correct": true,
+     "rationale": "Rectal is nonparenteral.",
+     "bucket": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-019",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing what can limit absorption by different routes. For each route, choose the factor that limits absorption.",
+   "table": {
+    "head": [
+     "Route",
+     "Factor that limits absorption"
+    ],
+    "rows": [
+     [
+      "Oral",
+      "{1}"
+     ],
+     [
+      "Inhaled",
+      "{2}"
+     ],
+     [
+      "Topical",
+      "{3}"
+     ],
+     [
+      "Rectal",
+      "{4}"
+     ]
+    ]
+   },
+   "options": [
+    {
+     "text": "Trouble swallowing",
+     "correct": true,
+     "rationale": "A client who can't swallow can't take an oral drug safely.",
+     "blank": 1
+    },
+    {
+     "text": "Stool in the rectum",
+     "correct": false,
+     "rationale": "That limits rectal absorption.",
+     "blank": 1
+    },
+    {
+     "text": "Respiratory distress",
+     "correct": false,
+     "rationale": "That limits inhaled drugs.",
+     "blank": 1
+    },
+    {
+     "text": "Airway obstruction or poor technique",
+     "correct": true,
+     "rationale": "Inhaled drugs need open airways, good effort and proper technique.",
+     "blank": 2
+    },
+    {
+     "text": "Hair on the skin",
+     "correct": false,
+     "rationale": "That affects topical drugs.",
+     "blank": 2
+    },
+    {
+     "text": "Lack of IV access",
+     "correct": false,
+     "rationale": "That affects IV drugs.",
+     "blank": 2
+    },
+    {
+     "text": "Skin that isn't clean and free of hair",
+     "correct": true,
+     "rationale": "Topical drugs need clean, hair-free skin for contact.",
+     "blank": 3
+    },
+    {
+     "text": "Gastric pH",
+     "correct": false,
+     "rationale": "Gastric pH affects oral drugs.",
+     "blank": 3
+    },
+    {
+     "text": "Infectious material in the vagina",
+     "correct": false,
+     "rationale": "That limits vaginal drugs.",
+     "blank": 3
+    },
+    {
+     "text": "Stool in the rectum",
+     "correct": true,
+     "rationale": "Stool limits contact between the drug and the mucosa.",
+     "blank": 4
+    },
+    {
+     "text": "Inspiratory effort",
+     "correct": false,
+     "rationale": "That affects inhaled drugs.",
+     "blank": 4
+    },
+    {
+     "text": "First pass through the lungs",
+     "correct": false,
+     "rationale": "Rectal drugs aren't affected by the lungs.",
+     "blank": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-020",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "mc",
+   "prompt": "A nurse is teaching about sublingual medications. Which statement explains why a client should not swallow a sublingual tablet?",
+   "options": [
+    {
+     "text": "Stomach acid can inactivate the medication before it's absorbed",
+     "correct": true,
+     "rationale": "Sublingual drugs are meant to be absorbed in the mouth; swallowed, gastric pH can inactivate them."
+    },
+    {
+     "text": "It will dissolve too slowly in the stomach",
+     "correct": false,
+     "rationale": "The concern is inactivation, not speed."
+    },
+    {
+     "text": "It will cause nausea",
+     "correct": false,
+     "rationale": "Nausea isn't the reason."
+    },
+    {
+     "text": "It will release the drug over 24 hours",
+     "correct": false,
+     "rationale": "That describes extended-release forms."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-021",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "mc",
+   "prompt": "A nurse is explaining pharmaceutics to a group of nursing students. Which statement best describes pharmaceutics?",
+   "options": [
+    {
+     "text": "How a medication's form affects how it dissolves, how fast it's absorbed and when it starts to work",
+     "correct": true,
+     "rationale": "Pharmaceutics looks at how dosage forms affect dissolution, absorption and onset."
+    },
+    {
+     "text": "How the body breaks down and removes a medication",
+     "correct": false,
+     "rationale": "That is pharmacokinetics (metabolism and excretion)."
+    },
+    {
+     "text": "How a medication acts on receptors",
+     "correct": false,
+     "rationale": "That is pharmacodynamics."
+    },
+    {
+     "text": "How to calculate a dose by weight",
+     "correct": false,
+     "rationale": "That is dosage calculation."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-022",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing the phases of pharmacokinetics. Match each phase to its definition. Move each answer to the box where it belongs.",
+   "leftLabel": "Definitions",
+   "buckets": [
+    "Absorption",
+    "Distribution",
+    "Metabolism",
+    "Excretion"
+   ],
+   "options": [
+    {
+     "text": "Movement of a drug from the site of administration into the bloodstream",
+     "correct": true,
+     "rationale": "That's absorption: how the drug gets in.",
+     "bucket": 1
+    },
+    {
+     "text": "Transport of a drug by the circulation to its site of action",
+     "correct": true,
+     "rationale": "That's distribution: where the drug goes.",
+     "bucket": 2
+    },
+    {
+     "text": "Change of a drug into a more or less active, or inactive, form",
+     "correct": true,
+     "rationale": "That's metabolism (biotransformation), mostly in the liver.",
+     "bucket": 3
+    },
+    {
+     "text": "Removal of a drug or its metabolites from the body",
+     "correct": true,
+     "rationale": "That's excretion, mostly through the kidneys.",
+     "bucket": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-023",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "order",
+   "prompt": "A nurse is explaining what happens to an oral medication after a client swallows it. Place the phases in the order they occur.",
+   "options": [
+    {
+     "text": "Absorption",
+     "rationale": "The drug moves from the GI tract into the bloodstream."
+    },
+    {
+     "text": "Distribution",
+     "rationale": "The circulation carries it to its site of action."
+    },
+    {
+     "text": "Metabolism",
+     "rationale": "Enzymes, mostly in the liver, change it into another form."
+    },
+    {
+     "text": "Excretion",
+     "rationale": "The drug or its metabolites leave the body, mostly in urine."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-024",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who has liver failure. The nurse should anticipate a change in which pharmacokinetic phase?",
+   "options": [
+    {
+     "text": "Metabolism",
+     "correct": true,
+     "rationale": "The liver is the main site of drug metabolism, so liver failure slows it."
+    },
+    {
+     "text": "Absorption",
+     "correct": false,
+     "rationale": "Absorption happens at the site of administration."
+    },
+    {
+     "text": "Distribution",
+     "correct": false,
+     "rationale": "Distribution depends mainly on circulation and protein binding."
+    },
+    {
+     "text": "Excretion",
+     "correct": false,
+     "rationale": "Excretion is mainly a kidney function."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-025",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client whose medication is prescribed IV instead of PO because of its high first-pass effect. Which statement by the nurse correctly explains the first-pass effect?",
+   "options": [
+    {
+     "text": "The liver breaks down part of an oral dose before it reaches the rest of the body",
+     "correct": true,
+     "rationale": "Oral drugs go from the intestines to the liver first, which reduces the active drug left."
+    },
+    {
+     "text": "The kidneys excrete the drug on its first pass",
+     "correct": false,
+     "rationale": "First-pass metabolism happens in the liver."
+    },
+    {
+     "text": "The drug is absorbed fastest the first time it's given",
+     "correct": false,
+     "rationale": "First-pass refers to liver metabolism, not timing of doses."
+    },
+    {
+     "text": "The drug binds to albumin on its first pass",
+     "correct": false,
+     "rationale": "That's protein binding, part of distribution."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-026",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "sata",
+   "prompt": "A nurse is reviewing routes of administration. Which routes bypass the first-pass effect? Select all that apply.",
+   "options": [
+    {
+     "text": "Sublingual",
+     "correct": true,
+     "rationale": "Absorbed straight into the blood through the mouth, bypassing the liver."
+    },
+    {
+     "text": "Intravenous",
+     "correct": true,
+     "rationale": "IV drugs enter the blood directly."
+    },
+    {
+     "text": "Transdermal",
+     "correct": true,
+     "rationale": "Absorbed through the skin into the systemic circulation."
+    },
+    {
+     "text": "Nasal",
+     "correct": true,
+     "rationale": "Nasal mucosa drains into the veins and reaches the heart without passing the liver."
+    },
+    {
+     "text": "Oral",
+     "correct": false,
+     "rationale": "Oral drugs go through the portal circulation to the liver first."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-027",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "sata",
+   "prompt": "A nurse is reviewing factors that affect a client's rate of drug metabolism. Which factors should the nurse identify? Select all that apply.",
+   "options": [
+    {
+     "text": "Older age",
+     "correct": true,
+     "rationale": "Liver metabolism tends to decline with age."
+    },
+    {
+     "text": "Malnutrition",
+     "correct": true,
+     "rationale": "Malnourished clients may lack what's needed to make metabolizing enzymes."
+    },
+    {
+     "text": "Another drug that uses the same metabolic pathway",
+     "correct": true,
+     "rationale": "Competing drugs can slow each other's metabolism and build up."
+    },
+    {
+     "text": "The first-pass effect",
+     "correct": true,
+     "rationale": "High first-pass drugs are metabolized heavily before reaching circulation."
+    },
+    {
+     "text": "Hair color",
+     "correct": false,
+     "rationale": "Hair color doesn't affect metabolism."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-028",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "mc",
+   "prompt": "A nurse is caring for an older adult who has a new prescription. The nurse should expect the provider to consider which change?",
+   "options": [
+    {
+     "text": "A smaller dose, because metabolism and excretion slow with age",
+     "correct": true,
+     "rationale": "Older adults may accumulate drugs, so doses are often lowered."
+    },
+    {
+     "text": "A larger dose, because older adults absorb less",
+     "correct": false,
+     "rationale": "Slower metabolism and excretion usually mean lower doses."
+    },
+    {
+     "text": "Giving every medication IV",
+     "correct": false,
+     "rationale": "Age alone doesn't require IV medications."
+    },
+    {
+     "text": "No change, because age doesn't affect medications",
+     "correct": false,
+     "rationale": "Age changes absorption, distribution, metabolism and excretion."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-029",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "sata",
+   "prompt": "A nurse is reviewing laboratory results before giving a medication that is excreted by the kidneys. Which results should the nurse check? Select all that apply.",
+   "options": [
+    {
+     "text": "Blood urea nitrogen (BUN)",
+     "correct": true,
+     "rationale": "BUN reflects kidney function."
+    },
+    {
+     "text": "Creatinine",
+     "correct": true,
+     "rationale": "Creatinine is the key marker of kidney function."
+    },
+    {
+     "text": "White blood cell count",
+     "correct": false,
+     "rationale": "WBC reflects infection, not kidney function."
+    },
+    {
+     "text": "Hemoglobin",
+     "correct": false,
+     "rationale": "Hemoglobin reflects oxygen-carrying capacity."
+    },
+    {
+     "text": "Platelet count",
+     "correct": false,
+     "rationale": "Platelets reflect clotting."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-030",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "mc",
+   "prompt": "A client has a low serum albumin level and takes a highly protein-bound medication. Which finding should the nurse monitor for?",
+   "options": [
+    {
+     "text": "Signs of toxicity",
+     "correct": true,
+     "rationale": "With less albumin, more of the drug is unbound and active, raising the risk of toxicity."
+    },
+    {
+     "text": "Reduced drug effect",
+     "correct": false,
+     "rationale": "Low albumin increases free drug, so the effect tends to rise."
+    },
+    {
+     "text": "Faster absorption",
+     "correct": false,
+     "rationale": "Albumin affects distribution, not absorption."
+    },
+    {
+     "text": "Increased first-pass effect",
+     "correct": false,
+     "rationale": "First-pass depends on the liver and route."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-031",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "mc",
+   "prompt": "A nurse is teaching about distribution. Which client condition is most likely to delay medication distribution?",
+   "options": [
+    {
+     "text": "Peripheral vascular disease",
+     "correct": true,
+     "rationale": "Poor blood flow delays distribution to tissues."
+    },
+    {
+     "text": "A high-protein diet",
+     "correct": false,
+     "rationale": "Diet doesn't usually delay distribution."
+    },
+    {
+     "text": "A recent meal",
+     "correct": false,
+     "rationale": "A meal affects oral absorption, not distribution."
+    },
+    {
+     "text": "Normal kidney function",
+     "correct": false,
+     "rationale": "Normal kidneys don't delay distribution."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-032",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing factors that change medication doses. For each factor, choose whether the client may need a higher or a lower dose.",
+   "columns": [
+    "Higher dose",
+    "Lower dose"
+   ],
+   "options": [
+    {
+     "text": "Liver failure",
+     "correct": true,
+     "rationale": "The drug isn't broken down well, so it builds up.",
+     "col": 2
+    },
+    {
+     "text": "Increased drug-metabolizing enzymes",
+     "correct": true,
+     "rationale": "The drug is broken down faster, so more may be needed.",
+     "col": 1
+    },
+    {
+     "text": "Malnutrition",
+     "correct": true,
+     "rationale": "Fewer metabolizing enzymes can let the drug build up.",
+     "col": 2
+    },
+    {
+     "text": "Another drug using the same metabolic pathway",
+     "correct": true,
+     "rationale": "Competition slows metabolism, so levels rise.",
+     "col": 2
+    },
+    {
+     "text": "Faster renal excretion",
+     "correct": true,
+     "rationale": "The drug leaves faster, so more may be needed.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Factor"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-033",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "sata",
+   "prompt": "A nurse is reviewing routes of medication excretion. Which are routes of excretion? Select all that apply.",
+   "options": [
+    {
+     "text": "Kidneys (urine)",
+     "correct": true,
+     "rationale": "The kidneys are the main site of excretion."
+    },
+    {
+     "text": "Lungs (exhaled air)",
+     "correct": true,
+     "rationale": "Some drugs leave through the lungs."
+    },
+    {
+     "text": "Bile and bowel",
+     "correct": true,
+     "rationale": "The liver excretes some drugs in bile into the stool."
+    },
+    {
+     "text": "Breast milk",
+     "correct": true,
+     "rationale": "Exocrine glands, including mammary glands, excrete some drugs."
+    },
+    {
+     "text": "Red blood cells",
+     "correct": false,
+     "rationale": "Red blood cells don't excrete drugs."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-034",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "mc",
+   "prompt": "A client who is breastfeeding asks why the nurse checks every medication before it's given. Which response is correct?",
+   "options": [
+    {
+     "text": "\"Some medications pass into breast milk and can reach your baby.\"",
+     "correct": true,
+     "rationale": "Drugs excreted through the mammary glands can be ingested by the infant."
+    },
+    {
+     "text": "\"Medications stop milk production.\"",
+     "correct": false,
+     "rationale": "Most don't; the concern is the infant's exposure."
+    },
+    {
+     "text": "\"Breastfeeding makes medications work faster.\"",
+     "correct": false,
+     "rationale": "That isn't the reason for the check."
+    },
+    {
+     "text": "\"Medications can't be taken while breastfeeding.\"",
+     "correct": false,
+     "rationale": "Many can be taken when benefits outweigh risks."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-035",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing how metabolism works.",
+   "sentence": "Metabolism takes place primarily in the {1} and changes most medications into forms the {2} can excrete.",
+   "options": [
+    {
+     "text": "liver",
+     "correct": true,
+     "rationale": "Liver enzymes do most drug metabolism.",
+     "blank": 1
+    },
+    {
+     "text": "kidneys",
+     "correct": false,
+     "rationale": "The kidneys mostly excrete.",
+     "blank": 1
+    },
+    {
+     "text": "lungs",
+     "correct": false,
+     "rationale": "The lungs play a smaller role.",
+     "blank": 1
+    },
+    {
+     "text": "kidneys",
+     "correct": true,
+     "rationale": "Metabolites are mostly excreted in urine.",
+     "blank": 2
+    },
+    {
+     "text": "heart",
+     "correct": false,
+     "rationale": "The heart doesn't excrete drugs.",
+     "blank": 2
+    },
+    {
+     "text": "stomach",
+     "correct": false,
+     "rationale": "The stomach isn't an excretion route.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-036",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "mc",
+   "prompt": "A nurse is teaching about prodrugs. Which statement about a prodrug is correct?",
+   "options": [
+    {
+     "text": "It is inactive until metabolism changes it into its active form",
+     "correct": true,
+     "rationale": "Metabolism activates prodrugs."
+    },
+    {
+     "text": "It is excreted unchanged",
+     "correct": false,
+     "rationale": "Prodrugs must be metabolized to work."
+    },
+    {
+     "text": "It is always given IV",
+     "correct": false,
+     "rationale": "Prodrugs come in many forms."
+    },
+    {
+     "text": "It can't be metabolized by the liver",
+     "correct": false,
+     "rationale": "The liver often activates prodrugs."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-037",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "mc",
+   "prompt": "A nurse receives a prescription to obtain a trough level of a client's medication. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Obtain the blood sample immediately before the next dose",
+     "correct": true,
+     "rationale": "The trough is the lowest level, just before the next dose."
+    },
+    {
+     "text": "Obtain the blood sample 30 minutes after the dose",
+     "correct": false,
+     "rationale": "That's closer to a peak level."
+    },
+    {
+     "text": "Ask the client for a urine sample after the next dose",
+     "correct": false,
+     "rationale": "Trough levels are measured in blood."
+    },
+    {
+     "text": "Obtain the sample 24 hours after the first dose",
+     "correct": false,
+     "rationale": "Timing is tied to the next dose, not a set number of hours."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-038",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who has a seizure disorder and a new prescription for phenobarbital, which has a half-life of about 4 days. How often should the nurse expect to give it?",
+   "options": [
+    {
+     "text": "Once a day",
+     "correct": true,
+     "rationale": "Long half-life drugs stay at therapeutic levels between doses, so they can be given less often."
+    },
+    {
+     "text": "Every 4 hours",
+     "correct": false,
+     "rationale": "Frequent dosing is for short half-life drugs."
+    },
+    {
+     "text": "Four times a day",
+     "correct": false,
+     "rationale": "A long half-life doesn't need frequent doses."
+    },
+    {
+     "text": "Every 6 hours",
+     "correct": false,
+     "rationale": "Long half-life drugs are given at longer intervals."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-039",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "mc",
+   "prompt": "A nurse is teaching about half-life. Which statement is accurate?",
+   "options": [
+    {
+     "text": "It is the time it takes for the amount of drug in the body to drop by 50%",
+     "correct": true,
+     "rationale": "That's the definition of half-life."
+    },
+    {
+     "text": "It is the time it takes for a drug to start working",
+     "correct": false,
+     "rationale": "That's the onset of action."
+    },
+    {
+     "text": "It is the highest drug level in the blood",
+     "correct": false,
+     "rationale": "That's the peak level."
+    },
+    {
+     "text": "It is the time it takes for a drug to leave the body completely",
+     "correct": false,
+     "rationale": "Half-life is the time to lose half, not all."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-040",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "mc",
+   "prompt": "A nurse is reviewing a new medication schedule. About how many half-lives does it usually take for a medication to reach a steady therapeutic concentration?",
+   "options": [
+    {
+     "text": "4",
+     "correct": true,
+     "rationale": "It usually takes about 4 half-lives to reach a steady state."
+    },
+    {
+     "text": "1",
+     "correct": false,
+     "rationale": "One half-life isn't enough to reach steady state."
+    },
+    {
+     "text": "2",
+     "correct": false,
+     "rationale": "Steady state usually takes about 4 half-lives."
+    },
+    {
+     "text": "10",
+     "correct": false,
+     "rationale": "About 4 half-lives is usually enough."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-041",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "sata",
+   "prompt": "A nurse is caring for a client who takes a medication with a long half-life. Which statements are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "It leaves the body slowly",
+     "correct": true,
+     "rationale": "Long half-life drugs take more than 24 hours to leave."
+    },
+    {
+     "text": "It carries a greater risk of accumulation and toxicity",
+     "correct": true,
+     "rationale": "Slow elimination means it can build up."
+    },
+    {
+     "text": "It can be given at longer intervals",
+     "correct": true,
+     "rationale": "Levels stay therapeutic between doses."
+    },
+    {
+     "text": "It takes a longer time to reach steady state",
+     "correct": true,
+     "rationale": "Steady state takes about 4 half-lives, which is longer for these drugs."
+    },
+    {
+     "text": "It must be given several times a day",
+     "correct": false,
+     "rationale": "Frequent dosing is for short half-life drugs."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-042",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "sata",
+   "prompt": "A nurse is reviewing factors that can change a medication's half-life. Which factors should the nurse identify? Select all that apply.",
+   "options": [
+    {
+     "text": "Liver disease",
+     "correct": true,
+     "rationale": "Slower metabolism lengthens half-life."
+    },
+    {
+     "text": "Kidney disease",
+     "correct": true,
+     "rationale": "Slower excretion lengthens half-life."
+    },
+    {
+     "text": "Older age",
+     "correct": true,
+     "rationale": "Metabolism and excretion slow with age."
+    },
+    {
+     "text": "Eye color",
+     "correct": false,
+     "rationale": "Eye color doesn't affect drug elimination."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-043",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing drug level terms. Match each term to its meaning. Move each answer to the box where it belongs.",
+   "leftLabel": "Meanings",
+   "buckets": [
+    "Onset of action",
+    "Peak effect",
+    "Duration of action",
+    "Trough level"
+   ],
+   "options": [
+    {
+     "text": "Time for the drug to start a therapeutic response",
+     "correct": true,
+     "rationale": "That's the onset of action.",
+     "bucket": 1
+    },
+    {
+     "text": "Time for the drug to reach its full therapeutic effect",
+     "correct": true,
+     "rationale": "That's the peak effect.",
+     "bucket": 2
+    },
+    {
+     "text": "How long the therapeutic effect lasts without another dose",
+     "correct": true,
+     "rationale": "That's the duration of action.",
+     "bucket": 3
+    },
+    {
+     "text": "The lowest drug level in the body",
+     "correct": true,
+     "rationale": "That's the trough level.",
+     "bucket": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-044",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "mc",
+   "prompt": "A nurse is teaching about the therapeutic index. A medication with a low therapeutic index requires which nursing action?",
+   "options": [
+    {
+     "text": "Close monitoring of blood drug levels",
+     "correct": true,
+     "rationale": "A narrow safety margin means small changes can become toxic."
+    },
+    {
+     "text": "No monitoring, because it has a wide safety margin",
+     "correct": false,
+     "rationale": "A low TI is a narrow margin."
+    },
+    {
+     "text": "Doubling the dose if a dose is missed",
+     "correct": false,
+     "rationale": "That can cause toxicity."
+    },
+    {
+     "text": "Giving it only by mouth",
+     "correct": false,
+     "rationale": "The route isn't decided by the therapeutic index."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-045",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "cloze",
+   "prompt": "A nurse is explaining the therapeutic range.",
+   "sentence": "A drug level is in the therapeutic range when it is above the {1} and below the {2}.",
+   "options": [
+    {
+     "text": "minimum effective concentration",
+     "correct": true,
+     "rationale": "Below it, the drug doesn't work.",
+     "blank": 1
+    },
+    {
+     "text": "toxic concentration",
+     "correct": false,
+     "rationale": "The toxic level is the upper limit.",
+     "blank": 1
+    },
+    {
+     "text": "trough level",
+     "correct": false,
+     "rationale": "The trough is the lowest point between doses.",
+     "blank": 1
+    },
+    {
+     "text": "toxic concentration",
+     "correct": true,
+     "rationale": "Above it, the drug causes harm.",
+     "blank": 2
+    },
+    {
+     "text": "minimum effective concentration",
+     "correct": false,
+     "rationale": "That's the lower limit.",
+     "blank": 2
+    },
+    {
+     "text": "onset of action",
+     "correct": false,
+     "rationale": "Onset is a time, not a level.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-046",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "mc",
+   "prompt": "A nurse is monitoring a client's IV antibiotic levels. When should the nurse expect the peak level of an IV medication?",
+   "options": [
+    {
+     "text": "Within about 10 minutes, depending on the drug",
+     "correct": true,
+     "rationale": "IV drugs can peak within minutes; check a drug reference or the pharmacist for exact timing."
+    },
+    {
+     "text": "1 to 3 hours after the dose",
+     "correct": false,
+     "rationale": "That's a typical oral peak."
+    },
+    {
+     "text": "Immediately before the next dose",
+     "correct": false,
+     "rationale": "That's the trough."
+    },
+    {
+     "text": "24 hours after the dose",
+     "correct": false,
+     "rationale": "IV drugs peak much sooner."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-047",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "mc",
+   "prompt": "A client asks why a medication with a short half-life is prescribed several times a day. Which response by the nurse is correct?",
+   "options": [
+    {
+     "text": "\"It leaves your body quickly, so frequent doses keep it at a level that works.\"",
+     "correct": true,
+     "rationale": "Short half-life drugs drop below the effective level between doses unless given often."
+    },
+    {
+     "text": "\"It builds up in your body, so it must be given often.\"",
+     "correct": false,
+     "rationale": "Short half-life drugs don't build up easily."
+    },
+    {
+     "text": "\"It needs time to reach the liver.\"",
+     "correct": false,
+     "rationale": "Half-life is about elimination."
+    },
+    {
+     "text": "\"It works better on a full stomach.\"",
+     "correct": false,
+     "rationale": "Food isn't why the frequency is set."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-048",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing drug level terms. For each statement, choose whether it describes the peak or the trough.",
+   "columns": [
+    "Peak",
+    "Trough"
+   ],
+   "options": [
+    {
+     "text": "The highest level in the blood",
+     "correct": true,
+     "rationale": "The peak is the highest level.",
+     "col": 1
+    },
+    {
+     "text": "Drawn immediately before the next dose",
+     "correct": true,
+     "rationale": "Trough samples are drawn right before the next dose.",
+     "col": 2
+    },
+    {
+     "text": "The lowest level in the blood",
+     "correct": true,
+     "rationale": "The trough is the lowest level.",
+     "col": 2
+    },
+    {
+     "text": "Should line up with the drug's full effect",
+     "correct": true,
+     "rationale": "The maximum effect occurs at the peak level.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Statement"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-049",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who has a prescription for morphine, an opioid agonist, for postoperative pain. Which action describes how an agonist works?",
+   "options": [
+    {
+     "text": "It activates the receptor",
+     "correct": true,
+     "rationale": "Agonists bind to receptors and activate them, mimicking the body's own signals."
+    },
+    {
+     "text": "It blocks the receptor",
+     "correct": false,
+     "rationale": "Blocking describes an antagonist."
+    },
+    {
+     "text": "It destroys the receptor",
+     "correct": false,
+     "rationale": "Drugs typically don't destroy receptors."
+    },
+    {
+     "text": "It competes with the receptor",
+     "correct": false,
+     "rationale": "Antagonists compete with agonists for receptors."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-050",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who takes metoprolol. Which statement by the nurse correctly describes how metoprolol works?",
+   "options": [
+    {
+     "text": "An antagonist that blocks cardiac beta receptors",
+     "correct": true,
+     "rationale": "Metoprolol, a beta blocker, blocks beta receptors to lower blood pressure and heart rate."
+    },
+    {
+     "text": "An agonist that activates beta receptors in the lungs",
+     "correct": false,
+     "rationale": "That describes albuterol."
+    },
+    {
+     "text": "A partial agonist at opioid receptors",
+     "correct": false,
+     "rationale": "That describes buprenorphine."
+    },
+    {
+     "text": "An agonist that activates opioid receptors",
+     "correct": false,
+     "rationale": "That describes morphine."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-051",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing medication actions. Sort each medication by how it acts on its receptor. Move each answer to the box where it belongs.",
+   "leftLabel": "Medications",
+   "buckets": [
+    "Agonist",
+    "Antagonist",
+    "Partial agonist"
+   ],
+   "options": [
+    {
+     "text": "Albuterol",
+     "correct": true,
+     "rationale": "Activates beta receptors in the lungs to open the airways.",
+     "bucket": 1
+    },
+    {
+     "text": "Morphine",
+     "correct": true,
+     "rationale": "Activates opioid receptors for pain relief.",
+     "bucket": 1
+    },
+    {
+     "text": "Metoprolol",
+     "correct": true,
+     "rationale": "Blocks cardiac beta receptors.",
+     "bucket": 2
+    },
+    {
+     "text": "Losartan",
+     "correct": true,
+     "rationale": "Blocks angiotensin II receptors on blood vessels.",
+     "bucket": 2
+    },
+    {
+     "text": "Buprenorphine",
+     "correct": true,
+     "rationale": "Partly activates opioid receptors to prevent withdrawal without a high.",
+     "bucket": 3
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-052",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A client starting buprenorphine for opioid use disorder asks how it works. Which response by the nurse is correct?",
+   "options": [
+    {
+     "text": "\"It partly activates the brain's opioid receptors to prevent withdrawal and cravings without a high.\"",
+     "correct": true,
+     "rationale": "Buprenorphine is a partial agonist: a blunted effect, about 10 to 40% of the full effect."
+    },
+    {
+     "text": "\"It completely blocks opioid receptors.\"",
+     "correct": false,
+     "rationale": "That describes an antagonist."
+    },
+    {
+     "text": "\"It fully activates opioid receptors like morphine.\"",
+     "correct": false,
+     "rationale": "That describes a full agonist."
+    },
+    {
+     "text": "\"It removes opioids from your body.\"",
+     "correct": false,
+     "rationale": "It acts on receptors; it doesn't remove other opioids."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-053",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "cloze",
+   "prompt": "A nurse is explaining pharmacodynamics.",
+   "sentence": "Albuterol is an {1} that {2} beta receptors in the lungs to open the airways.",
+   "options": [
+    {
+     "text": "agonist",
+     "correct": true,
+     "rationale": "Albuterol activates receptors.",
+     "blank": 1
+    },
+    {
+     "text": "antagonist",
+     "correct": false,
+     "rationale": "Antagonists block receptors.",
+     "blank": 1
+    },
+    {
+     "text": "enzyme",
+     "correct": false,
+     "rationale": "Albuterol acts on receptors, not as an enzyme.",
+     "blank": 1
+    },
+    {
+     "text": "activates",
+     "correct": true,
+     "rationale": "Activating beta receptors relaxes the airway muscles.",
+     "blank": 2
+    },
+    {
+     "text": "blocks",
+     "correct": false,
+     "rationale": "Blocking beta receptors would narrow the airways.",
+     "blank": 2
+    },
+    {
+     "text": "destroys",
+     "correct": false,
+     "rationale": "Drugs don't destroy receptors.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-054",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is comparing competitive and noncompetitive antagonists. Which statement is correct?",
+   "options": [
+    {
+     "text": "A noncompetitive antagonist in high enough doses can completely block an agonist's response",
+     "correct": true,
+     "rationale": "Noncompetitive antagonists block access to the receptor."
+    },
+    {
+     "text": "A competitive antagonist always completely blocks the agonist",
+     "correct": false,
+     "rationale": "Competitive antagonists lower the response but rarely block it completely."
+    },
+    {
+     "text": "Both types activate the receptor",
+     "correct": false,
+     "rationale": "Antagonists block, not activate."
+    },
+    {
+     "text": "Competitive antagonists don't bind to receptors",
+     "correct": false,
+     "rationale": "They compete with the agonist for the same receptor."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-055",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is teaching about how antibiotics work. How should the nurse explain the way a penicillin-type antibiotic kills bacteria?",
+   "options": [
+    {
+     "text": "Stopping the bacteria from building their cell walls",
+     "correct": true,
+     "rationale": "Penicillins inhibit cell wall synthesis, so the bacteria die."
+    },
+    {
+     "text": "Blocking folic acid from helping the bacteria make DNA",
+     "correct": false,
+     "rationale": "That's how sulfa drugs work."
+    },
+    {
+     "text": "Activating the bacteria's receptors",
+     "correct": false,
+     "rationale": "Penicillins act on the cell wall."
+    },
+    {
+     "text": "Raising the client's body temperature",
+     "correct": false,
+     "rationale": "Antibiotics don't work through body temperature."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-056",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is reviewing selective medication action. Which statement about a highly selective medication is correct?",
+   "options": [
+    {
+     "text": "It acts on fewer receptors, so its effects are more limited",
+     "correct": true,
+     "rationale": "Selective drugs interact with fewer receptor types."
+    },
+    {
+     "text": "It acts on many receptors throughout the body",
+     "correct": false,
+     "rationale": "That describes a less selective drug."
+    },
+    {
+     "text": "It has no adverse effects",
+     "correct": false,
+     "rationale": "Selective drugs can still cause adverse effects."
+    },
+    {
+     "text": "It can only be given IV",
+     "correct": false,
+     "rationale": "Selectivity doesn't decide the route."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-057",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A client asks why a provider prescribed acetaminophen for a fever. Which explanation of its expected action is correct?",
+   "options": [
+    {
+     "text": "It blocks the chemical messengers that signal the hypothalamus to raise body temperature",
+     "correct": true,
+     "rationale": "That expected action is why reducing fever is a therapeutic use."
+    },
+    {
+     "text": "It kills the bacteria causing the fever",
+     "correct": false,
+     "rationale": "Acetaminophen isn't an antibiotic."
+    },
+    {
+     "text": "It increases sweating by activating sweat glands",
+     "correct": false,
+     "rationale": "That isn't its mechanism."
+    },
+    {
+     "text": "It blocks histamine release",
+     "correct": false,
+     "rationale": "That describes an antihistamine."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-058",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "sata",
+   "prompt": "A nurse is reviewing the therapeutic uses of diphenhydramine. For which conditions may it be prescribed? Select all that apply.",
+   "options": [
+    {
+     "text": "Allergies",
+     "correct": true,
+     "rationale": "Its antihistamine effect treats allergies."
+    },
+    {
+     "text": "Motion sickness",
+     "correct": true,
+     "rationale": "Its antiemetic effect helps motion sickness."
+    },
+    {
+     "text": "Insomnia",
+     "correct": true,
+     "rationale": "Its sedative effect makes it a sleep aid."
+    },
+    {
+     "text": "Parkinson's disease",
+     "correct": true,
+     "rationale": "Its anticholinergic effect is used in Parkinson's disease."
+    },
+    {
+     "text": "Bacterial infection",
+     "correct": false,
+     "rationale": "Diphenhydramine has no antibacterial effect."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-059",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A client prescribed sildenafil for pulmonary hypertension asks why it was chosen. Which response by the nurse is correct?",
+   "options": [
+    {
+     "text": "\"It relaxes blood vessels and increases blood flow, which helps lower pressure in the lungs.\"",
+     "correct": true,
+     "rationale": "Many drugs have more than one therapeutic use based on their action."
+    },
+    {
+     "text": "\"It only treats erectile dysfunction, so this must be an error.\"",
+     "correct": false,
+     "rationale": "Sildenafil's vessel-relaxing action has more than one use."
+    },
+    {
+     "text": "\"It strengthens your heart's contractions.\"",
+     "correct": false,
+     "rationale": "That isn't sildenafil's action."
+    },
+    {
+     "text": "\"It removes extra fluid from your lungs.\"",
+     "correct": false,
+     "rationale": "That describes a diuretic."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-060",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse isn't sure why a client is receiving a newly prescribed medication. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Clarify the reason with the provider or pharmacist before giving it",
+     "correct": true,
+     "rationale": "Knowing the indication is part of giving a medication safely."
+    },
+    {
+     "text": "Give it, because the provider prescribed it",
+     "correct": false,
+     "rationale": "The nurse is responsible for knowing why each drug is given."
+    },
+    {
+     "text": "Skip the dose without telling anyone",
+     "correct": false,
+     "rationale": "Missed doses must be reported."
+    },
+    {
+     "text": "Ask the client to look it up",
+     "correct": false,
+     "rationale": "The nurse, not the client, verifies the indication."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-061",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who has a new prescription. After the first dose, the client has anaphylaxis. The nurse should identify anaphylaxis as which result of the medication?",
+   "options": [
+    {
+     "text": "Adverse effect",
+     "correct": true,
+     "rationale": "An allergic reaction at a therapeutic dose is an adverse drug reaction."
+    },
+    {
+     "text": "Paradoxical effect",
+     "correct": false,
+     "rationale": "A paradoxical effect is the opposite of the intended effect."
+    },
+    {
+     "text": "Therapeutic effect",
+     "correct": false,
+     "rationale": "A therapeutic effect is the intended benefit."
+    },
+    {
+     "text": "Toxicity",
+     "correct": false,
+     "rationale": "Toxicity comes from excessive dosing or buildup."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-062",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "order",
+   "prompt": "A client develops wheezing, stridor and hypotension minutes after an IV antibiotic is started. Place the nurse's actions in priority order.",
+   "options": [
+    {
+     "text": "Stop the infusion",
+     "rationale": "Remove the cause first."
+    },
+    {
+     "text": "Establish and maintain an open airway",
+     "rationale": "Airway comes first in anaphylaxis."
+    },
+    {
+     "text": "Give oxygen",
+     "rationale": "Support breathing once the airway is open."
+    },
+    {
+     "text": "Give epinephrine IM as prescribed",
+     "rationale": "Epinephrine raises blood pressure and opens the airways."
+    },
+    {
+     "text": "Give diphenhydramine as prescribed",
+     "rationale": "It blocks further histamine release."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-063",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A nurse is preparing to treat a client who is in anaphylactic shock. By which route should the nurse expect to give epinephrine?",
+   "options": [
+    {
+     "text": "Intramuscular",
+     "correct": true,
+     "rationale": "Epinephrine is given IM for anaphylaxis."
+    },
+    {
+     "text": "Oral",
+     "correct": false,
+     "rationale": "The oral route is far too slow in an emergency."
+    },
+    {
+     "text": "Transdermal",
+     "correct": false,
+     "rationale": "Patches act slowly."
+    },
+    {
+     "text": "Rectal",
+     "correct": false,
+     "rationale": "Rectal absorption is too slow and unreliable."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-064",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "sata",
+   "prompt": "A nurse is assessing a client after a first dose of a new medication. Which findings suggest anaphylaxis? Select all that apply.",
+   "options": [
+    {
+     "text": "Stridor",
+     "correct": true,
+     "rationale": "Stridor means the upper airway is narrowing."
+    },
+    {
+     "text": "Swelling of the lips and tongue",
+     "correct": true,
+     "rationale": "Facial and throat swelling are signs of anaphylaxis."
+    },
+    {
+     "text": "Hypotension",
+     "correct": true,
+     "rationale": "Massive histamine release causes very low blood pressure."
+    },
+    {
+     "text": "Wheezing",
+     "correct": true,
+     "rationale": "Bronchospasm causes wheezing."
+    },
+    {
+     "text": "Bradycardia with hypertension",
+     "correct": false,
+     "rationale": "Anaphylaxis usually causes a fast heart rate and low blood pressure."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-065",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing signs of anaphylaxis. For each finding, choose the body area it involves.",
+   "columns": [
+    "Airway",
+    "Circulation",
+    "Skin"
+   ],
+   "options": [
+    {
+     "text": "Stridor",
+     "correct": true,
+     "rationale": "Stridor is an airway sign.",
+     "col": 1
+    },
+    {
+     "text": "Weak pulse and low blood pressure",
+     "correct": true,
+     "rationale": "These are circulation signs of shock.",
+     "col": 2
+    },
+    {
+     "text": "Hives",
+     "correct": true,
+     "rationale": "Hives are a skin sign.",
+     "col": 3
+    },
+    {
+     "text": "Throat tightening",
+     "correct": true,
+     "rationale": "Throat tightening is an airway sign.",
+     "col": 1
+    },
+    {
+     "text": "Widespread redness and warmth",
+     "correct": true,
+     "rationale": "These are skin signs.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Finding"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-066",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A client had a mild rash the first time they took a medication. Which instruction should the nurse give?",
+   "options": [
+    {
+     "text": "\"Avoid this medication; a second exposure could cause a more severe reaction.\"",
+     "correct": true,
+     "rationale": "Previous exposure can make the next reaction worse, up to anaphylaxis."
+    },
+    {
+     "text": "\"A rash is expected, so keep taking it.\"",
+     "correct": false,
+     "rationale": "A rash after a drug can be an allergic reaction."
+    },
+    {
+     "text": "\"Take a smaller dose next time.\"",
+     "correct": false,
+     "rationale": "An allergy isn't prevented by lowering the dose."
+    },
+    {
+     "text": "\"Take it with food next time.\"",
+     "correct": false,
+     "rationale": "Food doesn't prevent an allergic reaction."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-067",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A client taking lisinopril reports a dry, nonproductive cough that won't go away. How should the nurse interpret this finding?",
+   "options": [
+    {
+     "text": "An adverse drug reaction",
+     "correct": true,
+     "rationale": "Lisinopril commonly causes a dry chronic cough at therapeutic doses."
+    },
+    {
+     "text": "A sign of toxicity",
+     "correct": false,
+     "rationale": "The cough happens at normal doses."
+    },
+    {
+     "text": "A therapeutic effect",
+     "correct": false,
+     "rationale": "The intended effect is lower blood pressure."
+    },
+    {
+     "text": "Drug tolerance",
+     "correct": false,
+     "rationale": "Tolerance is a reduced response over time."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-068",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A client taking lisinopril develops swelling of the lips and tongue. Which action should the nurse take first?",
+   "options": [
+    {
+     "text": "Assess the client's airway and breathing",
+     "correct": true,
+     "rationale": "Angioedema can block the airway; airway comes first."
+    },
+    {
+     "text": "Give the next dose of lisinopril",
+     "correct": false,
+     "rationale": "The drug must be held."
+    },
+    {
+     "text": "Document the finding at the end of the shift",
+     "correct": false,
+     "rationale": "This is urgent."
+    },
+    {
+     "text": "Apply ice to the lips",
+     "correct": false,
+     "rationale": "Airway assessment comes first."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-069",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing terms related to medication effects. Match each term to its definition. Move each answer to the box where it belongs.",
+   "leftLabel": "Definitions",
+   "buckets": [
+    "Tolerance",
+    "Dependence",
+    "Toxicity",
+    "Cumulative effect"
+   ],
+   "options": [
+    {
+     "text": "A decreased response to a drug over time, so a higher dose is needed",
+     "correct": true,
+     "rationale": "That's tolerance.",
+     "bucket": 1
+    },
+    {
+     "text": "A physical or psychological need for a drug",
+     "correct": true,
+     "rationale": "That's dependence; stopping can cause withdrawal.",
+     "bucket": 2
+    },
+    {
+     "text": "Harm from an excessive dose or buildup of the drug",
+     "correct": true,
+     "rationale": "That's toxicity.",
+     "bucket": 3
+    },
+    {
+     "text": "Buildup because one dose isn't cleared before the next is given",
+     "correct": true,
+     "rationale": "That's a cumulative effect, often from liver or kidney impairment.",
+     "bucket": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-070",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A client who has taken an opioid for months tells the nurse the usual dose no longer controls the pain. How should the nurse interpret this finding?",
+   "options": [
+    {
+     "text": "Tolerance",
+     "correct": true,
+     "rationale": "Tolerance is a reduced response over time that needs a higher dose."
+    },
+    {
+     "text": "Dependence",
+     "correct": false,
+     "rationale": "Dependence is a need for the drug; withdrawal can happen if it's stopped."
+    },
+    {
+     "text": "Toxicity",
+     "correct": false,
+     "rationale": "Toxicity is harm from too much drug."
+    },
+    {
+     "text": "A paradoxical effect",
+     "correct": false,
+     "rationale": "That's the opposite of the intended effect."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-071",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who received vancomycin. Which finding should the nurse report as a possible sign of toxicity?",
+   "options": [
+    {
+     "text": "Decreased hearing",
+     "correct": true,
+     "rationale": "Vancomycin can damage cranial nerve VIII, causing hearing loss."
+    },
+    {
+     "text": "Increased appetite",
+     "correct": false,
+     "rationale": "That isn't a sign of vancomycin toxicity."
+    },
+    {
+     "text": "Improved wound appearance",
+     "correct": false,
+     "rationale": "That shows the drug is working."
+    },
+    {
+     "text": "Mild thirst",
+     "correct": false,
+     "rationale": "That isn't a typical toxicity sign."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-072",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "sata",
+   "prompt": "A nurse is teaching a client who has a new prescription for a medication with a high potential for toxicity. Which information should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "Periodic blood tests check the drug level and dose",
+     "correct": true,
+     "rationale": "Serum levels keep the drug in the therapeutic range."
+    },
+    {
+     "text": "Watch for signs of toxicity and report them",
+     "correct": true,
+     "rationale": "Early signs let the provider adjust the dose."
+    },
+    {
+     "text": "The lowest effective dose is used",
+     "correct": true,
+     "rationale": "The lowest effective dose lowers the toxicity risk."
+    },
+    {
+     "text": "Drinking extra fluids prevents toxicity",
+     "correct": false,
+     "rationale": "Extra fluids don't change how the kidneys excrete the drug."
+    },
+    {
+     "text": "Double the next dose if one is missed",
+     "correct": false,
+     "rationale": "Doubling raises the risk of toxicity."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-073",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A client given a sedative becomes restless and excited instead of drowsy. The nurse recognizes this as which type of effect?",
+   "options": [
+    {
+     "text": "Paradoxical effect",
+     "correct": true,
+     "rationale": "A paradoxical effect is the opposite of the intended effect."
+    },
+    {
+     "text": "Therapeutic effect",
+     "correct": false,
+     "rationale": "The intended effect is sedation."
+    },
+    {
+     "text": "Tolerance",
+     "correct": false,
+     "rationale": "Tolerance is a reduced effect over time."
+    },
+    {
+     "text": "Cumulative effect",
+     "correct": false,
+     "rationale": "That's buildup of the drug."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-074",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who has severe liver impairment and takes acetaminophen. Which statement explains the nurse's concern?",
+   "options": [
+    {
+     "text": "Acetaminophen toxicity can damage the liver, up to liver failure",
+     "correct": true,
+     "rationale": "Acetaminophen is metabolized by the liver and can cause liver damage in excess."
+    },
+    {
+     "text": "Acetaminophen causes hearing loss",
+     "correct": false,
+     "rationale": "That's a vancomycin toxicity."
+    },
+    {
+     "text": "Acetaminophen is excreted only through the lungs",
+     "correct": false,
+     "rationale": "It's metabolized by the liver and excreted by the kidneys."
+    },
+    {
+     "text": "Acetaminophen has no adverse effects",
+     "correct": false,
+     "rationale": "It can cause liver toxicity."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-075",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing a client who developed a reaction.",
+   "sentence": "An adverse drug reaction is a {1} effect that happens at a {2} dose.",
+   "options": [
+    {
+     "text": "nontherapeutic, unintended",
+     "correct": true,
+     "rationale": "ADRs are unintended effects.",
+     "blank": 1
+    },
+    {
+     "text": "intended",
+     "correct": false,
+     "rationale": "Intended effects are therapeutic effects.",
+     "blank": 1
+    },
+    {
+     "text": "expected therapeutic",
+     "correct": false,
+     "rationale": "That describes the desired effect.",
+     "blank": 1
+    },
+    {
+     "text": "therapeutic",
+     "correct": true,
+     "rationale": "ADRs happen at normal, therapeutic doses.",
+     "blank": 2
+    },
+    {
+     "text": "toxic",
+     "correct": false,
+     "rationale": "Effects at toxic doses are toxicity.",
+     "blank": 2
+    },
+    {
+     "text": "missed",
+     "correct": false,
+     "rationale": "A missed dose doesn't cause an ADR.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-076",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A client who stops a long-term medication suddenly reports anxiety, sweating and tremors. How should the nurse interpret this finding?",
+   "options": [
+    {
+     "text": "Withdrawal from dependence",
+     "correct": true,
+     "rationale": "Clients who are dependent can have withdrawal when the drug is stopped."
+    },
+    {
+     "text": "An allergic reaction",
+     "correct": false,
+     "rationale": "Allergic reactions follow exposure, not stopping a drug."
+    },
+    {
+     "text": "Tolerance",
+     "correct": false,
+     "rationale": "Tolerance is a reduced response while taking the drug."
+    },
+    {
+     "text": "A therapeutic effect",
+     "correct": false,
+     "rationale": "These aren't intended effects."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-077",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client who has glaucoma asks about taking oxybutynin for an overactive bladder. The nurse explains that glaucoma is a contraindication. Which explanation should the nurse give for avoiding a contraindicated medication?",
+   "options": [
+    {
+     "text": "Serious adverse reactions",
+     "correct": true,
+     "rationale": "A contraindication means the drug could cause a serious or life-threatening reaction."
+    },
+    {
+     "text": "Tolerance",
+     "correct": false,
+     "rationale": "Tolerance is a reduced response over time."
+    },
+    {
+     "text": "Dependence",
+     "correct": false,
+     "rationale": "Dependence is a need for the drug."
+    },
+    {
+     "text": "Interactions with other medications",
+     "correct": false,
+     "rationale": "An interaction is a separate concept."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-078",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing contraindications. For each statement, choose whether it describes an absolute or a relative contraindication.",
+   "columns": [
+    "Absolute",
+    "Relative"
+   ],
+   "options": [
+    {
+     "text": "The drug is never given, no matter what",
+     "correct": true,
+     "rationale": "An absolute contraindication means no.",
+     "col": 1
+    },
+    {
+     "text": "The risk is weighed against the benefit",
+     "correct": true,
+     "rationale": "A relative contraindication can be overridden with caution.",
+     "col": 2
+    },
+    {
+     "text": "The drug may be given with caution and close monitoring",
+     "correct": true,
+     "rationale": "Relative contraindications allow use when benefits outweigh risks.",
+     "col": 2
+    },
+    {
+     "text": "Giving the drug would be too dangerous in any situation",
+     "correct": true,
+     "rationale": "That's an absolute contraindication.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Statement"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-079",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A nurse is teaching about boxed warnings. Which statement is correct?",
+   "options": [
+    {
+     "text": "It is the FDA's highest safety warning, for serious risks such as suicide or abuse potential",
+     "correct": true,
+     "rationale": "A boxed (black box) warning is the strongest FDA warning."
+    },
+    {
+     "text": "It means the medication has been taken off the market",
+     "correct": false,
+     "rationale": "Drugs with boxed warnings are still prescribed."
+    },
+    {
+     "text": "It is only used for over-the-counter drugs",
+     "correct": false,
+     "rationale": "Boxed warnings apply to prescription drugs."
+    },
+    {
+     "text": "It lists the medication's storage instructions",
+     "correct": false,
+     "rationale": "Storage is on the label, not a boxed warning."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-080",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client taking nifedipine asks whether it's OK to drink grapefruit juice. Which response by the nurse is correct?",
+   "options": [
+    {
+     "text": "\"Avoid it; grapefruit juice slows how your body breaks down the medication, so it can build up.\"",
+     "correct": true,
+     "rationale": "Grapefruit juice decreases metabolism and raises drug levels toward toxicity."
+    },
+    {
+     "text": "\"Grapefruit juice makes the medication work less.\"",
+     "correct": false,
+     "rationale": "It increases, not decreases, the drug level."
+    },
+    {
+     "text": "\"It's fine in small amounts at any time.\"",
+     "correct": false,
+     "rationale": "The interaction can happen with any amount."
+    },
+    {
+     "text": "\"Only orange juice causes problems.\"",
+     "correct": false,
+     "rationale": "Grapefruit juice is the one that interacts."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-081",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client takes warfarin. Which instruction about diet should the nurse include?",
+   "options": [
+    {
+     "text": "\"Keep your intake of leafy green vegetables steady, because vitamin K counteracts warfarin.\"",
+     "correct": true,
+     "rationale": "Vitamin K reduces warfarin's anticoagulant effect, so intake should stay consistent."
+    },
+    {
+     "text": "\"Eat as many leafy greens as you like.\"",
+     "correct": false,
+     "rationale": "Large changes in vitamin K change warfarin's effect."
+    },
+    {
+     "text": "\"Avoid all dairy products.\"",
+     "correct": false,
+     "rationale": "Dairy interacts with tetracycline, not warfarin."
+    },
+    {
+     "text": "\"Take warfarin with grapefruit juice.\"",
+     "correct": false,
+     "rationale": "That isn't the warfarin teaching point."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-082",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client taking tetracycline asks whether to take it with a glass of milk. Which response is correct?",
+   "options": [
+    {
+     "text": "\"No. The calcium in milk binds the drug and reduces how much is absorbed.\"",
+     "correct": true,
+     "rationale": "Milk reduces tetracycline's absorption and effect."
+    },
+    {
+     "text": "\"Yes. Milk protects your stomach and helps it work.\"",
+     "correct": false,
+     "rationale": "Milk lowers absorption."
+    },
+    {
+     "text": "\"Yes, milk increases its effect.\"",
+     "correct": false,
+     "rationale": "Milk decreases its effect."
+    },
+    {
+     "text": "\"Only if the milk is warm.\"",
+     "correct": false,
+     "rationale": "Temperature doesn't matter."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-083",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing food–drug interactions. Match each food to the medication it interacts with. Move each answer to the box where it belongs.",
+   "leftLabel": "Foods",
+   "buckets": [
+    "Warfarin",
+    "Tetracycline",
+    "MAOIs (monoamine oxidase inhibitors)",
+    "Levodopa"
+   ],
+   "options": [
+    {
+     "text": "Leafy green vegetables (vitamin K)",
+     "correct": true,
+     "rationale": "Vitamin K counteracts warfarin.",
+     "bucket": 1
+    },
+    {
+     "text": "Milk",
+     "correct": true,
+     "rationale": "Calcium binds tetracycline.",
+     "bucket": 2
+    },
+    {
+     "text": "Aged cheese and wine (tyramine)",
+     "correct": true,
+     "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
+     "bucket": 3
+    },
+    {
+     "text": "A high-protein meal",
+     "correct": true,
+     "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
+     "bucket": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-084",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client taking an MAOI (monoamine oxidase inhibitor) eats aged cheese and drinks wine at a party. Which complication should the nurse monitor for?",
+   "options": [
+    {
+     "text": "Hypertensive crisis",
+     "correct": true,
+     "rationale": "Tyramine with an MAOI can cause dangerously high blood pressure."
+    },
+    {
+     "text": "Hypoglycemia",
+     "correct": false,
+     "rationale": "That isn't the tyramine interaction."
+    },
+    {
+     "text": "Bleeding",
+     "correct": false,
+     "rationale": "That's a ginkgo or warfarin concern."
+    },
+    {
+     "text": "Hearing loss",
+     "correct": false,
+     "rationale": "That's a vancomycin toxicity."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-085",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client who takes nitroglycerin for chest pain asks about using sildenafil. Which response by the nurse is correct?",
+   "options": [
+    {
+     "text": "\"Taking them together can cause a dangerous drop in blood pressure.\"",
+     "correct": true,
+     "rationale": "Both dilate blood vessels; together they can cause severe hypotension."
+    },
+    {
+     "text": "\"They can be taken together safely.\"",
+     "correct": false,
+     "rationale": "This combination is dangerous."
+    },
+    {
+     "text": "\"Sildenafil will stop the nitroglycerin from working.\"",
+     "correct": false,
+     "rationale": "The danger is additive hypotension."
+    },
+    {
+     "text": "\"Take them at the same time to lower your dose.\"",
+     "correct": false,
+     "rationale": "They shouldn't be combined."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-086",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client takes aspirin daily and asks about adding ginkgo biloba. Which concern should the nurse explain?",
+   "options": [
+    {
+     "text": "An increased risk of bleeding",
+     "correct": true,
+     "rationale": "Ginkgo and aspirin both raise bleeding risk."
+    },
+    {
+     "text": "A hypertensive crisis",
+     "correct": false,
+     "rationale": "That's the MAOI–tyramine interaction."
+    },
+    {
+     "text": "Reduced absorption of aspirin",
+     "correct": false,
+     "rationale": "The concern is bleeding."
+    },
+    {
+     "text": "Liver toxicity",
+     "correct": false,
+     "rationale": "Bleeding is the main concern."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-087",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A nurse tells a client not to take tetracycline at the same time as an antacid, because the antacid reduces its absorption. This is an example of which kind of interaction?",
+   "options": [
+    {
+     "text": "Antagonistic effect",
+     "correct": true,
+     "rationale": "One drug reducing the effect of another is an antagonistic effect."
+    },
+    {
+     "text": "Synergistic effect",
+     "correct": false,
+     "rationale": "Synergy produces a greater effect together."
+    },
+    {
+     "text": "Allergic reaction",
+     "correct": false,
+     "rationale": "That's an immune response, not a drug interaction."
+    },
+    {
+     "text": "Potentiating effect",
+     "correct": false,
+     "rationale": "Potentiation increases another drug's effect."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-088",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing medication interactions. For each example, choose the type of interaction.",
+   "columns": [
+    "Synergistic",
+    "Antagonistic"
+   ],
+   "options": [
+    {
+     "text": "An opioid taken with alcohol causes profound sedation",
+     "correct": true,
+     "rationale": "Two CNS depressants together cause a much greater effect.",
+     "col": 1
+    },
+    {
+     "text": "An antacid lowers tetracycline absorption",
+     "correct": true,
+     "rationale": "One drug reduces the other's effect.",
+     "col": 2
+    },
+    {
+     "text": "An opioid taken with an antihistamine increases drowsiness",
+     "correct": true,
+     "rationale": "Both depress the CNS, adding to the effect.",
+     "col": 1
+    },
+    {
+     "text": "Vitamin K foods reduce warfarin's effect",
+     "correct": true,
+     "rationale": "Vitamin K counteracts the anticoagulant.",
+     "col": 2
+    }
+   ],
+   "rowLabel": "Example"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-089",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "sata",
+   "prompt": "A nurse is reviewing ways to prevent complications in drug therapy. Which actions should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "Use the lowest effective dose",
+     "correct": true,
+     "rationale": "The lowest effective dose lowers the risk of adverse effects."
+    },
+    {
+     "text": "Monitor for adverse drug reactions",
+     "correct": true,
+     "rationale": "Early detection prevents harm."
+    },
+    {
+     "text": "Monitor for changes in metabolism and excretion",
+     "correct": true,
+     "rationale": "Liver or kidney changes can lead to buildup."
+    },
+    {
+     "text": "Know each drug's precautions and contraindications",
+     "correct": true,
+     "rationale": "That knowledge prevents giving a dangerous drug."
+    },
+    {
+     "text": "Double the dose if the client feels no effect",
+     "correct": false,
+     "rationale": "Only the provider changes the dose."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-090",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A nurse is preparing to teach a client about a new medication. Which information should the nurse expect to find in the precautions section of a drug reference?",
+   "options": [
+    {
+     "text": "Conditions in which the drug carries extra risk or needs a dose change",
+     "correct": true,
+     "rationale": "The precautions section covers clinical situations and client factors, like age, that raise the risk."
+    },
+    {
+     "text": "Which foods interact with the drug",
+     "correct": false,
+     "rationale": "That's in the interactions section."
+    },
+    {
+     "text": "How the drug is absorbed",
+     "correct": false,
+     "rationale": "That's in the pharmacokinetics section."
+    },
+    {
+     "text": "Which strengths are available",
+     "correct": false,
+     "rationale": "Availability isn't part of precautions."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-091",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "sata",
+   "prompt": "A nurse is caring for an older adult with several chronic conditions. Which age-related changes can affect the client's medications? Select all that apply.",
+   "options": [
+    {
+     "text": "Decreased kidney function",
+     "correct": true,
+     "rationale": "Slower excretion can let drugs build up."
+    },
+    {
+     "text": "Decreased liver function",
+     "correct": true,
+     "rationale": "Slower metabolism prolongs drug action."
+    },
+    {
+     "text": "Slower GI motility",
+     "correct": true,
+     "rationale": "Slower peristalsis changes absorption."
+    },
+    {
+     "text": "Decreased cardiac output",
+     "correct": true,
+     "rationale": "Lower cardiac output slows distribution."
+    },
+    {
+     "text": "Faster metabolism of all drugs",
+     "correct": false,
+     "rationale": "Metabolism tends to slow with age."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-092",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client who is pregnant asks whether she can take a new over-the-counter medication. Which response by the nurse is best?",
+   "options": [
+    {
+     "text": "\"Check with your provider first; many drugs cross the placenta, and some can harm the baby.\"",
+     "correct": true,
+     "rationale": "Pregnant clients take only what their provider prescribes when benefits outweigh risks."
+    },
+    {
+     "text": "\"Over-the-counter medications are always safe in pregnancy.\"",
+     "correct": false,
+     "rationale": "OTC drugs can also be harmful in pregnancy."
+    },
+    {
+     "text": "\"Medications don't reach the baby.\"",
+     "correct": false,
+     "rationale": "Many drugs cross the placenta."
+    },
+    {
+     "text": "\"It's only a concern in the third trimester.\"",
+     "correct": false,
+     "rationale": "The first trimester carries the highest risk of birth defects."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-093",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A nurse is reviewing how providers decide a child's medication dose. Which information is used?",
+   "options": [
+    {
+     "text": "Age, weight and body surface area",
+     "correct": true,
+     "rationale": "Children's doses are based on age, weight and body surface area to avoid toxicity."
+    },
+    {
+     "text": "Developmental level only",
+     "correct": false,
+     "rationale": "Developmental level guides how a drug is given, not the dose."
+    },
+    {
+     "text": "The adult dose divided in half",
+     "correct": false,
+     "rationale": "Doses aren't simply halved."
+    },
+    {
+     "text": "Height only",
+     "correct": false,
+     "rationale": "Height alone isn't enough."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-094",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A nurse is reviewing client factors that affect medication response. Which statement is correct?",
+   "options": [
+    {
+     "text": "Genetic differences in metabolizing enzymes can make some clients more sensitive to a drug",
+     "correct": true,
+     "rationale": "Genetic variation can change how a drug is metabolized."
+    },
+    {
+     "text": "All clients respond the same way to the same dose",
+     "correct": false,
+     "rationale": "Genetics, age, sex and health status all change the response."
+    },
+    {
+     "text": "Body fat doesn't affect fat-soluble drugs",
+     "correct": false,
+     "rationale": "More body fat can let fat-soluble drugs accumulate."
+    },
+    {
+     "text": "Cultural beliefs don't affect medication use",
+     "correct": false,
+     "rationale": "Beliefs about pain and treatment affect adherence."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-095",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "cloze",
+   "prompt": "A nurse is teaching a client about grapefruit juice.",
+   "sentence": "Grapefruit juice {1} the metabolism of drugs such as sertraline, so the drug level can {2}.",
+   "options": [
+    {
+     "text": "slows",
+     "correct": true,
+     "rationale": "Grapefruit juice decreases enzyme metabolism.",
+     "blank": 1
+    },
+    {
+     "text": "speeds up",
+     "correct": false,
+     "rationale": "It slows metabolism.",
+     "blank": 1
+    },
+    {
+     "text": "doesn't change",
+     "correct": false,
+     "rationale": "It does change metabolism.",
+     "blank": 1
+    },
+    {
+     "text": "rise toward toxicity",
+     "correct": true,
+     "rationale": "Slower metabolism lets the drug build up.",
+     "blank": 2
+    },
+    {
+     "text": "fall below therapeutic",
+     "correct": false,
+     "rationale": "Levels rise, not fall.",
+     "blank": 2
+    },
+    {
+     "text": "stay exactly the same",
+     "correct": false,
+     "rationale": "Levels rise.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-096",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "matrix",
+   "prompt": "A nurse is planning medication teaching for a client. For each piece of information, choose which part of the teaching it belongs to.",
+   "columns": [
+    "Who",
+    "Why",
+    "When",
+    "Where"
+   ],
+   "options": [
+    {
+     "text": "The brand and generic names",
+     "correct": true,
+     "rationale": "Who is the drug: its names.",
+     "col": 1
+    },
+    {
+     "text": "The condition it treats and the goal of therapy",
+     "correct": true,
+     "rationale": "Why covers the indication.",
+     "col": 2
+    },
+    {
+     "text": "Taking it every morning, and when to call the provider",
+     "correct": true,
+     "rationale": "When covers timing and when to get help.",
+     "col": 3
+    },
+    {
+     "text": "Storing it away from heat and moisture and how to dispose of it",
+     "correct": true,
+     "rationale": "Where covers storage and disposal.",
+     "col": 4
+    }
+   ],
+   "rowLabel": "Teaching point"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-097",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "mc",
+   "prompt": "A nurse has finished teaching a client to self-inject insulin. Which method best evaluates the client's learning?",
+   "options": [
+    {
+     "text": "Ask the client to do a return demonstration",
+     "correct": true,
+     "rationale": "A return demonstration shows the client can do the skill."
+    },
+    {
+     "text": "Ask whether the client has any questions",
+     "correct": false,
+     "rationale": "That doesn't show the skill."
+    },
+    {
+     "text": "Give the client a pamphlet",
+     "correct": false,
+     "rationale": "Written materials support learning but don't evaluate it."
+    },
+    {
+     "text": "Have a family member describe the steps",
+     "correct": false,
+     "rationale": "The client needs to show their own skill."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-098",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "mc",
+   "prompt": "A nurse is preparing to teach a client who speaks only Spanish about a new medication. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Arrange for a medical interpreter",
+     "correct": true,
+     "rationale": "A medical interpreter familiar with medical terms reduces misunderstanding."
+    },
+    {
+     "text": "Ask the client's teenage child to translate",
+     "correct": false,
+     "rationale": "Family members may not know medical terms and may filter information."
+    },
+    {
+     "text": "Speak slowly and loudly in English",
+     "correct": false,
+     "rationale": "Volume doesn't overcome a language barrier."
+    },
+    {
+     "text": "Give written English instructions",
+     "correct": false,
+     "rationale": "The client can't read them."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-099",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "sata",
+   "prompt": "A nurse is preparing to teach a client about a new medication. Which factors should the nurse assess first? Select all that apply.",
+   "options": [
+    {
+     "text": "Readiness to learn",
+     "correct": true,
+     "rationale": "Teaching works best when the client is ready."
+    },
+    {
+     "text": "Preferred learning style",
+     "correct": true,
+     "rationale": "Teach in the way the client learns best."
+    },
+    {
+     "text": "Primary language",
+     "correct": true,
+     "rationale": "Language decides whether an interpreter is needed."
+    },
+    {
+     "text": "Cognitive level",
+     "correct": true,
+     "rationale": "Teaching is matched to the client's understanding."
+    },
+    {
+     "text": "The client's insurance plan",
+     "correct": false,
+     "rationale": "Insurance doesn't change how teaching is planned."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-100",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client about a new antihypertensive. Which statement by the nurse uses the best wording?",
+   "options": [
+    {
+     "text": "\"This medicine lowers your blood pressure. Some people get a dry cough.\"",
+     "correct": true,
+     "rationale": "Plain words avoid medical jargon."
+    },
+    {
+     "text": "\"This ACE inhibitor decreases peripheral vascular resistance.\"",
+     "correct": false,
+     "rationale": "Jargon makes teaching hard to understand."
+    },
+    {
+     "text": "\"This drug's pharmacodynamics target the RAAS.\"",
+     "correct": false,
+     "rationale": "Clients need plain language."
+    },
+    {
+     "text": "\"You'll have decreased afterload.\"",
+     "correct": false,
+     "rationale": "Medical terms should be avoided."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-101",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client about a new medication. When does the nurse's responsibility for medication teaching begin?",
+   "options": [
+    {
+     "text": "As soon as possible after admission or the first dose, continuing through discharge",
+     "correct": true,
+     "rationale": "Teaching starts early and continues until discharge."
+    },
+    {
+     "text": "Only on the day of discharge",
+     "correct": false,
+     "rationale": "Waiting until discharge leaves too little time."
+    },
+    {
+     "text": "Only if the client asks",
+     "correct": false,
+     "rationale": "Teaching is part of the nurse's role whether or not the client asks."
+    },
+    {
+     "text": "Only after the pharmacist teaches first",
+     "correct": false,
+     "rationale": "The nurse is responsible for teaching."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-102",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "sata",
+   "prompt": "A nurse is teaching a client about a newly prescribed medication. Which information should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "The name of the medication",
+     "correct": true,
+     "rationale": "Clients should know the brand and generic names."
+    },
+    {
+     "text": "What it's for",
+     "correct": true,
+     "rationale": "The indication helps adherence."
+    },
+    {
+     "text": "How and when to take it",
+     "correct": true,
+     "rationale": "Clear instructions prevent errors."
+    },
+    {
+     "text": "Adverse effects to report",
+     "correct": true,
+     "rationale": "Clients need to know when to call the provider."
+    },
+    {
+     "text": "How to store it",
+     "correct": true,
+     "rationale": "Storage keeps the drug effective and safe."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-103",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "mc",
+   "prompt": "A client asks for a good place to learn more about a medication online. Which response by the nurse is best?",
+   "options": [
+    {
+     "text": "\"I can suggest reliable websites, because some online sources aren't accurate.\"",
+     "correct": true,
+     "rationale": "Recommending reputable sites helps clients avoid misinformation."
+    },
+    {
+     "text": "\"Any website is fine.\"",
+     "correct": false,
+     "rationale": "Many sites are unreliable."
+    },
+    {
+     "text": "\"Don't look online at all.\"",
+     "correct": false,
+     "rationale": "Reliable sites can support learning."
+    },
+    {
+     "text": "\"Social media groups are the best source.\"",
+     "correct": false,
+     "rationale": "Social media isn't a reliable source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-104",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "order",
+   "prompt": "A nurse is teaching a client how to take a new medication at home. Place the nurse's actions in order.",
+   "options": [
+    {
+     "text": "Assess the client's readiness, language and learning style",
+     "rationale": "Assessment guides the plan."
+    },
+    {
+     "text": "Explain the medication's name, purpose and how to take it in plain words",
+     "rationale": "Teach the key points simply."
+    },
+    {
+     "text": "Demonstrate any special technique",
+     "rationale": "Show skills such as using an inhaler."
+    },
+    {
+     "text": "Have the client teach back or return-demonstrate",
+     "rationale": "Evaluate whether the client learned."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-105",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "cloze",
+   "prompt": "A nurse finishes teaching a client about a new medication.",
+   "sentence": "To check understanding, the nurse asks the client to {1}, and for a skill such as an injection, asks for a {2}.",
+   "options": [
+    {
+     "text": "repeat the information in their own words",
+     "correct": true,
+     "rationale": "Teach-back confirms understanding.",
+     "blank": 1
+    },
+    {
+     "text": "sign a consent form",
+     "correct": false,
+     "rationale": "A signature doesn't show understanding.",
+     "blank": 1
+    },
+    {
+     "text": "read the pamphlet later",
+     "correct": false,
+     "rationale": "That doesn't check understanding now.",
+     "blank": 1
+    },
+    {
+     "text": "return demonstration",
+     "correct": true,
+     "rationale": "The client shows the skill.",
+     "blank": 2
+    },
+    {
+     "text": "written test",
+     "correct": false,
+     "rationale": "A test doesn't show the hands-on skill.",
+     "blank": 2
+    },
+    {
+     "text": "phone call next week",
+     "correct": false,
+     "rationale": "Evaluation happens before discharge.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-106",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing medications a client takes at home. Which are available over the counter? Move the correct answers to the answer box.",
+   "leftLabel": "Medications",
+   "rightLabel": "Over the counter",
+   "options": [
+    {
+     "text": "Ibuprofen",
+     "correct": true,
+     "rationale": "Ibuprofen (Advil) is sold over the counter."
+    },
+    {
+     "text": "Loratadine",
+     "correct": true,
+     "rationale": "Loratadine (Claritin) is sold over the counter."
+    },
+    {
+     "text": "Diphenhydramine",
+     "correct": true,
+     "rationale": "Diphenhydramine (Benadryl) is sold over the counter."
+    },
+    {
+     "text": "Ceftriaxone",
+     "correct": false,
+     "rationale": "Ceftriaxone is a prescription antibiotic."
+    },
+    {
+     "text": "Fentanyl",
+     "correct": false,
+     "rationale": "Fentanyl is a prescription opioid."
+    },
+    {
+     "text": "Furosemide",
+     "correct": false,
+     "rationale": "Furosemide is a prescription diuretic."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-107",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing oral medication forms with a client. Which forms release the medication slowly over time? Move the correct answers to the answer box.",
+   "leftLabel": "Forms",
+   "rightLabel": "Slow release",
+   "options": [
+    {
+     "text": "Extended release (ER)",
+     "correct": true,
+     "rationale": "ER forms release over time."
+    },
+    {
+     "text": "Sustained release (SR)",
+     "correct": true,
+     "rationale": "SR forms release over time."
+    },
+    {
+     "text": "Sustained action (SA)",
+     "correct": true,
+     "rationale": "SA forms release over time."
+    },
+    {
+     "text": "Immediate release",
+     "correct": false,
+     "rationale": "Immediate release is released right after it's swallowed."
+    },
+    {
+     "text": "Orally disintegrating tablet (ODT)",
+     "correct": false,
+     "rationale": "ODTs dissolve in the mouth."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-108",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing factors that affect how well an oral medication is absorbed. Which factors affect oral absorption? Move the correct answers to the answer box.",
+   "leftLabel": "Factors",
+   "rightLabel": "Affects oral absorption",
+   "options": [
+    {
+     "text": "Food in the stomach",
+     "correct": true,
+     "rationale": "Food can change how much and how fast a drug is absorbed."
+    },
+    {
+     "text": "Gastric pH and emptying time",
+     "correct": true,
+     "rationale": "Stomach acid and emptying speed change absorption."
+    },
+    {
+     "text": "The form, such as enteric-coated",
+     "correct": true,
+     "rationale": "Coatings and release forms change when the drug is absorbed."
+    },
+    {
+     "text": "Other medications taken at the same time",
+     "correct": true,
+     "rationale": "Some drugs reduce others' absorption."
+    },
+    {
+     "text": "The client's hair color",
+     "correct": false,
+     "rationale": "Hair color has no effect."
+    },
+    {
+     "text": "The time of the last IV flush",
+     "correct": false,
+     "rationale": "IV flushes don't affect oral absorption."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-109",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing a medication with a short half-life. Which statements apply to it? Move the correct answers to the answer box.",
+   "leftLabel": "Statements",
+   "rightLabel": "Short half-life",
+   "options": [
+    {
+     "text": "Leaves the body in about 4 to 8 hours",
+     "correct": true,
+     "rationale": "Short half-life drugs leave quickly."
+    },
+    {
+     "text": "Needs a short dosing interval",
+     "correct": true,
+     "rationale": "Frequent doses keep the level above the minimum effective concentration."
+    },
+    {
+     "text": "Is often given several times a day",
+     "correct": true,
+     "rationale": "Short half-life drugs are dosed often."
+    },
+    {
+     "text": "Has a greater risk of building up",
+     "correct": false,
+     "rationale": "Buildup is a long half-life concern."
+    },
+    {
+     "text": "Is usually given once a day",
+     "correct": false,
+     "rationale": "Once-daily dosing fits long half-life drugs."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-110",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "dragdrop",
+   "prompt": "A nurse is caring for a client in anaphylactic shock. Which medications should the nurse expect to give? Move the correct answers to the answer box.",
+   "leftLabel": "Options",
+   "rightLabel": "Anaphylaxis medications",
+   "options": [
+    {
+     "text": "Epinephrine IM",
+     "correct": true,
+     "rationale": "Epinephrine raises blood pressure and opens the airways."
+    },
+    {
+     "text": "Diphenhydramine",
+     "correct": true,
+     "rationale": "Diphenhydramine blocks further histamine release."
+    },
+    {
+     "text": "Oxygen",
+     "correct": true,
+     "rationale": "Oxygen supports breathing after the airway is secured."
+    },
+    {
+     "text": "Morphine",
+     "correct": false,
+     "rationale": "Morphine can depress breathing and isn't an anaphylaxis treatment."
+    },
+    {
+     "text": "Metoprolol",
+     "correct": false,
+     "rationale": "A beta blocker would lower heart rate and blood pressure further."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-111",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "dragdrop",
+   "prompt": "A nurse is teaching a client who takes several medications. Which combinations should the client avoid? Move the correct answers to the answer box.",
+   "leftLabel": "Combinations",
+   "rightLabel": "Avoid together",
+   "options": [
+    {
+     "text": "Sildenafil and nitroglycerin",
+     "correct": true,
+     "rationale": "Together they can cause dangerous hypotension."
+    },
+    {
+     "text": "Ginkgo biloba and aspirin",
+     "correct": true,
+     "rationale": "Together they raise bleeding risk."
+    },
+    {
+     "text": "Tetracycline and milk",
+     "correct": true,
+     "rationale": "Milk reduces tetracycline absorption."
+    },
+    {
+     "text": "MAOIs and aged cheese",
+     "correct": true,
+     "rationale": "Tyramine with an MAOI can cause a hypertensive crisis."
+    },
+    {
+     "text": "Acetaminophen and water",
+     "correct": false,
+     "rationale": "Water doesn't interact with acetaminophen."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-112",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "dragdrop",
+   "prompt": "A nurse is choosing teaching methods for a client starting an inhaler. Which methods are appropriate? Move the correct answers to the answer box.",
+   "leftLabel": "Methods",
+   "rightLabel": "Teaching methods",
+   "options": [
+    {
+     "text": "Demonstrating the inhaler",
+     "correct": true,
+     "rationale": "Special techniques are best taught by showing them."
+    },
+    {
+     "text": "Written instructions",
+     "correct": true,
+     "rationale": "Handouts reinforce verbal teaching."
+    },
+    {
+     "text": "A short video",
+     "correct": true,
+     "rationale": "Videos support different learning styles."
+    },
+    {
+     "text": "A return demonstration by the client",
+     "correct": true,
+     "rationale": "It shows the client can use the inhaler."
+    },
+    {
+     "text": "Telling the client to search social media",
+     "correct": false,
+     "rationale": "Social media isn't a reliable source."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-113",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing how antibiotics work. Which bacterial processes do antibiotics target? Move the correct answers to the answer box.",
+   "leftLabel": "Processes",
+   "rightLabel": "Antibiotic targets",
+   "options": [
+    {
+     "text": "Cell wall synthesis",
+     "correct": true,
+     "rationale": "Penicillins stop bacteria from building cell walls."
+    },
+    {
+     "text": "DNA synthesis",
+     "correct": true,
+     "rationale": "Some antibiotics, such as sulfa drugs, block DNA synthesis."
+    },
+    {
+     "text": "RNA synthesis",
+     "correct": true,
+     "rationale": "Some antibiotics block RNA synthesis."
+    },
+    {
+     "text": "The client's hypothalamus",
+     "correct": false,
+     "rationale": "That's how acetaminophen lowers fever."
+    },
+    {
+     "text": "Beta receptors in the lungs",
+     "correct": false,
+     "rationale": "That's where albuterol acts."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-114",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacokinetics",
+   "type": "order",
+   "prompt": "A nurse is explaining the first-pass effect for an oral medication. Place the steps in order.",
+   "options": [
+    {
+     "text": "The client swallows the medication",
+     "rationale": "The oral dose enters the GI tract."
+    },
+    {
+     "text": "It's absorbed through the intestinal wall",
+     "rationale": "Absorption happens in the gut."
+    },
+    {
+     "text": "The portal circulation carries it to the liver",
+     "rationale": "Blood from the intestines goes to the liver first."
+    },
+    {
+     "text": "The liver metabolizes part of the dose",
+     "rationale": "This is the first-pass effect."
+    },
+    {
+     "text": "The remaining active drug reaches the systemic circulation",
+     "rationale": "Less active drug is left to act."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-115",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Half-Life & Drug Levels",
+   "type": "order",
+   "prompt": "A nurse is reviewing what happens after a single dose of an oral medication. Place the events in the order they occur.",
+   "options": [
+    {
+     "text": "Onset of action",
+     "rationale": "The drug begins to produce a response."
+    },
+    {
+     "text": "Peak level and full effect",
+     "rationale": "The drug reaches its highest level and full effect."
+    },
+    {
+     "text": "Duration of action continues",
+     "rationale": "The effect lasts while the level stays in the therapeutic range."
+    },
+    {
+     "text": "Termination of action",
+     "rationale": "The effect ends as the drug is eliminated."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-116",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "order",
+   "prompt": "A nurse is checking whether a new medication is safe to give with a client's current medications. Place the actions in order.",
+   "options": [
+    {
+     "text": "Review the client's full medication list, including OTC drugs and supplements",
+     "rationale": "Start with everything the client takes."
+    },
+    {
+     "text": "Check the interactions section of a current drug reference",
+     "rationale": "Look up interactions with each drug, food and herb."
+    },
+    {
+     "text": "Consult the pharmacist about any interaction found",
+     "rationale": "The pharmacist can advise on combinations."
+    },
+    {
+     "text": "Contact the provider before giving the medication if there's a concern",
+     "rationale": "Only the provider changes the prescription."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-117",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "order",
+   "prompt": "A nurse suspects a client is having a mild allergic reaction (itching and hives) to a newly started oral medication. Place the nurse's actions in order.",
+   "options": [
+    {
+     "text": "Hold the next dose of the medication",
+     "rationale": "Stop further exposure."
+    },
+    {
+     "text": "Assess airway, breathing and vital signs",
+     "rationale": "Make sure it isn't progressing to anaphylaxis."
+    },
+    {
+     "text": "Notify the provider",
+     "rationale": "The provider decides on treatment and a different drug."
+    },
+    {
+     "text": "Document the reaction and add the allergy to the chart, MAR and allergy band",
+     "rationale": "Record it so the drug isn't given again."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-118",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "order",
+   "prompt": "A nurse is explaining how albuterol relieves an asthma attack. Place the events in order.",
+   "options": [
+    {
+     "text": "The client inhales albuterol",
+     "rationale": "The drug reaches the lungs."
+    },
+    {
+     "text": "Albuterol binds to beta receptors in the airways",
+     "rationale": "It's an agonist at these receptors."
+    },
+    {
+     "text": "The receptors are activated",
+     "rationale": "Agonists activate receptors."
+    },
+    {
+     "text": "The airway muscles relax and the airways open",
+     "rationale": "This is the therapeutic effect."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-119",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "cloze",
+   "prompt": "A nurse is comparing routes for a client who needs a medication to work right away.",
+   "sentence": "The nurse expects the {1} route to have the fastest onset, because the drug is {2}.",
+   "options": [
+    {
+     "text": "intravenous",
+     "correct": true,
+     "rationale": "IV gives immediate onset.",
+     "blank": 1
+    },
+    {
+     "text": "subcutaneous",
+     "correct": false,
+     "rationale": "Subcutaneous onset varies.",
+     "blank": 1
+    },
+    {
+     "text": "transdermal",
+     "correct": false,
+     "rationale": "Transdermal onset is slow.",
+     "blank": 1
+    },
+    {
+     "text": "absorbed immediately and completely into the blood",
+     "correct": true,
+     "rationale": "IV skips absorption barriers.",
+     "blank": 2
+    },
+    {
+     "text": "released slowly through the skin",
+     "correct": false,
+     "rationale": "That describes transdermal drugs.",
+     "blank": 2
+    },
+    {
+     "text": "broken down by the liver first",
+     "correct": false,
+     "rationale": "That's the first-pass effect of oral drugs.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-120",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "cloze",
+   "prompt": "A nurse is explaining why some medications need a prescription.",
+   "sentence": "A medication requires a prescription when the FDA considers it {1} without a provider's supervision; over-the-counter medications are considered {2} to take without supervision.",
+   "options": [
+    {
+     "text": "potentially harmful",
+     "correct": true,
+     "rationale": "That's the reason for prescription status.",
+     "blank": 1
+    },
+    {
+     "text": "completely safe",
+     "correct": false,
+     "rationale": "Safe drugs can be sold OTC.",
+     "blank": 1
+    },
+    {
+     "text": "too expensive",
+     "correct": false,
+     "rationale": "Cost doesn't decide prescription status.",
+     "blank": 1
+    },
+    {
+     "text": "relatively safe",
+     "correct": true,
+     "rationale": "OTC drugs are relatively safe but not risk-free.",
+     "blank": 2
+    },
+    {
+     "text": "completely risk-free",
+     "correct": false,
+     "rationale": "OTC drugs can still interact or be misused.",
+     "blank": 2
+    },
+    {
+     "text": "unsafe",
+     "correct": false,
+     "rationale": "Unsafe drugs aren't sold OTC.",
+     "blank": 2
+    }
+   ]
+  },
   {
    "id": "nur114-u5-med-calc-001",
    "course": "NUR 114",

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharmacology Principles &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Pharmacology Principles &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-5-gas-exchange-med-admin/pharm-principles-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pharmacology Principles &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=125">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-05" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=36"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=15"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Pharmacology Principles</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  names: {label:"Names & Categories", hue:"blue"},
+  forms: {label:"Forms & Absorption", hue:"green"},
+  pk: {label:"Pharmacokinetics", hue:"violet"},
+  lv: {label:"Half-Life & Levels", hue:"orange"},
+  pd: {label:"Pharmacodynamics", hue:"aqua"},
+  adr: {label:"Adverse Effects", hue:"red"},
+  int: {label:"Precautions & Interactions", hue:"magenta"},
+  teach: {label:"Client Teaching", hue:"yellow"}
+};
+var CARDS = [
+[1, "names", "Generic name", "The official name; written in lowercase; only one per drug"],
+[2, "names", "Brand (trade) name", "The manufacturer's name; capitalized (often with ®); a drug can have several"],
+[3, "names", "Generic vs brand: what's the same?", "Chemical composition, effects, and abuse or dependence potential"],
+[4, "names", "Why are generics prescribed most?", "They're usually less expensive"],
+[5, "names", "When can a generic be made?", "After the brand's patent expires"],
+[6, "names", "Name used on the NCLEX", "The generic name (a brand name, if used, comes with the generic)"],
+[7, "names", "Tylenol / Motrin / Colace", "acetaminophen / ibuprofen / docusate sodium"],
+[8, "names", "Dilaudid / Protonix / Prevacid", "hydromorphone / pantoprazole / lansoprazole"],
+[9, "names", "Prescription (Rx) drug", "Potentially harmful without medical supervision; needs a licensed provider's prescription"],
+[10, "names", "Over-the-counter (OTC) drug", "Relatively safe without supervision; sold in stores, pharmacies and online"],
+[11, "names", "Vitamins, supplements, herbal remedies", "Count them as medications: they can interact, even though the FDA doesn't regulate them"],
+[12, "names", "Medications brought from home", "Sent to the hospital pharmacist to approve before use"],
+[13, "names", "Prototype drug", "The drug in a category that providers prescribe most"],
+[14, "forms", "Pharmaceutics", "How a drug's form affects how it dissolves, how fast it's absorbed and when it starts working"],
+[15, "forms", "Enteric-coated (EC)", "Dissolves in the small intestine, protecting the stomach; swallow whole"],
+[16, "forms", "ER, XL, XR, SR, SA", "Extended or sustained release: released slowly over time; never crush"],
+[17, "forms", "ODT", "Orally disintegrating tablet: dissolves in the mouth"],
+[18, "forms", "Sublingual / buccal", "Under the tongue / between the cheek and gum"],
+[19, "forms", "Parenteral routes", "Injections: IM, subcutaneous, intradermal, IV, intrathecal, epidural"],
+[20, "forms", "IV absorption", "Immediate and complete"],
+[21, "forms", "IM and subcutaneous absorption", "Fast if water-soluble and blood flow is good; slow if poorly soluble or circulation is poor"],
+[22, "forms", "Topical / transdermal timing", "Slower onset, longer duration"],
+[23, "pk", "Pharmacokinetics", "How a drug moves through the body: absorption, distribution, metabolism, excretion (ADME)"],
+[24, "pk", "Absorption", "From the site of administration into the bloodstream"],
+[25, "pk", "Distribution", "Carried by the circulation to the site of action"],
+[26, "pk", "Metabolism (biotransformation)", "Enzymes change the drug, primarily in the liver"],
+[27, "pk", "Excretion", "Removal of the drug, mainly by the kidneys"],
+[28, "pk", "First-pass effect", "Oral drugs go to the liver first, which breaks down part of the dose; one reason IV may be chosen over PO"],
+[29, "pk", "Routes that bypass first pass", "Sublingual, buccal, IV, nasal, inhaled, transdermal"],
+[30, "pk", "Factors that affect metabolism", "Age, similar metabolic pathways, nutrition, more metabolizing enzymes, first-pass effect"],
+[31, "pk", "Plasma protein binding", "Drugs bind albumin; low albumin leaves more free drug, raising toxicity risk"],
+[32, "pk", "What delays distribution", "Poor blood flow (peripheral vascular or heart disease)"],
+[33, "pk", "Kidney labs to check", "BUN (blood urea nitrogen) and creatinine"],
+[34, "pk", "Other excretion routes", "Liver (bile), lungs, intestines, sweat, saliva, breast milk"],
+[35, "pk", "Prodrug", "Inactive until metabolism turns it into the active form"],
+[36, "lv", "Half-life", "Time for the amount of drug in the body to drop by 50%"],
+[37, "lv", "Half-lives to reach steady state", "About 4"],
+[38, "lv", "Short half-life", "Leaves fast (4–8 hr); dosed often"],
+[39, "lv", "Long half-life", "Leaves slowly (over 24 hr); dosed less often, often once a day; can build up"],
+[40, "lv", "Peak level", "The highest drug level in the blood"],
+[41, "lv", "Trough level", "The lowest level; draw it immediately before the next dose"],
+[42, "lv", "Onset of action", "Time for the drug to start a therapeutic response"],
+[43, "lv", "Peak effect", "Time to reach the full therapeutic effect"],
+[44, "lv", "Duration of action", "How long the effect lasts without another dose"],
+[45, "lv", "Therapeutic range", "Above the minimum effective concentration, below the toxic concentration"],
+[46, "lv", "Low therapeutic index", "Narrow safety margin: monitor blood levels closely"],
+[47, "pd", "Pharmacodynamics", "How a drug interacts with target cells, systems or organs to produce an effect"],
+[48, "pd", "Agonist", "Binds to and activates a receptor, mimicking the body (albuterol, morphine)"],
+[49, "pd", "Antagonist", "Blocks receptor activity (metoprolol, losartan)"],
+[50, "pd", "Partial agonist", "Partly activates a receptor, about 10–40% of the full effect (buprenorphine)"],
+[51, "pd", "Albuterol action", "Activates beta receptors in the lungs to relax and open the airways"],
+[52, "pd", "Metoprolol action", "Blocks cardiac beta receptors to lower blood pressure and heart rate"],
+[53, "pd", "Buprenorphine action", "Satisfies opioid receptors to prevent withdrawal and cravings without a high"],
+[54, "pd", "Competitive vs noncompetitive antagonist", "Competitive rarely blocks completely; noncompetitive can block completely at high doses"],
+[55, "pd", "Indication", "The condition a drug is prescribed for"],
+[56, "pd", "Sildenafil: second use", "Pulmonary hypertension (it relaxes blood vessels)"],
+[57, "pd", "Unsure why a drug is ordered?", "Ask before giving it"],
+[58, "adr", "Adverse drug reaction (ADR)", "Unintended, nontherapeutic effect at a therapeutic dose; can happen any time"],
+[59, "adr", "Lisinopril ADRs", "Dry, nonproductive chronic cough; angioedema"],
+[60, "adr", "Anaphylaxis", "An exaggerated immune response with massive histamine release; a medical emergency"],
+[61, "adr", "Anaphylaxis signs", "Stridor, wheezing, throat and face swelling, hives, fast heart rate, very low blood pressure"],
+[62, "adr", "Anaphylaxis treatment, in order", "Airway, oxygen, epinephrine IM, diphenhydramine"],
+[63, "adr", "Mild rash after a drug", "Avoid it next time: a second exposure can cause a worse reaction"],
+[64, "adr", "Tolerance", "Less response over time, so a higher dose is needed"],
+[65, "adr", "Dependence", "Physical or psychological need for a drug; stopping can cause withdrawal"],
+[66, "adr", "Cumulative effect", "Drug builds up because one dose isn't cleared before the next"],
+[67, "adr", "Toxicity", "Harm from too much drug or poor excretion"],
+[68, "adr", "Vancomycin toxicity", "Cranial nerve VIII damage: hearing loss"],
+[69, "adr", "Acetaminophen toxicity", "Liver damage, up to liver failure"],
+[70, "adr", "Paradoxical effect", "The opposite of the intended effect (a sedative causing excitement)"],
+[71, "int", "Absolute contraindication", "Never give it, no matter what"],
+[72, "int", "Relative contraindication", "Weigh the risk against the benefit"],
+[73, "int", "Precaution", "Use only when benefits outweigh risks, with extra monitoring"],
+[74, "int", "Boxed (black box) warning", "The FDA's highest warning (suicide risk, abuse potential)"],
+[75, "int", "Preventing complications", "Lowest effective dose; monitor ADRs, metabolism and excretion; know precautions and contraindications"],
+[76, "int", "Grapefruit juice", "Slows metabolism, so drug levels rise (sertraline, fexofenadine, nifedipine)"],
+[77, "int", "Tyramine + MAOIs", "Hypertensive crisis"],
+[78, "int", "Milk + tetracycline", "Less absorption, less effect"],
+[79, "int", "Vitamin K foods + warfarin", "Less anticoagulant effect"],
+[80, "int", "High-protein meal + levodopa", "Less absorbed: Parkinson's symptoms suddenly worsen"],
+[81, "int", "Sildenafil + nitroglycerin", "Dangerous drop in blood pressure"],
+[82, "int", "Ginkgo biloba + aspirin", "Increased bleeding risk"],
+[83, "int", "Synergistic effect", "Together, a much greater effect (opioid + alcohol)"],
+[84, "int", "Antagonistic effect", "One drug reduces another's effect (antacid + tetracycline)"],
+[85, "int", "Pregnancy and medications", "Only what the provider prescribes; many drugs cross the placenta; first trimester is riskiest"],
+[86, "int", "Older adults and medications", "Slower liver and kidney function, so doses are often lower; more interactions"],
+[87, "int", "Children's doses", "Based on age, weight and body surface area"],
+[88, "teach", "When teaching starts", "As soon as possible after admission or the first dose, through discharge"],
+[89, "teach", "Who / What / Why", "Names / form, strength, effects and adverse effects / indication and goals"],
+[90, "teach", "When / How / Where", "Timing and when to call / how to take it, food and other drugs / storage and disposal"],
+[91, "teach", "Before teaching, assess", "Readiness, learning style, language, cognitive level"],
+[92, "teach", "Client doesn't speak English", "Use a medical interpreter"],
+[93, "teach", "Check understanding", "Teach-back; return demonstration for skills"],
+[94, "teach", "Teaching wording", "Plain words, not medical jargon"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
