@@ -234,6 +234,8 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
 .meth p{margin:0 !important;font-family:'IBM Plex Mono',monospace;font-size:15px;line-height:2.5}
 .meth .frac{font-size:14.5px;line-height:1.3}
 .meth .arr{color:var(--label);margin:0 4px}
+.meth p.meth-note{font-family:inherit;font-size:14.5px;line-height:1.4;color:var(--muted);grid-column:2}
+@media (max-width:600px){.meth p.meth-note{grid-column:1}}
 .meth-key{border:1.5px solid var(--border);background:var(--card);margin:12px 0}
 .calc-post{margin:0 !important;padding:8px 16px;border-top:1px dashed var(--border);font-size:16px}
 @media (max-width:600px){.meth > div{grid-template-columns:1fr}}
@@ -1288,11 +1290,11 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
 
   <div class="gsub" id="c-setups">
     <h3>The three setup methods</h3>
-    <p>Every example below is set up three ways. You only need one: pick the method you use and follow that row. Every method gives the same answer. Rates and weight-based doses have no have and quantity, so in those examples the usual <b>formula</b> takes the place of desired over have.</p>
+    <p>Doses from a tablet or a liquid, and IV problems with several steps, are set up three ways below. You only need one: pick the method you use and follow that row. Every method gives the same answer. Simple conversions, weight math and mL/hr are just multiply or divide, so they're shown as plain steps.</p>
     <div class="meth meth-key">
       <div><b>Ratio and proportion</b><p><span class="frac"><span>Have</span><span>Quantity</span></span> = <span class="frac"><span>Desired</span><span>X</span></span></p></div>
       <div><b>Desired over have</b><p>X = <span class="frac"><span>Desired</span><span>Have</span></span> × Quantity</p></div>
-      <div><b>Formula</b><p>mL/hr = <span class="frac"><span>Volume (mL)</span><span>Time (hr)</span></span> &nbsp;or <span style="white-space:nowrap">Weight (kg) × Dose (mg/kg)</span></p></div>
+      <div><b>Formula</b><p>gtt/min = <span class="frac"><span>Volume (mL) × drop factor (gtt/mL)</span><span>Time (min)</span></span></p><p class="meth-note">Used for drip rates, which have no have and quantity; it takes the place of desired over have there.</p></div>
       <div><b>Dimensional analysis</b><p>X = <span class="frac"><span>Quantity</span><span>Have</span></span> × <span class="frac"><span>Desired</span><span>1</span></span> <span style="white-space:nowrap">(units cancel</span> <span style="white-space:nowrap">top and bottom)</span></p></div>
     </div>
   </div>
@@ -1345,47 +1347,25 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
     <div class="calc">
       <div class="calc-head"><b>Metric/household: bigger to smaller</b><span>Type 5</span></div>
       <p class="calc-q">Give 3 Tbsp of a medication. How many mL?</p>
-      <ol class="seq"><li>1 Tbsp = 15 mL. Tbsp to mL is bigger to smaller, so the number gets bigger</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>1 Tbsp</span><span>15 mL</span></span> = <span class="frac"><span>3 Tbsp</span><span>X</span></span> <span class="arr">→</span> X = 3 × 15 = 45</p></div>
-        <div><b>Desired over have</b><p><span class="frac"><span>3 Tbsp</span><span>1 Tbsp</span></span> × 15 mL = 45</p></div>
-        <div><b>Dimensional analysis</b><p>X mL = <span class="frac"><span>15 mL</span><span>1 Tbsp</span></span> × <span class="frac"><span>3 Tbsp</span><span>1</span></span> = 45</p></div>
-      </div>
+      <ol class="seq"><li>1 Tbsp = 15 mL. Tbsp to mL is bigger to smaller, so multiply</li><li><span class="eq">3 × 15 = 45</span></li></ol>
       <p class="calc-ans">Answer: <span class="eq">45 mL</span></p>
     </div>
     <div class="calc">
       <div class="calc-head"><b>Metric/household: smaller to bigger</b><span>Type 5</span></div>
       <p class="calc-q">Give 30 mL of a medication. How many Tbsp?</p>
-      <ol class="seq"><li>1 Tbsp = 15 mL. mL to Tbsp is smaller to bigger, so divide</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>1 Tbsp</span><span>15 mL</span></span> = <span class="frac"><span>X</span><span>30 mL</span></span> <span class="arr">→</span> 15X = 30 <span class="arr">→</span> X = 2</p></div>
-        <div><b>Desired over have</b><p><span class="frac"><span>30 mL</span><span>15 mL</span></span> × 1 Tbsp = 2</p></div>
-        <div><b>Dimensional analysis</b><p>X Tbsp = <span class="frac"><span>1 Tbsp</span><span>15 mL</span></span> × <span class="frac"><span>30 mL</span><span>1</span></span> = 2</p></div>
-      </div>
-      <p class="calc-post">Makes sense: going to the bigger unit, the number got smaller (30 mL is 2 Tbsp).</p>
+      <ol class="seq"><li>1 Tbsp = 15 mL. mL to Tbsp is smaller to bigger, so divide</li><li><span class="eq">30 ÷ 15 = 2</span></li></ol>
       <p class="calc-ans">Answer: <span class="eq">2 Tbsp</span></p>
     </div>
     <div class="calc">
       <div class="calc-head"><b>Equivalent dosage: bigger to smaller</b><span>Type 6</span></div>
       <p class="calc-q">Give 500 mg of a medication. How many mcg is that?</p>
-      <ol class="seq"><li>1 mg = 1,000 mcg. mg to mcg is bigger to smaller, so multiply</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>1 mg</span><span>1,000 mcg</span></span> = <span class="frac"><span>500 mg</span><span>X</span></span> <span class="arr">→</span> X = 500 × 1,000 = 500,000</p></div>
-        <div><b>Desired over have</b><p><span class="frac"><span>500 mg</span><span>1 mg</span></span> × 1,000 mcg = 500,000</p></div>
-        <div><b>Dimensional analysis</b><p>X mcg = <span class="frac"><span>1,000 mcg</span><span>1 mg</span></span> × <span class="frac"><span>500 mg</span><span>1</span></span> = 500,000</p></div>
-      </div>
+      <ol class="seq"><li>1 mg = 1,000 mcg. mg to mcg is bigger to smaller, so multiply</li><li><span class="eq">500 × 1,000 = 500,000</span></li></ol>
       <p class="calc-ans">Answer: <span class="eq">500,000 mcg</span></p>
     </div>
     <div class="calc">
       <div class="calc-head"><b>Equivalent dosage: smaller to bigger</b><span>Type 6</span></div>
       <p class="calc-q">Give 250 mcg of a medication. How many mg is that?</p>
-      <ol class="seq"><li>1 mg = 1,000 mcg. mcg to mg is smaller to bigger, so divide</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>1,000 mcg</span><span>1 mg</span></span> = <span class="frac"><span>250 mcg</span><span>X</span></span> <span class="arr">→</span> 1,000X = 250 <span class="arr">→</span> X = 0.25</p></div>
-        <div><b>Desired over have</b><p><span class="frac"><span>250 mcg</span><span>1,000 mcg</span></span> × 1 mg = 0.25</p></div>
-        <div><b>Dimensional analysis</b><p>X mg = <span class="frac"><span>1 mg</span><span>1,000 mcg</span></span> × <span class="frac"><span>250 mcg</span><span>1</span></span> = 0.25</p></div>
-      </div>
-      <p class="calc-post">Leading zero: 0.25, not .25.</p>
+      <ol class="seq"><li>1 mg = 1,000 mcg. mcg to mg is smaller to bigger, so divide</li><li><span class="eq">250 ÷ 1,000 = 0.25</span></li><li>Leading zero: 0.25, not .25</li></ol>
       <p class="calc-ans">Answer: <span class="eq">0.25 mg</span></p>
     </div>
   </div>
@@ -1457,37 +1437,19 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
     <div class="calc">
       <div class="calc-head"><b>kg to lb</b><span>Slide practice</span></div>
       <p class="calc-q">A client weighs 75.4 kg. How many pounds? Round to the nearest tenth.</p>
-      <ol class="seq"><li>1 kg = 2.2 lb. kg to lb: multiply</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>1 kg</span><span>2.2 lb</span></span> = <span class="frac"><span>75.4 kg</span><span>X</span></span> <span class="arr">→</span> X = 75.4 × 2.2 = 165.88</p></div>
-        <div><b>Desired over have</b><p><span class="frac"><span>75.4 kg</span><span>1 kg</span></span> × 2.2 lb = 165.88</p></div>
-        <div><b>Dimensional analysis</b><p>X lb = <span class="frac"><span>2.2 lb</span><span>1 kg</span></span> × <span class="frac"><span>75.4 kg</span><span>1</span></span> = 165.88</p></div>
-      </div>
-      <p class="calc-post">Round to the nearest tenth: the hundredths digit is 8, so round up.</p>
+      <ol class="seq"><li>kg to lb: multiply by 2.2</li><li><span class="eq">75.4 × 2.2 = 165.88</span></li><li>Round to the nearest tenth: the hundredths digit is 8, so round up</li></ol>
       <p class="calc-ans">Answer: <span class="eq">165.9 lb</span></p>
     </div>
     <div class="calc">
       <div class="calc-head"><b>Pounds and ounces to pounds</b><span>Slide practice</span></div>
       <p class="calc-q">An infant weighs 10 lb 3 oz. How many pounds? Round to the nearest tenth.</p>
-      <ol class="seq"><li>Only the ounces need converting: 1 lb = 16 oz</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>16 oz</span><span>1 lb</span></span> = <span class="frac"><span>3 oz</span><span>X</span></span> <span class="arr">→</span> 16X = 3 <span class="arr">→</span> X = 0.1875 lb</p></div>
-        <div><b>Desired over have</b><p><span class="frac"><span>3 oz</span><span>16 oz</span></span> × 1 lb = 0.1875 lb</p></div>
-        <div><b>Dimensional analysis</b><p>X lb = <span class="frac"><span>1 lb</span><span>16 oz</span></span> × <span class="frac"><span>3 oz</span><span>1</span></span> = 0.1875</p></div>
-      </div>
-      <p class="calc-post">Add the pounds: <span class="eq">10 + 0.1875 = 10.1875</span>. Round to the nearest tenth: the hundredths digit is 8, so round up.</p>
+      <ol class="seq"><li>Ounces to pounds: divide by 16. <span class="eq">3 ÷ 16 = 0.1875</span></li><li>Add the pounds: <span class="eq">10 + 0.1875 = 10.1875</span></li><li>Round to the nearest tenth: the hundredths digit is 8, so round up</li></ol>
       <p class="calc-ans">Answer: <span class="eq">10.2 lb</span></p>
     </div>
     <div class="calc">
       <div class="calc-head"><b>Pounds and ounces to kilograms</b><span>Slide practice</span></div>
       <p class="calc-q">A child weighs 50 lb 7 oz. How many kilograms? Round to the nearest tenth.</p>
-      <ol class="seq"><li>Ounces to pounds first: <span class="eq">7 oz ÷ 16 = 0.4375 lb</span>, so <span class="eq">50.4375 lb</span> (don't round yet)</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>2.2 lb</span><span>1 kg</span></span> = <span class="frac"><span>50.4375 lb</span><span>X</span></span> <span class="arr">→</span> 2.2X = 50.4375 <span class="arr">→</span> X = 22.926…</p></div>
-        <div><b>Desired over have</b><p><span class="frac"><span>50.4375 lb</span><span>2.2 lb</span></span> × 1 kg = 22.926…</p></div>
-        <div><b>Dimensional analysis</b><p>X kg = <span class="frac"><span>1 kg</span><span>2.2 lb</span></span> × <span class="frac"><span>50.4375 lb</span><span>1</span></span> = 22.926…</p></div>
-      </div>
-      <p class="calc-post">Round to the nearest tenth: the hundredths digit is 2, so leave it.</p>
+      <ol class="seq"><li>Ounces to pounds: <span class="eq">7 ÷ 16 = 0.4375</span>, so <span class="eq">50.4375 lb</span> (don't round yet)</li><li>Pounds to kilograms: divide by 2.2. <span class="eq">50.4375 ÷ 2.2 = 22.926…</span></li><li>Round to the nearest tenth: the hundredths digit is 2, so leave it</li></ol>
       <p class="calc-ans">Answer: <span class="eq">22.9 kg</span></p>
     </div>
   </div>
@@ -1502,24 +1464,13 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
     <div class="calc">
       <div class="calc-head"><b>Amoxicillin by weight</b><span>Slide practice</span></div>
       <p class="calc-q">A client is ordered amoxicillin oral suspension 30 mg/kg/day and weighs 25 kg. How many mg a day?</p>
-      <ol class="seq"><li>Already in kg. There's no have and quantity here, so the formula is weight × dose</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>30 mg</span><span>1 kg</span></span> = <span class="frac"><span>X</span><span>25 kg</span></span> <span class="arr">→</span> X = 30 × 25 = 750</p></div>
-        <div><b>Formula</b><p>weight (kg) × dose (mg/kg) = 25 kg × 30 mg/kg = 750</p></div>
-        <div><b>Dimensional analysis</b><p>X mg/day = <span class="frac"><span>30 mg</span><span>1 kg · day</span></span> × <span class="frac"><span>25 kg</span><span>1</span></span> = 750</p></div>
-      </div>
+      <ol class="seq"><li>Already in kg</li><li><span class="eq">25 kg × 30 mg/kg = 750</span></li></ol>
       <p class="calc-ans">Answer: <span class="eq">750 mg/day</span></p>
     </div>
     <div class="calc">
       <div class="calc-head"><b>Enoxaparin: pounds first</b><span>Slide practice</span></div>
       <p class="calc-q">Enoxaparin 1.5 mg/kg subcutaneously daily. The client weighs 155 lb. How many mg? Round to the nearest whole number.</p>
-      <ol class="seq"><li>Pounds to kilograms: <span class="eq">155 lb ÷ 2.2 = 70.4545… kg</span> (don't round yet; dimensional analysis does this inside the chain)</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>1.5 mg</span><span>1 kg</span></span> = <span class="frac"><span>X</span><span>70.4545… kg</span></span> <span class="arr">→</span> X = 105.68…</p></div>
-        <div><b>Formula</b><p>weight (kg) × dose (mg/kg) = 70.4545… kg × 1.5 mg/kg = 105.68…</p></div>
-        <div><b>Dimensional analysis</b><p>X mg = <span class="frac"><span>1.5 mg</span><span>1 kg</span></span> × <span class="frac"><span>1 kg</span><span>2.2 lb</span></span> × <span class="frac"><span>155 lb</span><span>1</span></span> = 105.68…</p></div>
-      </div>
-      <p class="calc-post">Round to the nearest whole number: the tenths digit is 6, so round up.</p>
+      <ol class="seq"><li>Pounds to kilograms: <span class="eq">155 ÷ 2.2 = 70.4545… kg</span> (don't round yet)</li><li><span class="eq">70.4545… kg × 1.5 mg/kg = 105.68…</span></li><li>Round to the nearest whole number: the tenths digit is 6, so round up</li></ol>
       <p class="calc-ans">Answer: <span class="eq">106 mg</span></p>
     </div>
   </div>
@@ -1534,25 +1485,13 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
     <div class="calc">
       <div class="calc-head"><b>Vancomycin in 3 doses</b><span>Slide practice</span></div>
       <p class="calc-q">Vancomycin oral suspension 40 mg/kg/day in 3 divided doses. The client weighs 86 kg. (1) mg a day? (2) mg per dose, rounded to the nearest whole number?</p>
-      <ol class="seq"><li>(1) Day: <span class="eq">86 kg × 40 mg/kg = 3,440 mg/day</span></li><li>(2) Per dose, set up any way:</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>3,440 mg</span><span>3 doses</span></span> = <span class="frac"><span>X</span><span>1 dose</span></span> <span class="arr">→</span> 3X = 3,440 <span class="arr">→</span> X = 1,146.666…</p></div>
-        <div><b>Formula</b><p><span class="frac"><span>total a day</span><span>doses a day</span></span> = <span class="frac"><span>3,440 mg</span><span>3</span></span> = 1,146.666…</p></div>
-        <div><b>Dimensional analysis</b><p>X mg/dose = <span class="frac"><span>40 mg</span><span>1 kg · day</span></span> × <span class="frac"><span>1 day</span><span>3 doses</span></span> × <span class="frac"><span>86 kg</span><span>1</span></span> = 1,146.666…</p></div>
-      </div>
-      <p class="calc-post">Round to the nearest whole number: the tenths digit is 6, so round up.</p>
+      <ol class="seq"><li>(1) Day: <span class="eq">86 kg × 40 mg/kg = 3,440 mg/day</span></li><li>(2) Per dose: <span class="eq">3,440 ÷ 3 = 1,146.666…</span></li><li>Round to the nearest whole number: the tenths digit is 6, so round up</li></ol>
       <p class="calc-ans">Answer: <span class="eq">3,440 mg/day; 1,147 mg per dose</span></p>
     </div>
     <div class="calc">
       <div class="calc-head"><b>Enoxaparin BID</b><span>Slide practice</span></div>
       <p class="calc-q">Enoxaparin 1.5 mg/kg/day, given BID. The client weighs 200 lb. (1) mg in 24 hours? (2) mg per dose? Round each to the nearest whole number.</p>
-      <ol class="seq"><li>Pounds to kilograms: <span class="eq">200 lb ÷ 2.2 = 90.909… kg</span></li><li>(1) Day: <span class="eq">90.909… kg × 1.5 mg/kg = 136.36… mg</span>, rounds to 136</li><li>(2) Per dose (BID = 2 doses), carrying the unrounded day total:</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>136.36… mg</span><span>2 doses</span></span> = <span class="frac"><span>X</span><span>1 dose</span></span> <span class="arr">→</span> 2X = 136.36… <span class="arr">→</span> X = 68.18…</p></div>
-        <div><b>Formula</b><p><span class="frac"><span>total a day</span><span>doses a day</span></span> = <span class="frac"><span>136.36… mg</span><span>2</span></span> = 68.18…</p></div>
-        <div><b>Dimensional analysis</b><p>X mg/dose = <span class="frac"><span>1.5 mg</span><span>1 kg · day</span></span> × <span class="frac"><span>1 day</span><span>2 doses</span></span> × <span class="frac"><span>1 kg</span><span>2.2 lb</span></span> × <span class="frac"><span>200 lb</span><span>1</span></span> = 68.18…</p></div>
-      </div>
-      <p class="calc-post">Round to the nearest whole number: the tenths digit is 1, so leave it.</p>
+      <ol class="seq"><li>Pounds to kilograms: <span class="eq">200 ÷ 2.2 = 90.909… kg</span></li><li>(1) Day: <span class="eq">90.909… kg × 1.5 mg/kg = 136.36…</span>, rounds to 136</li><li>(2) Per dose (BID = 2 doses), carrying the unrounded day total: <span class="eq">136.36… ÷ 2 = 68.18…</span>, rounds to 68</li></ol>
       <p class="calc-ans">Answer: <span class="eq">136 mg/day; 68 mg per dose</span></p>
     </div>
     <div class="calc">
@@ -1596,13 +1535,7 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
     <div class="calc">
       <div class="calc-head"><b>Range by weight</b><span>Slide practice</span></div>
       <p class="calc-q">A client is ordered 350 mg of medication X oral suspension. The safe range is 7.5 to 15 mg/kg/dose, and the client weighs 23 kg. (1) The safe dose range, rounded to the nearest tenth? (2) Is the order safe?</p>
-      <ol class="seq"><li>Already in kg. Work out the low end and the high end the same way</li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p>Low: <span class="frac"><span>7.5 mg</span><span>1 kg</span></span> = <span class="frac"><span>X</span><span>23 kg</span></span> <span class="arr">→</span> X = 172.5   High: <span class="frac"><span>15 mg</span><span>1 kg</span></span> = <span class="frac"><span>X</span><span>23 kg</span></span> <span class="arr">→</span> X = 345</p></div>
-        <div><b>Formula</b><p>weight (kg) × dose (mg/kg): 23 × 7.5 = 172.5 and 23 × 15 = 345</p></div>
-        <div><b>Dimensional analysis</b><p>Low: X mg = <span class="frac"><span>7.5 mg</span><span>1 kg</span></span> × <span class="frac"><span>23 kg</span><span>1</span></span> = 172.5   High: X mg = <span class="frac"><span>15 mg</span><span>1 kg</span></span> × <span class="frac"><span>23 kg</span><span>1</span></span> = 345</p></div>
-      </div>
-      <p class="calc-post">Compare: the order (350 mg) is more than the high end (345 mg).</p>
+      <ol class="seq"><li>Low: <span class="eq">23 kg × 7.5 mg/kg = 172.5 mg</span></li><li>High: <span class="eq">23 kg × 15 mg/kg = 345 mg</span></li><li>Compare: the order (350 mg) is more than the high end (345 mg)</li></ol>
       <p class="calc-ans">Answer: <span class="eq">172.5 to 345 mg per dose; 350 mg is not safe</span></p>
     </div>
   </div>
@@ -1613,23 +1546,13 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
     <div class="calc">
       <div class="calc-head"><b>Continuous IV fluid</b><span>Pump</span></div>
       <p class="calc-q">Infuse D5W (dextrose 5% in water) 500 mL over 4 hours. Set the pump to how many mL/hr? Round to the nearest whole number.</p>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>500 mL</span><span>4 hr</span></span> = <span class="frac"><span>X</span><span>1 hr</span></span> <span class="arr">→</span> 4X = 500 <span class="arr">→</span> X = 125</p></div>
-        <div><b>Formula</b><p>mL/hr = <span class="frac"><span>Volume (mL)</span><span>Time (hr)</span></span> = <span class="frac"><span>500 mL</span><span>4 hr</span></span> = 125</p></div>
-        <div><b>Dimensional analysis</b><p>X mL/hr = <span class="frac"><span>500 mL</span><span>4 hr</span></span> = 125</p></div>
-      </div>
+      <ol class="seq"><li>mL/hr = volume ÷ time: <span class="eq">500 mL ÷ 4 hr = 125</span></li></ol>
       <p class="calc-ans">Answer: <span class="eq">125 mL/hr</span></p>
     </div>
     <div class="calc">
       <div class="calc-head"><b>IV piggyback in minutes</b><span>Pump</span></div>
       <p class="calc-q">Cefotaxime 1 g in 100 mL 0.9% sodium chloride over 45 minutes. How many mL/hr? Round to the nearest whole number.</p>
-      <ol class="seq"><li>For the formula, change minutes to hours: <span class="eq">45 min ÷ 60 = 0.75 hr</span></li></ol>
-      <div class="meth">
-        <div><b>Ratio and proportion</b><p><span class="frac"><span>100 mL</span><span>45 min</span></span> = <span class="frac"><span>X</span><span>60 min</span></span> <span class="arr">→</span> 45X = 6,000 <span class="arr">→</span> X = 133.33…</p></div>
-        <div><b>Formula</b><p>mL/hr = <span class="frac"><span>100 mL</span><span>0.75 hr</span></span> = 133.33…</p></div>
-        <div><b>Dimensional analysis</b><p>X mL/hr = <span class="frac"><span>100 mL</span><span>45 min</span></span> × <span class="frac"><span>60 min</span><span>1 hr</span></span> = 133.33…</p></div>
-      </div>
-      <p class="calc-post">Round to the nearest whole number: the tenths digit is 3, so leave it.</p>
+      <ol class="seq"><li>Minutes to hours: <span class="eq">45 ÷ 60 = 0.75 hr</span></li><li>mL/hr = volume ÷ time: <span class="eq">100 mL ÷ 0.75 hr = 133.33…</span></li><li>Round to the nearest whole number: the tenths digit is 3, so leave it</li></ol>
       <p class="calc-ans">Answer: <span class="eq">133 mL/hr</span></p>
     </div>
   </div>
