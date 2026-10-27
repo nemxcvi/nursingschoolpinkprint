@@ -8434,41 +8434,6 @@
    ]
   },
   {
-   "id": "nur114-u5-med-admin-122",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Medication Administration",
-   "category": "Injections",
-   "type": "matrix",
-   "prompt": "A nurse is reviewing IV catheter sizes. For each client, choose the usual gauge.",
-   "columns": [
-    "16 gauge",
-    "18 gauge",
-    "22 to 24 gauge"
-   ],
-   "options": [
-    {
-     "text": "A client with major trauma",
-     "correct": true,
-     "rationale": "Large gauges allow rapid fluids.",
-     "col": 1
-    },
-    {
-     "text": "A client having surgery who may need blood",
-     "correct": true,
-     "rationale": "18 gauge is used for surgery and blood.",
-     "col": 2
-    },
-    {
-     "text": "A stable older adult",
-     "correct": true,
-     "rationale": "Smaller gauges suit stable clients and fragile veins.",
-     "col": 3
-    }
-   ],
-   "rowLabel": "Client"
-  },
-  {
    "id": "nur114-u5-med-admin-123",
    "course": "NUR 114",
    "unit": 5,
