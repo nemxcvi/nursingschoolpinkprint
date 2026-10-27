@@ -7016,9 +7016,9 @@
      "rationale": "Hairless skin allows good contact and absorption."
     },
     {
-     "text": "\"I will clean the site with an alcohol swab first.\"",
+     "text": "\"I will put the patch over my pacemaker so it lies flat.\"",
      "correct": false,
-     "rationale": "Wash with soap and water and dry the skin."
+     "rationale": "Never place a patch over an implanted device such as a pacemaker."
     },
     {
      "text": "\"I will put the new patch where the old one was.\"",
@@ -9153,6 +9153,171 @@
      "text": "\"Both needles are the same width; only the length differs.\"",
      "correct": false,
      "rationale": "Different gauges mean different widths."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-142",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse returns to a client's room and finds that another nurse removed the client's medications from the dispensing cabinet and placed them in a cup at the bedside. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Don't give them; get and prepare the medications again",
+     "correct": true,
+     "rationale": "Never give a medication you didn't see pulled or prepared."
+    },
+    {
+     "text": "Give them after checking the cup against the MAR",
+     "correct": false,
+     "rationale": "You can't verify what's in the cup if you didn't see it pulled or prepared."
+    },
+    {
+     "text": "Give them because a licensed nurse prepared them",
+     "correct": false,
+     "rationale": "Only give medications you saw pulled or prepared."
+    },
+    {
+     "text": "Ask the client whether the pills look familiar, then give them",
+     "correct": false,
+     "rationale": "The client's memory isn't a medication check."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-143",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "sata",
+   "prompt": "A nurse is giving several crushed medications to a client who has difficulty swallowing. Which actions should the nurse take? Select all that apply.",
+   "options": [
+    {
+     "text": "Check a drug reference that each one can be crushed",
+     "correct": true,
+     "rationale": "Some forms must never be crushed."
+    },
+    {
+     "text": "Crush each pill separately",
+     "correct": true,
+     "rationale": "Crushing them separately keeps track of each drug."
+    },
+    {
+     "text": "Give them one at a time, each with a bite of applesauce",
+     "correct": true,
+     "rationale": "One at a time, you know exactly what the client took."
+    },
+    {
+     "text": "Mix all of them into a full bowl of applesauce",
+     "correct": false,
+     "rationale": "If the client doesn't finish it, you can't tell what they took or how much they missed."
+    },
+    {
+     "text": "Crush the extended-release tablet along with the others",
+     "correct": false,
+     "rationale": "Extended-release forms must not be crushed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-144",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse is receiving report on a client who takes several oral medications. Which question should the nurse ask to help the client tolerate the medications?",
+   "options": [
+    {
+     "text": "\"How does the client usually take their medications?\"",
+     "correct": true,
+     "rationale": "Knowing whether they take them whole, crushed or in applesauce helps the client tolerate them."
+    },
+    {
+     "text": "\"Which pharmacy fills the client's prescriptions?\"",
+     "correct": false,
+     "rationale": "That doesn't help the client take the medications."
+    },
+    {
+     "text": "\"Which provider prescribed each medication?\"",
+     "correct": false,
+     "rationale": "That doesn't tell you how the client takes them."
+    },
+    {
+     "text": "\"How much do the client's medications cost?\"",
+     "correct": false,
+     "rationale": "Cost doesn't help with how the client takes them."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-145",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "sata",
+   "prompt": "A nurse is preparing to apply a new transdermal patch. Which actions should the nurse take? Select all that apply.",
+   "options": [
+    {
+     "text": "Wear gloves",
+     "correct": true,
+     "rationale": "Gloves keep the drug off the nurse's skin."
+    },
+    {
+     "text": "Remove the old patch first",
+     "correct": true,
+     "rationale": "Leaving it on can cause an overdose."
+    },
+    {
+     "text": "Check for an adhesive allergy",
+     "correct": true,
+     "rationale": "An adhesive allergy can cause a skin reaction."
+    },
+    {
+     "text": "Place it over the client's implanted pacemaker",
+     "correct": false,
+     "rationale": "Never place a patch over an implanted device."
+    },
+    {
+     "text": "Apply it to the same site as the old patch",
+     "correct": false,
+     "rationale": "Rotate sites to prevent irritation."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-146",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client who has a new prescription for a transdermal patch. Which statement by the client indicates understanding?",
+   "options": [
+    {
+     "text": "\"I'll take the old patch off on time, because some patches can burn my skin if left on too long.\"",
+     "correct": true,
+     "rationale": "Some patches can cause burns if they aren't removed on time."
+    },
+    {
+     "text": "\"I can leave the old patch on until it falls off.\"",
+     "correct": false,
+     "rationale": "Patches need to come off on schedule."
+    },
+    {
+     "text": "\"I'll cut the patch in half if I want a smaller dose.\"",
+     "correct": false,
+     "rationale": "Never cut patches."
+    },
+    {
+     "text": "\"I'll put the new patch on top of the old one.\"",
+     "correct": false,
+     "rationale": "Remove the old patch first and rotate sites."
     }
    ]
   },
