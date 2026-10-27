@@ -11472,13 +11472,7 @@
    "round": "whole",
    "exact": 125.0,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[500 mL|4 hr]] = [[X mL|1 hr]]  →  4X = 500  →  X = 125",
-      "fm": "mL/hr = [[500 mL|4 hr]] = 125",
-      "da": "X mL/hr = [[500 mL|4 hr]] = 125"
-     }
-    },
+    "mL/hr = volume ÷ time: 500 mL ÷ 4 hr = 125",
     "Makes sense: 500 mL over 4 hr works out to about 125 mL each hour."
    ]
   },
@@ -11496,13 +11490,7 @@
    "round": "whole",
    "exact": 16.666666666666668,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[100 mL|6 hr]] = [[X mL|1 hr]]  →  6X = 100  →  X = 16.6667…",
-      "fm": "mL/hr = [[100 mL|6 hr]] = 16.6667…",
-      "da": "X mL/hr = [[100 mL|6 hr]] = 16.6667…"
-     }
-    },
+    "mL/hr = volume ÷ time: 100 mL ÷ 6 hr = 16.6667…",
     "Round to the nearest whole number: the tenths digit is 6, so round up (17).",
     "Makes sense: 100 mL over 6 hr works out to about 17 mL each hour."
    ]
@@ -11521,13 +11509,7 @@
    "round": "whole",
    "exact": 133.33333333333334,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[100 mL|45 min]] = [[X mL|60 min]]  →  45X = 6,000  →  X = 133.3333…",
-      "fm": "mL/hr = [[100 mL|45 min]] × 60 = 133.3333…",
-      "da": "X mL/hr = [[100 mL|45 min]] × [[60 min|1 hr]] = 133.3333…"
-     }
-    },
+    "mL/hr = volume ÷ minutes × 60 (minutes in an hour): 100 mL ÷ 45 min × 60 = 133.3333…",
     "Round to the nearest whole number: the tenths digit is 3, so leave it (133).",
     "Makes sense: 100 mL over 45 minutes works out to about 133 mL each hour."
    ]
@@ -11546,13 +11528,7 @@
    "round": "whole",
    "exact": 200.0,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[100 mL|30 min]] = [[X mL|60 min]]  →  30X = 6,000  →  X = 200",
-      "fm": "mL/hr = [[100 mL|30 min]] × 60 = 200",
-      "da": "X mL/hr = [[100 mL|30 min]] × [[60 min|1 hr]] = 200"
-     }
-    },
+    "mL/hr = volume ÷ minutes × 60 (minutes in an hour): 100 mL ÷ 30 min × 60 = 200",
     "Makes sense: 100 mL over 30 minutes works out to about 200 mL each hour."
    ]
   },
@@ -11570,13 +11546,7 @@
    "round": "whole",
    "exact": 125.0,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[1,000 mL|8 hr]] = [[X mL|1 hr]]  →  8X = 1,000  →  X = 125",
-      "fm": "mL/hr = [[1,000 mL|8 hr]] = 125",
-      "da": "X mL/hr = [[1,000 mL|8 hr]] = 125"
-     }
-    },
+    "mL/hr = volume ÷ time: 1,000 mL ÷ 8 hr = 125",
     "Makes sense: 1,000 mL over 8 hr works out to about 125 mL each hour."
    ]
   },
@@ -11594,13 +11564,7 @@
    "round": "whole",
    "exact": 83.33333333333333,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[1,000 mL|12 hr]] = [[X mL|1 hr]]  →  12X = 1,000  →  X = 83.3333…",
-      "fm": "mL/hr = [[1,000 mL|12 hr]] = 83.3333…",
-      "da": "X mL/hr = [[1,000 mL|12 hr]] = 83.3333…"
-     }
-    },
+    "mL/hr = volume ÷ time: 1,000 mL ÷ 12 hr = 83.3333…",
     "Round to the nearest whole number: the tenths digit is 3, so leave it (83).",
     "Makes sense: 1,000 mL over 12 hr works out to about 83 mL each hour."
    ]
@@ -11619,13 +11583,7 @@
    "round": "whole",
    "exact": 125.0,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[250 mL|2 hr]] = [[X mL|1 hr]]  →  2X = 250  →  X = 125",
-      "fm": "mL/hr = [[250 mL|2 hr]] = 125",
-      "da": "X mL/hr = [[250 mL|2 hr]] = 125"
-     }
-    },
+    "mL/hr = volume ÷ time: 250 mL ÷ 2 hr = 125",
     "Makes sense: 250 mL over 2 hr works out to about 125 mL each hour."
    ]
   },
@@ -11643,13 +11601,7 @@
    "round": "whole",
    "exact": 150.0,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[50 mL|20 min]] = [[X mL|60 min]]  →  20X = 3,000  →  X = 150",
-      "fm": "mL/hr = [[50 mL|20 min]] × 60 = 150",
-      "da": "X mL/hr = [[50 mL|20 min]] × [[60 min|1 hr]] = 150"
-     }
-    },
+    "mL/hr = volume ÷ minutes × 60 (minutes in an hour): 50 mL ÷ 20 min × 60 = 150",
     "Makes sense: 50 mL over 20 minutes works out to about 150 mL each hour."
    ]
   },
@@ -11668,13 +11620,7 @@
    "exact": 100.0,
    "steps": [
     "1 L = 1,000 mL",
-    {
-     "setups": {
-      "rp": "[[1,000 mL|10 hr]] = [[X mL|1 hr]]  →  10X = 1,000  →  X = 100",
-      "fm": "mL/hr = [[1,000 mL|10 hr]] = 100",
-      "da": "X mL/hr = [[1,000 mL|1 L]] × [[1 L|10 hr]] = 100"
-     }
-    },
+    "mL/hr = volume ÷ time: 1,000 mL ÷ 10 hr = 100",
     "Makes sense: 1,000 mL over 10 hr works out to about 100 mL each hour."
    ]
   },
@@ -11692,13 +11638,7 @@
    "round": "whole",
    "exact": 200.0,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[50 mL|15 min]] = [[X mL|60 min]]  →  15X = 3,000  →  X = 200",
-      "fm": "mL/hr = [[50 mL|15 min]] × 60 = 200",
-      "da": "X mL/hr = [[50 mL|15 min]] × [[60 min|1 hr]] = 200"
-     }
-    },
+    "mL/hr = volume ÷ minutes × 60 (minutes in an hour): 50 mL ÷ 15 min × 60 = 200",
     "Makes sense: 50 mL over 15 minutes works out to about 200 mL each hour."
    ]
   },
@@ -11716,13 +11656,7 @@
    "round": "whole",
    "exact": 125.0,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[750 mL|6 hr]] = [[X mL|1 hr]]  →  6X = 750  →  X = 125",
-      "fm": "mL/hr = [[750 mL|6 hr]] = 125",
-      "da": "X mL/hr = [[750 mL|6 hr]] = 125"
-     }
-    },
+    "mL/hr = volume ÷ time: 750 mL ÷ 6 hr = 125",
     "Makes sense: 750 mL over 6 hr works out to about 125 mL each hour."
    ]
   },
@@ -11740,13 +11674,7 @@
    "round": "whole",
    "exact": 100.0,
    "steps": [
-    {
-     "setups": {
-      "rp": "[[150 mL|90 min]] = [[X mL|60 min]]  →  90X = 9,000  →  X = 100",
-      "fm": "mL/hr = [[150 mL|90 min]] × 60 = 100",
-      "da": "X mL/hr = [[150 mL|90 min]] × [[60 min|1 hr]] = 100"
-     }
-    },
+    "mL/hr = volume ÷ minutes × 60 (minutes in an hour): 150 mL ÷ 90 min × 60 = 100",
     "Makes sense: 150 mL over 90 minutes works out to about 100 mL each hour."
    ]
   },
