@@ -163,7 +163,11 @@ function initPracticeQuiz(bank, catLabels, opts){
      Ordered response ("order"): options are listed in the correct order; every one is
      marked correct and q.correct keeps that order.
      Drop-down ("cloze"): q.sentence holds {1}, {2}... and each option has a blank number;
-     one correct option per blank, so it grades like select-all-that-apply. */
+     one correct option per blank, so it grades like select-all-that-apply. A drop-down
+     table puts the blanks in q.table ({head: [...], rows: [[cell, "{1}"], ...]}) instead.
+     Drag and drop into several boxes: q.buckets lists the box names, and each option that
+     belongs in a box has bucket: N (1-based); options with no bucket stay out. The answer
+     is a list of "id@N" placements, and q.correct holds the right ones. */
   function normalizeBank(bank){
     var missingRationale = [];
     bank.forEach(function(q, qi){
@@ -179,9 +183,9 @@ function initPracticeQuiz(bank, catLabels, opts){
         var id = o.id != null ? String(o.id) : (i < LETTERS.length ? LETTERS.charAt(i).toLowerCase() : "o" + i);
         var rationale = o.rationale ? String(o.rationale).replace(PREFIX_RE, "") : "";
         if (!rationale) gaps.push(id);
-        return {id: id, text: o.text, correct: ordered || o.correct === true || listed.indexOf(id) !== -1, rationale: rationale, blank: o.blank};
+        return {id: id, text: o.text, correct: ordered || o.bucket != null || o.correct === true || listed.indexOf(id) !== -1, rationale: rationale, blank: o.blank, bucket: o.bucket != null ? Number(o.bucket) : undefined};
       });
-      q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return o.id; });
+      q.correct = q.options.filter(function(o){ return o.correct; }).map(function(o){ return isMultiDD(q) ? o.id + "@" + o.bucket : o.id; });
       /* A question marked "sata" stays select-all even with one correct answer, like the real exam */
       q.multi = q.type === "sata" || q.correct.length > 1;
       if (q.type !== "dragdrop" && q.type !== "cloze" && !ordered) q.type = q.multi ? "sata" : "mc";
@@ -212,6 +216,19 @@ function initPracticeQuiz(bank, catLabels, opts){
       });
       return {correct: allRight, states: states};
     }
+    /* Several boxes: right only when every option sits in its own box and the extras stay out */
+    if (isMultiDD(q)){
+      var placed = {};
+      selected.forEach(function(s){ var p = String(s).split("@"); placed[p[0]] = Number(p[1]); });
+      q.options.forEach(function(o){
+        var at = placed[o.id], home = o.bucket ? " Belongs in " + q.buckets[o.bucket - 1] + "." : "";
+        var state = o.bucket ? (at === o.bucket ? "correct" : at ? "wrong" : "missed") : (at ? "wrong" : "neutral");
+        if (state === "missed" || state === "wrong") allRight = false;
+        states[o.id] = {state: state, chosen: !!at,
+          prefix: state === "correct" ? "Correct." : state === "missed" ? "Missed." + home : "Incorrect." + (o.bucket ? home : " Doesn't belong in a box.")};
+      });
+      return {correct: allRight, states: states};
+    }
     q.options.forEach(function(o){
       var chosen = selected.indexOf(o.id) !== -1;
       var state = o.correct ? (chosen ? "correct" : "missed") : (chosen ? "wrong" : "neutral");
@@ -220,6 +237,8 @@ function initPracticeQuiz(bank, catLabels, opts){
     });
     return {correct: allRight, states: states};
   }
+
+  function isMultiDD(q){ return q.type === "dragdrop" && Array.isArray(q.buckets) && q.buckets.length > 0; }
 
   function shuffle(arr){
     var a = arr.slice();
@@ -741,14 +760,21 @@ function initPracticeQuiz(bank, catLabels, opts){
   function ddBoxes(){ return optsEl.querySelectorAll(".pq-dd-box"); }
   function ddList(box){ return box.querySelector(".pq-dd-list"); }
   function ddBoxOf(item){ return item.closest(".pq-dd-box"); }
+  /* The next box over (letter keys cycle an option through every box) */
   function ddOtherBox(item){
-    var b = ddBoxes();
-    return ddBoxOf(item) === b[0] ? b[1] : b[0];
+    var b = Array.prototype.slice.call(ddBoxes());
+    return b[(b.indexOf(ddBoxOf(item)) + 1) % b.length];
   }
   function ddAnswerIds(){
-    var box = optsEl.querySelector('.pq-dd-box[data-box="answer"]');
-    if (!box) return [];
-    return Array.prototype.map.call(box.querySelectorAll(".pq-dd-item"), function(el){ return el.getAttribute("data-opt"); });
+    var ids = [];
+    Array.prototype.forEach.call(optsEl.querySelectorAll(".pq-dd-box"), function(box){
+      var name = box.getAttribute("data-box");
+      if (name === "pool") return;
+      box.querySelectorAll(".pq-dd-item").forEach(function(el){
+        ids.push(el.getAttribute("data-opt") + (name === "answer" ? "" : "@" + name.slice(1)));
+      });
+    });
+    return ids;
   }
 
   /* Keep each box in the original shuffled order so items don't jump around */
@@ -800,7 +826,7 @@ function initPracticeQuiz(bank, catLabels, opts){
      with every option still in it. Re-measured when the screen width changes. */
   function ddLockSize(){
     var boxes = ddBoxes();
-    if (boxes.length !== 2) return;
+    if (boxes.length !== 2){ ddSync(); return; }
     var pool = boxes[0];
     boxes.forEach(function(b){ b.style.minHeight = ""; });
     var moved = Array.prototype.slice.call(boxes[1].querySelectorAll(".pq-dd-item"));
@@ -909,10 +935,16 @@ function initPracticeQuiz(bank, catLabels, opts){
     optsEl.removeAttribute("aria-label");
     var wrap = document.createElement("div");
     wrap.className = "pq-dd";
+    var boxes = [["pool", q.leftLabel || "Options"]];
+    if (isMultiDD(q)){
+      wrap.classList.add("pq-dd-multi");
+      wrap.style.setProperty("--dd-cols", Math.min(q.buckets.length, 3));
+      q.buckets.forEach(function(name, i){ boxes.push(["b" + (i + 1), name]); });
+    } else boxes.push(["answer", q.rightLabel || "Answer"]);
 
-    [["pool", q.leftLabel || "Options"], ["answer", q.rightLabel || "Answer"]].forEach(function(b){
+    boxes.forEach(function(b){
       var box = document.createElement("div");
-      box.className = "pq-dd-box";
+      box.className = "pq-dd-box" + (b[0] === "pool" ? "" : " is-answer");
       box.setAttribute("data-box", b[0]);
       box.setAttribute("role", "group");
       box.setAttribute("aria-label", b[1]);
@@ -927,7 +959,7 @@ function initPracticeQuiz(bank, catLabels, opts){
       list.className = "pq-dd-list";
       var empty = document.createElement("p");
       empty.className = "pq-dd-empty";
-      empty.textContent = b[0] === "answer" ? "Drag or tap answers here" : "Empty";
+      empty.textContent = b[0] === "pool" ? "Empty" : "Drag or tap answers here";
       box.appendChild(head); box.appendChild(list); box.appendChild(empty);
       /* Tap-then-tap: with an option picked, tapping anywhere in the other box moves it */
       box.addEventListener("click", function(e){
@@ -1161,13 +1193,15 @@ function initPracticeQuiz(bank, catLabels, opts){
     optsEl.removeAttribute("aria-label");
     var wrap = document.createElement("div");
     wrap.className = "pq-cloze";
-    var para = document.createElement("p");
-    para.className = "pq-cloze-text";
-    var parts = String(q.sentence || "").split(/\{(\d+)\}/);
-    var blanks = [];
-    parts.forEach(function(part, i){
-      if (i % 2 === 0){ if (part) para.appendChild(document.createTextNode(part)); return; }
-      var n = Number(part);
+    var blanks = [], blankNames = {};
+    /* Fill one element with text, turning each {N} into that blank's menu */
+    function fill(el, text){
+      String(text || "").split(/\{(\d+)\}/).forEach(function(part, i){
+        if (i % 2 === 0){ if (part) el.appendChild(document.createTextNode(part)); return; }
+        el.appendChild(blankMenu(Number(part)));
+      });
+    }
+    function blankMenu(n){
       blanks.push(n);
       var sel = document.createElement("select");
       sel.className = "pq-cloze-sel";
@@ -1185,9 +1219,36 @@ function initPracticeQuiz(bank, catLabels, opts){
         errEl.style.display = "none";
         document.getElementById("pq-submit").disabled = clozeIds().length < clozeSelects().length;
       });
-      para.appendChild(sel);
-    });
-    wrap.appendChild(para);
+      return sel;
+    }
+    if (q.sentence){
+      var para = document.createElement("p");
+      para.className = "pq-cloze-text";
+      fill(para, q.sentence);
+      wrap.appendChild(para);
+    }
+    /* Drop-down table: one menu per blank cell; the row's first cell names the blank in the results */
+    if (q.table && Array.isArray(q.table.rows)){
+      var scroll = document.createElement("div");
+      scroll.className = "pq-cloze-tablewrap";
+      var table = document.createElement("table");
+      table.className = "pq-cloze-table";
+      if (q.table.head){
+        var thead = table.createTHead().insertRow();
+        q.table.head.forEach(function(h){ var th = document.createElement("th"); th.textContent = h; thead.appendChild(th); });
+      }
+      var tbody = table.createTBody();
+      q.table.rows.forEach(function(row){
+        var tr = tbody.insertRow();
+        row.forEach(function(cell, ci){
+          var td = tr.insertCell();
+          String(cell).replace(/\{(\d+)\}/g, function(m, n){ if (ci > 0) blankNames[n] = String(row[0]).replace(/\{\d+\}/g, "").trim(); return m; });
+          fill(td, cell);
+        });
+      });
+      scroll.appendChild(table);
+      wrap.appendChild(scroll);
+    }
 
     /* Result rows, shown after checking */
     var results = document.createElement("div");
@@ -1195,7 +1256,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     blanks.forEach(function(n){
       var head = document.createElement("p");
       head.className = "pq-cloze-blank";
-      head.textContent = "Blank " + n;
+      head.textContent = blankNames[n] || "Blank " + n;
       results.appendChild(head);
       currentDisplayOptions.filter(function(o){ return Number(o.blank) === n; }).forEach(function(o, i){
         results.appendChild(buildOption(o, i, "div"));
@@ -1318,14 +1379,20 @@ function initPracticeQuiz(bank, catLabels, opts){
     img.src = q.image; img.alt = q.imageAlt || "";
     fig.hidden = false;
   }
-  function fullPrompt(q){ return q.prompt + (q.sentence ? " " + q.sentence.replace(/\{\d+\}/g, "_____") : ""); }
+  function fullPrompt(q){
+    var t = q.prompt + (q.sentence ? " " + q.sentence.replace(/\{\d+\}/g, "_____") : "");
+    if (q.table && q.table.rows) t += " " + q.table.rows.map(function(r){ return r.join(": ").replace(/\{\d+\}/g, "_____"); }).join("; ");
+    return t;
+  }
 
   /* Ordered response reads as numbered steps: "1. First → 2. Second" */
   function optText(q, ids){
     var order = q.type === "order";
     return ids.map(function(id, i){
-      var opt = q.options.filter(function(o){ return o.id === id; })[0];
-      return (order ? (i + 1) + ". " : "") + (opt ? opt.text : id);
+      var p = String(id).split("@");
+      var opt = q.options.filter(function(o){ return o.id === p[0]; })[0];
+      var box = p[1] && q.buckets ? " \u2192 " + q.buckets[Number(p[1]) - 1] : "";
+      return (order ? (i + 1) + ". " : "") + (opt ? opt.text : id) + box;
     }).join(order ? " \u2192 " : ", ");
   }
 

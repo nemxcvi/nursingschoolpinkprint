@@ -1806,6 +1806,106 @@
    ]
   },
   {
+   "id": "nur114-u4-fluid-balance-052",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Fluid Balance & Imbalances",
+   "category": "Hypervolemia",
+   "type": "dragdrop",
+   "prompt": "A nurse is assessing several clients for fluid imbalance. Sort each finding. Move each answer to the box where it belongs.",
+   "leftLabel": "Findings",
+   "buckets": [
+    "Fluid volume deficit",
+    "Fluid volume excess"
+   ],
+   "options": [
+    {
+     "text": "Dry mucous membranes",
+     "correct": true,
+     "rationale": "An early sign of fluid deficit.",
+     "bucket": 1
+    },
+    {
+     "text": "Weak, thready pulse",
+     "correct": true,
+     "rationale": "Low volume weakens the pulse.",
+     "bucket": 1
+    },
+    {
+     "text": "Low urine output with high specific gravity",
+     "correct": true,
+     "rationale": "The kidneys conserve water.",
+     "bucket": 1
+    },
+    {
+     "text": "Crackles in the lungs",
+     "correct": true,
+     "rationale": "Fluid backs up into the lungs.",
+     "bucket": 2
+    },
+    {
+     "text": "Distended neck veins",
+     "correct": true,
+     "rationale": "Extra volume distends the neck veins.",
+     "bucket": 2
+    },
+    {
+     "text": "Weight gain of 2 kg in 2 days",
+     "correct": true,
+     "rationale": "Rapid weight gain reflects fluid retention.",
+     "bucket": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-fluid-balance-053",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Fluid Balance & Imbalances",
+   "category": "Hypervolemia",
+   "type": "cloze",
+   "prompt": "A client who has heart failure gained 2 kg in 2 days and has crackles in both lung bases and ankle edema.",
+   "sentence": "The client is experiencing {1}, and the nurse should anticipate a prescription for {2}.",
+   "options": [
+    {
+     "text": "fluid volume excess",
+     "correct": true,
+     "rationale": "Weight gain, crackles, and edema are signs of hypervolemia.",
+     "blank": 1
+    },
+    {
+     "text": "fluid volume deficit",
+     "correct": false,
+     "rationale": "These findings show too much fluid.",
+     "blank": 1
+    },
+    {
+     "text": "dehydration",
+     "correct": false,
+     "rationale": "Dehydration causes weight loss and dry mucous membranes.",
+     "blank": 1
+    },
+    {
+     "text": "furosemide",
+     "correct": true,
+     "rationale": "A loop diuretic removes extra fluid.",
+     "blank": 2
+    },
+    {
+     "text": "more IV fluids",
+     "correct": false,
+     "rationale": "More fluid worsens overload.",
+     "blank": 2
+    },
+    {
+     "text": "a high-sodium diet",
+     "correct": false,
+     "rationale": "Sodium holds fluid.",
+     "blank": 2
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-electrolytes-001",
    "course": "NUR 114",
    "unit": 4,
@@ -3673,6 +3773,165 @@
    ]
   },
   {
+   "id": "nur114-u4-electrolytes-057",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Electrolytes",
+   "category": "Electrolyte Basics",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing an adult client's electrolytes. For each result, choose how it compares with the expected range.",
+   "table": {
+    "head": [
+     "Result",
+     "Compared with expected"
+    ],
+    "rows": [
+     [
+      "Sodium 128 mEq/L",
+      "{1}"
+     ],
+     [
+      "Potassium 5.8 mEq/L",
+      "{2}"
+     ],
+     [
+      "Calcium 9.5 mg/dL",
+      "{3}"
+     ],
+     [
+      "Magnesium 1.0 mEq/L",
+      "{4}"
+     ]
+    ]
+   },
+   "options": [
+    {
+     "text": "Low",
+     "correct": true,
+     "rationale": "Expected sodium is 136–145 mEq/L.",
+     "blank": 1
+    },
+    {
+     "text": "Within range",
+     "correct": false,
+     "rationale": "128 is below 136.",
+     "blank": 1
+    },
+    {
+     "text": "High",
+     "correct": false,
+     "rationale": "128 is low.",
+     "blank": 1
+    },
+    {
+     "text": "High",
+     "correct": true,
+     "rationale": "Expected potassium is 3.5–5 mEq/L.",
+     "blank": 2
+    },
+    {
+     "text": "Within range",
+     "correct": false,
+     "rationale": "5.8 is above 5.",
+     "blank": 2
+    },
+    {
+     "text": "Low",
+     "correct": false,
+     "rationale": "5.8 is high.",
+     "blank": 2
+    },
+    {
+     "text": "Within range",
+     "correct": true,
+     "rationale": "Expected calcium is 9–10.5 mg/dL.",
+     "blank": 3
+    },
+    {
+     "text": "Low",
+     "correct": false,
+     "rationale": "9.5 is within range.",
+     "blank": 3
+    },
+    {
+     "text": "High",
+     "correct": false,
+     "rationale": "9.5 is within range.",
+     "blank": 3
+    },
+    {
+     "text": "Low",
+     "correct": true,
+     "rationale": "Expected magnesium is 1.3–2.1 mEq/L.",
+     "blank": 4
+    },
+    {
+     "text": "Within range",
+     "correct": false,
+     "rationale": "1.0 is below 1.3.",
+     "blank": 4
+    },
+    {
+     "text": "High",
+     "correct": false,
+     "rationale": "1.0 is low.",
+     "blank": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-electrolytes-058",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Electrolytes",
+   "category": "Electrolyte Basics",
+   "type": "dragdrop",
+   "prompt": "A nurse is caring for clients who have electrolyte imbalances. Sort each finding into the imbalance it best matches. Move each answer to the box where it belongs.",
+   "leftLabel": "Findings",
+   "buckets": [
+    "Hyperkalemia",
+    "Hypocalcemia",
+    "Hypernatremia"
+   ],
+   "options": [
+    {
+     "text": "Life-threatening dysrhythmias with a high potassium level",
+     "correct": true,
+     "rationale": "Hyperkalemia affects the heart.",
+     "bucket": 1
+    },
+    {
+     "text": "Paresthesia and muscle weakness with kidney failure",
+     "correct": true,
+     "rationale": "Kidney failure causes hyperkalemia.",
+     "bucket": 1
+    },
+    {
+     "text": "Tetany and a positive Trousseau's sign",
+     "correct": true,
+     "rationale": "Tetany is the hallmark of hypocalcemia.",
+     "bucket": 2
+    },
+    {
+     "text": "Numbness and tingling around the mouth",
+     "correct": true,
+     "rationale": "Perioral tingling suggests low calcium.",
+     "bucket": 2
+    },
+    {
+     "text": "Thirst and agitation after water loss",
+     "correct": true,
+     "rationale": "Hypernatremia hits the central nervous system.",
+     "bucket": 3
+    },
+    {
+     "text": "Constipation and confusion with a high calcium level",
+     "correct": false,
+     "rationale": "That's hypercalcemia."
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-iv-therapy-001",
    "course": "NUR 114",
    "unit": 4,
@@ -5125,6 +5384,100 @@
    ]
   },
   {
+   "id": "nur114-u4-iv-therapy-045",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "IV Therapy & Blood Transfusions",
+   "category": "IV Complications",
+   "type": "dragdrop",
+   "prompt": "A nurse is assessing several clients' peripheral IV sites. Sort each finding into the complication it suggests. Move each answer to the box where it belongs.",
+   "leftLabel": "Findings",
+   "buckets": [
+    "Infiltration",
+    "Phlebitis",
+    "Infection"
+   ],
+   "options": [
+    {
+     "text": "Cool, pale skin around the site",
+     "correct": true,
+     "rationale": "Fluid leaking into tissue cools the area.",
+     "bucket": 1
+    },
+    {
+     "text": "Swelling and a damp dressing",
+     "correct": true,
+     "rationale": "Infiltration causes local swelling.",
+     "bucket": 1
+    },
+    {
+     "text": "Warmth and a red streak along the vein",
+     "correct": true,
+     "rationale": "A red streak along the vein suggests phlebitis.",
+     "bucket": 2
+    },
+    {
+     "text": "Purulent drainage at the site and fever",
+     "correct": true,
+     "rationale": "Pus and fever suggest infection.",
+     "bucket": 3
+    },
+    {
+     "text": "Clear site with no redness or swelling",
+     "correct": false,
+     "rationale": "That's an expected finding."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-iv-therapy-046",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "IV Therapy & Blood Transfusions",
+   "category": "IV Complications",
+   "type": "cloze",
+   "prompt": "A client receiving IV fluids becomes short of breath. The nurse hears crackles, sees distended neck veins, and notes the blood pressure has risen.",
+   "sentence": "The client most likely has {1}, so the nurse should first {2}.",
+   "options": [
+    {
+     "text": "circulatory overload",
+     "correct": true,
+     "rationale": "Crackles, distended neck veins, high blood pressure, and dyspnea point to fluid overload.",
+     "blank": 1
+    },
+    {
+     "text": "infiltration",
+     "correct": false,
+     "rationale": "Infiltration is a local problem at the site.",
+     "blank": 1
+    },
+    {
+     "text": "phlebitis",
+     "correct": false,
+     "rationale": "Phlebitis is inflammation of the vein.",
+     "blank": 1
+    },
+    {
+     "text": "slow or stop the infusion",
+     "correct": true,
+     "rationale": "Stopping more fluid is the first action.",
+     "blank": 2
+    },
+    {
+     "text": "increase the infusion rate",
+     "correct": false,
+     "rationale": "More fluid worsens overload.",
+     "blank": 2
+    },
+    {
+     "text": "apply a warm compress to the site",
+     "correct": false,
+     "rationale": "This doesn't address overload.",
+     "blank": 2
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-acid-base-001",
    "course": "NUR 114",
    "unit": 4,
@@ -6138,6 +6491,159 @@
     {
      "text": "Reassess breathing and level of consciousness",
      "rationale": "Evaluate the response to interventions."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-acid-base-034",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Acid-Base Balance",
+   "category": "ABG Interpretation",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing arterial blood gas results for several clients. For each result, choose the interpretation.",
+   "table": {
+    "head": [
+     "ABG result",
+     "Interpretation"
+    ],
+    "rows": [
+     [
+      "pH 7.30, PaCO2 52, HCO3– 24",
+      "{1}"
+     ],
+     [
+      "pH 7.49, PaCO2 30, HCO3– 24",
+      "{2}"
+     ],
+     [
+      "pH 7.32, PaCO2 40, HCO3– 18",
+      "{3}"
+     ],
+     [
+      "pH 7.50, PaCO2 41, HCO3– 31",
+      "{4}"
+     ]
+    ]
+   },
+   "options": [
+    {
+     "text": "Respiratory acidosis",
+     "correct": true,
+     "rationale": "Low pH and high PaCO2 move in opposite directions.",
+     "blank": 1
+    },
+    {
+     "text": "Metabolic acidosis",
+     "correct": false,
+     "rationale": "HCO3– is normal.",
+     "blank": 1
+    },
+    {
+     "text": "Respiratory alkalosis",
+     "correct": false,
+     "rationale": "The pH is low.",
+     "blank": 1
+    },
+    {
+     "text": "Respiratory alkalosis",
+     "correct": true,
+     "rationale": "High pH and low PaCO2.",
+     "blank": 2
+    },
+    {
+     "text": "Metabolic alkalosis",
+     "correct": false,
+     "rationale": "HCO3– is normal.",
+     "blank": 2
+    },
+    {
+     "text": "Respiratory acidosis",
+     "correct": false,
+     "rationale": "The pH is high.",
+     "blank": 2
+    },
+    {
+     "text": "Metabolic acidosis",
+     "correct": true,
+     "rationale": "Low pH and low HCO3– move in the same direction.",
+     "blank": 3
+    },
+    {
+     "text": "Respiratory acidosis",
+     "correct": false,
+     "rationale": "PaCO2 is normal.",
+     "blank": 3
+    },
+    {
+     "text": "Metabolic alkalosis",
+     "correct": false,
+     "rationale": "The pH is low.",
+     "blank": 3
+    },
+    {
+     "text": "Metabolic alkalosis",
+     "correct": true,
+     "rationale": "High pH and high HCO3–.",
+     "blank": 4
+    },
+    {
+     "text": "Respiratory alkalosis",
+     "correct": false,
+     "rationale": "PaCO2 is normal.",
+     "blank": 4
+    },
+    {
+     "text": "Metabolic acidosis",
+     "correct": false,
+     "rationale": "The pH is high.",
+     "blank": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-acid-base-035",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Acid-Base Balance",
+   "category": "Acid-Base Basics",
+   "type": "dragdrop",
+   "prompt": "A nurse is teaching how the body controls acid-base balance. Sort each job by the organ that does it. Move each answer to the box where it belongs.",
+   "leftLabel": "Jobs",
+   "buckets": [
+    "Lungs",
+    "Kidneys"
+   ],
+   "options": [
+    {
+     "text": "Blowing off carbon dioxide",
+     "correct": true,
+     "rationale": "The lungs control carbonic acid (CO2).",
+     "bucket": 1
+    },
+    {
+     "text": "Changing the rate and depth of breathing",
+     "correct": true,
+     "rationale": "Breathing changes adjust CO2.",
+     "bucket": 1
+    },
+    {
+     "text": "Making new bicarbonate",
+     "correct": true,
+     "rationale": "The kidneys make bicarbonate.",
+     "bucket": 2
+    },
+    {
+     "text": "Excreting hydrogen ions",
+     "correct": true,
+     "rationale": "The kidneys excrete hydrogen ions.",
+     "bucket": 2
+    },
+    {
+     "text": "Holding on to bicarbonate",
+     "correct": true,
+     "rationale": "The kidneys reabsorb bicarbonate.",
+     "bucket": 2
     }
    ]
   },
@@ -10536,6 +11042,94 @@
    ]
   },
   {
+   "id": "nur114-u4-enteral-parenteral-068",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Feeding Tubes",
+   "type": "dragdrop",
+   "prompt": "A nurse is caring for clients who have feeding tubes. Sort each tube by where its tip ends. Move each answer to the box where it belongs.",
+   "leftLabel": "Tubes",
+   "buckets": [
+    "Stomach",
+    "Small intestine"
+   ],
+   "options": [
+    {
+     "text": "Nasogastric tube",
+     "correct": true,
+     "rationale": "Its tip ends in the stomach.",
+     "bucket": 1
+    },
+    {
+     "text": "Gastrostomy (PEG) tube",
+     "correct": true,
+     "rationale": "Its tip ends in the stomach.",
+     "bucket": 1
+    },
+    {
+     "text": "Nasoduodenal tube",
+     "correct": true,
+     "rationale": "Its tip ends in the duodenum.",
+     "bucket": 2
+    },
+    {
+     "text": "Nasojejunal tube",
+     "correct": true,
+     "rationale": "Its tip ends in the jejunum.",
+     "bucket": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-enteral-parenteral-069",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Enteral & Parenteral Nutrition",
+   "category": "Giving Feedings",
+   "type": "cloze",
+   "prompt": "A nurse is about to give an intermittent tube feeding to a client.",
+   "sentence": "The nurse should raise the head of the bed to {1} and keep it raised for at least {2} after the feeding.",
+   "options": [
+    {
+     "text": "30 to 45 degrees",
+     "correct": true,
+     "rationale": "This lowers the risk of aspiration.",
+     "blank": 1
+    },
+    {
+     "text": "0 degrees",
+     "correct": false,
+     "rationale": "Flat raises the risk of aspiration.",
+     "blank": 1
+    },
+    {
+     "text": "10 degrees",
+     "correct": false,
+     "rationale": "That's too low.",
+     "blank": 1
+    },
+    {
+     "text": "1 hour",
+     "correct": true,
+     "rationale": "Keep the head of the bed up at least 1 hour after.",
+     "blank": 2
+    },
+    {
+     "text": "5 minutes",
+     "correct": false,
+     "rationale": "That's too short.",
+     "blank": 2
+    },
+    {
+     "text": "10 minutes",
+     "correct": false,
+     "rationale": "That's too short.",
+     "blank": 2
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-nutrition-043",
    "course": "NUR 114",
    "unit": 4,
@@ -11333,6 +11927,105 @@
      "correct": false,
      "rationale": "Vitamin K helps make the proteins needed for blood clotting.",
      "blank": 6
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-092",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Therapeutic Diets",
+   "type": "dragdrop",
+   "prompt": "A nurse is checking meal trays. Sort each item by the most limited diet it's allowed on. Move each answer to the box where it belongs.",
+   "leftLabel": "Items",
+   "buckets": [
+    "Clear liquid",
+    "Full liquid"
+   ],
+   "options": [
+    {
+     "text": "Broth",
+     "correct": true,
+     "rationale": "Allowed on clear liquids.",
+     "bucket": 1
+    },
+    {
+     "text": "Gelatin",
+     "correct": true,
+     "rationale": "Allowed on clear liquids.",
+     "bucket": 1
+    },
+    {
+     "text": "Apple juice without pulp",
+     "correct": true,
+     "rationale": "Allowed on clear liquids.",
+     "bucket": 1
+    },
+    {
+     "text": "Vanilla pudding",
+     "correct": true,
+     "rationale": "Full liquids add milk-based foods.",
+     "bucket": 2
+    },
+    {
+     "text": "Ice cream",
+     "correct": true,
+     "rationale": "Allowed on full liquids.",
+     "bucket": 2
+    },
+    {
+     "text": "Raw carrots",
+     "correct": false,
+     "rationale": "Not allowed on either liquid diet."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-nutrition-093",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Nutrition",
+   "category": "Safe Eating & Aspiration",
+   "type": "cloze",
+   "prompt": "A client who had a stroke coughs and clears the throat while drinking water at lunch.",
+   "sentence": "These are signs of {1}, so the nurse should {2}.",
+   "options": [
+    {
+     "text": "aspiration",
+     "correct": true,
+     "rationale": "Coughing and throat clearing while drinking are signs of aspiration.",
+     "blank": 1
+    },
+    {
+     "text": "an expected finding",
+     "correct": false,
+     "rationale": "Coughing with drinks isn't expected.",
+     "blank": 1
+    },
+    {
+     "text": "nausea",
+     "correct": false,
+     "rationale": "These are swallowing signs.",
+     "blank": 1
+    },
+    {
+     "text": "stop the meal and request a swallowing evaluation",
+     "correct": true,
+     "rationale": "A speech therapist evaluates swallowing.",
+     "blank": 2
+    },
+    {
+     "text": "give the water faster",
+     "correct": false,
+     "rationale": "Faster drinking raises aspiration risk.",
+     "blank": 2
+    },
+    {
+     "text": "lay the client flat to rest",
+     "correct": false,
+     "rationale": "Lying flat raises aspiration risk.",
+     "blank": 2
     }
    ]
   },
@@ -17115,6 +17808,151 @@
    ]
   },
   {
+   "id": "nur114-u4-bowel-elimination-144",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Ostomies",
+   "type": "dragdrop",
+   "prompt": "A nurse is caring for clients who have bowel diversions. Sort each diversion by its usual output. Move each answer to the box where it belongs.",
+   "leftLabel": "Diversions",
+   "buckets": [
+    "Liquid output",
+    "Formed output"
+   ],
+   "options": [
+    {
+     "text": "Ileostomy",
+     "correct": true,
+     "rationale": "Small intestine output is liquid.",
+     "bucket": 1
+    },
+    {
+     "text": "Ascending colostomy",
+     "correct": true,
+     "rationale": "Output is still liquid.",
+     "bucket": 1
+    },
+    {
+     "text": "Descending colostomy",
+     "correct": true,
+     "rationale": "More water is absorbed, so stool is formed.",
+     "bucket": 2
+    },
+    {
+     "text": "Sigmoid colostomy",
+     "correct": true,
+     "rationale": "Sigmoid output is formed.",
+     "bucket": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-bowel-elimination-145",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Enemas, Laxatives & Bowel Care",
+   "type": "cloze",
+   "prompt": "A nurse is teaching about laxatives. For each medication, choose how it works.",
+   "table": {
+    "head": [
+     "Medication",
+     "How it works"
+    ],
+    "rows": [
+     [
+      "Psyllium",
+      "{1}"
+     ],
+     [
+      "Docusate sodium",
+      "{2}"
+     ]
+    ]
+   },
+   "options": [
+    {
+     "text": "Bulk-forming: adds fiber that holds water",
+     "correct": true,
+     "rationale": "Psyllium is bulk-forming.",
+     "blank": 1
+    },
+    {
+     "text": "Stool softener: lowers surface tension",
+     "correct": false,
+     "rationale": "That's docusate.",
+     "blank": 1
+    },
+    {
+     "text": "Lubricant: coats the stool",
+     "correct": false,
+     "rationale": "That's an oil retention approach.",
+     "blank": 1
+    },
+    {
+     "text": "Stool softener: lets water and fat soak into stool",
+     "correct": true,
+     "rationale": "Docusate lowers stool surface tension.",
+     "blank": 2
+    },
+    {
+     "text": "Bulk-forming: adds fiber",
+     "correct": false,
+     "rationale": "That's psyllium.",
+     "blank": 2
+    },
+    {
+     "text": "Stimulant: increases peristalsis",
+     "correct": false,
+     "rationale": "Docusate isn't a stimulant.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-bowel-elimination-146",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Bowel Elimination",
+   "category": "Enemas, Laxatives & Bowel Care",
+   "type": "cloze",
+   "prompt": "A nurse is giving an adult client a cleansing enema. The client reports abdominal cramping.",
+   "sentence": "The nurse should position the client on the {1} side and, when cramping occurs, {2}.",
+   "options": [
+    {
+     "text": "left",
+     "correct": true,
+     "rationale": "Left Sims' follows the path of the colon.",
+     "blank": 1
+    },
+    {
+     "text": "right",
+     "correct": false,
+     "rationale": "The left side is used.",
+     "blank": 1
+    },
+    {
+     "text": "lower the bag or pause the flow",
+     "correct": true,
+     "rationale": "Slowing the flow eases cramping.",
+     "blank": 2
+    },
+    {
+     "text": "raise the bag higher",
+     "correct": false,
+     "rationale": "Raising the bag speeds the flow and worsens cramping.",
+     "blank": 2
+    },
+    {
+     "text": "remove the tube and stop for the day",
+     "correct": false,
+     "rationale": "Pausing usually relieves cramping.",
+     "blank": 2
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-urinary-elimination-001",
    "course": "NUR 114",
    "unit": 4,
@@ -21108,6 +21946,106 @@
    ]
   },
   {
+   "id": "nur114-u4-urinary-elimination-125",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Urinary Elimination",
+   "category": "Catheters & CAUTI",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing catheter care. Sort each action. Move each answer to the box where it belongs.",
+   "leftLabel": "Actions",
+   "buckets": [
+    "Lowers CAUTI risk",
+    "Raises CAUTI risk"
+   ],
+   "options": [
+    {
+     "text": "Removing the catheter as soon as it isn't needed",
+     "correct": true,
+     "rationale": "A shorter time lowers risk.",
+     "bucket": 1
+    },
+    {
+     "text": "Keeping the drainage system closed",
+     "correct": true,
+     "rationale": "A closed system lowers risk.",
+     "bucket": 1
+    },
+    {
+     "text": "Keeping the bag below the bladder and off the floor",
+     "correct": true,
+     "rationale": "This prevents backflow and contamination.",
+     "bucket": 1
+    },
+    {
+     "text": "Disconnecting the tubing to empty the bag",
+     "correct": true,
+     "rationale": "Opening the system raises risk.",
+     "bucket": 2
+    },
+    {
+     "text": "Routine catheter changes",
+     "correct": true,
+     "rationale": "Routine changes raise risk.",
+     "bucket": 2
+    },
+    {
+     "text": "Irrigating the catheter",
+     "correct": true,
+     "rationale": "Irrigation raises risk.",
+     "bucket": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-urinary-elimination-126",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Urinary Elimination",
+   "category": "UTIs & Urinary Conditions",
+   "type": "cloze",
+   "prompt": "A female client reports burning with urination and cloudy, foul-smelling urine.",
+   "sentence": "The nurse should suspect {1} and teach the client to {2}.",
+   "options": [
+    {
+     "text": "a urinary tract infection (UTI)",
+     "correct": true,
+     "rationale": "Burning and cloudy, foul-smelling urine are typical of a UTI.",
+     "blank": 1
+    },
+    {
+     "text": "a kidney stone",
+     "correct": false,
+     "rationale": "A stone causes sharp flank pain and blood in the urine.",
+     "blank": 1
+    },
+    {
+     "text": "urinary retention",
+     "correct": false,
+     "rationale": "Retention causes a distended bladder.",
+     "blank": 1
+    },
+    {
+     "text": "wipe front to back and urinate after intercourse",
+     "correct": true,
+     "rationale": "These help prevent UTIs.",
+     "blank": 2
+    },
+    {
+     "text": "limit fluids",
+     "correct": false,
+     "rationale": "Fluids help flush the urinary tract.",
+     "blank": 2
+    },
+    {
+     "text": "hold urine as long as possible",
+     "correct": false,
+     "rationale": "Holding urine raises UTI risk.",
+     "blank": 2
+    }
+   ]
+  },
+  {
    "id": "nur114-u4-med-math-001",
    "course": "NUR 114",
    "unit": 4,
@@ -24351,6 +25289,272 @@
      "text": "The unit you're solving for goes in the denominator",
      "correct": false,
      "rationale": "The unit you're solving for goes on top."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-098",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "24-Hour Clock",
+   "type": "cloze",
+   "prompt": "A nurse is documenting medication times. For each time, choose the 24-hour time.",
+   "table": {
+    "head": [
+     "Time",
+     "24-hour clock"
+    ],
+    "rows": [
+     [
+      "4:00 p.m.",
+      "{1}"
+     ],
+     [
+      "12:30 a.m.",
+      "{2}"
+     ],
+     [
+      "9:45 a.m.",
+      "{3}"
+     ],
+     [
+      "7:00 p.m.",
+      "{4}"
+     ]
+    ]
+   },
+   "options": [
+    {
+     "text": "1600",
+     "correct": true,
+     "rationale": "Add 12 to p.m. hours.",
+     "blank": 1
+    },
+    {
+     "text": "0400",
+     "correct": false,
+     "rationale": "0400 is 4:00 a.m.",
+     "blank": 1
+    },
+    {
+     "text": "1400",
+     "correct": false,
+     "rationale": "1400 is 2:00 p.m.",
+     "blank": 1
+    },
+    {
+     "text": "0030",
+     "correct": true,
+     "rationale": "12:30 a.m. is 0030.",
+     "blank": 2
+    },
+    {
+     "text": "1230",
+     "correct": false,
+     "rationale": "1230 is 12:30 p.m.",
+     "blank": 2
+    },
+    {
+     "text": "2430",
+     "correct": false,
+     "rationale": "There is no 2430.",
+     "blank": 2
+    },
+    {
+     "text": "0945",
+     "correct": true,
+     "rationale": "Morning times keep their hour.",
+     "blank": 3
+    },
+    {
+     "text": "2145",
+     "correct": false,
+     "rationale": "2145 is 9:45 p.m.",
+     "blank": 3
+    },
+    {
+     "text": "1945",
+     "correct": false,
+     "rationale": "1945 is 7:45 p.m.",
+     "blank": 3
+    },
+    {
+     "text": "1900",
+     "correct": true,
+     "rationale": "7 + 12 = 19.",
+     "blank": 4
+    },
+    {
+     "text": "0700",
+     "correct": false,
+     "rationale": "0700 is 7:00 a.m.",
+     "blank": 4
+    },
+    {
+     "text": "1700",
+     "correct": false,
+     "rationale": "1700 is 5:00 p.m.",
+     "blank": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-099",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Abbreviations",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing a client's medication orders. Sort each abbreviation. Move each answer to the box where it belongs.",
+   "leftLabel": "Abbreviations",
+   "buckets": [
+    "Route",
+    "Timing or frequency"
+   ],
+   "options": [
+    {
+     "text": "PO",
+     "correct": true,
+     "rationale": "By mouth.",
+     "bucket": 1
+    },
+    {
+     "text": "SL",
+     "correct": true,
+     "rationale": "Under the tongue.",
+     "bucket": 1
+    },
+    {
+     "text": "IM",
+     "correct": true,
+     "rationale": "Intramuscular.",
+     "bucket": 1
+    },
+    {
+     "text": "TID",
+     "correct": true,
+     "rationale": "Three times a day.",
+     "bucket": 2
+    },
+    {
+     "text": "AC",
+     "correct": true,
+     "rationale": "Before meals.",
+     "bucket": 2
+    },
+    {
+     "text": "PRN",
+     "correct": true,
+     "rationale": "As needed.",
+     "bucket": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u4-med-math-100",
+   "course": "NUR 114",
+   "unit": 4,
+   "topic": "Med Math",
+   "category": "Metric & Household Conversions",
+   "type": "cloze",
+   "prompt": "A nurse is recording a client's oral intake. For each amount, choose the equal volume in milliliters.",
+   "table": {
+    "head": [
+     "Amount",
+     "Milliliters"
+    ],
+    "rows": [
+     [
+      "1 teaspoon",
+      "{1}"
+     ],
+     [
+      "1 tablespoon",
+      "{2}"
+     ],
+     [
+      "1 ounce",
+      "{3}"
+     ],
+     [
+      "1 cup (8 oz)",
+      "{4}"
+     ]
+    ]
+   },
+   "options": [
+    {
+     "text": "5 mL",
+     "correct": true,
+     "rationale": "1 tsp = 5 mL.",
+     "blank": 1
+    },
+    {
+     "text": "15 mL",
+     "correct": false,
+     "rationale": "15 mL is 1 tablespoon.",
+     "blank": 1
+    },
+    {
+     "text": "30 mL",
+     "correct": false,
+     "rationale": "30 mL is 1 ounce.",
+     "blank": 1
+    },
+    {
+     "text": "15 mL",
+     "correct": true,
+     "rationale": "1 Tbsp = 15 mL.",
+     "blank": 2
+    },
+    {
+     "text": "5 mL",
+     "correct": false,
+     "rationale": "5 mL is 1 teaspoon.",
+     "blank": 2
+    },
+    {
+     "text": "30 mL",
+     "correct": false,
+     "rationale": "30 mL is 1 ounce.",
+     "blank": 2
+    },
+    {
+     "text": "30 mL",
+     "correct": true,
+     "rationale": "1 oz = 30 mL.",
+     "blank": 3
+    },
+    {
+     "text": "15 mL",
+     "correct": false,
+     "rationale": "15 mL is 1 tablespoon.",
+     "blank": 3
+    },
+    {
+     "text": "60 mL",
+     "correct": false,
+     "rationale": "60 mL is 2 ounces.",
+     "blank": 3
+    },
+    {
+     "text": "240 mL",
+     "correct": true,
+     "rationale": "1 cup = 8 oz = 240 mL.",
+     "blank": 4
+    },
+    {
+     "text": "120 mL",
+     "correct": false,
+     "rationale": "120 mL is 4 oz.",
+     "blank": 4
+    },
+    {
+     "text": "500 mL",
+     "correct": false,
+     "rationale": "A cup is 240 mL.",
+     "blank": 4
     }
    ]
   }

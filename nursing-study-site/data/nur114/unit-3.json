@@ -4088,6 +4088,250 @@
       ]
     },
     {
+      "id": "nur114-u3-infection-control-117",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Infection Control & Isolation",
+      "category": "Precautions & PPE",
+      "type": "dragdrop",
+      "prompt": "A nurse is assigning rooms and PPE for several newly admitted clients. Sort each condition into the isolation precautions it requires. Move each answer to the box where it belongs.",
+      "leftLabel": "Conditions",
+      "buckets": [
+        "Contact",
+        "Droplet",
+        "Airborne"
+      ],
+      "options": [
+        {
+          "text": "C. difficile",
+          "correct": true,
+          "rationale": "C. diff spreads by contact: gown and gloves on entry, soap and water.",
+          "bucket": 1
+        },
+        {
+          "text": "Scabies",
+          "correct": true,
+          "rationale": "Scabies spreads by direct contact.",
+          "bucket": 1
+        },
+        {
+          "text": "Influenza",
+          "correct": true,
+          "rationale": "Influenza spreads by large droplets within about 3–6 ft: surgical mask.",
+          "bucket": 2
+        },
+        {
+          "text": "Pertussis",
+          "correct": true,
+          "rationale": "Pertussis spreads by droplets.",
+          "bucket": 2
+        },
+        {
+          "text": "Tuberculosis",
+          "correct": true,
+          "rationale": "TB is airborne: fit-tested N95 and an airborne infection isolation room.",
+          "bucket": 3
+        },
+        {
+          "text": "Measles",
+          "correct": true,
+          "rationale": "Measles is airborne.",
+          "bucket": 3
+        },
+        {
+          "text": "Hypertension",
+          "correct": false,
+          "rationale": "Hypertension isn't infectious, so no isolation is needed beyond standard precautions."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-infection-control-118",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Infection Control & Isolation",
+      "category": "Precautions & PPE",
+      "type": "cloze",
+      "prompt": "A nurse is planning precautions for several clients. For each client, choose the PPE the nurse should wear on entering the room.",
+      "table": {
+        "head": [
+          "Client",
+          "PPE on entry"
+        ],
+        "rows": [
+          [
+            "Client who has MRSA in a wound",
+            "{1}"
+          ],
+          [
+            "Client who has influenza",
+            "{2}"
+          ],
+          [
+            "Client who has pulmonary tuberculosis",
+            "{3}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Gown and gloves",
+          "correct": true,
+          "rationale": "MRSA calls for contact precautions.",
+          "blank": 1
+        },
+        {
+          "text": "Fit-tested N95",
+          "correct": false,
+          "rationale": "An N95 is for airborne precautions.",
+          "blank": 1
+        },
+        {
+          "text": "Surgical mask only",
+          "correct": false,
+          "rationale": "A mask alone doesn't block contact spread.",
+          "blank": 1
+        },
+        {
+          "text": "Surgical mask",
+          "correct": true,
+          "rationale": "Influenza calls for droplet precautions.",
+          "blank": 2
+        },
+        {
+          "text": "Fit-tested N95",
+          "correct": false,
+          "rationale": "An N95 is for airborne diseases.",
+          "blank": 2
+        },
+        {
+          "text": "No PPE beyond hand hygiene",
+          "correct": false,
+          "rationale": "Droplet precautions need a mask.",
+          "blank": 2
+        },
+        {
+          "text": "Fit-tested N95",
+          "correct": true,
+          "rationale": "TB calls for airborne precautions.",
+          "blank": 3
+        },
+        {
+          "text": "Surgical mask",
+          "correct": false,
+          "rationale": "A surgical mask doesn't filter airborne particles.",
+          "blank": 3
+        },
+        {
+          "text": "Gown and gloves only",
+          "correct": false,
+          "rationale": "TB spreads through the air.",
+          "blank": 3
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-infection-control-119",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Infection Control & Isolation",
+      "category": "Inflammation & Stages",
+      "type": "cloze",
+      "prompt": "A nurse is caring for a client who had abdominal surgery 3 days ago. The client's temperature is 39.1°C (102.4°F), heart rate is 112/min, and the client reports chills and feeling weak all over. The incision is red and warm.",
+      "sentence": "The client is most likely experiencing a {1} infection, as evidenced by {2}.",
+      "options": [
+        {
+          "text": "systemic",
+          "correct": true,
+          "rationale": "Fever, a fast heart rate, chills, and malaise mean the infection has spread beyond the site.",
+          "blank": 1
+        },
+        {
+          "text": "local",
+          "correct": false,
+          "rationale": "A local infection stays at the site, with pain, tenderness, and edema but no whole-body signs.",
+          "blank": 1
+        },
+        {
+          "text": "colonized",
+          "correct": false,
+          "rationale": "Colonization causes no signs of infection.",
+          "blank": 1
+        },
+        {
+          "text": "fever and a fast heart rate",
+          "correct": true,
+          "rationale": "Fever and increased heart rate are systemic signs.",
+          "blank": 2
+        },
+        {
+          "text": "redness at the incision",
+          "correct": false,
+          "rationale": "Redness and warmth at the site are local signs.",
+          "blank": 2
+        },
+        {
+          "text": "the time since surgery",
+          "correct": false,
+          "rationale": "Timing alone doesn't tell local from systemic infection.",
+          "blank": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-infection-control-120",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Infection Control & Isolation",
+      "category": "Chain of Infection",
+      "type": "dragdrop",
+      "prompt": "A nurse is teaching assistive personnel how nursing actions break the chain of infection. Sort each action into the link it breaks. Move each answer to the box where it belongs.",
+      "leftLabel": "Nursing actions",
+      "buckets": [
+        "Portal of exit",
+        "Mode of transmission",
+        "Susceptible host"
+      ],
+      "options": [
+        {
+          "text": "Cover a draining wound with a dressing",
+          "correct": true,
+          "rationale": "Containing drainage keeps the pathogen from leaving the reservoir.",
+          "bucket": 1
+        },
+        {
+          "text": "Have a coughing client cover the mouth",
+          "correct": true,
+          "rationale": "Containing secretions blocks the portal of exit.",
+          "bucket": 1
+        },
+        {
+          "text": "Perform hand hygiene between clients",
+          "correct": true,
+          "rationale": "Hand hygiene stops the agent from being carried to the next person.",
+          "bucket": 2
+        },
+        {
+          "text": "Wear a gown and gloves for contact precautions",
+          "correct": true,
+          "rationale": "Barrier devices block the mode of transmission.",
+          "bucket": 2
+        },
+        {
+          "text": "Give the annual influenza vaccine",
+          "correct": true,
+          "rationale": "Immunizations make the host less susceptible.",
+          "bucket": 3
+        },
+        {
+          "text": "Help the client keep blood glucose in range",
+          "correct": true,
+          "rationale": "Glucose control lowers host susceptibility.",
+          "bucket": 3
+        }
+      ]
+    },
+    {
       "id": "nur114-u3-specimen-collection-001",
       "course": "NUR 114",
       "unit": 3,
@@ -7138,6 +7382,222 @@
           "text": "Acetaminophen",
           "correct": false,
           "rationale": "Acetaminophen isn't one of the medications stopped before the test."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-specimen-collection-092",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Specimen Collection",
+      "category": "Cultures & Swabs",
+      "type": "dragdrop",
+      "prompt": "A nurse is delegating specimen collection on a busy unit. Sort each task by who can do it. Move each answer to the box where it belongs.",
+      "leftLabel": "Tasks",
+      "buckets": [
+        "Can delegate to UAP",
+        "Nurse only"
+      ],
+      "options": [
+        {
+          "text": "Collect a stool specimen for occult blood",
+          "correct": true,
+          "rationale": "Unlicensed assistive personnel (UAP) can collect the specimen.",
+          "bucket": 1
+        },
+        {
+          "text": "Collect a clean-catch urine specimen",
+          "correct": true,
+          "rationale": "Urine specimens can be delegated.",
+          "bucket": 1
+        },
+        {
+          "text": "Check a capillary blood glucose for a stable client",
+          "correct": true,
+          "rationale": "Capillary glucose is usually delegated.",
+          "bucket": 1
+        },
+        {
+          "text": "Perform the point-of-care occult blood test",
+          "correct": true,
+          "rationale": "UAP can collect but can't do the point-of-care test.",
+          "bucket": 2
+        },
+        {
+          "text": "Obtain a throat culture",
+          "correct": true,
+          "rationale": "Throat cultures are never delegated.",
+          "bucket": 2
+        },
+        {
+          "text": "Obtain a nasal swab",
+          "correct": true,
+          "rationale": "Nasal swabs are never delegated.",
+          "bucket": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-specimen-collection-093",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Specimen Collection",
+      "category": "Urine",
+      "type": "cloze",
+      "prompt": "A nurse is reading a client's urine dipstick. For each result, choose what it suggests.",
+      "table": {
+        "head": [
+          "Result",
+          "Suggests"
+        ],
+        "rows": [
+          [
+            "Positive leukocytes and nitrites",
+            "{1}"
+          ],
+          [
+            "Positive glucose and ketones",
+            "{2}"
+          ],
+          [
+            "Positive bilirubin",
+            "{3}"
+          ],
+          [
+            "Specific gravity 1.035",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Infection",
+          "correct": true,
+          "rationale": "Leukocytes or nitrites suggest a urinary tract infection.",
+          "blank": 1
+        },
+        {
+          "text": "Diabetes",
+          "correct": false,
+          "rationale": "Glucose and ketones suggest diabetes.",
+          "blank": 1
+        },
+        {
+          "text": "Liver disease",
+          "correct": false,
+          "rationale": "Bilirubin suggests liver disease.",
+          "blank": 1
+        },
+        {
+          "text": "Diabetes",
+          "correct": true,
+          "rationale": "Ketones or glucose in the urine suggest diabetes.",
+          "blank": 2
+        },
+        {
+          "text": "Infection",
+          "correct": false,
+          "rationale": "Leukocytes and nitrites suggest infection.",
+          "blank": 2
+        },
+        {
+          "text": "Dilute urine",
+          "correct": false,
+          "rationale": "Low specific gravity means dilute urine.",
+          "blank": 2
+        },
+        {
+          "text": "Liver disease or RBC destruction",
+          "correct": true,
+          "rationale": "Bilirubin or urobilinogen suggest liver disease or red blood cell destruction.",
+          "blank": 3
+        },
+        {
+          "text": "Infection",
+          "correct": false,
+          "rationale": "Leukocytes and nitrites suggest infection.",
+          "blank": 3
+        },
+        {
+          "text": "An expected finding",
+          "correct": false,
+          "rationale": "Bilirubin should be negative.",
+          "blank": 3
+        },
+        {
+          "text": "Concentrated urine, such as dehydration",
+          "correct": true,
+          "rationale": "Above 1.030 is concentrated.",
+          "blank": 4
+        },
+        {
+          "text": "Dilute urine",
+          "correct": false,
+          "rationale": "Dilute urine has a low specific gravity.",
+          "blank": 4
+        },
+        {
+          "text": "An expected finding",
+          "correct": false,
+          "rationale": "The expected range is 1.005–1.030.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-specimen-collection-094",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Specimen Collection",
+      "category": "Stool",
+      "type": "dragdrop",
+      "prompt": "A nurse is teaching a client how to prepare for a fecal occult blood test. Sort each item by how long before the test the client should stop it. Move each answer to the box where it belongs.",
+      "leftLabel": "Items",
+      "buckets": [
+        "Stop 7 days before",
+        "Avoid 3 days before"
+      ],
+      "options": [
+        {
+          "text": "Aspirin",
+          "correct": true,
+          "rationale": "Medications wait a week.",
+          "bucket": 1
+        },
+        {
+          "text": "Iron supplements",
+          "correct": true,
+          "rationale": "Iron is stopped 7 days before.",
+          "bucket": 1
+        },
+        {
+          "text": "Ibuprofen",
+          "correct": true,
+          "rationale": "NSAIDs are stopped 7 days before.",
+          "bucket": 1
+        },
+        {
+          "text": "Rare red meat",
+          "correct": true,
+          "rationale": "Foods wait three days.",
+          "bucket": 2
+        },
+        {
+          "text": "Beets",
+          "correct": true,
+          "rationale": "Foods wait three days.",
+          "bucket": 2
+        },
+        {
+          "text": "Vitamin C",
+          "correct": true,
+          "rationale": "Vitamin C is avoided 3 days before.",
+          "bucket": 2
+        },
+        {
+          "text": "Water",
+          "correct": false,
+          "rationale": "Water doesn't affect the test."
         }
       ]
     },
@@ -11523,6 +11983,282 @@
       ]
     },
     {
+      "id": "nur114-u3-tissue-integrity-128",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Tissue Integrity",
+      "category": "Pressure Injuries",
+      "type": "cloze",
+      "prompt": "A nurse is assessing several clients' pressure injuries. For each finding, choose the stage.",
+      "table": {
+        "head": [
+          "Finding",
+          "Stage"
+        ],
+        "rows": [
+          [
+            "Intact skin with nonblanchable redness over the sacrum",
+            "{1}"
+          ],
+          [
+            "Shallow, pink, moist wound bed with no slough",
+            "{2}"
+          ],
+          [
+            "Full-thickness loss with fat visible, no bone",
+            "{3}"
+          ],
+          [
+            "Wound bed covered by eschar",
+            "{4}"
+          ],
+          [
+            "Intact skin with persistent deep maroon discoloration",
+            "{5}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Stage 1",
+          "correct": true,
+          "rationale": "Stage 1 is intact skin with nonblanchable erythema.",
+          "blank": 1
+        },
+        {
+          "text": "Stage 2",
+          "correct": false,
+          "rationale": "Stage 2 has broken skin.",
+          "blank": 1
+        },
+        {
+          "text": "Deep tissue pressure injury",
+          "correct": false,
+          "rationale": "DTPI is deep red, maroon, or purple.",
+          "blank": 1
+        },
+        {
+          "text": "Stage 2",
+          "correct": true,
+          "rationale": "Stage 2 is partial thickness with a pink-red moist bed.",
+          "blank": 2
+        },
+        {
+          "text": "Stage 3",
+          "correct": false,
+          "rationale": "Stage 3 shows fat.",
+          "blank": 2
+        },
+        {
+          "text": "Stage 1",
+          "correct": false,
+          "rationale": "Stage 1 skin is intact.",
+          "blank": 2
+        },
+        {
+          "text": "Stage 3",
+          "correct": true,
+          "rationale": "Stage 3 is full thickness with fat visible.",
+          "blank": 3
+        },
+        {
+          "text": "Stage 4",
+          "correct": false,
+          "rationale": "Stage 4 exposes bone, tendon, or muscle.",
+          "blank": 3
+        },
+        {
+          "text": "Stage 2",
+          "correct": false,
+          "rationale": "Stage 2 doesn't reach fat.",
+          "blank": 3
+        },
+        {
+          "text": "Unstageable",
+          "correct": true,
+          "rationale": "Slough or eschar hides the bed.",
+          "blank": 4
+        },
+        {
+          "text": "Stage 4",
+          "correct": false,
+          "rationale": "The depth can't be seen yet.",
+          "blank": 4
+        },
+        {
+          "text": "Stage 1",
+          "correct": false,
+          "rationale": "Eschar means tissue loss.",
+          "blank": 4
+        },
+        {
+          "text": "Deep tissue pressure injury",
+          "correct": true,
+          "rationale": "DTPI is persistent deep red, maroon, or purple on intact skin.",
+          "blank": 5
+        },
+        {
+          "text": "Stage 1",
+          "correct": false,
+          "rationale": "Stage 1 is red, not maroon.",
+          "blank": 5
+        },
+        {
+          "text": "Ecchymosis",
+          "correct": false,
+          "rationale": "This is pressure damage, not a bruise.",
+          "blank": 5
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-tissue-integrity-129",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Tissue Integrity",
+      "category": "Dressings, Closures & Drains",
+      "type": "dragdrop",
+      "prompt": "A nurse is choosing dressings for several wounds. Sort each wound into the dressing that fits it best. Move each answer to the box where it belongs.",
+      "leftLabel": "Wounds",
+      "buckets": [
+        "Hydrocolloid",
+        "Alginate",
+        "Hydrogel"
+      ],
+      "options": [
+        {
+          "text": "Stage 2 pressure injury on the coccyx",
+          "correct": true,
+          "rationale": "Hydrocolloid supports moist healing in stage 2.",
+          "bucket": 1
+        },
+        {
+          "text": "Small abrasion on the elbow",
+          "correct": true,
+          "rationale": "Hydrocolloid suits small abrasions.",
+          "bucket": 1
+        },
+        {
+          "text": "Wound with heavy drainage",
+          "correct": true,
+          "rationale": "Alginate absorbs moderate to heavy drainage.",
+          "bucket": 2
+        },
+        {
+          "text": "Bleeding wound that needs packing",
+          "correct": true,
+          "rationale": "Alginate stops bleeding and packs wounds.",
+          "bucket": 2
+        },
+        {
+          "text": "Dry wound with necrotic tissue",
+          "correct": true,
+          "rationale": "Hydrogel adds moisture to dry or necrotic wounds.",
+          "bucket": 3
+        },
+        {
+          "text": "Superficial wound with minimal drainage that the nurse wants to see through the dressing",
+          "correct": false,
+          "rationale": "A transparent film fits this wound."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-tissue-integrity-130",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Tissue Integrity",
+      "category": "Complications",
+      "type": "cloze",
+      "prompt": "On postoperative day 6, a client who had abdominal surgery coughs and feels something \"give way.\" The nurse sees the incision edges have separated, there is more serosanguineous drainage, and no organs are visible.",
+      "sentence": "The nurse should recognize {1} and take action by {2}.",
+      "options": [
+        {
+          "text": "dehiscence",
+          "correct": true,
+          "rationale": "Separated edges and increased serosanguineous drainage on days 5–8 are dehiscence.",
+          "blank": 1
+        },
+        {
+          "text": "evisceration",
+          "correct": false,
+          "rationale": "Evisceration means organs are protruding.",
+          "blank": 1
+        },
+        {
+          "text": "hematoma",
+          "correct": false,
+          "rationale": "A hematoma is a collection of blood.",
+          "blank": 1
+        },
+        {
+          "text": "covering the wound with a sterile saline-moistened dressing and notifying the provider",
+          "correct": true,
+          "rationale": "That's the action for dehiscence.",
+          "blank": 2
+        },
+        {
+          "text": "pushing the edges together with tape",
+          "correct": false,
+          "rationale": "Taping isn't the treatment.",
+          "blank": 2
+        },
+        {
+          "text": "applying a dry dressing and rechecking in 4 hours",
+          "correct": false,
+          "rationale": "The provider needs to know now.",
+          "blank": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-tissue-integrity-131",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Tissue Integrity",
+      "category": "Wound Healing",
+      "type": "dragdrop",
+      "prompt": "A nurse is caring for several clients who have wounds. Sort each wound by how it will heal. Move each answer to the box where it belongs.",
+      "leftLabel": "Wounds",
+      "buckets": [
+        "Primary intention",
+        "Secondary intention",
+        "Tertiary intention"
+      ],
+      "options": [
+        {
+          "text": "Stapled abdominal incision",
+          "correct": true,
+          "rationale": "Clean edges closed right away heal by primary intention.",
+          "bucket": 1
+        },
+        {
+          "text": "Laceration closed with skin adhesive",
+          "correct": true,
+          "rationale": "Closed edges heal by primary intention.",
+          "bucket": 1
+        },
+        {
+          "text": "Stage 3 pressure injury",
+          "correct": true,
+          "rationale": "Left open, it fills with granulation from the bottom up.",
+          "bucket": 2
+        },
+        {
+          "text": "Open burn",
+          "correct": true,
+          "rationale": "Open burns heal by secondary intention.",
+          "bucket": 2
+        },
+        {
+          "text": "Abdominal wound left open 7 days until infection clears, then closed",
+          "correct": true,
+          "rationale": "Delayed primary closure is tertiary intention.",
+          "bucket": 3
+        }
+      ]
+    },
+    {
       "id": "nur114-u3-assess-integ-heent-neuro-001",
       "course": "NUR 114",
       "unit": 3,
@@ -14590,6 +15326,219 @@
       ]
     },
     {
+      "id": "nur114-u3-assess-integ-heent-neuro-089",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Integumentary, HEENT & Neuro",
+      "category": "Neuro & Mental Status",
+      "type": "cloze",
+      "prompt": "A nurse is assessing the level of consciousness of several clients. For each description, choose the level the nurse should document.",
+      "table": {
+        "head": [
+          "Client",
+          "Level of consciousness"
+        ],
+        "rows": [
+          [
+            "Opens eyes and answers when prompted, then drifts back to sleep",
+            "{1}"
+          ],
+          [
+            "Responds to light shaking but is confused and slow",
+            "{2}"
+          ],
+          [
+            "Responds only to painful stimuli",
+            "{3}"
+          ],
+          [
+            "No response to repeated painful stimuli",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Lethargic",
+          "correct": true,
+          "rationale": "Lethargic clients answer when prompted but drift off.",
+          "blank": 1
+        },
+        {
+          "text": "Alert",
+          "correct": false,
+          "rationale": "Alert clients stay awake.",
+          "blank": 1
+        },
+        {
+          "text": "Stuporous",
+          "correct": false,
+          "rationale": "Stupor needs painful stimuli.",
+          "blank": 1
+        },
+        {
+          "text": "Obtunded",
+          "correct": true,
+          "rationale": "Obtunded clients respond to light shaking and may be confused.",
+          "blank": 2
+        },
+        {
+          "text": "Lethargic",
+          "correct": false,
+          "rationale": "Lethargic clients respond to voice.",
+          "blank": 2
+        },
+        {
+          "text": "Comatose",
+          "correct": false,
+          "rationale": "Comatose clients don't respond.",
+          "blank": 2
+        },
+        {
+          "text": "Stuporous",
+          "correct": true,
+          "rationale": "Stuporous clients need painful stimuli.",
+          "blank": 3
+        },
+        {
+          "text": "Obtunded",
+          "correct": false,
+          "rationale": "Obtunded clients respond to light shaking.",
+          "blank": 3
+        },
+        {
+          "text": "Alert",
+          "correct": false,
+          "rationale": "Alert clients respond on their own.",
+          "blank": 3
+        },
+        {
+          "text": "Comatose",
+          "correct": true,
+          "rationale": "No response to repeated painful stimuli is coma.",
+          "blank": 4
+        },
+        {
+          "text": "Stuporous",
+          "correct": false,
+          "rationale": "Stuporous clients respond to pain.",
+          "blank": 4
+        },
+        {
+          "text": "Lethargic",
+          "correct": false,
+          "rationale": "Lethargic clients respond when prompted.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-assess-integ-heent-neuro-090",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Integumentary, HEENT & Neuro",
+      "category": "Basics & Integumentary",
+      "type": "dragdrop",
+      "prompt": "A nurse is assessing several clients' skin color. Sort each finding by what it most likely means. Move each answer to the box where it belongs.",
+      "leftLabel": "Findings",
+      "buckets": [
+        "Hypoxia",
+        "Liver dysfunction",
+        "Anemia or shock"
+      ],
+      "options": [
+        {
+          "text": "Bluish lips and nail beds",
+          "correct": true,
+          "rationale": "Cyanosis signals hypoxia.",
+          "bucket": 1
+        },
+        {
+          "text": "Bluish oral mucosa in a client with dark skin",
+          "correct": true,
+          "rationale": "Cyanosis in dark skin shows in the mucosa.",
+          "bucket": 1
+        },
+        {
+          "text": "Yellow sclera",
+          "correct": true,
+          "rationale": "Jaundice points to liver dysfunction.",
+          "bucket": 2
+        },
+        {
+          "text": "Yellow hard palate in a client with dark skin",
+          "correct": true,
+          "rationale": "Jaundice shows on the hard palate.",
+          "bucket": 2
+        },
+        {
+          "text": "Ashen gray conjunctiva in a client with dark skin",
+          "correct": true,
+          "rationale": "Pallor in dark skin shows as ashen gray.",
+          "bucket": 3
+        },
+        {
+          "text": "Pale skin with loss of red undertones",
+          "correct": true,
+          "rationale": "Pallor suggests anemia, shock, or poor blood flow.",
+          "bucket": 3
+        },
+        {
+          "text": "Redness and warmth over a joint",
+          "correct": false,
+          "rationale": "Erythema suggests inflammation."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-assess-integ-heent-neuro-091",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Integumentary, HEENT & Neuro",
+      "category": "HEENT",
+      "type": "cloze",
+      "prompt": "During a Weber test, a client hears the sound louder in the right ear. The client reports trouble hearing in the right ear, and the ear canal is clear.",
+      "sentence": "This suggests {1} hearing loss in the {2} ear.",
+      "options": [
+        {
+          "text": "conductive",
+          "correct": true,
+          "rationale": "Conductive loss is heard best in the bad ear.",
+          "blank": 1
+        },
+        {
+          "text": "sensorineural",
+          "correct": false,
+          "rationale": "Sensorineural loss is heard best in the good ear.",
+          "blank": 1
+        },
+        {
+          "text": "no",
+          "correct": false,
+          "rationale": "A Weber that lateralizes isn't expected.",
+          "blank": 1
+        },
+        {
+          "text": "right",
+          "correct": true,
+          "rationale": "The client hears best in the affected right ear.",
+          "blank": 2
+        },
+        {
+          "text": "left",
+          "correct": false,
+          "rationale": "The left ear is the good ear here.",
+          "blank": 2
+        },
+        {
+          "text": "both",
+          "correct": false,
+          "rationale": "One-sided lateralization points to one ear.",
+          "blank": 2
+        }
+      ]
+    },
+    {
       "id": "nur114-u3-cranial-nerves-001",
       "course": "NUR 114",
       "unit": 3,
@@ -16455,6 +17404,166 @@
           "text": "CN III, oculomotor",
           "correct": false,
           "rationale": "CN III moves the eye."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-cranial-nerves-056",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Cranial Nerves",
+      "category": "Names & Types",
+      "type": "cloze",
+      "prompt": "A nurse is reviewing cranial nerve tests before a client's neurologic assessment. For each test, choose the nerve it checks.",
+      "table": {
+        "head": [
+          "Test",
+          "Cranial nerve"
+        ],
+        "rows": [
+          [
+            "Client identifies coffee with one nostril blocked",
+            "{1}"
+          ],
+          [
+            "Client shrugs the shoulders against resistance",
+            "{2}"
+          ],
+          [
+            "Client puffs the cheeks and raises the eyebrows",
+            "{3}"
+          ],
+          [
+            "Client pushes the tongue against each cheek",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "CN I, olfactory",
+          "correct": true,
+          "rationale": "Smell is CN I.",
+          "blank": 1
+        },
+        {
+          "text": "CN V, trigeminal",
+          "correct": false,
+          "rationale": "CN V is facial sensation.",
+          "blank": 1
+        },
+        {
+          "text": "CN II, optic",
+          "correct": false,
+          "rationale": "CN II is vision.",
+          "blank": 1
+        },
+        {
+          "text": "CN XI, spinal accessory",
+          "correct": true,
+          "rationale": "Shoulder shrug is CN XI.",
+          "blank": 2
+        },
+        {
+          "text": "CN X, vagus",
+          "correct": false,
+          "rationale": "CN X is swallowing and the soft palate.",
+          "blank": 2
+        },
+        {
+          "text": "CN XII, hypoglossal",
+          "correct": false,
+          "rationale": "CN XII is the tongue.",
+          "blank": 2
+        },
+        {
+          "text": "CN VII, facial",
+          "correct": true,
+          "rationale": "Facial expression is CN VII.",
+          "blank": 3
+        },
+        {
+          "text": "CN V, trigeminal",
+          "correct": false,
+          "rationale": "CN V is sensation and jaw clenching.",
+          "blank": 3
+        },
+        {
+          "text": "CN III, oculomotor",
+          "correct": false,
+          "rationale": "CN III moves the eye.",
+          "blank": 3
+        },
+        {
+          "text": "CN XII, hypoglossal",
+          "correct": true,
+          "rationale": "Tongue movement is CN XII.",
+          "blank": 4
+        },
+        {
+          "text": "CN IX, glossopharyngeal",
+          "correct": false,
+          "rationale": "CN IX is the gag and swallowing.",
+          "blank": 4
+        },
+        {
+          "text": "CN VII, facial",
+          "correct": false,
+          "rationale": "CN VII is facial expression.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-cranial-nerves-057",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Cranial Nerves",
+      "category": "Names & Types",
+      "type": "dragdrop",
+      "prompt": "A nurse is reviewing cranial nerves. Sort each nerve by its function. Move each answer to the box where it belongs.",
+      "leftLabel": "Cranial nerves",
+      "buckets": [
+        "Sensory only",
+        "Motor only",
+        "Both"
+      ],
+      "options": [
+        {
+          "text": "CN I, olfactory",
+          "correct": true,
+          "rationale": "Smell: sensory only.",
+          "bucket": 1
+        },
+        {
+          "text": "CN VIII, vestibulocochlear",
+          "correct": true,
+          "rationale": "Hearing: sensory only.",
+          "bucket": 1
+        },
+        {
+          "text": "CN XI, spinal accessory",
+          "correct": true,
+          "rationale": "Motor only.",
+          "bucket": 2
+        },
+        {
+          "text": "CN XII, hypoglossal",
+          "correct": true,
+          "rationale": "Motor only.",
+          "bucket": 2
+        },
+        {
+          "text": "CN V, trigeminal",
+          "correct": true,
+          "rationale": "Both sensory and motor.",
+          "bucket": 3
+        },
+        {
+          "text": "CN VII, facial",
+          "correct": true,
+          "rationale": "Both sensory and motor.",
+          "bucket": 3
         }
       ]
     },
@@ -19841,6 +20950,307 @@
           "text": "Trendelenburg",
           "correct": false,
           "rationale": "Trendelenburg isn't used for heart sounds."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-assess-thorax-cv-abd-msk-102",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
+      "category": "Thorax & Lungs",
+      "type": "dragdrop",
+      "prompt": "A nurse is auscultating a client's lungs. Sort each sound by what it most likely means. Move each answer to the box where it belongs.",
+      "leftLabel": "Sounds",
+      "buckets": [
+        "Fluid in the alveoli",
+        "Mucus in the large airways",
+        "Narrowed airways"
+      ],
+      "options": [
+        {
+          "text": "Fine crackles at the bases that don't clear with coughing",
+          "correct": true,
+          "rationale": "Crackles can't clear: fluid or collapsed alveoli opening.",
+          "bucket": 1
+        },
+        {
+          "text": "Low-pitched rhonchi that clear after coughing",
+          "correct": true,
+          "rationale": "Rhonchi run off with a cough.",
+          "bucket": 2
+        },
+        {
+          "text": "High-pitched wheezes on expiration",
+          "correct": true,
+          "rationale": "Wheezes come from airway constriction.",
+          "bucket": 3
+        },
+        {
+          "text": "Bronchial sounds over the trachea",
+          "correct": false,
+          "rationale": "That's an expected finding."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-assess-thorax-cv-abd-msk-103",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
+      "category": "Heart & Peripheral Vascular",
+      "type": "cloze",
+      "prompt": "A nurse is auscultating a client's heart. For each site, choose its location.",
+      "table": {
+        "head": [
+          "Site",
+          "Location"
+        ],
+        "rows": [
+          [
+            "Aortic",
+            "{1}"
+          ],
+          [
+            "Pulmonic",
+            "{2}"
+          ],
+          [
+            "Erb's point",
+            "{3}"
+          ],
+          [
+            "Mitral (apex)",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Right 2nd ICS, right sternal border",
+          "correct": true,
+          "rationale": "The aortic area is the right 2nd intercostal space (ICS).",
+          "blank": 1
+        },
+        {
+          "text": "Left 2nd ICS, left sternal border",
+          "correct": false,
+          "rationale": "That's pulmonic.",
+          "blank": 1
+        },
+        {
+          "text": "5th ICS, midclavicular line",
+          "correct": false,
+          "rationale": "That's mitral.",
+          "blank": 1
+        },
+        {
+          "text": "Left 2nd ICS, left sternal border",
+          "correct": true,
+          "rationale": "The pulmonic area is the left 2nd ICS.",
+          "blank": 2
+        },
+        {
+          "text": "Right 2nd ICS, right sternal border",
+          "correct": false,
+          "rationale": "That's aortic.",
+          "blank": 2
+        },
+        {
+          "text": "Left 4th ICS, left sternal border",
+          "correct": false,
+          "rationale": "That's tricuspid.",
+          "blank": 2
+        },
+        {
+          "text": "Left 3rd ICS, left sternal border",
+          "correct": true,
+          "rationale": "Erb's point is the left 3rd ICS.",
+          "blank": 3
+        },
+        {
+          "text": "Left 4th ICS, left sternal border",
+          "correct": false,
+          "rationale": "That's tricuspid.",
+          "blank": 3
+        },
+        {
+          "text": "Right 2nd ICS, right sternal border",
+          "correct": false,
+          "rationale": "That's aortic.",
+          "blank": 3
+        },
+        {
+          "text": "5th ICS, midclavicular line",
+          "correct": true,
+          "rationale": "The mitral area is the PMI (point of maximal impulse).",
+          "blank": 4
+        },
+        {
+          "text": "Left 3rd ICS, left sternal border",
+          "correct": false,
+          "rationale": "That's Erb's point.",
+          "blank": 4
+        },
+        {
+          "text": "Left 2nd ICS, left sternal border",
+          "correct": false,
+          "rationale": "That's pulmonic.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-assess-thorax-cv-abd-msk-104",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
+      "category": "Musculoskeletal",
+      "type": "cloze",
+      "prompt": "A nurse is grading muscle strength in several clients. For each finding, choose the grade.",
+      "table": {
+        "head": [
+          "Finding",
+          "Grade"
+        ],
+        "rows": [
+          [
+            "Moves the arm against gravity but not against resistance",
+            "{1}"
+          ],
+          [
+            "Moves only with gravity eliminated",
+            "{2}"
+          ],
+          [
+            "Full strength against resistance",
+            "{3}"
+          ],
+          [
+            "Trace contraction only",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "3",
+          "correct": true,
+          "rationale": "3 = moves against gravity.",
+          "blank": 1
+        },
+        {
+          "text": "4",
+          "correct": false,
+          "rationale": "4 = against some resistance.",
+          "blank": 1
+        },
+        {
+          "text": "2",
+          "correct": false,
+          "rationale": "2 = gravity eliminated.",
+          "blank": 1
+        },
+        {
+          "text": "2",
+          "correct": true,
+          "rationale": "2 = moves with gravity eliminated.",
+          "blank": 2
+        },
+        {
+          "text": "1",
+          "correct": false,
+          "rationale": "1 = trace contraction.",
+          "blank": 2
+        },
+        {
+          "text": "3",
+          "correct": false,
+          "rationale": "3 = against gravity.",
+          "blank": 2
+        },
+        {
+          "text": "5",
+          "correct": true,
+          "rationale": "5 = full strength.",
+          "blank": 3
+        },
+        {
+          "text": "4",
+          "correct": false,
+          "rationale": "4 = some resistance only.",
+          "blank": 3
+        },
+        {
+          "text": "3",
+          "correct": false,
+          "rationale": "3 = against gravity only.",
+          "blank": 3
+        },
+        {
+          "text": "1",
+          "correct": true,
+          "rationale": "1 = trace contraction.",
+          "blank": 4
+        },
+        {
+          "text": "0",
+          "correct": false,
+          "rationale": "0 = no contraction.",
+          "blank": 4
+        },
+        {
+          "text": "2",
+          "correct": false,
+          "rationale": "2 = moves with gravity eliminated.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-assess-thorax-cv-abd-msk-105",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
+      "category": "Abdomen",
+      "type": "dragdrop",
+      "prompt": "A nurse is auscultating bowel sounds in several clients. Sort each finding. Move each answer to the box where it belongs.",
+      "leftLabel": "Findings",
+      "buckets": [
+        "Hypoactive",
+        "Normoactive",
+        "Hyperactive"
+      ],
+      "options": [
+        {
+          "text": "3 sounds per minute after surgery",
+          "correct": true,
+          "rationale": "Fewer than 5/min is hypoactive.",
+          "bucket": 1
+        },
+        {
+          "text": "Faint sounds in a client taking opioids",
+          "correct": true,
+          "rationale": "Opioids slow the bowel.",
+          "bucket": 1
+        },
+        {
+          "text": "20 clicks and gurgles per minute",
+          "correct": true,
+          "rationale": "5–35/min is expected.",
+          "bucket": 2
+        },
+        {
+          "text": "40 sounds per minute in a client with diarrhea",
+          "correct": true,
+          "rationale": "More than 35/min is hyperactive.",
+          "bucket": 3
+        },
+        {
+          "text": "Loud growling heard without a stethoscope",
+          "correct": true,
+          "rationale": "Borborygmi are hyperperistalsis.",
+          "bucket": 3
         }
       ]
     },
@@ -24745,6 +26155,276 @@
           "text": "Supine: severe dyspnea",
           "correct": false,
           "rationale": "Dyspnea uses high-Fowler's."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-safety-147",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Safety",
+      "category": "Restraints & Seizures",
+      "type": "dragdrop",
+      "prompt": "A nurse is caring for a client who has a seizure disorder. Sort each action by when the nurse should do it. Move each answer to the box where it belongs.",
+      "leftLabel": "Actions",
+      "buckets": [
+        "Before a seizure",
+        "During a seizure",
+        "After a seizure"
+      ],
+      "options": [
+        {
+          "text": "Set up suction and oxygen at the bedside",
+          "correct": true,
+          "rationale": "Precautions are set up before.",
+          "bucket": 1
+        },
+        {
+          "text": "Pad the side rails",
+          "correct": true,
+          "rationale": "Precautions are set up before.",
+          "bucket": 1
+        },
+        {
+          "text": "Turn the client to the side and protect the head",
+          "correct": true,
+          "rationale": "During: side-lying, protect the head.",
+          "bucket": 2
+        },
+        {
+          "text": "Note the start time and the body parts involved",
+          "correct": true,
+          "rationale": "During: time it and watch.",
+          "bucket": 2
+        },
+        {
+          "text": "Check the gag reflex before offering fluids",
+          "correct": true,
+          "rationale": "After: gag reflex first.",
+          "bucket": 3
+        },
+        {
+          "text": "Reorient the client in a quiet room",
+          "correct": true,
+          "rationale": "After: reorient and reassure.",
+          "bucket": 3
+        },
+        {
+          "text": "Place a tongue blade between the teeth",
+          "correct": false,
+          "rationale": "Never put anything in the client's mouth."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-safety-148",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Safety",
+      "category": "Communication & Unexpected Events",
+      "type": "cloze",
+      "prompt": "A nurse is reviewing events on the unit. For each event, choose its type.",
+      "table": {
+        "head": [
+          "Event",
+          "Type"
+        ],
+        "rows": [
+          [
+            "A wrong medication is caught during reconciliation before it's given",
+            "{1}"
+          ],
+          [
+            "A client who is NPO eats a tray, and surgery is delayed",
+            "{2}"
+          ],
+          [
+            "A client falls and sprains a wrist",
+            "{3}"
+          ],
+          [
+            "Surgery is done on the wrong knee",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Near miss",
+          "correct": true,
+          "rationale": "Caught before reaching the client.",
+          "blank": 1
+        },
+        {
+          "text": "Adverse event",
+          "correct": false,
+          "rationale": "No harm reached the client.",
+          "blank": 1
+        },
+        {
+          "text": "Sentinel event",
+          "correct": false,
+          "rationale": "No harm occurred.",
+          "blank": 1
+        },
+        {
+          "text": "Client safety event",
+          "correct": true,
+          "rationale": "An unexpected event that could have caused harm.",
+          "blank": 2
+        },
+        {
+          "text": "Near miss",
+          "correct": false,
+          "rationale": "The error reached the client.",
+          "blank": 2
+        },
+        {
+          "text": "Sentinel event",
+          "correct": false,
+          "rationale": "There was no serious harm.",
+          "blank": 2
+        },
+        {
+          "text": "Adverse event",
+          "correct": true,
+          "rationale": "Unexpected harm.",
+          "blank": 3
+        },
+        {
+          "text": "Sentinel event",
+          "correct": false,
+          "rationale": "A sprain isn't severe or permanent harm.",
+          "blank": 3
+        },
+        {
+          "text": "Near miss",
+          "correct": false,
+          "rationale": "The client was harmed.",
+          "blank": 3
+        },
+        {
+          "text": "Sentinel event",
+          "correct": true,
+          "rationale": "Wrong-site surgery is a sentinel (never) event.",
+          "blank": 4
+        },
+        {
+          "text": "Adverse event",
+          "correct": false,
+          "rationale": "Wrong-site surgery is a sentinel event.",
+          "blank": 4
+        },
+        {
+          "text": "Client safety event",
+          "correct": false,
+          "rationale": "This is a sentinel event.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-safety-149",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Safety",
+      "category": "Falls & Injury Prevention",
+      "type": "dragdrop",
+      "prompt": "A nurse is planning fall prevention. Sort each action by who it applies to. Move each answer to the box where it belongs.",
+      "leftLabel": "Actions",
+      "buckets": [
+        "Every client (universal)",
+        "Higher-risk clients"
+      ],
+      "options": [
+        {
+          "text": "Nonskid footwear",
+          "correct": true,
+          "rationale": "Universal precaution.",
+          "bucket": 1
+        },
+        {
+          "text": "Bed low and locked",
+          "correct": true,
+          "rationale": "Universal precaution.",
+          "bucket": 1
+        },
+        {
+          "text": "Call light within reach",
+          "correct": true,
+          "rationale": "Universal precaution.",
+          "bucket": 1
+        },
+        {
+          "text": "Bed or chair alarm",
+          "correct": true,
+          "rationale": "Added for higher-risk clients.",
+          "bucket": 2
+        },
+        {
+          "text": "Room near the nurses' station",
+          "correct": true,
+          "rationale": "Added for higher-risk clients.",
+          "bucket": 2
+        },
+        {
+          "text": "Color-coded wristband",
+          "correct": true,
+          "rationale": "Added for higher-risk clients.",
+          "bucket": 2
+        },
+        {
+          "text": "All four side rails up for a client who tries to get up alone",
+          "correct": false,
+          "rationale": "That's a restraint and invites climbing over."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u3-safety-150",
+      "course": "NUR 114",
+      "unit": 3,
+      "topic": "Safety",
+      "category": "Restraints & Seizures",
+      "type": "cloze",
+      "prompt": "A nurse checks a client who has a soft wrist restraint and finds the hand distal to the restraint cool and pale with a capillary refill of 5 seconds.",
+      "sentence": "The client has {1}, so the nurse should first {2}.",
+      "options": [
+        {
+          "text": "impaired circulation",
+          "correct": true,
+          "rationale": "Cool, pale skin and slow capillary refill mean poor circulation.",
+          "blank": 1
+        },
+        {
+          "text": "an expected finding",
+          "correct": false,
+          "rationale": "This isn't expected.",
+          "blank": 1
+        },
+        {
+          "text": "a skin tear",
+          "correct": false,
+          "rationale": "The findings point to circulation.",
+          "blank": 1
+        },
+        {
+          "text": "remove the restraint",
+          "correct": true,
+          "rationale": "Impaired circulation: remove it right away, reassess, and notify the provider.",
+          "blank": 2
+        },
+        {
+          "text": "loosen it by one finger",
+          "correct": false,
+          "rationale": "Remove it first.",
+          "blank": 2
+        },
+        {
+          "text": "document and recheck in 2 hours",
+          "correct": false,
+          "rationale": "This can't wait.",
+          "blank": 2
         }
       ]
     }

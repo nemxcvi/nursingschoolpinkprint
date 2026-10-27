@@ -391,7 +391,11 @@ h2{font-size:20px;}
 .pq-dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch;}
 @media(max-width:640px){.pq-dd{grid-template-columns:1fr;}}
 .pq-dd-box{display:flex;flex-direction:column;min-height:180px;border:1.5px solid var(--border);border-radius:0;background:color-mix(in srgb,var(--pill) 35%,var(--card));}
-.pq-dd-box[data-box="answer"]{border-style:dashed;}
+.pq-dd-box.is-answer{border-style:dashed;}
+.pq-dd-multi{grid-template-columns:repeat(var(--dd-cols,2),minmax(0,1fr));}
+.pq-dd-multi .pq-dd-box[data-box="pool"]{grid-column:1/-1;min-height:0;}
+.pq-dd-multi .pq-dd-box.is-answer{min-height:150px;}
+@media(max-width:640px){.pq-dd-multi{grid-template-columns:1fr;}}
 .pq-dd-box.is-target{cursor:pointer;background:color-mix(in srgb,var(--pill) 70%,var(--card));}
 .pq-dd-box.is-over{border-style:solid;border-color:var(--label);background:var(--pill);}
 .pq-dd-box.is-done{cursor:default;}
@@ -426,6 +430,11 @@ h2{font-size:20px;}
 .pq-cloze-sel:disabled{cursor:default;opacity:1;}
 .pq-cloze-sel.is-right{border-color:var(--success-border);background:color-mix(in srgb,var(--success-border) 14%,var(--card));}
 .pq-cloze-sel.is-wrong{border-color:var(--danger-border);background:color-mix(in srgb,var(--danger-border) 14%,var(--card));}
+.pq-cloze-tablewrap{overflow-x:auto;margin:4px 0 6px;}
+.pq-cloze-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:var(--text);}
+.pq-cloze-table th{padding:8px 10px;border:1.5px solid var(--border);background:color-mix(in srgb,var(--pill) 50%,var(--card));font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);text-align:left;}
+.pq-cloze-table td{padding:8px 10px;border:1.5px solid var(--border);vertical-align:middle;}
+.pq-cloze-table .pq-cloze-sel{margin:0;width:100%;}
 .pq-cloze-results{display:grid;gap:8px;margin-top:14px;}
 .pq-cloze-blank{margin:8px 0 0;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--label);}
 /* Result states after checking (every question type) */

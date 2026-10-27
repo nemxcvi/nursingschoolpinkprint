@@ -1393,6 +1393,165 @@
       "explanation": "Glucose 58 (normal 74–106) is low. Female RBC 3.6 (normal 4.2–5.4) is low. ALP 95, magnesium 1.9, and creatinine 0.9 (normal 0.6–1.2 for this age) are all within normal limits."
     },
     {
+      "id": "nur114-u1-cbc-cmp-041",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": "CBC+CMP combined",
+      "type": "cloze",
+      "prompt": "A nurse is reviewing an adult client's morning labs. For each result, choose how it compares with the expected range.",
+      "table": {
+        "head": [
+          "Lab result",
+          "Compared with expected"
+        ],
+        "rows": [
+          [
+            "Potassium 2.8 mEq/L",
+            "{1}"
+          ],
+          [
+            "Sodium 140 mEq/L",
+            "{2}"
+          ],
+          [
+            "Glucose 58 mg/dL",
+            "{3}"
+          ],
+          [
+            "Platelets 160,000/mm3",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Low",
+          "correct": true,
+          "rationale": "Expected potassium is 3.5–5.0 mEq/L.",
+          "blank": 1
+        },
+        {
+          "text": "Within range",
+          "correct": false,
+          "rationale": "2.8 is below 3.5.",
+          "blank": 1
+        },
+        {
+          "text": "High",
+          "correct": false,
+          "rationale": "2.8 is below the range.",
+          "blank": 1
+        },
+        {
+          "text": "Within range",
+          "correct": true,
+          "rationale": "Expected sodium is 136–145 mEq/L.",
+          "blank": 2
+        },
+        {
+          "text": "Low",
+          "correct": false,
+          "rationale": "140 is within range.",
+          "blank": 2
+        },
+        {
+          "text": "High",
+          "correct": false,
+          "rationale": "140 is within range.",
+          "blank": 2
+        },
+        {
+          "text": "Low",
+          "correct": true,
+          "rationale": "58 mg/dL is below the expected fasting range.",
+          "blank": 3
+        },
+        {
+          "text": "Within range",
+          "correct": false,
+          "rationale": "58 is below range.",
+          "blank": 3
+        },
+        {
+          "text": "High",
+          "correct": false,
+          "rationale": "58 is low.",
+          "blank": 3
+        },
+        {
+          "text": "Within range",
+          "correct": true,
+          "rationale": "Expected platelets are 150,000–400,000/mm3.",
+          "blank": 4
+        },
+        {
+          "text": "Low",
+          "correct": false,
+          "rationale": "160,000 is within range.",
+          "blank": 4
+        },
+        {
+          "text": "High",
+          "correct": false,
+          "rationale": "160,000 is within range.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-cbc-cmp-042",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "CBC/CMP Adult Lab Value Ranges",
+      "category": "CBC+CMP combined",
+      "type": "dragdrop",
+      "prompt": "A nurse is reviewing lab results with a nursing student. Sort each lab into the panel it belongs to. Move each answer to the box where it belongs.",
+      "leftLabel": "Labs",
+      "buckets": [
+        "Complete blood count (CBC)",
+        "Comprehensive metabolic panel (CMP)"
+      ],
+      "options": [
+        {
+          "text": "Hemoglobin",
+          "correct": true,
+          "rationale": "Hemoglobin is part of the CBC.",
+          "bucket": 1
+        },
+        {
+          "text": "Platelet count",
+          "correct": true,
+          "rationale": "Platelets are part of the CBC.",
+          "bucket": 1
+        },
+        {
+          "text": "White blood cell count",
+          "correct": true,
+          "rationale": "WBCs are part of the CBC.",
+          "bucket": 1
+        },
+        {
+          "text": "Sodium",
+          "correct": true,
+          "rationale": "Electrolytes are part of the CMP.",
+          "bucket": 2
+        },
+        {
+          "text": "Blood urea nitrogen (BUN)",
+          "correct": true,
+          "rationale": "Kidney labs are part of the CMP.",
+          "bucket": 2
+        },
+        {
+          "text": "Alanine aminotransferase (ALT)",
+          "correct": true,
+          "rationale": "Liver enzymes are part of the CMP.",
+          "bucket": 2
+        }
+      ]
+    },
+    {
       "id": "nur114-u1-nursing-fundamentals-001",
       "course": "NUR 114",
       "unit": 1,
@@ -4251,6 +4410,188 @@
       ]
     },
     {
+      "id": "nur114-u1-foundations-047",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Foundations & the Nursing Process",
+      "category": "Clinical Judgment & Nursing Process",
+      "type": "cloze",
+      "prompt": "A nurse is caring for a client who had surgery yesterday. For each nursing action, choose the step of the nursing process.",
+      "table": {
+        "head": [
+          "Nursing action",
+          "Step"
+        ],
+        "rows": [
+          [
+            "Measures the client's vital signs and pain level",
+            "{1}"
+          ],
+          [
+            "Writes \"Acute pain related to surgical incision\"",
+            "{2}"
+          ],
+          [
+            "Sets a goal that the client will rate pain 3/10 or less by the end of the shift",
+            "{3}"
+          ],
+          [
+            "Gives the prescribed analgesic and repositions the client",
+            "{4}"
+          ],
+          [
+            "Rechecks the pain rating 1 hour later",
+            "{5}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Assessment",
+          "correct": true,
+          "rationale": "Collecting data is assessment.",
+          "blank": 1
+        },
+        {
+          "text": "Evaluation",
+          "correct": false,
+          "rationale": "Evaluation checks whether goals were met.",
+          "blank": 1
+        },
+        {
+          "text": "Implementation",
+          "correct": false,
+          "rationale": "Implementation is carrying out care.",
+          "blank": 1
+        },
+        {
+          "text": "Analysis (diagnosis)",
+          "correct": true,
+          "rationale": "Writing a nursing diagnosis is analysis.",
+          "blank": 2
+        },
+        {
+          "text": "Planning",
+          "correct": false,
+          "rationale": "Planning sets goals and interventions.",
+          "blank": 2
+        },
+        {
+          "text": "Assessment",
+          "correct": false,
+          "rationale": "Assessment collects data.",
+          "blank": 2
+        },
+        {
+          "text": "Planning",
+          "correct": true,
+          "rationale": "Setting goals is planning.",
+          "blank": 3
+        },
+        {
+          "text": "Analysis (diagnosis)",
+          "correct": false,
+          "rationale": "Analysis names the problem.",
+          "blank": 3
+        },
+        {
+          "text": "Evaluation",
+          "correct": false,
+          "rationale": "Evaluation checks the goal later.",
+          "blank": 3
+        },
+        {
+          "text": "Implementation",
+          "correct": true,
+          "rationale": "Carrying out interventions is implementation.",
+          "blank": 4
+        },
+        {
+          "text": "Planning",
+          "correct": false,
+          "rationale": "Planning chooses interventions; implementation does them.",
+          "blank": 4
+        },
+        {
+          "text": "Assessment",
+          "correct": false,
+          "rationale": "Assessment collects data.",
+          "blank": 4
+        },
+        {
+          "text": "Evaluation",
+          "correct": true,
+          "rationale": "Checking whether the goal was met is evaluation.",
+          "blank": 5
+        },
+        {
+          "text": "Assessment",
+          "correct": false,
+          "rationale": "This recheck judges the goal, so it's evaluation.",
+          "blank": 5
+        },
+        {
+          "text": "Implementation",
+          "correct": false,
+          "rationale": "No new care is given.",
+          "blank": 5
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-foundations-048",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Foundations & the Nursing Process",
+      "category": "Health Promotion & Prevention",
+      "type": "dragdrop",
+      "prompt": "A nurse is planning care at a community clinic. Sort each activity by its level of prevention. Move each answer to the box where it belongs.",
+      "leftLabel": "Activities",
+      "buckets": [
+        "Primary",
+        "Secondary",
+        "Tertiary"
+      ],
+      "options": [
+        {
+          "text": "Giving the influenza vaccine",
+          "correct": true,
+          "rationale": "Primary prevention stops disease before it starts.",
+          "bucket": 1
+        },
+        {
+          "text": "Teaching seat belt use",
+          "correct": true,
+          "rationale": "Primary prevention prevents injury.",
+          "bucket": 1
+        },
+        {
+          "text": "Mammogram screening",
+          "correct": true,
+          "rationale": "Secondary prevention finds disease early.",
+          "bucket": 2
+        },
+        {
+          "text": "Blood pressure screening at a health fair",
+          "correct": true,
+          "rationale": "Screening is secondary prevention.",
+          "bucket": 2
+        },
+        {
+          "text": "Cardiac rehabilitation after a heart attack",
+          "correct": true,
+          "rationale": "Tertiary prevention limits disability after disease.",
+          "bucket": 3
+        },
+        {
+          "text": "Physical therapy after a stroke",
+          "correct": true,
+          "rationale": "Tertiary prevention restores function.",
+          "bucket": 3
+        }
+      ]
+    },
+    {
       "id": "nur114-u1-priority-care-001",
       "course": "NUR 114",
       "unit": 1,
@@ -5782,6 +6123,147 @@
           "text": "Cost savings",
           "correct": false,
           "rationale": "Cost matters but isn't the cornerstone."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-priority-care-046",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Priority Setting & Managing Care",
+      "category": "Priority Setting",
+      "type": "dragdrop",
+      "prompt": "A nurse is triaging clients after a mass casualty event. Sort each client into the triage category. Move each answer to the box where it belongs.",
+      "leftLabel": "Clients",
+      "buckets": [
+        "Immediate (red)",
+        "Delayed (yellow)",
+        "Minor (green)"
+      ],
+      "options": [
+        {
+          "text": "A client who has an airway obstruction",
+          "correct": true,
+          "rationale": "Life-threatening but treatable: immediate.",
+          "bucket": 1
+        },
+        {
+          "text": "A client who is bleeding heavily from the thigh",
+          "correct": true,
+          "rationale": "Uncontrolled bleeding is immediate.",
+          "bucket": 1
+        },
+        {
+          "text": "A client who has a closed leg fracture with stable vital signs",
+          "correct": true,
+          "rationale": "Serious but not immediately life-threatening: delayed.",
+          "bucket": 2
+        },
+        {
+          "text": "A client who has minor cuts and is walking",
+          "correct": true,
+          "rationale": "Walking wounded with minor injuries: minor.",
+          "bucket": 3
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-priority-care-047",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Priority Setting & Managing Care",
+      "category": "Delegation & Managing Care",
+      "type": "dragdrop",
+      "prompt": "A nurse is caring for several stable clients. Sort each task by who can do it. Move each answer to the box where it belongs.",
+      "leftLabel": "Tasks",
+      "buckets": [
+        "Can delegate to UAP",
+        "Nurse only"
+      ],
+      "options": [
+        {
+          "text": "Measuring a stable client's output",
+          "correct": true,
+          "rationale": "Routine measurements can be delegated.",
+          "bucket": 1
+        },
+        {
+          "text": "Helping a stable client walk",
+          "correct": true,
+          "rationale": "Ambulating a stable client can be delegated.",
+          "bucket": 1
+        },
+        {
+          "text": "Obtaining an oxygen saturation reading",
+          "correct": true,
+          "rationale": "Routine data collection can be delegated.",
+          "bucket": 1
+        },
+        {
+          "text": "Assessing a client's new chest pain",
+          "correct": true,
+          "rationale": "Assessment is a nursing task.",
+          "bucket": 2
+        },
+        {
+          "text": "Teaching a client about a new medication",
+          "correct": true,
+          "rationale": "Teaching can't be delegated to UAP.",
+          "bucket": 2
+        },
+        {
+          "text": "Evaluating a client's response to pain medication",
+          "correct": true,
+          "rationale": "Evaluation is a nursing task.",
+          "bucket": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-priority-care-048",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Priority Setting & Managing Care",
+      "category": "Priority Setting",
+      "type": "cloze",
+      "prompt": "A nurse receives report on four clients: a client who has a respiratory rate of 30/min and SpO2 of 88%, a client who is due for a scheduled antibiotic, a client who wants help to the bathroom, and a client who has a question about discharge.",
+      "sentence": "The nurse should see the client with {1} first because {2} comes first.",
+      "options": [
+        {
+          "text": "the respiratory rate of 30/min and SpO2 of 88%",
+          "correct": true,
+          "rationale": "This client has a breathing problem.",
+          "blank": 1
+        },
+        {
+          "text": "the scheduled antibiotic",
+          "correct": false,
+          "rationale": "A routine medication can wait a few minutes.",
+          "blank": 1
+        },
+        {
+          "text": "the discharge question",
+          "correct": false,
+          "rationale": "Questions come after physical needs.",
+          "blank": 1
+        },
+        {
+          "text": "airway and breathing",
+          "correct": true,
+          "rationale": "ABCs set the priority.",
+          "blank": 2
+        },
+        {
+          "text": "the client who asked first",
+          "correct": false,
+          "rationale": "Priority is based on need, not order of requests.",
+          "blank": 2
+        },
+        {
+          "text": "the easiest task",
+          "correct": false,
+          "rationale": "Priority is based on need.",
+          "blank": 2
         }
       ]
     },
@@ -7456,6 +7938,201 @@
       ]
     },
     {
+      "id": "nur114-u1-vitals-pain-049",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Health Assessment, Vital Signs & Pain",
+      "category": "Vital Signs",
+      "type": "cloze",
+      "prompt": "A nurse is reviewing an adult client's vital signs. For each finding, choose the term the nurse should document.",
+      "table": {
+        "head": [
+          "Finding",
+          "Term"
+        ],
+        "rows": [
+          [
+            "Heart rate 118/min, regular",
+            "{1}"
+          ],
+          [
+            "Respiratory rate 8/min",
+            "{2}"
+          ],
+          [
+            "Heart rate 48/min",
+            "{3}"
+          ],
+          [
+            "Respiratory rate 28/min",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Tachycardia",
+          "correct": true,
+          "rationale": "Over 100/min is tachycardia.",
+          "blank": 1
+        },
+        {
+          "text": "Bradycardia",
+          "correct": false,
+          "rationale": "Bradycardia is under 60/min.",
+          "blank": 1
+        },
+        {
+          "text": "Tachypnea",
+          "correct": false,
+          "rationale": "Tachypnea is a fast respiratory rate.",
+          "blank": 1
+        },
+        {
+          "text": "Bradypnea",
+          "correct": true,
+          "rationale": "Under 12/min is bradypnea.",
+          "blank": 2
+        },
+        {
+          "text": "Apnea",
+          "correct": false,
+          "rationale": "Apnea is no breathing.",
+          "blank": 2
+        },
+        {
+          "text": "Tachypnea",
+          "correct": false,
+          "rationale": "Tachypnea is fast breathing.",
+          "blank": 2
+        },
+        {
+          "text": "Bradycardia",
+          "correct": true,
+          "rationale": "Under 60/min is bradycardia.",
+          "blank": 3
+        },
+        {
+          "text": "Tachycardia",
+          "correct": false,
+          "rationale": "Tachycardia is over 100/min.",
+          "blank": 3
+        },
+        {
+          "text": "Bradypnea",
+          "correct": false,
+          "rationale": "Bradypnea is a slow respiratory rate.",
+          "blank": 3
+        },
+        {
+          "text": "Tachypnea",
+          "correct": true,
+          "rationale": "Over 20/min is tachypnea.",
+          "blank": 4
+        },
+        {
+          "text": "Bradypnea",
+          "correct": false,
+          "rationale": "Bradypnea is slow breathing.",
+          "blank": 4
+        },
+        {
+          "text": "Tachycardia",
+          "correct": false,
+          "rationale": "Tachycardia is a fast heart rate.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-vitals-pain-050",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Health Assessment, Vital Signs & Pain",
+      "category": "Pain",
+      "type": "dragdrop",
+      "prompt": "A nurse is assessing several clients who report pain. Sort each description by type of pain. Move each answer to the box where it belongs.",
+      "leftLabel": "Descriptions",
+      "buckets": [
+        "Nociceptive",
+        "Neuropathic"
+      ],
+      "options": [
+        {
+          "text": "Aching pain at a surgical incision",
+          "correct": true,
+          "rationale": "Nociceptive pain comes from tissue damage.",
+          "bucket": 1
+        },
+        {
+          "text": "Throbbing pain from a sprained ankle",
+          "correct": true,
+          "rationale": "Tissue injury causes nociceptive pain.",
+          "bucket": 1
+        },
+        {
+          "text": "Burning, shooting pain in the feet from diabetes",
+          "correct": true,
+          "rationale": "Nerve damage causes neuropathic pain.",
+          "bucket": 2
+        },
+        {
+          "text": "Shooting pain along a nerve after shingles",
+          "correct": true,
+          "rationale": "Nerve damage causes neuropathic pain.",
+          "bucket": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-vitals-pain-051",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Health Assessment, Vital Signs & Pain",
+      "category": "Vital Signs",
+      "type": "cloze",
+      "prompt": "A nurse checks a client's blood pressure lying down and gets 128/78 mm Hg. When the client stands, the blood pressure is 100/70 mm Hg and the heart rate rises.",
+      "sentence": "These findings show {1}, so the nurse should have the client {2}.",
+      "options": [
+        {
+          "text": "orthostatic hypotension",
+          "correct": true,
+          "rationale": "A systolic drop of 20 or more with standing is orthostatic hypotension.",
+          "blank": 1
+        },
+        {
+          "text": "hypertension",
+          "correct": false,
+          "rationale": "The pressure dropped.",
+          "blank": 1
+        },
+        {
+          "text": "an expected change",
+          "correct": false,
+          "rationale": "A 28-point drop isn't expected.",
+          "blank": 1
+        },
+        {
+          "text": "change positions slowly",
+          "correct": true,
+          "rationale": "Slow position changes lower the risk of falls.",
+          "blank": 2
+        },
+        {
+          "text": "walk quickly to the bathroom",
+          "correct": false,
+          "rationale": "Walking now raises fall risk.",
+          "blank": 2
+        },
+        {
+          "text": "stand for 10 minutes",
+          "correct": false,
+          "rationale": "Standing longer worsens dizziness.",
+          "blank": 2
+        }
+      ]
+    },
+    {
       "id": "nur114-u1-ethics-legal-001",
       "course": "NUR 114",
       "unit": 1,
@@ -8850,6 +9527,137 @@
           "text": "Yes, for teaching purposes",
           "correct": false,
           "rationale": "Teaching use still needs consent and proper channels."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-ethics-legal-043",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Professionalism, Ethics & Legal",
+      "category": "Legal",
+      "type": "dragdrop",
+      "prompt": "A nurse manager is reviewing legal issues with staff. Sort each example by type of tort. Move each answer to the box where it belongs.",
+      "leftLabel": "Examples",
+      "buckets": [
+        "Intentional tort",
+        "Unintentional tort"
+      ],
+      "options": [
+        {
+          "text": "Threatening to restrain a client who refuses a bath",
+          "correct": true,
+          "rationale": "Assault is an intentional tort.",
+          "bucket": 1
+        },
+        {
+          "text": "Touching a client without consent",
+          "correct": true,
+          "rationale": "Battery is an intentional tort.",
+          "bucket": 1
+        },
+        {
+          "text": "Sharing a client's diagnosis with a neighbor",
+          "correct": true,
+          "rationale": "Invasion of privacy is intentional.",
+          "bucket": 1
+        },
+        {
+          "text": "Forgetting to raise the side rails on a sedated client who then falls",
+          "correct": true,
+          "rationale": "Negligence is unintentional.",
+          "bucket": 2
+        },
+        {
+          "text": "Giving the wrong dose because the label wasn't checked",
+          "correct": true,
+          "rationale": "Malpractice is unintentional.",
+          "bucket": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-ethics-legal-044",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Professionalism, Ethics & Legal",
+      "category": "Professionalism & Leadership",
+      "type": "cloze",
+      "prompt": "A nurse is reviewing leadership styles. For each description, choose the style.",
+      "table": {
+        "head": [
+          "Description",
+          "Leadership style"
+        ],
+        "rows": [
+          [
+            "Inspires the team with a shared vision",
+            "{1}"
+          ],
+          [
+            "Rewards meeting short-term goals and has clear consequences for missing them",
+            "{2}"
+          ],
+          [
+            "Gives staff little direction and lets them decide",
+            "{3}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Transformational",
+          "correct": true,
+          "rationale": "Transformational leaders inspire with vision and passion.",
+          "blank": 1
+        },
+        {
+          "text": "Transactional",
+          "correct": false,
+          "rationale": "Transactional leaders use rewards and consequences.",
+          "blank": 1
+        },
+        {
+          "text": "Laissez-faire",
+          "correct": false,
+          "rationale": "Laissez-faire leaders give little direction.",
+          "blank": 1
+        },
+        {
+          "text": "Transactional",
+          "correct": true,
+          "rationale": "Rewards and consequences are transactional.",
+          "blank": 2
+        },
+        {
+          "text": "Transformational",
+          "correct": false,
+          "rationale": "Transformational leaders inspire with vision.",
+          "blank": 2
+        },
+        {
+          "text": "Laissez-faire",
+          "correct": false,
+          "rationale": "Laissez-faire leaders don't set consequences.",
+          "blank": 2
+        },
+        {
+          "text": "Laissez-faire",
+          "correct": true,
+          "rationale": "Laissez-faire is hands-off.",
+          "blank": 3
+        },
+        {
+          "text": "Transactional",
+          "correct": false,
+          "rationale": "Transactional leaders set clear expectations.",
+          "blank": 3
+        },
+        {
+          "text": "Transformational",
+          "correct": false,
+          "rationale": "Transformational leaders actively inspire.",
+          "blank": 3
         }
       ]
     },
@@ -10380,6 +11188,211 @@
           "text": "Theory-practice gap",
           "correct": false,
           "rationale": "That's the gap between research and practice."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-communication-044",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Communication, Documentation & EBP",
+      "category": "Communication",
+      "type": "dragdrop",
+      "prompt": "A nurse is talking with a client who is anxious about surgery. Sort each nurse statement. Move each answer to the box where it belongs.",
+      "leftLabel": "Statements",
+      "buckets": [
+        "Therapeutic",
+        "Nontherapeutic"
+      ],
+      "options": [
+        {
+          "text": "\"Tell me more about what's worrying you.\"",
+          "correct": true,
+          "rationale": "Open-ended questions are therapeutic.",
+          "bucket": 1
+        },
+        {
+          "text": "\"You seem upset. How are you feeling?\"",
+          "correct": true,
+          "rationale": "Naming the feeling invites the client to share.",
+          "bucket": 1
+        },
+        {
+          "text": "\"So the pain is worse at night and better with rest?\"",
+          "correct": true,
+          "rationale": "Clarifying is therapeutic.",
+          "bucket": 1
+        },
+        {
+          "text": "\"Don't worry. Everything will be fine.\"",
+          "correct": true,
+          "rationale": "False reassurance is nontherapeutic.",
+          "bucket": 2
+        },
+        {
+          "text": "\"Why didn't you take your medication?\"",
+          "correct": true,
+          "rationale": "\"Why\" questions put the client on the defensive.",
+          "bucket": 2
+        },
+        {
+          "text": "\"If I were you, I'd have the surgery.\"",
+          "correct": true,
+          "rationale": "Giving advice is nontherapeutic.",
+          "bucket": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-communication-045",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Communication, Documentation & EBP",
+      "category": "Teamwork & Collaboration",
+      "type": "cloze",
+      "prompt": "A nurse is calling a provider about a client using ISBARR. For each statement, choose the part of ISBARR.",
+      "table": {
+        "head": [
+          "Statement",
+          "ISBARR part"
+        ],
+        "rows": [
+          [
+            "\"This is Sam, the nurse on 4 West.\"",
+            "{1}"
+          ],
+          [
+            "\"The client's oxygen saturation dropped to 88%.\"",
+            "{2}"
+          ],
+          [
+            "\"The client had surgery yesterday and has a history of COPD.\"",
+            "{3}"
+          ],
+          [
+            "\"I'd like an order for a chest x-ray.\"",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Identity",
+          "correct": true,
+          "rationale": "Identity is who you are and where you're calling from.",
+          "blank": 1
+        },
+        {
+          "text": "Situation",
+          "correct": false,
+          "rationale": "Situation is the concern.",
+          "blank": 1
+        },
+        {
+          "text": "Background",
+          "correct": false,
+          "rationale": "Background is history.",
+          "blank": 1
+        },
+        {
+          "text": "Situation",
+          "correct": true,
+          "rationale": "Situation states the concern.",
+          "blank": 2
+        },
+        {
+          "text": "Assessment",
+          "correct": false,
+          "rationale": "Assessment is the nurse's findings and impression.",
+          "blank": 2
+        },
+        {
+          "text": "Background",
+          "correct": false,
+          "rationale": "Background is history.",
+          "blank": 2
+        },
+        {
+          "text": "Background",
+          "correct": true,
+          "rationale": "Background gives history.",
+          "blank": 3
+        },
+        {
+          "text": "Situation",
+          "correct": false,
+          "rationale": "Situation is the current concern.",
+          "blank": 3
+        },
+        {
+          "text": "Recommendation",
+          "correct": false,
+          "rationale": "Recommendation is what you need.",
+          "blank": 3
+        },
+        {
+          "text": "Recommendation",
+          "correct": true,
+          "rationale": "Recommendation is what you need.",
+          "blank": 4
+        },
+        {
+          "text": "Read back",
+          "correct": false,
+          "rationale": "Read back repeats an order.",
+          "blank": 4
+        },
+        {
+          "text": "Assessment",
+          "correct": false,
+          "rationale": "Assessment is findings.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u1-communication-046",
+      "course": "NUR 114",
+      "unit": 1,
+      "topic": "Communication, Documentation & EBP",
+      "category": "Documentation",
+      "type": "dragdrop",
+      "prompt": "A nurse is reviewing chart entries. Sort each entry. Move each answer to the box where it belongs.",
+      "leftLabel": "Entries",
+      "buckets": [
+        "Written correctly",
+        "Needs correction"
+      ],
+      "options": [
+        {
+          "text": "\"Client ate 50% of breakfast.\"",
+          "correct": true,
+          "rationale": "Objective and specific.",
+          "bucket": 1
+        },
+        {
+          "text": "\"Client states, 'My head hurts.' Rated pain 6/10.\"",
+          "correct": true,
+          "rationale": "Uses the client's words and a measure.",
+          "bucket": 1
+        },
+        {
+          "text": "\"Client ate a good breakfast.\"",
+          "correct": true,
+          "rationale": "\"Good\" is vague.",
+          "bucket": 2
+        },
+        {
+          "text": "\"Client seems depressed.\"",
+          "correct": true,
+          "rationale": "This is an opinion, not data.",
+          "bucket": 2
+        },
+        {
+          "text": "\"Gave 5.0 mg of morphine.\"",
+          "correct": true,
+          "rationale": "Never use a trailing zero.",
+          "bucket": 2
         }
       ]
     }

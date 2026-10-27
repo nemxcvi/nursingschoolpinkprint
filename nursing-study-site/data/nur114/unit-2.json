@@ -3688,6 +3688,253 @@
       ]
     },
     {
+      "id": "nur114-u2-mobility-106",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Mobility",
+      "category": "Assessment & devices",
+      "type": "cloze",
+      "prompt": "A nurse is completing the Bedside Mobility Assessment Tool (BMAT) for several clients. For each result, choose the mobility level.",
+      "table": {
+        "head": [
+          "Result",
+          "Mobility level"
+        ],
+        "rows": [
+          [
+            "Can't sit on the edge of the bed for 2 minutes",
+            "{1}"
+          ],
+          [
+            "Sits and shakes hands but can't extend each leg and point the toes",
+            "{2}"
+          ],
+          [
+            "Stands with the bed rail but can't march in place",
+            "{3}"
+          ],
+          [
+            "Marches in place and steps forward and back with no device",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Level 1, maximum assist",
+          "correct": true,
+          "rationale": "Failing a Level 1 task keeps the client at Level 1.",
+          "blank": 1
+        },
+        {
+          "text": "Level 2, moderate assist",
+          "correct": false,
+          "rationale": "The client didn't pass Level 1.",
+          "blank": 1
+        },
+        {
+          "text": "Level 3, minimal assist",
+          "correct": false,
+          "rationale": "The client didn't pass Level 1.",
+          "blank": 1
+        },
+        {
+          "text": "Level 2, moderate assist",
+          "correct": true,
+          "rationale": "Failing the Level 2 test makes the client Level 2.",
+          "blank": 2
+        },
+        {
+          "text": "Level 1, maximum assist",
+          "correct": false,
+          "rationale": "The client passed Level 1.",
+          "blank": 2
+        },
+        {
+          "text": "Level 3, minimal assist",
+          "correct": false,
+          "rationale": "The client failed Level 2.",
+          "blank": 2
+        },
+        {
+          "text": "Level 3, minimal assist",
+          "correct": true,
+          "rationale": "Failing the walking test means Level 3.",
+          "blank": 3
+        },
+        {
+          "text": "Level 4, no assist",
+          "correct": false,
+          "rationale": "The client couldn't march in place.",
+          "blank": 3
+        },
+        {
+          "text": "Level 2, moderate assist",
+          "correct": false,
+          "rationale": "The client passed Level 2.",
+          "blank": 3
+        },
+        {
+          "text": "Level 4, no assist",
+          "correct": true,
+          "rationale": "Passing every test without a device is Level 4.",
+          "blank": 4
+        },
+        {
+          "text": "Level 3, minimal assist",
+          "correct": false,
+          "rationale": "Level 3 applies if a device is needed.",
+          "blank": 4
+        },
+        {
+          "text": "Level 2, moderate assist",
+          "correct": false,
+          "rationale": "The client passed more than Level 2.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-mobility-107",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Mobility",
+      "category": "Assessment & devices",
+      "type": "dragdrop",
+      "prompt": "A nurse is choosing transfer equipment for several clients. Sort each client into the device that fits. Move each answer to the box where it belongs.",
+      "leftLabel": "Clients",
+      "buckets": [
+        "Mechanical lift",
+        "Sit-to-stand lift",
+        "Pivot disc with gait belt"
+      ],
+      "options": [
+        {
+          "text": "Can't support any of their own weight",
+          "correct": true,
+          "rationale": "A mechanical lift is for clients who can't bear weight.",
+          "bucket": 1
+        },
+        {
+          "text": "Can stay upright once standing but can't get up alone",
+          "correct": true,
+          "rationale": "A sit-to-stand lift fits this client.",
+          "bucket": 2
+        },
+        {
+          "text": "Cooperative, can stand and bear weight, but has trouble moving the feet",
+          "correct": true,
+          "rationale": "A pivot disc fits this client.",
+          "bucket": 3
+        },
+        {
+          "text": "Walks independently with a steady gait",
+          "correct": false,
+          "rationale": "This client needs no transfer device."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-mobility-108",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Mobility",
+      "category": "Effects of immobility",
+      "type": "dragdrop",
+      "prompt": "A nurse is caring for a client on prolonged bed rest. Sort each intervention into the complication it helps prevent. Move each answer to the box where it belongs.",
+      "leftLabel": "Interventions",
+      "buckets": [
+        "Atelectasis",
+        "Deep vein thrombosis (DVT)",
+        "Constipation"
+      ],
+      "options": [
+        {
+          "text": "Incentive spirometer",
+          "correct": true,
+          "rationale": "Slow, deep breaths expand the lungs.",
+          "bucket": 1
+        },
+        {
+          "text": "Deep breathing and coughing",
+          "correct": true,
+          "rationale": "Deep breaths open the alveoli.",
+          "bucket": 1
+        },
+        {
+          "text": "Sequential compression devices",
+          "correct": true,
+          "rationale": "SCDs push blood back toward the heart.",
+          "bucket": 2
+        },
+        {
+          "text": "Ankle flexing and foot circles",
+          "correct": true,
+          "rationale": "Calf exercises reduce venous stasis.",
+          "bucket": 2
+        },
+        {
+          "text": "High-fiber foods",
+          "correct": true,
+          "rationale": "Fiber helps prevent constipation.",
+          "bucket": 3
+        },
+        {
+          "text": "Massaging the calves",
+          "correct": false,
+          "rationale": "Massage could dislodge a clot and prevents nothing."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-mobility-109",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Mobility",
+      "category": "Heat/cold & venous return",
+      "type": "cloze",
+      "prompt": "A client sprained an ankle 2 hours ago playing basketball. The ankle is swollen and painful.",
+      "sentence": "The nurse should apply {1} because it {2}.",
+      "options": [
+        {
+          "text": "cold",
+          "correct": true,
+          "rationale": "A fresh injury gets cold.",
+          "blank": 1
+        },
+        {
+          "text": "heat",
+          "correct": false,
+          "rationale": "Heat is never used in the first 24 hours of a traumatic injury.",
+          "blank": 1
+        },
+        {
+          "text": "a warm soak",
+          "correct": false,
+          "rationale": "A warm soak is heat.",
+          "blank": 1
+        },
+        {
+          "text": "decreases swelling, bleeding, and pain",
+          "correct": true,
+          "rationale": "Cold clamps down on swelling, bleeding, and pain.",
+          "blank": 2
+        },
+        {
+          "text": "increases circulation to the injury",
+          "correct": false,
+          "rationale": "Increasing circulation is what heat does.",
+          "blank": 2
+        },
+        {
+          "text": "relaxes stiff muscles",
+          "correct": false,
+          "rationale": "Relaxing stiff muscles is what heat does.",
+          "blank": 2
+        }
+      ]
+    },
+    {
       "id": "nur114-u2-hygiene-001",
       "course": "NUR 114",
       "unit": 2,
@@ -6869,6 +7116,179 @@
       ]
     },
     {
+      "id": "nur114-u2-hygiene-095",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Hygiene",
+      "category": "Integumentary & infection prevention",
+      "type": "dragdrop",
+      "prompt": "A nurse is reviewing hand hygiene. Sort each situation by the method the nurse should use. Move each answer to the box where it belongs.",
+      "leftLabel": "Situations",
+      "buckets": [
+        "Alcohol-based sanitizer",
+        "Soap and water"
+      ],
+      "options": [
+        {
+          "text": "Before touching a client",
+          "correct": true,
+          "rationale": "Sanitizer is the default.",
+          "bucket": 1
+        },
+        {
+          "text": "Right after removing gloves when hands aren't soiled",
+          "correct": true,
+          "rationale": "Sanitizer is used after removing gloves.",
+          "bucket": 1
+        },
+        {
+          "text": "Before sterile technique",
+          "correct": true,
+          "rationale": "Sanitizer is used before sterile technique.",
+          "bucket": 1
+        },
+        {
+          "text": "After caring for a client who has C. difficile",
+          "correct": true,
+          "rationale": "Spores need soap and water.",
+          "bucket": 2
+        },
+        {
+          "text": "Hands are visibly soiled",
+          "correct": true,
+          "rationale": "Soiled hands need soap and water.",
+          "bucket": 2
+        },
+        {
+          "text": "After caring for a client who has infectious diarrhea",
+          "correct": true,
+          "rationale": "Stool calls for soap and water.",
+          "bucket": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-hygiene-096",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Hygiene",
+      "category": "Special populations",
+      "type": "cloze",
+      "prompt": "A nurse is planning hygiene care for several clients. For each client, choose the best approach.",
+      "table": {
+        "head": [
+          "Client",
+          "Approach"
+        ],
+        "rows": [
+          [
+            "Client who has a spinal cord injury",
+            "{1}"
+          ],
+          [
+            "Client who takes an anticoagulant",
+            "{2}"
+          ],
+          [
+            "Client who has dementia and becomes upset in the shower",
+            "{3}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Check the water temperature before bathing",
+          "correct": true,
+          "rationale": "The client may not feel hot or cold.",
+          "blank": 1
+        },
+        {
+          "text": "Use the hottest water tolerated",
+          "correct": false,
+          "rationale": "Hot water can burn skin without sensation.",
+          "blank": 1
+        },
+        {
+          "text": "Rub the skin dry briskly",
+          "correct": false,
+          "rationale": "Wet skin is fragile; dry gently.",
+          "blank": 1
+        },
+        {
+          "text": "Use an electric razor",
+          "correct": true,
+          "rationale": "Clients who bleed easily use an electric razor.",
+          "blank": 2
+        },
+        {
+          "text": "Use a new blade razor",
+          "correct": false,
+          "rationale": "A blade raises the risk of cuts.",
+          "blank": 2
+        },
+        {
+          "text": "Shave against the hair growth",
+          "correct": false,
+          "rationale": "Shave with the direction of growth.",
+          "blank": 2
+        },
+        {
+          "text": "Offer a towel bath with no-rinse soap",
+          "correct": true,
+          "rationale": "A towel bath is a gentle alternative.",
+          "blank": 3
+        },
+        {
+          "text": "Insist on the shower now",
+          "correct": false,
+          "rationale": "Forcing care increases agitation.",
+          "blank": 3
+        },
+        {
+          "text": "Skip bathing for the week",
+          "correct": false,
+          "rationale": "Ignoring a refusal can be considered abuse.",
+          "blank": 3
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-hygiene-097",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Hygiene",
+      "category": "Special populations",
+      "type": "cloze",
+      "prompt": "A client who had a stroke has weakness on the left side and needs help changing into a clean gown.",
+      "sentence": "The nurse should remove the soiled gown from the {1} arm first and put the clean gown on the {2} arm first.",
+      "options": [
+        {
+          "text": "right",
+          "correct": true,
+          "rationale": "Undressing: out with the unaffected side.",
+          "blank": 1
+        },
+        {
+          "text": "left",
+          "correct": false,
+          "rationale": "The affected side comes out last.",
+          "blank": 1
+        },
+        {
+          "text": "left",
+          "correct": true,
+          "rationale": "Dressing: in with the affected side.",
+          "blank": 2
+        },
+        {
+          "text": "right",
+          "correct": false,
+          "rationale": "The unaffected side goes in last.",
+          "blank": 2
+        }
+      ]
+    },
+    {
       "id": "nur114-u2-client-education-001",
       "course": "NUR 114",
       "unit": 2,
@@ -9738,6 +10158,192 @@
       ]
     },
     {
+      "id": "nur114-u2-client-education-085",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Client Education",
+      "category": "Domains of learning",
+      "type": "dragdrop",
+      "prompt": "A nurse is planning teaching for a client who has a new ostomy. Sort each teaching method into the domain of learning it fits. Move each answer to the box where it belongs.",
+      "leftLabel": "Methods",
+      "buckets": [
+        "Cognitive",
+        "Affective",
+        "Psychomotor"
+      ],
+      "options": [
+        {
+          "text": "Lecture on how the ostomy works",
+          "correct": true,
+          "rationale": "Lecture is a cognitive method.",
+          "bucket": 1
+        },
+        {
+          "text": "Question-and-answer about signs of complications",
+          "correct": true,
+          "rationale": "Q&A is cognitive.",
+          "bucket": 1
+        },
+        {
+          "text": "Role play of telling a partner about the ostomy",
+          "correct": true,
+          "rationale": "Role play is affective.",
+          "bucket": 2
+        },
+        {
+          "text": "Discussion of feelings about body image",
+          "correct": true,
+          "rationale": "Discussion of feelings is affective.",
+          "bucket": 2
+        },
+        {
+          "text": "Demonstration of changing the pouch",
+          "correct": true,
+          "rationale": "Demonstration is psychomotor.",
+          "bucket": 3
+        },
+        {
+          "text": "Return demonstration of emptying the pouch",
+          "correct": true,
+          "rationale": "Return demonstration is psychomotor.",
+          "bucket": 3
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-client-education-086",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Client Education",
+      "category": "Knowles's principles",
+      "type": "cloze",
+      "prompt": "A nurse is applying adult learning principles. For each client statement, choose the principle it shows.",
+      "table": {
+        "head": [
+          "Client statement",
+          "Principle"
+        ],
+        "rows": [
+          [
+            "\"I want to learn foot care so I don't lose a toe.\"",
+            "{1}"
+          ],
+          [
+            "\"I'll practice my injections at night when I have time.\"",
+            "{2}"
+          ],
+          [
+            "\"Carb counting is like following a recipe, and I love to cook.\"",
+            "{3}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Relevance",
+          "correct": true,
+          "rationale": "The client knows why it applies to them.",
+          "blank": 1
+        },
+        {
+          "text": "Readiness",
+          "correct": false,
+          "rationale": "Readiness is being able to learn now.",
+          "blank": 1
+        },
+        {
+          "text": "Self-directed",
+          "correct": false,
+          "rationale": "Self-direction is controlling choices.",
+          "blank": 1
+        },
+        {
+          "text": "Self-directed",
+          "correct": true,
+          "rationale": "The client controls their choices.",
+          "blank": 2
+        },
+        {
+          "text": "Motivation",
+          "correct": false,
+          "rationale": "Motivation is the drive to learn.",
+          "blank": 2
+        },
+        {
+          "text": "Life experience",
+          "correct": false,
+          "rationale": "Life experience builds on what they know.",
+          "blank": 2
+        },
+        {
+          "text": "Life experience",
+          "correct": true,
+          "rationale": "The client relates learning to what they already know.",
+          "blank": 3
+        },
+        {
+          "text": "Relevance",
+          "correct": false,
+          "rationale": "Relevance is why it matters.",
+          "blank": 3
+        },
+        {
+          "text": "Task-centered",
+          "correct": false,
+          "rationale": "Task-centered ties learning to real problems.",
+          "blank": 3
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-client-education-087",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Client Education",
+      "category": "Barriers to learning",
+      "type": "cloze",
+      "prompt": "A nurse arrives to teach a client about incision care. The client is grimacing, rates pain 8/10, and the TV is on loudly.",
+      "sentence": "The nurse should first {1} because {2} hinders learning.",
+      "options": [
+        {
+          "text": "treat the client's pain",
+          "correct": true,
+          "rationale": "Assess and treat comfort before teaching.",
+          "blank": 1
+        },
+        {
+          "text": "start teaching to stay on schedule",
+          "correct": false,
+          "rationale": "Teaching in pain isn't effective.",
+          "blank": 1
+        },
+        {
+          "text": "give the client a handout to read later",
+          "correct": false,
+          "rationale": "The client still needs comfort and teaching.",
+          "blank": 1
+        },
+        {
+          "text": "physical discomfort",
+          "correct": true,
+          "rationale": "Pain and fatigue hinder learning.",
+          "blank": 2
+        },
+        {
+          "text": "repetition",
+          "correct": false,
+          "rationale": "Repetition promotes learning.",
+          "blank": 2
+        },
+        {
+          "text": "perceived benefit",
+          "correct": false,
+          "rationale": "Perceived benefit promotes learning.",
+          "blank": 2
+        }
+      ]
+    },
+    {
       "id": "nur114-u2-dei-001",
       "course": "NUR 114",
       "unit": 2,
@@ -11641,6 +12247,184 @@
           "text": "Wait until the client asks about culture",
           "correct": false,
           "rationale": "The nurse starts the assessment."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-dei-058",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Diversity, Equity, and Inclusion",
+      "category": "Leininger & Sunrise Enabler",
+      "type": "cloze",
+      "prompt": "A nurse is using Leininger's three modes of care. For each nursing action, choose the mode.",
+      "table": {
+        "head": [
+          "Nursing action",
+          "Mode of care"
+        ],
+        "rows": [
+          [
+            "Arranges a female caregiver as the client requested",
+            "{1}"
+          ],
+          [
+            "Helps a client with diabetes plan smaller portions of holiday foods",
+            "{2}"
+          ],
+          [
+            "Helps a client replace a home practice that is harming their health",
+            "{3}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Preservation and maintenance",
+          "correct": true,
+          "rationale": "The belief is kept as is.",
+          "blank": 1
+        },
+        {
+          "text": "Accommodation and negotiation",
+          "correct": false,
+          "rationale": "Nothing is adapted here.",
+          "blank": 1
+        },
+        {
+          "text": "Repatterning and restructuring",
+          "correct": false,
+          "rationale": "Nothing is changed.",
+          "blank": 1
+        },
+        {
+          "text": "Accommodation and negotiation",
+          "correct": true,
+          "rationale": "The practice is adapted safely.",
+          "blank": 2
+        },
+        {
+          "text": "Preservation and maintenance",
+          "correct": false,
+          "rationale": "The practice is adapted, not kept as is.",
+          "blank": 2
+        },
+        {
+          "text": "Repatterning and restructuring",
+          "correct": false,
+          "rationale": "The practice isn't replaced.",
+          "blank": 2
+        },
+        {
+          "text": "Repatterning and restructuring",
+          "correct": true,
+          "rationale": "A harmful practice is changed.",
+          "blank": 3
+        },
+        {
+          "text": "Accommodation and negotiation",
+          "correct": false,
+          "rationale": "The practice is replaced, not adapted.",
+          "blank": 3
+        },
+        {
+          "text": "Preservation and maintenance",
+          "correct": false,
+          "rationale": "The practice isn't kept.",
+          "blank": 3
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-dei-059",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Diversity, Equity, and Inclusion",
+      "category": "Vulnerable Populations",
+      "type": "dragdrop",
+      "prompt": "A nurse is assessing factors that affect vulnerable populations. Sort each factor. Move each answer to the box where it belongs.",
+      "leftLabel": "Factors",
+      "buckets": [
+        "Demographic",
+        "Health status",
+        "Socioeconomic"
+      ],
+      "options": [
+        {
+          "text": "Age",
+          "correct": true,
+          "rationale": "Demographic.",
+          "bucket": 1
+        },
+        {
+          "text": "English proficiency",
+          "correct": true,
+          "rationale": "Demographic.",
+          "bucket": 1
+        },
+        {
+          "text": "Chronic conditions",
+          "correct": true,
+          "rationale": "Health status.",
+          "bucket": 2
+        },
+        {
+          "text": "Insurance status",
+          "correct": true,
+          "rationale": "Health status.",
+          "bucket": 2
+        },
+        {
+          "text": "Household income",
+          "correct": true,
+          "rationale": "Socioeconomic.",
+          "bucket": 3
+        },
+        {
+          "text": "Employment",
+          "correct": true,
+          "rationale": "Socioeconomic.",
+          "bucket": 3
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-dei-060",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Diversity, Equity, and Inclusion",
+      "category": "Culture & Bias",
+      "type": "dragdrop",
+      "prompt": "A nurse is reviewing ways of knowing about culture and types of bias. Sort each example. Move each answer to the box where it belongs.",
+      "leftLabel": "Examples",
+      "buckets": [
+        "Emic knowledge",
+        "Etic knowledge",
+        "Implicit bias"
+      ],
+      "options": [
+        {
+          "text": "A client explains what a healing ceremony means to their family",
+          "correct": true,
+          "rationale": "Emic is the insider view from members.",
+          "bucket": 1
+        },
+        {
+          "text": "The nurse reads a study on a group's health practices",
+          "correct": true,
+          "rationale": "Etic is the outsider view from research.",
+          "bucket": 2
+        },
+        {
+          "text": "The nurse spends less time with certain clients without realizing it",
+          "correct": true,
+          "rationale": "Implicit bias is unconscious.",
+          "bucket": 3
+        },
+        {
+          "text": "The nurse says, \"I'd rather not care for clients of that religion.\"",
+          "correct": false,
+          "rationale": "That's explicit bias."
         }
       ]
     },
@@ -13899,6 +14683,208 @@
           "text": "Cortisol level",
           "correct": false,
           "rationale": "Cortisol relates to the stress response."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-self-concept-067",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Self-Concept",
+      "category": "Identity Formation",
+      "type": "cloze",
+      "prompt": "A nurse is talking with several young adult clients about their career plans. For each statement, choose the identity status.",
+      "table": {
+        "head": [
+          "Client statement",
+          "Identity status"
+        ],
+        "rows": [
+          [
+            "\"I shadowed three careers and just enrolled in nursing.\"",
+            "{1}"
+          ],
+          [
+            "\"I keep switching majors, and it makes me anxious.\"",
+            "{2}"
+          ],
+          [
+            "\"My parents are teachers, so I'll be one too.\"",
+            "{3}"
+          ],
+          [
+            "\"I don't care what I do. I'll figure it out someday.\"",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Achievement",
+          "correct": true,
+          "rationale": "Explored, then chose.",
+          "blank": 1
+        },
+        {
+          "text": "Foreclosure",
+          "correct": false,
+          "rationale": "Foreclosure skips exploring.",
+          "blank": 1
+        },
+        {
+          "text": "Moratorium",
+          "correct": false,
+          "rationale": "Moratorium hasn't committed.",
+          "blank": 1
+        },
+        {
+          "text": "Moratorium",
+          "correct": true,
+          "rationale": "Still searching, anxious.",
+          "blank": 2
+        },
+        {
+          "text": "Diffusion",
+          "correct": false,
+          "rationale": "Diffusion isn't exploring.",
+          "blank": 2
+        },
+        {
+          "text": "Achievement",
+          "correct": false,
+          "rationale": "The client hasn't committed.",
+          "blank": 2
+        },
+        {
+          "text": "Foreclosure",
+          "correct": true,
+          "rationale": "Chose without looking.",
+          "blank": 3
+        },
+        {
+          "text": "Achievement",
+          "correct": false,
+          "rationale": "Achievement requires exploring.",
+          "blank": 3
+        },
+        {
+          "text": "Moratorium",
+          "correct": false,
+          "rationale": "The client has committed.",
+          "blank": 3
+        },
+        {
+          "text": "Diffusion",
+          "correct": true,
+          "rationale": "Drifting, no direction.",
+          "blank": 4
+        },
+        {
+          "text": "Moratorium",
+          "correct": false,
+          "rationale": "Moratorium is actively searching.",
+          "blank": 4
+        },
+        {
+          "text": "Foreclosure",
+          "correct": false,
+          "rationale": "The client hasn't committed.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-self-concept-068",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Self-Concept",
+      "category": "Role Stressors",
+      "type": "dragdrop",
+      "prompt": "A nurse is assessing clients who report role stress. Sort each statement into the role stressor. Move each answer to the box where it belongs.",
+      "leftLabel": "Statements",
+      "buckets": [
+        "Role conflict",
+        "Role overload",
+        "Role ambiguity",
+        "Role strain"
+      ],
+      "options": [
+        {
+          "text": "\"My boss wants me Saturday, but it's my son's championship.\"",
+          "correct": true,
+          "rationale": "Two roles, same time.",
+          "bucket": 1
+        },
+        {
+          "text": "\"Between work, school, and my mom's care, I have too many roles.\"",
+          "correct": true,
+          "rationale": "Too many roles at once.",
+          "bucket": 2
+        },
+        {
+          "text": "\"Nobody has told me what I'm supposed to do in this job.\"",
+          "correct": true,
+          "rationale": "No idea what's expected.",
+          "bucket": 3
+        },
+        {
+          "text": "\"I can't keep up with everything my job demands.\"",
+          "correct": true,
+          "rationale": "Can't meet one role's demands.",
+          "bucket": 4
+        },
+        {
+          "text": "\"I really enjoy being a grandparent.\"",
+          "correct": false,
+          "rationale": "Role satisfaction isn't a stressor."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-self-concept-069",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Self-Concept",
+      "category": "Nursing Process",
+      "type": "cloze",
+      "prompt": "A client who had a mastectomy 1 week ago keeps their eyes closed during dressing changes, refuses visitors, and says, \"I'm sorry for being such a burden.\"",
+      "sentence": "These findings suggest {1}, so the nurse should first {2}.",
+      "options": [
+        {
+          "text": "negative self-esteem related to body image",
+          "correct": true,
+          "rationale": "Withdrawing, hiding, and over-apologizing are red flags.",
+          "blank": 1
+        },
+        {
+          "text": "healthy coping",
+          "correct": false,
+          "rationale": "Avoidance isn't healthy coping.",
+          "blank": 1
+        },
+        {
+          "text": "role conflict",
+          "correct": false,
+          "rationale": "Role conflict is two roles clashing.",
+          "blank": 1
+        },
+        {
+          "text": "use open-ended questions to explore the client's feelings",
+          "correct": true,
+          "rationale": "Assessment comes first.",
+          "blank": 2
+        },
+        {
+          "text": "tell the client there's no need to apologize",
+          "correct": false,
+          "rationale": "That dismisses the client's feelings.",
+          "blank": 2
+        },
+        {
+          "text": "make care decisions for the client",
+          "correct": false,
+          "rationale": "That promotes dependence.",
+          "blank": 2
         }
       ]
     },
@@ -16292,6 +17278,207 @@
           "text": "Wake the client every hour to check on them",
           "correct": false,
           "rationale": "Unneeded waking disrupts sleep."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-comfort-rest-sleep-071",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Comfort, Rest & Sleep",
+      "category": "Sleep Medications",
+      "type": "cloze",
+      "prompt": "A nurse is reviewing sleep medications. For each medication, choose the key teaching point.",
+      "table": {
+        "head": [
+          "Medication",
+          "Key point"
+        ],
+        "rows": [
+          [
+            "Melatonin",
+            "{1}"
+          ],
+          [
+            "Zolpidem",
+            "{2}"
+          ],
+          [
+            "Lorazepam",
+            "{3}"
+          ],
+          [
+            "Diphenhydramine",
+            "{4}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Non-habit forming with few side effects",
+          "correct": true,
+          "rationale": "Melatonin is cheap, non-habit forming, and has few side effects.",
+          "blank": 1
+        },
+        {
+          "text": "Short-term only because of dependence",
+          "correct": false,
+          "rationale": "That's benzodiazepines.",
+          "blank": 1
+        },
+        {
+          "text": "Causes dry mouth and urinary retention",
+          "correct": false,
+          "rationale": "That's anticholinergic antihistamines.",
+          "blank": 1
+        },
+        {
+          "text": "Can cause memory loss and hallucinations",
+          "correct": true,
+          "rationale": "Z-drugs can cause memory loss, hallucinations, and GI upset.",
+          "blank": 2
+        },
+        {
+          "text": "Non-habit forming with few side effects",
+          "correct": false,
+          "rationale": "Zolpidem has abuse potential.",
+          "blank": 2
+        },
+        {
+          "text": "Causes constipation and blurred vision",
+          "correct": false,
+          "rationale": "That's antihistamines.",
+          "blank": 2
+        },
+        {
+          "text": "Short-term only because of dependence",
+          "correct": true,
+          "rationale": "Benzodiazepines carry a dependence risk.",
+          "blank": 3
+        },
+        {
+          "text": "Most commonly prescribed sleep medication",
+          "correct": false,
+          "rationale": "Z-drugs are the most prescribed.",
+          "blank": 3
+        },
+        {
+          "text": "No effect on anxiety",
+          "correct": false,
+          "rationale": "Benzodiazepines lessen anxiety.",
+          "blank": 3
+        },
+        {
+          "text": "Can't see, can't pee, can't spit, can't poop",
+          "correct": true,
+          "rationale": "Anticholinergic effects plus daytime drowsiness.",
+          "blank": 4
+        },
+        {
+          "text": "Short-term only because of dependence",
+          "correct": false,
+          "rationale": "That's benzodiazepines.",
+          "blank": 4
+        },
+        {
+          "text": "Non-habit forming with few side effects",
+          "correct": false,
+          "rationale": "Diphenhydramine has anticholinergic effects.",
+          "blank": 4
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-comfort-rest-sleep-072",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Comfort, Rest & Sleep",
+      "category": "Sleep Disorders",
+      "type": "dragdrop",
+      "prompt": "A nurse is assessing clients who have trouble sleeping. Sort each finding into the disorder it suggests. Move each answer to the box where it belongs.",
+      "leftLabel": "Findings",
+      "buckets": [
+        "Obstructive sleep apnea",
+        "Narcolepsy",
+        "Restless legs syndrome"
+      ],
+      "options": [
+        {
+          "text": "Loud snoring and exhaustion all day",
+          "correct": true,
+          "rationale": "The airway collapses during sleep.",
+          "bucket": 1
+        },
+        {
+          "text": "Sudden sleep attacks during conversation",
+          "correct": true,
+          "rationale": "Narcolepsy is sudden, uncontrollable sleep.",
+          "bucket": 2
+        },
+        {
+          "text": "Loss of muscle tone when laughing",
+          "correct": true,
+          "rationale": "Cataplexy occurs in narcolepsy.",
+          "bucket": 2
+        },
+        {
+          "text": "Urge to move the legs that is worse at night",
+          "correct": true,
+          "rationale": "Restless legs is worse at night and at rest.",
+          "bucket": 3
+        },
+        {
+          "text": "Trouble falling asleep despite time in bed",
+          "correct": false,
+          "rationale": "That's insomnia."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-comfort-rest-sleep-073",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Comfort, Rest & Sleep",
+      "category": "Stages & Brain Waves",
+      "type": "cloze",
+      "prompt": "A nurse wakes a client at 0200 for vital signs. The client is confused and groggy for about 45 minutes.",
+      "sentence": "The client was most likely in {1} sleep, which is when {2}.",
+      "options": [
+        {
+          "text": "stage 3",
+          "correct": true,
+          "rationale": "Stage 3 is the deepest sleep, with 30–60 minutes of fogginess after waking.",
+          "blank": 1
+        },
+        {
+          "text": "stage 1",
+          "correct": false,
+          "rationale": "Stage 1 is the lightest sleep.",
+          "blank": 1
+        },
+        {
+          "text": "REM",
+          "correct": false,
+          "rationale": "REM looks awake on EEG.",
+          "blank": 1
+        },
+        {
+          "text": "tissue, muscle, and bone repair",
+          "correct": true,
+          "rationale": "Stage 3 is the repair stage.",
+          "blank": 2
+        },
+        {
+          "text": "dreaming happens",
+          "correct": false,
+          "rationale": "Dreaming happens in REM.",
+          "blank": 2
+        },
+        {
+          "text": "the muscles are paralyzed",
+          "correct": false,
+          "rationale": "Muscles are atonic in REM.",
+          "blank": 2
         }
       ]
     },
@@ -18789,6 +19976,186 @@
           "text": "a sleep diary",
           "correct": false,
           "rationale": "A sleep diary isn't the priority.",
+          "blank": 2
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-stress-coping-075",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Stress and Coping",
+      "category": "Coping & Defense Mechanisms",
+      "type": "dragdrop",
+      "prompt": "A nurse is assessing clients' responses to stress. Sort each statement into the defense mechanism. Move each answer to the box where it belongs.",
+      "leftLabel": "Statements",
+      "buckets": [
+        "Denial",
+        "Projection",
+        "Rationalization",
+        "Suppression"
+      ],
+      "options": [
+        {
+          "text": "\"The doctor is overreacting. I don't have diabetes.\"",
+          "correct": true,
+          "rationale": "Refusing to accept reality.",
+          "bucket": 1
+        },
+        {
+          "text": "An angry client asks a calm nurse, \"Why are you so hostile?\"",
+          "correct": true,
+          "rationale": "Putting your feelings on someone else.",
+          "bucket": 2
+        },
+        {
+          "text": "\"I failed because the test was unfair.\"",
+          "correct": true,
+          "rationale": "A logical-sounding excuse.",
+          "bucket": 3
+        },
+        {
+          "text": "\"I'll deal with that after my shift.\"",
+          "correct": true,
+          "rationale": "Pushing thoughts away on purpose.",
+          "bucket": 4
+        },
+        {
+          "text": "\"I made a study schedule for the next exam.\"",
+          "correct": false,
+          "rationale": "That's problem-focused coping, not a defense mechanism."
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-stress-coping-076",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Stress and Coping",
+      "category": "General Adaptation Syndrome (GAS)",
+      "type": "cloze",
+      "prompt": "A nurse is caring for several clients under stress. For each finding, choose the stage of general adaptation syndrome.",
+      "table": {
+        "head": [
+          "Finding",
+          "Stage"
+        ],
+        "rows": [
+          [
+            "Heart rate 118, dilated pupils, high glucose minutes after a crash",
+            "{1}"
+          ],
+          [
+            "Fatigue, irritability, and poor focus after 2 weeks in the hospital, with vitals near baseline",
+            "{2}"
+          ],
+          [
+            "Chronic hypertension and depression after years of caregiver stress",
+            "{3}"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "text": "Alarm",
+          "correct": true,
+          "rationale": "Epinephrine drives fight or flight.",
+          "blank": 1
+        },
+        {
+          "text": "Resistance",
+          "correct": false,
+          "rationale": "The body is still in fight or flight.",
+          "blank": 1
+        },
+        {
+          "text": "Exhaustion",
+          "correct": false,
+          "rationale": "This is an acute response.",
+          "blank": 1
+        },
+        {
+          "text": "Resistance",
+          "correct": true,
+          "rationale": "The parasympathetic system calms things down; coping kicks in.",
+          "blank": 2
+        },
+        {
+          "text": "Alarm",
+          "correct": false,
+          "rationale": "Vital signs are near baseline.",
+          "blank": 2
+        },
+        {
+          "text": "Exhaustion",
+          "correct": false,
+          "rationale": "Resources aren't used up yet.",
+          "blank": 2
+        },
+        {
+          "text": "Exhaustion",
+          "correct": true,
+          "rationale": "Resources are used up, leading to illness and allostatic load.",
+          "blank": 3
+        },
+        {
+          "text": "Alarm",
+          "correct": false,
+          "rationale": "This is long-term.",
+          "blank": 3
+        },
+        {
+          "text": "Resistance",
+          "correct": false,
+          "rationale": "Illness signals exhaustion.",
+          "blank": 3
+        }
+      ]
+    },
+    {
+      "id": "nur114-u2-stress-coping-077",
+      "course": "NUR 114",
+      "unit": 2,
+      "topic": "Stress and Coping",
+      "category": "Types of Stress & Disorders",
+      "type": "cloze",
+      "prompt": "Six weeks after a car crash, a client still has flashbacks, nightmares, and an exaggerated startle response.",
+      "sentence": "The nurse should suspect {1} because the symptoms have lasted {2}.",
+      "options": [
+        {
+          "text": "post-traumatic stress disorder (PTSD)",
+          "correct": true,
+          "rationale": "PTSD persists.",
+          "blank": 1
+        },
+        {
+          "text": "acute stress disorder",
+          "correct": false,
+          "rationale": "ASD lasts up to 1 month.",
+          "blank": 1
+        },
+        {
+          "text": "episodic acute stress",
+          "correct": false,
+          "rationale": "That's everyday overcommitment.",
+          "blank": 1
+        },
+        {
+          "text": "more than 1 month",
+          "correct": true,
+          "rationale": "Past 1 month, it's PTSD.",
+          "blank": 2
+        },
+        {
+          "text": "less than 1 week",
+          "correct": false,
+          "rationale": "The symptoms have lasted 6 weeks.",
+          "blank": 2
+        },
+        {
+          "text": "less than 1 month",
+          "correct": false,
+          "rationale": "Under a month would be ASD.",
           "blank": 2
         }
       ]
