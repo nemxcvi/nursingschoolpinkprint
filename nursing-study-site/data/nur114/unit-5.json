@@ -9338,7 +9338,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Convert mg to mcg (bigger to smaller, multiply): 0.1 mg × 1,000 = 100 mcg",
+    "1 mg = 1,000 mcg, so multiply the mg by 1,000: 0.1 mg × 1,000 = 100 mcg",
     {
      "setups": {
       "rp": "[[50 mcg|1 tablet]] = [[100 mcg|X]]  →  50X = 100  →  X = 2",
@@ -9411,7 +9411,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Convert g to mg (bigger to smaller, multiply): 0.5 g × 1,000 = 500 mg",
+    "1 g = 1,000 mg, so multiply the g by 1,000: 0.5 g × 1,000 = 500 mg",
     {
      "setups": {
       "rp": "[[250 mg|1 capsule]] = [[500 mg|X]]  →  250X = 500  →  X = 2",
@@ -9436,7 +9436,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Convert mg to mcg (bigger to smaller, multiply): 0.25 mg × 1,000 = 250 mcg",
+    "1 mg = 1,000 mcg, so multiply the mg by 1,000: 0.25 mg × 1,000 = 250 mcg",
     {
      "setups": {
       "rp": "[[125 mcg|1 tablet]] = [[250 mcg|X]]  →  125X = 250  →  X = 2",
@@ -9533,7 +9533,7 @@
    "round": "whole",
    "exact": 3.0,
    "steps": [
-    "Convert g to mg (bigger to smaller, multiply): 0.3 g × 1,000 = 300 mg",
+    "1 g = 1,000 mg, so multiply the g by 1,000: 0.3 g × 1,000 = 300 mg",
     {
      "setups": {
       "rp": "[[100 mg|1 capsule]] = [[300 mg|X]]  →  100X = 300  →  X = 3",
@@ -9606,7 +9606,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Convert g to mg (bigger to smaller, multiply): 1 g × 1,000 = 1,000 mg",
+    "1 g = 1,000 mg, so multiply the g by 1,000: 1 g × 1,000 = 1,000 mg",
     {
      "setups": {
       "rp": "[[500 mg|1 capsule]] = [[1,000 mg|X]]  →  500X = 1,000  →  X = 2",
@@ -9679,7 +9679,7 @@
    "round": "tenth",
    "exact": 5.0,
    "steps": [
-    "Convert g to mg (bigger to smaller, multiply): 0.25 g × 1,000 = 250 mg",
+    "1 g = 1,000 mg, so multiply the g by 1,000: 0.25 g × 1,000 = 250 mg",
     {
      "setups": {
       "rp": "[[250 mg|5 mL]] = [[250 mg|X]]  →  250X = 1,250  →  X = 5",
@@ -9849,7 +9849,7 @@
    "round": "tenth",
    "exact": 2.5,
    "steps": [
-    "Convert mcg to mg (smaller to bigger, divide): 125 mcg ÷ 1,000 = 0.125 mg",
+    "1 mg = 1,000 mcg, so divide the mcg by 1,000: 125 mcg ÷ 1,000 = 0.125 mg",
     {
      "setups": {
       "rp": "[[0.05 mg|1 mL]] = [[0.125 mg|X]]  →  0.05X = 0.125  →  X = 2.5",
@@ -10272,8 +10272,7 @@
    "round": "whole",
    "exact": 45.0,
    "steps": [
-    "1 Tbsp = 15 mL",
-    "Bigger unit to smaller: 3 × 15 = 45 mL"
+    "1 Tbsp = 15 mL, so multiply the tablespoons by 15: 3 Tbsp × 15 = 45 mL"
    ]
   },
   {
@@ -10290,8 +10289,7 @@
    "round": "whole",
    "exact": 10.0,
    "steps": [
-    "1 tsp = 5 mL",
-    "Bigger unit to smaller: 2 × 5 = 10 mL"
+    "1 tsp = 5 mL, so multiply the teaspoons by 5: 2 tsp × 5 = 10 mL"
    ]
   },
   {
@@ -10308,8 +10306,7 @@
    "round": "whole",
    "exact": 45.0,
    "steps": [
-    "1 oz = 30 mL",
-    "Bigger unit to smaller: 1.5 × 30 = 45 mL"
+    "1 oz = 30 mL, so multiply the ounces by 30: 1.5 oz × 30 = 45 mL"
    ]
   },
   {
@@ -10326,8 +10323,7 @@
    "round": "tenth",
    "exact": 12.5,
    "steps": [
-    "1 tsp = 5 mL",
-    "Bigger unit to smaller: 2.5 × 5 = 12.5 mL"
+    "1 tsp = 5 mL, so multiply the teaspoons by 5: 2.5 tsp × 5 = 12.5 mL"
    ]
   },
   {
@@ -10344,8 +10340,7 @@
    "round": "whole",
    "exact": 120.0,
    "steps": [
-    "1 oz = 30 mL",
-    "Bigger unit to smaller: 4 × 30 = 120 mL"
+    "1 oz = 30 mL, so multiply the ounces by 30: 4 oz × 30 = 120 mL"
    ]
   },
   {
@@ -10362,8 +10357,7 @@
    "round": "tenth",
    "exact": 7.5,
    "steps": [
-    "1 Tbsp = 15 mL",
-    "Bigger unit to smaller: 0.5 × 15 = 7.5 mL"
+    "1 Tbsp = 15 mL, so multiply the tablespoons by 15: 0.5 Tbsp × 15 = 7.5 mL"
    ]
   },
   {
@@ -10380,8 +10374,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "1 Tbsp = 15 mL",
-    "Smaller unit to bigger: 30 ÷ 15 = 2 Tbsp"
+    "1 Tbsp = 15 mL, so divide the mL by 15: 30 mL ÷ 15 = 2 Tbsp"
    ],
    "summary": "Teach the client to use a calibrated dosing cup or spoon, not a kitchen spoon."
   },
@@ -10399,8 +10392,7 @@
    "round": "whole",
    "exact": 3.0,
    "steps": [
-    "1 tsp = 5 mL",
-    "Smaller unit to bigger: 15 ÷ 5 = 3 tsp"
+    "1 tsp = 5 mL, so divide the mL by 5: 15 mL ÷ 5 = 3 tsp"
    ],
    "summary": "Teach the client to use a calibrated dosing cup or spoon, not a kitchen spoon."
   },
@@ -10418,8 +10410,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "1 oz = 30 mL",
-    "Smaller unit to bigger: 60 ÷ 30 = 2 oz"
+    "1 oz = 30 mL, so divide the mL by 30: 60 mL ÷ 30 = 2 oz"
    ],
    "summary": "Teach the client to use a calibrated dosing cup or spoon, not a kitchen spoon."
   },
@@ -10437,8 +10428,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "1 tsp = 5 mL",
-    "Smaller unit to bigger: 10 ÷ 5 = 2 tsp"
+    "1 tsp = 5 mL, so divide the mL by 5: 10 mL ÷ 5 = 2 tsp"
    ],
    "summary": "Teach the client to use a calibrated dosing cup or spoon, not a kitchen spoon."
   },
@@ -10456,7 +10446,7 @@
    "round": "whole",
    "exact": 500000.0,
    "steps": [
-    "Convert mg to mcg (bigger to smaller, multiply): 500 mg × 1,000 = 500,000 mcg"
+    "1 mg = 1,000 mcg, so multiply the mg by 1,000: 500 mg × 1,000 = 500,000 mcg"
    ]
   },
   {
@@ -10473,7 +10463,7 @@
    "round": "whole",
    "exact": 200.0,
    "steps": [
-    "Convert g to mg (bigger to smaller, multiply): 0.2 g × 1,000 = 200 mg"
+    "1 g = 1,000 mg, so multiply the g by 1,000: 0.2 g × 1,000 = 200 mg"
    ]
   },
   {
@@ -10490,7 +10480,7 @@
    "round": "whole",
    "exact": 1500.0,
    "steps": [
-    "Convert g to mg (bigger to smaller, multiply): 1.5 g × 1,000 = 1,500 mg"
+    "1 g = 1,000 mg, so multiply the g by 1,000: 1.5 g × 1,000 = 1,500 mg"
    ]
   },
   {
@@ -10507,7 +10497,7 @@
    "round": "hundredth",
    "exact": 0.25,
    "steps": [
-    "Convert mcg to mg (smaller to bigger, divide): 250 mcg ÷ 1,000 = 0.25 mg"
+    "1 mg = 1,000 mcg, so divide the mcg by 1,000: 250 mcg ÷ 1,000 = 0.25 mg"
    ]
   },
   {
@@ -10524,7 +10514,7 @@
    "round": "whole",
    "exact": 125.0,
    "steps": [
-    "Convert mg to mcg (bigger to smaller, multiply): 0.125 mg × 1,000 = 125 mcg"
+    "1 mg = 1,000 mcg, so multiply the mg by 1,000: 0.125 mg × 1,000 = 125 mcg"
    ]
   },
   {
@@ -10541,7 +10531,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "Convert mg to g (smaller to bigger, divide): 2,000 mg ÷ 1,000 = 2 g"
+    "1 g = 1,000 mg, so divide the mg by 1,000: 2,000 mg ÷ 1,000 = 2 g"
    ]
   },
   {
@@ -10558,7 +10548,7 @@
    "round": "hundredth",
    "exact": 0.75,
    "steps": [
-    "Convert mg to g (smaller to bigger, divide): 750 mg ÷ 1,000 = 0.75 g"
+    "1 g = 1,000 mg, so divide the mg by 1,000: 750 mg ÷ 1,000 = 0.75 g"
    ]
   },
   {
@@ -10575,7 +10565,7 @@
    "round": "whole",
    "exact": 100.0,
    "steps": [
-    "Convert mg to mcg (bigger to smaller, multiply): 0.1 mg × 1,000 = 100 mcg"
+    "1 mg = 1,000 mcg, so multiply the mg by 1,000: 0.1 mg × 1,000 = 100 mcg"
    ]
   },
   {
@@ -10592,7 +10582,7 @@
    "round": "whole",
    "exact": 500.0,
    "steps": [
-    "Bigger to smaller, multiply: 0.5 × 1,000 = 500"
+    "1 L = 1,000 mL, so multiply the L by 1,000: 0.5 L × 1,000 = 500 mL"
    ]
   },
   {
@@ -10609,7 +10599,7 @@
    "round": "hundredth",
    "exact": 1.25,
    "steps": [
-    "Smaller to bigger, divide: 1,250 ÷ 1,000 = 1.25"
+    "1 L = 1,000 mL, so divide the mL by 1,000: 1,250 mL ÷ 1,000 = 1.25 L"
    ]
   },
   {
@@ -10626,7 +10616,7 @@
    "round": "whole",
    "exact": 3000.0,
    "steps": [
-    "Bigger to smaller, multiply: 3 × 1,000 = 3,000"
+    "1 kg = 1,000 g, so multiply the kg by 1,000: 3 kg × 1,000 = 3,000 g"
    ]
   },
   {
@@ -10643,8 +10633,7 @@
    "round": "tenth",
    "exact": 165.88,
    "steps": [
-    "kg to lb: multiply by 2.2",
-    "75.4 × 2.2 = 165.88",
+    "1 kg = 2.2 lb, so multiply the kg by 2.2: 75.4 kg × 2.2 = 165.88 lb",
     "Round to the nearest tenth: the hundredths digit is 8, so round up (165.9)."
    ]
   },
@@ -10662,7 +10651,7 @@
    "round": "tenth",
    "exact": 10.1875,
    "steps": [
-    "Ounces to pounds: 3 ÷ 16 = 0.1875",
+    "1 lb = 16 oz, so divide the ounces by 16: 3 oz ÷ 16 = 0.1875 lb",
     "Add the pounds: 10 + 0.1875 = 10.1875",
     "Round to the nearest tenth: the hundredths digit is 8, so round up (10.2)."
    ]
@@ -10681,8 +10670,8 @@
    "round": "tenth",
    "exact": 22.926136363636363,
    "steps": [
-    "Ounces to pounds first: 7 ÷ 16 = 0.4375, so 50.4375 lb (don't round yet)",
-    "Pounds to kilograms: 50.4375 ÷ 2.2 = 22.9261…",
+    "First change ounces to pounds. 1 lb = 16 oz, so divide the ounces by 16: 7 oz ÷ 16 = 0.4375 lb. Add it to the pounds: 50 + 0.4375 = 50.4375 lb (don't round yet)",
+    "1 kg = 2.2 lb, so divide the pounds by 2.2: 50.4375 lb ÷ 2.2 = 22.9261… kg",
     "Round to the nearest tenth: the hundredths digit is 2, so leave it (22.9)."
    ]
   },
@@ -10700,8 +10689,7 @@
    "round": "tenth",
    "exact": 80.0,
    "steps": [
-    "lb to kg: divide by 2.2",
-    "176 ÷ 2.2 = 80"
+    "1 kg = 2.2 lb, so divide the lb by 2.2: 176 lb ÷ 2.2 = 80 kg"
    ],
    "summary": "The kilogram number is always smaller than the pound number."
   },
@@ -10719,8 +10707,7 @@
    "round": "tenth",
    "exact": 70.0,
    "steps": [
-    "lb to kg: divide by 2.2",
-    "154 ÷ 2.2 = 70"
+    "1 kg = 2.2 lb, so divide the lb by 2.2: 154 lb ÷ 2.2 = 70 kg"
    ],
    "summary": "The kilogram number is always smaller than the pound number."
   },
@@ -10738,8 +10725,7 @@
    "round": "tenth",
    "exact": 95.45454545454545,
    "steps": [
-    "lb to kg: divide by 2.2",
-    "210 ÷ 2.2 = 95.4545…",
+    "1 kg = 2.2 lb, so divide the lb by 2.2: 210 lb ÷ 2.2 = 95.4545… kg",
     "Round to the nearest tenth: the hundredths digit is 5, so round up (95.5)."
    ],
    "summary": "The kilogram number is always smaller than the pound number."
@@ -10758,8 +10744,7 @@
    "round": "tenth",
    "exact": 85.0,
    "steps": [
-    "lb to kg: divide by 2.2",
-    "187 ÷ 2.2 = 85"
+    "1 kg = 2.2 lb, so divide the lb by 2.2: 187 lb ÷ 2.2 = 85 kg"
    ],
    "summary": "The kilogram number is always smaller than the pound number."
   },
@@ -10777,8 +10762,8 @@
    "round": "tenth",
    "exact": 60.22727272727273,
    "steps": [
-    "Ounces to pounds first: 8 ÷ 16 = 0.5, so 132.5 lb",
-    "Pounds to kilograms: 132.5 ÷ 2.2 = 60.2272…",
+    "First change ounces to pounds. 1 lb = 16 oz, so divide the ounces by 16: 8 oz ÷ 16 = 0.5 lb. Add it to the pounds: 132 + 0.5 = 132.5 lb",
+    "1 kg = 2.2 lb, so divide the pounds by 2.2: 132.5 lb ÷ 2.2 = 60.2272… kg",
     "Round to the nearest tenth: the hundredths digit is 2, so leave it (60.2)."
    ]
   },
@@ -10796,8 +10781,7 @@
    "round": "tenth",
    "exact": 139.7,
    "steps": [
-    "kg to lb: multiply by 2.2",
-    "63.5 × 2.2 = 139.7"
+    "1 kg = 2.2 lb, so multiply the kg by 2.2: 63.5 kg × 2.2 = 139.7 lb"
    ]
   },
   {
@@ -10831,7 +10815,7 @@
    "round": "whole",
    "exact": 105.68181818181819,
    "steps": [
-    "Pounds to kilograms: 155 ÷ 2.2 = 70.4545… kg (don't round yet)",
+    "1 kg = 2.2 lb, so divide the pounds by 2.2: 155 lb ÷ 2.2 = 70.4545… kg (don't round yet)",
     "Multiply kg by the dose: 70.4545… kg × 1.5 mg/kg = 105.6818… mg",
     "Round to the nearest whole number: the tenths digit is 6, so round up (106)."
    ]
@@ -10867,7 +10851,7 @@
    "round": "whole",
    "exact": 80.0,
    "steps": [
-    "Pounds to kilograms: 176 ÷ 2.2 = 80 kg (don't round yet)",
+    "1 kg = 2.2 lb, so divide the pounds by 2.2: 176 lb ÷ 2.2 = 80 kg (don't round yet)",
     "Multiply kg by the dose: 80 kg × 1 mg/kg = 80 mg"
    ]
   },
@@ -10902,7 +10886,7 @@
    "round": "whole",
    "exact": 325.0,
    "steps": [
-    "Pounds to kilograms: 143 ÷ 2.2 = 65 kg (don't round yet)",
+    "1 kg = 2.2 lb, so divide the pounds by 2.2: 143 lb ÷ 2.2 = 65 kg (don't round yet)",
     "Multiply kg by the dose: 65 kg × 5 mg/kg = 325 mg"
    ]
   },
@@ -10937,7 +10921,7 @@
    "round": "whole",
    "exact": 6800.0,
    "steps": [
-    "Pounds to kilograms: 187 ÷ 2.2 = 85 kg (don't round yet)",
+    "1 kg = 2.2 lb, so divide the pounds by 2.2: 187 lb ÷ 2.2 = 85 kg (don't round yet)",
     "Multiply kg by the dose: 85 kg × 80 units/kg = 6,800 units"
    ]
   },
@@ -10955,7 +10939,7 @@
    "round": "whole",
    "exact": 2000.0,
    "steps": [
-    "Pounds to kilograms: 220 ÷ 2.2 = 100 kg (don't round yet)",
+    "1 kg = 2.2 lb, so divide the pounds by 2.2: 220 lb ÷ 2.2 = 100 kg (don't round yet)",
     "Multiply kg by the dose: 100 kg × 20 mg/kg = 2,000 mg"
    ]
   },
@@ -10990,7 +10974,7 @@
    "round": "hundredth",
    "exact": 0.75,
    "steps": [
-    "165 ÷ 2.2 = 75 kg",
+    "165 lb ÷ 2.2 = 75 kg",
     "75 kg × 1 mg/kg = 75 mg",
     {
      "setups": {
@@ -11016,7 +11000,7 @@
    "round": "whole",
    "exact": 2.0,
    "steps": [
-    "22 ÷ 2.2 = 10 kg",
+    "22 lb ÷ 2.2 = 10 kg",
     "10 kg × 8 mg/kg/day = 80 mg/day",
     "Every 12 hr = 2 doses: 80 ÷ 2 = 40 mg per dose",
     {
@@ -11043,7 +11027,7 @@
    "round": "whole",
    "exact": 4.0,
    "steps": [
-    "44 ÷ 2.2 = 20 kg",
+    "44 lb ÷ 2.2 = 20 kg",
     "20 kg × 20 mg/kg/day = 400 mg/day",
     "Every 12 hr = 2 doses: 400 ÷ 2 = 200 mg per dose",
     {
@@ -11106,7 +11090,7 @@
    "round": "whole",
    "exact": 136.36363636363637,
    "steps": [
-    "200 ÷ 2.2 = 90.9090… kg",
+    "200 lb ÷ 2.2 = 90.9090… kg",
     "90.9090… kg × 1.5 mg/kg/day = 136.3636… mg/day",
     "Round to the nearest whole number: the tenths digit is 3, so leave it (136)."
    ]
@@ -11125,7 +11109,7 @@
    "round": "whole",
    "exact": 68.18181818181819,
    "steps": [
-    "200 ÷ 2.2 = 90.9090… kg",
+    "200 lb ÷ 2.2 = 90.9090… kg",
     "90.9090… kg × 1.5 = 136.3636… mg/day",
     "BID = 2 doses: 136.3636… ÷ 2 = 68.1818… mg",
     "Round to the nearest whole number: the tenths digit is 1, so leave it (68)."
@@ -11145,7 +11129,7 @@
    "round": "tenth",
    "exact": 113.63636363636364,
    "steps": [
-    "250 ÷ 2.2 = 113.6363…",
+    "250 lb ÷ 2.2 = 113.6363…",
     "Round to the nearest tenth: the hundredths digit is 3, so leave it (113.6)."
    ]
   },
@@ -11323,7 +11307,7 @@
    "round": "whole",
    "exact": 21.0,
    "steps": [
-    "154 ÷ 2.2 = 70 kg",
+    "154 lb ÷ 2.2 = 70 kg",
     "70 kg × 30 mg/kg/day = 2,100 mg/day",
     "Every 12 hr = 2 doses: 2,100 ÷ 2 = 1,050 mg",
     {
@@ -11457,7 +11441,7 @@
    "round": "tenth",
    "exact": 1022.7272727272727,
    "steps": [
-    "75 ÷ 2.2 = 34.0909… kg",
+    "75 lb ÷ 2.2 = 34.0909… kg",
     "34.0909… kg × 30 mg/kg = 1,022.7272… mg",
     "Round to the nearest tenth: the hundredths digit is 2, so leave it (1,022.7)."
    ]
@@ -11476,7 +11460,7 @@
    "round": "tenth",
    "exact": 681.8181818181819,
    "steps": [
-    "75 ÷ 2.2 = 34.0909… kg",
+    "75 lb ÷ 2.2 = 34.0909… kg",
     "34.0909… kg × 20 mg/kg = 681.8181… mg",
     "Round to the nearest tenth: the hundredths digit is 1, so leave it (681.8)."
    ]
@@ -11943,7 +11927,7 @@
    "round": "whole",
    "exact": 27.272727272727273,
    "steps": [
-    "150 ÷ 2.2 = 68.1818… kg",
+    "150 lb ÷ 2.2 = 68.1818… kg",
     "68.1818… kg × 10 units/kg/hr = 681.8181… units/hr",
     "Concentration: 2,500 units ÷ 100 mL = 25 units/mL",
     "681.8181… units/hr ÷ 25 units/mL = 27.2727… mL/hr",
@@ -11984,7 +11968,7 @@
    "round": "whole",
    "exact": 19.2,
    "steps": [
-    "176 ÷ 2.2 = 80 kg",
+    "176 lb ÷ 2.2 = 80 kg",
     "80 kg × 12 units/kg/hr = 960 units/hr",
     "Concentration: 25,000 ÷ 500 = 50 units/mL",
     "960 ÷ 50 = 19.2 mL/hr",
@@ -12096,7 +12080,7 @@
    "round": "tenth",
    "exact": 1.44,
    "steps": [
-    "198 ÷ 2.2 = 90 kg",
+    "198 lb ÷ 2.2 = 90 kg",
     "90 kg × 80 units/kg = 7,200 units",
     {
      "setups": {
