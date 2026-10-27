@@ -14962,27 +14962,27 @@
       "topic": "Comfort, Rest & Sleep",
       "category": "Sleep Disorders",
       "type": "mc",
-      "prompt": "A client's partner says the client screams and seems terrified shortly after falling asleep but doesn't remember it the next morning. Which information should the nurse include?",
+      "prompt": "A parent tells the nurse their 5-year-old child screams and seems terrified shortly after falling asleep but doesn't remember it the next morning. Which information about night terrors should the nurse include?",
       "options": [
         {
-          "text": "\"These sound like night terrors, which happen in the first third of the night.\"",
+          "text": "\"They usually happen within the first few hours after your child falls asleep.\"",
           "correct": true,
-          "rationale": "Night terrors: NREM, first third of the night, no recall."
+          "rationale": "Night terrors happen in NREM sleep in the first third of the night, with no recall. They're most common in young children."
         },
         {
-          "text": "\"These happen right before waking in the morning.\"",
+          "text": "\"They usually happen in the early morning, right before your child wakes up.\"",
           "correct": false,
           "rationale": "Late-night episodes that are remembered are nightmares."
         },
         {
-          "text": "\"The client will usually remember the dream in detail.\"",
+          "text": "\"Your child will usually remember the dream in detail.\"",
           "correct": false,
           "rationale": "Night terrors are erased. Nightmares are remembered."
         },
         {
-          "text": "\"These happen during REM sleep.\"",
+          "text": "\"Night terrors are more common in adults than in children.\"",
           "correct": false,
-          "rationale": "Night terrors happen in NREM sleep."
+          "rationale": "Night terrors are most common in young children."
         }
       ]
     },
@@ -14993,22 +14993,22 @@
       "topic": "Comfort, Rest & Sleep",
       "category": "Sleep Disorders",
       "type": "mc",
-      "prompt": "A client wakes early in the morning and describes a frightening dream in detail. Which should the nurse recognize?",
+      "prompt": "A child wakes early in the morning crying and describes a scary dream about being chased. Which should the nurse recognize?",
       "options": [
         {
           "text": "A night terror during NREM sleep",
           "correct": false,
-          "rationale": "Night terrors are early in the night with no recall."
+          "rationale": "Night terrors happen early in the night with no recall."
         },
         {
           "text": "A nightmare during REM sleep",
           "correct": true,
-          "rationale": "Nightmares are late and remembered, during REM."
+          "rationale": "Nightmares are late and remembered: REM sleep, second half of the night."
         },
         {
           "text": "Cataplexy",
           "correct": false,
-          "rationale": "Cataplexy is a drop in muscle tone with emotion."
+          "rationale": "Cataplexy is a drop in muscle tone triggered by emotion."
         },
         {
           "text": "Sensory overload",
@@ -17427,7 +17427,7 @@
       "topic": "Stress and Coping",
       "category": "Coping & Defense Mechanisms",
       "type": "mc",
-      "prompt": "An adult client who is hospitalized after a fall curls up, sucks their thumb, and asks the nurse to feed them, though they ate on their own yesterday. Which defense mechanism is this?",
+      "prompt": "A 4-year-old who was toilet trained begins wetting the bed after a new sibling is born. Which defense mechanism is the child demonstrating?",
       "options": [
         {
           "text": "Denial",
@@ -17437,12 +17437,12 @@
         {
           "text": "Projection",
           "correct": false,
-          "rationale": "Projection puts your feelings on someone else."
+          "rationale": "Projection puts your own feelings on someone else."
         },
         {
           "text": "Regression",
           "correct": true,
-          "rationale": "Regression is going back to earlier behavior under stress."
+          "rationale": "Regression is going back to earlier behavior under stress, like bedwetting after a new sibling arrives."
         },
         {
           "text": "Rationalization",

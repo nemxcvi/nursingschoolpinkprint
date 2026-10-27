@@ -1265,27 +1265,27 @@
       "topic": "Infection Control & Isolation",
       "category": "Body Defenses",
       "type": "mc",
-      "prompt": "A client who was exposed to hepatitis B receives an injection of immunoglobulin. Which type of immunity does the client gain?",
+      "prompt": "A newborn receives antibodies from the mother. The nurse identifies this as which type of immunity?",
       "options": [
         {
           "text": "Passive immunity",
           "correct": true,
-          "rationale": "Passive immunity comes from an outside source, such as immunoglobulin or maternal antibodies, and is temporary."
+          "rationale": "Antibodies from an outside source, such as maternal antibodies, provide passive immunity. It is temporary and has no memory."
         },
         {
           "text": "Active immunity",
           "correct": false,
-          "rationale": "Active immunity is made by the body after exposure and lasts."
+          "rationale": "Active immunity develops when the body makes its own antibodies in response to an antigen."
         },
         {
-          "text": "Nonspecific (innate) immunity",
+          "text": "Specific acquired immunity from vaccination",
           "correct": false,
-          "rationale": "Innate immunity is neutrophils and macrophages responding right away, with no memory."
+          "rationale": "Vaccination stimulates the body to make its own antibodies, which is active immunity."
         },
         {
           "text": "Permanent immunity",
           "correct": false,
-          "rationale": "Passive immunity is temporary."
+          "rationale": "Passive immunity is temporary, not permanent."
         }
       ]
     },
