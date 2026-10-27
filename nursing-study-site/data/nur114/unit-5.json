@@ -8176,108 +8176,23 @@
    ]
   },
   {
-   "id": "nur114-u5-med-admin-112",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Medication Administration",
-   "category": "Injections",
-   "type": "cloze",
-   "prompt": "A nurse is reviewing injection routes. For each route, choose the correct needle angle.",
-   "table": {
-    "head": [
-     "Route",
-     "Angle"
-    ],
-    "rows": [
-     [
-      "Intradermal",
-      "{1}"
-     ],
-     [
-      "Subcutaneous",
-      "{2}"
-     ],
-     [
-      "Intramuscular",
-      "{3}"
-     ]
-    ]
-   },
-   "options": [
-    {
-     "text": "10° to 15°",
-     "correct": true,
-     "rationale": "A shallow angle places the drug in the dermis.",
-     "blank": 1
-    },
-    {
-     "text": "45° to 90°",
-     "correct": false,
-     "rationale": "That's subcutaneous.",
-     "blank": 1
-    },
-    {
-     "text": "90°",
-     "correct": false,
-     "rationale": "That's IM.",
-     "blank": 1
-    },
-    {
-     "text": "45° to 90°",
-     "correct": true,
-     "rationale": "45° for less fat, 90° when the client has more fat.",
-     "blank": 2
-    },
-    {
-     "text": "10° to 15°",
-     "correct": false,
-     "rationale": "That's intradermal.",
-     "blank": 2
-    },
-    {
-     "text": "5°",
-     "correct": false,
-     "rationale": "Too shallow.",
-     "blank": 2
-    },
-    {
-     "text": "90°",
-     "correct": true,
-     "rationale": "IM injections go straight in.",
-     "blank": 3
-    },
-    {
-     "text": "10° to 15°",
-     "correct": false,
-     "rationale": "That's intradermal.",
-     "blank": 3
-    },
-    {
-     "text": "30°",
-     "correct": false,
-     "rationale": "Too shallow for muscle.",
-     "blank": 3
-    }
-   ]
-  },
-  {
    "id": "nur114-u5-med-admin-113",
    "course": "NUR 114",
    "unit": 5,
    "topic": "Medication Administration",
    "category": "Injections",
    "type": "mc",
-   "prompt": "A nurse is preparing an IM injection of 3 mL for an adult. Which site is preferred?",
+   "prompt": "A nurse is preparing to give an IM injection to an adult. Which site is preferred?",
    "options": [
     {
      "text": "Ventrogluteal",
      "correct": true,
-     "rationale": "The ventrogluteal site is preferred and holds volumes over 2 mL."
+     "rationale": "The ventrogluteal site is preferred: a large, deep muscle away from major nerves and blood vessels."
     },
     {
      "text": "Deltoid",
      "correct": false,
-     "rationale": "The deltoid holds only about 1 mL."
+     "rationale": "The deltoid is a small muscle, so it isn't the preferred IM site."
     },
     {
      "text": "Dorsogluteal",
@@ -8288,37 +8203,6 @@
      "text": "Abdomen",
      "correct": false,
      "rationale": "The abdomen is a subcutaneous site."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u5-med-admin-114",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Medication Administration",
-   "category": "Injections",
-   "type": "mc",
-   "prompt": "A nurse is giving an IM injection in the deltoid. What is the maximum volume the nurse should inject at this site?",
-   "options": [
-    {
-     "text": "1 mL",
-     "correct": true,
-     "rationale": "The deltoid's small muscle mass holds about 1 mL."
-    },
-    {
-     "text": "3 mL",
-     "correct": false,
-     "rationale": "That's too much for the deltoid."
-    },
-    {
-     "text": "5 mL",
-     "correct": false,
-     "rationale": "Far too much for one site."
-    },
-    {
-     "text": "0.1 mL",
-     "correct": false,
-     "rationale": "That's an intradermal volume."
     }
    ]
   },
@@ -8363,14 +8247,9 @@
    "prompt": "A nurse is preparing to give a subcutaneous injection of heparin. Which actions are correct? Select all that apply.",
    "options": [
     {
-     "text": "Use a 25- to 31-gauge, 3/8- to 5/8-inch needle",
+     "text": "Pinch up the skin",
      "correct": true,
-     "rationale": "That's the subcutaneous needle size."
-    },
-    {
-     "text": "Inject at a 45° to 90° angle",
-     "correct": true,
-     "rationale": "Pinch up the skin; 90° for clients with more fat."
+     "rationale": "Pinching up the skin places the drug in the fatty tissue."
     },
     {
      "text": "Choose a site with enough fat, such as the abdomen",
@@ -8378,14 +8257,19 @@
      "rationale": "Subcutaneous sites need an adequate fat pad."
     },
     {
-     "text": "Inject no more than 1.5 mL",
+     "text": "Rotate sites and document each one",
      "correct": true,
-     "rationale": "Subcutaneous volumes are small."
+     "rationale": "Rotating sites protects the tissue."
     },
     {
-     "text": "Use a 10° to 15° angle",
+     "text": "Use the Z-track technique",
      "correct": false,
-     "rationale": "That's intradermal."
+     "rationale": "Z-track is for IM drugs that irritate or stain, such as iron."
+    },
+    {
+     "text": "Use the ventrogluteal site",
+     "correct": false,
+     "rationale": "The ventrogluteal is an IM site, not a subcutaneous one."
     }
    ]
   },
@@ -8404,9 +8288,9 @@
      "rationale": "Small volumes need a tuberculin syringe."
     },
     {
-     "text": "Insert the needle bevel up at 10° to 15°",
+     "text": "Insert the needle bevel up",
      "correct": true,
-     "rationale": "That places it in the dermis."
+     "rationale": "Bevel up places the drug just under the top layer of skin."
     },
     {
      "text": "Look for a small bleb",
@@ -8419,9 +8303,9 @@
      "rationale": "Don't massage an intradermal site."
     },
     {
-     "text": "Inject 1 mL",
+     "text": "Use the deltoid muscle",
      "correct": false,
-     "rationale": "Intradermal volumes are 0.01 to 0.1 mL."
+     "rationale": "The deltoid is an IM site; a skin test goes just under the skin's surface."
     }
    ]
   },
@@ -8706,7 +8590,7 @@
    "category": "Injections",
    "type": "cloze",
    "prompt": "A nurse is choosing an IM injection site.",
-   "sentence": "The {1} site is preferred for IM injections, and the deltoid can hold only up to {2}.",
+   "sentence": "The {1} site is preferred for IM injections, and the {2} technique is used for IM drugs that irritate or stain the tissue, such as iron.",
    "options": [
     {
      "text": "ventrogluteal",
@@ -8727,21 +8611,21 @@
      "blank": 1
     },
     {
-     "text": "1 mL",
+     "text": "Z-track",
      "correct": true,
-     "rationale": "The deltoid is small.",
+     "rationale": "Z-track keeps the drug from leaking back into the tissue.",
      "blank": 2
     },
     {
-     "text": "3 mL",
+     "text": "massage",
      "correct": false,
-     "rationale": "Too much for the deltoid.",
+     "rationale": "Massage can push the drug into the tissue.",
      "blank": 2
     },
     {
-     "text": "5 mL",
+     "text": "intradermal bleb",
      "correct": false,
-     "rationale": "Far too much.",
+     "rationale": "A bleb is for intradermal injections, not IM.",
      "blank": 2
     }
    ]
