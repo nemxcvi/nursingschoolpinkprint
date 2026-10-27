@@ -54,6 +54,8 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 
 - **When work starts on sheet 02 (NUR 121), put the unit mastery bars back on the homepage** for tracked visitors. They were taken off in October 2026 only because NUR 114 was already halfway through, so bars on the early units looked odd and unfinished. The code to restore is the unit-card part of `home()` in `nursing-study-site/js/my-study.js` as of commit `c4c0a7d` (the thin `bar(st, {thin: true})` plus "% mastered →" in each card's `.pp-card-bottom`, opening `journal.html#unit-N`, the Journal's Progress tab), and the `e2e-mystudy.js` check "homepage: mastery bars on units 1-3".
 
+- **Injection details for later.** Week 10's injection table (needle gauge and length, angle, volume) and the IV catheter sizes stay in the guide as reference with `data-quiz="skip"`; for now students only need "the bigger the gauge number, the smaller the needle." When a later week or NUR 121 teaches these numbers, remove the skip tags and add quiz questions and flashcards for them.
+
 ## Quiz data
 
 - All quiz questions live in `nursing-study-site/data/nur114/unit-N.json`, one file per unit. Quiz pages hold no questions; they call `loadPracticeQuiz({data, units, topic})` from `practice-quiz.js`. Mix quizzes (`unit-N/mix-quiz.html`, `mix-all-quiz.html`) read the same files, so editing a question in the JSON updates every quiz that uses it.
