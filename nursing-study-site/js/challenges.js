@@ -289,7 +289,10 @@ var Challenges = (function(){
     var out = [];
     (q.steps || []).forEach(function(s){
       if (s && s.setups){
-        ["rp", "dh", "da"].forEach(function(m){ if (s.setups[m] && (!pick || pick === m)) out.push(names[m] + ": " + flat(s.setups[m])); });
+        ["rp", "dh", "da"].forEach(function(m){
+          var text = m === "dh" ? (s.setups.dh || s.setups.fm) : s.setups[m];
+          if (text && (!pick || pick === m)) out.push((m === "dh" && !s.setups.dh ? "Formula" : names[m]) + ": " + flat(text));
+        });
       } else out.push(flat(s));
     });
     return out;

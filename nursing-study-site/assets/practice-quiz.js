@@ -1505,6 +1505,10 @@ function initPracticeQuiz(bank, catLabels, opts){
     });
     return el;
   }
+  /* Rate problems (IV mL/hr, gtt/min) have no desired over have; they carry the usual formula
+     as "fm" instead, shown in that slot as "Formula" so a desired-over-have pick still lands there */
+  function setupText(setups, key){ return key === "dh" ? (setups.dh || setups.fm) : setups[key]; }
+  function methodName(setups, m){ return m[0] === "dh" && !setups.dh && setups.fm ? "Formula" : m[1]; }
   function drawSetups(box, setups){
     var pick = calcMethod();
     box.querySelectorAll(".pq-meth-tab").forEach(function(b){
@@ -1515,14 +1519,15 @@ function initPracticeQuiz(bank, catLabels, opts){
     var body = box.querySelector(".pq-setup-list");
     body.innerHTML = "";
     METHODS.forEach(function(m){
-      if (!m[0] || !setups[m[0]] || (pick && pick !== m[0])) return;
+      var text = setupText(setups, m[0]);
+      if (!m[0] || !text || (pick && pick !== m[0])) return;
       var one = document.createElement("div");
       one.className = "pq-setup";
       var lab = document.createElement("span");
       lab.className = "pq-setup-label";
-      lab.textContent = m[1];
+      lab.textContent = methodName(setups, m);
       one.appendChild(lab);
-      one.appendChild(mathText(document.createElement("div"), setups[m[0]])).className = "pq-setup-math";
+      one.appendChild(mathText(document.createElement("div"), text)).className = "pq-setup-math";
       body.appendChild(one);
     });
   }
@@ -1539,7 +1544,7 @@ function initPracticeQuiz(bank, catLabels, opts){
     tabs.appendChild(lbl);
     METHODS.forEach(function(m){
       var b = document.createElement("button");
-      b.type = "button"; b.className = "pq-meth-tab"; b.textContent = m[1];
+      b.type = "button"; b.className = "pq-meth-tab"; b.textContent = methodName(setups, m);
       b.setAttribute("data-m", m[0]);
       b.addEventListener("click", function(){
         if (typeof Tracking !== "undefined" && Tracking.setCalcMethod) Tracking.setCalcMethod(m[0]);
