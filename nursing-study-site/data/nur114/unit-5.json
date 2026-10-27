@@ -20,6 +20,24 @@
    ]
   },
   {
+   "topic": "Medication Administration",
+   "slug": "med-admin",
+   "quiz": "unit-5-gas-exchange-med-admin/med-admin-quiz.html",
+   "mixLabel": "Med Administration",
+   "categories": [
+    "Prescriptions & the MAR",
+    "Dispensing & Labels",
+    "Rights & Errors",
+    "Oral Medications",
+    "Enteral Tubes",
+    "Topical & Transdermal",
+    "Eye, Ear & Nose",
+    "Rectal & Vaginal",
+    "Inhaled",
+    "Injections"
+   ]
+  },
+  {
    "topic": "Medication Calculations",
    "slug": "med-calc",
    "quiz": "unit-5-gas-exchange-med-admin/med-calc-quiz.html",
@@ -4282,6 +4300,4979 @@
      "correct": false,
      "rationale": "Unsafe drugs aren't sold OTC.",
      "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-001",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "sata",
+   "prompt": "A nurse is reviewing a new medication prescription. Which parts must the prescription include? Select all that apply.",
+   "options": [
+    {
+     "text": "The client's name",
+     "correct": true,
+     "rationale": "Every prescription identifies the client."
+    },
+    {
+     "text": "The medication name and dose",
+     "correct": true,
+     "rationale": "The drug and dose are required."
+    },
+    {
+     "text": "The route and frequency",
+     "correct": true,
+     "rationale": "Route and frequency are required."
+    },
+    {
+     "text": "The prescriber's signature",
+     "correct": true,
+     "rationale": "The prescription must be signed."
+    },
+    {
+     "text": "The client's insurance company",
+     "correct": false,
+     "rationale": "Insurance isn't part of a prescription."
+    },
+    {
+     "text": "The pharmacy's phone number",
+     "correct": false,
+     "rationale": "That isn't a required part."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-002",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing several prescriptions. Match each prescription to its type. Move each answer to the box where it belongs.",
+   "leftLabel": "Prescriptions",
+   "buckets": [
+    "STAT",
+    "PRN",
+    "Single (one-time)",
+    "Routine"
+   ],
+   "options": [
+    {
+     "text": "nitroglycerin 0.3 mg SL stat",
+     "correct": true,
+     "rationale": "STAT means give immediately.",
+     "bucket": 1
+    },
+    {
+     "text": "acetaminophen 650 mg PO q4h PRN for pain",
+     "correct": true,
+     "rationale": "PRN means as needed, no more often than the order allows.",
+     "bucket": 2
+    },
+    {
+     "text": "cefazolin 1 g IV 1 hr before surgery",
+     "correct": true,
+     "rationale": "A preoperative dose is a one-time prescription.",
+     "bucket": 3
+    },
+    {
+     "text": "metoprolol 25 mg PO every 12 hr",
+     "correct": true,
+     "rationale": "A regular schedule until discontinued is a routine (standing) prescription.",
+     "bucket": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-003",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "mc",
+   "prompt": "A nurse receives a prescription for ceftazidime 1 g IV now. Within what time frame should the nurse give it?",
+   "options": [
+    {
+     "text": "Within 90 minutes, or per facility policy",
+     "correct": true,
+     "rationale": "\"Now\" is less urgent than STAT: within 90 minutes or the facility's time frame."
+    },
+    {
+     "text": "Immediately",
+     "correct": false,
+     "rationale": "That's a STAT order."
+    },
+    {
+     "text": "At the next scheduled medication time",
+     "correct": false,
+     "rationale": "A \"now\" order isn't held for the schedule."
+    },
+    {
+     "text": "Within 24 hours",
+     "correct": false,
+     "rationale": "That's far too long for a \"now\" order."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-004",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "mc",
+   "prompt": "A client has a prescription for acetaminophen 650 mg PO q4h PRN for pain and received a dose at 0800. The client reports pain at 1100. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Use other comfort measures and give the next dose no earlier than 1200",
+     "correct": true,
+     "rationale": "q4h PRN means no more often than every 4 hours."
+    },
+    {
+     "text": "Give the dose now",
+     "correct": false,
+     "rationale": "That would be only 3 hours after the last dose."
+    },
+    {
+     "text": "Give a half dose now",
+     "correct": false,
+     "rationale": "The nurse can't change the dose."
+    },
+    {
+     "text": "Wait until the client's next scheduled medications",
+     "correct": false,
+     "rationale": "PRN doses are given when needed and allowed, not on the routine schedule."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-005",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "mc",
+   "prompt": "A nurse receives a verbal prescription from a provider during an emergency. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Repeat the prescription back to the provider to confirm it",
+     "correct": true,
+     "rationale": "Read-back of verbal orders is a Joint Commission requirement."
+    },
+    {
+     "text": "Write it down later from memory",
+     "correct": false,
+     "rationale": "Repeat it back first to confirm accuracy."
+    },
+    {
+     "text": "Ask another nurse to take the order",
+     "correct": false,
+     "rationale": "The nurse receiving it confirms it."
+    },
+    {
+     "text": "Refuse all verbal prescriptions",
+     "correct": false,
+     "rationale": "Verbal orders are allowed in emergencies."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-006",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "order",
+   "prompt": "A nurse receives a telephone prescription from a provider. Place the nurse's actions in order.",
+   "options": [
+    {
+     "text": "Write down the prescription as the provider gives it",
+     "rationale": "Record it as it's given."
+    },
+    {
+     "text": "Read it back to the provider",
+     "rationale": "Read-back confirms accuracy."
+    },
+    {
+     "text": "Receive the provider's confirmation",
+     "rationale": "The provider confirms it's correct."
+    },
+    {
+     "text": "Transcribe it and carry it out",
+     "rationale": "Then act on the order."
+    },
+    {
+     "text": "Make sure the provider signs it within 24 hours (or per policy)",
+     "rationale": "Telephone orders must be signed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-007",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "mc",
+   "prompt": "A nurse finds a prescription that seems incorrect for the client. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Contact the prescriber before giving the medication",
+     "correct": true,
+     "rationale": "Unclear, inappropriate or incomplete prescriptions are clarified first."
+    },
+    {
+     "text": "Give it because the provider wrote it",
+     "correct": false,
+     "rationale": "The nurse is responsible for catching errors."
+    },
+    {
+     "text": "Change the dose to what seems right",
+     "correct": false,
+     "rationale": "Only the prescriber changes a prescription."
+    },
+    {
+     "text": "Skip it and document nothing",
+     "correct": false,
+     "rationale": "Holding a drug must be reported and documented."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-008",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing a client's MAR (medication administration record). For each item, choose whether it is found on the MAR or on the medication label.",
+   "columns": [
+    "MAR",
+    "Medication label"
+   ],
+   "options": [
+    {
+     "text": "Administration times",
+     "correct": true,
+     "rationale": "Times are on the MAR.",
+     "col": 1
+    },
+    {
+     "text": "The client's allergies",
+     "correct": true,
+     "rationale": "Allergies are part of the client information on the MAR.",
+     "col": 1
+    },
+    {
+     "text": "Expiration date",
+     "correct": true,
+     "rationale": "The label shows the expiration date.",
+     "col": 2
+    },
+    {
+     "text": "Lot number",
+     "correct": true,
+     "rationale": "The label shows the lot number.",
+     "col": 2
+    },
+    {
+     "text": "The nurse's signature",
+     "correct": true,
+     "rationale": "The nurse signs the MAR.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Item"
+  },
+  {
+   "id": "nur114-u5-med-admin-009",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "sata",
+   "prompt": "A nurse is reviewing a client's MAR. Which information should the nurse expect to find? Select all that apply.",
+   "options": [
+    {
+     "text": "The client's name, date of birth and medical record number",
+     "correct": true,
+     "rationale": "Client identifying information is on every MAR."
+    },
+    {
+     "text": "Allergies",
+     "correct": true,
+     "rationale": "Allergies are listed with the client information."
+    },
+    {
+     "text": "Scheduled and PRN medications",
+     "correct": true,
+     "rationale": "Both are listed separately."
+    },
+    {
+     "text": "IV fluids and medications",
+     "correct": true,
+     "rationale": "IV fluids and drugs have their own section."
+    },
+    {
+     "text": "The pharmacy's lot numbers",
+     "correct": false,
+     "rationale": "Lot numbers are on labels, not the MAR."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-010",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "mc",
+   "prompt": "A nurse is reviewing an eMAR (electronic MAR) that lists metoprolol PO q12h, enoxaparin subcut q12h, omeprazole PO daily, fluticasone INH BID, and 0.9% sodium chloride IV. Which medications should the nurse plan to give orally?",
+   "options": [
+    {
+     "text": "Metoprolol and omeprazole",
+     "correct": true,
+     "rationale": "Both are marked PO (by mouth)."
+    },
+    {
+     "text": "Enoxaparin and fluticasone",
+     "correct": false,
+     "rationale": "Enoxaparin is subcutaneous; fluticasone is inhaled."
+    },
+    {
+     "text": "Fluticasone and sodium chloride",
+     "correct": false,
+     "rationale": "Fluticasone is inhaled; sodium chloride is IV."
+    },
+    {
+     "text": "All of the medications",
+     "correct": false,
+     "rationale": "Only the PO medications are oral."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-011",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "cloze",
+   "prompt": "A nurse is reading a client's prescriptions. For each abbreviation, choose its meaning.",
+   "table": {
+    "head": [
+     "Abbreviation",
+     "Meaning"
+    ],
+    "rows": [
+     [
+      "AC",
+      "{1}"
+     ],
+     [
+      "PC",
+      "{2}"
+     ],
+     [
+      "SL",
+      "{3}"
+     ],
+     [
+      "ID",
+      "{4}"
+     ]
+    ]
+   },
+   "options": [
+    {
+     "text": "Before meals",
+     "correct": true,
+     "rationale": "AC = before meals.",
+     "blank": 1
+    },
+    {
+     "text": "After meals",
+     "correct": false,
+     "rationale": "That's PC.",
+     "blank": 1
+    },
+    {
+     "text": "As needed",
+     "correct": false,
+     "rationale": "That's PRN.",
+     "blank": 1
+    },
+    {
+     "text": "After meals",
+     "correct": true,
+     "rationale": "PC = after meals.",
+     "blank": 2
+    },
+    {
+     "text": "Before meals",
+     "correct": false,
+     "rationale": "That's AC.",
+     "blank": 2
+    },
+    {
+     "text": "By mouth",
+     "correct": false,
+     "rationale": "That's PO.",
+     "blank": 2
+    },
+    {
+     "text": "Sublingual",
+     "correct": true,
+     "rationale": "SL = under the tongue.",
+     "blank": 3
+    },
+    {
+     "text": "Subcutaneous",
+     "correct": false,
+     "rationale": "Subcutaneous isn't SL.",
+     "blank": 3
+    },
+    {
+     "text": "Slowly",
+     "correct": false,
+     "rationale": "SL doesn't mean slowly.",
+     "blank": 3
+    },
+    {
+     "text": "Intradermal",
+     "correct": true,
+     "rationale": "ID = into the dermis.",
+     "blank": 4
+    },
+    {
+     "text": "Intravenous drip",
+     "correct": false,
+     "rationale": "IV is intravenous.",
+     "blank": 4
+    },
+    {
+     "text": "Identify",
+     "correct": false,
+     "rationale": "Not a medication abbreviation meaning.",
+     "blank": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-012",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "mc",
+   "prompt": "A nurse is transcribing a prescription onto a paper MAR. Which abbreviation guidance should the nurse follow?",
+   "options": [
+    {
+     "text": "Use only the facility's approved abbreviations and avoid those on the Do Not Use list",
+     "correct": true,
+     "rationale": "Error-prone abbreviations cause medication errors."
+    },
+    {
+     "text": "Use any common abbreviation",
+     "correct": false,
+     "rationale": "Some common abbreviations are banned because they cause errors."
+    },
+    {
+     "text": "Abbreviate drug names to save space",
+     "correct": false,
+     "rationale": "Abbreviated drug names cause errors."
+    },
+    {
+     "text": "Copy whatever the provider wrote, even if unclear",
+     "correct": false,
+     "rationale": "Unclear orders are clarified first."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-013",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing types of prescriptions.",
+   "sentence": "A {1} prescription is given immediately, while a {2} prescription is given only when the client needs it.",
+   "options": [
+    {
+     "text": "STAT",
+     "correct": true,
+     "rationale": "STAT means immediately.",
+     "blank": 1
+    },
+    {
+     "text": "PRN",
+     "correct": false,
+     "rationale": "PRN means as needed.",
+     "blank": 1
+    },
+    {
+     "text": "routine",
+     "correct": false,
+     "rationale": "Routine follows a schedule.",
+     "blank": 1
+    },
+    {
+     "text": "PRN",
+     "correct": true,
+     "rationale": "PRN means as needed.",
+     "blank": 2
+    },
+    {
+     "text": "STAT",
+     "correct": false,
+     "rationale": "STAT is immediate.",
+     "blank": 2
+    },
+    {
+     "text": "standing",
+     "correct": false,
+     "rationale": "Standing orders follow a schedule.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-014",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "mc",
+   "prompt": "A nurse is reviewing how prescriptions reach the client. Which statement about roles is correct?",
+   "options": [
+    {
+     "text": "The provider prescribes, the pharmacist prepares and dispenses, and the nurse administers",
+     "correct": true,
+     "rationale": "Each role has its part in medication safety."
+    },
+    {
+     "text": "The nurse prescribes and the pharmacist administers",
+     "correct": false,
+     "rationale": "Nurses administer; licensed providers prescribe."
+    },
+    {
+     "text": "The pharmacist prescribes and the provider dispenses",
+     "correct": false,
+     "rationale": "Roles are reversed."
+    },
+    {
+     "text": "The nurse prepares all medications from bulk supplies",
+     "correct": false,
+     "rationale": "Pharmacy prepares and dispenses."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-015",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "sata",
+   "prompt": "A nurse is preparing to administer a unit-dose medication. Which information should the nurse expect to find on the label? Select all that apply.",
+   "options": [
+    {
+     "text": "Generic name",
+     "correct": true,
+     "rationale": "The label shows the generic (and brand) name."
+    },
+    {
+     "text": "Storage instructions",
+     "correct": true,
+     "rationale": "Storage is on the label."
+    },
+    {
+     "text": "Expiration date",
+     "correct": true,
+     "rationale": "The expiration date is on the label."
+    },
+    {
+     "text": "Dosage strength",
+     "correct": true,
+     "rationale": "The strength in the package is on the label."
+    },
+    {
+     "text": "Administration times",
+     "correct": false,
+     "rationale": "Times are on the MAR."
+    },
+    {
+     "text": "Client diagnosis",
+     "correct": false,
+     "rationale": "The diagnosis is in the client's record, not the label."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-016",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "sata",
+   "prompt": "A nurse is removing medications for four clients from an automated dispensing system. Which actions help prevent errors? Select all that apply.",
+   "options": [
+    {
+     "text": "Compare the medication label with the MAR",
+     "correct": true,
+     "rationale": "This is one of the three checks."
+    },
+    {
+     "text": "Check the expiration date",
+     "correct": true,
+     "rationale": "Expired drugs aren't given."
+    },
+    {
+     "text": "Remove medications for one client at a time",
+     "correct": true,
+     "rationale": "Pulling for several clients at once invites mix-ups."
+    },
+    {
+     "text": "Keep each medication in its package until the bedside",
+     "correct": true,
+     "rationale": "Opening at the bedside lets the final check happen."
+    },
+    {
+     "text": "Remove all four clients' medications at once to save time",
+     "correct": false,
+     "rationale": "Never retrieve more than one client's medications at a time."
+    },
+    {
+     "text": "Document the medications as given when they're removed",
+     "correct": false,
+     "rationale": "Document only after giving them."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-017",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse is waiting in line at the automated dispensing system during a busy medication pass. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Wait and retrieve only one client's medications at a time",
+     "correct": true,
+     "rationale": "Even with a wait, pulling for one client at a time prevents errors."
+    },
+    {
+     "text": "Pull medications for all assigned clients at once",
+     "correct": false,
+     "rationale": "That increases the risk of giving the wrong drug to the wrong client."
+    },
+    {
+     "text": "Borrow another nurse's login to use a second machine",
+     "correct": false,
+     "rationale": "Each nurse uses their own password or biometric ID."
+    },
+    {
+     "text": "Take medications from another client's drawer",
+     "correct": false,
+     "rationale": "Never use another client's supply."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-018",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse scans a client's wristband and medication, and the bar code system shows an alert that they don't match. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Hold the medication until the reason for the alert is resolved",
+     "correct": true,
+     "rationale": "A mismatch must be resolved before giving the drug."
+    },
+    {
+     "text": "Override the alert and give the medication",
+     "correct": false,
+     "rationale": "Overriding can lead to an error."
+    },
+    {
+     "text": "Give it and report the alert later",
+     "correct": false,
+     "rationale": "Resolve it first."
+    },
+    {
+     "text": "Scan a different client's wristband",
+     "correct": false,
+     "rationale": "That defeats the purpose of scanning."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-019",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse uses a bar code scanner for medication administration. Which statement about bar code systems is correct?",
+   "options": [
+    {
+     "text": "They don't replace the nurse's own checks",
+     "correct": true,
+     "rationale": "Scanning supports, but doesn't replace, the rights and three checks."
+    },
+    {
+     "text": "They make the three checks unnecessary",
+     "correct": false,
+     "rationale": "The checks are still done."
+    },
+    {
+     "text": "They only scan the medication",
+     "correct": false,
+     "rationale": "They scan the wristband and the medication."
+    },
+    {
+     "text": "They are used only for controlled substances",
+     "correct": false,
+     "rationale": "They're used for all medications."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-020",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing how medications are dispensed. For each statement, choose the system it describes.",
+   "columns": [
+    "Unit-dose system",
+    "Bulk system"
+   ],
+   "options": [
+    {
+     "text": "Each dose is packaged and labeled separately",
+     "correct": true,
+     "rationale": "That's unit dose.",
+     "col": 1
+    },
+    {
+     "text": "One labeled container holds many doses",
+     "correct": true,
+     "rationale": "That's the bulk system.",
+     "col": 2
+    },
+    {
+     "text": "Used in acute and long-term care to reduce errors",
+     "correct": true,
+     "rationale": "Unit dose reduces errors.",
+     "col": 1
+    },
+    {
+     "text": "Liquids should be dispensed by pharmacy in oral syringes",
+     "correct": true,
+     "rationale": "Best practice for bulk liquids.",
+     "col": 2
+    }
+   ],
+   "rowLabel": "Statement"
+  },
+  {
+   "id": "nur114-u5-med-admin-021",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse finishes using a medication cart. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Lock the cart",
+     "correct": true,
+     "rationale": "Carts are locked whenever they're not in use."
+    },
+    {
+     "text": "Leave it unlocked for the next nurse",
+     "correct": false,
+     "rationale": "An unlocked cart risks theft and errors."
+    },
+    {
+     "text": "Leave the key in the lock",
+     "correct": false,
+     "rationale": "The key must be secured."
+    },
+    {
+     "text": "Restock it from another client's drawer",
+     "correct": false,
+     "rationale": "Each drawer is for one client."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-022",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse is reviewing storage in a facility that keeps a locked medication cabinet in each client's room. Which medications are stored somewhere else?",
+   "options": [
+    {
+     "text": "Controlled substances",
+     "correct": true,
+     "rationale": "Controlled substances are kept in secure, tracked storage, not the room cabinet."
+    },
+    {
+     "text": "Oral tablets",
+     "correct": false,
+     "rationale": "Oral tablets can be stored in the room cabinet."
+    },
+    {
+     "text": "Topical creams",
+     "correct": false,
+     "rationale": "Topicals can be stored there."
+    },
+    {
+     "text": "Eye drops",
+     "correct": false,
+     "rationale": "Eye drops can be stored there."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-023",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse reviews the medication label shown before giving a dose. Which information should the nurse identify first to calculate the dose?",
+   "options": [
+    {
+     "text": "The dosage strength: 350 mg/5 mL",
+     "correct": true,
+     "rationale": "The first question is \"what is my available\": the strength on the label."
+    },
+    {
+     "text": "The manufacturer",
+     "correct": false,
+     "rationale": "The manufacturer isn't used in the calculation."
+    },
+    {
+     "text": "The lot number",
+     "correct": false,
+     "rationale": "The lot number tracks batches for recalls."
+    },
+    {
+     "text": "The NDC number",
+     "correct": false,
+     "rationale": "The NDC identifies the product, not the dose."
+    }
+   ],
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
+   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+  },
+  {
+   "id": "nur114-u5-med-admin-024",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse is preparing the reconstituted oral solution shown on the label. Which instruction on the label applies to every dose?",
+   "options": [
+    {
+     "text": "Shake well before each use",
+     "correct": true,
+     "rationale": "Suspensions and some solutions separate, so they're shaken before every dose."
+    },
+    {
+     "text": "Add 80 mL of water",
+     "correct": false,
+     "rationale": "That's done once, to reconstitute."
+    },
+    {
+     "text": "Discard after 14 days",
+     "correct": false,
+     "rationale": "That's about when to throw it away, not each dose."
+    },
+    {
+     "text": "Rx only",
+     "correct": false,
+     "rationale": "That means it needs a prescription."
+    }
+   ],
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
+   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+  },
+  {
+   "id": "nur114-u5-med-admin-025",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse reconstitutes the medication shown on the label on October 1. When should the nurse plan to discard any remaining solution?",
+   "options": [
+    {
+     "text": "October 15",
+     "correct": true,
+     "rationale": "The label says to discard it 14 days after preparation."
+    },
+    {
+     "text": "October 8",
+     "correct": false,
+     "rationale": "That's only 7 days."
+    },
+    {
+     "text": "October 31",
+     "correct": false,
+     "rationale": "That's 30 days."
+    },
+    {
+     "text": "On the expiration date printed on the label",
+     "correct": false,
+     "rationale": "Once mixed, the 14-day discard rule applies."
+    }
+   ],
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
+   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+  },
+  {
+   "id": "nur114-u5-med-admin-026",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing the medication label shown. Sort each item into the right box. Move each answer to the box where it belongs.",
+   "leftLabel": "Label items",
+   "buckets": [
+    "Brand name",
+    "Generic name",
+    "Form"
+   ],
+   "options": [
+    {
+     "text": "Prevacid",
+     "correct": true,
+     "rationale": "The capitalized name with ® is the brand.",
+     "bucket": 1
+    },
+    {
+     "text": "lansoprazole",
+     "correct": true,
+     "rationale": "Lansoprazole is the generic name.",
+     "bucket": 2
+    },
+    {
+     "text": "Delayed-release capsules",
+     "correct": true,
+     "rationale": "This is the medication form.",
+     "bucket": 3
+    },
+    {
+     "text": "Takeda",
+     "correct": false,
+     "rationale": "Takeda is the distributor, not a drug name or form."
+    }
+   ],
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
+   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
+  },
+  {
+   "id": "nur114-u5-med-admin-027",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "mc",
+   "prompt": "A nurse reviews the medication label shown for a client who has a 30 mg dose prescribed. Which statement about this medication is correct?",
+   "options": [
+    {
+     "text": "Give 1 capsule, swallowed whole",
+     "correct": true,
+     "rationale": "Each delayed-release capsule has 30 mg, and delayed-release forms aren't crushed or opened."
+    },
+    {
+     "text": "Give 2 capsules",
+     "correct": false,
+     "rationale": "Each capsule is 30 mg, so 1 capsule is the dose."
+    },
+    {
+     "text": "Open the capsule and sprinkle it on food",
+     "correct": false,
+     "rationale": "Delayed-release capsules shouldn't be altered."
+    },
+    {
+     "text": "Crush the capsule for easier swallowing",
+     "correct": false,
+     "rationale": "Crushing changes how a delayed-release drug is released."
+    }
+   ],
+   "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
+   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
+  },
+  {
+   "id": "nur114-u5-med-admin-028",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "order",
+   "prompt": "A nurse is preparing to administer an oral medication. Place the three label checks in order.",
+   "options": [
+    {
+     "text": "Compare the label with the MAR when removing the medication from storage",
+     "rationale": "First check."
+    },
+    {
+     "text": "Compare the label with the MAR while preparing the medication",
+     "rationale": "Second check."
+    },
+    {
+     "text": "Compare the label with the MAR at the bedside before giving it",
+     "rationale": "Third check, just before administration."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-029",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "sata",
+   "prompt": "A nurse is reviewing the rights of medication administration. Which are rights of medication administration? Select all that apply.",
+   "options": [
+    {
+     "text": "Right medication",
+     "correct": true,
+     "rationale": "Check the label against the MAR."
+    },
+    {
+     "text": "Right client",
+     "correct": true,
+     "rationale": "Use two identifiers."
+    },
+    {
+     "text": "Right documentation",
+     "correct": true,
+     "rationale": "Document after giving it."
+    },
+    {
+     "text": "Right to refuse",
+     "correct": true,
+     "rationale": "Clients may refuse."
+    },
+    {
+     "text": "Right reason",
+     "correct": true,
+     "rationale": "Know the indication."
+    },
+    {
+     "text": "Right pharmacy",
+     "correct": false,
+     "rationale": "That isn't one of the rights."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-030",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give medications to a client the nurse has cared for all week. Which action should the nurse take to confirm the right client?",
+   "options": [
+    {
+     "text": "Check two client identifiers against the wristband and MAR",
+     "correct": true,
+     "rationale": "Two identifiers are used every time, no matter how well you know the client."
+    },
+    {
+     "text": "Call the client by name and wait for an answer",
+     "correct": false,
+     "rationale": "One identifier isn't enough, and a confused client may answer to any name."
+    },
+    {
+     "text": "Check the room number",
+     "correct": false,
+     "rationale": "Room numbers aren't client identifiers."
+    },
+    {
+     "text": "Skip identification because the nurse knows the client",
+     "correct": false,
+     "rationale": "Identity is confirmed every time."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-031",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give a medication to a client who is confused and can't state their name. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Compare the medical record number and birth date on the MAR with the wristband",
+     "correct": true,
+     "rationale": "When the client can't answer, use two identifiers from the wristband and MAR."
+    },
+    {
+     "text": "Ask the roommate to identify the client",
+     "correct": false,
+     "rationale": "A roommate isn't a valid source."
+    },
+    {
+     "text": "Use the room and bed number",
+     "correct": false,
+     "rationale": "Room numbers aren't identifiers."
+    },
+    {
+     "text": "Hold all medications",
+     "correct": false,
+     "rationale": "The client can be identified with the wristband."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-032",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse prepares a client's 0900 medications. When should the nurse document them?",
+   "options": [
+    {
+     "text": "Right after the client takes them",
+     "correct": true,
+     "rationale": "Never document a medication before it's given."
+    },
+    {
+     "text": "When removing them from the dispensing system",
+     "correct": false,
+     "rationale": "The client might refuse or the dose might be held."
+    },
+    {
+     "text": "At the end of the shift",
+     "correct": false,
+     "rationale": "Document promptly after giving them."
+    },
+    {
+     "text": "Before entering the room",
+     "correct": false,
+     "rationale": "Documentation follows administration."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-033",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A client refuses a scheduled medication. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Ask the reason, notify the provider, and document the refusal and reason",
+     "correct": true,
+     "rationale": "Clients have the right to refuse; the nurse follows up and documents."
+    },
+    {
+     "text": "Mix the medication into the client's food",
+     "correct": false,
+     "rationale": "Hiding a drug violates the right to refuse."
+    },
+    {
+     "text": "Insist the client take it",
+     "correct": false,
+     "rationale": "Never force a medication."
+    },
+    {
+     "text": "Leave it at the bedside for later",
+     "correct": false,
+     "rationale": "Medications aren't left at the bedside."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-034",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give an antihypertensive. Which action reflects the right reason and assessment before giving it?",
+   "options": [
+    {
+     "text": "Check the client's blood pressure and heart rate",
+     "correct": true,
+     "rationale": "Assess the values the drug affects before giving it."
+    },
+    {
+     "text": "Check the client's temperature only",
+     "correct": false,
+     "rationale": "Temperature isn't the key value for an antihypertensive."
+    },
+    {
+     "text": "Check the lot number",
+     "correct": false,
+     "rationale": "That's a label detail, not an assessment."
+    },
+    {
+     "text": "Ask the client's family whether it's needed",
+     "correct": false,
+     "rationale": "The nurse assesses the client."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-035",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse realizes a client received the wrong medication. Which action should the nurse take first?",
+   "options": [
+    {
+     "text": "Assess the client",
+     "correct": true,
+     "rationale": "Client safety is the priority."
+    },
+    {
+     "text": "Complete an incident report",
+     "correct": false,
+     "rationale": "That comes after the client is assessed and the provider notified."
+    },
+    {
+     "text": "Notify the nurse manager",
+     "correct": false,
+     "rationale": "Assess the client first."
+    },
+    {
+     "text": "Document the error in the progress notes",
+     "correct": false,
+     "rationale": "Assess first; the incident report isn't charted."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-036",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "order",
+   "prompt": "A nurse gave a client a double dose of a medication. Place the nurse's actions in order.",
+   "options": [
+    {
+     "text": "Assess the client and monitor for adverse effects",
+     "rationale": "The client's safety comes first."
+    },
+    {
+     "text": "Notify the provider",
+     "rationale": "The provider decides on treatment."
+    },
+    {
+     "text": "Notify the nurse manager",
+     "rationale": "Report the error up the chain."
+    },
+    {
+     "text": "Complete an incident report within 24 hours",
+     "rationale": "File the report once the client is stable."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-037",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "sata",
+   "prompt": "A nurse is completing an incident report after a medication error. Which information should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "Client information",
+     "correct": true,
+     "rationale": "The report identifies the client."
+    },
+    {
+     "text": "Location and time of the incident",
+     "correct": true,
+     "rationale": "When and where it happened."
+    },
+    {
+     "text": "What happened and what was done",
+     "correct": true,
+     "rationale": "A factual description and the actions taken."
+    },
+    {
+     "text": "The client's condition",
+     "correct": true,
+     "rationale": "The outcome for the client."
+    },
+    {
+     "text": "The nurse's signature",
+     "correct": true,
+     "rationale": "The report is signed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-038",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse completes an incident report after a medication error. Which action is correct?",
+   "options": [
+    {
+     "text": "Don't mention the incident report in the client's chart",
+     "correct": true,
+     "rationale": "The report isn't part of the medical record and isn't referenced in charting."
+    },
+    {
+     "text": "Place a copy of the report in the client's chart",
+     "correct": false,
+     "rationale": "Incident reports stay out of the medical record."
+    },
+    {
+     "text": "Write \"incident report filed\" in the nurse's notes",
+     "correct": false,
+     "rationale": "Don't reference the report in the chart."
+    },
+    {
+     "text": "Give the client a copy of the report",
+     "correct": false,
+     "rationale": "The report is an internal document."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-039",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A charge nurse is talking with a newly hired nurse who is afraid to report a medication error. Which response by the charge nurse is best?",
+   "options": [
+    {
+     "text": "\"Reports are used to improve systems, not to punish nurses.\"",
+     "correct": true,
+     "rationale": "Incident reports support quality improvement."
+    },
+    {
+     "text": "\"Only report errors that cause harm.\"",
+     "correct": false,
+     "rationale": "All errors are reported, harm or not."
+    },
+    {
+     "text": "\"Wait to see if the client has a reaction.\"",
+     "correct": false,
+     "rationale": "Report right away."
+    },
+    {
+     "text": "\"You'll be disciplined, so it's better not to report it.\"",
+     "correct": false,
+     "rationale": "Not reporting puts clients at risk."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-040",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "sata",
+   "prompt": "A nurse is giving a medication at a time other than its scheduled time because pharmacy delivered it late. Which actions should the nurse take? Select all that apply.",
+   "options": [
+    {
+     "text": "Note the actual time on the MAR",
+     "correct": true,
+     "rationale": "Document the time it was really given."
+    },
+    {
+     "text": "Explain the reason in the progress notes",
+     "correct": true,
+     "rationale": "Document why the time differed."
+    },
+    {
+     "text": "Leave the scheduled time on the MAR",
+     "correct": false,
+     "rationale": "That would be inaccurate."
+    },
+    {
+     "text": "Skip the dose and wait for the next one",
+     "correct": false,
+     "rationale": "Giving it late with documentation is appropriate per policy."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-041",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse is calculating a dose of a high-alert medication such as insulin. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Have another nurse independently double-check the dose",
+     "correct": true,
+     "rationale": "Many facilities require a double check for insulin and anticoagulants."
+    },
+    {
+     "text": "Round the dose to the nearest 10 units",
+     "correct": false,
+     "rationale": "Doses aren't rounded that way."
+    },
+    {
+     "text": "Rely on memory of the usual dose",
+     "correct": false,
+     "rationale": "Every dose is calculated and checked."
+    },
+    {
+     "text": "Ask the client what dose they usually take",
+     "correct": false,
+     "rationale": "The prescription decides the dose."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-042",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "mc",
+   "prompt": "A nurse is preparing an injectable medication. Which check confirms the right route?",
+   "options": [
+    {
+     "text": "The label says the preparation is for injection",
+     "correct": true,
+     "rationale": "Inject only drugs labeled for parenteral use."
+    },
+    {
+     "text": "The vial is the right color",
+     "correct": false,
+     "rationale": "Color doesn't confirm the route."
+    },
+    {
+     "text": "The client prefers injections",
+     "correct": false,
+     "rationale": "Preference doesn't confirm a safe route."
+    },
+    {
+     "text": "The dose is under 1 mL",
+     "correct": false,
+     "rationale": "Volume doesn't confirm the route."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-043",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing actions during a medication pass. For each action, choose whether it follows or breaks the rights of medication administration.",
+   "columns": [
+    "Follows",
+    "Breaks"
+   ],
+   "options": [
+    {
+     "text": "Leaving the client's pills at the bedside to take later",
+     "correct": true,
+     "rationale": "Stay until the client takes oral medications.",
+     "col": 2
+    },
+    {
+     "text": "Checking two identifiers before giving a medication",
+     "correct": true,
+     "rationale": "That's the right client.",
+     "col": 1
+    },
+    {
+     "text": "Documenting a medication before giving it",
+     "correct": true,
+     "rationale": "Document only after giving it.",
+     "col": 2
+    },
+    {
+     "text": "Checking the expiration date",
+     "correct": true,
+     "rationale": "Part of the right medication.",
+     "col": 1
+    },
+    {
+     "text": "Teaching the client what the medication is for",
+     "correct": true,
+     "rationale": "That's the right to education.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Action"
+  },
+  {
+   "id": "nur114-u5-med-admin-044",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing the rights of medication administration.",
+   "sentence": "The nurse checks the label against the MAR {1} times and uses at least {2} client identifiers.",
+   "options": [
+    {
+     "text": "three",
+     "correct": true,
+     "rationale": "When removing it, preparing it, and at the bedside.",
+     "blank": 1
+    },
+    {
+     "text": "two",
+     "correct": false,
+     "rationale": "There are three label checks.",
+     "blank": 1
+    },
+    {
+     "text": "five",
+     "correct": false,
+     "rationale": "Three checks are standard.",
+     "blank": 1
+    },
+    {
+     "text": "two",
+     "correct": true,
+     "rationale": "Two identifiers, such as name and date of birth.",
+     "blank": 2
+    },
+    {
+     "text": "one",
+     "correct": false,
+     "rationale": "One identifier isn't enough.",
+     "blank": 2
+    },
+    {
+     "text": "four",
+     "correct": false,
+     "rationale": "Two is the standard.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-045",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "sata",
+   "prompt": "A nurse is reviewing a client's chart before giving oral medications. Which findings are contraindications to the oral route? Select all that apply.",
+   "options": [
+    {
+     "text": "Vomiting",
+     "correct": true,
+     "rationale": "The drug may be lost or aspirated."
+    },
+    {
+     "text": "NPO status",
+     "correct": true,
+     "rationale": "Nothing by mouth means no oral medications (sublingual may be allowed per policy)."
+    },
+    {
+     "text": "Absent gag reflex",
+     "correct": true,
+     "rationale": "There's a high risk of aspiration."
+    },
+    {
+     "text": "Decreased level of consciousness",
+     "correct": true,
+     "rationale": "The client can't swallow safely."
+    },
+    {
+     "text": "Mild headache",
+     "correct": false,
+     "rationale": "A headache doesn't prevent oral medications."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-046",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give oral medications to a client. Which position is best?",
+   "options": [
+    {
+     "text": "Sitting upright at 90°",
+     "correct": true,
+     "rationale": "Upright positioning helps swallowing and prevents aspiration."
+    },
+    {
+     "text": "Supine",
+     "correct": false,
+     "rationale": "Lying flat raises the aspiration risk."
+    },
+    {
+     "text": "Prone",
+     "correct": false,
+     "rationale": "Swallowing face down isn't safe."
+    },
+    {
+     "text": "Trendelenburg",
+     "correct": false,
+     "rationale": "Head-down positioning increases aspiration risk."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-047",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A client's medication must be taken on an empty stomach, and breakfast arrives at 0800. When should the nurse give the medication?",
+   "options": [
+    {
+     "text": "By 0730",
+     "correct": true,
+     "rationale": "Give it at least 30 minutes before the client eats (or 2 hours after)."
+    },
+    {
+     "text": "At 0800 with breakfast",
+     "correct": false,
+     "rationale": "That's with food, not an empty stomach."
+    },
+    {
+     "text": "At 0830",
+     "correct": false,
+     "rationale": "That's 30 minutes after eating; it should be 2 hours after."
+    },
+    {
+     "text": "At 0900",
+     "correct": false,
+     "rationale": "That's only 1 hour after eating."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-048",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "sata",
+   "prompt": "A nurse is preparing oral medications for a client who has trouble swallowing. Which medications must not be crushed? Select all that apply.",
+   "options": [
+    {
+     "text": "Enteric-coated tablets",
+     "correct": true,
+     "rationale": "Crushing destroys the coating that protects the stomach."
+    },
+    {
+     "text": "Extended-release tablets",
+     "correct": true,
+     "rationale": "Crushing releases the whole dose at once."
+    },
+    {
+     "text": "Sublingual tablets",
+     "correct": true,
+     "rationale": "They're made to dissolve under the tongue."
+    },
+    {
+     "text": "Tablets with layers or speckles of different colors",
+     "correct": true,
+     "rationale": "These are combination or special-release drugs."
+    },
+    {
+     "text": "Gel capsules with sealed halves",
+     "correct": true,
+     "rationale": "Sealed capsules shouldn't be altered."
+    },
+    {
+     "text": "A plain immediate-release scored tablet",
+     "correct": false,
+     "rationale": "Plain tablets can usually be crushed if a reference allows it."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-049",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A client who has trouble swallowing is prescribed an extended-release tablet. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Contact the provider to ask for a different form, such as a liquid",
+     "correct": true,
+     "rationale": "Extended-release forms can't be crushed."
+    },
+    {
+     "text": "Crush the tablet and mix it in applesauce",
+     "correct": false,
+     "rationale": "Crushing releases the full dose at once."
+    },
+    {
+     "text": "Cut the tablet in half",
+     "correct": false,
+     "rationale": "Cutting also alters the release."
+    },
+    {
+     "text": "Dissolve it in water",
+     "correct": false,
+     "rationale": "That alters an extended-release tablet."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-050",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "order",
+   "prompt": "A nurse needs to crush an immediate-release tablet for a client who can't swallow pills, and no liquid form is available. Place the actions in order.",
+   "options": [
+    {
+     "text": "Check a drug reference or the pharmacist to confirm it can be crushed",
+     "rationale": "Not every tablet can be crushed."
+    },
+    {
+     "text": "Crush the tablet using a crushing device",
+     "rationale": "Use the proper device."
+    },
+    {
+     "text": "Mix it with a small amount of soft food such as applesauce",
+     "rationale": "A small amount makes sure the whole dose is taken."
+    },
+    {
+     "text": "Give all of the medication",
+     "rationale": "The full dose has to be taken."
+    },
+    {
+     "text": "Clean the crushing device",
+     "rationale": "Clean it after use."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-051",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse needs to give half of a tablet. Which action is correct?",
+   "options": [
+    {
+     "text": "Split only a scored tablet, using a cutting device",
+     "correct": true,
+     "rationale": "Only scored tablets are split, ideally with a cutter or by pharmacy."
+    },
+    {
+     "text": "Break any tablet in half by hand",
+     "correct": false,
+     "rationale": "Unscored tablets don't split evenly."
+    },
+    {
+     "text": "Bite the tablet in half",
+     "correct": false,
+     "rationale": "That's unsafe and unsanitary."
+    },
+    {
+     "text": "Crush it and give half the powder",
+     "correct": false,
+     "rationale": "That gives an inaccurate dose."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-052",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse cuts a scored tablet, and it doesn't break evenly. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Discard it per facility policy and cut another",
+     "correct": true,
+     "rationale": "An uneven piece gives an inaccurate dose; controlled substances follow the waste policy."
+    },
+    {
+     "text": "Give the larger half",
+     "correct": false,
+     "rationale": "That's an inaccurate dose."
+    },
+    {
+     "text": "Give both pieces",
+     "correct": false,
+     "rationale": "That's a double dose."
+    },
+    {
+     "text": "Save the pieces for the next dose",
+     "correct": false,
+     "rationale": "Uneven pieces aren't reused."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-053",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client about a sublingual medication. Which instruction should the nurse include?",
+   "options": [
+    {
+     "text": "\"Let it dissolve completely under your tongue.\"",
+     "correct": true,
+     "rationale": "Sublingual tablets dissolve and absorb under the tongue."
+    },
+    {
+     "text": "\"Swallow it whole with water.\"",
+     "correct": false,
+     "rationale": "Swallowing it defeats the route."
+    },
+    {
+     "text": "\"Chew it carefully.\"",
+     "correct": false,
+     "rationale": "Chewing changes absorption."
+    },
+    {
+     "text": "\"Take it with a full glass of water.\"",
+     "correct": false,
+     "rationale": "Don't drink until it has dissolved."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-054",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "sata",
+   "prompt": "A nurse is teaching a client about a buccal medication. Which instructions should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "Place it between your cheek and gum",
+     "correct": true,
+     "rationale": "That's the buccal site."
+    },
+    {
+     "text": "Keep it in place until it dissolves",
+     "correct": true,
+     "rationale": "It must dissolve to be absorbed."
+    },
+    {
+     "text": "Don't eat or drink until it has dissolved",
+     "correct": true,
+     "rationale": "Food and fluids wash it away."
+    },
+    {
+     "text": "Switch sides with each dose",
+     "correct": true,
+     "rationale": "Alternating sides prevents irritation."
+    },
+    {
+     "text": "Swallow it once it softens",
+     "correct": false,
+     "rationale": "Buccal drugs aren't swallowed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-055",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse is giving a troche to a client. Which instruction is correct?",
+   "options": [
+    {
+     "text": "\"Let it dissolve in your mouth; don't swallow or chew it.\"",
+     "correct": true,
+     "rationale": "A troche (lozenge) dissolves slowly in the mouth."
+    },
+    {
+     "text": "\"Swallow it whole.\"",
+     "correct": false,
+     "rationale": "Troches aren't swallowed."
+    },
+    {
+     "text": "\"Chew it, then drink water.\"",
+     "correct": false,
+     "rationale": "Troches dissolve, not chewed."
+    },
+    {
+     "text": "\"Place it in your cheek and spit it out after 1 minute.\"",
+     "correct": false,
+     "rationale": "It must fully dissolve."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-056",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A client is about to receive a troche. Which instruction about eating and drinking is correct?",
+   "options": [
+    {
+     "text": "Nothing to eat or drink for 5 minutes before and 5 minutes after it dissolves",
+     "correct": true,
+     "rationale": "This keeps the medication in contact with the mouth and throat."
+    },
+    {
+     "text": "Drink a full glass of water right after",
+     "correct": false,
+     "rationale": "That washes it away."
+    },
+    {
+     "text": "Eat a snack while it dissolves",
+     "correct": false,
+     "rationale": "Food interferes with it."
+    },
+    {
+     "text": "Avoid food for 24 hours",
+     "correct": false,
+     "rationale": "That's far longer than needed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-057",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "sata",
+   "prompt": "A nurse is preparing medications for a client. Which forms should the client swallow whole? Select all that apply.",
+   "options": [
+    {
+     "text": "Sustained-release capsule",
+     "correct": true,
+     "rationale": "It must be swallowed whole to release slowly."
+    },
+    {
+     "text": "Enteric-coated tablet",
+     "correct": true,
+     "rationale": "The coating must stay intact."
+    },
+    {
+     "text": "Caplet",
+     "correct": true,
+     "rationale": "Caplets are swallowed."
+    },
+    {
+     "text": "Troche",
+     "correct": false,
+     "rationale": "A troche dissolves in the mouth."
+    },
+    {
+     "text": "Sublingual tablet",
+     "correct": false,
+     "rationale": "It dissolves under the tongue."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-058",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse is measuring a liquid medication in a medicine cup. Which action is correct?",
+   "options": [
+    {
+     "text": "Set the cup on a flat surface at eye level and read the bottom of the meniscus",
+     "correct": true,
+     "rationale": "Precise liquid doses are read at the base of the meniscus."
+    },
+    {
+     "text": "Hold the cup up and read the top edge of the liquid",
+     "correct": false,
+     "rationale": "The edges creep up and give a wrong reading."
+    },
+    {
+     "text": "Read the cup from above",
+     "correct": false,
+     "rationale": "Reading from above distorts the level."
+    },
+    {
+     "text": "Fill to the rim and estimate",
+     "correct": false,
+     "rationale": "Estimating isn't accurate."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-059",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse needs to give 2.5 mL of an oral liquid. Which device should the nurse use?",
+   "options": [
+    {
+     "text": "An oral syringe",
+     "correct": true,
+     "rationale": "Doses under 5 mL are measured with an oral syringe, dropper or calibrated spoon."
+    },
+    {
+     "text": "A medicine cup",
+     "correct": false,
+     "rationale": "Cups are for 5 to 30 mL."
+    },
+    {
+     "text": "A household teaspoon",
+     "correct": false,
+     "rationale": "Household spoons aren't accurate."
+    },
+    {
+     "text": "An IV syringe with a needle",
+     "correct": false,
+     "rationale": "Use an oral syringe for oral doses."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-060",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A client asks whether a kitchen teaspoon can be used to measure a liquid medication at home. Which response is best?",
+   "options": [
+    {
+     "text": "\"Use the dosing cup or oral syringe that came with it; kitchen spoons vary in size.\"",
+     "correct": true,
+     "rationale": "Calibrated devices give accurate doses."
+    },
+    {
+     "text": "\"Yes, any spoon works.\"",
+     "correct": false,
+     "rationale": "Household spoons aren't standard sizes."
+    },
+    {
+     "text": "\"Use a tablespoon instead.\"",
+     "correct": false,
+     "rationale": "That's also not standard and is three times larger."
+    },
+    {
+     "text": "\"Estimate by pouring into the cap.\"",
+     "correct": false,
+     "rationale": "Estimating causes dosing errors."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-061",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing liquid medication forms. Match each form to its description. Move each answer to the box where it belongs.",
+   "leftLabel": "Descriptions",
+   "buckets": [
+    "Elixir",
+    "Syrup",
+    "Suspension",
+    "Solution"
+   ],
+   "options": [
+    {
+     "text": "Water, alcohol, sweetener and drug",
+     "correct": true,
+     "rationale": "Elixirs contain alcohol.",
+     "bucket": 1
+    },
+    {
+     "text": "Water, concentrated sugar and drug",
+     "correct": true,
+     "rationale": "Syrups contain concentrated sugar.",
+     "bucket": 2
+    },
+    {
+     "text": "Fine particles that don't fully dissolve; shake before giving",
+     "correct": true,
+     "rationale": "Suspensions settle and must be shaken.",
+     "bucket": 3
+    },
+    {
+     "text": "Drug dissolved in water or 0.9% sodium chloride",
+     "correct": true,
+     "rationale": "Solutions are fully dissolved.",
+     "bucket": 4
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-062",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse is preparing amoxicillin oral suspension. Which action should the nurse take right before pouring the dose?",
+   "options": [
+    {
+     "text": "Shake the bottle",
+     "correct": true,
+     "rationale": "Suspension particles settle, so it's shaken right before each dose."
+    },
+    {
+     "text": "Heat the bottle",
+     "correct": false,
+     "rationale": "Heat isn't part of preparation."
+    },
+    {
+     "text": "Dilute it with milk",
+     "correct": false,
+     "rationale": "Follow label directions; don't dilute unless directed."
+    },
+    {
+     "text": "Strain it",
+     "correct": false,
+     "rationale": "Straining removes drug."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-063",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "sata",
+   "prompt": "A nurse is pouring a liquid medication from a multidose bottle. Which actions are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "Hold the bottle with the label toward the palm",
+     "correct": true,
+     "rationale": "That keeps drips from smearing the label."
+    },
+    {
+     "text": "Set the cup at eye level on a flat surface",
+     "correct": true,
+     "rationale": "That gives an accurate reading."
+    },
+    {
+     "text": "Recap the bottle after pouring",
+     "correct": true,
+     "rationale": "Keeps the drug clean for the next dose."
+    },
+    {
+     "text": "Stay with the client until they take it",
+     "correct": true,
+     "rationale": "Medications aren't left at the bedside."
+    },
+    {
+     "text": "Pour extra back into the bottle",
+     "correct": false,
+     "rationale": "Returning poured medication can contaminate the bottle."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-064",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing advantages and disadvantages of the oral route. For each statement, choose whether it is an advantage or a disadvantage.",
+   "columns": [
+    "Advantage",
+    "Disadvantage"
+   ],
+   "options": [
+    {
+     "text": "Noninvasive and easy to give",
+     "correct": true,
+     "rationale": "The oral route is safe and convenient.",
+     "col": 1
+    },
+    {
+     "text": "Absorption isn't consistent",
+     "correct": true,
+     "rationale": "Oral absorption varies a lot.",
+     "col": 2
+    },
+    {
+     "text": "Less expensive",
+     "correct": true,
+     "rationale": "Oral medications cost less.",
+     "col": 1
+    },
+    {
+     "text": "Slower onset",
+     "correct": true,
+     "rationale": "Oral drugs take longer to work.",
+     "col": 2
+    },
+    {
+     "text": "Can be inactivated by the first-pass effect",
+     "correct": true,
+     "rationale": "The liver breaks down part of the dose.",
+     "col": 2
+    }
+   ],
+   "rowLabel": "Statement"
+  },
+  {
+   "id": "nur114-u5-med-admin-065",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse is giving a medication that is irritating to the stomach. Which action is appropriate unless the label says otherwise?",
+   "options": [
+    {
+     "text": "Give it with a small amount of food",
+     "correct": true,
+     "rationale": "A little food reduces GI irritation."
+    },
+    {
+     "text": "Give it with grapefruit juice",
+     "correct": false,
+     "rationale": "Grapefruit juice causes interactions."
+    },
+    {
+     "text": "Give it with a large meal mixed in",
+     "correct": false,
+     "rationale": "Large amounts may not be finished."
+    },
+    {
+     "text": "Give it on an empty stomach",
+     "correct": false,
+     "rationale": "That increases irritation."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-066",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who is NPO and has a prescription for a sublingual medication. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Check the facility policy; in most cases sublingual medications can still be given",
+     "correct": true,
+     "rationale": "Sublingual drugs aren't swallowed, so they're often allowed while NPO."
+    },
+    {
+     "text": "Hold the medication until the client can eat",
+     "correct": false,
+     "rationale": "Not always needed; check policy."
+    },
+    {
+     "text": "Give it through an IV",
+     "correct": false,
+     "rationale": "The route can't be changed by the nurse."
+    },
+    {
+     "text": "Crush it and give it with water",
+     "correct": false,
+     "rationale": "Sublingual tablets aren't crushed or swallowed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-067",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing measuring devices.",
+   "sentence": "A medicine cup is used for doses of {1}, and doses less than {2} are measured with an oral syringe.",
+   "options": [
+    {
+     "text": "5 to 30 mL",
+     "correct": true,
+     "rationale": "Cups are calibrated for 5 to 30 mL.",
+     "blank": 1
+    },
+    {
+     "text": "0.5 to 2 mL",
+     "correct": false,
+     "rationale": "That's too small for a cup.",
+     "blank": 1
+    },
+    {
+     "text": "50 to 100 mL",
+     "correct": false,
+     "rationale": "Cups don't hold that much.",
+     "blank": 1
+    },
+    {
+     "text": "5 mL",
+     "correct": true,
+     "rationale": "Doses under 5 mL use an oral syringe.",
+     "blank": 2
+    },
+    {
+     "text": "30 mL",
+     "correct": false,
+     "rationale": "Cups handle up to 30 mL.",
+     "blank": 2
+    },
+    {
+     "text": "1 L",
+     "correct": false,
+     "rationale": "That isn't a dose cutoff.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-068",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "order",
+   "prompt": "A nurse is giving several medications through a client's nasogastric (NG) tube. Place the actions in order.",
+   "options": [
+    {
+     "text": "Position the client in Fowler's (at least 30°)",
+     "rationale": "Upright positioning prevents aspiration."
+    },
+    {
+     "text": "Verify tube placement",
+     "rationale": "Confirm the tube is in the stomach."
+    },
+    {
+     "text": "Flush the tube with water",
+     "rationale": "Flush before the first medication."
+    },
+    {
+     "text": "Give each medication separately, flushing between them",
+     "rationale": "Separate doses prevent interactions and clogging."
+    },
+    {
+     "text": "Flush the tube after the last medication",
+     "rationale": "A final flush clears the tube."
+    },
+    {
+     "text": "Keep the head of the bed raised for at least 1 hour",
+     "rationale": "Prevents aspiration afterward."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-069",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "sata",
+   "prompt": "A nurse is preparing medications for a client who has a gastrostomy tube. Which actions are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "Use a liquid form when available",
+     "correct": true,
+     "rationale": "Liquids are less likely to clog the tube."
+    },
+    {
+     "text": "Dissolve each crushed tablet completely in 15 to 30 mL of water",
+     "correct": true,
+     "rationale": "Fully dissolved drugs flow without clogging."
+    },
+    {
+     "text": "Give each medication separately",
+     "correct": true,
+     "rationale": "Mixing drugs can cause interactions and clogs."
+    },
+    {
+     "text": "Mix the medications into the tube feeding",
+     "correct": false,
+     "rationale": "Never mix medications into a feeding."
+    },
+    {
+     "text": "Crush enteric-coated tablets",
+     "correct": false,
+     "rationale": "Enteric-coated forms aren't crushed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-070",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "mc",
+   "prompt": "A client who has an NG tube has a prescription for a sublingual medication. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Give it under the client's tongue",
+     "correct": true,
+     "rationale": "Sublingual drugs aren't given through the tube."
+    },
+    {
+     "text": "Crush it and give it through the NG tube",
+     "correct": false,
+     "rationale": "That defeats the sublingual route."
+    },
+    {
+     "text": "Dissolve it in water and flush it through the tube",
+     "correct": false,
+     "rationale": "Sublingual drugs are absorbed in the mouth."
+    },
+    {
+     "text": "Hold it until the tube is removed",
+     "correct": false,
+     "rationale": "It can still be given sublingually."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-071",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "mc",
+   "prompt": "A nurse checks a client's gastric residual before giving medications through an enteral tube and aspirates 300 mL. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Follow facility policy about returning the contents and giving medications",
+     "correct": true,
+     "rationale": "A residual over 250 mL is handled per agency policy."
+    },
+    {
+     "text": "Give the medications without checking policy",
+     "correct": false,
+     "rationale": "A high residual needs follow-up first."
+    },
+    {
+     "text": "Discard the 300 mL",
+     "correct": false,
+     "rationale": "Discarding residual isn't the default action."
+    },
+    {
+     "text": "Increase the feeding rate",
+     "correct": false,
+     "rationale": "That could raise the aspiration risk."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-072",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "mc",
+   "prompt": "A client's enteral tube becomes clogged while the nurse is giving medications. Which action should the nurse take first?",
+   "options": [
+    {
+     "text": "Gently irrigate the tube with the appropriate flush",
+     "correct": true,
+     "rationale": "The first step is a gentle flush."
+    },
+    {
+     "text": "Push forcefully with a small syringe",
+     "correct": false,
+     "rationale": "Force can rupture the tube."
+    },
+    {
+     "text": "Remove and replace the tube",
+     "correct": false,
+     "rationale": "Replacement is a last resort."
+    },
+    {
+     "text": "Insert a wire to clear it",
+     "correct": false,
+     "rationale": "Never insert objects to clear a tube."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-073",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "dragdrop",
+   "prompt": "A nurse is preparing medications for a client who has an enteral feeding tube. Sort each medication by how it should be handled. Move each answer to the box where it belongs.",
+   "leftLabel": "Medications",
+   "buckets": [
+    "Prepare and give through the tube",
+    "Don't give through the tube; ask for another form or route"
+   ],
+   "options": [
+    {
+     "text": "Liquid medication",
+     "correct": true,
+     "rationale": "Liquids go through the tube as is.",
+     "bucket": 1
+    },
+    {
+     "text": "Plain immediate-release tablet",
+     "correct": true,
+     "rationale": "Crush and dissolve, if a reference allows it.",
+     "bucket": 1
+    },
+    {
+     "text": "Liquid-filled soft gelatin capsule",
+     "correct": true,
+     "rationale": "Puncture or draw out the contents and dilute.",
+     "bucket": 1
+    },
+    {
+     "text": "Enteric-coated tablet",
+     "correct": true,
+     "rationale": "Don't crush; ask for another form.",
+     "bucket": 2
+    },
+    {
+     "text": "Timed-release tablet",
+     "correct": true,
+     "rationale": "Don't crush; ask for another form.",
+     "bucket": 2
+    },
+    {
+     "text": "Sublingual tablet",
+     "correct": true,
+     "rationale": "Give it under the tongue instead.",
+     "bucket": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-074",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "mc",
+   "prompt": "A nurse is giving medications through a client's NG tube while a continuous feeding is running. Which action is correct?",
+   "options": [
+    {
+     "text": "Check compatibility and follow policy on pausing the feeding; never mix drugs into the feeding",
+     "correct": true,
+     "rationale": "Some drugs must be separated from feedings."
+    },
+    {
+     "text": "Add the crushed medications to the feeding bag",
+     "correct": false,
+     "rationale": "Never mix medications into a feeding."
+    },
+    {
+     "text": "Give all medications mixed together in one syringe",
+     "correct": false,
+     "rationale": "Give each separately."
+    },
+    {
+     "text": "Skip the flushes to avoid extra fluid",
+     "correct": false,
+     "rationale": "Flushes prevent clogging."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-075",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing medication administration through an enteral tube.",
+   "sentence": "The nurse flushes the tube with {1} of water before and after each medication and keeps the head of the bed raised for at least {2} afterward.",
+   "options": [
+    {
+     "text": "15 to 30 mL",
+     "correct": true,
+     "rationale": "15 to 30 mL is the usual flush.",
+     "blank": 1
+    },
+    {
+     "text": "1 to 2 mL",
+     "correct": false,
+     "rationale": "Too little to clear the tube.",
+     "blank": 1
+    },
+    {
+     "text": "250 mL",
+     "correct": false,
+     "rationale": "Far more than needed.",
+     "blank": 1
+    },
+    {
+     "text": "1 hour",
+     "correct": true,
+     "rationale": "Elevation for at least 1 hour helps prevent aspiration.",
+     "blank": 2
+    },
+    {
+     "text": "5 minutes",
+     "correct": false,
+     "rationale": "Too short.",
+     "blank": 2
+    },
+    {
+     "text": "24 hours",
+     "correct": false,
+     "rationale": "Not required.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-076",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "sata",
+   "prompt": "A nurse is teaching a client about a new transdermal patch. Which instructions should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "Remove the old patch before applying a new one",
+     "correct": true,
+     "rationale": "Leaving the old patch on can cause an overdose."
+    },
+    {
+     "text": "Apply the patch to a clean, dry, hairless area",
+     "correct": true,
+     "rationale": "Hair and oil interfere with absorption."
+    },
+    {
+     "text": "Rotate application sites",
+     "correct": true,
+     "rationale": "Rotation prevents skin irritation."
+    },
+    {
+     "text": "Cut the patch if a smaller dose is needed",
+     "correct": false,
+     "rationale": "Cutting changes how the drug is delivered."
+    },
+    {
+     "text": "Place the new patch on the same spot as the old one",
+     "correct": false,
+     "rationale": "Use a new site."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-077",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client about a transdermal patch. Which statement by the client indicates understanding?",
+   "options": [
+    {
+     "text": "\"I will put the patch on skin with no hair.\"",
+     "correct": true,
+     "rationale": "Hairless skin allows good contact and absorption."
+    },
+    {
+     "text": "\"I will clean the site with an alcohol swab first.\"",
+     "correct": false,
+     "rationale": "Wash with soap and water and dry the skin."
+    },
+    {
+     "text": "\"I will put the new patch where the old one was.\"",
+     "correct": false,
+     "rationale": "Rotate sites."
+    },
+    {
+     "text": "\"I will rotate sites once a week.\"",
+     "correct": false,
+     "rationale": "Rotate with each new patch, not weekly."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-078",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "mc",
+   "prompt": "A nurse is applying a topical cream to a client's skin. Which action is correct?",
+   "options": [
+    {
+     "text": "Wear gloves while applying it",
+     "correct": true,
+     "rationale": "Gloves protect the nurse from absorbing the drug."
+    },
+    {
+     "text": "Apply it with a bare hand",
+     "correct": false,
+     "rationale": "The nurse could absorb the medication."
+    },
+    {
+     "text": "Apply new cream over the old cream",
+     "correct": false,
+     "rationale": "Wash off old medication first."
+    },
+    {
+     "text": "Rub it in vigorously",
+     "correct": false,
+     "rationale": "Apply gently, especially on fragile skin."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-079",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "order",
+   "prompt": "A nurse is applying a new transdermal patch. Place the actions in order.",
+   "options": [
+    {
+     "text": "Put on gloves",
+     "rationale": "Protects the nurse from the drug."
+    },
+    {
+     "text": "Remove the old patch",
+     "rationale": "Prevents a double dose."
+    },
+    {
+     "text": "Wash the new site with soap and water and dry it",
+     "rationale": "Clean, dry skin absorbs well."
+    },
+    {
+     "text": "Apply the new patch to a different hairless site",
+     "rationale": "Rotate sites."
+    },
+    {
+     "text": "Label the patch with the date, time and initials",
+     "rationale": "Shows when it was applied."
+    },
+    {
+     "text": "Document where the old patch came off and the new one went",
+     "rationale": "Record both sites on the MAR."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-080",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "mc",
+   "prompt": "A nurse is applying nitroglycerin ointment. Which action is correct?",
+   "options": [
+    {
+     "text": "Measure it on the dose paper and don't rub it into the skin",
+     "correct": true,
+     "rationale": "Rubbing makes it absorb too fast."
+    },
+    {
+     "text": "Massage it in until it disappears",
+     "correct": false,
+     "rationale": "Massaging speeds absorption."
+    },
+    {
+     "text": "Apply it with bare fingers",
+     "correct": false,
+     "rationale": "The nurse would absorb nitroglycerin."
+    },
+    {
+     "text": "Estimate the amount by sight",
+     "correct": false,
+     "rationale": "It's measured in inches or centimeters on the paper."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-081",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "mc",
+   "prompt": "A nurse is applying a topical medication to an open wound. Which technique should the nurse use?",
+   "options": [
+    {
+     "text": "Surgical asepsis",
+     "correct": true,
+     "rationale": "Open wounds need sterile technique."
+    },
+    {
+     "text": "Clean technique with a bare hand",
+     "correct": false,
+     "rationale": "Bare hands aren't used, and open wounds need sterile technique."
+    },
+    {
+     "text": "No hand hygiene, since gloves are worn",
+     "correct": false,
+     "rationale": "Hand hygiene is always required."
+    },
+    {
+     "text": "Rubbing the medication in firmly",
+     "correct": false,
+     "rationale": "That can damage the wound."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-082",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "mc",
+   "prompt": "A nurse is applying a topical medication for an older adult. Which consideration is most important?",
+   "options": [
+    {
+     "text": "Thinner skin absorbs topical drugs faster, so watch for toxicity",
+     "correct": true,
+     "rationale": "Aging skin absorbs more quickly and tears easily."
+    },
+    {
+     "text": "Older adults absorb topical drugs more slowly",
+     "correct": false,
+     "rationale": "Thin skin absorbs faster."
+    },
+    {
+     "text": "Patches can be pulled off quickly",
+     "correct": false,
+     "rationale": "Remove patches slowly to avoid tearing skin."
+    },
+    {
+     "text": "Topicals have no systemic effects in older adults",
+     "correct": false,
+     "rationale": "They can cause systemic effects and toxicity."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-083",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing topical medications. For each medication form, choose whether it usually acts locally or systemically.",
+   "columns": [
+    "Local",
+    "Systemic"
+   ],
+   "options": [
+    {
+     "text": "Antibiotic ointment on a cut",
+     "correct": true,
+     "rationale": "Ointments usually act where they're applied.",
+     "col": 1
+    },
+    {
+     "text": "Fentanyl transdermal patch",
+     "correct": true,
+     "rationale": "Transdermal patches act throughout the body.",
+     "col": 2
+    },
+    {
+     "text": "Hydrocortisone cream on a rash",
+     "correct": true,
+     "rationale": "Acts on the skin.",
+     "col": 1
+    },
+    {
+     "text": "Nicotine patch",
+     "correct": true,
+     "rationale": "Delivers nicotine into the bloodstream.",
+     "col": 2
+    }
+   ],
+   "rowLabel": "Medication"
+  },
+  {
+   "id": "nur114-u5-med-admin-084",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "sata",
+   "prompt": "A nurse is preparing to give eye drops to a client. Which actions should the nurse take? Select all that apply.",
+   "options": [
+    {
+     "text": "Ask the client to look up at the ceiling",
+     "correct": true,
+     "rationale": "Looking up moves the cornea away from the drops."
+    },
+    {
+     "text": "Drop the medication into the conjunctival sac",
+     "correct": true,
+     "rationale": "The lower lid pocket is the right site."
+    },
+    {
+     "text": "Tell the client to close the eye gently afterward",
+     "correct": true,
+     "rationale": "Gentle closing spreads the drug."
+    },
+    {
+     "text": "Have the client lie on one side",
+     "correct": false,
+     "rationale": "Sitting or lying supine with the head tilted is correct."
+    },
+    {
+     "text": "Drop the medication directly onto the cornea",
+     "correct": false,
+     "rationale": "The cornea is sensitive and easily irritated."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-085",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "mc",
+   "prompt": "A nurse has instilled eye drops that could have systemic effects. Which action should the nurse take next?",
+   "options": [
+    {
+     "text": "Press gently on the nasolacrimal duct for 30 to 60 seconds",
+     "correct": true,
+     "rationale": "This keeps the drug from draining into the nose and bloodstream."
+    },
+    {
+     "text": "Have the client blink rapidly",
+     "correct": false,
+     "rationale": "Blinking pushes the drug out."
+    },
+    {
+     "text": "Rub the eyelid",
+     "correct": false,
+     "rationale": "Rubbing can injure the eye."
+    },
+    {
+     "text": "Rinse the eye with water",
+     "correct": false,
+     "rationale": "That washes the medication away."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-086",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "mc",
+   "prompt": "A client has two different eye drops due at the same time. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Wait at least 5 minutes between them",
+     "correct": true,
+     "rationale": "Waiting keeps the second drop from washing out the first."
+    },
+    {
+     "text": "Give them at the same time",
+     "correct": false,
+     "rationale": "The second would wash out the first."
+    },
+    {
+     "text": "Mix them in one dropper",
+     "correct": false,
+     "rationale": "Never mix eye medications."
+    },
+    {
+     "text": "Give one in each eye",
+     "correct": false,
+     "rationale": "Give each as prescribed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-087",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "order",
+   "prompt": "A nurse is instilling eye drops. Place the actions in order.",
+   "options": [
+    {
+     "text": "Wipe any drainage from the inner to the outer canthus",
+     "rationale": "Clean away from the tear duct."
+    },
+    {
+     "text": "Have the client tilt the head back slightly and look up",
+     "rationale": "Positions the eye."
+    },
+    {
+     "text": "Pull the lower lid down to expose the conjunctival sac",
+     "rationale": "Creates the pocket."
+    },
+    {
+     "text": "Instill the drops into the sac from 1 to 2 cm above",
+     "rationale": "Without touching the eye."
+    },
+    {
+     "text": "Have the client close the eye gently",
+     "rationale": "Spreads the medication."
+    },
+    {
+     "text": "Press on the nasolacrimal duct for 30 to 60 seconds",
+     "rationale": "Prevents systemic absorption."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-088",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "mc",
+   "prompt": "A nurse is applying an eye ointment. Which technique is correct?",
+   "options": [
+    {
+     "text": "Apply a thin ribbon along the lower lid from the inner to the outer canthus",
+     "correct": true,
+     "rationale": "That's the correct technique for eye ointment."
+    },
+    {
+     "text": "Apply a thick ribbon onto the cornea",
+     "correct": false,
+     "rationale": "Don't apply it to the cornea."
+    },
+    {
+     "text": "Apply it from the outer to the inner canthus",
+     "correct": false,
+     "rationale": "Go from inner to outer."
+    },
+    {
+     "text": "Apply it to the upper lid",
+     "correct": false,
+     "rationale": "The lower lid pocket is used."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-089",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "mc",
+   "prompt": "A nurse is instilling ear drops for an adult client. Which action is correct?",
+   "options": [
+    {
+     "text": "Pull the auricle upward and back",
+     "correct": true,
+     "rationale": "This straightens the adult ear canal."
+    },
+    {
+     "text": "Pull the auricle down and back",
+     "correct": false,
+     "rationale": "That's for children younger than 3."
+    },
+    {
+     "text": "Insert the dropper deep into the canal",
+     "correct": false,
+     "rationale": "Hold it about 1 cm above the canal."
+    },
+    {
+     "text": "Use cold drops straight from the refrigerator",
+     "correct": false,
+     "rationale": "Cold drops cause dizziness and nausea."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-090",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "sata",
+   "prompt": "A nurse is giving ear drops to an adult client. Which actions should the nurse take? Select all that apply.",
+   "options": [
+    {
+     "text": "Warm the drops to room temperature",
+     "correct": true,
+     "rationale": "Cold drops cause dizziness."
+    },
+    {
+     "text": "Have the client lie on the side with the affected ear up",
+     "correct": true,
+     "rationale": "Positions the canal for the drops."
+    },
+    {
+     "text": "Press gently on the tragus afterward",
+     "correct": true,
+     "rationale": "Helps move the drops into the canal, unless painful."
+    },
+    {
+     "text": "Have the client stay side-lying for 2 to 3 minutes",
+     "correct": true,
+     "rationale": "Lets the drops reach the canal."
+    },
+    {
+     "text": "Push a cotton ball deep into the ear canal",
+     "correct": false,
+     "rationale": "Only place it in the outer part of the canal, if used."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-091",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "mc",
+   "prompt": "A nurse is preparing to instill ear drops and sees cerumen at the opening of the ear canal. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Gently remove it from the outermost part with a washcloth or cotton-tipped applicator",
+     "correct": true,
+     "rationale": "Clear the outer canal without entering it."
+    },
+    {
+     "text": "Push a cotton-tipped applicator into the canal",
+     "correct": false,
+     "rationale": "That can damage the eardrum."
+    },
+    {
+     "text": "Instill the drops over the cerumen",
+     "correct": false,
+     "rationale": "Cerumen blocks distribution."
+    },
+    {
+     "text": "Irrigate the ear with hot water",
+     "correct": false,
+     "rationale": "Hot water is unsafe."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-092",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client how to use a nasal spray. Which instruction should the nurse include?",
+   "options": [
+    {
+     "text": "\"Spray while breathing in through your nose.\"",
+     "correct": true,
+     "rationale": "Inhaling draws the spray into the nasal passages."
+    },
+    {
+     "text": "\"Blow your nose right after spraying.\"",
+     "correct": false,
+     "rationale": "Don't blow the nose for several minutes after."
+    },
+    {
+     "text": "\"Point the nozzle toward the center of your nose.\"",
+     "correct": false,
+     "rationale": "Point it away from the center (septum)."
+    },
+    {
+     "text": "\"Hold your breath while spraying.\"",
+     "correct": false,
+     "rationale": "Inhale gently while spraying."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-093",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "mc",
+   "prompt": "A client who uses a decongestant nasal spray every day for weeks says the congestion is getting worse. The nurse recognizes this as which problem?",
+   "options": [
+    {
+     "text": "Rebound congestion from prolonged use",
+     "correct": true,
+     "rationale": "Long-term use can increase swelling and congestion."
+    },
+    {
+     "text": "An allergic reaction",
+     "correct": false,
+     "rationale": "Worsening congestion with long use is rebound."
+    },
+    {
+     "text": "The expected therapeutic effect",
+     "correct": false,
+     "rationale": "The goal is less congestion."
+    },
+    {
+     "text": "Toxicity",
+     "correct": false,
+     "rationale": "This is a rebound effect."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-094",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "mc",
+   "prompt": "A nurse has given a client nasal drops. Which instruction should the nurse give?",
+   "options": [
+    {
+     "text": "Stay lying down and don't blow your nose for 5 minutes",
+     "correct": true,
+     "rationale": "This keeps the drops in place."
+    },
+    {
+     "text": "Sit up and blow your nose right away",
+     "correct": false,
+     "rationale": "That removes the medication."
+    },
+    {
+     "text": "Breathe through your nose forcefully",
+     "correct": false,
+     "rationale": "Breathe through the mouth."
+    },
+    {
+     "text": "Rinse your nose with water",
+     "correct": false,
+     "rationale": "That washes the drops away."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-095",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing positions for medications. For each medication, choose the correct position.",
+   "columns": [
+    "Supine, head tilted back",
+    "Side-lying, affected side up",
+    "Upright, head slightly back"
+   ],
+   "options": [
+    {
+     "text": "Nasal drops",
+     "correct": true,
+     "rationale": "Supine with the head positioned lets drops reach the passages.",
+     "col": 1
+    },
+    {
+     "text": "Ear drops",
+     "correct": true,
+     "rationale": "Side-lying with the affected ear up.",
+     "col": 2
+    },
+    {
+     "text": "Nasal spray",
+     "correct": true,
+     "rationale": "Upright with the head slightly back.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Medication"
+  },
+  {
+   "id": "nur114-u5-med-admin-096",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "mc",
+   "prompt": "A nurse is preparing to insert a rectal suppository. Which position should the nurse place the client in?",
+   "options": [
+    {
+     "text": "Left lateral (left Sims')",
+     "correct": true,
+     "rationale": "The left side follows the shape of the rectum and colon."
+    },
+    {
+     "text": "Prone",
+     "correct": false,
+     "rationale": "Prone isn't used for suppositories."
+    },
+    {
+     "text": "Right lateral",
+     "correct": false,
+     "rationale": "Left lateral is preferred."
+    },
+    {
+     "text": "High Fowler's",
+     "correct": false,
+     "rationale": "Sitting makes insertion and retention hard."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-097",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "order",
+   "prompt": "A nurse is inserting a rectal suppository. Place the actions in order.",
+   "options": [
+    {
+     "text": "Place the client in the left lateral position",
+     "rationale": "Positions the rectum for insertion."
+    },
+    {
+     "text": "Put on gloves and lubricate the rounded end",
+     "rationale": "Water-soluble lubricant eases insertion."
+    },
+    {
+     "text": "Ask the client to breathe slowly through the mouth",
+     "rationale": "Relaxes the anal sphincter."
+    },
+    {
+     "text": "Insert it past the internal sphincter, against the rectal wall",
+     "rationale": "Correct depth and placement."
+    },
+    {
+     "text": "Have the client stay on the left side for at least 5 minutes",
+     "rationale": "Helps keep it in place."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-098",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "sata",
+   "prompt": "A nurse is inserting a rectal suppository. Which actions are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "Place it past the internal anal sphincter",
+     "correct": true,
+     "rationale": "Inserting past the sphincter keeps it from being expelled."
+    },
+    {
+     "text": "Place it against the rectal wall",
+     "correct": true,
+     "rationale": "Contact with the mucosa allows absorption."
+    },
+    {
+     "text": "Push it into the stool",
+     "correct": false,
+     "rationale": "Stool blocks absorption."
+    },
+    {
+     "text": "Cut it in half for a half dose",
+     "correct": false,
+     "rationale": "The drug may not be spread evenly."
+    },
+    {
+     "text": "Use a water-soluble lubricant",
+     "correct": true,
+     "rationale": "It eases insertion."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-099",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "mc",
+   "prompt": "A nurse is reviewing a client's chart before giving a rectal suppository. Which finding is a reason not to give it?",
+   "options": [
+    {
+     "text": "Active rectal bleeding",
+     "correct": true,
+     "rationale": "Rectal drugs aren't used with rectal bleeding or after rectal surgery."
+    },
+    {
+     "text": "Constipation",
+     "correct": false,
+     "rationale": "Suppositories are often used for constipation."
+    },
+    {
+     "text": "Fever",
+     "correct": false,
+     "rationale": "Some suppositories treat fever."
+    },
+    {
+     "text": "Nausea",
+     "correct": false,
+     "rationale": "Some suppositories treat nausea."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-100",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "mc",
+   "prompt": "A nurse is inserting a vaginal suppository. Where should the nurse insert it?",
+   "options": [
+    {
+     "text": "Along the posterior wall of the vagina, 7.5 to 10 cm (3 to 4 in)",
+     "correct": true,
+     "rationale": "That's the correct site and depth for a suppository."
+    },
+    {
+     "text": "Along the anterior wall, 2 cm",
+     "correct": false,
+     "rationale": "That's the wrong wall and too shallow."
+    },
+    {
+     "text": "Just inside the opening",
+     "correct": false,
+     "rationale": "It would fall out."
+    },
+    {
+     "text": "Into the urethra",
+     "correct": false,
+     "rationale": "The urethra is not the vagina."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-101",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give a vaginal medication. Which position should the nurse use?",
+   "options": [
+    {
+     "text": "Supine with knees bent and feet flat near the hips (dorsal recumbent)",
+     "correct": true,
+     "rationale": "This exposes the vagina for insertion."
+    },
+    {
+     "text": "Left lateral",
+     "correct": false,
+     "rationale": "That's for rectal medications."
+    },
+    {
+     "text": "Prone",
+     "correct": false,
+     "rationale": "Prone doesn't allow access."
+    },
+    {
+     "text": "Sitting upright",
+     "correct": false,
+     "rationale": "Upright positioning makes it hard to retain."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-102",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "sata",
+   "prompt": "A nurse is teaching a client about an antifungal vaginal cream. Which instructions should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "Use it for the full prescribed time",
+     "correct": true,
+     "rationale": "Completing the course treats the infection."
+    },
+    {
+     "text": "Keep using it during menstruation",
+     "correct": true,
+     "rationale": "Treatment continues during the period."
+    },
+    {
+     "text": "Avoid sexual intercourse until the course is done",
+     "correct": true,
+     "rationale": "Prevents reinfection and irritation."
+    },
+    {
+     "text": "Stay lying down for a few minutes after inserting it",
+     "correct": true,
+     "rationale": "Helps keep the medication in place."
+    },
+    {
+     "text": "Stop using it as soon as itching improves",
+     "correct": false,
+     "rationale": "Stopping early can let the infection return."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-103",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "cloze",
+   "prompt": "A nurse is inserting a rectal suppository.",
+   "sentence": "The nurse places the client in the {1} position and has the client remain there for at least {2} afterward.",
+   "options": [
+    {
+     "text": "left lateral",
+     "correct": true,
+     "rationale": "Left side-lying is used.",
+     "blank": 1
+    },
+    {
+     "text": "prone",
+     "correct": false,
+     "rationale": "Not used for suppositories.",
+     "blank": 1
+    },
+    {
+     "text": "supine",
+     "correct": false,
+     "rationale": "Supine is for vaginal medications.",
+     "blank": 1
+    },
+    {
+     "text": "5 minutes",
+     "correct": true,
+     "rationale": "At least 5 minutes helps retention.",
+     "blank": 2
+    },
+    {
+     "text": "30 seconds",
+     "correct": false,
+     "rationale": "Too short.",
+     "blank": 2
+    },
+    {
+     "text": "1 hour",
+     "correct": false,
+     "rationale": "Longer than needed.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-104",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "order",
+   "prompt": "A nurse is teaching a client how to use a metered-dose inhaler (MDI). Place the steps in order.",
+   "options": [
+    {
+     "text": "Remove the cap and shake the inhaler 5 or 6 times",
+     "rationale": "Mixes the medication."
+    },
+    {
+     "text": "Breathe out completely",
+     "rationale": "Makes room for a deep breath."
+    },
+    {
+     "text": "Press the inhaler while starting a slow, deep breath in",
+     "rationale": "Times the puff with the breath."
+    },
+    {
+     "text": "Hold the breath for 10 seconds",
+     "rationale": "Lets the drug settle in the airways."
+    },
+    {
+     "text": "Breathe out slowly through pursed lips",
+     "rationale": "Then resume normal breathing."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-105",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "sata",
+   "prompt": "A nurse is teaching a client how to use an MDI with a spacer. Which instructions should the nurse include? Select all that apply.",
+   "options": [
+    {
+     "text": "Shake the inhaler before use",
+     "correct": true,
+     "rationale": "MDIs are shaken."
+    },
+    {
+     "text": "Insert the MDI into the end of the spacer",
+     "correct": true,
+     "rationale": "The spacer attaches to the inhaler."
+    },
+    {
+     "text": "Breathe out, then close your mouth around the spacer's mouthpiece",
+     "correct": true,
+     "rationale": "Then continue as with an MDI."
+    },
+    {
+     "text": "A spacer helps more medication reach your lungs",
+     "correct": true,
+     "rationale": "Less stays in the mouth and throat."
+    },
+    {
+     "text": "Exhale forcefully into the spacer after the puff",
+     "correct": false,
+     "rationale": "Breathe in slowly; don't exhale into it."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-106",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "mc",
+   "prompt": "A client uses a corticosteroid inhaler. Which instruction should the nurse include?",
+   "options": [
+    {
+     "text": "\"Rinse your mouth with water after each use.\"",
+     "correct": true,
+     "rationale": "Rinsing prevents thrush (oral candidiasis)."
+    },
+    {
+     "text": "\"Swallow the extra medication in your mouth.\"",
+     "correct": false,
+     "rationale": "Rinse and spit instead."
+    },
+    {
+     "text": "\"Use it right before meals.\"",
+     "correct": false,
+     "rationale": "Timing with meals isn't the key point."
+    },
+    {
+     "text": "\"Shake it before each puff of a dry-powder inhaler.\"",
+     "correct": false,
+     "rationale": "Dry-powder inhalers aren't shaken."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-107",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "matrix",
+   "prompt": "A nurse is teaching a client about two inhalers. For each instruction, choose which inhaler it applies to.",
+   "columns": [
+    "MDI",
+    "DPI (dry-powder inhaler)"
+   ],
+   "options": [
+    {
+     "text": "Shake it before use",
+     "correct": true,
+     "rationale": "MDIs are shaken.",
+     "col": 1
+    },
+    {
+     "text": "Do not shake it",
+     "correct": true,
+     "rationale": "DPIs are not shaken.",
+     "col": 2
+    },
+    {
+     "text": "Press the canister as you start a slow, deep breath",
+     "correct": true,
+     "rationale": "MDI timing.",
+     "col": 1
+    },
+    {
+     "text": "Load the dose, such as by turning a wheel",
+     "correct": true,
+     "rationale": "DPIs are loaded per the directions.",
+     "col": 2
+    }
+   ],
+   "rowLabel": "Instruction"
+  },
+  {
+   "id": "nur114-u5-med-admin-108",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "mc",
+   "prompt": "A client needs two puffs of the same medication from an MDI. Which instruction should the nurse give?",
+   "options": [
+    {
+     "text": "Wait at least 1 minute between puffs",
+     "correct": true,
+     "rationale": "The wait lets the first puff work."
+    },
+    {
+     "text": "Take both puffs in one breath",
+     "correct": false,
+     "rationale": "Each puff needs its own breath."
+    },
+    {
+     "text": "Wait 30 minutes between puffs",
+     "correct": false,
+     "rationale": "That's longer than needed."
+    },
+    {
+     "text": "Take the second puff right away without breathing out",
+     "correct": false,
+     "rationale": "Each puff follows the full technique."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-109",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "mc",
+   "prompt": "A client has trouble pressing the MDI at the same time as breathing in. Which device should the nurse suggest?",
+   "options": [
+    {
+     "text": "A spacer",
+     "correct": true,
+     "rationale": "A spacer holds the medication so the client can inhale it."
+    },
+    {
+     "text": "A nasal spray",
+     "correct": false,
+     "rationale": "That's a different route."
+    },
+    {
+     "text": "A larger mouthpiece",
+     "correct": false,
+     "rationale": "That doesn't fix timing."
+    },
+    {
+     "text": "A second inhaler",
+     "correct": false,
+     "rationale": "That doesn't help timing."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-110",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "mc",
+   "prompt": "A client can't hold a nebulizer mouthpiece in the mouth. Which action should the nurse take?",
+   "options": [
+    {
+     "text": "Use an aerosol mask instead",
+     "correct": true,
+     "rationale": "A mask delivers the mist when the client can't hold the mouthpiece."
+    },
+    {
+     "text": "Stop the treatment",
+     "correct": false,
+     "rationale": "The mask allows the treatment to continue."
+    },
+    {
+     "text": "Have the client hold their breath",
+     "correct": false,
+     "rationale": "Nebulizers use normal breathing."
+    },
+    {
+     "text": "Switch to an oral tablet",
+     "correct": false,
+     "rationale": "The nurse can't change the route."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-111",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "cloze",
+   "prompt": "A nurse is teaching about a dry-powder inhaler (DPI).",
+   "sentence": "The client should {1} the DPI before use and hold the breath for {2} after inhaling.",
+   "options": [
+    {
+     "text": "not shake",
+     "correct": true,
+     "rationale": "DPIs are not shaken.",
+     "blank": 1
+    },
+    {
+     "text": "shake",
+     "correct": false,
+     "rationale": "Shaking is for MDIs.",
+     "blank": 1
+    },
+    {
+     "text": "warm",
+     "correct": false,
+     "rationale": "DPIs aren't warmed.",
+     "blank": 1
+    },
+    {
+     "text": "5 to 10 seconds",
+     "correct": true,
+     "rationale": "Holding the breath lets the powder settle.",
+     "blank": 2
+    },
+    {
+     "text": "1 minute",
+     "correct": false,
+     "rationale": "Too long.",
+     "blank": 2
+    },
+    {
+     "text": "1 second",
+     "correct": false,
+     "rationale": "Too short.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-112",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "cloze",
+   "prompt": "A nurse is reviewing injection routes. For each route, choose the correct needle angle.",
+   "table": {
+    "head": [
+     "Route",
+     "Angle"
+    ],
+    "rows": [
+     [
+      "Intradermal",
+      "{1}"
+     ],
+     [
+      "Subcutaneous",
+      "{2}"
+     ],
+     [
+      "Intramuscular",
+      "{3}"
+     ]
+    ]
+   },
+   "options": [
+    {
+     "text": "10° to 15°",
+     "correct": true,
+     "rationale": "A shallow angle places the drug in the dermis.",
+     "blank": 1
+    },
+    {
+     "text": "45° to 90°",
+     "correct": false,
+     "rationale": "That's subcutaneous.",
+     "blank": 1
+    },
+    {
+     "text": "90°",
+     "correct": false,
+     "rationale": "That's IM.",
+     "blank": 1
+    },
+    {
+     "text": "45° to 90°",
+     "correct": true,
+     "rationale": "45° for less fat, 90° when the client has more fat.",
+     "blank": 2
+    },
+    {
+     "text": "10° to 15°",
+     "correct": false,
+     "rationale": "That's intradermal.",
+     "blank": 2
+    },
+    {
+     "text": "5°",
+     "correct": false,
+     "rationale": "Too shallow.",
+     "blank": 2
+    },
+    {
+     "text": "90°",
+     "correct": true,
+     "rationale": "IM injections go straight in.",
+     "blank": 3
+    },
+    {
+     "text": "10° to 15°",
+     "correct": false,
+     "rationale": "That's intradermal.",
+     "blank": 3
+    },
+    {
+     "text": "30°",
+     "correct": false,
+     "rationale": "Too shallow for muscle.",
+     "blank": 3
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-113",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse is preparing an IM injection of 3 mL for an adult. Which site is preferred?",
+   "options": [
+    {
+     "text": "Ventrogluteal",
+     "correct": true,
+     "rationale": "The ventrogluteal site is preferred and holds volumes over 2 mL."
+    },
+    {
+     "text": "Deltoid",
+     "correct": false,
+     "rationale": "The deltoid holds only about 1 mL."
+    },
+    {
+     "text": "Dorsogluteal",
+     "correct": false,
+     "rationale": "It's near the sciatic nerve and isn't recommended."
+    },
+    {
+     "text": "Abdomen",
+     "correct": false,
+     "rationale": "The abdomen is a subcutaneous site."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-114",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse is giving an IM injection in the deltoid. What is the maximum volume the nurse should inject at this site?",
+   "options": [
+    {
+     "text": "1 mL",
+     "correct": true,
+     "rationale": "The deltoid's small muscle mass holds about 1 mL."
+    },
+    {
+     "text": "3 mL",
+     "correct": false,
+     "rationale": "That's too much for the deltoid."
+    },
+    {
+     "text": "5 mL",
+     "correct": false,
+     "rationale": "Far too much for one site."
+    },
+    {
+     "text": "0.1 mL",
+     "correct": false,
+     "rationale": "That's an intradermal volume."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-115",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give an iron preparation IM. Which technique should the nurse use?",
+   "options": [
+    {
+     "text": "Z-track",
+     "correct": true,
+     "rationale": "Z-track keeps irritating or staining drugs from leaking into the tissue."
+    },
+    {
+     "text": "Intradermal bleb",
+     "correct": false,
+     "rationale": "Iron is given IM, not intradermal."
+    },
+    {
+     "text": "Massage the site afterward",
+     "correct": false,
+     "rationale": "Massage can push the drug into the tissue."
+    },
+    {
+     "text": "Use the dorsogluteal site",
+     "correct": false,
+     "rationale": "That site isn't recommended."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-116",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "sata",
+   "prompt": "A nurse is preparing to give a subcutaneous injection of heparin. Which actions are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "Use a 25- to 31-gauge, 3/8- to 5/8-inch needle",
+     "correct": true,
+     "rationale": "That's the subcutaneous needle size."
+    },
+    {
+     "text": "Inject at a 45° to 90° angle",
+     "correct": true,
+     "rationale": "Pinch up the skin; 90° for clients with more fat."
+    },
+    {
+     "text": "Choose a site with enough fat, such as the abdomen",
+     "correct": true,
+     "rationale": "Subcutaneous sites need an adequate fat pad."
+    },
+    {
+     "text": "Inject no more than 1.5 mL",
+     "correct": true,
+     "rationale": "Subcutaneous volumes are small."
+    },
+    {
+     "text": "Use a 10° to 15° angle",
+     "correct": false,
+     "rationale": "That's intradermal."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-117",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "sata",
+   "prompt": "A nurse is giving a tuberculin skin test. Which actions are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "Use a tuberculin syringe",
+     "correct": true,
+     "rationale": "Small volumes need a tuberculin syringe."
+    },
+    {
+     "text": "Insert the needle bevel up at 10° to 15°",
+     "correct": true,
+     "rationale": "That places it in the dermis."
+    },
+    {
+     "text": "Look for a small bleb",
+     "correct": true,
+     "rationale": "A bleb shows correct placement."
+    },
+    {
+     "text": "Massage the site afterward",
+     "correct": false,
+     "rationale": "Don't massage an intradermal site."
+    },
+    {
+     "text": "Inject 1 mL",
+     "correct": false,
+     "rationale": "Intradermal volumes are 0.01 to 0.1 mL."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-118",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse needs to draw up 0.3 mL of a medication. Which syringe should the nurse use?",
+   "options": [
+    {
+     "text": "A tuberculin syringe",
+     "correct": true,
+     "rationale": "Use a tuberculin syringe for volumes under 0.5 mL."
+    },
+    {
+     "text": "A 5 mL syringe",
+     "correct": false,
+     "rationale": "Too large to measure 0.3 mL accurately."
+    },
+    {
+     "text": "A 10 mL syringe",
+     "correct": false,
+     "rationale": "Far too large."
+    },
+    {
+     "text": "A medicine cup",
+     "correct": false,
+     "rationale": "Cups are for oral liquids."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-119",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse is choosing an IM injection site. Which site should the nurse avoid?",
+   "options": [
+    {
+     "text": "A site with a scar",
+     "correct": true,
+     "rationale": "Avoid sites that are swollen, inflamed, or have moles, birthmarks or scars."
+    },
+    {
+     "text": "The ventrogluteal muscle",
+     "correct": false,
+     "rationale": "It's the preferred IM site."
+    },
+    {
+     "text": "A rotated site from the last injection",
+     "correct": false,
+     "rationale": "Rotating sites is recommended."
+    },
+    {
+     "text": "The deltoid for a 0.5 mL dose",
+     "correct": false,
+     "rationale": "The deltoid can take up to 1 mL."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-120",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse is explaining why the dorsogluteal site is no longer recommended for IM injections. Which reason is correct?",
+   "options": [
+    {
+     "text": "It's close to the sciatic nerve",
+     "correct": true,
+     "rationale": "Injecting there risks nerve damage."
+    },
+    {
+     "text": "It has too little muscle",
+     "correct": false,
+     "rationale": "The concern is the nerve."
+    },
+    {
+     "text": "It absorbs too quickly",
+     "correct": false,
+     "rationale": "Absorption isn't the reason."
+    },
+    {
+     "text": "It can only hold 0.5 mL",
+     "correct": false,
+     "rationale": "Volume isn't the reason."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-121",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse has just given a medication by IV push. Which action should the nurse take next?",
+   "options": [
+    {
+     "text": "Monitor the client right away for therapeutic and adverse effects",
+     "correct": true,
+     "rationale": "IV drugs act immediately, so reactions can be immediate."
+    },
+    {
+     "text": "Check on the client in 4 hours",
+     "correct": false,
+     "rationale": "IV drugs act right away."
+    },
+    {
+     "text": "Document before checking the client",
+     "correct": false,
+     "rationale": "Monitor the client first."
+    },
+    {
+     "text": "Massage the IV site",
+     "correct": false,
+     "rationale": "That isn't needed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-122",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing IV catheter sizes. For each client, choose the usual gauge.",
+   "columns": [
+    "16 gauge",
+    "18 gauge",
+    "22 to 24 gauge"
+   ],
+   "options": [
+    {
+     "text": "A client with major trauma",
+     "correct": true,
+     "rationale": "Large gauges allow rapid fluids.",
+     "col": 1
+    },
+    {
+     "text": "A client having surgery who may need blood",
+     "correct": true,
+     "rationale": "18 gauge is used for surgery and blood.",
+     "col": 2
+    },
+    {
+     "text": "A stable older adult",
+     "correct": true,
+     "rationale": "Smaller gauges suit stable clients and fragile veins.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Client"
+  },
+  {
+   "id": "nur114-u5-med-admin-123",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "sata",
+   "prompt": "A nurse is caring for a client who has an epidural infusion of an opioid. Which findings should the nurse monitor for? Select all that apply.",
+   "options": [
+    {
+     "text": "Hypotension",
+     "correct": true,
+     "rationale": "Epidural opioids can lower blood pressure."
+    },
+    {
+     "text": "Respiratory depression",
+     "correct": true,
+     "rationale": "Opioids can slow breathing."
+    },
+    {
+     "text": "Hypertension",
+     "correct": false,
+     "rationale": "Hypotension is the concern."
+    },
+    {
+     "text": "Increased urine output",
+     "correct": false,
+     "rationale": "That isn't a typical complication to watch."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-124",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "matrix",
+   "prompt": "A nurse is reviewing injection routes. For each medication, choose the usual route.",
+   "columns": [
+    "Intradermal",
+    "Subcutaneous",
+    "Intramuscular"
+   ],
+   "options": [
+    {
+     "text": "Tuberculin skin test",
+     "correct": true,
+     "rationale": "TB testing is intradermal.",
+     "col": 1
+    },
+    {
+     "text": "Insulin",
+     "correct": true,
+     "rationale": "Insulin is given subcutaneously.",
+     "col": 2
+    },
+    {
+     "text": "Heparin",
+     "correct": true,
+     "rationale": "Heparin is given subcutaneously.",
+     "col": 2
+    },
+    {
+     "text": "Influenza vaccine",
+     "correct": true,
+     "rationale": "The flu shot is IM.",
+     "col": 3
+    },
+    {
+     "text": "An iron preparation (Z-track)",
+     "correct": true,
+     "rationale": "Iron is given IM by Z-track.",
+     "col": 3
+    }
+   ],
+   "rowLabel": "Medication"
+  },
+  {
+   "id": "nur114-u5-med-admin-125",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "sata",
+   "prompt": "A nurse is reviewing the advantages and disadvantages of the IV route. Which statements are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "It gives the fastest onset",
+     "correct": true,
+     "rationale": "IV drugs enter the blood immediately."
+    },
+    {
+     "text": "It allows precise control of the dose",
+     "correct": true,
+     "rationale": "The exact amount can be given."
+    },
+    {
+     "text": "A wrong dose is dangerous because absorption is immediate",
+     "correct": true,
+     "rationale": "There's no time to stop absorption."
+    },
+    {
+     "text": "It carries a risk of infection and embolism",
+     "correct": true,
+     "rationale": "Access to the bloodstream carries these risks."
+    },
+    {
+     "text": "It's the least expensive route",
+     "correct": false,
+     "rationale": "IV is the most costly."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-126",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "cloze",
+   "prompt": "A nurse is choosing an IM injection site.",
+   "sentence": "The {1} site is preferred for IM injections, and the deltoid can hold only up to {2}.",
+   "options": [
+    {
+     "text": "ventrogluteal",
+     "correct": true,
+     "rationale": "It's the preferred site.",
+     "blank": 1
+    },
+    {
+     "text": "dorsogluteal",
+     "correct": false,
+     "rationale": "Not recommended.",
+     "blank": 1
+    },
+    {
+     "text": "abdominal",
+     "correct": false,
+     "rationale": "That's subcutaneous.",
+     "blank": 1
+    },
+    {
+     "text": "1 mL",
+     "correct": true,
+     "rationale": "The deltoid is small.",
+     "blank": 2
+    },
+    {
+     "text": "3 mL",
+     "correct": false,
+     "rationale": "Too much for the deltoid.",
+     "blank": 2
+    },
+    {
+     "text": "5 mL",
+     "correct": false,
+     "rationale": "Far too much.",
+     "blank": 2
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-127",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse finishes an injection. How should the nurse dispose of the needle?",
+   "options": [
+    {
+     "text": "In a puncture-proof sharps container",
+     "correct": true,
+     "rationale": "Sharps go in leak- and puncture-proof containers."
+    },
+    {
+     "text": "In the regular trash after recapping",
+     "correct": false,
+     "rationale": "Recapping risks needlesticks, and regular trash isn't safe."
+    },
+    {
+     "text": "In a biohazard bag",
+     "correct": false,
+     "rationale": "Bags can be punctured."
+    },
+    {
+     "text": "On the medication cart to discard later",
+     "correct": false,
+     "rationale": "Dispose of it right away."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-128",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Prescriptions & the MAR",
+   "type": "dragdrop",
+   "prompt": "A nurse receives a telephone prescription. Which actions are required? Move the correct answers to the answer box.",
+   "leftLabel": "Actions",
+   "rightLabel": "Required actions",
+   "options": [
+    {
+     "text": "Read the prescription back to the provider",
+     "correct": true,
+     "rationale": "Read-back confirms accuracy."
+    },
+    {
+     "text": "Make sure the provider signs it within 24 hours or per policy",
+     "correct": true,
+     "rationale": "Telephone orders must be signed."
+    },
+    {
+     "text": "Transcribe it onto the correct form",
+     "correct": true,
+     "rationale": "The order is documented."
+    },
+    {
+     "text": "Wait until the provider comes to the unit before acting on it",
+     "correct": false,
+     "rationale": "Telephone orders can be carried out once read back and confirmed."
+    },
+    {
+     "text": "Have the client sign it",
+     "correct": false,
+     "rationale": "The prescriber signs it."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-129",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing a client's medication label. Which items appear on the label? Move the correct answers to the answer box.",
+   "leftLabel": "Items",
+   "rightLabel": "On the label",
+   "options": [
+    {
+     "text": "Dosage strength",
+     "correct": true,
+     "rationale": "The strength is on the label."
+    },
+    {
+     "text": "Expiration date",
+     "correct": true,
+     "rationale": "The expiration date is on the label."
+    },
+    {
+     "text": "Lot number",
+     "correct": true,
+     "rationale": "The lot number is on the label."
+    },
+    {
+     "text": "Generic name",
+     "correct": true,
+     "rationale": "The generic name is on the label."
+    },
+    {
+     "text": "Administration time",
+     "correct": false,
+     "rationale": "Times are on the MAR."
+    },
+    {
+     "text": "The client's allergies",
+     "correct": false,
+     "rationale": "Allergies are on the MAR and allergy band."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-130",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Dispensing & Labels",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing the benefits of an automated dispensing system. Which are advantages? Move the correct answers to the answer box.",
+   "leftLabel": "Options",
+   "rightLabel": "Advantages",
+   "options": [
+    {
+     "text": "Tracks controlled substances",
+     "correct": true,
+     "rationale": "It supports controlled substance regulations."
+    },
+    {
+     "text": "Reduces medication errors",
+     "correct": true,
+     "rationale": "Controlled dispensing reduces errors."
+    },
+    {
+     "text": "Links what's removed to the client's record",
+     "correct": true,
+     "rationale": "Documentation is more accurate."
+    },
+    {
+     "text": "Lets nurses share one password",
+     "correct": false,
+     "rationale": "Each nurse has a personal password or biometric ID."
+    },
+    {
+     "text": "Removes the need to check the MAR",
+     "correct": false,
+     "rationale": "The label is still checked against the MAR."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-131",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "dragdrop",
+   "prompt": "A nurse is preparing to give a medication. Which can serve as client identifiers? Move the correct answers to the answer box.",
+   "leftLabel": "Options",
+   "rightLabel": "Client identifiers",
+   "options": [
+    {
+     "text": "Full name",
+     "correct": true,
+     "rationale": "Name is a client-specific identifier."
+    },
+    {
+     "text": "Date of birth",
+     "correct": true,
+     "rationale": "Birth date is an identifier."
+    },
+    {
+     "text": "Medical record number",
+     "correct": true,
+     "rationale": "The record number is an identifier."
+    },
+    {
+     "text": "Room number",
+     "correct": false,
+     "rationale": "Rooms change and aren't client-specific."
+    },
+    {
+     "text": "Bed number",
+     "correct": false,
+     "rationale": "Beds aren't client-specific."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-132",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rights & Errors",
+   "type": "dragdrop",
+   "prompt": "A nurse is preparing to give an antihypertensive. Which assessments should the nurse complete before giving it? Move the correct answers to the answer box.",
+   "leftLabel": "Assessments",
+   "rightLabel": "Before giving",
+   "options": [
+    {
+     "text": "Blood pressure",
+     "correct": true,
+     "rationale": "Check the value the drug lowers."
+    },
+    {
+     "text": "Heart rate",
+     "correct": true,
+     "rationale": "Many antihypertensives slow the heart rate."
+    },
+    {
+     "text": "Check the provider's hold parameters",
+     "correct": true,
+     "rationale": "Some orders say when to hold the dose."
+    },
+    {
+     "text": "Urine color",
+     "correct": false,
+     "rationale": "Not the key check for this drug."
+    },
+    {
+     "text": "Hair condition",
+     "correct": false,
+     "rationale": "Not relevant."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-133",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "dragdrop",
+   "prompt": "A nurse is preparing medications for a client who has dysphagia (trouble swallowing). Which medications can the nurse ask the pharmacy to provide in liquid form instead of crushing? Move the correct answers to the answer box.",
+   "leftLabel": "Medications",
+   "rightLabel": "Ask for a liquid",
+   "options": [
+    {
+     "text": "Extended-release tablet",
+     "correct": true,
+     "rationale": "Can't be crushed, so another form is needed."
+    },
+    {
+     "text": "Enteric-coated tablet",
+     "correct": true,
+     "rationale": "Can't be crushed, so another form is needed."
+    },
+    {
+     "text": "Delayed-release capsule",
+     "correct": true,
+     "rationale": "Can't be opened or crushed."
+    },
+    {
+     "text": "Sublingual tablet",
+     "correct": false,
+     "rationale": "Sublingual tablets dissolve under the tongue and aren't swallowed."
+    },
+    {
+     "text": "Topical cream",
+     "correct": false,
+     "rationale": "Topical drugs aren't swallowed."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-134",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Oral Medications",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing contraindications to the oral route. Which clients should not receive oral medications? Move the correct answers to the answer box.",
+   "leftLabel": "Clients",
+   "rightLabel": "Not by mouth",
+   "options": [
+    {
+     "text": "A client who is vomiting",
+     "correct": true,
+     "rationale": "The drug may be lost or aspirated."
+    },
+    {
+     "text": "A client who has no gag reflex",
+     "correct": true,
+     "rationale": "High aspiration risk."
+    },
+    {
+     "text": "A client who is NPO for surgery",
+     "correct": true,
+     "rationale": "Nothing by mouth (except as allowed by policy)."
+    },
+    {
+     "text": "A client who is drowsy and can't stay awake",
+     "correct": true,
+     "rationale": "A decreased level of consciousness raises aspiration risk."
+    },
+    {
+     "text": "A client who is alert and sitting up",
+     "correct": false,
+     "rationale": "This client can take oral medications."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-135",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Enteral Tubes",
+   "type": "dragdrop",
+   "prompt": "A nurse is giving medications through a gastrostomy tube. Which actions are correct? Move the correct answers to the answer box.",
+   "leftLabel": "Actions",
+   "rightLabel": "Correct actions",
+   "options": [
+    {
+     "text": "Verify tube placement first",
+     "correct": true,
+     "rationale": "Placement is confirmed before anything goes in."
+    },
+    {
+     "text": "Flush before and after each medication",
+     "correct": true,
+     "rationale": "Flushing prevents clogs and interactions."
+    },
+    {
+     "text": "Let medication flow by gravity or push gently",
+     "correct": true,
+     "rationale": "Gentle delivery prevents damage."
+    },
+    {
+     "text": "Mix all medications together",
+     "correct": false,
+     "rationale": "Give each separately."
+    },
+    {
+     "text": "Lay the client flat afterward",
+     "correct": false,
+     "rationale": "Keep the head of the bed raised."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-136",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Topical & Transdermal",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing safety with topical and transdermal medications. Which actions protect the nurse and client? Move the correct answers to the answer box.",
+   "leftLabel": "Actions",
+   "rightLabel": "Safe actions",
+   "options": [
+    {
+     "text": "Wear gloves",
+     "correct": true,
+     "rationale": "Gloves keep the nurse from absorbing the drug."
+    },
+    {
+     "text": "Remove the old patch first",
+     "correct": true,
+     "rationale": "Prevents an overdose."
+    },
+    {
+     "text": "Wash the skin with soap and water",
+     "correct": true,
+     "rationale": "Removes old medication and debris."
+    },
+    {
+     "text": "Apply new cream over old cream",
+     "correct": false,
+     "rationale": "Old medication harbors microorganisms and reduces absorption."
+    },
+    {
+     "text": "Cut a patch in half",
+     "correct": false,
+     "rationale": "Cutting changes the dose."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-137",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Eye, Ear & Nose",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing eye medication safety. Which actions are correct? Move the correct answers to the answer box.",
+   "leftLabel": "Actions",
+   "rightLabel": "Correct actions",
+   "options": [
+    {
+     "text": "Avoid touching the eye with the dropper tip",
+     "correct": true,
+     "rationale": "Prevents contamination and injury."
+    },
+    {
+     "text": "Instill into the conjunctival sac",
+     "correct": true,
+     "rationale": "The correct site."
+    },
+    {
+     "text": "Press on the nasolacrimal duct afterward",
+     "correct": true,
+     "rationale": "Prevents systemic absorption."
+    },
+    {
+     "text": "Push on the eyeball to open the eye",
+     "correct": false,
+     "rationale": "Never push on the eyeball."
+    },
+    {
+     "text": "Share eye drops between clients",
+     "correct": false,
+     "rationale": "Eye medications are for one client."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-138",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Rectal & Vaginal",
+   "type": "dragdrop",
+   "prompt": "A nurse is teaching a client about rectal suppositories. Which instructions are correct? Move the correct answers to the answer box.",
+   "leftLabel": "Instructions",
+   "rightLabel": "Instructions",
+   "options": [
+    {
+     "text": "Keep suppositories refrigerated",
+     "correct": true,
+     "rationale": "They melt at body temperature."
+    },
+    {
+     "text": "Lie on your left side to insert it",
+     "correct": true,
+     "rationale": "Left lateral is the position."
+    },
+    {
+     "text": "Stay lying down for at least 5 minutes",
+     "correct": true,
+     "rationale": "Helps keep it in."
+    },
+    {
+     "text": "Cut it in half for a smaller dose",
+     "correct": false,
+     "rationale": "The drug may not be evenly spread."
+    },
+    {
+     "text": "Insert it into stool",
+     "correct": false,
+     "rationale": "Place it against the rectal wall."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-139",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Inhaled",
+   "type": "dragdrop",
+   "prompt": "A nurse is teaching a client how to use an MDI. Which steps are correct? Move the correct answers to the answer box.",
+   "leftLabel": "Steps",
+   "rightLabel": "Correct steps",
+   "options": [
+    {
+     "text": "Shake the inhaler",
+     "correct": true,
+     "rationale": "MDIs are shaken."
+    },
+    {
+     "text": "Breathe in slowly and deeply while pressing it",
+     "correct": true,
+     "rationale": "Coordinates the puff and breath."
+    },
+    {
+     "text": "Hold your breath for 10 seconds",
+     "correct": true,
+     "rationale": "Lets the drug deposit."
+    },
+    {
+     "text": "Breathe out fast right after the puff",
+     "correct": false,
+     "rationale": "Hold the breath first."
+    },
+    {
+     "text": "Take both puffs at once",
+     "correct": false,
+     "rationale": "Wait at least 1 minute between puffs."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-med-admin-140",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "dragdrop",
+   "prompt": "A nurse is choosing IM injection sites for adults. Which sites are appropriate? Move the correct answers to the answer box.",
+   "leftLabel": "Sites",
+   "rightLabel": "Appropriate sites",
+   "options": [
+    {
+     "text": "Ventrogluteal",
+     "correct": true,
+     "rationale": "Preferred IM site."
+    },
+    {
+     "text": "Deltoid (for 1 mL or less)",
+     "correct": true,
+     "rationale": "Small volumes only."
+    },
+    {
+     "text": "Vastus lateralis",
+     "correct": true,
+     "rationale": "An acceptable IM site."
+    },
+    {
+     "text": "Dorsogluteal",
+     "correct": false,
+     "rationale": "Near the sciatic nerve; not recommended."
+    },
+    {
+     "text": "Abdomen",
+     "correct": false,
+     "rationale": "That's a subcutaneous site."
     }
    ]
   },

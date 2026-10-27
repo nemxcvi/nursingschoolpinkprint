@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medication Administration &mdash; Nursing School Pinkprint</title>
+<meta name="description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nursing School Pinkprint">
+<meta property="og:title" content="Medication Administration &mdash; Nursing School Pinkprint">
+<meta property="og:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta property="og:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<meta property="og:url" content="https://nursingschoolpinkprint.com/unit-5-gas-exchange-med-admin/med-admin-flashcards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Medication Administration &mdash; Nursing School Pinkprint">
+<meta name="twitter:description" content="Flashcards, quizzes &amp; study guides drafted from ATI &amp; lecture material">
+<meta name="twitter:image" content="https://nursingschoolpinkprint.com/assets/og-image.png?v=5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=125">
+<script>(function(){var s=localStorage.getItem("theme");if(s==="dark")document.documentElement.setAttribute("data-theme","dark");var p=localStorage.getItem("palette");if(p==="blue"){document.documentElement.setAttribute("data-palette","blue");var fi=document.querySelector("link[rel=icon]");if(fi)fi.href=fi.href.replace("favicon.svg","favicon-blue.svg");}if(localStorage.getItem("paletteHintSeen")==="1")document.documentElement.setAttribute("data-hint-seen","1");})();</script>
+</head>
+<body>
+<div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-05" data-type="flashcards"></div>
+<script src="../assets/site-data.js?v=36"></script>
+<script src="../js/tracking.js?v=15"></script>
+<script src="../assets/header.js?v=15"></script>
+<script src="../js/progress.js?v=8"></script>
+<div class="wrap fc-wrap">
+  <h2 class="fc-title">Medication Administration</h2>
+
+  <div class="fc-counter">
+    <div class="fc-nav">
+      <button type="button" class="fc-textbtn fc-arrow" onclick="prevCard(event)" aria-label="Previous card">&larr;</button>
+      <span id="cardcounter"></span>
+      <button type="button" class="fc-textbtn fc-arrow" onclick="nextCard(event)" aria-label="Next card">&rarr;</button>
+    </div>
+    <div class="fc-tools">
+      <button type="button" class="fc-textbtn" onclick="shuffleDeck(event)"><span aria-hidden="true">&#10536;</span> shuffle</button>
+      <button type="button" class="fc-textbtn" onclick="restartDeck(event)"><span aria-hidden="true">&#8635;</span> restart</button>
+    </div>
+    <span id="counts"></span>
+  </div>
+  <div class="fc-progresswrap" id="progressbar" aria-hidden="true"><span class="seg dk"></span><span class="seg al"></span><span class="seg kn"></span></div>
+
+  <div id="cardscene" class="fc-scene" onclick="flipCard()">
+    <div id="cardinner" class="fc-inner">
+      <div id="cardfront" class="fc-face"></div>
+      <div id="cardback" class="fc-face back"></div>
+    </div>
+  </div>
+
+  <div id="gradebtns" class="fc-rate">
+    <button type="button" class="fc-ratebtn dk" onclick="grade('dontknow', event)" disabled><i class="ti ti-x" aria-hidden="true"></i> don't know <span class="kbd" aria-hidden="true">1</span></button>
+    <button type="button" class="fc-ratebtn al" onclick="grade('almost', event)" disabled>~ almost <span class="kbd" aria-hidden="true">2</span></button>
+    <button type="button" class="fc-ratebtn kn" onclick="grade('know', event)" disabled><i class="ti ti-check" aria-hidden="true"></i> know it <span class="kbd" aria-hidden="true">3</span></button>
+  </div>
+
+  <div id="completion" style="display:none;"></div>
+
+  <p id="reviewnote" class="fc-note"></p>
+  <p class="kbd-hint fc-hintline" aria-hidden="true"><span>Rating goes to the next card</span><span>Space &middot; flip</span><span>1 2 3 &middot; rate</span><span>&larr; &rarr; &middot; prev / next</span></p>
+</div>
+
+<script src="../assets/theme.js?v=6"></script>
+<script src="../assets/flashcards.js?v=7"></script>
+<script>
+var CATS = {
+  ord: {label:"Orders & the MAR", hue:"blue"},
+  disp: {label:"Dispensing & Labels", hue:"green"},
+  rights: {label:"Rights & Errors", hue:"red"},
+  oral: {label:"Oral & Tubes", hue:"orange"},
+  skin: {label:"Topical & Mucous Membranes", hue:"violet"},
+  inh: {label:"Inhaled", hue:"aqua"},
+  inj: {label:"Injections", hue:"magenta"}
+};
+var CARDS = [
+[1, "ord", "Parts of every prescription", "Client name, date, drug, dose, route, frequency, special instructions, prescriber's signature"],
+[2, "ord", "Routine (standing) order", "Given on a schedule until discharge or until canceled"],
+[3, "ord", "PRN order", "As needed, no more often than the order allows"],
+[4, "ord", "Single (one-time) order", "Given once, such as before surgery"],
+[5, "ord", "STAT order", "Give immediately"],
+[6, "ord", "\"Now\" order", "Give within 90 minutes (or per facility policy)"],
+[7, "ord", "Verbal order", "Emergencies only; repeat it back to the prescriber"],
+[8, "ord", "Telephone order", "Read it back; prescriber signs within 24 hours"],
+[9, "ord", "Order seems wrong or incomplete", "Contact the prescriber before giving the drug"],
+[10, "ord", "Abbreviations", "Use only approved ones; avoid the Do Not Use list"],
+[11, "ord", "AC / PC", "Before meals / after meals"],
+[12, "ord", "MAR (medication administration record) contents", "Client ID and allergies, date, order and stop dates, scheduled, PRN and IV meds, times, nurse's signature"],
+[13, "ord", "Where are administration times?", "On the MAR, not the label"],
+[14, "disp", "Who does what", "Provider prescribes, pharmacist dispenses, nurse administers"],
+[15, "disp", "Unit-dose system", "Each dose packaged and labeled separately; reduces errors"],
+[16, "disp", "Pharmacy bulk system", "One container, many doses; liquids best dispensed in oral syringes"],
+[17, "disp", "Medication cart", "One drawer per client, 24-hour supply; locked when not in use"],
+[18, "disp", "Automated dispensing system", "Personal password or fingerprint; tracks controlled substances; one client at a time"],
+[19, "disp", "Bar code alert: mismatch", "Don't give it until the alert is resolved"],
+[20, "disp", "Bar code scanning", "Supports, but doesn't replace, the nurse's checks"],
+[21, "disp", "Label: \"what is my available?\"", "The dosage strength (such as 350 mg/5 mL)"],
+[22, "disp", "Reconstituted liquid", "Follow the label: water to add, shake, discard date, storage"],
+[23, "rights", "Rights of medication administration", "Medication, dose, route, time, client, documentation, education, reason, response, refuse"],
+[24, "rights", "Three checks", "Label vs MAR when removing it, when preparing it, and at the bedside"],
+[25, "rights", "Right client", "Two identifiers every time (name and date of birth) against the wristband and MAR"],
+[26, "rights", "Confused client: identify how?", "Medical record number and birth date on the MAR vs the wristband"],
+[27, "rights", "Right documentation", "Document after giving it, never before"],
+[28, "rights", "High-alert drugs", "Insulin and anticoagulants: another nurse double-checks"],
+[29, "rights", "Client refuses", "Ask why, notify the provider, document the refusal and reason; never force it"],
+[30, "rights", "Medication error: first action", "Assess the client; then notify the provider and nurse manager"],
+[31, "rights", "Incident report", "Within about 24 hours; not part of the chart and not mentioned in charting"],
+[32, "rights", "Purpose of incident reports", "Improve systems, not punish"],
+[33, "oral", "Oral route contraindications", "Vomiting, NPO, no gag reflex, trouble swallowing, decreased consciousness"],
+[34, "oral", "Position for oral meds", "Upright at 90° (or side-lying)"],
+[35, "oral", "Empty stomach timing", "30 minutes before meals (lecture) or 30 minutes to 1 hour before (ATI), or 2 hours after"],
+[36, "oral", "Do not crush", "Enteric-coated, sustained/extended release, hard-shell, layered or speckled, sublingual or buccal, sealed gel capsules"],
+[37, "oral", "Splitting tablets", "Scored tablets only, with a cutter; discard uneven pieces per policy"],
+[38, "oral", "Crushing (when allowed)", "Check a reference, crush, mix in a little soft food, give all of it, clean the device"],
+[39, "oral", "Sublingual vs buccal", "Under the tongue vs between cheek and gum (alternate sides); let it dissolve; no food or drink"],
+[40, "oral", "Troche", "Dissolves in the mouth; nothing to eat or drink 5 min before and after"],
+[41, "oral", "Measuring liquids", "Cup on a flat surface at eye level; read the bottom of the meniscus"],
+[42, "oral", "Medicine cup vs oral syringe", "Cup for 5–30 mL; oral syringe for under 5 mL"],
+[43, "oral", "Elixir / syrup", "Contains alcohol / contains concentrated sugar"],
+[44, "oral", "Suspension", "Particles don't dissolve: shake right before giving"],
+[45, "oral", "Feeding tube meds", "Liquid form, verify placement, give separately, never mix into the feeding"],
+[46, "oral", "Tube flushes", "15–30 mL before and after each drug; final flush 15–30 mL (ATI chapter) or 30–60 mL (ATI skills)"],
+[47, "oral", "After tube meds", "Keep the head of the bed up at least 1 hour"],
+[48, "oral", "Sublingual drug, client has an NG tube", "Give it under the tongue, not through the tube"],
+[49, "skin", "Topical and transdermal safety", "Wear gloves; wash skin first; remove the old patch first"],
+[50, "skin", "Patch site", "Clean, dry, hairless; rotate sites; don't cut patches"],
+[51, "skin", "Nitroglycerin ointment", "Measure on the paper; don't rub it in; label date, time, initials"],
+[52, "skin", "Older adults and topicals", "Thin skin absorbs faster; remove patches slowly"],
+[53, "skin", "Eye drops", "Look up; drop into the conjunctival sac, not the cornea; close gently"],
+[54, "skin", "After eye drops", "Press the nasolacrimal duct 30–60 seconds"],
+[55, "skin", "Two eye medications", "Wait at least 5 minutes between them"],
+[56, "skin", "Eye ointment", "Thin ribbon along the lower lid, inner to outer canthus"],
+[57, "skin", "Adult ear drops", "Pull the auricle up and back; warm drops; side-lying 2–3 minutes"],
+[58, "skin", "Nasal drops", "Supine; breathe through the mouth; don't blow the nose for 5 minutes"],
+[59, "skin", "Nasal spray", "Upright; spray while breathing in; aim away from the center"],
+[60, "skin", "Overused decongestant spray", "Rebound congestion"],
+[61, "skin", "Rectal suppository", "Left lateral (Sims'); past the internal sphincter against the wall; stay 5 minutes"],
+[62, "skin", "Vaginal suppository", "Dorsal recumbent; posterior wall, 7.5–10 cm; stay supine at least 5 min (ATI chapter) or about 10 min (ATI skills)"],
+[63, "inh", "MDI steps", "Shake, breathe out, press as you breathe in slowly, hold 10 seconds, breathe out through pursed lips"],
+[64, "inh", "Between MDI puffs", "Wait at least 1 minute"],
+[65, "inh", "Spacer", "For clients who can't time the puff; more drug reaches the lungs"],
+[66, "inh", "DPI (dry-powder inhaler)", "Don't shake; load the dose; deep breath in; hold 5–10 seconds"],
+[67, "inh", "Corticosteroid inhaler", "Rinse the mouth afterward to prevent thrush"],
+[68, "inh", "Nebulizer", "Mist inhaled over a few minutes; use a mask if the client can't hold the mouthpiece"],
+[69, "inj", "Intradermal", "TB and allergy tests; 10°–15°, bevel up; 0.01–0.1 mL; bleb; don't massage"],
+[70, "inj", "Subcutaneous", "Insulin, heparin; 45°–90°; 25–31 gauge, 3/8–5/8 in; up to 1.5 mL"],
+[71, "inj", "Intramuscular", "90°; 18–25 gauge, 5/8–1.5 in; usually 1–3 mL"],
+[72, "inj", "Preferred IM site", "Ventrogluteal (also for more than 2 mL)"],
+[73, "inj", "Deltoid maximum", "1 mL"],
+[74, "inj", "Dorsogluteal site", "Not recommended: close to the sciatic nerve"],
+[75, "inj", "Z-track", "For irritating or staining IM drugs, such as iron"],
+[76, "inj", "Volume under 0.5 mL", "Use a tuberculin syringe"],
+[77, "inj", "Sites to avoid", "Swollen, inflamed, or with moles, birthmarks or scars"],
+[78, "inj", "After IV medication", "Monitor right away: the effect is immediate"],
+[79, "inj", "IV catheter sizes", "16 gauge trauma; 18 gauge surgery and blood; 22–24 gauge older adults and stable clients"],
+[80, "inj", "Epidural opioids: watch for", "Hypotension and respiratory depression"],
+[81, "inj", "Sharps", "Puncture-proof sharps container right away"]
+];
+initFlashcards(CATS, CARDS);
+</script>
+</body>
+</html>
