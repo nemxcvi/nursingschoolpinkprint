@@ -230,7 +230,7 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
 </head>
 <body>
 <div id="site-header" data-mode="compact" data-sheet="nur114" data-unit="U-05" data-type="studyguides"></div>
-<script src="../assets/site-data.js?v=39"></script>
+<script src="../assets/site-data.js?v=40"></script>
 <script src="../js/tracking.js?v=16"></script>
 <script src="../assets/header.js?v=15"></script>
 <script src="../js/progress.js?v=8"></script>
@@ -1288,7 +1288,7 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
     <ul class="tight">
       <li><b>Leading zero</b> always: write <b>0.5</b>, never .5.</li>
       <li><b>No trailing zero</b>: write <b>5</b>, never 5.0.</li>
-      <li>Round <b>only at the end</b>, unless the question tells you to round a step (such as the weight).</li>
+      <li>Round <b>only at the end</b>. Carry the unrounded numbers (such as the weight in kg) all the way through.</li>
       <li>On the practice quizzes, type only the number; the unit is shown beside the box.</li>
     </ul>
   </div>
@@ -1305,7 +1305,21 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
 
   <div class="gsub" id="c-convert">
     <h3>Types 5 &amp; 6: conversions and equivalent dosages</h3>
-    <p>Bigger unit to smaller: <b>multiply</b>. Smaller to bigger: <b>divide</b>.</p>
+    <div class="cols">
+      <div><h4>Bigger unit to smaller: multiply</h4><ul>
+        <li>1 g = 1,000 mg, so <span class="eq">0.5 g × 1,000 = 500 mg</span></li>
+        <li>1 mg = 1,000 mcg, so <span class="eq">0.2 mg × 1,000 = 200 mcg</span></li>
+        <li>1 Tbsp = 15 mL, so <span class="eq">2 Tbsp × 15 = 30 mL</span></li>
+        <li>1 kg = 2.2 lb, so <span class="eq">70 kg × 2.2 = 154 lb</span></li>
+      </ul></div>
+      <div><h4>Smaller unit to bigger: divide</h4><ul>
+        <li>1 mg = 1,000 mcg, so <span class="eq">250 mcg ÷ 1,000 = 0.25 mg</span></li>
+        <li>1 g = 1,000 mg, so <span class="eq">1,500 mg ÷ 1,000 = 1.5 g</span></li>
+        <li>1 tsp = 5 mL, so <span class="eq">20 mL ÷ 5 = 4 tsp</span></li>
+        <li>1 kg = 2.2 lb, so <span class="eq">176 lb ÷ 2.2 = 80 kg</span></li>
+      </ul></div>
+    </div>
+    <p>Check it: going to a <b>smaller</b> unit, the number gets <b>bigger</b> (0.5 g is 500 mg); going to a <b>bigger</b> unit, the number gets <b>smaller</b>.</p>
     <div class="calc">
       <div class="calc-head"><b>Metric/household</b><span>Type 5</span></div>
       <p class="calc-q">Give 3 Tbsp of a medication. How many mL?</p>
@@ -1441,10 +1455,10 @@ ol.seq li::before{position:absolute;left:14px;top:5px}
       <div class="calc-head"><b>Putting it all together</b><span>Slide practice</span></div>
       <p class="calc-q">Vancomycin oral suspension 40 mg/kg/day divided every 6 hours. The client weighs 250 lb. Available: vancomycin oral suspension 250 mg/5 mL. How many mL per dose?</p>
       <ol class="seq">
-        <li>Weight, rounded to the nearest tenth (as the slide asks): <span class="eq">250 ÷ 2.2 = 113.6 kg</span></li>
-        <li>Total a day: <span class="eq">113.6 × 40 = 4,544 mg</span></li>
-        <li>Every 6 hours = 4 doses: <span class="eq">4,544 ÷ 4 = 1,136 mg</span> per dose</li>
-        <li>mL: <span class="frac"><span>250 mg</span><span>5 mL</span></span> = <span class="frac"><span>1,136 mg</span><span>X</span></span>, so <span class="eq">X = 22.72</span>; round to the nearest whole number</li>
+        <li>Weight: <span class="eq">250 lb ÷ 2.2 = 113.6363… kg</span> (don't round yet)</li>
+        <li>Total a day: <span class="eq">113.6363… × 40 = 4,545.4545… mg</span></li>
+        <li>Every 6 hours = 4 doses: <span class="eq">4,545.4545… ÷ 4 = 1,136.3636… mg</span> per dose</li>
+        <li>mL: <span class="frac"><span>250 mg</span><span>5 mL</span></span> = <span class="frac"><span>1,136.36… mg</span><span>X</span></span>, so <span class="eq">X = 22.727…</span>; now round to the nearest whole number</li>
       </ol>
       <p class="calc-ans">Answer: <span class="eq">23 mL per dose</span></p>
     </div>

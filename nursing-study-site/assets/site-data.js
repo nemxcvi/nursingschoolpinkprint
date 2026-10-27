@@ -89,7 +89,7 @@ var SITE = {
     {title:"Medication Administration", type:"flashcards", sheet:"nur114", unit:"U-05", href:"unit-5-gas-exchange-med-admin/med-admin-flashcards.html", count:81},
     {title:"Medication Administration practice quiz", type:"quiz", sheet:"nur114", unit:"U-05", href:"unit-5-gas-exchange-med-admin/med-admin-quiz.html", count:140},
     {title:"Medication Calculations", type:"flashcards", sheet:"nur114", unit:"U-05", href:"unit-5-gas-exchange-med-admin/med-calc-flashcards.html", count:60},
-    {title:"Medication Calculations practice quiz", type:"quiz", sheet:"nur114", unit:"U-05", href:"unit-5-gas-exchange-med-admin/med-calc-quiz.html", count:165, note:"Typed answers · calculator"},
+    {title:"Medication Calculations practice quiz", type:"quiz", sheet:"nur114", unit:"U-05", href:"unit-5-gas-exchange-med-admin/med-calc-quiz.html", count:162, note:"Typed answers · calculator"},
     {title:"Week 10 Study Guide", type:"studyguide", sheet:"nur114", unit:"U-05", href:"unit-5-gas-exchange-med-admin/week10-study-guide.html", meta:"Pharmacology, med administration & med math (all 10 Medication Calculation Competency types) · quick checks"}
   ],
   mixAll: {title:"Mix all", type:"quiz", href:"mix-all-quiz.html", meta:"Random from every quiz on the site"},

@@ -11116,69 +11116,6 @@
    ]
   },
   {
-   "id": "nur114-u5-med-calc-088",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Medication Calculations",
-   "category": "Weight-Based & Divided Doses",
-   "type": "fill",
-   "prompt": "A nurse is caring for a client who weighs 250 lb and has a prescription for vancomycin oral suspension 40 mg/kg/day divided every 6 hr. How many kilograms does the client weigh? Round to the nearest tenth.",
-   "calc": true,
-   "answer": "113.6",
-   "answerUnit": "kg",
-   "round": "tenth",
-   "exact": 113.63636363636364,
-   "steps": [
-    "250 lb ÷ 2.2 = 113.6363…",
-    "Round to the nearest tenth: the hundredths digit is 3, so leave it (113.6)."
-   ]
-  },
-  {
-   "id": "nur114-u5-med-calc-089",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Medication Calculations",
-   "category": "Weight-Based & Divided Doses",
-   "type": "fill",
-   "prompt": "A nurse is caring for a client who weighs 250 lb (113.6 kg) and has a prescription for vancomycin oral suspension 40 mg/kg/day divided every 6 hr. How many mg should the nurse administer per dose? Round to the nearest whole number.",
-   "calc": true,
-   "answer": "1136",
-   "answerUnit": "mg",
-   "round": "whole",
-   "exact": 1136.0,
-   "steps": [
-    "113.6 kg × 40 mg/kg/day = 4,544 mg/day",
-    "Every 6 hr = 4 doses: 4,544 ÷ 4 = 1,136 mg"
-   ]
-  },
-  {
-   "id": "nur114-u5-med-calc-090",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Medication Calculations",
-   "category": "Weight-Based & Divided Doses",
-   "type": "fill",
-   "prompt": "A nurse is caring for a client who weighs 250 lb (113.6 kg) and has a prescription for vancomycin oral suspension 40 mg/kg/day divided every 6 hr. Available is vancomycin oral suspension 250 mg/5 mL. How many mL should the nurse administer per dose? Round to the nearest whole number.",
-   "calc": true,
-   "answer": "23",
-   "answerUnit": "mL",
-   "round": "whole",
-   "exact": 22.72,
-   "steps": [
-    "113.6 kg × 40 mg/kg/day = 4,544 mg/day",
-    "Every 6 hr = 4 doses: 4,544 ÷ 4 = 1,136 mg per dose",
-    {
-     "setups": {
-      "rp": "[[250 mg|5 mL]] = [[1,136 mg|X]]  →  250X = 5,680  →  X = 22.72",
-      "dh": "[[1,136 mg|250 mg]] × 5 mL = 22.72",
-      "da": "X mL = [[5 mL|250 mg]] × [[40 mg|1 kg]] × [[113.6 kg|1 day]] × [[1 day|4 doses]] = 22.72"
-     }
-    },
-    "Round to the nearest whole number: the tenths digit is 7, so round up (23).",
-    "Makes sense: 1,136 mg is about 4.5 times 250 mg, so about 4.5 × 5 mL."
-   ]
-  },
-  {
    "id": "nur114-u5-med-calc-091",
    "course": "NUR 114",
    "unit": 5,
@@ -12692,14 +12629,14 @@
    "calc": false,
    "options": [
     {
-     "text": "Only at the final answer, unless the question says to round a step",
+     "text": "Only at the final answer",
      "correct": true,
      "rationale": "Rounding the weight early carries the error into the dose."
     },
     {
      "text": "After converting the weight to kilograms",
      "correct": false,
-     "rationale": "Carry the unrounded kilograms through, unless directed to round them."
+     "rationale": "Carry the unrounded kilograms through to the end."
     },
     {
      "text": "At each step, to the nearest whole number",
