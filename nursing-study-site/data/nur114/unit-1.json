@@ -79,7 +79,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which hematocrit value is WITHIN normal limits for an adult female client?",
+      "prompt": "A nurse is reviewing the complete blood count (CBC) of an adult female client. Which hematocrit value is WITHIN the expected range?",
       "options": [
         {
           "text": "34%",
@@ -111,7 +111,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which hematocrit value is WITHIN normal limits for an adult male client?",
+      "prompt": "A nurse is reviewing the complete blood count (CBC) of an adult male client. Which hematocrit value is WITHIN the expected range?",
       "options": [
         {
           "text": "38%",
@@ -143,7 +143,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which hemoglobin value is expected for an adult female client?",
+      "prompt": "A nurse is reviewing the complete blood count (CBC) of an adult female client. Which hemoglobin value is expected?",
       "options": [
         {
           "text": "11.5 g/dL",
@@ -207,7 +207,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which hemoglobin value is WITHIN the normal range for ONLY an adult male client (not an adult female)?",
+      "prompt": "A nurse is reviewing hemoglobin levels for several adult clients. Which value is WITHIN the expected range for ONLY an adult male client (not an adult female)?",
       "options": [
         {
           "text": "14 g/dL",
@@ -239,7 +239,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which RBC count is expected for an adult female client?",
+      "prompt": "A nurse is reviewing the complete blood count (CBC) of an adult female client. Which red blood cell (RBC) count is expected?",
       "options": [
         {
           "text": "4.1 ×10⁶/µL",
@@ -271,7 +271,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which RBC count is expected for an adult male client?",
+      "prompt": "A nurse is reviewing the complete blood count (CBC) of an adult male client. Which red blood cell (RBC) count is expected?",
       "options": [
         {
           "text": "4.6 ×10⁶/µL",
@@ -303,7 +303,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which MCV value falls WITHIN the normal adult range?",
+      "prompt": "A nurse is reviewing an adult client's complete blood count (CBC). Which mean corpuscular volume (MCV) value is WITHIN the expected range?",
       "options": [
         {
           "text": "75 fL",
@@ -335,7 +335,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Which red blood cell and platelet indices are below normal for an adult client? Select all that apply.",
+      "prompt": "A nurse is reviewing an adult client's complete blood count (CBC). Which red blood cell and platelet indices are below the expected range? Select all that apply.",
       "options": [
         {
           "text": "MCV (mean corpuscular volume) 78 fL",
@@ -372,7 +372,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which RDW value is considered WITHIN the normal adult range?",
+      "prompt": "A nurse is reviewing an adult client's complete blood count (CBC). Which red cell distribution width (RDW) value is WITHIN the expected range?",
       "options": [
         {
           "text": "10%",
@@ -404,7 +404,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which platelet count falls WITHIN the normal adult range?",
+      "prompt": "A nurse is reviewing an adult client's complete blood count (CBC). Which platelet count is WITHIN the expected range?",
       "options": [
         {
           "text": "140,000/mm3",
@@ -436,7 +436,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which MPV value is WITHIN the normal adult range?",
+      "prompt": "A nurse is reviewing an adult client's complete blood count (CBC). Which mean platelet volume (MPV) value is WITHIN the expected range?",
       "options": [
         {
           "text": "5 fL",
@@ -468,7 +468,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which WBC count is expected for an adult client?",
+      "prompt": "A nurse is reviewing an adult client's complete blood count (CBC). Which white blood cell (WBC) count is expected?",
       "options": [
         {
           "text": "4,000/mm3",
@@ -500,7 +500,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which BUN value is expected for an adult client?",
+      "prompt": "A nurse is reviewing an adult client's comprehensive metabolic panel (CMP). Which blood urea nitrogen (BUN) value is expected?",
       "options": [
         {
           "text": "8 mg/dL",
@@ -532,7 +532,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which creatinine value is expected for a 30-year-old female client?",
+      "prompt": "A nurse is reviewing the comprehensive metabolic panel (CMP) of a 30-year-old female client. Which creatinine value is expected?",
       "options": [
         {
           "text": "0.4 mg/dL",
@@ -596,7 +596,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which glucose value is WITHIN normal limits for an adult?",
+      "prompt": "A nurse is reviewing an adult client's fasting comprehensive metabolic panel (CMP). Which glucose value is WITHIN the expected range?",
       "options": [
         {
           "text": "70 mg/dL",
@@ -660,7 +660,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which ALT value is expected for an adult client?",
+      "prompt": "A nurse is reviewing an adult client's liver panel. Which alanine aminotransferase (ALT) value is expected?",
       "options": [
         {
           "text": "2 units/L",
@@ -692,7 +692,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which AST value is expected for an adult client?",
+      "prompt": "A nurse is reviewing an adult client's liver panel. Which aspartate aminotransferase (AST) value is expected?",
       "options": [
         {
           "text": "45 units/L",
@@ -724,7 +724,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which ALP value is expected for an adult client?",
+      "prompt": "A nurse is reviewing an adult client's comprehensive metabolic panel (CMP). Which alkaline phosphatase (ALP) value is expected?",
       "options": [
         {
           "text": "25 units/L",
@@ -756,7 +756,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which total bilirubin value is expected for an adult client?",
+      "prompt": "A nurse is reviewing an adult client's comprehensive metabolic panel (CMP). Which total bilirubin value is expected?",
       "options": [
         {
           "text": "0.1 mg/dL",
@@ -788,7 +788,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which albumin value is expected for an adult client?",
+      "prompt": "A nurse is reviewing an adult client's comprehensive metabolic panel (CMP). Which albumin value is expected?",
       "options": [
         {
           "text": "2.8 g/dL",
@@ -820,7 +820,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Which liver and protein panel values are below normal for an adult client? Select all that apply.",
+      "prompt": "A nurse is reviewing an adult client's liver and protein panel. Which values are below the expected range? Select all that apply.",
       "options": [
         {
           "text": "ALT (alanine aminotransferase) 2 units/L",
@@ -857,7 +857,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which sodium level is WITHIN normal limits for an adult?",
+      "prompt": "A nurse is reviewing an adult client's comprehensive metabolic panel (CMP). Which sodium level is WITHIN the expected range?",
       "options": [
         {
           "text": "128 mEq/L",
@@ -889,7 +889,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which chloride value falls WITHIN the expected adult range?",
+      "prompt": "A nurse is reviewing an adult client's comprehensive metabolic panel (CMP). Which chloride level is WITHIN the expected range?",
       "options": [
         {
           "text": "90 mEq/L",
@@ -921,7 +921,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which magnesium value is WITHIN the normal adult range?",
+      "prompt": "A nurse is reviewing an adult client's lab results. Which magnesium level is WITHIN the expected range?",
       "options": [
         {
           "text": "0.9 mEq/L",
@@ -953,7 +953,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Which electrolyte values are within normal limits for an adult client? Select all that apply.",
+      "prompt": "A nurse is reviewing an adult client's electrolyte results. Which values are within the expected range? Select all that apply.",
       "options": [
         {
           "text": "Sodium 138 mEq/L",
@@ -990,7 +990,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which MCH value is WITHIN the normal adult range?",
+      "prompt": "A nurse is reviewing an adult client's complete blood count (CBC). Which mean corpuscular hemoglobin (MCH) value is WITHIN the expected range?",
       "options": [
         {
           "text": "20 pg",
@@ -1054,7 +1054,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Which CBC (complete blood count) values are within normal limits for an adult male client? Select all that apply.",
+      "prompt": "A nurse is reviewing the complete blood count (CBC) of an adult male client. Which values are within the expected range? Select all that apply.",
       "options": [
         {
           "text": "Hct (hematocrit) 46%",
@@ -1123,7 +1123,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which bicarbonate value is WITHIN normal adult limits?",
+      "prompt": "A nurse is reviewing an adult client's comprehensive metabolic panel (CMP). Which bicarbonate level is WITHIN the expected range?",
       "options": [
         {
           "text": "18 mEq/L",
@@ -1187,7 +1187,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which creatinine value best reflects an expected finding for an 18-year-old female client?",
+      "prompt": "A nurse is reviewing the comprehensive metabolic panel (CMP) of an 18-year-old female client. Which creatinine value is expected?",
       "options": [
         {
           "text": "0.4 mg/dL",
@@ -1219,7 +1219,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "mc",
-      "prompt": "Which ALT and AST pairing would the nurse expect to see both WITHIN normal limits?",
+      "prompt": "A nurse is reviewing an adult client's liver panel. Which ALT and AST pairing are both WITHIN the expected range?",
       "options": [
         {
           "text": "ALT 50 units/L, AST 45 units/L",
@@ -1251,7 +1251,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "You are assigned 5 clients at the start of your shift. Which of the following morning lab results should be reported to the provider? Select all that apply.",
+      "prompt": "A nurse is reviewing morning lab results for five assigned clients at the start of the shift. Which results should the nurse report to the provider? Select all that apply.",
       "options": [
         {
           "text": "A client's total protein of 9.6 g/dL",
@@ -1288,7 +1288,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Which of the following morning lab results should be reported to the provider? Select all that apply.",
+      "prompt": "A nurse is reviewing morning lab results for several adult clients. Which results should the nurse report to the provider? Select all that apply.",
       "options": [
         {
           "text": "A client's bicarbonate level of 19 mEq/L",
@@ -1325,7 +1325,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Which of the following morning lab results should be reported to the provider? Select all that apply.",
+      "prompt": "A nurse is reviewing morning lab results for several adult clients. Which results should the nurse report to the provider? Select all that apply.",
       "options": [
         {
           "text": "A client's total protein of 5.9 g/dL",
@@ -1362,7 +1362,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": null,
       "type": "sata",
-      "prompt": "Which of the following morning lab results should be reported to the provider? Select all that apply.",
+      "prompt": "A nurse is reviewing morning lab results for several adult clients. Which results should the nurse report to the provider? Select all that apply.",
       "options": [
         {
           "text": "A client's glucose level of 58 mg/dL",
@@ -1495,7 +1495,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Which step of the nursing process involves identifying expected outcomes and defining the interventions needed to reach them?",
+      "prompt": "A nurse is writing expected outcomes and choosing the interventions needed to reach them for a newly admitted client. Which step of the nursing process is the nurse performing?",
       "options": [
         {
           "text": "Assessment",
@@ -1527,7 +1527,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Which nursing diagnosis is written correctly as a 'risk for' diagnosis?",
+      "prompt": "A nurse is writing a care plan for a client who had surgery and has a weakened immune system. Which nursing diagnosis is written correctly as a \"risk for\" diagnosis?",
       "options": [
         {
           "text": "Impaired physical mobility r/t pain AEB reluctance to walk",
@@ -1559,7 +1559,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "mc",
-      "prompt": "Which term is best defined as a legal obligation with a moral and ethical commitment to do the right thing every time?",
+      "prompt": "A nurse educator is teaching nursing students about professional accountability. Which definition should the educator use for a legal obligation with a moral and ethical commitment to do the right thing every time?",
       "options": [
         {
           "text": "Delegating tasks appropriately to the care team",
@@ -1655,7 +1655,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "mc",
-      "prompt": "Which of the following is an example of primary prevention?",
+      "prompt": "A nurse is planning health promotion activities at a community clinic. Which activity is an example of primary prevention?",
       "options": [
         {
           "text": "Colonoscopy screening",
@@ -1719,7 +1719,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "mc",
-      "prompt": "Why does the nurse assess the ABCs before completing a neurological exam on an acutely ill client?",
+      "prompt": "A nurse is assessing a client who is acutely ill and confused. Why should the nurse assess the airway, breathing, and circulation (ABCs) before completing a neurological exam?",
       "options": [
         {
           "text": "Neuro exams take longer to complete",
@@ -1751,7 +1751,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Communication",
       "type": "mc",
-      "prompt": "Which communication model includes the concepts of sender, encoder, channel, decoder, receiver, and noise?",
+      "prompt": "A nurse educator is teaching nursing students about communication models. Which model includes a sender, encoder, channel, decoder, receiver, and noise?",
       "options": [
         {
           "text": "Shannon-Weaver model",
@@ -1847,7 +1847,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "mc",
-      "prompt": "HIPAA primarily protects which of the following?",
+      "prompt": "A nurse is teaching a newly hired assistive personnel about HIPAA (the Health Insurance Portability and Accountability Act). Which does HIPAA primarily protect?",
       "options": [
         {
           "text": "A client's right to refuse treatment",
@@ -1879,7 +1879,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "mc",
-      "prompt": "In the ISBARR communication tool, what does the second 'R' stand for?",
+      "prompt": "A nurse is calling a provider about a client using ISBARR. What does the second \"R\" stand for?",
       "options": [
         {
           "text": "Response",
@@ -1911,7 +1911,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Evidence-Based Practice",
       "type": "mc",
-      "prompt": "In a PICOT question, the 'T' stands for:",
+      "prompt": "A nurse is writing a PICOT question about fall prevention for an evidence-based practice project. What does the \"T\" stand for?",
       "options": [
         {
           "text": "Type of study",
@@ -1943,7 +1943,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "mc",
-      "prompt": "Which documentation method charts only significant findings or deviations from the norm?",
+      "prompt": "A nurse documents only a client's significant findings and changes from the expected norms. Which documentation method is the nurse using?",
       "options": [
         {
           "text": "SOAP charting",
@@ -1975,7 +1975,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "mc",
-      "prompt": "Which of the following best demonstrates the 'least restrictive, least invasive' principle in priority setting?",
+      "prompt": "A nurse is caring for a client who is confused and pulling at an IV line. Which action best follows the \"least restrictive, least invasive\" principle?",
       "options": [
         {
           "text": "Restraining a confused client immediately",
@@ -2268,7 +2268,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Which client outcome is written so the nurse can measure it?",
+      "prompt": "A nurse is writing outcomes for a client who had hip surgery. Which outcome is written so the nurse can measure it?",
       "options": [
         {
           "text": "The client will understand the new diet",
@@ -2433,7 +2433,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "sata",
-      "prompt": "Which actions by a nurse violate a client's privacy under HIPAA? Select all that apply.",
+      "prompt": "A nurse manager is reviewing privacy rules with staff. Which actions by a nurse violate a client's privacy under HIPAA (the Health Insurance Portability and Accountability Act)? Select all that apply.",
       "options": [
         {
           "text": "Discussing a client's diagnosis in the elevator",
@@ -2534,7 +2534,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Communication",
       "type": "mc",
-      "prompt": "Which statement by a nurse is nontherapeutic?",
+      "prompt": "A nurse is talking with a client who stopped taking a prescribed medication. Which statement by the nurse is nontherapeutic?",
       "options": [
         {
           "text": "\"Why didn't you take your medication?\"",
@@ -2662,7 +2662,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "mc",
-      "prompt": "Which documentation entry is written correctly?",
+      "prompt": "A nurse is documenting a client's breakfast intake. Which entry is written correctly?",
       "options": [
         {
           "text": "\"Client ate 50% of breakfast.\"",
@@ -2694,7 +2694,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "mc",
-      "prompt": "Which document is a state law that defines what a licensed nurse may do and can differ from one state to another?",
+      "prompt": "A newly licensed nurse is moving to another state. Which document is a state law that defines what a licensed nurse may do and can differ from one state to another?",
       "options": [
         {
           "text": "The Nurse Practice Act",
@@ -2725,7 +2725,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "mc",
-      "prompt": "Which organization grants nursing licenses, approves nursing programs and disciplines nurses in its state?",
+      "prompt": "A newly licensed nurse asks who grants nursing licenses in the state. Which organization grants licenses, approves nursing programs, and disciplines nurses in its state?",
       "options": [
         {
           "text": "The state Board of Nursing",
@@ -2787,7 +2787,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "mc",
-      "prompt": "Which statement describes the nurse's scope of practice?",
+      "prompt": "A newly licensed nurse asks a charge nurse what scope of practice means. Which statement should the charge nurse give?",
       "options": [
         {
           "text": "The services and activities a licensed nurse is competent and permitted to perform",
@@ -2887,7 +2887,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "mc",
-      "prompt": "Which QSEN competency is a nurse using when they tailor care to a client's spiritual and cultural needs?",
+      "prompt": "A nurse tailors care to a client's spiritual and cultural needs. Which Quality and Safety Education for Nurses (QSEN) competency is the nurse using?",
       "options": [
         {
           "text": "Patient-centered care",
@@ -2918,7 +2918,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "sata",
-      "prompt": "Which are QSEN competencies? Select all that apply.",
+      "prompt": "A nurse educator is teaching nursing students about the Quality and Safety Education for Nurses (QSEN) competencies. Which should the educator include? Select all that apply.",
       "options": [
         {
           "text": "Safety",
@@ -2990,7 +2990,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "mc",
-      "prompt": "Which nursing role is the nurse filling when coordinating care among the physical therapist, dietitian and social worker for a client going home?",
+      "prompt": "A nurse coordinates care among the physical therapist, dietitian, and social worker for a client going home. Which nursing role is the nurse filling?",
       "options": [
         {
           "text": "Case manager",
@@ -3052,7 +3052,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "mc",
-      "prompt": "Which person connected unclean conditions to wound infections during the Crimean War by collecting and reporting data, an early example of evidence-based practice?",
+      "prompt": "A nurse educator is teaching nursing students about the history of evidence-based practice. Which person connected unclean conditions to wound infections during the Crimean War by collecting and reporting data?",
       "options": [
         {
           "text": "Florence Nightingale",
@@ -3083,7 +3083,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "dragdrop",
-      "prompt": "Match each person to what they're known for. Move the people known for founding or leading an organization to the answer box.",
+      "prompt": "A nurse educator is teaching nursing students about leaders in nursing history. Which people are known for founding or leading an organization? Move the correct answers to the answer box.",
       "leftLabel": "People",
       "rightLabel": "Founded an organization",
       "options": [
@@ -3116,7 +3116,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "mc",
-      "prompt": "Which organization's four core values are caring, integrity, diversity and excellence?",
+      "prompt": "A nurse is researching professional nursing organizations. Which organization's four core values are caring, integrity, diversity, and excellence?",
       "options": [
         {
           "text": "The National League for Nursing",
@@ -3178,7 +3178,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Profession & Regulation",
       "type": "mc",
-      "prompt": "Which statement about the ANA's definition of nursing is accurate?",
+      "prompt": "A nurse educator is teaching nursing students about the American Nurses Association (ANA) definition of nursing. Which statement should the educator include?",
       "options": [
         {
           "text": "Nursing diagnoses and treats human responses to health problems and advocates for clients",
@@ -3209,7 +3209,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "order",
-      "prompt": "Place the steps of the clinical judgment model in order.",
+      "prompt": "A nurse is using the clinical judgment model to care for a client whose condition is changing. Place the steps in order.",
       "options": [
         {
           "text": "Recognize cues",
@@ -3275,7 +3275,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "How do the nursing process and the clinical judgment model relate?",
+      "prompt": "A nursing student asks how the nursing process and the clinical judgment model relate. Which response by the nurse is accurate?",
       "options": [
         {
           "text": "The nursing process guides what the nurse does; clinical judgment describes how the nurse thinks while doing it",
@@ -3306,7 +3306,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "order",
-      "prompt": "Place the steps of the nursing process in order.",
+      "prompt": "A nurse is caring for a newly admitted client. Place the steps of the nursing process in order.",
       "options": [
         {
           "text": "Assessment",
@@ -3337,7 +3337,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "dragdrop",
-      "prompt": "Sort the data collected during an admission. Move the objective data to the answer box.",
+      "prompt": "A nurse is collecting data during a client's admission. Which data are objective? Move the correct answers to the answer box.",
       "leftLabel": "Data",
       "rightLabel": "Objective",
       "options": [
@@ -3380,7 +3380,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "How should a nurse document a client's description of chest pain?",
+      "prompt": "A client describes chest pain to the nurse. How should the nurse document the client's description?",
       "options": [
         {
           "text": "In quotation marks, using the client's exact words",
@@ -3411,7 +3411,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "sata",
-      "prompt": "Which are sources of data during the assessment step? Select all that apply.",
+      "prompt": "A nurse is completing the assessment step for a newly admitted client. Which are sources of data? Select all that apply.",
       "options": [
         {
           "text": "The client's health history interview",
@@ -3447,7 +3447,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Which statement is a nursing diagnosis rather than a medical diagnosis?",
+      "prompt": "A nurse is writing a care plan for a client who has pain in both legs after a fall. Which statement is a nursing diagnosis rather than a medical diagnosis?",
       "options": [
         {
           "text": "Impaired physical mobility related to pain in the lower extremities",
@@ -3526,7 +3526,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Why does a \"risk for\" nursing diagnosis have no \"as evidenced by\" part?",
+      "prompt": "A nurse writes \"Risk for falls\" on a client's care plan. A nursing student asks why it has no \"as evidenced by\" part. Which response by the nurse is accurate?",
       "options": [
         {
           "text": "The problem hasn't happened yet, so there are no signs or symptoms, only risk factors",
@@ -3557,7 +3557,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Who develops and standardizes nursing diagnoses so care plans are consistent?",
+      "prompt": "A nurse is choosing a nursing diagnosis for a client's care plan. Which organization develops and standardizes nursing diagnoses?",
       "options": [
         {
           "text": "NANDA-I (North American Nursing Diagnosis Association International)",
@@ -3588,7 +3588,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "dragdrop",
-      "prompt": "Sort these goals. Move the goals written in SMART (specific, measurable, achievable, relevant, time-bound) format to the answer box.",
+      "prompt": "A nurse is reviewing goals in a client's care plan. Which goals are written in SMART (specific, measurable, achievable, relevant, time-bound) format? Move the correct answers to the answer box.",
       "leftLabel": "Goals",
       "rightLabel": "SMART goals",
       "options": [
@@ -3631,7 +3631,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Which is a long-term goal for a client after surgery?",
+      "prompt": "A nurse is writing goals for a client who had abdominal surgery. Which is a long-term goal?",
       "options": [
         {
           "text": "The client will show no signs of a surgical site infection within 30 days of surgery.",
@@ -3662,7 +3662,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "What must accompany every nursing intervention in a plan of care?",
+      "prompt": "A nurse is adding interventions to a client's plan of care. What must accompany every nursing intervention?",
       "options": [
         {
           "text": "An evidence-based rationale explaining why it's done",
@@ -3724,7 +3724,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "dragdrop",
-      "prompt": "Sort these nursing activities. Move the indirect care activities to the answer box.",
+      "prompt": "A nurse is caring for several clients during a shift. Which nursing activities are indirect care? Move the correct answers to the answer box.",
       "leftLabel": "Activities",
       "rightLabel": "Indirect care",
       "options": [
@@ -3762,7 +3762,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Which question type on the NCLEX asks the nurse to choose the condition in the middle, actions on one side and parameters to monitor on the other?",
+      "prompt": "A nursing student is preparing for the Next Generation NCLEX. Which item type asks the student to choose the condition in the middle, actions on one side, and parameters to monitor on the other?",
       "options": [
         {
           "text": "Bow tie",
@@ -3793,7 +3793,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "mc",
-      "prompt": "Which NGN (Next Generation NCLEX) item type requires typing the answer into a box and is mostly used for math?",
+      "prompt": "A nursing student is preparing for the Next Generation NCLEX (NGN). Which item type requires typing the answer into a box and is mostly used for math?",
       "options": [
         {
           "text": "Fill in the blank",
@@ -3855,7 +3855,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Clinical Judgment & Nursing Process",
       "type": "sata",
-      "prompt": "Mr. Jones, 78, had hip surgery last night. His temperature is 39.0 °C (102.2 °F), pulse 122, respirations 16, BP 118/76 and pain 4/10. Which findings are outside the expected adult range? Select all that apply.",
+      "prompt": "A nurse is caring for a 78-year-old client who had hip surgery last night. The client's temperature is 39.0 °C (102.2 °F), pulse 122/min, respirations 16/min, blood pressure 118/76 mm Hg, and pain 4/10. Which findings are outside the expected adult range? Select all that apply.",
       "options": [
         {
           "text": "Temperature 39.0 °C",
@@ -3886,7 +3886,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "dragdrop",
-      "prompt": "Sort these by level of prevention. Move the secondary prevention measures to the answer box.",
+      "prompt": "A nurse is planning a community health fair. Which activities are secondary prevention measures? Move the correct answers to the answer box.",
       "leftLabel": "Measures",
       "rightLabel": "Secondary prevention",
       "options": [
@@ -3960,7 +3960,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "mc",
-      "prompt": "A provider decides not to order a scan that would add risk without changing treatment. Which level of prevention is this?",
+      "prompt": "A provider decides not to order a scan for a client because it would add risk without changing treatment. Which level of prevention should the nurse recognize?",
       "options": [
         {
           "text": "Quaternary",
@@ -3991,7 +3991,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "mc",
-      "prompt": "Which is an example of primary prevention?",
+      "prompt": "A nurse is planning care for a healthy adult at a clinic visit. Which action by the nurse is an example of primary prevention?",
       "options": [
         {
           "text": "Teaching a client to wear a seat belt",
@@ -4022,7 +4022,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "dragdrop",
-      "prompt": "Sort these cardiovascular risk factors. Move the modifiable risk factors to the answer box.",
+      "prompt": "A nurse is teaching a client about cardiovascular risk factors. Which risk factors can the client modify? Move the correct answers to the answer box.",
       "leftLabel": "Risk factors",
       "rightLabel": "Modifiable",
       "options": [
@@ -4101,7 +4101,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "mc",
-      "prompt": "Which term means helping people gain control over and improve their own health?",
+      "prompt": "A nurse is helping a client gain control over and improve their own health. Which concept is the nurse practicing?",
       "options": [
         {
           "text": "Health promotion",
@@ -4132,7 +4132,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "sata",
-      "prompt": "Which are tools of health promotion? Select all that apply.",
+      "prompt": "A nurse is planning health promotion for a community group. Which are tools of health promotion? Select all that apply.",
       "options": [
         {
           "text": "Client education",
@@ -4221,7 +4221,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "sata",
-      "prompt": "Which are dimensions of wellness? Select all that apply.",
+      "prompt": "A nurse is assessing a client's overall wellness. Which dimensions of wellness should the nurse include? Select all that apply.",
       "options": [
         {
           "text": "Spiritual",
@@ -4288,7 +4288,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "mc",
-      "prompt": "Which client need does the nurse address first?",
+      "prompt": "A nurse is receiving report on four clients. Which client need should the nurse address first?",
       "options": [
         {
           "text": "A client with a respiratory rate of 30 and oxygen saturation of 88%",
@@ -4391,7 +4391,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "mc",
-      "prompt": "Which signs suggest a severe airway obstruction?",
+      "prompt": "A nurse is caring for a client who is eating in the dining room. Which findings should the nurse recognize as signs of a severe airway obstruction?",
       "options": [
         {
           "text": "Inability to speak, clutching the throat and high-pitched wheezing",
@@ -4453,7 +4453,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "dragdrop",
-      "prompt": "Sort these pairs. Move the option that usually comes FIRST in each priority framework to the answer box.",
+      "prompt": "A nurse is prioritizing care for several clients. For each pair, which option usually comes FIRST in priority-setting frameworks? Move the correct answers to the answer box.",
       "leftLabel": "Options",
       "rightLabel": "Goes first",
       "options": [
@@ -4549,7 +4549,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "mc",
-      "prompt": "In a mass casualty triage, which category means serious but not immediately life-threatening, so care can be delayed briefly?",
+      "prompt": "A nurse is triaging clients during a mass casualty event. Which category should the nurse use for a client whose injuries are serious but not immediately life-threatening, so care can be delayed briefly?",
       "options": [
         {
           "text": "Urgent or delayed (yellow)",
@@ -4580,7 +4580,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "mc",
-      "prompt": "Which term describes deciding how to use resources when there isn't enough to meet every need?",
+      "prompt": "A nurse manager must decide how to use limited staff and supplies when there isn't enough to meet every client's need. Which term describes this?",
       "options": [
         {
           "text": "Rationing",
@@ -4611,7 +4611,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "mc",
-      "prompt": "Which is NOT an effective priority-setting practice?",
+      "prompt": "A charge nurse is reviewing priority-setting practices with new nurses. Which practice should the charge nurse identify as NOT effective?",
       "options": [
         {
           "text": "Ignoring nonurgent needs",
@@ -4735,7 +4735,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Delegation & Managing Care",
       "type": "dragdrop",
-      "prompt": "Sort these tasks for a stable client. Move the tasks a nurse can delegate to a UAP to the answer box.",
+      "prompt": "A nurse is caring for a stable client. Which tasks can the nurse delegate to unlicensed assistive personnel (UAP)? Move the correct answers to the answer box.",
       "leftLabel": "Tasks",
       "rightLabel": "Can delegate",
       "options": [
@@ -4778,7 +4778,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Delegation & Managing Care",
       "type": "mc",
-      "prompt": "Using the time management matrix, where does a task that is important but not urgent belong?",
+      "prompt": "A nurse is using the time management matrix to plan a shift. Where does a task that is important but not urgent belong?",
       "options": [
         {
           "text": "Decide: schedule a time to do it",
@@ -4809,7 +4809,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Delegation & Managing Care",
       "type": "sata",
-      "prompt": "Which are good time management strategies for a nurse? Select all that apply.",
+      "prompt": "A nurse has a heavy assignment and wants to manage time well. Which strategies should the nurse use? Select all that apply.",
       "options": [
         {
           "text": "Plan the day and make a list",
@@ -4850,7 +4850,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Delegation & Managing Care",
       "type": "mc",
-      "prompt": "When does discharge planning begin?",
+      "prompt": "A nurse is admitting a client to the medical-surgical unit. When should the nurse begin discharge planning?",
       "options": [
         {
           "text": "On admission, and it continues throughout the stay",
@@ -4881,7 +4881,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Delegation & Managing Care",
       "type": "order",
-      "prompt": "Place the steps of IDEAL discharge planning in order.",
+      "prompt": "A nurse is planning a client's discharge using the IDEAL model. Place the steps in order.",
       "options": [
         {
           "text": "Include the client and caregivers",
@@ -5053,7 +5053,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Delegation & Managing Care",
       "type": "sata",
-      "prompt": "Which areas does the nurse cover under \"Discuss\" in IDEAL discharge planning? Select all that apply.",
+      "prompt": "A nurse is planning a client's discharge with the IDEAL model. Which areas should the nurse cover under \"Discuss\"? Select all that apply.",
       "options": [
         {
           "text": "Medications",
@@ -5094,7 +5094,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Patient-Centered Care & Culture",
       "type": "mc",
-      "prompt": "Which action by the nurse best shows patient-centered care?",
+      "prompt": "A nurse is admitting a client who has a new diagnosis of heart failure. Which action by the nurse best shows patient-centered care?",
       "options": [
         {
           "text": "Asking the client what matters most to them before planning care",
@@ -5156,7 +5156,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Patient-Centered Care & Culture",
       "type": "dragdrop",
-      "prompt": "Sort these nurse actions. Move the ones that match Swanson's \"doing for\" process to the answer box.",
+      "prompt": "A nurse is applying Swanson's theory of caring. Which nurse actions match the \"doing for\" process? Move the correct answers to the answer box.",
       "leftLabel": "Actions",
       "rightLabel": "Doing for",
       "options": [
@@ -5194,7 +5194,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Patient-Centered Care & Culture",
       "type": "mc",
-      "prompt": "Which Swanson caring process is the nurse using by guiding a family through a new diagnosis with information and support?",
+      "prompt": "A nurse guides a family through a client's new diagnosis with information and support. Which Swanson caring process is the nurse using?",
       "options": [
         {
           "text": "Enabling",
@@ -5225,7 +5225,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Patient-Centered Care & Culture",
       "type": "mc",
-      "prompt": "Which nursing theory focuses on human-to-human connection and healing mind, body and spirit, using ten caritas processes?",
+      "prompt": "A nurse focuses on human-to-human connection and healing the client's mind, body, and spirit. Which nursing theory is the nurse applying?",
       "options": [
         {
           "text": "Watson's theory of human caring",
@@ -5495,7 +5495,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Patient-Centered Care & Culture",
       "type": "mc",
-      "prompt": "Which referral best supports a client in spiritual distress?",
+      "prompt": "A client tells the nurse, \"I don't know why God would let this happen to me.\" Which referral best supports this client's spiritual distress?",
       "options": [
         {
           "text": "Pastoral care (chaplain)",
@@ -5526,7 +5526,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Patient-Centered Care & Culture",
       "type": "mc",
-      "prompt": "Which describes palliative care?",
+      "prompt": "A nurse is teaching a client who has advanced cancer about palliative care. Which statement should the nurse include?",
       "options": [
         {
           "text": "Interprofessional care that manages symptoms of serious illness to keep the best possible quality of life",
@@ -5694,7 +5694,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Patient-Centered Care & Culture",
       "type": "sata",
-      "prompt": "Which are caring behaviors? Select all that apply.",
+      "prompt": "A nurse is caring for a client who is anxious about a new diagnosis. Which actions are caring behaviors? Select all that apply.",
       "options": [
         {
           "text": "Active, empathetic listening",
@@ -5761,7 +5761,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Patient-Centered Care & Culture",
       "type": "mc",
-      "prompt": "What is the cornerstone of patient-centered care?",
+      "prompt": "A nurse manager is teaching staff about patient-centered care. What should the nurse manager identify as its cornerstone?",
       "options": [
         {
           "text": "Client preferences",
@@ -5792,7 +5792,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Health Assessment",
       "type": "mc",
-      "prompt": "Which assessment technique does the nurse always use first?",
+      "prompt": "A nurse is beginning a client's physical assessment. Which assessment technique should the nurse always use first?",
       "options": [
         {
           "text": "Inspection",
@@ -5823,7 +5823,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Health Assessment",
       "type": "mc",
-      "prompt": "Which part of the hand does the nurse use to assess skin temperature?",
+      "prompt": "A nurse is assessing a client's skin. Which part of the hand should the nurse use to assess skin temperature?",
       "options": [
         {
           "text": "The back (dorsal side) of the hand",
@@ -5854,7 +5854,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Health Assessment",
       "type": "dragdrop",
-      "prompt": "Match each palpation task to the part of the hand used. Move the tasks done with the fingertips to the answer box.",
+      "prompt": "A nurse is palpating during a client's physical assessment. Which tasks should the nurse perform with the fingertips? Move the correct answers to the answer box.",
       "leftLabel": "Tasks",
       "rightLabel": "Fingertips",
       "options": [
@@ -5923,7 +5923,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Health Assessment",
       "type": "mc",
-      "prompt": "Which is the best way for a nurse to begin a health assessment?",
+      "prompt": "A nurse is admitting a client to the unit. Which is the best way for the nurse to begin the health assessment?",
       "options": [
         {
           "text": "Start with the health history and general survey, then the physical exam",
@@ -5954,7 +5954,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Health Assessment",
       "type": "dragdrop",
-      "prompt": "Sort these interview items. Move the ones that belong in the chief concern and history of present illness to the answer box.",
+      "prompt": "A nurse is interviewing a client who reports chest tightness. Which items belong in the chief concern and history of present illness? Move the correct answers to the answer box.",
       "leftLabel": "Items",
       "rightLabel": "Chief concern / present illness",
       "options": [
@@ -5992,7 +5992,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Health Assessment",
       "type": "sata",
-      "prompt": "Which belong in the general survey? Select all that apply.",
+      "prompt": "A nurse is beginning a client's physical assessment with a general survey. Which findings should the nurse include? Select all that apply.",
       "options": [
         {
           "text": "Level of consciousness",
@@ -6033,7 +6033,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Health Assessment",
       "type": "mc",
-      "prompt": "Which percussion technique is used to check for tenderness over the kidneys?",
+      "prompt": "A nurse is assessing a client who reports flank pain. Which percussion technique should the nurse use to check for tenderness over the kidneys?",
       "options": [
         {
           "text": "Fist percussion",
@@ -6064,7 +6064,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Health Assessment",
       "type": "mc",
-      "prompt": "Which is part of a review of systems?",
+      "prompt": "A nurse is completing a health history for a newly admitted client. Which action is part of a review of systems?",
       "options": [
         {
           "text": "Asking questions about every body system to find existing health problems",
@@ -6143,7 +6143,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "How does the nurse count a radial pulse that is irregular?",
+      "prompt": "A nurse is assessing a client's radial pulse and notes the rhythm is irregular. How should the nurse count the pulse?",
       "options": [
         {
           "text": "For a full minute",
@@ -6205,7 +6205,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "Where does the nurse listen for an apical pulse?",
+      "prompt": "A nurse is preparing to take a client's apical pulse. Where should the nurse listen?",
       "options": [
         {
           "text": "5th intercostal space at the midclavicular line",
@@ -6274,7 +6274,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "sata",
-      "prompt": "Which can cause tachycardia? Select all that apply.",
+      "prompt": "A nurse is caring for a client whose heart rate is 118/min. Which conditions can cause tachycardia? Select all that apply.",
       "options": [
         {
           "text": "Fever",
@@ -6351,7 +6351,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "A well-trained marathon runner has a resting heart rate of 52 and no symptoms. What is the most likely reason?",
+      "prompt": "A nurse is assessing a client who runs marathons. The client's resting heart rate is 52/min, and the client has no symptoms. Which is the most likely reason?",
       "options": [
         {
           "text": "Being very physically fit",
@@ -6382,7 +6382,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "dragdrop",
-      "prompt": "Sort these temperature sites. Move the core temperature sites to the answer box.",
+      "prompt": "A nurse is choosing a site to measure a client's temperature. Which sites measure core temperature? Move the correct answers to the answer box.",
       "leftLabel": "Sites",
       "rightLabel": "Core",
       "options": [
@@ -6473,7 +6473,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "Which is correct technique for a tympanic temperature in an adult?",
+      "prompt": "A nurse is measuring an adult client's tympanic temperature. Which technique should the nurse use?",
       "options": [
         {
           "text": "Pull the pinna up and back",
@@ -6504,7 +6504,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "Which can make a tympanic temperature inaccurate?",
+      "prompt": "A nurse obtains a tympanic temperature that seems low for a client who feels warm. Which factor can make a tympanic temperature inaccurate?",
       "options": [
         {
           "text": "Earwax",
@@ -6535,7 +6535,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "Which temperature site is affected by sweat and head coverings?",
+      "prompt": "A nurse is measuring the temperature of a client who is sweating and wearing a head covering. Which temperature site is most affected by these factors?",
       "options": [
         {
           "text": "Temporal artery",
@@ -6566,7 +6566,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "dragdrop",
-      "prompt": "Sort these breathing patterns. Move the abnormal patterns to the answer box.",
+      "prompt": "A nurse is assessing the breathing patterns of several clients. Which patterns are abnormal? Move the correct answers to the answer box.",
       "leftLabel": "Patterns",
       "rightLabel": "Abnormal",
       "options": [
@@ -6635,7 +6635,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "What is the expected SpO2 (oxygen saturation by pulse oximetry) for an adult?",
+      "prompt": "A nurse is checking an adult client's oxygen saturation by pulse oximetry (SpO2). Which range should the nurse expect?",
       "options": [
         {
           "text": "95–100%",
@@ -6666,7 +6666,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "Oxygen saturation measures oxygen bound to which part of the red blood cell?",
+      "prompt": "A client asks the nurse what the pulse oximeter measures. Oxygen saturation measures oxygen bound to which part of the red blood cell?",
       "options": [
         {
           "text": "Hemoglobin",
@@ -6697,7 +6697,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "mc",
-      "prompt": "Which reading is in the elevated blood pressure category?",
+      "prompt": "A nurse is checking blood pressure at a health fair. Which reading is in the elevated category?",
       "options": [
         {
           "text": "124/76 mm Hg",
@@ -6807,7 +6807,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "dragdrop",
-      "prompt": "Sort these factors that affect blood pressure. Move the extrinsic (modifiable) factors to the answer box.",
+      "prompt": "A nurse is teaching a client who has high blood pressure. Which factors are extrinsic (modifiable)? Move the correct answers to the answer box.",
       "leftLabel": "Factors",
       "rightLabel": "Extrinsic",
       "options": [
@@ -6913,7 +6913,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Vital Signs",
       "type": "sata",
-      "prompt": "Which can cause orthostatic hypotension? Select all that apply.",
+      "prompt": "A nurse is caring for a client who becomes dizzy when standing. Which conditions can cause orthostatic hypotension? Select all that apply.",
       "options": [
         {
           "text": "Dehydration",
@@ -6949,7 +6949,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "mc",
-      "prompt": "Who is the best judge of how much pain a client has?",
+      "prompt": "A nurse is caring for a client who rates pain as 8/10 while watching TV and laughing. Who is the best judge of how much pain the client has?",
       "options": [
         {
           "text": "The client",
@@ -7059,7 +7059,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "dragdrop",
-      "prompt": "Sort these descriptions. Move the ones that describe neuropathic pain to the answer box.",
+      "prompt": "A nurse is assessing several clients who report pain. Which descriptions are neuropathic pain? Move the correct answers to the answer box.",
       "leftLabel": "Descriptions",
       "rightLabel": "Neuropathic",
       "options": [
@@ -7092,7 +7092,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "order",
-      "prompt": "Place the PQRST pain assessment questions in order.",
+      "prompt": "A nurse is assessing a client who reports abdominal pain. Place the PQRST pain assessment questions in order.",
       "options": [
         {
           "text": "Provocation: what triggers it or makes it better?",
@@ -7185,7 +7185,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "mc",
-      "prompt": "Using the FLACC scale, how many points can each category score, and what is the highest total?",
+      "prompt": "A nurse is using the FLACC scale to assess pain in a client who can't communicate. How many points can each category score, and what is the highest total?",
       "options": [
         {
           "text": "0–2 each, for a total of 0–10",
@@ -7252,7 +7252,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "dragdrop",
-      "prompt": "Sort these pain treatments. Move the nonpharmacologic measures to the answer box.",
+      "prompt": "A nurse is planning pain management for a client after surgery. Which measures are nonpharmacologic? Move the correct answers to the answer box.",
       "leftLabel": "Treatments",
       "rightLabel": "Nonpharmacologic",
       "options": [
@@ -7326,7 +7326,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "dragdrop",
-      "prompt": "Sort these pain medications. Move the opioids to the answer box.",
+      "prompt": "A nurse is reviewing a client's medication record. Which medications are opioids? Move the correct answers to the answer box.",
       "leftLabel": "Medications",
       "rightLabel": "Opioids",
       "options": [
@@ -7364,7 +7364,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "mc",
-      "prompt": "Which describes PCA (patient-controlled analgesia)?",
+      "prompt": "A nurse is teaching a client who will use PCA (patient-controlled analgesia) after surgery. Which description should the nurse give?",
       "options": [
         {
           "text": "A pump the client uses to give themself pain medication through an IV (intravenous) line",
@@ -7395,7 +7395,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "mc",
-      "prompt": "Which medication group works on the source of pain and is used along with analgesics, such as antidepressants or corticosteroids?",
+      "prompt": "A client who has nerve pain is prescribed an antidepressant along with an analgesic. Which medication group should the nurse recognize the antidepressant as?",
       "options": [
         {
           "text": "Adjuvant analgesics",
@@ -7426,7 +7426,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "sata",
-      "prompt": "Which factors in the biopsychosocial model can change how a client feels pain? Select all that apply.",
+      "prompt": "A nurse is using the biopsychosocial model to assess a client who has chronic back pain. Which factors can change how the client feels pain? Select all that apply.",
       "options": [
         {
           "text": "Mood and stress",
@@ -7462,7 +7462,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "order",
-      "prompt": "Place Benner's levels of nursing expertise in order, from beginning to most experienced.",
+      "prompt": "A nurse educator is teaching new nurses about Benner's levels of nursing expertise. Place the levels in order, from beginning to most experienced.",
       "options": [
         {
           "text": "Novice",
@@ -7493,7 +7493,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "mc",
-      "prompt": "A new graduate performs skills correctly but still needs reminders and support to notice what matters in a situation. Which Benner level is this?",
+      "prompt": "A charge nurse is working with a new graduate who performs skills correctly but still needs reminders and support to notice what matters in a situation. Which Benner level should the charge nurse recognize?",
       "options": [
         {
           "text": "Advanced beginner",
@@ -7555,7 +7555,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "mc",
-      "prompt": "Which term means an obligation to perform work, duties or tasks using sound professional judgment?",
+      "prompt": "A nurse educator is teaching nursing students about professional practice. Which term means an obligation to perform work, duties, or tasks using sound professional judgment?",
       "options": [
         {
           "text": "Responsibility",
@@ -7586,7 +7586,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "dragdrop",
-      "prompt": "Sort these parts of professionalism. Move the inner processes to the answer box.",
+      "prompt": "A nurse educator is teaching nursing students about professionalism. Which are inner processes of professionalism? Move the correct answers to the answer box.",
       "leftLabel": "Items",
       "rightLabel": "Inner processes",
       "options": [
@@ -7629,7 +7629,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "dragdrop",
-      "prompt": "Match each leadership style to its description. Move the descriptions of transformational leadership to the answer box.",
+      "prompt": "A nurse is reviewing leadership styles on the unit. Which descriptions fit transformational leadership? Move the correct answers to the answer box.",
       "leftLabel": "Descriptions",
       "rightLabel": "Transformational",
       "options": [
@@ -7667,7 +7667,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "mc",
-      "prompt": "A unit manager gives rewards for meeting short-term goals and has clear consequences for missing them. Which leadership style is this?",
+      "prompt": "A nurse's unit manager gives rewards for meeting short-term goals and has clear consequences for missing them. Which leadership style should the nurse recognize?",
       "options": [
         {
           "text": "Transactional",
@@ -7698,7 +7698,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "mc",
-      "prompt": "Which is a drawback of laissez-faire leadership?",
+      "prompt": "A nurse's new unit manager uses a laissez-faire leadership style. Which drawback should the nurse expect?",
       "options": [
         {
           "text": "Outcomes can suffer when staff are inexperienced, and the leader may seem absent",
@@ -7760,7 +7760,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Professionalism & Leadership",
       "type": "mc",
-      "prompt": "Staff nurses on a unit sit on councils that make decisions about practice, quality and staffing. What is this model called?",
+      "prompt": "Staff nurses on a unit sit on councils that make decisions about practice, quality, and staffing. Which model should the nurse recognize?",
       "options": [
         {
           "text": "Shared governance",
@@ -7922,7 +7922,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Ethics",
       "type": "sata",
-      "prompt": "Which are core professional nursing values? Select all that apply.",
+      "prompt": "A nurse educator is teaching nursing students about professional nursing values. Which should the educator include as core values? Select all that apply.",
       "options": [
         {
           "text": "Altruism",
@@ -7963,7 +7963,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Ethics",
       "type": "mc",
-      "prompt": "Which value does a nurse show by staying late to comfort a frightened client with no expectation of anything in return?",
+      "prompt": "A nurse stays late to comfort a frightened client with no expectation of anything in return. Which value is the nurse showing?",
       "options": [
         {
           "text": "Altruism",
@@ -7994,7 +7994,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Ethics",
       "type": "mc",
-      "prompt": "Which describes an ethical dilemma?",
+      "prompt": "A nurse is caring for a client whose family disagrees about continuing life support. Which statement describes an ethical dilemma?",
       "options": [
         {
           "text": "A situation where a choice must be made but no option may be fully ethically acceptable",
@@ -8025,7 +8025,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Ethics",
       "type": "order",
-      "prompt": "Place the steps of ethical decision making in order.",
+      "prompt": "A nurse is facing an ethical dilemma in a client's care. Place the steps of ethical decision making in order.",
       "options": [
         {
           "text": "Define the issue and assess risks",
@@ -8091,7 +8091,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Ethics",
       "type": "mc",
-      "prompt": "Which document from the ANA (American Nurses Association) outlines rules for nurses on client privacy, conduct and behavior?",
+      "prompt": "A nurse educator is teaching new nurses about professional conduct. Which document from the ANA (American Nurses Association) outlines rules for nurses on client privacy, conduct, and behavior?",
       "options": [
         {
           "text": "The Code of Ethics",
@@ -8122,7 +8122,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Ethics",
       "type": "mc",
-      "prompt": "Which term means one person's own principles about right and wrong?",
+      "prompt": "A nurse educator is teaching nursing students about ethics. Which term means one person's own principles about right and wrong?",
       "options": [
         {
           "text": "Morality",
@@ -8153,7 +8153,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "dragdrop",
-      "prompt": "Sort these torts. Move the intentional torts to the answer box.",
+      "prompt": "A nurse is reviewing legal risks in nursing practice. Which torts are intentional? Move the correct answers to the answer box.",
       "leftLabel": "Torts",
       "rightLabel": "Intentional",
       "options": [
@@ -8337,7 +8337,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "mc",
-      "prompt": "Which HIPAA (Health Insurance Portability and Accountability Act) rule sets safeguards for electronic PHI (protected health information)?",
+      "prompt": "A nurse is teaching staff about HIPAA (the Health Insurance Portability and Accountability Act). Which rule sets safeguards for electronic PHI (protected health information)?",
       "options": [
         {
           "text": "The Security Rule",
@@ -8368,7 +8368,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "mc",
-      "prompt": "Which law guarantees that anyone who comes to an emergency department gets emergency care, regardless of ability to pay?",
+      "prompt": "A client who has no insurance arrives at the emergency department with chest pain. Which law guarantees the client emergency care regardless of ability to pay?",
       "options": [
         {
           "text": "EMTALA (Emergency Medical Treatment and Labor Act)",
@@ -8399,7 +8399,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "mc",
-      "prompt": "Which situation is an example of implied consent?",
+      "prompt": "A nurse is reviewing consent with a group of nursing students. Which situation is an example of implied consent?",
       "options": [
         {
           "text": "An unconscious client arrives after a car crash and needs emergency surgery",
@@ -8461,7 +8461,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "mc",
-      "prompt": "Which document lets a client state their wishes for care if they later can't make decisions?",
+      "prompt": "A client asks the nurse how to make sure their wishes are followed if they later can't make decisions. Which document should the nurse describe?",
       "options": [
         {
           "text": "An advance directive",
@@ -8523,7 +8523,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "sata",
-      "prompt": "Which must a nurse report under mandatory reporting laws? Select all that apply.",
+      "prompt": "A nurse is reviewing mandatory reporting laws. Which must the nurse report? Select all that apply.",
       "options": [
         {
           "text": "Suspected abuse or neglect",
@@ -8585,7 +8585,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "sata",
-      "prompt": "Which are breaches of nursing practice? Select all that apply.",
+      "prompt": "A nurse manager is reviewing reports of staff conduct. Which actions are breaches of nursing practice? Select all that apply.",
       "options": [
         {
           "text": "Falsifying a client's record",
@@ -8860,7 +8860,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Communication",
       "type": "dragdrop",
-      "prompt": "Sort these nurse statements. Move the therapeutic responses to the answer box.",
+      "prompt": "A nurse is talking with a client who is anxious about surgery. Which nurse statements are therapeutic? Move the correct answers to the answer box.",
       "leftLabel": "Statements",
       "rightLabel": "Therapeutic",
       "options": [
@@ -8965,7 +8965,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Communication",
       "type": "dragdrop",
-      "prompt": "Sort these features into communication styles. Move the features of an assertive communicator to the answer box.",
+      "prompt": "A nurse is working on being an assertive communicator with coworkers. Which features describe assertive communication? Move the correct answers to the answer box.",
       "leftLabel": "Features",
       "rightLabel": "Assertive",
       "options": [
@@ -9039,7 +9039,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Communication",
       "type": "mc",
-      "prompt": "In the Shannon-Weaver model, what is noise?",
+      "prompt": "A nurse is teaching a client in a noisy hallway. In the Shannon-Weaver model, what is noise?",
       "options": [
         {
           "text": "Anything that interferes with the message, such as distractions or technical problems",
@@ -9070,7 +9070,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Communication",
       "type": "mc",
-      "prompt": "Which communication model has only a sender, message, channel and receiver, and no feedback?",
+      "prompt": "A nurse educator is teaching nursing students about communication models. Which model has only a sender, message, channel, and receiver, with no feedback?",
       "options": [
         {
           "text": "Berlo's SMCR (sender, message, channel, receiver) model",
@@ -9101,7 +9101,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Communication",
       "type": "sata",
-      "prompt": "Which are parts of OARS for motivational interviewing? Select all that apply.",
+      "prompt": "A nurse is using motivational interviewing with a client who wants to quit smoking. Which are parts of OARS? Select all that apply.",
       "options": [
         {
           "text": "Open-ended questions",
@@ -9318,7 +9318,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "sata",
-      "prompt": "Which are the four TeamSTEPPS skills? Select all that apply.",
+      "prompt": "A nurse manager is training staff in TeamSTEPPS. Which are the four TeamSTEPPS skills? Select all that apply.",
       "options": [
         {
           "text": "Leadership",
@@ -9354,7 +9354,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "mc",
-      "prompt": "What makes communication \"closed loop\"?",
+      "prompt": "A nurse receives a verbal order from a provider during an emergency. What makes this communication \"closed loop\"?",
       "options": [
         {
           "text": "The receiver confirms the message was received and understood correctly",
@@ -9416,7 +9416,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "mc",
-      "prompt": "Where is a handoff report best given?",
+      "prompt": "A nurse is giving report to the oncoming nurse at the end of the shift. Where is a handoff report best given?",
       "options": [
         {
           "text": "At the bedside, with a structured format",
@@ -9447,7 +9447,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "dragdrop",
-      "prompt": "Sort these workplace behaviors. Move the uncivil behaviors to the answer box.",
+      "prompt": "A nurse manager is addressing incivility on the unit. Which staff behaviors are uncivil? Move the correct answers to the answer box.",
       "leftLabel": "Behaviors",
       "rightLabel": "Uncivil",
       "options": [
@@ -9521,7 +9521,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "dragdrop",
-      "prompt": "Match each conflict approach to its example. Move the examples of compromise to the answer box.",
+      "prompt": "A nurse is reviewing approaches to conflict between coworkers. Which examples show compromise? Move the correct answers to the answer box.",
       "leftLabel": "Examples",
       "rightLabel": "Compromise",
       "options": [
@@ -9559,7 +9559,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "mc",
-      "prompt": "Which conflict approach is useful in the short term when a situation is fueled by intense anger?",
+      "prompt": "Two coworkers are in a heated argument at the nurses' station. Which conflict approach is useful in the short term when a situation is fueled by intense anger?",
       "options": [
         {
           "text": "Avoidance",
@@ -9621,7 +9621,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Teamwork & Collaboration",
       "type": "sata",
-      "prompt": "Which should be included in discharge planning? Select all that apply.",
+      "prompt": "A nurse is planning a client's discharge. Which items should the nurse include in discharge planning? Select all that apply.",
       "options": [
         {
           "text": "Medications",
@@ -9662,7 +9662,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "dragdrop",
-      "prompt": "Sort these chart entries. Move the entries that are written correctly to the answer box.",
+      "prompt": "A nurse is reviewing chart entries written during the shift. Which entries are written correctly? Move the correct answers to the answer box.",
       "leftLabel": "Entries",
       "rightLabel": "Correct",
       "options": [
@@ -9784,7 +9784,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "dragdrop",
-      "prompt": "Match each documentation method to its description. Move the description of focus charting to the answer box.",
+      "prompt": "A nurse is choosing a documentation method for a client's chart. Which description fits focus charting? Move the correct answers to the answer box.",
       "leftLabel": "Descriptions",
       "rightLabel": "Focus charting",
       "options": [
@@ -9853,7 +9853,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "dragdrop",
-      "prompt": "Sort these abbreviations. Move the ones on the \"Do Not Use\" list to the answer box.",
+      "prompt": "A nurse is reviewing handwritten orders for errors. Which abbreviations are on the \"Do Not Use\" list? Move the correct answers to the answer box.",
       "leftLabel": "Abbreviations",
       "rightLabel": "Do not use",
       "options": [
@@ -9901,7 +9901,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "mc",
-      "prompt": "Which dose is written correctly?",
+      "prompt": "A nurse is transcribing a medication dose into a client's record. Which dose is written correctly?",
       "options": [
         {
           "text": "0.5 mg",
@@ -9980,7 +9980,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "mc",
-      "prompt": "Why is military (24-hour) time used in health care?",
+      "prompt": "A nursing student asks why the unit uses military (24-hour) time. Which response by the nurse is accurate?",
       "options": [
         {
           "text": "It removes a.m./p.m. confusion and cuts documentation errors",
@@ -10011,7 +10011,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "sata",
-      "prompt": "Which are common HIPAA (Health Insurance Portability and Accountability Act) violations? Select all that apply.",
+      "prompt": "A nurse manager is teaching staff about privacy. Which actions are common HIPAA (Health Insurance Portability and Accountability Act) violations? Select all that apply.",
       "options": [
         {
           "text": "Throwing printed client records in a regular trash can",
@@ -10047,7 +10047,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "mc",
-      "prompt": "Which system lets providers enter orders electronically to reduce errors?",
+      "prompt": "A nurse receives a provider's medication order through the electronic health record. Which system lets providers enter orders electronically to reduce errors?",
       "options": [
         {
           "text": "CPOE (computerized provider order entry)",
@@ -10078,7 +10078,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Evidence-Based Practice",
       "type": "order",
-      "prompt": "Place the steps of evidence-based practice in order.",
+      "prompt": "A nurse is leading an evidence-based practice project on the unit. Place the steps in order.",
       "options": [
         {
           "text": "Identify the problem and write a PICOT question",
@@ -10161,7 +10161,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Evidence-Based Practice",
       "type": "dragdrop",
-      "prompt": "Sort these study types. Move the ones near the top of the evidence pyramid (strongest evidence) to the answer box.",
+      "prompt": "A nurse is searching for evidence for a practice change. Which study types are near the top of the evidence pyramid (strongest evidence)? Move the correct answers to the answer box.",
       "leftLabel": "Evidence",
       "rightLabel": "Strongest",
       "options": [
@@ -10199,7 +10199,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Evidence-Based Practice",
       "type": "mc",
-      "prompt": "A researcher interviews nurses to understand what working through a pandemic felt like. Which type of research is this?",
+      "prompt": "A nurse researcher interviews nurses to understand what working through a pandemic felt like. Which type of research is this?",
       "options": [
         {
           "text": "Qualitative",
@@ -10230,7 +10230,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Evidence-Based Practice",
       "type": "mc",
-      "prompt": "Which type of research uses numerical data to measure the outcome of an intervention?",
+      "prompt": "A nurse is reading a study that uses numerical data to measure the outcome of an intervention. Which type of research is this?",
       "options": [
         {
           "text": "Quantitative",
@@ -10261,7 +10261,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Evidence-Based Practice",
       "type": "mc",
-      "prompt": "What is critical appraisal?",
+      "prompt": "A nurse is reviewing a study for an evidence-based practice project. What is critical appraisal?",
       "options": [
         {
           "text": "Judging a study's validity, reliability and fit for the question",
@@ -10292,7 +10292,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Evidence-Based Practice",
       "type": "sata",
-      "prompt": "Which are credible sources of evidence? Select all that apply.",
+      "prompt": "A nurse is searching for evidence to support a change in practice. Which are credible sources? Select all that apply.",
       "options": [
         {
           "text": "Peer-reviewed journals",
@@ -10328,7 +10328,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Evidence-Based Practice",
       "type": "mc",
-      "prompt": "Which term describes the gap between what research shows and what is actually done at the bedside?",
+      "prompt": "A nurse notices that a research-supported practice isn't being used at the bedside on the unit. Which term describes this gap?",
       "options": [
         {
           "text": "Theory-practice gap",

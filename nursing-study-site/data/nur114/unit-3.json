@@ -423,7 +423,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Body Defenses",
       "type": "sata",
-      "prompt": "Which of the following are physical and chemical barriers that help protect the body from infection? Select all that apply.",
+      "prompt": "A nurse is teaching a client about the body's defenses against infection. Which physical and chemical barriers should the nurse include? Select all that apply.",
       "options": [
         {
           "text": "Intact skin",
@@ -495,7 +495,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Body Defenses",
       "type": "mc",
-      "prompt": "What is the role of phagocytes in nonspecific immunity?",
+      "prompt": "A nurse is teaching a client about how the body fights infection. Which role of phagocytes should the nurse include?",
       "options": [
         {
           "text": "Eat and destroy micro-organisms",
@@ -526,7 +526,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Body Defenses",
       "type": "dragdrop",
-      "prompt": "Which of the following are part of nonspecific immunity? Move the correct items to the answer box.",
+      "prompt": "A nurse is teaching a group of nursing students about nonspecific (innate) immunity. Which items are part of nonspecific immunity? Move the correct answers to the answer box.",
       "leftLabel": "Body defenses",
       "rightLabel": "Nonspecific immunity",
       "options": [
@@ -615,7 +615,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Inflammation & Stages",
       "type": "dragdrop",
-      "prompt": "Which of the following are noninfectious triggers of the inflammatory response? Move the correct triggers to the answer box.",
+      "prompt": "A nurse is caring for several clients who have inflammation. Which triggers of inflammation are noninfectious? Move the correct answers to the answer box.",
       "leftLabel": "Triggers",
       "rightLabel": "Noninfectious triggers",
       "options": [
@@ -823,7 +823,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Hand Hygiene & Asepsis",
       "type": "sata",
-      "prompt": "In which situations should the nurse use soap and water instead of an alcohol-based hand rub? Select all that apply.",
+      "prompt": "A nurse is caring for several clients on a medical unit. In which situations should the nurse use soap and water instead of an alcohol-based hand rub? Select all that apply.",
       "options": [
         {
           "text": "The nurse's hands are visibly soiled",
@@ -964,7 +964,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Hand Hygiene & Asepsis",
       "type": "mc",
-      "prompt": "Which process eliminates all micro-organisms, including bacterial spores?",
+      "prompt": "A nurse is preparing reusable surgical instruments for a sterile procedure. Which process eliminates all micro-organisms, including bacterial spores?",
       "options": [
         {
           "text": "Sterilization",
@@ -1203,7 +1203,7 @@
       "topic": "Infection Control & Isolation",
       "category": "HAIs & MDROs",
       "type": "mc",
-      "prompt": "Which action should the nurse take to help prevent a catheter-associated urinary tract infection (CAUTI)?",
+      "prompt": "A nurse is caring for a client who has had an indwelling urinary catheter since surgery 3 days ago. Which action should the nurse take to help prevent a catheter-associated urinary tract infection (CAUTI)?",
       "options": [
         {
           "text": "Advocate for removal of the catheter as soon as it is no longer needed",
@@ -1368,7 +1368,7 @@
       "topic": "Infection Control & Isolation",
       "category": "HAIs & MDROs",
       "type": "mc",
-      "prompt": "Which action is the best way for the nurse to prevent health care-associated infections?",
+      "prompt": "A nurse is caring for several clients on a medical-surgical unit. Which action is the best way for the nurse to prevent health care–associated infections?",
       "options": [
         {
           "text": "Perform frequent and effective hand hygiene",
@@ -1802,7 +1802,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Chain of Infection",
       "type": "mc",
-      "prompt": "Which disease is caused by a prion?",
+      "prompt": "A nurse is teaching a group of nursing students about types of infectious agents. Which disease should the nurse identify as caused by a prion?",
       "options": [
         {
           "text": "Creutzfeldt-Jakob disease (CJD)",
@@ -2722,7 +2722,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Diagnostic Tests",
       "type": "mc",
-      "prompt": "Which white blood cell is the first responder that eats bacteria?",
+      "prompt": "A nurse is reviewing the white blood cell differential of a client who has an acute bacterial infection. Which white blood cell should the nurse identify as the first responder that eats bacteria?",
       "options": [
         {
           "text": "Neutrophil",
@@ -3027,7 +3027,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Hand Hygiene & Asepsis",
       "type": "mc",
-      "prompt": "Which nursing activity uses medical asepsis (clean technique)?",
+      "prompt": "A nurse is planning care for several clients. Which nursing activity calls for medical asepsis (clean technique)?",
       "options": [
         {
           "text": "Inserting a nasogastric (NG) tube",
@@ -3580,7 +3580,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Precautions & PPE",
       "type": "sata",
-      "prompt": "When should the nurse change gloves? Select all that apply.",
+      "prompt": "A nurse is providing care to several clients during a shift. When should the nurse change gloves? Select all that apply.",
       "options": [
         {
           "text": "When the gloves tear",
@@ -3647,7 +3647,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Precautions & PPE",
       "type": "mc",
-      "prompt": "When should a sharps container be replaced?",
+      "prompt": "A nurse is about to discard a used needle in a client's room. When should the nurse replace the sharps container?",
       "options": [
         {
           "text": "Before it is more than three-quarters full",
@@ -3788,7 +3788,7 @@
       "topic": "Infection Control & Isolation",
       "category": "HAIs & MDROs",
       "type": "mc",
-      "prompt": "Which site is the most common site of health care–associated infections?",
+      "prompt": "A nurse is teaching a group of newly hired nurses about health care–associated infections (HAIs). Which site should the nurse identify as the most common site of HAIs?",
       "options": [
         {
           "text": "The urinary tract",
@@ -3922,7 +3922,7 @@
       "topic": "Infection Control & Isolation",
       "category": "HAIs & MDROs",
       "type": "mc",
-      "prompt": "Which organism is the most common cause of surgical site infections?",
+      "prompt": "A nurse is caring for a client who has a surgical site infection. Which organism should the nurse identify as the most common cause?",
       "options": [
         {
           "text": "Staphylococcus aureus",
@@ -4469,7 +4469,7 @@
       "topic": "Specimen Collection",
       "category": "Stool",
       "type": "mc",
-      "prompt": "A provider orders stool for ova and parasites. How many specimens are usually collected?",
+      "prompt": "A provider prescribes a stool test for ova and parasites for a client who has diarrhea. How many specimens should the nurse plan to collect?",
       "options": [
         {
           "text": "Three separate specimens",
@@ -4744,7 +4744,7 @@
       "topic": "Specimen Collection",
       "category": "Cultures & Swabs",
       "type": "mc",
-      "prompt": "A provider orders sputum specimens for acid-fast bacilli (AFB). Which collection schedule is correct?",
+      "prompt": "A provider prescribes sputum specimens for acid-fast bacilli (AFB) for a client who has a persistent cough. Which collection schedule should the nurse follow?",
       "options": [
         {
           "text": "Three consecutive specimens, 8 to 24 hours apart",
@@ -4837,7 +4837,7 @@
       "topic": "Specimen Collection",
       "category": "Cultures & Swabs",
       "type": "mc",
-      "prompt": "Which action should the nurse take before obtaining a nasal swab?",
+      "prompt": "A provider prescribes a nasal swab for a client who has cold symptoms. Which action should the nurse take before obtaining the swab?",
       "options": [
         {
           "text": "Have the client blow their nose and check patency with a penlight",
@@ -5517,7 +5517,7 @@
       "topic": "Specimen Collection",
       "category": "Blood Specimens",
       "type": "mc",
-      "prompt": "Why shouldn't the nurse milk a client's finger during a capillary blood glucose test?",
+      "prompt": "A nurse is obtaining a capillary blood glucose from a client who has diabetes. Why shouldn't the nurse milk the client's finger?",
       "options": [
         {
           "text": "It can lyse blood cells and alter the result.",
@@ -5778,7 +5778,7 @@
       "topic": "Specimen Collection",
       "category": "Blood Specimens",
       "type": "mc",
-      "prompt": "Which statement about butterfly needles is accurate?",
+      "prompt": "A nurse is choosing a needle to draw blood from a client who is afraid of needles. Which statement about butterfly needles should the nurse keep in mind?",
       "options": [
         {
           "text": "They can lyse cells for some tests.",
@@ -5881,7 +5881,7 @@
       "topic": "Specimen Collection",
       "category": "Stool",
       "type": "mc",
-      "prompt": "A stool specimen is being tested for ova and parasites. Why might the container have a preservative?",
+      "prompt": "A nurse is collecting a stool specimen for ova and parasites. The client asks why the container has a liquid in it. Which response should the nurse give?",
       "options": [
         {
           "text": "To keep parasites alive for testing",
@@ -5943,7 +5943,7 @@
       "topic": "Specimen Collection",
       "category": "Stool",
       "type": "mc",
-      "prompt": "Which statement about home fecal occult blood testing is accurate?",
+      "prompt": "A nurse is teaching a client about fecal occult blood testing at home. Which statement should the nurse include?",
       "options": [
         {
           "text": "Three home samples are more accurate than one office test.",
@@ -6359,7 +6359,7 @@
       "topic": "Specimen Collection",
       "category": "Urine",
       "type": "mc",
-      "prompt": "When is it acceptable to send urine from a catheter drainage bag for testing?",
+      "prompt": "A nurse needs a urine specimen from a client who has an indwelling urinary catheter. When is it acceptable to send urine from the drainage bag?",
       "options": [
         {
           "text": "Only when the catheter is first inserted",
@@ -6488,7 +6488,7 @@
       "topic": "Specimen Collection",
       "category": "Urine",
       "type": "mc",
-      "prompt": "A provider orders a 24-hour urine test. Which value might this test measure?",
+      "prompt": "A provider prescribes a 24-hour urine collection for a client. The client asks what the test is for. Which value should the nurse explain the test can measure?",
       "options": [
         {
           "text": "Creatinine clearance",
@@ -6550,7 +6550,7 @@
       "topic": "Specimen Collection",
       "category": "Urine",
       "type": "mc",
-      "prompt": "When collecting a urine pregnancy test, which information should the nurse document?",
+      "prompt": "A nurse is collecting a urine specimen for a pregnancy test from a client. Which information should the nurse document?",
       "options": [
         {
           "text": "The client's last menstrual period",
@@ -7012,7 +7012,7 @@
       "topic": "Specimen Collection",
       "category": "Cultures & Swabs",
       "type": "mc",
-      "prompt": "A provider orders sputum cytology. Which statement is accurate?",
+      "prompt": "A provider prescribes sputum cytology for a client who has a mass on a chest x-ray. Which statement about this test should the nurse keep in mind?",
       "options": [
         {
           "text": "It needs a preservative and identifies the type of lung cancer.",
@@ -8228,7 +8228,7 @@
       "topic": "Tissue Integrity",
       "category": "Wound Healing",
       "type": "dragdrop",
-      "prompt": "Which wounds heal by primary intention? Move the correct wounds to the answer box.",
+      "prompt": "A nurse is caring for several clients who have wounds. Which wounds will heal by primary intention? Move the correct answers to the answer box.",
       "leftLabel": "Wounds",
       "rightLabel": "Primary intention",
       "options": [
@@ -8563,7 +8563,7 @@
       "topic": "Tissue Integrity",
       "category": "Skin & Risk Factors",
       "type": "mc",
-      "prompt": "Which skin layer provides strength and elasticity and plays a major role in wound healing?",
+      "prompt": "A nurse is teaching a client about how the skin heals. Which skin layer should the nurse identify as giving the skin strength and elasticity and playing a major role in wound healing?",
       "options": [
         {
           "text": "Dermis",
@@ -10034,7 +10034,7 @@
       "topic": "Tissue Integrity",
       "category": "Pressure Injuries",
       "type": "mc",
-      "prompt": "When should a nurse complete a skin assessment on a newly admitted client?",
+      "prompt": "A nurse is admitting a client who is at risk for pressure injuries. When should the nurse complete a skin assessment?",
       "options": [
         {
           "text": "Within 24 hours of admission and with every change in condition",
@@ -10641,7 +10641,7 @@
       "topic": "Tissue Integrity",
       "category": "Dressings, Closures & Drains",
       "type": "mc",
-      "prompt": "Which statement about semiocclusive and occlusive dressings is accurate?",
+      "prompt": "A nurse is choosing a dressing for a client's wound and compares semiocclusive and occlusive dressings. Which statement is accurate?",
       "options": [
         {
           "text": "Semiocclusive dressings allow some gas exchange, and occlusive dressings seal completely.",
@@ -10818,7 +10818,7 @@
       "topic": "Tissue Integrity",
       "category": "Dressings, Closures & Drains",
       "type": "mc",
-      "prompt": "When should the nurse empty a client's bulb suction (Jackson-Pratt) drain?",
+      "prompt": "A nurse is caring for a client who has a bulb suction (Jackson-Pratt) drain after surgery. When should the nurse empty the drain?",
       "options": [
         {
           "text": "Every 8 hours or when more than half full",
@@ -11339,7 +11339,7 @@
       "topic": "Tissue Integrity",
       "category": "Complications",
       "type": "sata",
-      "prompt": "Which clients are at higher risk for dehiscence and evisceration? Select all that apply.",
+      "prompt": "A nurse is caring for several postoperative clients. Which clients are at higher risk for dehiscence and evisceration? Select all that apply.",
       "options": [
         {
           "text": "A client who has obesity",
@@ -11845,7 +11845,7 @@
       "topic": "Assessment: Integumentary, HEENT & Neuro",
       "category": "HEENT",
       "type": "mc",
-      "prompt": "Which tympanic membrane finding should the nurse document as expected?",
+      "prompt": "A nurse is performing an otoscopic exam on a client. Which tympanic membrane finding should the nurse document as expected?",
       "options": [
         {
           "text": "Red and bulging",
@@ -11960,7 +11960,7 @@
       "topic": "Assessment: Integumentary, HEENT & Neuro",
       "category": "Cranial Nerves",
       "type": "dragdrop",
-      "prompt": "Drag the cranial nerves that have only motor function into the answer box.",
+      "prompt": "A nurse is preparing to assess a client's cranial nerves. Which cranial nerves have only motor function? Move the correct answers to the answer box.",
       "leftLabel": "Cranial nerves",
       "rightLabel": "Motor only",
       "options": [
@@ -14658,7 +14658,7 @@
       "topic": "Cranial Nerves",
       "category": "CN I & II: Smell & Vision",
       "type": "sata",
-      "prompt": "Which items are appropriate for testing CN I? Select all that apply.",
+      "prompt": "A nurse is gathering supplies to test a client's cranial nerve I. Which items are appropriate to use? Select all that apply.",
       "options": [
         {
           "text": "Coffee",
@@ -14694,7 +14694,7 @@
       "topic": "Cranial Nerves",
       "category": "CN I & II: Smell & Vision",
       "type": "mc",
-      "prompt": "Why should the nurse avoid using an alcohol wipe when testing the sense of smell?",
+      "prompt": "A nurse is preparing to test a client's sense of smell. Why should the nurse avoid using an alcohol wipe?",
       "options": [
         {
           "text": "Alcohol stimulates CN V and gives a false response",
@@ -14787,7 +14787,7 @@
       "topic": "Cranial Nerves",
       "category": "CN I & II: Smell & Vision",
       "type": "mc",
-      "prompt": "How far from the Snellen chart should the client stand?",
+      "prompt": "A nurse is testing a client's visual acuity with a Snellen chart. How far from the chart should the client stand?",
       "options": [
         {
           "text": "20 feet",
@@ -14880,7 +14880,7 @@
       "topic": "Cranial Nerves",
       "category": "CN III, IV & VI: Eye Movement & Pupils",
       "type": "dragdrop",
-      "prompt": "Drag the cranial nerves tested with the six cardinal positions of gaze into the answer box.",
+      "prompt": "A nurse is testing the six cardinal positions of gaze during a client's neurologic assessment. Which cranial nerves is the nurse testing? Move the correct answers to the answer box.",
       "leftLabel": "Cranial nerves",
       "rightLabel": "Tested by cardinal gaze",
       "options": [
@@ -14923,7 +14923,7 @@
       "topic": "Cranial Nerves",
       "category": "CN III, IV & VI: Eye Movement & Pupils",
       "type": "mc",
-      "prompt": "Which instruction should the nurse give when testing the six cardinal positions of gaze?",
+      "prompt": "A nurse is testing a client's six cardinal positions of gaze. Which instruction should the nurse give?",
       "options": [
         {
           "text": "\"Follow my finger with your eyes without moving your head.\"",
@@ -14954,7 +14954,7 @@
       "topic": "Cranial Nerves",
       "category": "CN III, IV & VI: Eye Movement & Pupils",
       "type": "mc",
-      "prompt": "Which finding during the six cardinal positions of gaze is expected?",
+      "prompt": "A nurse is testing a client's six cardinal positions of gaze. Which finding should the nurse document as expected?",
       "options": [
         {
           "text": "Smooth, full eye movements with both eyes moving in parallel",
@@ -14985,7 +14985,7 @@
       "topic": "Cranial Nerves",
       "category": "CN III, IV & VI: Eye Movement & Pupils",
       "type": "sata",
-      "prompt": "Which eye findings are abnormal? Select all that apply.",
+      "prompt": "A nurse is performing an eye examination on a client. Which findings should the nurse document as abnormal? Select all that apply.",
       "options": [
         {
           "text": "Loss of visual fields",
@@ -15021,7 +15021,7 @@
       "topic": "Cranial Nerves",
       "category": "CN III, IV & VI: Eye Movement & Pupils",
       "type": "mc",
-      "prompt": "In PERRLA, what does the final \"A\" stand for?",
+      "prompt": "A nurse documents a client's pupils as PERRLA. Which term does the final \"A\" stand for?",
       "options": [
         {
           "text": "Accommodation",
@@ -15207,7 +15207,7 @@
       "topic": "Cranial Nerves",
       "category": "CN V & VII: Face & Taste",
       "type": "sata",
-      "prompt": "Which actions does the nurse ask the client to perform to assess CN VII? Select all that apply.",
+      "prompt": "A nurse is assessing a client's cranial nerve VII. Which actions should the nurse ask the client to perform? Select all that apply.",
       "options": [
         {
           "text": "Smile",
@@ -15248,7 +15248,7 @@
       "topic": "Cranial Nerves",
       "category": "CN V & VII: Face & Taste",
       "type": "mc",
-      "prompt": "Taste on the front of the tongue, such as salt and sweet, is carried by which cranial nerve?",
+      "prompt": "A client reports trouble tasting salt and sugar on the front of the tongue. Which cranial nerve should the nurse identify as carrying this taste?",
       "options": [
         {
           "text": "CN VII, facial",
@@ -15279,7 +15279,7 @@
       "topic": "Cranial Nerves",
       "category": "CN V & VII: Face & Taste",
       "type": "mc",
-      "prompt": "Taste on the back of the tongue, such as sour and bitter, is carried by which cranial nerve?",
+      "prompt": "A client reports trouble tasting sour and bitter foods on the back of the tongue. Which cranial nerve should the nurse identify as carrying this taste?",
       "options": [
         {
           "text": "CN IX, glossopharyngeal",
@@ -15341,7 +15341,7 @@
       "topic": "Cranial Nerves",
       "category": "CN VIII: Hearing",
       "type": "mc",
-      "prompt": "How should the nurse perform the whisper test?",
+      "prompt": "A nurse is assessing a client's hearing with a whisper test. How should the nurse perform the test?",
       "options": [
         {
           "text": "Cover one ear, whisper words toward the other, and have the client repeat them; then switch ears",
@@ -15372,7 +15372,7 @@
       "topic": "Cranial Nerves",
       "category": "CN VIII: Hearing",
       "type": "dragdrop",
-      "prompt": "Drag the tests used to assess CN VIII into the answer box.",
+      "prompt": "A nurse is preparing to assess a client's cranial nerve VIII. Which tests can the nurse use? Move the correct answers to the answer box.",
       "leftLabel": "Assessment tests",
       "rightLabel": "Tests CN VIII",
       "options": [
@@ -15415,7 +15415,7 @@
       "topic": "Cranial Nerves",
       "category": "CN VIII: Hearing",
       "type": "mc",
-      "prompt": "Which Rinne test result is expected?",
+      "prompt": "A nurse performs a Rinne test on a client who has no hearing concerns. Which result should the nurse expect?",
       "options": [
         {
           "text": "Air conduction lasts about twice as long as bone conduction",
@@ -15446,7 +15446,7 @@
       "topic": "Cranial Nerves",
       "category": "CN VIII: Hearing",
       "type": "mc",
-      "prompt": "Which Weber test result is expected?",
+      "prompt": "A nurse performs a Weber test on a client who has no hearing concerns. Which result should the nurse expect?",
       "options": [
         {
           "text": "Sound is heard equally in both ears",
@@ -15570,7 +15570,7 @@
       "topic": "Cranial Nerves",
       "category": "CN IX–XII: Throat, Shoulders & Tongue",
       "type": "dragdrop",
-      "prompt": "Drag the cranial nerves assessed when the client says \"Ah\" and swallows into the answer box.",
+      "prompt": "A nurse places a tongue blade on a client's tongue, asks the client to say \"Ah,\" and then watches the client swallow. Which cranial nerves is the nurse assessing? Move the correct answers to the answer box.",
       "leftLabel": "Cranial nerves",
       "rightLabel": "Tested by \"Ah\" and swallowing",
       "options": [
@@ -15706,7 +15706,7 @@
       "topic": "Cranial Nerves",
       "category": "Names & Types",
       "type": "dragdrop",
-      "prompt": "Drag the cranial nerves that are sensory only into the answer box.",
+      "prompt": "A nurse is reviewing the cranial nerves before a client's neurologic assessment. Which cranial nerves are sensory only? Move the correct answers to the answer box.",
       "leftLabel": "Cranial nerves",
       "rightLabel": "Sensory only",
       "options": [
@@ -15749,7 +15749,7 @@
       "topic": "Cranial Nerves",
       "category": "Names & Types",
       "type": "dragdrop",
-      "prompt": "Drag the cranial nerves that are both sensory and motor into the answer box.",
+      "prompt": "A nurse is reviewing the cranial nerves before a client's neurologic assessment. Which cranial nerves are both sensory and motor? Move the correct answers to the answer box.",
       "leftLabel": "Cranial nerves",
       "rightLabel": "Both sensory and motor",
       "options": [
@@ -15792,7 +15792,7 @@
       "topic": "Cranial Nerves",
       "category": "Names & Types",
       "type": "sata",
-      "prompt": "Which cranial nerves are motor only? Select all that apply.",
+      "prompt": "A nurse is reviewing the cranial nerves before a client's neurologic assessment. Which cranial nerves are motor only? Select all that apply.",
       "options": [
         {
           "text": "CN III, oculomotor",
@@ -15838,7 +15838,7 @@
       "topic": "Cranial Nerves",
       "category": "Names & Types",
       "type": "mc",
-      "prompt": "In the mnemonic \"Oh Oh Oh To Touch And Feel Very Good Velvet, AH,\" which nerve does \"Touch\" stand for?",
+      "prompt": "A nurse is using the mnemonic \"Oh Oh Oh To Touch And Feel Very Good Velvet, AH\" to review the cranial nerves before assessing a client. Which nerve does \"Touch\" stand for?",
       "options": [
         {
           "text": "CN V, trigeminal",
@@ -15869,7 +15869,7 @@
       "topic": "Cranial Nerves",
       "category": "Names & Types",
       "type": "mc",
-      "prompt": "Which cranial nerve is CN X?",
+      "prompt": "A nurse is documenting a client's cranial nerve assessment. Which nerve is cranial nerve X?",
       "options": [
         {
           "text": "Vagus",
@@ -16138,7 +16138,7 @@
       "topic": "Cranial Nerves",
       "category": "CN IX–XII: Throat, Shoulders & Tongue",
       "type": "mc",
-      "prompt": "Which cranial nerves control swallowing?",
+      "prompt": "A client who had a stroke has trouble swallowing. Which cranial nerves should the nurse identify as controlling swallowing?",
       "options": [
         {
           "text": "CN IX and CN X",
@@ -16324,7 +16324,7 @@
       "topic": "Cranial Nerves",
       "category": "CN III, IV & VI: Eye Movement & Pupils",
       "type": "mc",
-      "prompt": "Which cranial nerve is tested both with the six cardinal positions of gaze and with PERRLA?",
+      "prompt": "A nurse checks a client's pupils with a penlight and then has the client follow a finger through the six cardinal positions of gaze. Which cranial nerve is tested by both?",
       "options": [
         {
           "text": "CN III, oculomotor",
@@ -16630,7 +16630,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Thorax & Lungs",
       "type": "mc",
-      "prompt": "Which adventitious sound should the nurse identify as the highest priority?",
+      "prompt": "A nurse is auscultating the lungs of several clients. Which adventitious sound should the nurse identify as the highest priority?",
       "options": [
         {
           "text": "Rhonchi",
@@ -16661,7 +16661,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Thorax & Lungs",
       "type": "dragdrop",
-      "prompt": "Drag the sounds that are adventitious (unexpected) into the answer box.",
+      "prompt": "A nurse is auscultating a client's lungs. Which sounds are adventitious (unexpected)? Move the correct answers to the answer box.",
       "leftLabel": "Lung sounds",
       "rightLabel": "Adventitious sounds",
       "options": [
@@ -16745,7 +16745,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Heart & Peripheral Vascular",
       "type": "dragdrop",
-      "prompt": "Drag the cardiac auscultation sites located along the left sternal border into the answer box.",
+      "prompt": "A nurse is auscultating a client's heart. Which auscultation sites are along the left sternal border? Move the correct answers to the answer box.",
       "leftLabel": "Auscultation sites",
       "rightLabel": "Left sternal border",
       "options": [
@@ -16845,7 +16845,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Heart & Peripheral Vascular",
       "type": "mc",
-      "prompt": "Which statement about S4 is correct?",
+      "prompt": "A nurse hears an extra heart sound in a client who has hypertension. Which statement about S4 is accurate?",
       "options": [
         {
           "text": "It occurs right after S2",
@@ -17000,7 +17000,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Heart & Peripheral Vascular",
       "type": "dragdrop",
-      "prompt": "Drag the sites where the nurse should auscultate for bruits into the answer box.",
+      "prompt": "A nurse is performing a cardiovascular and abdominal assessment. At which sites should the nurse auscultate for bruits? Move the correct answers to the answer box.",
       "leftLabel": "Body sites",
       "rightLabel": "Bruit auscultation sites",
       "options": [
@@ -17115,7 +17115,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Abdomen",
       "type": "mc",
-      "prompt": "Which bowel sound finding should the nurse document as expected?",
+      "prompt": "A nurse is auscultating a client's abdomen. Which bowel sound finding should the nurse document as expected?",
       "options": [
         {
           "text": "High-pitched clicks and gurgles 5 to 35 times per minute",
@@ -17363,7 +17363,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Musculoskeletal",
       "type": "dragdrop",
-      "prompt": "Drag the movements that bring a body part toward the midline into the answer box.",
+      "prompt": "A nurse is assessing a client's range of motion. Which movements bring a body part toward the midline? Move the correct answers to the answer box.",
       "leftLabel": "ROM movements",
       "rightLabel": "Movement toward the midline",
       "options": [
@@ -17530,7 +17530,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Heart & Peripheral Vascular",
       "type": "mc",
-      "prompt": "Where should the nurse place the stethoscope to auscultate the tricuspid area?",
+      "prompt": "A nurse is auscultating a client's heart. Where should the nurse place the stethoscope to auscultate the tricuspid area?",
       "options": [
         {
           "text": "Right sternal border, 2nd intercostal space",
@@ -17994,7 +17994,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Thorax & Lungs",
       "type": "mc",
-      "prompt": "Where should the nurse expect to hear vesicular breath sounds?",
+      "prompt": "A nurse is auscultating a client's lungs. Where should the nurse expect to hear vesicular breath sounds?",
       "options": [
         {
           "text": "Over the peripheral lung, toward the bases",
@@ -18154,7 +18154,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Thorax & Lungs",
       "type": "mc",
-      "prompt": "Where should the nurse listen to the right middle lobe of the lung?",
+      "prompt": "A nurse is auscultating the lungs of a client who has pneumonia. Where should the nurse listen to the right middle lobe?",
       "options": [
         {
           "text": "At the axilla",
@@ -18345,7 +18345,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Heart & Peripheral Vascular",
       "type": "mc",
-      "prompt": "Where should the nurse place the stethoscope to auscultate the aortic area?",
+      "prompt": "A nurse is auscultating a client's heart. Where should the nurse place the stethoscope to auscultate the aortic area?",
       "options": [
         {
           "text": "Right 2nd intercostal space, right sternal border",
@@ -18376,7 +18376,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Heart & Peripheral Vascular",
       "type": "mc",
-      "prompt": "Where is S2 loudest?",
+      "prompt": "A nurse is auscultating a client's heart. Where should the nurse expect S2 to be loudest?",
       "options": [
         {
           "text": "At the base of the heart",
@@ -18713,7 +18713,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Heart & Peripheral Vascular",
       "type": "mc",
-      "prompt": "Where should the nurse palpate the brachial pulse?",
+      "prompt": "A nurse is assessing a client's peripheral pulses. Where should the nurse palpate the brachial pulse?",
       "options": [
         {
           "text": "The antecubital fossa",
@@ -19131,7 +19131,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Abdomen",
       "type": "mc",
-      "prompt": "Which action is outside the nurse's role during an abdominal assessment?",
+      "prompt": "A nurse is performing an abdominal assessment on a client. Which action is outside the nurse's role?",
       "options": [
         {
           "text": "Deep palpation",
@@ -19303,7 +19303,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Abdomen",
       "type": "mc",
-      "prompt": "Why is peritonitis harder to detect in older adults?",
+      "prompt": "A nurse is assessing an older adult client who reports mild abdominal discomfort. Why might peritonitis be harder to detect in this client?",
       "options": [
         {
           "text": "They often have less pain, guarding, and fever.",
@@ -19944,7 +19944,7 @@
       "topic": "Safety",
       "category": "Communication & Unexpected Events",
       "type": "dragdrop",
-      "prompt": "Drag the events that are sentinel events into the answer box.",
+      "prompt": "A nurse is reviewing occurrence reports on the unit. Which events are sentinel events? Move the correct answers to the answer box.",
       "leftLabel": "Unexpected events",
       "rightLabel": "Sentinel events",
       "options": [
@@ -20059,7 +20059,7 @@
       "topic": "Safety",
       "category": "Communication & Unexpected Events",
       "type": "sata",
-      "prompt": "Which client situations should prompt the nurse to call the rapid response team? Select all that apply.",
+      "prompt": "A nurse is caring for several clients on a medical-surgical unit. Which client situations should prompt the nurse to call the rapid response team? Select all that apply.",
       "options": [
         {
           "text": "Oxygen saturation of 95% on 2 L of oxygen",
@@ -20131,7 +20131,7 @@
       "topic": "Safety",
       "category": "National Performance Goals & Culture of Safety",
       "type": "mc",
-      "prompt": "Which action is the single most important way to prevent hospital-associated infections?",
+      "prompt": "A nurse is teaching a group of newly hired nurses about the national safety goals. Which action is the single most important way to prevent health care–associated infections?",
       "options": [
         {
           "text": "Giving prophylactic antibiotics",
@@ -20612,7 +20612,7 @@
       "topic": "Safety",
       "category": "Restraints & Seizures",
       "type": "mc",
-      "prompt": "Which situation is an appropriate indication for a restraint after less restrictive measures have failed?",
+      "prompt": "A nurse has tried less restrictive measures for a client who is confused. Which situation is an appropriate indication for a restraint?",
       "options": [
         {
           "text": "The client has refused medications for 2 days",
@@ -20643,7 +20643,7 @@
       "topic": "Safety",
       "category": "Restraints & Seizures",
       "type": "dragdrop",
-      "prompt": "Drag the interventions the nurse should try before using restraints into the answer box.",
+      "prompt": "A nurse is caring for a client who is confused and keeps getting out of bed. Which interventions should the nurse try before using restraints? Move the correct answers to the answer box.",
       "leftLabel": "Interventions",
       "rightLabel": "Try before restraints",
       "options": [
@@ -20873,7 +20873,7 @@
       "topic": "Safety",
       "category": "Environmental & Emergency Safety",
       "type": "mc",
-      "prompt": "A fire cannot be contained, and clients must be moved. Which type of evacuation is preferred?",
+      "prompt": "A nurse is working on a unit where a fire can't be contained, and clients must be moved. Which type of evacuation should the nurse use first?",
       "options": [
         {
           "text": "Lateral evacuation to a safe area on the same floor",
@@ -20966,7 +20966,7 @@
       "topic": "Safety",
       "category": "Environmental & Emergency Safety",
       "type": "mc",
-      "prompt": "Which type of radiation is the most serious and requires lead shielding?",
+      "prompt": "A nurse is caring for a client who has a radioactive implant. Which type of radiation is the most serious and requires lead shielding?",
       "options": [
         {
           "text": "Alpha",
@@ -20997,7 +20997,7 @@
       "topic": "Safety",
       "category": "Environmental & Emergency Safety",
       "type": "mc",
-      "prompt": "Why is potassium iodide given after a radiation mass-casualty event?",
+      "prompt": "A nurse is caring for clients after a radiation mass-casualty event. The provider prescribes potassium iodide. Which explains why it is given?",
       "options": [
         {
           "text": "To treat skin burns",
@@ -21464,7 +21464,7 @@
       "topic": "Safety",
       "category": "National Performance Goals & Culture of Safety",
       "type": "sata",
-      "prompt": "When should medication reconciliation be done? Select all that apply.",
+      "prompt": "A nurse is caring for a client in the hospital. At which points in the client's stay should medication reconciliation be done? Select all that apply.",
       "options": [
         {
           "text": "On admission",
@@ -21696,7 +21696,7 @@
       "topic": "Safety",
       "category": "National Performance Goals & Culture of Safety",
       "type": "mc",
-      "prompt": "Which statement describes the purpose of the Joint Commission's Speak Up initiative?",
+      "prompt": "A nurse is teaching a client about the Joint Commission's Speak Up initiative. Which statement should the nurse include?",
       "options": [
         {
           "text": "It encourages clients to report concerns about their care.",
@@ -21727,7 +21727,7 @@
       "topic": "Safety",
       "category": "National Performance Goals & Culture of Safety",
       "type": "mc",
-      "prompt": "Which statement reflects a culture of safety?",
+      "prompt": "A nurse manager is building a culture of safety on the unit. Which practice reflects a culture of safety?",
       "options": [
         {
           "text": "Near misses are reported along with errors.",
@@ -21758,7 +21758,7 @@
       "topic": "Safety",
       "category": "National Performance Goals & Culture of Safety",
       "type": "mc",
-      "prompt": "What is the goal of the Transforming Care at the Bedside initiative?",
+      "prompt": "A nurse manager is teaching staff about the Transforming Care at the Bedside initiative. Which goal should the nurse manager include?",
       "options": [
         {
           "text": "Having nurses spend 70% of their time at the bedside",
@@ -21837,7 +21837,7 @@
       "topic": "Safety",
       "category": "Communication & Unexpected Events",
       "type": "sata",
-      "prompt": "Which client situations should prompt the nurse to call the rapid response team? Select all that apply.",
+      "prompt": "A nurse is caring for several clients on a medical-surgical unit. Which client situations should prompt the nurse to call the rapid response team? Select all that apply.",
       "options": [
         {
           "text": "SpO2 of 86% despite oxygen",
@@ -21939,7 +21939,7 @@
       "topic": "Safety",
       "category": "Communication & Unexpected Events",
       "type": "mc",
-      "prompt": "Where should the nurse give handoff report?",
+      "prompt": "A nurse is giving report to the oncoming nurse at the end of the shift. Where should the nurse give the handoff report?",
       "options": [
         {
           "text": "At the bedside",
@@ -21970,7 +21970,7 @@
       "topic": "Safety",
       "category": "Communication & Unexpected Events",
       "type": "sata",
-      "prompt": "When should the nurse give a handoff report? Select all that apply.",
+      "prompt": "A nurse is caring for a client during a hospital stay. When should the nurse give a handoff report? Select all that apply.",
       "options": [
         {
           "text": "At the end of the shift",
@@ -22118,7 +22118,7 @@
       "topic": "Safety",
       "category": "Communication & Unexpected Events",
       "type": "sata",
-      "prompt": "Which events should the nurse report with an occurrence report? Select all that apply.",
+      "prompt": "A nurse is reviewing events that happened during the shift. Which events should the nurse report with an occurrence report? Select all that apply.",
       "options": [
         {
           "text": "A client fall",
@@ -22221,7 +22221,7 @@
       "topic": "Safety",
       "category": "Communication & Unexpected Events",
       "type": "mc",
-      "prompt": "In which settings is workplace violence highest?",
+      "prompt": "A nurse is teaching newly hired nurses about workplace violence. In which settings should the nurse identify workplace violence as highest?",
       "options": [
         {
           "text": "Behavioral health, long-term care, and the emergency department",
@@ -22391,7 +22391,7 @@
       "topic": "Safety",
       "category": "Falls & Injury Prevention",
       "type": "sata",
-      "prompt": "When should the nurse complete a fall-risk assessment? Select all that apply.",
+      "prompt": "A nurse is caring for a client who has a history of falls. When should the nurse complete a fall-risk assessment? Select all that apply.",
       "options": [
         {
           "text": "On admission",
@@ -22607,7 +22607,7 @@
       "topic": "Safety",
       "category": "Falls & Injury Prevention",
       "type": "mc",
-      "prompt": "Which clients should have side rails up for safety?",
+      "prompt": "A nurse is caring for several clients. Which client should have the side rails up for safety?",
       "options": [
         {
           "text": "A client who is sedated",
@@ -22669,7 +22669,7 @@
       "topic": "Safety",
       "category": "Falls & Injury Prevention",
       "type": "mc",
-      "prompt": "What does a fall mean in health care?",
+      "prompt": "A nurse is completing an occurrence report after finding a client on the floor. Which definition of a fall should the nurse use?",
       "options": [
         {
           "text": "An unplanned descent to the floor, with or without injury",
@@ -22774,7 +22774,7 @@
       "topic": "Safety",
       "category": "Restraints & Seizures",
       "type": "sata",
-      "prompt": "A restraint prescription must include which information? Select all that apply.",
+      "prompt": "A nurse is reviewing a provider's prescription for wrist restraints for a client. Which information must the prescription include? Select all that apply.",
       "options": [
         {
           "text": "The reason",
@@ -22815,7 +22815,7 @@
       "topic": "Safety",
       "category": "Restraints & Seizures",
       "type": "mc",
-      "prompt": "How often must the need for a client's restraint be reevaluated, with the provider seeing the client?",
+      "prompt": "A nurse is caring for a client who is in wrist restraints. How often must the need for the restraint be reevaluated, with the provider seeing the client?",
       "options": [
         {
           "text": "Every 24 hours",
@@ -22846,7 +22846,7 @@
       "topic": "Safety",
       "category": "Restraints & Seizures",
       "type": "mc",
-      "prompt": "Why do many facilities avoid vest restraints?",
+      "prompt": "A nurse asks why the facility doesn't use vest restraints. Which response by the charge nurse is accurate?",
       "options": [
         {
           "text": "Strangulation risk",
@@ -23306,7 +23306,7 @@
       "topic": "Safety",
       "category": "Environmental & Emergency Safety",
       "type": "mc",
-      "prompt": "What three things does a fire need?",
+      "prompt": "A nurse is teaching a client about home fire safety. Which three things should the nurse explain a fire needs?",
       "options": [
         {
           "text": "Heat, oxygen, and fuel",
@@ -23545,7 +23545,7 @@
       "topic": "Safety",
       "category": "Environmental & Emergency Safety",
       "type": "mc",
-      "prompt": "Which type of radiation is the least dangerous and doesn't pass through clothing?",
+      "prompt": "A nurse is caring for a client who is receiving radiation therapy. Which type of radiation is the least dangerous and doesn't pass through clothing?",
       "options": [
         {
           "text": "Alpha",
@@ -23697,7 +23697,7 @@
       "topic": "Safety",
       "category": "Environmental & Emergency Safety",
       "type": "mc",
-      "prompt": "What does the Centers for Medicare & Medicaid Services (CMS) require for disaster preparedness?",
+      "prompt": "A nurse manager is reviewing the unit's disaster plan. Which requirement from the Centers for Medicare & Medicaid Services (CMS) should the nurse manager include?",
       "options": [
         {
           "text": "A plan, training at orientation and yearly, and drills",
@@ -23764,7 +23764,7 @@
       "topic": "Safety",
       "category": "Home & Community Safety",
       "type": "mc",
-      "prompt": "What is the leading cause of death and injury for adults?",
+      "prompt": "A nurse is teaching a group of adults about injury prevention. Which cause should the nurse identify as the leading cause of death and injury for adults?",
       "options": [
         {
           "text": "Car crashes",
@@ -23795,7 +23795,7 @@
       "topic": "Safety",
       "category": "Home & Community Safety",
       "type": "mc",
-      "prompt": "An older adult has reduced sensation in the hands. Which home safety risk is increased?",
+      "prompt": "A home health nurse is assessing an older adult client who has reduced sensation in the hands. Which home safety risk should the nurse identify as increased?",
       "options": [
         {
           "text": "Burns",
@@ -23910,7 +23910,7 @@
       "topic": "Safety",
       "category": "Home & Community Safety",
       "type": "mc",
-      "prompt": "What causes the most home fires?",
+      "prompt": "A nurse is teaching a client about home fire safety. Which cause should the nurse identify as the leading cause of home fires?",
       "options": [
         {
           "text": "Cooking",
@@ -24015,7 +24015,7 @@
       "topic": "Safety",
       "category": "Home & Community Safety",
       "type": "mc",
-      "prompt": "Which statement about radon is accurate?",
+      "prompt": "A home health nurse is teaching a client about radon testing. Which statement about radon should the nurse include?",
       "options": [
         {
           "text": "It's the second-leading cause of lung cancer.",
@@ -24526,7 +24526,7 @@
       "topic": "Safety",
       "category": "Ergonomics & Positioning",
       "type": "mc",
-      "prompt": "Which lift equipment puts the least strain on the nurse's back?",
+      "prompt": "A nurse needs to transfer a client who can't bear weight from the bed to a chair. Which lift equipment puts the least strain on the nurse's back?",
       "options": [
         {
           "text": "A ceiling lift",

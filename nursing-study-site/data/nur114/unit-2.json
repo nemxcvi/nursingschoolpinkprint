@@ -8293,7 +8293,7 @@
       "topic": "Client Education",
       "category": "The teaching process",
       "type": "mc",
-      "prompt": "Which part of the teaching plan can a practical nurse (PN) not perform?",
+      "prompt": "A practical nurse (PN) is working with an RN on a client's teaching plan. Which part of the teaching plan can the PN not perform?",
       "options": [
         {
           "text": "Analysis",
@@ -10059,7 +10059,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Cultural Assessment & Communication",
       "type": "mc",
-      "prompt": "When should the nurse begin a cultural health assessment for a newly admitted client?",
+      "prompt": "A nurse is admitting a client from a different cultural background. When should the nurse begin the cultural health assessment?",
       "options": [
         {
           "text": "At the first encounter",
@@ -10214,7 +10214,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Health Equity",
       "type": "mc",
-      "prompt": "A hospital offers simple materials in several languages and trains staff to help clients find services. Which concept does this reflect?",
+      "prompt": "A nurse is part of a committee that is making the hospital's simple health materials available in several languages and training staff to help clients find services. Which concept is the committee addressing?",
       "options": [
         {
           "text": "Personal health literacy",
@@ -10441,7 +10441,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Vulnerable Populations",
       "type": "mc",
-      "prompt": "Which factor is a socioeconomic factor?",
+      "prompt": "A nurse is assessing a client in a community clinic for factors that place the client in a vulnerable population. Which finding is a socioeconomic factor?",
       "options": [
         {
           "text": "Age",
@@ -10472,7 +10472,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Vulnerable Populations",
       "type": "mc",
-      "prompt": "Which factor is a health status factor?",
+      "prompt": "A nurse is assessing a client in a community clinic for factors that place the client in a vulnerable population. Which finding is a health status factor?",
       "options": [
         {
           "text": "Population density",
@@ -11033,7 +11033,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Culture & Bias",
       "type": "mc",
-      "prompt": "Which definition of culture did Leininger give?",
+      "prompt": "A nurse is teaching a group of nursing students about Leininger's theory of culture care. Which definition of culture should the nurse include?",
       "options": [
         {
           "text": "Learned, shared, and passed-down values, beliefs, norms, and lifeways that guide a group's thinking and decisions",
@@ -11148,7 +11148,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Culture & Bias",
       "type": "mc",
-      "prompt": "Which statement describes cultural awareness?",
+      "prompt": "A nurse is teaching a newly hired nurse about cultural awareness. Which statement should the nurse include?",
       "options": [
         {
           "text": "Being willing to understand differences between your culture and others'",
@@ -11337,7 +11337,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Vulnerable Populations",
       "type": "mc",
-      "prompt": "Why are vulnerable populations at higher risk for poor outcomes?",
+      "prompt": "A nurse is teaching a group of nursing students about vulnerable populations. Which statement explains why these groups are at higher risk for poor outcomes?",
       "options": [
         {
           "text": "They face barriers to social, economic, and environmental resources.",
@@ -11557,7 +11557,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Cultural Assessment & Communication",
       "type": "mc",
-      "prompt": "Why shouldn't family members or other staff interpret for a client?",
+      "prompt": "A client's adult son offers to interpret during the admission interview. Why shouldn't the nurse use family members or other staff to interpret?",
       "options": [
         {
           "text": "They can omit or alter information and break confidentiality.",
@@ -13113,7 +13113,7 @@
       "topic": "Self-Concept",
       "category": "Rogers' Theory",
       "type": "mc",
-      "prompt": "Congruence of the three components of self-concept moves a person toward which outcome?",
+      "prompt": "A nurse is teaching a group of nursing students about Rogers' components of self-concept. When a person's self-image, self-esteem, and ideal self are congruent, which outcome should the nurse expect?",
       "options": [
         {
           "text": "Self-actualization",
@@ -13971,7 +13971,7 @@
       "topic": "Comfort, Rest & Sleep",
       "category": "Sleep Medications",
       "type": "mc",
-      "prompt": "Which class of medication is most commonly prescribed for sleep?",
+      "prompt": "A nurse is reviewing sleep medications with a group of nursing students. Which class of medication should the nurse identify as the most commonly prescribed for sleep?",
       "options": [
         {
           "text": "Benzodiazepines",
@@ -14807,7 +14807,7 @@
       "topic": "Comfort, Rest & Sleep",
       "category": "Sleep Disorders",
       "type": "mc",
-      "prompt": "Which sleep disorder causes sudden, uncontrollable episodes of sleep?",
+      "prompt": "A client reports falling asleep suddenly and without warning several times a day, even while talking with friends. Which sleep disorder should the nurse suspect?",
       "options": [
         {
           "text": "Insomnia",
@@ -15352,7 +15352,7 @@
       "topic": "Comfort, Rest & Sleep",
       "category": "Stages & Brain Waves",
       "type": "mc",
-      "prompt": "Which stage of sleep makes up the largest share of sleep for adults ages 20 to 35?",
+      "prompt": "A nurse is teaching a 28-year-old client about the stages of sleep. Which stage should the nurse identify as making up the largest share of the client's sleep?",
       "options": [
         {
           "text": "Stage 2",
@@ -15479,7 +15479,7 @@
       "topic": "Comfort, Rest & Sleep",
       "category": "Stages & Brain Waves",
       "type": "mc",
-      "prompt": "During which sleep stage are the pulse and respiratory rate at their lowest?",
+      "prompt": "A nurse is checking vital signs on a client who is in a deep sleep at 0200. During which stage of sleep should the nurse expect the client's pulse and respiratory rate to be at their lowest?",
       "options": [
         {
           "text": "Stage 3",
@@ -16462,7 +16462,7 @@
       "topic": "Stress and Coping",
       "category": "Types of Stress & Disorders",
       "type": "mc",
-      "prompt": "Which of the following is a psychological stressor?",
+      "prompt": "A nurse is assessing several clients for sources of stress. Which finding should the nurse identify as a psychological stressor?",
       "options": [
         {
           "text": "Hypothermia",
@@ -16560,7 +16560,7 @@
       "topic": "Stress and Coping",
       "category": "Types of Stress & Disorders",
       "type": "mc",
-      "prompt": "A college student says, \"I wait until the last minute on every assignment, and I'm always panicking to finish on time.\" Which type of stress is this?",
+      "prompt": "A college student tells the campus nurse, \"I wait until the last minute on every assignment, and I'm always panicking to finish on time.\" Which type of stress should the nurse identify?",
       "options": [
         {
           "text": "Traumatic stress",
@@ -17267,7 +17267,7 @@
       "topic": "Stress and Coping",
       "category": "Coping & Defense Mechanisms",
       "type": "mc",
-      "prompt": "Which coping strategy is adaptive?",
+      "prompt": "A nurse is assessing a client's coping strategies after a stressful week at work. Which strategy should the nurse identify as adaptive?",
       "options": [
         {
           "text": "Smoking after a hard day",
@@ -17427,7 +17427,7 @@
       "topic": "Stress and Coping",
       "category": "Coping & Defense Mechanisms",
       "type": "mc",
-      "prompt": "A 4-year-old who was toilet trained begins wetting the bed after a new sibling is born. Which defense mechanism is the child demonstrating?",
+      "prompt": "A parent tells the nurse that their 4-year-old, who was toilet trained, began wetting the bed after a new sibling was born. Which defense mechanism should the nurse recognize?",
       "options": [
         {
           "text": "Denial",
@@ -17752,7 +17752,7 @@
       "topic": "Stress and Coping",
       "category": "Stress Physiology",
       "type": "mc",
-      "prompt": "Which effect does cortisol have in the short term?",
+      "prompt": "A nurse is teaching a client about the body's response to a short-term stressor. Which effect of cortisol should the nurse include?",
       "options": [
         {
           "text": "It boosts some immune function.",
@@ -17860,7 +17860,7 @@
       "topic": "Stress and Coping",
       "category": "General Adaptation Syndrome (GAS)",
       "type": "mc",
-      "prompt": "During the alarm stage, which gland releases epinephrine?",
+      "prompt": "A client is brought to the emergency department minutes after a car crash and is in the alarm stage of general adaptation syndrome. Which gland should the nurse identify as releasing epinephrine?",
       "options": [
         {
           "text": "The adrenal medulla",
@@ -17891,7 +17891,7 @@
       "topic": "Stress and Coping",
       "category": "General Adaptation Syndrome (GAS)",
       "type": "mc",
-      "prompt": "Which system calms the body during the resistance stage?",
+      "prompt": "A client who has been hospitalized for 2 weeks is in the resistance stage of general adaptation syndrome. Which system should the nurse identify as calming the body during this stage?",
       "options": [
         {
           "text": "The parasympathetic system",
@@ -17965,7 +17965,7 @@
       "topic": "Stress and Coping",
       "category": "Types of Stress & Disorders",
       "type": "mc",
-      "prompt": "Which type of stress is most common?",
+      "prompt": "A nurse is teaching a community group about types of stress. Which type of stress should the nurse identify as the most common?",
       "options": [
         {
           "text": "Acute",
@@ -18321,7 +18321,7 @@
       "topic": "Stress and Coping",
       "category": "Coping & Defense Mechanisms",
       "type": "mc",
-      "prompt": "When are defense mechanisms helpful?",
+      "prompt": "A nurse is teaching a group of nursing students about defense mechanisms. Which statement about when defense mechanisms are helpful should the nurse include?",
       "options": [
         {
           "text": "In mild to moderate anxiety",
@@ -18637,7 +18637,7 @@
       "topic": "Stress and Coping",
       "category": "Stress in Nursing",
       "type": "mc",
-      "prompt": "Which situation describes moral distress?",
+      "prompt": "A nurse manager is teaching staff about moral distress. Which situation should the nurse manager use as an example?",
       "options": [
         {
           "text": "A nurse's actions don't match what the nurse believes is right.",

@@ -174,7 +174,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "mc",
-   "prompt": "Which fluid is classified as intravascular fluid?",
+   "prompt": "A nurse is teaching a client about the body's fluid compartments. Which fluid should the nurse identify as intravascular fluid?",
    "options": [
     {
      "text": "Plasma",
@@ -205,7 +205,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "sata",
-   "prompt": "Which fluids are transcellular fluids? Select all that apply.",
+   "prompt": "A nurse is teaching a group of nursing students about fluid compartments. Which fluids should the nurse identify as transcellular fluids? Select all that apply.",
    "options": [
     {
      "text": "Plasma",
@@ -241,7 +241,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "dragdrop",
-   "prompt": "Sort each fluid into the compartment it belongs to. Move the extracellular fluids to the answer box.",
+   "prompt": "A nurse is teaching a client about the body's fluid compartments. Which fluids are extracellular? Move the correct answers to the answer box.",
    "leftLabel": "Fluids",
    "rightLabel": "Extracellular",
    "options": [
@@ -284,7 +284,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "mc",
-   "prompt": "Which organ system is the primary regulator of fluid volume?",
+   "prompt": "A nurse is caring for a client who has a fluid imbalance. Which organ system should the nurse identify as the primary regulator of fluid volume?",
    "options": [
     {
      "text": "Renal system",
@@ -315,7 +315,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "mc",
-   "prompt": "Where is the thirst mechanism located?",
+   "prompt": "An older adult client tells the nurse, \"I never feel thirsty anymore.\" Where in the brain should the nurse identify the thirst mechanism as located?",
    "options": [
     {
      "text": "Hypothalamus",
@@ -377,7 +377,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "mc",
-   "prompt": "Which serum osmolality value is within the normal range?",
+   "prompt": "A nurse is reviewing the lab results of a client who has nausea and vomiting. Which serum osmolality value is within the expected range?",
    "options": [
     {
      "text": "290 mOsm/kg",
@@ -408,7 +408,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "mc",
-   "prompt": "What does serum osmolality measure?",
+   "prompt": "A provider prescribes a serum osmolality for a client who has a fluid imbalance. The client asks what the test measures. Which response should the nurse give?",
    "options": [
     {
      "text": "The concentration of solutes to water in the blood",
@@ -439,7 +439,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "sata",
-   "prompt": "Which lab tests reflect kidney function? Select all that apply.",
+   "prompt": "A nurse is reviewing the lab results of a client who has decreased urine output. Which lab tests reflect kidney function? Select all that apply.",
    "options": [
     {
      "text": "Blood urea nitrogen (BUN)",
@@ -475,7 +475,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "mc",
-   "prompt": "Which BUN (blood urea nitrogen) result is within the normal range?",
+   "prompt": "A nurse is reviewing a client's lab results. Which BUN (blood urea nitrogen) result is within the expected range?",
    "options": [
     {
      "text": "15 mg/dL",
@@ -506,7 +506,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "mc",
-   "prompt": "Which creatinine level is normal for an adult male client?",
+   "prompt": "A nurse is reviewing the lab results of an adult male client. Which creatinine level is within the expected range?",
    "options": [
     {
      "text": "1.1 mg/dL",
@@ -537,7 +537,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "sata",
-   "prompt": "Which are functions of body fluids? Select all that apply.",
+   "prompt": "A nurse is teaching a client about why staying hydrated matters. Which functions of body fluids should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Transport nutrients to cells",
@@ -573,7 +573,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Compartments & Regulation",
    "type": "mc",
-   "prompt": "Which process moves water across a semipermeable membrane toward the area with more solutes?",
+   "prompt": "A nurse is teaching a group of nursing students about fluid movement. Which process moves water across a semipermeable membrane toward the area with more solutes?",
    "options": [
     {
      "text": "Osmosis",
@@ -635,7 +635,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Dehydration & Hypovolemia",
    "type": "mc",
-   "prompt": "What is the difference between dehydration and hypovolemia?",
+   "prompt": "A nursing student asks how dehydration differs from hypovolemia. Which response by the nurse is accurate?",
    "options": [
     {
      "text": "Dehydration is a loss of water only; hypovolemia is a loss of fluid and electrolytes",
@@ -666,7 +666,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Dehydration & Hypovolemia",
    "type": "mc",
-   "prompt": "During dehydration, which way does water move to maintain homeostasis?",
+   "prompt": "A nurse is caring for a client who is dehydrated. Which way should the nurse expect water to move to maintain homeostasis?",
    "options": [
     {
      "text": "From inside the cells into the vascular space",
@@ -697,7 +697,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Dehydration & Hypovolemia",
    "type": "sata",
-   "prompt": "Which conditions can cause hypovolemia? Select all that apply.",
+   "prompt": "A nurse is reviewing the medical records of several clients. Which conditions place a client at risk for hypovolemia? Select all that apply.",
    "options": [
     {
      "text": "Hemorrhage",
@@ -733,7 +733,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Dehydration & Hypovolemia",
    "type": "mc",
-   "prompt": "Which is an early sign of hypovolemia?",
+   "prompt": "A nurse is assessing a client who has had vomiting for 2 days. Which finding is an early sign of hypovolemia?",
    "options": [
     {
      "text": "Dry mucous membranes",
@@ -764,7 +764,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Dehydration & Hypovolemia",
    "type": "mc",
-   "prompt": "How does the body compensate for low blood volume?",
+   "prompt": "A nurse is caring for a client who has low blood volume after a hemorrhage. Which compensation should the nurse expect?",
    "options": [
     {
      "text": "The heart beats faster and harder, and vessels in the extremities constrict",
@@ -934,7 +934,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Dehydration & Hypovolemia",
    "type": "mc",
-   "prompt": "Why are older adults at higher risk for dehydration?",
+   "prompt": "A nurse is teaching the family of an older adult client about preventing dehydration. Which explanation of the client's higher risk should the nurse give?",
    "options": [
     {
      "text": "Their sense of thirst diminishes",
@@ -1054,7 +1054,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Hypervolemia",
    "type": "mc",
-   "prompt": "Which finding is most consistent with hypervolemia?",
+   "prompt": "A nurse is assessing a client who has heart failure. Which finding is most consistent with hypervolemia?",
    "options": [
     {
      "text": "Crackles in the lungs",
@@ -1085,7 +1085,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Hypervolemia",
    "type": "sata",
-   "prompt": "Which findings suggest fluid overload? Select all that apply.",
+   "prompt": "A nurse is assessing a client who has chronic kidney disease. Which findings suggest fluid overload? Select all that apply.",
    "options": [
     {
      "text": "Weight gain of 2 kg in 2 days",
@@ -1121,7 +1121,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Hypervolemia",
    "type": "mc",
-   "prompt": "Hypervolemia is most commonly caused by problems with which organ?",
+   "prompt": "A nurse is caring for a client who has hypervolemia. Problems with which organ most commonly cause hypervolemia?",
    "options": [
     {
      "text": "Kidneys",
@@ -1152,7 +1152,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Hypervolemia",
    "type": "mc",
-   "prompt": "Which medication does the nurse anticipate for a client with fluid overload?",
+   "prompt": "A nurse is caring for a client who has fluid overload with crackles and edema. Which medication should the nurse anticipate?",
    "options": [
     {
      "text": "Furosemide, a loop diuretic",
@@ -1183,7 +1183,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Hypervolemia",
    "type": "sata",
-   "prompt": "Which nursing actions are appropriate for a client with hypervolemia? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has hypervolemia. Which nursing actions are appropriate? Select all that apply.",
    "options": [
     {
      "text": "Weigh the client daily",
@@ -1317,7 +1317,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Hypervolemia",
    "type": "mc",
-   "prompt": "Which hematocrit change does the nurse expect with fluid overload?",
+   "prompt": "A nurse is reviewing the lab results of a client who has fluid overload. Which hematocrit change should the nurse expect?",
    "options": [
     {
      "text": "Decreased, because the blood is diluted",
@@ -1348,7 +1348,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Hypervolemia",
    "type": "dragdrop",
-   "prompt": "Sort the findings. Move the signs of fluid volume excess to the answer box.",
+   "prompt": "A nurse is assessing a client who is receiving IV fluids. Which findings are signs of fluid volume excess? Move the correct answers to the answer box.",
    "leftLabel": "Findings",
    "rightLabel": "Fluid volume excess",
    "options": [
@@ -1396,7 +1396,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Assessment & I&O",
    "type": "sata",
-   "prompt": "Which are counted as intake? Select all that apply.",
+   "prompt": "A nurse is totaling a client's intake and output at the end of the shift. Which should the nurse count as intake? Select all that apply.",
    "options": [
     {
      "text": "IV fluids",
@@ -1432,7 +1432,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Assessment & I&O",
    "type": "sata",
-   "prompt": "Which are counted as output? Select all that apply.",
+   "prompt": "A nurse is totaling a client's intake and output at the end of the shift. Which should the nurse count as output? Select all that apply.",
    "options": [
     {
      "text": "Urine",
@@ -1532,7 +1532,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Assessment & I&O",
    "type": "mc",
-   "prompt": "Which is the most accurate way to track a client's fluid status day to day?",
+   "prompt": "A nurse is caring for a client who has heart failure. Which is the most accurate way to track the client's fluid status day to day?",
    "options": [
     {
      "text": "Daily weight at the same time on the same scale",
@@ -1563,7 +1563,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Assessment & I&O",
    "type": "mc",
-   "prompt": "What is the normal range for urine specific gravity?",
+   "prompt": "A nurse is reviewing a client's urinalysis. Which range is expected for urine specific gravity?",
    "options": [
     {
      "text": "1.005–1.030",
@@ -1656,7 +1656,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Assessment & I&O",
    "type": "mc",
-   "prompt": "Which combination indicates fluid volume deficit?",
+   "prompt": "A nurse is reviewing a client's intake and output and urinalysis. Which combination indicates fluid volume deficit?",
    "options": [
     {
      "text": "Low urine volume and high specific gravity",
@@ -1718,7 +1718,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Assessment & I&O",
    "type": "sata",
-   "prompt": "Which are part of assessing a client with a fluid or electrolyte imbalance? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a fluid and electrolyte imbalance. Which should the nurse include in the assessment? Select all that apply.",
    "options": [
     {
      "text": "Intake and output",
@@ -1754,7 +1754,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Assessment & I&O",
    "type": "order",
-   "prompt": "Place the steps for an accurate daily weight in order.",
+   "prompt": "A nurse is caring for a client who has heart failure and needs daily weights. Place the steps for an accurate daily weight in order.",
    "options": [
     {
      "text": "Have the client void first",
@@ -1781,7 +1781,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Assessment & I&O",
    "type": "mc",
-   "prompt": "Urine specific gravity is often checked instead of serum osmolality because it:",
+   "prompt": "A nursing student asks why the nurse checks a client's urine specific gravity instead of serum osmolality. Which response by the nurse is accurate?",
    "options": [
     {
      "text": "Is easier to obtain and reflects the same idea of concentration",
@@ -1812,7 +1812,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "mc",
-   "prompt": "What are electrolytes?",
+   "prompt": "A client asks the nurse what electrolytes are. Which response should the nurse give?",
    "options": [
     {
      "text": "Minerals in the body that conduct electricity",
@@ -1843,7 +1843,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "sata",
-   "prompt": "Electrolytes are responsible for which functions? Select all that apply.",
+   "prompt": "A nurse is teaching a client about electrolytes. Which functions should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Balancing the amount of water in the body",
@@ -1879,7 +1879,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "mc",
-   "prompt": "Which lab panel measures a client's electrolyte levels?",
+   "prompt": "A provider wants to check a client's electrolyte levels. Which lab panel should the nurse expect to be prescribed?",
    "options": [
     {
      "text": "Comprehensive metabolic panel (CMP)",
@@ -1910,7 +1910,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "sata",
-   "prompt": "Which can lead to an electrolyte imbalance? Select all that apply.",
+   "prompt": "A nurse is reviewing the medical records of several clients. Which factors can lead to an electrolyte imbalance? Select all that apply.",
    "options": [
     {
      "text": "Dehydration",
@@ -1946,7 +1946,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "dragdrop",
-   "prompt": "Move each lab value that is within the normal range to the answer box.",
+   "prompt": "A nurse is reviewing an adult client's lab results. Which values are within the expected range? Move the correct answers to the answer box.",
    "leftLabel": "Lab values",
    "rightLabel": "Normal",
    "options": [
@@ -1994,7 +1994,7 @@
    "topic": "Electrolytes",
    "category": "Sodium",
    "type": "mc",
-   "prompt": "What is the normal serum sodium range?",
+   "prompt": "A nurse is reviewing an adult client's basic metabolic panel. Which serum sodium range is expected?",
    "options": [
     {
      "text": "136–145 mEq/L",
@@ -2025,7 +2025,7 @@
    "topic": "Electrolytes",
    "category": "Sodium",
    "type": "mc",
-   "prompt": "What is the most common cause of hyponatremia?",
+   "prompt": "A nurse is caring for a client who has hyponatremia. Which cause is most common?",
    "options": [
     {
      "text": "Excess water in the body",
@@ -2056,7 +2056,7 @@
    "topic": "Electrolytes",
    "category": "Sodium",
    "type": "mc",
-   "prompt": "What is the most common cause of hypernatremia?",
+   "prompt": "A nurse is caring for a client who has hypernatremia. Which cause is most common?",
    "options": [
     {
      "text": "Loss of water from the body",
@@ -2154,7 +2154,7 @@
    "topic": "Electrolytes",
    "category": "Sodium",
    "type": "mc",
-   "prompt": "Which body system is hit hardest by hypernatremia?",
+   "prompt": "A nurse is caring for a client who has a sodium level of 152 mEq/L. Which body system should the nurse expect to be affected most?",
    "options": [
     {
      "text": "Central nervous system",
@@ -2185,7 +2185,7 @@
    "topic": "Electrolytes",
    "category": "Sodium",
    "type": "sata",
-   "prompt": "Which findings are consistent with hypernatremia? Select all that apply.",
+   "prompt": "A nurse is assessing a client who has hypernatremia. Which findings should the nurse expect? Select all that apply.",
    "options": [
     {
      "text": "Agitation",
@@ -2221,7 +2221,7 @@
    "topic": "Electrolytes",
    "category": "Sodium",
    "type": "mc",
-   "prompt": "Which IV fluid does the nurse expect for a client with hypernatremia from water loss?",
+   "prompt": "A nurse is caring for a client who has hypernatremia from water loss. Which IV fluid should the nurse expect?",
    "options": [
     {
      "text": "0.45% sodium chloride (hypotonic)",
@@ -2319,7 +2319,7 @@
    "topic": "Electrolytes",
    "category": "Sodium",
    "type": "mc",
-   "prompt": "What is sodium's main role in the body?",
+   "prompt": "A nurse is teaching a client about sodium. Which role of sodium in the body should the nurse include?",
    "options": [
     {
      "text": "Regulates fluid balance and supports nerve and muscle function",
@@ -2350,7 +2350,7 @@
    "topic": "Electrolytes",
    "category": "Potassium",
    "type": "mc",
-   "prompt": "What is the normal serum potassium range?",
+   "prompt": "A nurse is reviewing an adult client's basic metabolic panel. Which serum potassium range is expected?",
    "options": [
     {
      "text": "3.5–5 mEq/L",
@@ -2412,7 +2412,7 @@
    "topic": "Electrolytes",
    "category": "Potassium",
    "type": "sata",
-   "prompt": "Which can cause hypokalemia? Select all that apply.",
+   "prompt": "A nurse is reviewing the medical records of several clients. Which factors can cause hypokalemia? Select all that apply.",
    "options": [
     {
      "text": "Loop diuretics such as furosemide",
@@ -2448,7 +2448,7 @@
    "topic": "Electrolytes",
    "category": "Potassium",
    "type": "mc",
-   "prompt": "What is a common cause of hyperkalemia?",
+   "prompt": "A nurse is reviewing the record of a client who has a potassium level of 6.2 mEq/L. Which condition is a common cause of hyperkalemia?",
    "options": [
     {
      "text": "Kidney failure",
@@ -2510,7 +2510,7 @@
    "topic": "Electrolytes",
    "category": "Potassium",
    "type": "mc",
-   "prompt": "At what rate is IV potassium typically given to an adult?",
+   "prompt": "A nurse is preparing to give IV potassium to an adult client who has hypokalemia. At which rate should the nurse expect to infuse it?",
    "options": [
     {
      "text": "10–20 mEq per hour",
@@ -2541,7 +2541,7 @@
    "topic": "Electrolytes",
    "category": "Potassium",
    "type": "sata",
-   "prompt": "Which are safe practices for IV potassium? Select all that apply.",
+   "prompt": "A nurse is preparing to give IV potassium chloride to a client. Which actions are safe practices? Select all that apply.",
    "options": [
     {
      "text": "Give it by IV push to replace it quickly",
@@ -2577,7 +2577,7 @@
    "topic": "Electrolytes",
    "category": "Potassium",
    "type": "sata",
-   "prompt": "Which treatments does the nurse anticipate for hyperkalemia? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a potassium level of 6.8 mEq/L. Which treatments should the nurse anticipate? Select all that apply.",
    "options": [
     {
      "text": "Sodium polystyrene sulfonate",
@@ -2711,7 +2711,7 @@
    "topic": "Electrolytes",
    "category": "Potassium",
    "type": "mc",
-   "prompt": "Why does hypokalemia increase the risk for digoxin toxicity?",
+   "prompt": "A client who takes digoxin has a potassium level of 3.1 mEq/L. Why is the client at increased risk for digoxin toxicity?",
    "options": [
     {
      "text": "Low potassium makes the heart more sensitive to digoxin",
@@ -2805,7 +2805,7 @@
    "topic": "Electrolytes",
    "category": "Potassium",
    "type": "dragdrop",
-   "prompt": "Move the findings of hyperkalemia to the answer box.",
+   "prompt": "A nurse is assessing a client who has a potassium level of 6.4 mEq/L. Which findings should the nurse expect? Move the correct answers to the answer box.",
    "leftLabel": "Findings",
    "rightLabel": "Hyperkalemia",
    "options": [
@@ -2848,7 +2848,7 @@
    "topic": "Electrolytes",
    "category": "Calcium",
    "type": "mc",
-   "prompt": "What is the normal serum calcium range?",
+   "prompt": "A nurse is reviewing an adult client's lab results. Which serum calcium range is expected?",
    "options": [
     {
      "text": "9–10.5 mg/dL",
@@ -2879,7 +2879,7 @@
    "topic": "Electrolytes",
    "category": "Calcium",
    "type": "mc",
-   "prompt": "Which finding is the hallmark of hypocalcemia?",
+   "prompt": "A nurse is assessing a client who had a thyroidectomy and has a low calcium level. Which finding is the hallmark of hypocalcemia?",
    "options": [
     {
      "text": "Tetany",
@@ -2941,7 +2941,7 @@
    "topic": "Electrolytes",
    "category": "Calcium",
    "type": "mc",
-   "prompt": "How does the nurse check for Chvostek's sign?",
+   "prompt": "A nurse is assessing a client who had a thyroidectomy for hypocalcemia. How should the nurse check for Chvostek's sign?",
    "options": [
     {
      "text": "Tap the face in front of the ear, below the cheekbone, and watch for twitching",
@@ -2972,7 +2972,7 @@
    "topic": "Electrolytes",
    "category": "Calcium",
    "type": "sata",
-   "prompt": "Which findings does the nurse expect with hypocalcemia? Select all that apply.",
+   "prompt": "A nurse is assessing a client who has hypocalcemia. Which findings should the nurse expect? Select all that apply.",
    "options": [
     {
      "text": "Numbness and tingling around the mouth",
@@ -3008,7 +3008,7 @@
    "topic": "Electrolytes",
    "category": "Calcium",
    "type": "sata",
-   "prompt": "Which are risk factors for hypocalcemia? Select all that apply.",
+   "prompt": "A nurse is reviewing the medical records of several clients. Which are risk factors for hypocalcemia? Select all that apply.",
    "options": [
     {
      "text": "Laxative misuse",
@@ -3044,7 +3044,7 @@
    "topic": "Electrolytes",
    "category": "Calcium",
    "type": "sata",
-   "prompt": "Which findings are consistent with hypercalcemia? Select all that apply.",
+   "prompt": "A nurse is assessing a client who has a calcium level of 12.4 mg/dL. Which findings should the nurse expect? Select all that apply.",
    "options": [
     {
      "text": "Constipation",
@@ -3142,7 +3142,7 @@
    "topic": "Electrolytes",
    "category": "Calcium",
    "type": "mc",
-   "prompt": "Which cause of hypercalcemia does the nurse recognize?",
+   "prompt": "A nurse is caring for a client who has a calcium level of 12.8 mg/dL. Which cause of hypercalcemia should the nurse recognize?",
    "options": [
     {
      "text": "Cancer",
@@ -3209,7 +3209,7 @@
    "topic": "Electrolytes",
    "category": "Calcium",
    "type": "sata",
-   "prompt": "Calcium's roles in the body include which? Select all that apply.",
+   "prompt": "A nurse is teaching a client about calcium. Which roles of calcium should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Helping move glucose into cells",
@@ -3245,7 +3245,7 @@
    "topic": "Electrolytes",
    "category": "Magnesium",
    "type": "mc",
-   "prompt": "What is the normal serum magnesium range?",
+   "prompt": "A nurse is reviewing an adult client's lab results. Which serum magnesium range is expected?",
    "options": [
     {
      "text": "1.3–2.1 mEq/L",
@@ -3276,7 +3276,7 @@
    "topic": "Electrolytes",
    "category": "Magnesium",
    "type": "mc",
-   "prompt": "What is a common cause of hypermagnesemia?",
+   "prompt": "A nurse is caring for a client who has hypermagnesemia. Which condition is a common cause?",
    "options": [
     {
      "text": "Kidney disease",
@@ -3338,7 +3338,7 @@
    "topic": "Electrolytes",
    "category": "Magnesium",
    "type": "sata",
-   "prompt": "Which findings are consistent with hypermagnesemia? Select all that apply.",
+   "prompt": "A nurse is assessing a client who has a magnesium level of 3.0 mEq/L. Which findings should the nurse expect? Select all that apply.",
    "options": [
     {
      "text": "Decreased deep tendon reflexes",
@@ -3374,7 +3374,7 @@
    "topic": "Electrolytes",
    "category": "Magnesium",
    "type": "sata",
-   "prompt": "Which can cause hypomagnesemia? Select all that apply.",
+   "prompt": "A nurse is reviewing the medical records of several clients. Which factors can cause hypomagnesemia? Select all that apply.",
    "options": [
     {
      "text": "Diarrhea",
@@ -3410,7 +3410,7 @@
    "topic": "Electrolytes",
    "category": "Magnesium",
    "type": "mc",
-   "prompt": "Which finding suggests severe hypomagnesemia?",
+   "prompt": "A nurse is caring for a client who has hypomagnesemia. Which finding suggests the imbalance is severe?",
    "options": [
     {
      "text": "Seizures",
@@ -3472,7 +3472,7 @@
    "topic": "Electrolytes",
    "category": "Magnesium",
    "type": "dragdrop",
-   "prompt": "Sort each finding. Move the findings of hypomagnesemia to the answer box.",
+   "prompt": "A nurse is assessing a client who has alcohol use disorder and a low magnesium level. Which findings are consistent with hypomagnesemia? Move the correct answers to the answer box.",
    "leftLabel": "Findings",
    "rightLabel": "Hypomagnesemia",
    "options": [
@@ -3515,7 +3515,7 @@
    "topic": "Electrolytes",
    "category": "Magnesium",
    "type": "mc",
-   "prompt": "Which electrolytes are often low along with magnesium?",
+   "prompt": "A nurse is reviewing the lab results of a client who has hypomagnesemia. Which electrolytes should the nurse expect to be low as well?",
    "options": [
     {
      "text": "Calcium and potassium",
@@ -3582,7 +3582,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "dragdrop",
-   "prompt": "Move the imbalances that are usually caused by losing fluid or electrolytes through the GI tract or diuretics to the answer box.",
+   "prompt": "A nurse is caring for clients who have lost fluid through the GI tract or from diuretics. Which imbalances are usually caused by these losses? Move the correct answers to the answer box.",
    "leftLabel": "Imbalances",
    "rightLabel": "Caused by GI or diuretic loss",
    "options": [
@@ -3679,7 +3679,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "mc",
-   "prompt": "Which statement describes a colloid solution?",
+   "prompt": "A provider prescribes a colloid solution for a client who has low blood volume. Which statement about colloid solutions should the nurse keep in mind?",
    "options": [
     {
      "text": "It has large molecules that stay in the blood vessels and expand volume",
@@ -3710,7 +3710,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "mc",
-   "prompt": "What does a solution's tonicity describe?",
+   "prompt": "A nurse is teaching a group of nursing students about IV solutions. What does a solution's tonicity describe?",
    "options": [
     {
      "text": "Its ability to make water move in or out of cells by osmosis",
@@ -3741,7 +3741,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "mc",
-   "prompt": "Which IV solution is isotonic?",
+   "prompt": "A nurse is preparing an IV solution for a client who has fluid volume deficit. Which solution is isotonic?",
    "options": [
     {
      "text": "0.9% sodium chloride",
@@ -3772,7 +3772,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "sata",
-   "prompt": "Which IV solutions are hypertonic? Select all that apply.",
+   "prompt": "A nurse is reviewing the IV solutions on the unit. Which solutions are hypertonic? Select all that apply.",
    "options": [
     {
      "text": "Lactated Ringer's",
@@ -3813,7 +3813,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "dragdrop",
-   "prompt": "Move the isotonic solutions to the answer box.",
+   "prompt": "A nurse is reviewing the IV solutions on the unit. Which solutions are isotonic? Move the correct answers to the answer box.",
    "leftLabel": "IV solutions",
    "rightLabel": "Isotonic",
    "options": [
@@ -3887,7 +3887,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "mc",
-   "prompt": "What happens to cells when a hypotonic solution is infused?",
+   "prompt": "A nurse is infusing a hypotonic solution to a client. What should the nurse expect to happen to the client's cells?",
    "options": [
     {
      "text": "Water moves into the cells, which can swell",
@@ -3918,7 +3918,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "mc",
-   "prompt": "Which solution is used to correct high serum electrolyte levels such as hypernatremia?",
+   "prompt": "A nurse is caring for a client who has hypernatremia. Which IV solution should the nurse expect the provider to prescribe?",
    "options": [
     {
      "text": "0.45% sodium chloride",
@@ -3980,7 +3980,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "sata",
-   "prompt": "Hypertonic IV solutions are used for which purposes? Select all that apply.",
+   "prompt": "A nurse is caring for a client who is receiving a hypertonic IV solution. For which purposes are hypertonic solutions used? Select all that apply.",
    "options": [
     {
      "text": "Treating low serum electrolyte levels",
@@ -4052,7 +4052,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "mc",
-   "prompt": "Which crystalloid property is true?",
+   "prompt": "A nurse is hanging a crystalloid solution for a client. Which statement about crystalloids is accurate?",
    "options": [
     {
      "text": "Small particles that pass easily from the blood into cells and tissues",
@@ -4083,7 +4083,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Access Devices",
    "type": "mc",
-   "prompt": "Which peripheral IV catheter has the largest diameter?",
+   "prompt": "A nurse is preparing to start a peripheral IV for a client who needs rapid fluid replacement. Which catheter has the largest diameter?",
    "options": [
     {
      "text": "16 gauge",
@@ -4145,7 +4145,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Access Devices",
    "type": "mc",
-   "prompt": "How often is IV tubing changed for an intermittent infusion?",
+   "prompt": "A nurse is caring for a client who receives an IV antibiotic every 8 hours. How often should the nurse change the intermittent infusion tubing?",
    "options": [
     {
      "text": "Every 24 hours",
@@ -4176,7 +4176,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Access Devices",
    "type": "mc",
-   "prompt": "How often is IV tubing for a continuous infusion changed?",
+   "prompt": "A nurse is caring for a client who has a continuous IV infusion. How often should the nurse change the tubing?",
    "options": [
     {
      "text": "Every 96 hours",
@@ -4207,7 +4207,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Access Devices",
    "type": "sata",
-   "prompt": "Which are central venous access devices (CVADs)? Select all that apply.",
+   "prompt": "A nurse is caring for several clients who have IV access. Which devices are central venous access devices (CVADs)? Select all that apply.",
    "options": [
     {
      "text": "Midline catheter",
@@ -4243,7 +4243,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Access Devices",
    "type": "mc",
-   "prompt": "How often is a CVAD dressing changed?",
+   "prompt": "A nurse is caring for a client who has a central venous access device (CVAD) with a transparent dressing. How often should the nurse change the dressing?",
    "options": [
     {
      "text": "Every 7 days, or sooner if soiled or loose",
@@ -4274,7 +4274,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Access Devices",
    "type": "mc",
-   "prompt": "What covers CVAD ports when they aren't in use?",
+   "prompt": "A nurse is caring for a client who has a central venous access device (CVAD). What should the nurse use to cover the ports when they aren't in use?",
    "options": [
     {
      "text": "Curos (disinfecting) caps",
@@ -4403,7 +4403,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Complications",
    "type": "mc",
-   "prompt": "Which finding suggests phlebitis at an IV site?",
+   "prompt": "A nurse is assessing a client's peripheral IV site. Which finding suggests phlebitis?",
    "options": [
     {
      "text": "Warmth, redness and a red streak along the vein",
@@ -4465,7 +4465,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Complications",
    "type": "mc",
-   "prompt": "What is the difference between infiltration and extravasation?",
+   "prompt": "A nurse is teaching a group of nursing students about IV complications. Which statement explains how extravasation differs from infiltration?",
    "options": [
     {
      "text": "Extravasation is the leak of a vesicant that can damage tissue",
@@ -4523,7 +4523,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Complications",
    "type": "sata",
-   "prompt": "Which findings suggest circulatory overload during IV therapy? Select all that apply.",
+   "prompt": "A nurse is caring for an older adult client who is receiving IV fluids. Which findings suggest circulatory overload? Select all that apply.",
    "options": [
     {
      "text": "Crackles in the lungs",
@@ -4626,7 +4626,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Complications",
    "type": "dragdrop",
-   "prompt": "Move the findings of infiltration to the answer box.",
+   "prompt": "A nurse is assessing a client's peripheral IV site. Which findings suggest infiltration? Move the correct answers to the answer box.",
    "leftLabel": "Findings",
    "rightLabel": "Infiltration",
    "options": [
@@ -4669,7 +4669,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Complications",
    "type": "sata",
-   "prompt": "Which are signs of an IV site infection? Select all that apply.",
+   "prompt": "A nurse is assessing a client who has had a peripheral IV for 3 days. Which findings are signs of an IV site infection? Select all that apply.",
    "options": [
     {
      "text": "Redness",
@@ -4705,7 +4705,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Complications",
    "type": "mc",
-   "prompt": "What does the IV complication mnemonic PIE stand for?",
+   "prompt": "A nurse is reviewing IV complications with a nursing student using the mnemonic PIE. What does PIE stand for?",
    "options": [
     {
      "text": "Phlebitis, infiltration, extravasation",
@@ -4736,7 +4736,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "mc",
-   "prompt": "Which blood product restores blood levels without adding much volume?",
+   "prompt": "A nurse is caring for a client who has anemia and heart failure. Which blood product restores blood levels without adding much volume?",
    "options": [
     {
      "text": "Packed red blood cells",
@@ -4767,7 +4767,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "mc",
-   "prompt": "Which blood type is the universal donor?",
+   "prompt": "A nurse is preparing to give an emergency blood transfusion before the client's blood type is known. Which blood type is the universal donor?",
    "options": [
     {
      "text": "O negative",
@@ -4798,7 +4798,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "mc",
-   "prompt": "Which blood type is the universal recipient?",
+   "prompt": "A nurse is reviewing blood compatibility. Which blood type is the universal recipient?",
    "options": [
     {
      "text": "AB positive",
@@ -4829,7 +4829,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "mc",
-   "prompt": "What is the main purpose of a platelet transfusion?",
+   "prompt": "A nurse is preparing to give a platelet transfusion to a client who has a low platelet count. What is the main purpose of the transfusion?",
    "options": [
     {
      "text": "To stop or prevent bleeding",
@@ -4860,7 +4860,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "mc",
-   "prompt": "When is whole blood most commonly used?",
+   "prompt": "A nurse is reviewing blood products with a nursing student. When is whole blood most commonly used?",
    "options": [
     {
      "text": "Trauma or surgery with significant blood loss",
@@ -4891,7 +4891,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "mc",
-   "prompt": "Which IV solution is used with a blood transfusion?",
+   "prompt": "A nurse is preparing to give a client a unit of packed red blood cells. Which IV solution should the nurse hang with the blood?",
    "options": [
     {
      "text": "0.9% sodium chloride",
@@ -4922,7 +4922,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "mc",
-   "prompt": "When do most transfusion reactions occur?",
+   "prompt": "A nurse has started a blood transfusion for a client. When should the nurse expect most transfusion reactions to occur?",
    "options": [
     {
      "text": "During the first 15 minutes",
@@ -4980,7 +4980,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "sata",
-   "prompt": "Which actions are part of safe blood administration? Select all that apply.",
+   "prompt": "A nurse is preparing to give a client a unit of packed red blood cells. Which actions are part of safe blood administration? Select all that apply.",
    "options": [
     {
      "text": "Two nurses verify the unit against the client at the bedside",
@@ -5016,7 +5016,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "dragdrop",
-   "prompt": "Move the blood types that can be given to a client with type A positive blood to the answer box.",
+   "prompt": "A nurse is preparing to give a blood transfusion to a client who has type A positive blood. Which blood types can the client receive? Move the correct answers to the answer box.",
    "leftLabel": "Blood types",
    "rightLabel": "Safe for A+",
    "options": [
@@ -5095,7 +5095,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "Blood Transfusions",
    "type": "sata",
-   "prompt": "Which findings during a transfusion suggest a reaction? Select all that apply.",
+   "prompt": "A nurse is monitoring a client who is receiving a blood transfusion. Which findings suggest a transfusion reaction? Select all that apply.",
    "options": [
     {
      "text": "Fever and chills",
@@ -5131,7 +5131,7 @@
    "topic": "Acid-Base Balance",
    "category": "Acid-Base Basics",
    "type": "mc",
-   "prompt": "What is the normal pH range of arterial blood?",
+   "prompt": "A nurse is reviewing a client's arterial blood gas (ABG) results. Which pH range is expected?",
    "options": [
     {
      "text": "7.35–7.45",
@@ -5193,7 +5193,7 @@
    "topic": "Acid-Base Balance",
    "category": "Acid-Base Basics",
    "type": "mc",
-   "prompt": "Which organ controls carbonic acid (CO2) in acid-base balance?",
+   "prompt": "A nurse is caring for a client who has an acid-base imbalance. Which organ controls carbonic acid (CO2)?",
    "options": [
     {
      "text": "Lungs",
@@ -5224,7 +5224,7 @@
    "topic": "Acid-Base Balance",
    "category": "Acid-Base Basics",
    "type": "sata",
-   "prompt": "What do the kidneys do to regulate acid-base balance? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has an acid-base imbalance. What do the kidneys do to regulate acid-base balance? Select all that apply.",
    "options": [
     {
      "text": "Make new bicarbonate",
@@ -5260,7 +5260,7 @@
    "topic": "Acid-Base Balance",
    "category": "Acid-Base Basics",
    "type": "mc",
-   "prompt": "Which statement about acidosis and alkalosis is true?",
+   "prompt": "A nursing student asks whether acidosis is a disease. Which response by the nurse is accurate?",
    "options": [
     {
      "text": "They result from many different disorders rather than being diseases themselves",
@@ -5291,7 +5291,7 @@
    "topic": "Acid-Base Balance",
    "category": "Acid-Base Basics",
    "type": "mc",
-   "prompt": "Carbonic acid forms when which two substances combine?",
+   "prompt": "A nurse is teaching a group of nursing students about acid-base balance. Carbonic acid forms when which two substances combine?",
    "options": [
     {
      "text": "Carbon dioxide and water",
@@ -5322,7 +5322,7 @@
    "topic": "Acid-Base Balance",
    "category": "Acid-Base Basics",
    "type": "dragdrop",
-   "prompt": "Move each item to the organ that controls it. Move the items controlled by the kidneys to the answer box.",
+   "prompt": "A nurse is teaching a group of nursing students how the lungs and kidneys control acid-base balance. Which items are controlled by the kidneys? Move the correct answers to the answer box.",
    "leftLabel": "Items",
    "rightLabel": "Kidneys",
    "options": [
@@ -5360,7 +5360,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "What is the normal range for PaCO2?",
+   "prompt": "A nurse is reviewing a client's arterial blood gas (ABG) results. Which PaCO2 range is expected?",
    "options": [
     {
      "text": "35–45 mm Hg",
@@ -5391,7 +5391,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "What is the normal range for bicarbonate (HCO3–)?",
+   "prompt": "A nurse is reviewing a client's arterial blood gas (ABG) results. Which bicarbonate (HCO3–) range is expected?",
    "options": [
     {
      "text": "22–26 mEq/L",
@@ -5422,7 +5422,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "order",
-   "prompt": "Place the steps for interpreting an ABG in order.",
+   "prompt": "A nurse is reviewing a client's arterial blood gas (ABG) results. Place the steps for interpreting the ABG in order.",
    "options": [
     {
      "text": "Look at the pH to decide acidosis or alkalosis",
@@ -5449,7 +5449,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "ABG: pH 7.30, PaCO2 52 mm Hg, HCO3– 24 mEq/L. Interpret.",
+   "prompt": "A nurse is reviewing the arterial blood gas results of a client who received opioids after surgery: pH 7.30, PaCO2 52 mm Hg, HCO3– 24 mEq/L. How should the nurse interpret these results?",
    "options": [
     {
      "text": "Respiratory acidosis",
@@ -5480,7 +5480,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "ABG: pH 7.49, PaCO2 30 mm Hg, HCO3– 24 mEq/L. Interpret.",
+   "prompt": "A nurse is reviewing the arterial blood gas results of a client who is anxious and breathing rapidly: pH 7.49, PaCO2 30 mm Hg, HCO3– 24 mEq/L. How should the nurse interpret these results?",
    "options": [
     {
      "text": "Respiratory alkalosis",
@@ -5511,7 +5511,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "ABG: pH 7.32, PaCO2 40 mm Hg, HCO3– 18 mEq/L. Interpret.",
+   "prompt": "A nurse is reviewing the arterial blood gas results of a client who has severe diarrhea: pH 7.32, PaCO2 40 mm Hg, HCO3– 18 mEq/L. How should the nurse interpret these results?",
    "options": [
     {
      "text": "Metabolic acidosis",
@@ -5542,7 +5542,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "ABG: pH 7.50, PaCO2 41 mm Hg, HCO3– 31 mEq/L. Interpret.",
+   "prompt": "A nurse is reviewing the arterial blood gas results of a client who has been vomiting for 3 days: pH 7.50, PaCO2 41 mm Hg, HCO3– 31 mEq/L. How should the nurse interpret these results?",
    "options": [
     {
      "text": "Metabolic alkalosis",
@@ -5573,7 +5573,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "ABG: pH 7.40, PaCO2 38 mm Hg, HCO3– 24 mEq/L. Interpret.",
+   "prompt": "A nurse is reviewing a client's arterial blood gas results: pH 7.40, PaCO2 38 mm Hg, HCO3– 24 mEq/L. How should the nurse interpret these results?",
    "options": [
     {
      "text": "Normal",
@@ -5604,7 +5604,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "ABG: pH 7.33, PaCO2 35 mm Hg, HCO3– 20 mEq/L. Interpret.",
+   "prompt": "A nurse is reviewing the arterial blood gas results of a client who has kidney failure: pH 7.33, PaCO2 35 mm Hg, HCO3– 20 mEq/L. How should the nurse interpret these results?",
    "options": [
     {
      "text": "Metabolic acidosis",
@@ -5635,7 +5635,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "In respiratory acid-base disorders, how do the pH and PaCO2 change?",
+   "prompt": "A nurse is interpreting a client's arterial blood gas results. In respiratory acid-base disorders, how do the pH and PaCO2 change?",
    "options": [
     {
      "text": "In opposite directions",
@@ -5666,7 +5666,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "mc",
-   "prompt": "In metabolic acid-base disorders, how do the pH and HCO3– change?",
+   "prompt": "A nurse is interpreting a client's arterial blood gas results. In metabolic acid-base disorders, how do the pH and HCO3– change?",
    "options": [
     {
      "text": "In the same direction",
@@ -5697,7 +5697,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "dragdrop",
-   "prompt": "Move each ABG that shows ACIDOSIS to the answer box.",
+   "prompt": "A nurse is reviewing the arterial blood gas results of several clients. Which results show acidosis? Move the correct answers to the answer box.",
    "leftLabel": "ABG results",
    "rightLabel": "Acidosis",
    "options": [
@@ -5812,7 +5812,7 @@
    "topic": "Acid-Base Balance",
    "category": "ABG Interpretation",
    "type": "sata",
-   "prompt": "Which values are within normal ABG ranges? Select all that apply.",
+   "prompt": "A nurse is reviewing a client's arterial blood gas results. Which values are within the expected range? Select all that apply.",
    "options": [
     {
      "text": "pH 7.38",
@@ -5910,7 +5910,7 @@
    "topic": "Acid-Base Balance",
    "category": "Causes & Care",
    "type": "sata",
-   "prompt": "Which conditions can cause respiratory acidosis? Select all that apply.",
+   "prompt": "A nurse is reviewing the medical records of several clients. Which conditions can cause respiratory acidosis? Select all that apply.",
    "options": [
     {
      "text": "Opioid overdose",
@@ -5946,7 +5946,7 @@
    "topic": "Acid-Base Balance",
    "category": "Causes & Care",
    "type": "sata",
-   "prompt": "Which can cause metabolic acidosis? Select all that apply.",
+   "prompt": "A nurse is reviewing the medical records of several clients. Which conditions can cause metabolic acidosis? Select all that apply.",
    "options": [
     {
      "text": "Diabetic ketoacidosis",
@@ -5982,7 +5982,7 @@
    "topic": "Acid-Base Balance",
    "category": "Causes & Care",
    "type": "sata",
-   "prompt": "Which can cause metabolic alkalosis? Select all that apply.",
+   "prompt": "A nurse is reviewing the medical records of several clients. Which conditions can cause metabolic alkalosis? Select all that apply.",
    "options": [
     {
      "text": "Prolonged vomiting",
@@ -6049,7 +6049,7 @@
    "topic": "Acid-Base Balance",
    "category": "Causes & Care",
    "type": "sata",
-   "prompt": "Which nursing interventions help prevent or correct acid-base imbalances? Select all that apply.",
+   "prompt": "A nurse is planning care for a client who has an acid-base imbalance. Which nursing interventions help prevent or correct the imbalance? Select all that apply.",
    "options": [
     {
      "text": "IV therapy",
@@ -6148,7 +6148,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "Which nutrient is the body's primary energy source?",
+   "prompt": "A nurse is teaching a client about nutrition. Which nutrient should the nurse identify as the body's primary energy source?",
    "options": [
     {
      "text": "Carbohydrates",
@@ -6179,7 +6179,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "sata",
-   "prompt": "Which nutrients supply energy? Select all that apply.",
+   "prompt": "A nurse is teaching a client about nutrition. Which nutrients supply energy? Select all that apply.",
    "options": [
     {
      "text": "Carbohydrates",
@@ -6215,7 +6215,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "Which nutrient is known as the building block of the body?",
+   "prompt": "A nurse is teaching a client who is recovering from surgery about nutrition. Which nutrient should the nurse identify as the building block of the body?",
    "options": [
     {
      "text": "Protein",
@@ -6277,7 +6277,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "How many calories per day does the average person need to maintain their weight?",
+   "prompt": "A client asks the nurse how many calories a day they need to maintain their weight. Which amount should the nurse give as the average?",
    "options": [
     {
      "text": "About 2,000",
@@ -6308,7 +6308,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "What is basal metabolism?",
+   "prompt": "A client asks the nurse what basal metabolism means. Which response should the nurse give?",
    "options": [
     {
      "text": "The energy needed for the body's involuntary activities at rest",
@@ -6339,7 +6339,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "sata",
-   "prompt": "Which factors increase the basal metabolic rate? Select all that apply.",
+   "prompt": "A nurse is planning nutrition for several clients. Which factors increase the basal metabolic rate? Select all that apply.",
    "options": [
     {
      "text": "Aging",
@@ -6380,7 +6380,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "Why do men usually have a higher basal metabolic rate than women?",
+   "prompt": "A client asks the nurse why men usually burn more calories at rest than women. Which response should the nurse give?",
    "options": [
     {
      "text": "Larger muscle mass",
@@ -6411,7 +6411,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "Which fats raise cholesterol and the risk of heart disease?",
+   "prompt": "A nurse is teaching a client who has high cholesterol. Which fats raise cholesterol and the risk of heart disease?",
    "options": [
     {
      "text": "Trans and saturated fats",
@@ -6442,7 +6442,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "What is the glycemic index?",
+   "prompt": "A nurse is teaching a client who has diabetes about the glycemic index. Which description should the nurse give?",
    "options": [
     {
      "text": "How quickly a food raises blood glucose",
@@ -6473,7 +6473,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "What does calorie density describe?",
+   "prompt": "A nurse is teaching a client about choosing foods for weight loss. Which description of calorie density should the nurse give?",
    "options": [
     {
      "text": "The number of calories a food has for its volume or weight",
@@ -6504,7 +6504,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "dragdrop",
-   "prompt": "Move the macronutrients to the answer box.",
+   "prompt": "A nurse is teaching a client about nutrition. Which nutrients are macronutrients? Move the correct answers to the answer box.",
    "leftLabel": "Nutrients",
    "rightLabel": "Macronutrients",
    "options": [
@@ -6547,7 +6547,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "Which organ makes bile to break down fats?",
+   "prompt": "A nurse is teaching a client about digestion. Which organ makes bile to break down fats?",
    "options": [
     {
      "text": "Liver",
@@ -6578,7 +6578,7 @@
    "topic": "Nutrition",
    "category": "Nutrients & Energy",
    "type": "mc",
-   "prompt": "Where are most nutrients absorbed?",
+   "prompt": "A nurse is teaching a client who had part of the bowel removed about digestion. Where are most nutrients absorbed?",
    "options": [
     {
      "text": "Small intestine",
@@ -6645,7 +6645,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Which vitamins are fat-soluble?",
+   "prompt": "A nurse is teaching a client about vitamin supplements. Which vitamins are fat-soluble?",
    "options": [
     {
      "text": "A, D, E and K",
@@ -6676,7 +6676,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Why can fat-soluble vitamins cause toxicity?",
+   "prompt": "A client who takes high-dose vitamin A supplements asks the nurse if this is safe. Why can fat-soluble vitamins cause toxicity?",
    "options": [
     {
      "text": "They are stored in the liver and fat tissue",
@@ -6707,7 +6707,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Why does a deficiency of a water-soluble vitamin show up sooner?",
+   "prompt": "A nurse is teaching a client about vitamins. Why does a deficiency of a water-soluble vitamin show up sooner?",
    "options": [
     {
      "text": "The body doesn't store water-soluble vitamins",
@@ -6738,7 +6738,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Which vitamin is needed for blood clotting?",
+   "prompt": "A nurse is caring for a client who has a bleeding disorder. Which vitamin is needed for blood clotting?",
    "options": [
     {
      "text": "Vitamin K",
@@ -6769,7 +6769,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Which vitamin helps the body absorb calcium?",
+   "prompt": "A nurse is teaching a client who has osteoporosis. Which vitamin helps the body absorb calcium?",
    "options": [
     {
      "text": "Vitamin D",
@@ -6800,7 +6800,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "sata",
-   "prompt": "Which are functions of vitamin C? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has a wound about vitamin C. Which functions should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Collagen synthesis",
@@ -6836,7 +6836,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "dragdrop",
-   "prompt": "Move the water-soluble vitamins to the answer box.",
+   "prompt": "A nurse is teaching a client about vitamins. Which vitamins are water-soluble? Move the correct answers to the answer box.",
    "leftLabel": "Vitamins",
    "rightLabel": "Water-soluble",
    "options": [
@@ -6884,7 +6884,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Why are fresh foods higher in vitamins than processed foods?",
+   "prompt": "A client asks the nurse why fresh foods are better than processed foods. Which response about vitamins should the nurse give?",
    "options": [
     {
      "text": "Light, heat, air and preparation destroy vitamins",
@@ -6915,7 +6915,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "What is the average daily water intake for an adult?",
+   "prompt": "A nurse is teaching a client about fluid intake. Which amount is the average daily water intake for an adult?",
    "options": [
     {
      "text": "2,500–3,500 mL",
@@ -6946,7 +6946,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "sata",
-   "prompt": "Which are functions of water in the body? Select all that apply.",
+   "prompt": "A nurse is teaching a client about why water matters. Which functions of water should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Solvent for chemical processes",
@@ -6982,7 +6982,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Which mineral carries oxygen in the blood as part of hemoglobin?",
+   "prompt": "A nurse is caring for a client who has anemia. Which mineral carries oxygen in the blood as part of hemoglobin?",
    "options": [
     {
      "text": "Iron",
@@ -7013,7 +7013,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Where are most minerals absorbed?",
+   "prompt": "A nurse is teaching a client about minerals. Where are most minerals absorbed?",
    "options": [
     {
      "text": "Small intestine",
@@ -7044,7 +7044,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "mc",
-   "prompt": "Which BMI is in the normal range?",
+   "prompt": "A nurse is calculating the body mass index (BMI) of several clients. Which BMI is in the expected range?",
    "options": [
     {
      "text": "22",
@@ -7138,7 +7138,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "mc",
-   "prompt": "Which lab best reflects a client's current, short-term nutritional status?",
+   "prompt": "A nurse is caring for a client who has had poor intake for a week. Which lab best reflects the client's current, short-term nutritional status?",
    "options": [
     {
      "text": "Prealbumin",
@@ -7169,7 +7169,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "mc",
-   "prompt": "Which prealbumin result is within the normal range?",
+   "prompt": "A nurse is reviewing the lab results of a client who has poor intake. Which prealbumin result is within the expected range?",
    "options": [
     {
      "text": "25 mg/dL",
@@ -7200,7 +7200,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "mc",
-   "prompt": "Albumin reflects nutritional status over what period?",
+   "prompt": "A nurse is reviewing a client's albumin level. Albumin reflects nutritional status over which period?",
    "options": [
     {
      "text": "The few weeks before the blood draw",
@@ -7231,7 +7231,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "mc",
-   "prompt": "Which cholesterol value should be high?",
+   "prompt": "A nurse is reviewing a client's lipid panel. Which cholesterol value should be high?",
    "options": [
     {
      "text": "HDL (high-density lipoprotein)",
@@ -7262,7 +7262,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "sata",
-   "prompt": "Which lab results are within the desired range? Select all that apply.",
+   "prompt": "A nurse is reviewing a female client's lab results. Which results are within the desired range? Select all that apply.",
    "options": [
     {
      "text": "Total cholesterol 180 mg/dL",
@@ -7298,7 +7298,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "mc",
-   "prompt": "Why can protein malnutrition cause edema?",
+   "prompt": "A nurse is caring for a client who has protein malnutrition and edema. Which explains why the edema develops?",
    "options": [
     {
      "text": "Low albumin lowers the pressure that holds fluid in the vessels",
@@ -7329,7 +7329,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "sata",
-   "prompt": "Which findings suggest malnutrition? Select all that apply.",
+   "prompt": "A nurse is assessing an older adult client who lives alone. Which findings suggest malnutrition? Select all that apply.",
    "options": [
     {
      "text": "Hair loss",
@@ -7365,7 +7365,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "sata",
-   "prompt": "Which are tools or parts of a nutritional assessment? Select all that apply.",
+   "prompt": "A nurse is completing a nutritional assessment for a client. Which tools or parts should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "24-hour food recall",
@@ -7437,7 +7437,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "sata",
-   "prompt": "Which are main parts of a food label? Select all that apply.",
+   "prompt": "A nurse is teaching a client how to read a food label. Which parts should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Serving size",
@@ -7473,7 +7473,7 @@
    "topic": "Nutrition",
    "category": "Labs, BMI & Assessment",
    "type": "sata",
-   "prompt": "Which are nutritional considerations for older adults? Select all that apply.",
+   "prompt": "A nurse is planning nutrition teaching for an older adult client. Which considerations should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "They need fewer calories",
@@ -7509,7 +7509,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "sata",
-   "prompt": "Which items are allowed on a clear liquid diet? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a prescription for a clear liquid diet. Which items can the nurse offer? Select all that apply.",
    "options": [
     {
      "text": "Broth",
@@ -7550,7 +7550,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "mc",
-   "prompt": "Which item is allowed on a full liquid diet but not a clear liquid diet?",
+   "prompt": "A client's diet is advanced from clear liquids to full liquids. Which item can the nurse now offer that wasn't allowed on a clear liquid diet?",
    "options": [
     {
      "text": "Vanilla pudding",
@@ -7581,7 +7581,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "mc",
-   "prompt": "Why is a clear liquid diet used only short-term?",
+   "prompt": "A client asks the nurse why they can't stay on a clear liquid diet. Which response should the nurse give?",
    "options": [
     {
      "text": "It doesn't provide adequate nutrition",
@@ -7674,7 +7674,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "sata",
-   "prompt": "Which foods are excluded from a soft diet? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a prescription for a soft diet. Which foods should the nurse exclude? Select all that apply.",
    "options": [
     {
      "text": "Raw vegetables",
@@ -7710,7 +7710,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "mc",
-   "prompt": "What is a pureed diet?",
+   "prompt": "A client who has dysphagia has a prescription for a pureed diet. Which description should the nurse give the client?",
    "options": [
     {
      "text": "Soft, smooth foods that need no chewing",
@@ -7741,7 +7741,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "mc",
-   "prompt": "Which minerals are limited on a renal diet?",
+   "prompt": "A nurse is teaching a client who has chronic kidney disease about a renal diet. Which minerals are limited?",
    "options": [
     {
      "text": "Sodium, potassium and phosphorus",
@@ -7772,7 +7772,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "mc",
-   "prompt": "Which diet is used for a client with diabetes?",
+   "prompt": "A nurse is caring for a client who has diabetes mellitus. Which diet should the nurse expect?",
    "options": [
     {
      "text": "Consistent-carbohydrate diet",
@@ -7803,7 +7803,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "mc",
-   "prompt": "Which food would the nurse expect on a low-residue diet tray?",
+   "prompt": "A nurse is checking the meal tray of a client who has a prescription for a low-residue diet. Which food should the nurse expect on the tray?",
    "options": [
     {
      "text": "Vanilla custard",
@@ -7834,7 +7834,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "sata",
-   "prompt": "Which methods help limit sodium intake? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has hypertension about limiting sodium. Which instructions should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Not adding table salt",
@@ -7870,7 +7870,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "mc",
-   "prompt": "What does a heart-healthy diet limit?",
+   "prompt": "A nurse is teaching a client who has coronary artery disease about a heart-healthy diet. What does the diet limit?",
    "options": [
     {
      "text": "Sodium and unhealthy fats",
@@ -7968,7 +7968,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "sata",
-   "prompt": "Which actions help prevent aspiration during meals? Select all that apply.",
+   "prompt": "A nurse is helping a client who has dysphagia eat lunch. Which actions help prevent aspiration? Select all that apply.",
    "options": [
     {
      "text": "Sit the client upright, preferably in a chair",
@@ -8009,7 +8009,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "mc",
-   "prompt": "How long should a client at risk for aspiration stay upright after eating?",
+   "prompt": "A nurse is caring for a client who is at risk for aspiration. How long should the client stay upright after eating?",
    "options": [
     {
      "text": "At least 1 hour, at 45° or higher",
@@ -8040,7 +8040,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "mc",
-   "prompt": "What is silent aspiration?",
+   "prompt": "A nurse is caring for a client who had a stroke. The nurse is concerned about silent aspiration. Which description fits silent aspiration?",
    "options": [
     {
      "text": "Aspiration with no obvious signs",
@@ -8071,7 +8071,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "sata",
-   "prompt": "Which are signs of aspiration? Select all that apply.",
+   "prompt": "A nurse is feeding a client who has dysphagia. Which findings are signs of aspiration? Select all that apply.",
    "options": [
     {
      "text": "Coughing",
@@ -8107,7 +8107,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "mc",
-   "prompt": "Which team member performs a swallowing evaluation?",
+   "prompt": "A nurse is caring for a client who coughs during meals. Which team member should perform a swallowing evaluation?",
    "options": [
     {
      "text": "Speech therapist",
@@ -8138,7 +8138,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "mc",
-   "prompt": "Why are thickened liquids ordered for a client with dysphagia?",
+   "prompt": "A client who has dysphagia asks the nurse why thickened liquids were ordered. Which response should the nurse give?",
    "options": [
     {
      "text": "Thin liquids move quickly and are easier to aspirate",
@@ -8169,7 +8169,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "order",
-   "prompt": "Place the thickened liquid stages in order from thinnest to thickest.",
+   "prompt": "A nurse is caring for a client who has dysphagia and needs thickened liquids. Place the thickened liquid stages in order from thinnest to thickest.",
    "options": [
     {
      "text": "Nectar-like: runs off the spoon, leaving a coating",
@@ -8192,7 +8192,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "sata",
-   "prompt": "Which actions help with nausea? Select all that apply.",
+   "prompt": "A nurse is caring for a client who is nauseated at mealtime. Which actions help with nausea? Select all that apply.",
    "options": [
     {
      "text": "Remove food that won't be eaten right away",
@@ -8228,7 +8228,7 @@
    "topic": "Nutrition",
    "category": "Safe Eating & Aspiration",
    "type": "sata",
-   "prompt": "Which actions help stimulate a client's appetite? Select all that apply.",
+   "prompt": "A nurse is caring for an older adult client who has a poor appetite. Which actions help stimulate the client's appetite? Select all that apply.",
    "options": [
     {
      "text": "Offer small, frequent meals",
@@ -8398,7 +8398,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Feeding Tubes",
    "type": "mc",
-   "prompt": "What is enteral nutrition?",
+   "prompt": "A client's family asks the nurse what enteral nutrition is. Which response should the nurse give?",
    "options": [
     {
      "text": "Giving nutrients directly into the GI tract through a tube",
@@ -8429,7 +8429,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Feeding Tubes",
    "type": "mc",
-   "prompt": "Which feeding tube is used for long-term nutrition?",
+   "prompt": "A nurse is caring for a client who will need tube feedings for many months. Which feeding tube should the nurse expect for long-term nutrition?",
    "options": [
     {
      "text": "Gastrostomy tube (G-tube)",
@@ -8460,7 +8460,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Feeding Tubes",
    "type": "sata",
-   "prompt": "Which tubes are used for short-term enteral feeding? Select all that apply.",
+   "prompt": "A nurse is caring for clients who need short-term tube feedings. Which tubes are used for short-term enteral feeding? Select all that apply.",
    "options": [
     {
      "text": "Nasogastric tube",
@@ -8496,7 +8496,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Feeding Tubes",
    "type": "mc",
-   "prompt": "Where does the tip of a nasojejunal tube end?",
+   "prompt": "A nurse is caring for a client who has a nasojejunal tube. Where does the tip of the tube end?",
    "options": [
     {
      "text": "Jejunum of the small intestine",
@@ -8527,7 +8527,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Feeding Tubes",
    "type": "mc",
-   "prompt": "What is the most common way a G-tube is placed?",
+   "prompt": "A client is scheduled for placement of a gastrostomy tube (G-tube). Which method should the nurse expect is most common?",
    "options": [
     {
      "text": "Percutaneous endoscopic gastrostomy (PEG)",
@@ -8558,7 +8558,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Feeding Tubes",
    "type": "dragdrop",
-   "prompt": "Move the tubes whose tip ends in the STOMACH to the answer box.",
+   "prompt": "A nurse is caring for clients who have feeding tubes. Which tubes have a tip that ends in the stomach? Move the correct answers to the answer box.",
    "leftLabel": "Tubes",
    "rightLabel": "Ends in the stomach",
    "options": [
@@ -8632,7 +8632,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Checking Placement",
    "type": "mc",
-   "prompt": "What is the gold standard for confirming feeding tube placement?",
+   "prompt": "A nurse has inserted a feeding tube for a client. Which method is the gold standard for confirming placement?",
    "options": [
     {
      "text": "X-ray",
@@ -8663,7 +8663,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Checking Placement",
    "type": "mc",
-   "prompt": "When must placement be confirmed by X-ray?",
+   "prompt": "A nurse is caring for a client who has a newly inserted feeding tube. When must placement be confirmed by x-ray?",
    "options": [
     {
      "text": "Before the first feeding or medication",
@@ -8694,7 +8694,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Checking Placement",
    "type": "sata",
-   "prompt": "When should the nurse verify a feeding tube's placement? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a feeding tube. When should the nurse verify the tube's placement? Select all that apply.",
    "options": [
     {
      "text": "After initial insertion",
@@ -8730,7 +8730,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Checking Placement",
    "type": "mc",
-   "prompt": "What is the expected pH of gastric aspirate?",
+   "prompt": "A nurse aspirates contents from a client's feeding tube to check placement. Which pH should the nurse expect for gastric aspirate?",
    "options": [
     {
      "text": "1–4",
@@ -8823,7 +8823,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Checking Placement",
    "type": "mc",
-   "prompt": "How much air is instilled to clear the tube before aspirating?",
+   "prompt": "A nurse is checking a client's feeding tube before aspirating. How much air should the nurse instill to clear the tube?",
    "options": [
     {
      "text": "30 mL",
@@ -8854,7 +8854,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Checking Placement",
    "type": "order",
-   "prompt": "Place the steps for checking feeding tube placement before a feeding in order.",
+   "prompt": "A nurse is preparing to give a client a tube feeding. Place the steps for checking feeding tube placement in order.",
    "options": [
     {
      "text": "Check the tube's marking at the nares",
@@ -8885,7 +8885,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Checking Placement",
    "type": "mc",
-   "prompt": "Why shouldn't the nurse rely on listening over the stomach while injecting air?",
+   "prompt": "A nurse is checking a client's feeding tube placement. Why shouldn't the nurse rely on listening over the stomach while injecting air?",
    "options": [
     {
      "text": "Air can be heard over the stomach even if the tube is in the lung",
@@ -8952,7 +8952,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "Which feeding method requires a feeding pump?",
+   "prompt": "A nurse is caring for a client who receives a tube feeding around the clock. Which feeding method requires a feeding pump?",
    "options": [
     {
      "text": "Continuous feeding",
@@ -8983,7 +8983,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "What is the head-of-bed position during a tube feeding?",
+   "prompt": "A nurse is caring for a client who is receiving a tube feeding. How should the nurse position the head of the bed?",
    "options": [
     {
      "text": "30–45°",
@@ -9014,7 +9014,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "How long should the head of the bed stay at 30° or higher after a feeding?",
+   "prompt": "A nurse has finished an intermittent tube feeding for a client. How long should the head of the bed stay at 30° or higher?",
    "options": [
     {
      "text": "At least 1 hour",
@@ -9045,7 +9045,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "How much water is used to flush before and after giving medications through a feeding tube?",
+   "prompt": "A nurse is giving a client medications through a feeding tube. How much water should the nurse use to flush before and after?",
    "options": [
     {
      "text": "30 mL before and 30 mL after",
@@ -9076,7 +9076,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "sata",
-   "prompt": "Which are signs of feeding intolerance? Select all that apply.",
+   "prompt": "A nurse is monitoring a client who is receiving a tube feeding. Which findings are signs of feeding intolerance? Select all that apply.",
    "options": [
     {
      "text": "Abdominal distention",
@@ -9112,7 +9112,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "sata",
-   "prompt": "Which are complications of enteral feedings? Select all that apply.",
+   "prompt": "A nurse is caring for a client who receives enteral feedings. Which complications should the nurse monitor for? Select all that apply.",
    "options": [
     {
      "text": "Aspiration",
@@ -9153,7 +9153,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "How can the nurse prevent a feeding tube from clogging?",
+   "prompt": "A nurse is giving medications through a client's feeding tube. How can the nurse prevent the tube from clogging?",
    "options": [
     {
      "text": "Crush medications thoroughly and flush with water",
@@ -9184,7 +9184,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "How often is the enteral feeding system and tubing changed?",
+   "prompt": "A nurse is caring for a client who receives a continuous tube feeding. How often should the nurse change the feeding system and tubing?",
    "options": [
     {
      "text": "Every 24 hours",
@@ -9215,7 +9215,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "How much formula should be hung in an open feeding bag at one time?",
+   "prompt": "A nurse is hanging formula in an open feeding bag for a client. How much formula should the nurse hang at one time?",
    "options": [
     {
      "text": "Only enough for 4 hours",
@@ -9246,7 +9246,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "order",
-   "prompt": "Place the steps for an intermittent (bolus) tube feeding in order.",
+   "prompt": "A nurse is giving a client an intermittent (bolus) tube feeding. Place the steps in order.",
    "options": [
     {
      "text": "Raise the head of the bed to 30–45°",
@@ -9313,7 +9313,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "Why is formula given at room temperature?",
+   "prompt": "A client asks the nurse why the formula isn't given cold from the refrigerator. Which response should the nurse give?",
    "options": [
     {
      "text": "Cold formula can cause cramping and discomfort",
@@ -9344,7 +9344,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "mc",
-   "prompt": "How is the length of a nasogastric tube measured before insertion?",
+   "prompt": "A nurse is preparing to insert a nasogastric tube in an adult client. How should the nurse measure the tube length?",
    "options": [
     {
      "text": "Tip of the nose to the earlobe to the xiphoid process, then add 10 cm",
@@ -9375,7 +9375,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "mc",
-   "prompt": "Which position is used for nasogastric tube insertion?",
+   "prompt": "A nurse is preparing to insert a nasogastric tube in a client. Which position should the nurse use?",
    "options": [
     {
      "text": "High-Fowler's",
@@ -9406,7 +9406,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "order",
-   "prompt": "Place the steps for inserting a nasogastric tube in order.",
+   "prompt": "A nurse is inserting a nasogastric tube in an adult client. Place the steps in order.",
    "options": [
     {
      "text": "Place the client in high-Fowler's position",
@@ -9468,7 +9468,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "mc",
-   "prompt": "Which lubricant is used for an NG tube and the client's nares?",
+   "prompt": "A nurse is preparing to insert an NG tube in a client. Which lubricant should the nurse use for the tube and the client's nares?",
    "options": [
     {
      "text": "Water-soluble lubricant",
@@ -9499,7 +9499,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "mc",
-   "prompt": "What is the purpose of gastric decompression with an NG tube?",
+   "prompt": "A provider prescribes gastric decompression with a nasogastric tube for a client. The client asks why. Which response should the nurse give?",
    "options": [
     {
      "text": "To remove air and fluid from the stomach",
@@ -9530,7 +9530,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "sata",
-   "prompt": "Which conditions are indications for gastric decompression? Select all that apply.",
+   "prompt": "A nurse is reviewing the records of several clients. Which conditions are indications for gastric decompression? Select all that apply.",
    "options": [
     {
      "text": "Bowel obstruction",
@@ -9566,7 +9566,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "mc",
-   "prompt": "When can an NG tube used for decompression usually be removed?",
+   "prompt": "A nurse is caring for a client who has an NG tube for decompression after bowel surgery. When can the tube usually be removed?",
    "options": [
     {
      "text": "When bowel function returns, such as bowel sounds or passing flatus",
@@ -9597,7 +9597,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "mc",
-   "prompt": "What should the nurse remember about the blue air vent on a double-lumen sump tube?",
+   "prompt": "A nurse is caring for a client who has a double-lumen sump tube for decompression. What should the nurse remember about the blue air vent?",
    "options": [
     {
      "text": "Never clamp it or connect it to suction",
@@ -9628,7 +9628,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "sata",
-   "prompt": "Which nursing care is appropriate for a client with an NG tube? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has an NG tube. Which nursing care is appropriate? Select all that apply.",
    "options": [
     {
      "text": "Provide frequent oral hygiene",
@@ -9695,7 +9695,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "order",
-   "prompt": "Place the steps for removing an NG tube in order.",
+   "prompt": "A provider prescribes removal of a client's NG tube. Place the steps for removing the tube in order.",
    "options": [
     {
      "text": "Verify the prescription for removal",
@@ -9726,7 +9726,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "mc",
-   "prompt": "Why does the nurse ask the client to take a deep breath and hold it during NG tube removal?",
+   "prompt": "A nurse is removing a client's NG tube. Why should the nurse ask the client to take a deep breath and hold it?",
    "options": [
     {
      "text": "Holding the breath closes the airway and reduces aspiration",
@@ -9757,7 +9757,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "mc",
-   "prompt": "Which type of suction is used with a single-lumen (Levin) NG tube?",
+   "prompt": "A nurse is caring for a client who has a single-lumen (Levin) NG tube for decompression. Which type of suction should the nurse use?",
    "options": [
     {
      "text": "Low intermittent suction",
@@ -9788,7 +9788,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Parenteral Nutrition",
    "type": "mc",
-   "prompt": "What is parenteral nutrition?",
+   "prompt": "A client's family asks the nurse what parenteral nutrition is. Which response should the nurse give?",
    "options": [
     {
      "text": "Nutrition given through an IV",
@@ -9819,7 +9819,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Parenteral Nutrition",
    "type": "mc",
-   "prompt": "What is the difference between TPN and PPN?",
+   "prompt": "A nursing student asks how total parenteral nutrition (TPN) differs from peripheral parenteral nutrition (PPN). Which response by the nurse is accurate?",
    "options": [
     {
      "text": "TPN provides all daily nutritional needs; PPN provides part of them",
@@ -9850,7 +9850,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Parenteral Nutrition",
    "type": "mc",
-   "prompt": "Which lab does the nurse monitor most closely for a client on TPN?",
+   "prompt": "A nurse is caring for a client who is receiving total parenteral nutrition (TPN). Which lab should the nurse monitor most closely?",
    "options": [
     {
      "text": "Blood glucose",
@@ -9881,7 +9881,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Parenteral Nutrition",
    "type": "mc",
-   "prompt": "Why should parenteral nutrition be short-term when possible?",
+   "prompt": "A client who is receiving parenteral nutrition asks why the provider wants to switch to tube feedings as soon as possible. Which response should the nurse give?",
    "options": [
     {
      "text": "Using the GI tract is preferred because it keeps the gut working",
@@ -9912,7 +9912,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Parenteral Nutrition",
    "type": "mc",
-   "prompt": "How is the route for parenteral nutrition chosen?",
+   "prompt": "A nurse is caring for a client who will start parenteral nutrition. How is the route chosen?",
    "options": [
     {
      "text": "By how concentrated the solution is: central line or peripheral vein",
@@ -9943,7 +9943,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Parenteral Nutrition",
    "type": "order",
-   "prompt": "Place the routes for nutrition in order of preference, starting with the most preferred.",
+   "prompt": "A nurse is planning nutrition for a client who can't eat enough. Place the routes for nutrition in order of preference, starting with the most preferred.",
    "options": [
     {
      "text": "Oral diet",
@@ -10002,7 +10002,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Parenteral Nutrition",
    "type": "sata",
-   "prompt": "Which clients may need parenteral nutrition? Select all that apply.",
+   "prompt": "A nurse is reviewing the records of several clients. Which clients may need parenteral nutrition? Select all that apply.",
    "options": [
     {
      "text": "A client whose GI tract can't absorb nutrients",
@@ -10198,7 +10198,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "How often should capillary blood glucose be checked when a continuous tube feeding is started?",
+   "prompt": "A nurse is starting a continuous tube feeding for a client. How often should the nurse check capillary blood glucose?",
    "options": [
     {
      "text": "Every 4 to 6 hours until the client tolerates the full rate for 24 hours",
@@ -10229,7 +10229,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Giving Feedings",
    "type": "mc",
-   "prompt": "Which task related to tube feedings can the nurse NOT delegate to assistive personnel?",
+   "prompt": "A nurse is working with assistive personnel on a unit where several clients receive tube feedings. Which task can the nurse NOT delegate?",
    "options": [
     {
      "text": "Giving the continuous tube feeding",
@@ -10401,7 +10401,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "NG Tube Care",
    "type": "dragdrop",
-   "prompt": "Move the reasons an NG tube can be used to the answer box.",
+   "prompt": "A nurse is teaching a group of nursing students about NG tubes. For which reasons can an NG tube be used? Move the correct answers to the answer box.",
    "leftLabel": "Reasons",
    "rightLabel": "NG tube uses",
    "options": [
@@ -10650,7 +10650,7 @@
    "topic": "Food Sources",
    "category": "Electrolyte Foods",
    "type": "sata",
-   "prompt": "Which foods are good sources of calcium? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has osteoporosis about calcium. Which foods are good sources of calcium? Select all that apply.",
    "options": [
     {
      "text": "Plain nonfat yogurt",
@@ -10686,7 +10686,7 @@
    "topic": "Food Sources",
    "category": "Electrolyte Foods",
    "type": "sata",
-   "prompt": "Which foods are high in magnesium? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has a low magnesium level about diet. Which foods are high in magnesium? Select all that apply.",
    "options": [
     {
      "text": "Cooked spinach",
@@ -10770,7 +10770,7 @@
    "topic": "Food Sources",
    "category": "Carbs, Protein & Fat",
    "type": "sata",
-   "prompt": "Which are healthy sources of carbohydrates? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has diabetes about carbohydrates. Which are healthy sources of carbohydrates? Select all that apply.",
    "options": [
     {
      "text": "Sugar-sweetened soda",
@@ -10806,7 +10806,7 @@
    "topic": "Food Sources",
    "category": "Carbs, Protein & Fat",
    "type": "sata",
-   "prompt": "Which foods are complete protein sources? Select all that apply.",
+   "prompt": "A nurse is teaching a client who is recovering from surgery about protein. Which foods are complete protein sources? Select all that apply.",
    "options": [
     {
      "text": "Beef",
@@ -10842,7 +10842,7 @@
    "topic": "Food Sources",
    "category": "Carbs, Protein & Fat",
    "type": "sata",
-   "prompt": "Which foods contain healthy (monounsaturated or omega-3) fats? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has high cholesterol about healthy fats. Which foods contain healthy (monounsaturated or omega-3) fats? Select all that apply.",
    "options": [
     {
      "text": "Avocado",
@@ -10909,7 +10909,7 @@
    "topic": "Food Sources",
    "category": "Fiber & Glycemic Index",
    "type": "sata",
-   "prompt": "Which foods are high-fiber? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has constipation about fiber. Which foods are high in fiber? Select all that apply.",
    "options": [
     {
      "text": "Lentils",
@@ -10986,7 +10986,7 @@
    "topic": "Food Sources",
    "category": "Fiber & Glycemic Index",
    "type": "sata",
-   "prompt": "Which foods are high-glycemic and raise blood glucose quickly? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has diabetes about the glycemic index. Which foods are high-glycemic and raise blood glucose quickly? Select all that apply.",
    "options": [
     {
      "text": "White bread",
@@ -11022,7 +11022,7 @@
    "topic": "Food Sources",
    "category": "Carbs, Protein & Fat",
    "type": "sata",
-   "prompt": "Which are examples of empty-calorie foods? Select all that apply.",
+   "prompt": "A nurse is teaching a client who wants to lose weight. Which foods are examples of empty calories? Select all that apply.",
    "options": [
     {
      "text": "Chips",
@@ -11125,7 +11125,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Which vitamin supports vision and keeps the skin and mucous membranes healthy?",
+   "prompt": "A nurse is teaching a client about vitamins. Which vitamin supports vision and keeps the skin and mucous membranes healthy?",
    "options": [
     {
      "text": "Vitamin A",
@@ -11156,7 +11156,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "sata",
-   "prompt": "Which are functions of the B vitamins? Select all that apply.",
+   "prompt": "A nurse is teaching a client about the B vitamins. Which functions should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Energy",
@@ -11192,7 +11192,7 @@
    "topic": "Nutrition",
    "category": "Vitamins, Minerals & Water",
    "type": "mc",
-   "prompt": "Which vitamin is an antioxidant that protects vitamin A and helps the body fight infection?",
+   "prompt": "A nurse is teaching a client about vitamins. Which vitamin is an antioxidant that protects vitamin A and helps the body fight infection?",
    "options": [
     {
      "text": "Vitamin E",
@@ -11374,7 +11374,7 @@
    "topic": "Food Sources",
    "category": "Electrolyte Foods",
    "type": "mc",
-   "prompt": "Which pudding is the better choice for a client limiting sodium?",
+   "prompt": "A nurse is helping a client who is limiting sodium choose a snack. Which pudding is the better choice?",
    "options": [
     {
      "text": "Regular vanilla pudding",
@@ -11515,7 +11515,7 @@
    "topic": "Food Sources",
    "category": "Carbs, Protein & Fat",
    "type": "sata",
-   "prompt": "Which foods are high in saturated fat? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has high cholesterol to limit saturated fat. Which foods are high in saturated fat? Select all that apply.",
    "options": [
     {
      "text": "Butter",
@@ -11551,7 +11551,7 @@
    "topic": "Food Sources",
    "category": "Carbs, Protein & Fat",
    "type": "mc",
-   "prompt": "Where are trans fats most often found?",
+   "prompt": "A nurse is teaching a client who has heart disease to avoid trans fats. Where are trans fats most often found?",
    "options": [
     {
      "text": "Processed foods made with partially hydrogenated oils",
@@ -11582,7 +11582,7 @@
    "topic": "Food Sources",
    "category": "Carbs, Protein & Fat",
    "type": "mc",
-   "prompt": "Which food is low in calorie density?",
+   "prompt": "A nurse is teaching a client who wants to lose weight about calorie density. Which food is low in calorie density?",
    "options": [
     {
      "text": "Fresh vegetables",
@@ -11649,7 +11649,7 @@
    "topic": "Food Sources",
    "category": "Carbs, Protein & Fat",
    "type": "dragdrop",
-   "prompt": "Move the HEALTHY fat sources to the answer box.",
+   "prompt": "A nurse is teaching a client who has heart disease about fats. Which are healthy fat sources? Move the correct answers to the answer box.",
    "leftLabel": "Foods",
    "rightLabel": "Healthy fats",
    "options": [
@@ -11728,7 +11728,7 @@
    "topic": "Food Sources",
    "category": "Fiber & Glycemic Index",
    "type": "sata",
-   "prompt": "Which foods are allowed on a low-residue diet? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a prescription for a low-residue diet. Which foods can the nurse offer? Select all that apply.",
    "options": [
     {
      "text": "Eggs",
@@ -11764,7 +11764,7 @@
    "topic": "Food Sources",
    "category": "Fiber & Glycemic Index",
    "type": "sata",
-   "prompt": "Which foods are low-glycemic? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has diabetes about low-glycemic foods. Which foods are low-glycemic? Select all that apply.",
    "options": [
     {
      "text": "White bread",
@@ -11831,7 +11831,7 @@
    "topic": "Food Sources",
    "category": "Fiber & Glycemic Index",
    "type": "dragdrop",
-   "prompt": "Move the HIGH-fiber foods to the answer box.",
+   "prompt": "A nurse is teaching a client who has constipation about fiber. Which foods are high in fiber? Move the correct answers to the answer box.",
    "leftLabel": "Foods",
    "rightLabel": "High fiber",
    "options": [
@@ -11874,7 +11874,7 @@
    "topic": "Food Sources",
    "category": "Foods by Diet",
    "type": "sata",
-   "prompt": "Which foods are allowed on a soft diet? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a prescription for a soft diet. Which foods can the nurse offer? Select all that apply.",
    "options": [
     {
      "text": "Well-cooked vegetables",
@@ -11915,7 +11915,7 @@
    "topic": "Food Sources",
    "category": "Foods by Diet",
    "type": "sata",
-   "prompt": "Which foods fit a pureed diet? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a prescription for a pureed diet. Which foods can the nurse offer? Select all that apply.",
    "options": [
     {
      "text": "Mashed potatoes",
@@ -11994,7 +11994,7 @@
    "topic": "Food Sources",
    "category": "Foods by Diet",
    "type": "mc",
-   "prompt": "Which item is allowed on a full liquid diet?",
+   "prompt": "A nurse is caring for a client who has a prescription for a full liquid diet. Which item can the nurse offer?",
    "options": [
     {
      "text": "Ice cream",
@@ -12025,7 +12025,7 @@
    "topic": "Food Sources",
    "category": "Foods by Diet",
    "type": "sata",
-   "prompt": "Which foods should a client on a renal diet limit because of potassium? Select all that apply.",
+   "prompt": "A nurse is teaching a client who is on a renal diet about potassium. Which foods should the client limit? Select all that apply.",
    "options": [
     {
      "text": "Tomato juice",
@@ -12061,7 +12061,7 @@
    "topic": "Food Sources",
    "category": "Foods by Diet",
    "type": "sata",
-   "prompt": "Which food choices fit a heart-healthy diet? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has coronary artery disease about a heart-healthy diet. Which food choices fit the diet? Select all that apply.",
    "options": [
     {
      "text": "Skim milk",
@@ -12097,7 +12097,7 @@
    "topic": "Food Sources",
    "category": "Foods by Diet",
    "type": "mc",
-   "prompt": "On a renal diet, which soft drink is the better choice?",
+   "prompt": "A client who is on a renal diet asks the nurse which soft drink to choose. Which drink is the better choice?",
    "options": [
     {
      "text": "A clear soda such as lemon-lime",
@@ -12186,7 +12186,7 @@
    "topic": "Food Sources",
    "category": "Special Situations",
    "type": "sata",
-   "prompt": "Which foods support brain health with omega-3 fatty acids? Select all that apply.",
+   "prompt": "A nurse is teaching a client about foods that support brain health. Which foods contain omega-3 fatty acids? Select all that apply.",
    "options": [
     {
      "text": "Wild salmon",
@@ -12258,7 +12258,7 @@
    "topic": "Food Sources",
    "category": "Special Situations",
    "type": "sata",
-   "prompt": "Which liquids can be thickened for a client with dysphagia? Select all that apply.",
+   "prompt": "A nurse is preparing a meal tray for a client who has dysphagia and needs thickened liquids. Which liquids can be thickened? Select all that apply.",
    "options": [
     {
      "text": "Milk",
@@ -12325,7 +12325,7 @@
    "topic": "Bowel Elimination",
    "category": "GI Tract & Assessment",
    "type": "order",
-   "prompt": "Place the parts of the GI (gastrointestinal) tract in the order food passes through them.",
+   "prompt": "A nurse is teaching a client about digestion. Place the parts of the GI (gastrointestinal) tract in the order food passes through them.",
    "options": [
     {
      "text": "Mouth",
@@ -12391,7 +12391,7 @@
    "topic": "Bowel Elimination",
    "category": "GI Tract & Assessment",
    "type": "mc",
-   "prompt": "Bacteria in the large intestine produce which vitamin that is needed for blood clotting and strong bones?",
+   "prompt": "A nurse is teaching a client about the large intestine. Bacteria in the large intestine produce which vitamin that is needed for blood clotting and strong bones?",
    "options": [
     {
      "text": "Vitamin K",
@@ -12422,7 +12422,7 @@
    "topic": "Bowel Elimination",
    "category": "GI Tract & Assessment",
    "type": "mc",
-   "prompt": "Which structure keeps food and liquid out of the airway during swallowing?",
+   "prompt": "A nurse is caring for a client who has trouble swallowing. Which structure keeps food and liquid out of the airway during swallowing?",
    "options": [
     {
      "text": "Epiglottis",
@@ -12532,7 +12532,7 @@
    "topic": "Bowel Elimination",
    "category": "GI Tract & Assessment",
    "type": "order",
-   "prompt": "Place the steps of an abdominal assessment in the correct order.",
+   "prompt": "A nurse is assessing a client's abdomen. Place the steps of the assessment in order.",
    "options": [
     {
      "text": "Inspect",
@@ -12735,7 +12735,7 @@
    "topic": "Bowel Elimination",
    "category": "GI Tract & Assessment",
    "type": "mc",
-   "prompt": "What is the recommended daily fiber intake for adults?",
+   "prompt": "A nurse is teaching a client who has constipation about fiber. Which daily fiber intake should the nurse recommend for an adult?",
    "options": [
     {
      "text": "22 to 34 g",
@@ -12797,7 +12797,7 @@
    "topic": "Bowel Elimination",
    "category": "GI Tract & Assessment",
    "type": "mc",
-   "prompt": "Why does a nurse auscultate bowel sounds before advancing a postoperative client's diet?",
+   "prompt": "A nurse is caring for a client who had abdominal surgery yesterday. Why should the nurse auscultate bowel sounds before advancing the client's diet?",
    "options": [
     {
      "text": "Anesthesia and surgery temporarily slow intestinal activity",
@@ -12828,7 +12828,7 @@
    "topic": "Bowel Elimination",
    "category": "GI Tract & Assessment",
    "type": "mc",
-   "prompt": "Which position helps stool pass most easily?",
+   "prompt": "A nurse is teaching a client who has constipation about positioning on the toilet. Which position helps stool pass most easily?",
    "options": [
     {
      "text": "Squatting or sitting with the knees above the hips",
@@ -12933,7 +12933,7 @@
    "topic": "Bowel Elimination",
    "category": "Constipation & Diarrhea",
    "type": "mc",
-   "prompt": "Which finding fits the definition of constipation?",
+   "prompt": "A nurse is assessing a client's bowel pattern. Which finding fits the definition of constipation?",
    "options": [
     {
      "text": "Fewer than 3 hard, dry bowel movements a week",
@@ -12964,7 +12964,7 @@
    "topic": "Bowel Elimination",
    "category": "Constipation & Diarrhea",
    "type": "sata",
-   "prompt": "Which factors put a client at risk for constipation? Select all that apply.",
+   "prompt": "A nurse is reviewing the records of several clients. Which factors put a client at risk for constipation? Select all that apply.",
    "options": [
     {
      "text": "Frequent laxative use",
@@ -13226,7 +13226,7 @@
    "topic": "Bowel Elimination",
    "category": "Constipation & Diarrhea",
    "type": "dragdrop",
-   "prompt": "Move the complications of constipation to the answer box.",
+   "prompt": "A nurse is caring for a client who has chronic constipation. Which complications of constipation should the nurse monitor for? Move the correct answers to the answer box.",
    "leftLabel": "Complications",
    "rightLabel": "Constipation",
    "options": [
@@ -13382,7 +13382,7 @@
    "topic": "Bowel Elimination",
    "category": "Constipation & Diarrhea",
    "type": "mc",
-   "prompt": "Which acid-base imbalance can result from prolonged diarrhea?",
+   "prompt": "A nurse is caring for a client who has had diarrhea for 4 days. Which acid-base imbalance should the nurse expect?",
    "options": [
     {
      "text": "Metabolic acidosis",
@@ -13413,7 +13413,7 @@
    "topic": "Bowel Elimination",
    "category": "Constipation & Diarrhea",
    "type": "mc",
-   "prompt": "Why does the nurse watch an older adult with diarrhea especially closely?",
+   "prompt": "A nurse is caring for an older adult client who has diarrhea. Why should the nurse watch this client especially closely?",
    "options": [
     {
      "text": "Older adults have less ability to make up for lost fluid",
@@ -13609,7 +13609,7 @@
    "topic": "Bowel Elimination",
    "category": "Constipation & Diarrhea",
    "type": "mc",
-   "prompt": "How is diarrhea defined?",
+   "prompt": "A nurse is assessing a client who reports loose stools. Which definition of diarrhea should the nurse use?",
    "options": [
     {
      "text": "Three or more loose or watery stools in 24 hours",
@@ -13733,7 +13733,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "Which intervention helps relieve hemorrhoid discomfort?",
+   "prompt": "A nurse is caring for a client who has painful hemorrhoids. Which intervention helps relieve the discomfort?",
    "options": [
     {
      "text": "A sitz bath",
@@ -13898,7 +13898,7 @@
    "topic": "Bowel Elimination",
    "category": "Bowel Conditions",
    "type": "mc",
-   "prompt": "Which first-line approach should the nurse reinforce for a client with IBS (irritable bowel syndrome)?",
+   "prompt": "A nurse is reinforcing teaching with a client who has IBS (irritable bowel syndrome). Which first-line approach should the nurse reinforce?",
    "options": [
     {
      "text": "Soluble fiber such as psyllium plus stress reduction",
@@ -13960,7 +13960,7 @@
    "topic": "Bowel Elimination",
    "category": "Bowel Conditions",
    "type": "sata",
-   "prompt": "Which findings are consistent with a bowel obstruction? Select all that apply.",
+   "prompt": "A nurse is assessing a client who had abdominal surgery 3 days ago. Which findings are consistent with a bowel obstruction? Select all that apply.",
    "options": [
     {
      "text": "Nausea and vomiting",
@@ -14032,7 +14032,7 @@
    "topic": "Bowel Elimination",
    "category": "Bowel Conditions",
    "type": "mc",
-   "prompt": "Which electrolyte imbalance can cause paralytic ileus?",
+   "prompt": "A nurse is caring for a client who has a paralytic ileus. Which electrolyte imbalance can cause this condition?",
    "options": [
     {
      "text": "Hypokalemia",
@@ -14094,7 +14094,7 @@
    "topic": "Bowel Elimination",
    "category": "Bowel Conditions",
    "type": "dragdrop",
-   "prompt": "Move the features of ulcerative colitis to the answer box.",
+   "prompt": "A nurse is caring for clients who have inflammatory bowel disease. Which features are typical of ulcerative colitis? Move the correct answers to the answer box.",
    "leftLabel": "Features",
    "rightLabel": "Ulcerative colitis",
    "options": [
@@ -14168,7 +14168,7 @@
    "topic": "Bowel Elimination",
    "category": "Bowel Conditions",
    "type": "mc",
-   "prompt": "How are flares of Crohn's disease usually treated?",
+   "prompt": "A nurse is caring for a client who is having a flare of Crohn's disease. Which treatment should the nurse expect?",
    "options": [
     {
      "text": "Short courses of corticosteroids",
@@ -14302,7 +14302,7 @@
    "topic": "Bowel Elimination",
    "category": "Stool Tests & Diagnostics",
    "type": "mc",
-   "prompt": "How many stool samples are needed for serial guaiac FOBT testing?",
+   "prompt": "A nurse is teaching a client about serial guaiac fecal occult blood testing (FOBT) at home. How many stool samples does the client need?",
    "options": [
     {
      "text": "3 samples from 3 different bowel movements",
@@ -14364,7 +14364,7 @@
    "topic": "Bowel Elimination",
    "category": "Stool Tests & Diagnostics",
    "type": "mc",
-   "prompt": "How does a FIT (fecal immunochemical test) differ from a guaiac FOBT?",
+   "prompt": "A client asks the nurse how a FIT (fecal immunochemical test) differs from a guaiac FOBT. Which response should the nurse give?",
    "options": [
     {
      "text": "FIT detects human hemoglobin, so it usually needs no diet changes",
@@ -14395,7 +14395,7 @@
    "topic": "Bowel Elimination",
    "category": "Stool Tests & Diagnostics",
    "type": "mc",
-   "prompt": "What should the client use to put stool on an FOBT card?",
+   "prompt": "A nurse is teaching a client how to do a fecal occult blood test (FOBT) at home. What should the client use to put stool on the card?",
    "options": [
     {
      "text": "A wooden applicator or tongue depressor",
@@ -14457,7 +14457,7 @@
    "topic": "Bowel Elimination",
    "category": "Stool Tests & Diagnostics",
    "type": "order",
-   "prompt": "Place the steps for collecting a stool culture sample at home in order.",
+   "prompt": "A nurse is teaching a client how to collect a stool culture sample at home. Place the steps in order.",
    "options": [
     {
      "text": "Place the collection container in the toilet",
@@ -14519,7 +14519,7 @@
    "topic": "Bowel Elimination",
    "category": "Stool Tests & Diagnostics",
    "type": "mc",
-   "prompt": "Which test lets the provider view the esophagus, stomach and upper small intestine?",
+   "prompt": "A client who has upper abdominal pain is scheduled for a test to view the esophagus, stomach, and upper small intestine. Which test should the nurse expect?",
    "options": [
     {
      "text": "Upper GI endoscopy (EGD, esophagogastroduodenoscopy)",
@@ -14550,7 +14550,7 @@
    "topic": "Bowel Elimination",
    "category": "Stool Tests & Diagnostics",
    "type": "mc",
-   "prompt": "Which test is used to diagnose problems of the pancreatic and bile ducts, such as gallstones?",
+   "prompt": "A client who has gallstones in the bile duct is scheduled for a diagnostic test. Which test is used to diagnose problems of the pancreatic and bile ducts?",
    "options": [
     {
      "text": "ERCP (endoscopic retrograde cholangiopancreatography)",
@@ -14612,7 +14612,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "How should the nurse position a client for an enema?",
+   "prompt": "A nurse is preparing to give a client a cleansing enema. How should the nurse position the client?",
    "options": [
     {
      "text": "Left side-lying (Sims') with the right knee flexed",
@@ -14643,7 +14643,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "How far should the nurse insert the rectal tube for an adult cleansing enema?",
+   "prompt": "A nurse is giving an adult client a cleansing enema. How far should the nurse insert the rectal tube?",
    "options": [
     {
      "text": "3 inches (7.5 cm)",
@@ -14674,7 +14674,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "How high above the anus should the nurse hold an enema bag during instillation?",
+   "prompt": "A nurse is giving a client a cleansing enema. How high above the anus should the nurse hold the enema bag during instillation?",
    "options": [
     {
      "text": "30 to 45 cm (12 to 18 in)",
@@ -14767,7 +14767,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "Why should enema solution be warmed before use?",
+   "prompt": "A nurse is preparing an enema for a client. Why should the nurse warm the solution before use?",
    "options": [
     {
      "text": "Cold solution causes cramping and hot solution can injure the mucosa",
@@ -14829,7 +14829,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "Which enema solution carries the greatest risk of water toxicity if repeated?",
+   "prompt": "A nurse is caring for a client who needs repeated cleansing enemas. Which solution carries the greatest risk of water toxicity if repeated?",
    "options": [
     {
      "text": "Tap water",
@@ -14939,7 +14939,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "When should soapsuds enemas be used with caution?",
+   "prompt": "A nurse is reviewing a prescription for a soapsuds enema. For which clients should soapsuds enemas be used with caution?",
    "options": [
     {
      "text": "For older adults and clients who are pregnant",
@@ -14970,7 +14970,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "What is the purpose of an oil retention enema?",
+   "prompt": "A provider prescribes an oil retention enema for a client who has hard stool. The client asks why. Which response should the nurse give?",
    "options": [
     {
      "text": "Lubricate the rectum and colon so stool passes more easily",
@@ -15032,7 +15032,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "What is a return-flow (flush) enema used for?",
+   "prompt": "A provider prescribes a return-flow (flush) enema for a client after surgery. What is this enema used for?",
    "options": [
     {
      "text": "Expelling intestinal gas",
@@ -15063,7 +15063,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "What volume is typical for a large-volume cleansing enema for an adult?",
+   "prompt": "A nurse is preparing a large-volume cleansing enema for an adult client. Which volume is typical?",
    "options": [
     {
      "text": "750 to 1,000 mL",
@@ -15204,7 +15204,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "How does docusate sodium work?",
+   "prompt": "A nurse is teaching a client who is prescribed docusate sodium. How does this medication work?",
    "options": [
     {
      "text": "It lowers stool surface tension so water and fat can soak in",
@@ -15235,7 +15235,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "mc",
-   "prompt": "Which laxative is bulk-forming?",
+   "prompt": "A nurse is reviewing laxatives with a client who has chronic constipation. Which laxative is bulk-forming?",
    "options": [
     {
      "text": "Psyllium",
@@ -15483,7 +15483,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "Which finding is expected when assessing a healthy stoma?",
+   "prompt": "A nurse is assessing a client's new colostomy. Which finding is expected for a healthy stoma?",
    "options": [
     {
      "text": "Pink to red, moist and shiny",
@@ -15555,7 +15555,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "order",
-   "prompt": "Place the bowel diversions in order from the most liquid output to the most formed output.",
+   "prompt": "A nurse is caring for clients who have different bowel diversions. Place the diversions in order from the most liquid output to the most formed output.",
    "options": [
     {
      "text": "Ileostomy",
@@ -15586,7 +15586,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "Which colostomy is usually permanent and produces formed stool, often after rectal cancer?",
+   "prompt": "A nurse is caring for a client who had surgery for rectal cancer. Which colostomy is usually permanent and produces formed stool?",
    "options": [
     {
      "text": "Sigmoid colostomy",
@@ -15679,7 +15679,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "Which statement about an ileostomy is correct?",
+   "prompt": "A nurse is caring for a client who has a new ileostomy. Which statement about an ileostomy is accurate?",
    "options": [
     {
      "text": "Output is liquid and contains enzymes that irritate the skin",
@@ -15710,7 +15710,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "When should a client empty an ileostomy pouch?",
+   "prompt": "A nurse is teaching a client who has a new ileostomy. When should the client empty the pouch?",
    "options": [
     {
      "text": "When it is one-third to one-half full",
@@ -15968,7 +15968,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "How often should a new stoma be measured after surgery?",
+   "prompt": "A nurse is teaching a client who has a new stoma. How often should the client measure the stoma after surgery?",
    "options": [
     {
      "text": "Weekly for the first 8 weeks",
@@ -15999,7 +15999,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "What should a client use to clean the skin around a stoma?",
+   "prompt": "A nurse is teaching a client how to care for a new stoma. What should the client use to clean the skin around the stoma?",
    "options": [
     {
      "text": "Warm water or a mild soap without moisturizers",
@@ -16092,7 +16092,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "Which pouch is best for a client with an ileostomy?",
+   "prompt": "A nurse is choosing a pouching system for a client who has a new ileostomy. Which pouch is best?",
    "options": [
     {
      "text": "A drainable pouch",
@@ -16154,7 +16154,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "Why must the nurse inspect a stoma closely every day?",
+   "prompt": "A nurse is caring for a client who has a new colostomy. Why must the nurse inspect the stoma closely every day?",
    "options": [
     {
      "text": "The stoma has few nerve endings, so the client may not feel an injury",
@@ -16216,7 +16216,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "Which statement best describes a J-pouch?",
+   "prompt": "A client asks the nurse what a J-pouch is. Which description should the nurse give?",
    "options": [
     {
      "text": "An internal pouch made from the ileum and connected to the anus, with no external stoma",
@@ -16247,7 +16247,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "mc",
-   "prompt": "How does a client empty a Kock pouch (continent ileostomy)?",
+   "prompt": "A nurse is teaching a client who has a Kock pouch (continent ileostomy). How does the client empty the pouch?",
    "options": [
     {
      "text": "By inserting a catheter through the stoma and its one-way valve",
@@ -16340,7 +16340,7 @@
    "topic": "Bowel Elimination",
    "category": "NG Decompression",
    "type": "mc",
-   "prompt": "Why is an NG (nasogastric) tube used for decompression in a client with a bowel obstruction?",
+   "prompt": "A nurse is caring for a client who has a bowel obstruction and an NG tube to suction. Why is the NG tube used for decompression?",
    "options": [
     {
      "text": "To remove gas and stomach contents, relieving distention and vomiting",
@@ -16402,7 +16402,7 @@
    "topic": "Bowel Elimination",
    "category": "NG Decompression",
    "type": "mc",
-   "prompt": "Which method is the gold standard for confirming NG tube placement?",
+   "prompt": "A nurse has inserted an NG tube for a client. Which method is the gold standard for confirming placement?",
    "options": [
     {
      "text": "X-ray",
@@ -16433,7 +16433,7 @@
    "topic": "Bowel Elimination",
    "category": "NG Decompression",
    "type": "mc",
-   "prompt": "Which gastric aspirate pH supports placement of an NG tube in the stomach?",
+   "prompt": "A nurse aspirates contents from a client's NG tube. Which pH supports placement in the stomach?",
    "options": [
     {
      "text": "4",
@@ -16505,7 +16505,7 @@
    "topic": "Bowel Elimination",
    "category": "NG Decompression",
    "type": "mc",
-   "prompt": "How should the nurse measure the length of an NG tube before insertion?",
+   "prompt": "A nurse is preparing to insert an NG tube for a client. How should the nurse measure the length of the tube?",
    "options": [
     {
      "text": "Tip of the nose to the earlobe to the xiphoid process, then add 10 cm",
@@ -16567,7 +16567,7 @@
    "topic": "Bowel Elimination",
    "category": "NG Decompression",
    "type": "mc",
-   "prompt": "Which task related to an NG tube can the nurse delegate to assistive personnel?",
+   "prompt": "A nurse is caring for a client who has an NG tube. Which task can the nurse delegate to assistive personnel?",
    "options": [
     {
      "text": "Giving oral care",
@@ -16646,7 +16646,7 @@
    "topic": "Bowel Elimination",
    "category": "Enemas, Laxatives & Bowel Care",
    "type": "dragdrop",
-   "prompt": "Move the solutions used for cleansing enemas to the answer box.",
+   "prompt": "A nurse is preparing a cleansing enema for a client. Which solutions are used for cleansing enemas? Move the correct answers to the answer box.",
    "leftLabel": "Enema types",
    "rightLabel": "Cleansing",
    "options": [
@@ -16689,7 +16689,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "dragdrop",
-   "prompt": "Move the diversions that are best managed with a drainable pouch to the answer box.",
+   "prompt": "A nurse is choosing ostomy pouches for clients who have bowel diversions. Which diversions are best managed with a drainable pouch? Move the correct answers to the answer box.",
    "leftLabel": "Diversions",
    "rightLabel": "Drainable pouch",
    "options": [
@@ -16727,7 +16727,7 @@
    "topic": "Bowel Elimination",
    "category": "Bowel Conditions",
    "type": "dragdrop",
-   "prompt": "Move the features of Crohn's disease to the answer box.",
+   "prompt": "A nurse is caring for clients who have inflammatory bowel disease. Which features are typical of Crohn's disease? Move the correct answers to the answer box.",
    "leftLabel": "Features",
    "rightLabel": "Crohn's disease",
    "options": [
@@ -16909,7 +16909,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "cloze",
-   "prompt": "Look at the picture. Each abdomen has one stoma.",
+   "prompt": "A nurse is caring for three clients who each have one stoma. Look at the picture.",
    "sentence": "Stoma A is {1}, stoma B is {2}, and stoma C is {3}.",
    "image": "/unit-4-fluids-nutrition-med-math/quiz-img/ostomy-sites-abc.jpg",
    "imageAlt": "Three abdomens, each with one stoma. A: stoma at the end of the small intestine in the right lower abdomen, with the whole large intestine shaded. B: stoma on the transverse colon, upper right abdomen. C: stoma on the sigmoid colon, left lower abdomen.",
@@ -17121,7 +17121,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "order",
-   "prompt": "Place the organs in the order urine is made and travels through the urinary tract.",
+   "prompt": "A nurse is teaching a client about the urinary tract. Place the organs in the order urine is made and travels through them.",
    "options": [
     {
      "text": "Kidneys",
@@ -17148,7 +17148,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "Which part of the kidney does most of the filtering, reabsorbing and excreting?",
+   "prompt": "A nurse is teaching a client who has kidney disease. Which part of the kidney does most of the filtering, reabsorbing, and excreting?",
    "options": [
     {
      "text": "The nephron",
@@ -17179,7 +17179,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "sata",
-   "prompt": "Which are functions of the kidneys? Select all that apply.",
+   "prompt": "A nurse is teaching a client who has chronic kidney disease about the kidneys. Which functions should the nurse include? Select all that apply.",
    "options": [
     {
      "text": "Filtering waste and toxins from the blood",
@@ -17225,7 +17225,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "Renin released by the kidneys starts a chain that ends with angiotensin II. What does angiotensin II do?",
+   "prompt": "A nurse is teaching a client about how the kidneys control blood pressure. Renin starts a chain that ends with angiotensin II. What does angiotensin II do?",
    "options": [
     {
      "text": "Raises blood volume and blood pressure",
@@ -17287,7 +17287,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "About how much urine collects in an adult's bladder before stretch receptors signal the need to void?",
+   "prompt": "A nurse is teaching a client about bladder function. About how much urine collects in an adult's bladder before stretch receptors signal the need to void?",
    "options": [
     {
      "text": "250 to 450 mL",
@@ -17318,7 +17318,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "Which 24-hour urine output is within the expected range for an adult?",
+   "prompt": "A nurse is reviewing an adult client's intake and output. Which 24-hour urine output is within the expected range?",
    "options": [
     {
      "text": "1,500 mL",
@@ -17491,7 +17491,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "A urinalysis shows glucose in the urine. Which term describes this?",
+   "prompt": "A nurse is reviewing a client's urinalysis, which shows glucose in the urine. Which term should the nurse use to document this?",
    "options": [
     {
      "text": "Glycosuria",
@@ -17584,7 +17584,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "Which medication turns urine orange or red?",
+   "prompt": "A client reports that their urine has turned orange. Which medication should the nurse ask about?",
    "options": [
     {
      "text": "Phenazopyridine",
@@ -17615,7 +17615,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "sata",
-   "prompt": "Which can cause urinary retention? Select all that apply.",
+   "prompt": "A nurse is caring for a client who can't empty the bladder. Which factors can cause urinary retention? Select all that apply.",
    "options": [
     {
      "text": "Loop diuretics",
@@ -17656,7 +17656,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "Which dietary change can decrease urine output?",
+   "prompt": "A nurse is reviewing a client's diet. Which dietary change can decrease urine output?",
    "options": [
     {
      "text": "Eating more sodium",
@@ -17687,7 +17687,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "sata",
-   "prompt": "Which age-related changes affect urination in older adults? Select all that apply.",
+   "prompt": "A nurse is caring for an older adult client. Which age-related changes affect urination? Select all that apply.",
    "options": [
     {
      "text": "Fewer nephrons",
@@ -17728,7 +17728,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "Why do clients who are pregnant urinate more often?",
+   "prompt": "A client who is pregnant asks the nurse why she urinates so often. Which response should the nurse give?",
    "options": [
     {
      "text": "The growing fetus presses on the bladder and blood volume rises 30% to 50%",
@@ -17759,7 +17759,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "dragdrop",
-   "prompt": "Move the loop diuretics to the answer box.",
+   "prompt": "A nurse is reviewing a client's medication list. Which medications are loop diuretics? Move the correct answers to the answer box.",
    "leftLabel": "Diuretics",
    "rightLabel": "Loop diuretics",
    "options": [
@@ -17802,7 +17802,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "When should a client take a once-daily diuretic?",
+   "prompt": "A nurse is teaching a client who has a new prescription for a once-daily diuretic. When should the client take it?",
    "options": [
     {
      "text": "In the morning",
@@ -17833,7 +17833,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Tract & Normal Urine",
    "type": "mc",
-   "prompt": "How often should intake and output be totaled for a hospitalized client?",
+   "prompt": "A nurse is monitoring intake and output for a hospitalized client. How often should the nurse total the intake and output?",
    "options": [
     {
      "text": "Every 24 hours",
@@ -18081,7 +18081,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "mc",
-   "prompt": "Which instructions should the nurse give a client learning Kegel exercises?",
+   "prompt": "A nurse is teaching a client who has stress incontinence how to do Kegel exercises. Which instructions should the nurse give?",
    "options": [
     {
      "text": "Tighten the pelvic muscles for a count of 10, relax for 10, and repeat 15 times, 3 to 4 times a day",
@@ -18153,7 +18153,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "mc",
-   "prompt": "What is the usual goal interval between voids in a bladder-retraining program?",
+   "prompt": "A nurse is planning a bladder-retraining program for a client. Which goal interval between voids should the nurse use?",
    "options": [
     {
      "text": "Every 4 hours",
@@ -18215,7 +18215,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "sata",
-   "prompt": "Which nursing actions help manage urinary incontinence? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has urinary incontinence. Which nursing actions help manage the incontinence? Select all that apply.",
    "options": [
     {
      "text": "Set up a toileting schedule",
@@ -18287,7 +18287,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "mc",
-   "prompt": "Which complications is an older adult with urinary incontinence at risk for?",
+   "prompt": "A nurse is caring for an older adult client who has urinary incontinence. Which complications is the client at risk for?",
    "options": [
     {
      "text": "Falls, skin breakdown and depression",
@@ -18318,7 +18318,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "mc",
-   "prompt": "Which definition describes urinary retention?",
+   "prompt": "A nurse is assessing a client who reports trouble emptying the bladder. Which definition describes urinary retention?",
    "options": [
     {
      "text": "The bladder doesn't empty completely with urination",
@@ -18349,7 +18349,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "sata",
-   "prompt": "Which findings suggest urinary retention? Select all that apply.",
+   "prompt": "A nurse is assessing a client after surgery. Which findings suggest urinary retention? Select all that apply.",
    "options": [
     {
      "text": "Suprapubic discomfort and a distended bladder",
@@ -18417,7 +18417,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "mc",
-   "prompt": "Why is a bladder scan done before catheterizing a client?",
+   "prompt": "A nurse is caring for a client who hasn't voided in 8 hours. Why should the nurse do a bladder scan before catheterizing the client?",
    "options": [
     {
      "text": "To avoid unnecessary catheterization and lower CAUTI risk",
@@ -18479,7 +18479,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "mc",
-   "prompt": "Which manifestations are typical of BPH (benign prostatic hyperplasia)?",
+   "prompt": "A nurse is assessing an older male client who has BPH (benign prostatic hyperplasia). Which manifestations should the nurse expect?",
    "options": [
     {
      "text": "Frequency, urgency, nocturia and a weak stream",
@@ -18541,7 +18541,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "mc",
-   "prompt": "Which technique helps a client with reflex incontinence empty the bladder?",
+   "prompt": "A nurse is caring for a client who has reflex incontinence. Which technique helps the client empty the bladder?",
    "options": [
     {
      "text": "Bladder compression such as the Credé method or double voiding",
@@ -18572,7 +18572,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "mc",
-   "prompt": "An adult reports nighttime bedwetting. Which question helps find a cause?",
+   "prompt": "An adult client reports nighttime bedwetting. Which question should the nurse ask to help find a cause?",
    "options": [
     {
      "text": "\"Do you drink alcohol or caffeine in the evening?\"",
@@ -18680,7 +18680,7 @@
    "topic": "Urinary Elimination",
    "category": "UTIs & Urinary Conditions",
    "type": "mc",
-   "prompt": "Why are females at higher risk for UTIs?",
+   "prompt": "A female client asks the nurse why she keeps getting urinary tract infections (UTIs). Which response should the nurse give?",
    "options": [
     {
      "text": "The urethra is shorter and close to the anus",
@@ -18711,7 +18711,7 @@
    "topic": "Urinary Elimination",
    "category": "UTIs & Urinary Conditions",
    "type": "sata",
-   "prompt": "Which manifestations are typical of a UTI? Select all that apply.",
+   "prompt": "A nurse is assessing a client who has a urinary tract infection (UTI). Which manifestations should the nurse expect? Select all that apply.",
    "options": [
     {
      "text": "Hesitancy with a weak urine stream",
@@ -18845,7 +18845,7 @@
    "topic": "Urinary Elimination",
    "category": "UTIs & Urinary Conditions",
    "type": "sata",
-   "prompt": "Which manifestations are typical of a kidney stone? Select all that apply.",
+   "prompt": "A nurse is assessing a client who has a kidney stone. Which manifestations should the nurse expect? Select all that apply.",
    "options": [
     {
      "text": "Sharp flank pain that travels toward the groin",
@@ -18917,7 +18917,7 @@
    "topic": "Urinary Elimination",
    "category": "UTIs & Urinary Conditions",
    "type": "mc",
-   "prompt": "Which eGFR (estimated glomerular filtration rate) means CKD (chronic kidney disease) has progressed to kidney failure?",
+   "prompt": "A nurse is reviewing the lab results of a client who has chronic kidney disease (CKD). Which eGFR (estimated glomerular filtration rate) means CKD has progressed to kidney failure?",
    "options": [
     {
      "text": "Below 15 mL/min/1.73 m²",
@@ -18948,7 +18948,7 @@
    "topic": "Urinary Elimination",
    "category": "UTIs & Urinary Conditions",
    "type": "sata",
-   "prompt": "Which are major risk factors for chronic kidney disease? Select all that apply.",
+   "prompt": "A nurse is reviewing the records of several clients. Which conditions are major risk factors for chronic kidney disease? Select all that apply.",
    "options": [
     {
      "text": "Asthma",
@@ -18989,7 +18989,7 @@
    "topic": "Urinary Elimination",
    "category": "UTIs & Urinary Conditions",
    "type": "mc",
-   "prompt": "Which findings suggest dehydration?",
+   "prompt": "A nurse is assessing an older adult client who has had poor intake for 3 days. Which findings suggest dehydration?",
    "options": [
     {
      "text": "Dark urine and decreased urine output",
@@ -19051,7 +19051,7 @@
    "topic": "Urinary Elimination",
    "category": "Specimens & Diagnostics",
    "type": "dragdrop",
-   "prompt": "Move the urine specimens that must be collected as sterile specimens to the answer box.",
+   "prompt": "A nurse is collecting urine specimens from several clients. Which specimens must be collected as sterile specimens? Move the correct answers to the answer box.",
    "leftLabel": "Specimens",
    "rightLabel": "Sterile",
    "options": [
@@ -19089,7 +19089,7 @@
    "topic": "Urinary Elimination",
    "category": "Specimens & Diagnostics",
    "type": "order",
-   "prompt": "Place the steps a female client follows for a clean-catch midstream specimen in order.",
+   "prompt": "A nurse is teaching a female client how to collect a clean-catch midstream urine specimen. Place the steps in order.",
    "options": [
     {
      "text": "Wash hands",
@@ -19120,7 +19120,7 @@
    "topic": "Urinary Elimination",
    "category": "Specimens & Diagnostics",
    "type": "mc",
-   "prompt": "How should the nurse start a 24-hour urine collection?",
+   "prompt": "A provider prescribes a 24-hour urine collection for a client. How should the nurse start the collection?",
    "options": [
     {
      "text": "Have the client void, discard that urine, and record the start time",
@@ -19182,7 +19182,7 @@
    "topic": "Urinary Elimination",
    "category": "Specimens & Diagnostics",
    "type": "mc",
-   "prompt": "How should a 24-hour urine collection be stored during the test?",
+   "prompt": "A nurse is teaching a client about a 24-hour urine collection. How should the urine be stored during the test?",
    "options": [
     {
      "text": "Kept cold, in a refrigerator or on ice, unless a preservative is used",
@@ -19213,7 +19213,7 @@
    "topic": "Urinary Elimination",
    "category": "Specimens & Diagnostics",
    "type": "mc",
-   "prompt": "How should the nurse obtain a urine specimen from a client with an indwelling catheter?",
+   "prompt": "A nurse needs a urine specimen from a client who has an indwelling catheter. How should the nurse obtain it?",
    "options": [
     {
      "text": "Clamp below the sampling port, cleanse the port, and withdraw urine with a sterile syringe",
@@ -19275,7 +19275,7 @@
    "topic": "Urinary Elimination",
    "category": "Specimens & Diagnostics",
    "type": "mc",
-   "prompt": "Which can a urine dipstick (reagent strip) detect?",
+   "prompt": "A nurse is testing a client's urine with a dipstick (reagent strip). Which can the dipstick detect?",
    "options": [
     {
      "text": "pH, specific gravity, glucose, protein, blood, leukocyte esterase and nitrites",
@@ -19306,7 +19306,7 @@
    "topic": "Urinary Elimination",
    "category": "Specimens & Diagnostics",
    "type": "mc",
-   "prompt": "Why is a urinalysis often ordered with a culture and sensitivity?",
+   "prompt": "A client asks why the provider ordered both a urinalysis and a urine culture and sensitivity. Which response should the nurse give?",
    "options": [
     {
      "text": "A urinalysis can show bacteria but can't identify the type",
@@ -19337,7 +19337,7 @@
    "topic": "Urinary Elimination",
    "category": "Specimens & Diagnostics",
    "type": "mc",
-   "prompt": "How should a urine specimen be labeled?",
+   "prompt": "A nurse has collected a urine specimen from a client. How should the nurse label it?",
    "options": [
     {
      "text": "In the client's presence, with two identifiers matching the order",
@@ -19445,7 +19445,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "sata",
-   "prompt": "Which are risk factors for CAUTI? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has an indwelling urinary catheter. Which factors increase the risk of catheter-associated urinary tract infection (CAUTI)? Select all that apply.",
    "options": [
     {
      "text": "A longer time with the catheter in place",
@@ -19486,7 +19486,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "How long after a catheter is removed can an infection still count as a CAUTI?",
+   "prompt": "A nurse removed a client's indwelling catheter yesterday, and the client now has a fever and cloudy urine. How long after removal can an infection still count as a CAUTI?",
    "options": [
     {
      "text": "Up to 48 hours",
@@ -19517,7 +19517,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Which catheter is used for a client with an enlarged prostate?",
+   "prompt": "A nurse is preparing to catheterize a male client who has an enlarged prostate. Which catheter should the nurse use?",
    "options": [
     {
      "text": "Coudé catheter",
@@ -19548,7 +19548,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "What should the nurse use to inflate an indwelling catheter balloon?",
+   "prompt": "A nurse is inserting an indwelling urinary catheter for a client. What should the nurse use to inflate the balloon?",
    "options": [
     {
      "text": "Sterile water",
@@ -19610,7 +19610,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Which technique is required to insert an indwelling urinary catheter?",
+   "prompt": "A nurse is preparing to insert an indwelling urinary catheter for a client. Which technique is required?",
    "options": [
     {
      "text": "Sterile technique",
@@ -19641,7 +19641,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Which catheter can't be placed by a nurse?",
+   "prompt": "A nurse is reviewing urinary catheters with a nursing student. Which catheter can't be placed by a nurse?",
    "options": [
     {
      "text": "Suprapubic catheter",
@@ -19672,7 +19672,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "What should the nurse use for routine catheter care?",
+   "prompt": "A nurse is caring for a client who has an indwelling urinary catheter. What should the nurse use for routine catheter care?",
    "options": [
     {
      "text": "Soap and water",
@@ -19703,7 +19703,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "How should the nurse clean the catheter during perineal care?",
+   "prompt": "A nurse is providing perineal care for a client who has an indwelling urinary catheter. How should the nurse clean the catheter?",
    "options": [
     {
      "text": "Start at the meatus and wipe away from the body along the first 4 in of the catheter",
@@ -19765,7 +19765,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Where should the nurse attach a standard drainage bag?",
+   "prompt": "A nurse is caring for a client who has an indwelling urinary catheter. Where should the nurse attach the standard drainage bag?",
    "options": [
     {
      "text": "To a part of the bed frame that doesn't move",
@@ -19796,7 +19796,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Which statement about leg bags is correct?",
+   "prompt": "A nurse is teaching a client who will go home with a leg bag. Which statement about leg bags is accurate?",
    "options": [
     {
      "text": "They hold less, so they need emptying more often",
@@ -19827,7 +19827,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Which catheter does not need a drainage bag?",
+   "prompt": "A nurse is preparing to drain a client's bladder once and then remove the catheter. Which catheter does not need a drainage bag?",
    "options": [
     {
      "text": "Straight catheter",
@@ -19858,7 +19858,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Which catheter is used after surgery when the bladder needs irrigation?",
+   "prompt": "A client is returning from bladder surgery and needs continuous bladder irrigation. Which catheter should the nurse expect?",
    "options": [
     {
      "text": "A retention (multiple-lumen) catheter",
@@ -19920,7 +19920,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Which technique is used for closed intermittent irrigation of an indwelling catheter?",
+   "prompt": "A nurse is preparing to perform closed intermittent irrigation of a client's indwelling catheter. Which technique is required?",
    "options": [
     {
      "text": "Sterile technique",
@@ -19951,7 +19951,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "How often should a condom catheter be changed?",
+   "prompt": "A nurse is caring for a male client who has a condom catheter. How often should the nurse change it?",
    "options": [
     {
      "text": "At least daily and whenever soiled",
@@ -19982,7 +19982,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "Which statement about a female external catheter is correct?",
+   "prompt": "A nurse is caring for a female client who has a female external catheter. Which statement about this device is accurate?",
    "options": [
     {
      "text": "A soft wick sits between the labia and connects to low continuous suction",
@@ -20013,7 +20013,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "How often should a suprapubic catheter dressing be changed?",
+   "prompt": "A nurse is caring for a client who has a suprapubic catheter. How often should the nurse change the dressing?",
    "options": [
     {
      "text": "Daily",
@@ -20075,7 +20075,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "mc",
-   "prompt": "What is the usual catheter size for an adult male?",
+   "prompt": "A nurse is preparing to insert an indwelling catheter for an adult male client. Which catheter size is usual?",
    "options": [
     {
      "text": "12 to 14 Fr",
@@ -20137,7 +20137,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "mc",
-   "prompt": "Which statement about an ileal conduit is correct?",
+   "prompt": "A nurse is caring for a client who has an ileal conduit. Which statement about this diversion is accurate?",
    "options": [
     {
      "text": "Urine drains continuously into an external pouch",
@@ -20199,7 +20199,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "mc",
-   "prompt": "How is urine removed from a continent urinary reservoir such as a Kock pouch or Indiana pouch?",
+   "prompt": "A nurse is teaching a client who has a continent urinary reservoir, such as a Kock pouch or Indiana pouch. How is urine removed?",
    "options": [
     {
      "text": "The client inserts a catheter through the stoma on a schedule",
@@ -20230,7 +20230,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "mc",
-   "prompt": "How does a client with a neobladder empty it?",
+   "prompt": "A nurse is teaching a client who has a new neobladder. How does the client empty it?",
    "options": [
     {
      "text": "By straining the abdominal muscles to void through the urethra, sometimes with self-catheterization",
@@ -20323,7 +20323,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "mc",
-   "prompt": "Which diversion uses a catheter inserted through the abdominal wall directly into the bladder?",
+   "prompt": "A nurse is caring for a client who has a catheter inserted through the abdominal wall directly into the bladder. Which term describes this diversion?",
    "options": [
     {
      "text": "Cystostomy",
@@ -20354,7 +20354,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "mc",
-   "prompt": "What is the purpose of a ureteral stent?",
+   "prompt": "A client asks the nurse why a ureteral stent was placed. Which response should the nurse give?",
    "options": [
     {
      "text": "To keep the ureter open past a blockage",
@@ -20416,7 +20416,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "sata",
-   "prompt": "Which findings in a client with a urinary diversion should the nurse report? Select all that apply.",
+   "prompt": "A nurse is caring for a client who has a urinary diversion. Which findings should the nurse report? Select all that apply.",
    "options": [
     {
      "text": "A dusky or cyanotic stoma",
@@ -20457,7 +20457,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "mc",
-   "prompt": "How much fluid should a client with a continent urinary reservoir drink each day, unless restricted?",
+   "prompt": "A nurse is teaching a client who has a continent urinary reservoir. Unless restricted, how much fluid should the client drink each day?",
    "options": [
     {
      "text": "About 2 L",
@@ -20488,7 +20488,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "mc",
-   "prompt": "Who should the nurse consult to help a client care for a new incontinent urinary diversion?",
+   "prompt": "A nurse is caring for a client who has a new incontinent urinary diversion. Who should the nurse consult to help the client learn its care?",
    "options": [
     {
      "text": "A WOC (wound, ostomy and continence) nurse",
@@ -20612,7 +20612,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Medications",
    "type": "mc",
-   "prompt": "Which effect is common with oxybutynin?",
+   "prompt": "A nurse is teaching a client who has a new prescription for oxybutynin. Which effect is common?",
    "options": [
     {
      "text": "Dry mouth",
@@ -20736,7 +20736,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Medications",
    "type": "mc",
-   "prompt": "Which medication decreases urine production by acting like ADH (antidiuretic hormone)?",
+   "prompt": "A nurse is caring for a client who takes a medication that decreases urine production by acting like ADH (antidiuretic hormone). Which medication is this?",
    "options": [
     {
      "text": "Desmopressin",
@@ -20767,7 +20767,7 @@
    "topic": "Urinary Elimination",
    "category": "Incontinence & Retention",
    "type": "dragdrop",
-   "prompt": "Move the factors that most commonly cause urinary retention to the answer box.",
+   "prompt": "A nurse is caring for a client who has urinary retention. Which factors most commonly cause urinary retention? Move the correct answers to the answer box.",
    "leftLabel": "Factors",
    "rightLabel": "Retention",
    "options": [
@@ -20810,7 +20810,7 @@
    "topic": "Urinary Elimination",
    "category": "UTIs & Urinary Conditions",
    "type": "dragdrop",
-   "prompt": "Move the UTI prevention measures to the answer box.",
+   "prompt": "A nurse is teaching a female client who has frequent UTIs. Which prevention measures should the nurse include? Move the correct answers to the answer box.",
    "leftLabel": "Measures",
    "rightLabel": "Prevent UTIs",
    "options": [
@@ -20853,7 +20853,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "dragdrop",
-   "prompt": "Move the catheters a nurse can insert or apply to the answer box.",
+   "prompt": "A nurse is reviewing urinary catheters with a nursing student. Which catheters can a nurse insert or apply? Move the correct answers to the answer box.",
    "leftLabel": "Catheters",
    "rightLabel": "Nurse can place",
    "options": [
@@ -20896,7 +20896,7 @@
    "topic": "Urinary Elimination",
    "category": "Urinary Diversions",
    "type": "dragdrop",
-   "prompt": "Move the continent urinary diversions to the answer box.",
+   "prompt": "A nurse is caring for clients who have urinary diversions. Which diversions are continent? Move the correct answers to the answer box.",
    "leftLabel": "Diversions",
    "rightLabel": "Continent",
    "options": [
@@ -21114,7 +21114,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "What is 4:00 p.m. in 24-hour clock time?",
+   "prompt": "A provider prescribes a medication for a client at 4:00 p.m. How should the nurse write this time on the 24-hour clock?",
    "options": [
     {
      "text": "1600",
@@ -21145,7 +21145,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "What is 1900 on the 12-hour clock?",
+   "prompt": "A client's medication is due at 1900. What time is this on the 12-hour clock?",
    "options": [
     {
      "text": "7:00 p.m.",
@@ -21207,7 +21207,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "What is 12:30 a.m. in 24-hour time?",
+   "prompt": "A nurse gives a client a medication at 12:30 a.m. How should the nurse document this time on the 24-hour clock?",
    "options": [
     {
      "text": "0030",
@@ -21238,7 +21238,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "What is 12:10 p.m. in 24-hour time?",
+   "prompt": "A nurse gives a client a medication at 12:10 p.m. How should the nurse document this time on the 24-hour clock?",
    "options": [
     {
      "text": "1210",
@@ -21269,7 +21269,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "What is 0945 on the 12-hour clock?",
+   "prompt": "A client's medication is due at 0945. What time is this on the 12-hour clock?",
    "options": [
     {
      "text": "9:45 a.m.",
@@ -21300,7 +21300,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "How is midnight written on the 24-hour clock?",
+   "prompt": "A nurse is documenting an event that happened at midnight. How is midnight written on the 24-hour clock?",
    "options": [
     {
      "text": "2400",
@@ -21362,7 +21362,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "Why do most facilities use the 24-hour clock?",
+   "prompt": "A nursing student asks why the facility uses the 24-hour clock. Which response by the nurse is accurate?",
    "options": [
     {
      "text": "It avoids confusion between a.m. and p.m.",
@@ -21393,7 +21393,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "dragdrop",
-   "prompt": "Move the 24-hour times that fall in the afternoon or evening (p.m.) to the answer box.",
+   "prompt": "A nurse is reviewing a client's medication schedule. Which 24-hour times fall in the afternoon or evening (p.m.)? Move the correct answers to the answer box.",
    "leftLabel": "Times",
    "rightLabel": "p.m.",
    "options": [
@@ -21441,7 +21441,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "order",
-   "prompt": "Place these medication times in order, starting just after midnight.",
+   "prompt": "A nurse is reviewing a client's medication times. Place them in order, starting just after midnight.",
    "options": [
     {
      "text": "0015",
@@ -21520,7 +21520,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "What is 2:45 a.m. in 24-hour time?",
+   "prompt": "A nurse gives a client a PRN medication at 2:45 a.m. How should the nurse document this time on the 24-hour clock?",
    "options": [
     {
      "text": "0245",
@@ -21551,7 +21551,7 @@
    "topic": "Med Math",
    "category": "24-Hour Clock",
    "type": "mc",
-   "prompt": "What is 1515 on the 12-hour clock?",
+   "prompt": "A client's medication is due at 1515. What time is this on the 12-hour clock?",
    "options": [
     {
      "text": "3:15 p.m.",
@@ -21582,7 +21582,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "How many milliliters are in 1 teaspoon?",
+   "prompt": "A nurse is teaching a client how to measure a liquid medication. How many milliliters are in 1 teaspoon?",
    "options": [
     {
      "text": "5 mL",
@@ -21613,7 +21613,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "How many milliliters are in 1 tablespoon?",
+   "prompt": "A nurse is teaching a client how to measure a liquid medication. How many milliliters are in 1 tablespoon?",
    "options": [
     {
      "text": "15 mL",
@@ -21644,7 +21644,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "How many milliliters are in 1 ounce?",
+   "prompt": "A nurse is recording a client's oral intake. How many milliliters are in 1 ounce?",
    "options": [
     {
      "text": "30 mL",
@@ -21675,7 +21675,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "How many milliliters are in 1 cup (8 oz)?",
+   "prompt": "A nurse is recording a client's oral intake. How many milliliters are in 1 cup (8 oz)?",
    "options": [
     {
      "text": "240 mL",
@@ -21706,7 +21706,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "How many pounds equal 1 kilogram?",
+   "prompt": "A nurse is converting a client's weight to calculate a dose. How many pounds equal 1 kilogram?",
    "options": [
     {
      "text": "2.2 lb",
@@ -21737,7 +21737,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Convert 20 mg to micrograms.",
+   "prompt": "A nurse is preparing a client's medication and needs to convert 20 mg to micrograms. Which amount is correct?",
    "calc": true,
    "options": [
     {
@@ -21769,7 +21769,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Convert 5 g to kilograms.",
+   "prompt": "A nurse is converting a measurement for a client's record. Which amount equals 5 g in kilograms?",
    "calc": true,
    "options": [
     {
@@ -21801,7 +21801,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Convert 50 mcg to grams.",
+   "prompt": "A nurse is preparing a client's medication and needs to convert 50 mcg to grams. Which amount is correct?",
    "calc": true,
    "options": [
     {
@@ -21833,7 +21833,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Convert 10 mg to grams.",
+   "prompt": "A nurse is preparing a client's medication and needs to convert 10 mg to grams. Which amount is correct?",
    "calc": true,
    "options": [
     {
@@ -21865,7 +21865,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Convert 2.5 mg to micrograms.",
+   "prompt": "A nurse is preparing a client's medication and needs to convert 2.5 mg to micrograms. Which amount is correct?",
    "calc": true,
    "options": [
     {
@@ -21897,7 +21897,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Convert 3 cm to meters.",
+   "prompt": "A nurse measures a client's wound as 3 cm long. Which amount equals 3 cm in meters?",
    "calc": true,
    "options": [
     {
@@ -21929,7 +21929,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Convert 4 mm to centimeters.",
+   "prompt": "A nurse measures a client's wound depth as 4 mm. Which amount equals 4 mm in centimeters?",
    "calc": true,
    "options": [
     {
@@ -22089,7 +22089,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "dragdrop",
-   "prompt": "Move the amounts that equal 30 mL to the answer box.",
+   "prompt": "A nurse is teaching a client how to measure a liquid medication at home. Which amounts equal 30 mL? Move the correct answers to the answer box.",
    "leftLabel": "Amounts",
    "rightLabel": "30 mL",
    "calc": true,
@@ -22181,7 +22181,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Which metric prefix means 1,000?",
+   "prompt": "A nurse is reviewing metric units before calculating a client's dose. Which metric prefix means 1,000?",
    "options": [
     {
      "text": "kilo-",
@@ -22212,7 +22212,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "What is the base unit for measuring the volume of liquids in the metric system?",
+   "prompt": "A nurse is reviewing metric units before calculating a client's dose. Which is the base unit for measuring the volume of liquids?",
    "options": [
     {
      "text": "Liter",
@@ -22243,7 +22243,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Which equivalent is correct?",
+   "prompt": "A nurse is reviewing metric equivalents before preparing a client's medication. Which equivalent is correct?",
    "options": [
     {
      "text": "1 mL = 1 cc (cubic centimeter)",
@@ -22274,7 +22274,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "How many centimeters equal 1 inch?",
+   "prompt": "A nurse is converting a client's height to centimeters. How many centimeters equal 1 inch?",
    "calc": true,
    "options": [
     {
@@ -22306,7 +22306,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Why should clients use a calibrated medicine cup or oral syringe instead of a kitchen spoon?",
+   "prompt": "A nurse is teaching a client how to take a liquid medication at home. Why should the client use a calibrated medicine cup or oral syringe instead of a kitchen spoon?",
    "options": [
     {
      "text": "Kitchen spoons vary in size, so the dose can be wrong",
@@ -22368,7 +22368,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "What does PC mean?",
+   "prompt": "A nurse is reviewing a client's medication prescription that says \"PC.\" When should the nurse give the medication?",
    "options": [
     {
      "text": "After meals",
@@ -22399,7 +22399,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "What does PRN mean?",
+   "prompt": "A nurse is reviewing a client's medication prescription that says \"PRN.\" What does this mean?",
    "options": [
     {
      "text": "As needed",
@@ -22430,7 +22430,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "A medication is ordered STAT. When should it be given?",
+   "prompt": "A provider prescribes a medication STAT for a client. When should the nurse give it?",
    "options": [
     {
      "text": "Immediately",
@@ -22461,7 +22461,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "A medication is ordered SL. How is it given?",
+   "prompt": "A provider prescribes a medication SL for a client. How should the nurse give it?",
    "options": [
     {
      "text": "Under the tongue (sublingually)",
@@ -22492,7 +22492,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "What does IM mean?",
+   "prompt": "A provider prescribes a medication IM for a client. What does IM mean?",
    "options": [
     {
      "text": "Intramuscular",
@@ -22523,7 +22523,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "A medication is ordered TID. How often is it given?",
+   "prompt": "A provider prescribes a medication TID for a client. How often should the nurse give it?",
    "options": [
     {
      "text": "Three times a day",
@@ -22554,7 +22554,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "A medication is ordered QID. How often is it given?",
+   "prompt": "A provider prescribes a medication QID for a client. How often should the nurse give it?",
    "options": [
     {
      "text": "Four times a day",
@@ -22585,7 +22585,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "What does gtt mean?",
+   "prompt": "A nurse is reviewing a prescription for eye drops measured in \"gtt.\" What does gtt mean?",
    "options": [
     {
      "text": "Drop",
@@ -22616,7 +22616,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "How should a nurse document a dose of insulin measured in units?",
+   "prompt": "A nurse is documenting a dose of insulin given to a client. How should the nurse document the units?",
    "options": [
     {
      "text": "Write out the word \"units\"",
@@ -22647,7 +22647,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "dragdrop",
-   "prompt": "Move the abbreviations that describe a route of administration to the answer box.",
+   "prompt": "A nurse is reviewing a client's medication prescriptions. Which abbreviations describe a route of administration? Move the correct answers to the answer box.",
    "leftLabel": "Abbreviations",
    "rightLabel": "Routes",
    "options": [
@@ -22700,7 +22700,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "dragdrop",
-   "prompt": "Move the abbreviations that describe how often or when a medication is given to the answer box.",
+   "prompt": "A nurse is reviewing a client's medication prescriptions. Which abbreviations describe how often or when a medication is given? Move the correct answers to the answer box.",
    "leftLabel": "Abbreviations",
    "rightLabel": "Timing",
    "options": [
@@ -22801,7 +22801,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "What does USP on a medication label refer to?",
+   "prompt": "A nurse sees \"USP\" on a client's medication label. What does USP refer to?",
    "options": [
     {
      "text": "U.S. Pharmacopeia, a reference of standard preparations with quality and purity tests",
@@ -23008,7 +23008,7 @@
    "topic": "Med Math",
    "category": "Rounding Rules",
    "type": "mc",
-   "prompt": "When should the nurse round during a multi-step dosage calculation, such as converting pounds to kilograms first?",
+   "prompt": "A nurse is calculating a client's weight-based dose and first converts pounds to kilograms. When should the nurse round?",
    "options": [
     {
      "text": "Only at the final step",
@@ -23039,7 +23039,7 @@
    "topic": "Med Math",
    "category": "Rounding Rules",
    "type": "mc",
-   "prompt": "How should the nurse write a dose of five-tenths of a milligram?",
+   "prompt": "A nurse is transcribing a dose of five-tenths of a milligram for a client. How should the nurse write the dose?",
    "options": [
     {
      "text": "0.5 mg",
@@ -23070,7 +23070,7 @@
    "topic": "Med Math",
    "category": "Rounding Rules",
    "type": "mc",
-   "prompt": "Which dose is written correctly?",
+   "prompt": "A nurse is transcribing a medication dose into a client's record. Which dose is written correctly?",
    "options": [
     {
      "text": "5 mg",
@@ -23293,7 +23293,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes sodium polystyrene sulfonate 4 oz PO every 6 hr. Available: 60 mL per unit dose. How many unit doses?",
+   "prompt": "A provider prescribes sodium polystyrene sulfonate 4 oz PO every 6 hr for a client. Available is 60 mL per unit dose. How many unit doses should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23325,7 +23325,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes clonidine 200 mcg PO daily. Available: 0.2 mg per tablet. How many tablets?",
+   "prompt": "A provider prescribes clonidine 200 mcg PO daily for a client. Available is 0.2 mg per tablet. How many tablets should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23357,7 +23357,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes metronidazole 2 g PO before discharge. Available: 500 mg per tablet. How many tablets?",
+   "prompt": "A provider prescribes metronidazole 2 g PO before discharge for a client. Available is 500 mg per tablet. How many tablets should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23421,7 +23421,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes cephalexin 0.5 g PO every 12 hr. Available: 250 mg per capsule. How many capsules?",
+   "prompt": "A provider prescribes cephalexin 0.5 g PO every 12 hr for a client. Available is 250 mg per capsule. How many capsules should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23453,7 +23453,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes magnesium hydroxide 2 oz PO daily. Available: 30 mL per unit dose. How many unit doses?",
+   "prompt": "A provider prescribes magnesium hydroxide 2 oz PO daily for a client. Available is 30 mL per unit dose. How many unit doses should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23581,7 +23581,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes acetaminophen 650 mg PO. Available: 325 mg tablets. How many tablets?",
+   "prompt": "A provider prescribes acetaminophen 650 mg PO for a client. Available is 325 mg tablets. How many tablets should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23613,7 +23613,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes digoxin 0.125 mg PO daily. Available: 0.25 mg tablets. How many tablets?",
+   "prompt": "A provider prescribes digoxin 0.125 mg PO daily for a client. Available is 0.25 mg tablets. How many tablets should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23645,7 +23645,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes levothyroxine 50 mcg PO daily. Available: 0.025 mg tablets. How many tablets?",
+   "prompt": "A provider prescribes levothyroxine 50 mcg PO daily for a client. Available is 0.025 mg tablets. How many tablets should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23677,7 +23677,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes heparin 5,000 units subcutaneously. Available: 10,000 units/mL. How many mL? (Round to the nearest hundredth if needed.)",
+   "prompt": "A provider prescribes heparin 5,000 units subcutaneously for a client. Available is 10,000 units/mL. How many mL should the nurse administer? (Round to the nearest hundredth if needed.)",
    "calc": true,
    "options": [
     {
@@ -23709,7 +23709,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes potassium chloride 20 mEq PO. Available: 10 mEq/15 mL. How many mL?",
+   "prompt": "A provider prescribes potassium chloride 20 mEq PO for a client. Available is 10 mEq/15 mL. How many mL should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23741,7 +23741,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes a medication 0.25 mg. Available: 0.5 mg/2 mL. How many mL?",
+   "prompt": "A provider prescribes a medication 0.25 mg for a client. Available is 0.5 mg/2 mL. How many mL should the nurse administer?",
    "calc": true,
    "options": [
     {
@@ -23773,7 +23773,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "A provider prescribes 8 mg of a medication. Available: 2.5 mg/mL. How many mL? (Round to the nearest tenth.)",
+   "prompt": "A provider prescribes 8 mg of a medication for a client. Available is 2.5 mg/mL. How many mL should the nurse administer? (Round to the nearest tenth.)",
    "calc": true,
    "options": [
     {
@@ -23854,7 +23854,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "When setting up a problem with dimensional analysis, what should the nurse check?",
+   "prompt": "A nurse is setting up a dimensional analysis problem to calculate a client's dose. What should the nurse check?",
    "calc": true,
    "options": [
     {
@@ -23886,7 +23886,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "Which setup is ratio and proportion?",
+   "prompt": "A nurse is calculating a client's dose using ratio and proportion. Which setup is correct?",
    "calc": true,
    "options": [
     {
@@ -24079,7 +24079,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "Convert 60 mL to tablespoons.",
+   "prompt": "A client's liquid medication dose is 60 mL. How many tablespoons should the nurse teach the client to measure?",
    "calc": true,
    "options": [
     {
@@ -24111,7 +24111,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "How many milliliters are in 1 pint?",
+   "prompt": "A nurse is recording a client's oral intake. How many milliliters are in 1 pint?",
    "calc": true,
    "options": [
     {
@@ -24143,7 +24143,7 @@
    "topic": "Med Math",
    "category": "Metric & Household Conversions",
    "type": "mc",
-   "prompt": "How many milliliters are in 1 quart?",
+   "prompt": "A nurse is recording a client's oral intake. How many milliliters are in 1 quart?",
    "calc": true,
    "options": [
     {
@@ -24256,7 +24256,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "mc",
-   "prompt": "Why are apothecary units such as grains no longer used for medications?",
+   "prompt": "A nursing student asks why grains are no longer used for medication doses. Which response by the nurse is accurate?",
    "options": [
     {
      "text": "They caused many calculation and medication errors and are on the \"Do Not Use\" list",
@@ -24287,7 +24287,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "sata",
-   "prompt": "Which habits help a nurse calculate doses safely? Select all that apply.",
+   "prompt": "A nurse is calculating doses for several clients. Which habits help the nurse calculate doses safely? Select all that apply.",
    "calc": true,
    "options": [
     {
@@ -24329,7 +24329,7 @@
    "topic": "Med Math",
    "category": "Dosage Calculations",
    "type": "mc",
-   "prompt": "When setting up a dimensional analysis problem, how should each new fraction be placed?",
+   "prompt": "A nurse is setting up a dimensional analysis problem to calculate a client's dose. How should each new fraction be placed?",
    "calc": true,
    "options": [
     {
