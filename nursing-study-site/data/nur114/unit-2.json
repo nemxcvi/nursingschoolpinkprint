@@ -3801,7 +3801,7 @@
       "topic": "Mobility",
       "category": "Assessment & devices",
       "type": "dragdrop",
-      "prompt": "A nurse is choosing transfer equipment for several clients. Sort the clients into the device that fits each. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is choosing transfer equipment for several clients. Sort the clients into the device that fits each. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Clients",
       "buckets": [
         "Mechanical lift",
@@ -3841,7 +3841,7 @@
       "topic": "Mobility",
       "category": "Effects of immobility",
       "type": "dragdrop",
-      "prompt": "A nurse is caring for a client on prolonged bed rest. Sort the interventions into the complication each helps prevent. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is caring for a client on prolonged bed rest. Sort the interventions into the complication each helps prevent. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Interventions",
       "buckets": [
         "Atelectasis",
@@ -7210,7 +7210,7 @@
       "topic": "Hygiene",
       "category": "Integumentary & infection prevention",
       "type": "dragdrop",
-      "prompt": "A nurse is reviewing hand hygiene. Sort each situation by the method the nurse should use. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is reviewing hand hygiene. Sort each situation by the method the nurse should use. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Situations",
       "buckets": [
         "Alcohol-based sanitizer",
@@ -10344,7 +10344,7 @@
       "topic": "Client Education",
       "category": "Domains of learning",
       "type": "dragdrop",
-      "prompt": "A nurse is planning teaching for a client who has a new ostomy. Sort each teaching method into the domain of learning it fits. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is planning teaching for a client who has a new ostomy. Sort each teaching method into the domain of learning it fits. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Methods",
       "buckets": [
         "Cognitive",
@@ -12568,7 +12568,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Vulnerable Populations",
       "type": "dragdrop",
-      "prompt": "A nurse is assessing factors that affect vulnerable populations. Sort each factor. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is assessing factors that affect vulnerable populations. Sort each factor. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Factors",
       "buckets": [
         "Demographic",
@@ -12621,7 +12621,7 @@
       "topic": "Diversity, Equity, and Inclusion",
       "category": "Culture & Bias",
       "type": "dragdrop",
-      "prompt": "A nurse is reviewing ways of knowing about culture and types of bias. Sort the examples. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is reviewing ways of knowing about culture and types of bias. Sort the examples. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Examples",
       "buckets": [
         "Emic knowledge",
@@ -15072,7 +15072,7 @@
       "topic": "Self-Concept",
       "category": "Role Stressors",
       "type": "dragdrop",
-      "prompt": "A nurse is assessing clients who report role stress. Sort the statements into the role stressor. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is assessing clients who report role stress. Sort the statements into the role stressor. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Statements",
       "buckets": [
         "Role conflict",
@@ -17713,7 +17713,7 @@
       "topic": "Comfort, Rest & Sleep",
       "category": "Sleep Disorders",
       "type": "dragdrop",
-      "prompt": "A nurse is assessing clients who have trouble sleeping. Sort the findings into the disorder each suggests. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is assessing clients who have trouble sleeping. Sort the findings into the disorder each suggests. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Findings",
       "buckets": [
         "Obstructive sleep apnea",
@@ -20357,7 +20357,7 @@
       "topic": "Stress and Coping",
       "category": "Coping & Defense Mechanisms",
       "type": "dragdrop",
-      "prompt": "A nurse is assessing clients' responses to stress. Sort the statements into the defense mechanism. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is assessing clients' responses to stress. Sort the statements into the defense mechanism. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Statements",
       "buckets": [
         "Denial",

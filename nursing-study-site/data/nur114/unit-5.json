@@ -204,7 +204,7 @@
    "topic": "Pharmacology Principles",
    "category": "Names & Categories",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing medication name pairs. Match each brand name to its generic name. Move each answer that belongs into its box. Not every answer will be used.",
+   "prompt": "A nurse is reviewing medication name pairs. Match each brand name to its generic name. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Brand names",
    "buckets": [
     "acetaminophen",
@@ -653,7 +653,7 @@
    "topic": "Pharmacology Principles",
    "category": "Forms & Absorption",
    "type": "dragdrop",
-   "prompt": "A nurse is sorting routes of administration. Place each route in the correct group. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is sorting routes of administration. Place each route in the correct group. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Routes",
    "buckets": [
     "Parenteral",
@@ -874,7 +874,7 @@
    "topic": "Pharmacology Principles",
    "category": "Pharmacokinetics",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing the phases of pharmacokinetics. Match each phase to its definition. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing the phases of pharmacokinetics. Match each phase to its definition. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Definitions",
    "buckets": [
     "Absorption",
@@ -1589,7 +1589,7 @@
    "topic": "Pharmacology Principles",
    "category": "Half-Life & Drug Levels",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing drug level terms. Match each term to its meaning. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing drug level terms. Match each term to its meaning. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Meanings",
    "buckets": [
     "Onset of action",
@@ -1874,7 +1874,7 @@
    "topic": "Pharmacology Principles",
    "category": "Pharmacodynamics",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing medication actions. Sort each medication by how it acts on its receptor. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing medication actions. Sort each medication by how it acts on its receptor. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Medications",
    "buckets": [
     "Agonist",
@@ -2491,7 +2491,7 @@
    "topic": "Pharmacology Principles",
    "category": "Adverse Effects & Toxicity",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing terms related to medication effects. Match each term to its definition. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing terms related to medication effects. Match each term to its definition. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Definitions",
    "buckets": [
     "Tolerance",
@@ -2967,7 +2967,7 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing food–drug interactions. Match each food to the medication it interacts with. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing food–drug interactions. Match each food to the medication it interacts with. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Foods",
    "buckets": [
     "Warfarin",
@@ -4351,7 +4351,7 @@
    "topic": "Medication Administration",
    "category": "Prescriptions & the MAR",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing several prescriptions. Match each prescription to its type. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing several prescriptions. Match each prescription to its type. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Prescriptions",
    "buckets": [
     "STAT",
@@ -5254,7 +5254,7 @@
    "topic": "Medication Administration",
    "category": "Dispensing & Labels",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing the medication label shown. Sort the items into the right boxes. Move each answer that belongs into its box. Not every answer will be used.",
+   "prompt": "A nurse is reviewing the medication label shown. Sort the items into the right boxes. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Label items",
    "buckets": [
     "Brand name",
@@ -6412,7 +6412,7 @@
    "topic": "Medication Administration",
    "category": "Oral Medications",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing liquid medication forms. Match each form to its description. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing liquid medication forms. Match each form to its description. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Descriptions",
    "buckets": [
     "Elixir",
@@ -6841,7 +6841,7 @@
    "topic": "Medication Administration",
    "category": "Enteral Tubes",
    "type": "dragdrop",
-   "prompt": "A nurse is preparing medications for a client who has an enteral feeding tube. Sort each medication by how it should be handled. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is preparing medications for a client who has an enteral feeding tube. Sort each medication by how it should be handled. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Medications",
    "buckets": [
     "Prepare and give through the tube",
@@ -12413,7 +12413,7 @@
    "topic": "Medication Calculations",
    "category": "Labels & Rounding",
    "type": "dragdrop",
-   "prompt": "A nurse is teaching a newly hired nurse about the parts of a medication label. Sort the items into the right boxes. Move each answer that belongs into its box. Not every answer will be used.",
+   "prompt": "A nurse is teaching a newly hired nurse about the parts of a medication label. Sort the items into the right boxes. Move each answer that belongs into its box. Not every answer may be used.",
    "calc": false,
    "leftLabel": "Label items",
    "buckets": [

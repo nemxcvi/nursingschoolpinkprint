@@ -1812,7 +1812,7 @@
    "topic": "Fluid Balance & Imbalances",
    "category": "Hypervolemia",
    "type": "dragdrop",
-   "prompt": "A nurse is assessing several clients for fluid imbalance. Sort each finding. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is assessing several clients for fluid imbalance. Sort each finding. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Findings",
    "buckets": [
     "Fluid volume deficit",
@@ -3938,7 +3938,7 @@
    "topic": "Electrolytes",
    "category": "Electrolyte Basics",
    "type": "dragdrop",
-   "prompt": "A nurse is caring for clients who have electrolyte imbalances. Sort the findings into the imbalance each best matches. Move each answer that belongs into its box. Not every answer will be used.",
+   "prompt": "A nurse is caring for clients who have electrolyte imbalances. Sort the findings into the imbalance each best matches. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Findings",
    "buckets": [
     "Hyperkalemia",
@@ -5489,7 +5489,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Complications",
    "type": "dragdrop",
-   "prompt": "A nurse is assessing several clients' peripheral IV sites. Sort the findings into the complication each suggests. Move each answer that belongs into its box. Not every answer will be used.",
+   "prompt": "A nurse is assessing several clients' peripheral IV sites. Sort the findings into the complication each suggests. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Findings",
    "buckets": [
     "Infiltration",
@@ -5689,7 +5689,7 @@
    "topic": "IV Therapy & Blood Transfusions",
    "category": "IV Solutions",
    "type": "dragdrop",
-   "prompt": "A nurse is matching IV solutions to client needs. Sort each client into the type of solution that fits. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is matching IV solutions to client needs. Sort each client into the type of solution that fits. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Clients",
    "buckets": [
     "Isotonic",
@@ -6955,7 +6955,7 @@
    "topic": "Acid-Base Balance",
    "category": "Acid-Base Basics",
    "type": "dragdrop",
-   "prompt": "A nurse is teaching how the body controls acid-base balance. Sort each job by the organ that does it. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is teaching how the body controls acid-base balance. Sort each job by the organ that does it. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Jobs",
    "buckets": [
     "Lungs",
@@ -11442,7 +11442,7 @@
    "topic": "Enteral & Parenteral Nutrition",
    "category": "Feeding Tubes",
    "type": "dragdrop",
-   "prompt": "A nurse is caring for clients who have feeding tubes. Sort each tube by where its tip ends. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is caring for clients who have feeding tubes. Sort each tube by where its tip ends. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Tubes",
    "buckets": [
     "Stomach",
@@ -12377,7 +12377,7 @@
    "topic": "Nutrition",
    "category": "Therapeutic Diets",
    "type": "dragdrop",
-   "prompt": "A nurse is checking meal trays. Sort the items by the most limited diet each is allowed on. Move each answer that belongs into its box. Not every answer will be used.",
+   "prompt": "A nurse is checking meal trays. Sort the items by the most limited diet each is allowed on. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Items",
    "buckets": [
     "Clear liquid",
@@ -18306,7 +18306,7 @@
    "topic": "Bowel Elimination",
    "category": "Ostomies",
    "type": "dragdrop",
-   "prompt": "A nurse is caring for clients who have bowel diversions. Sort each diversion by its usual output. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is caring for clients who have bowel diversions. Sort each diversion by its usual output. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Diversions",
    "buckets": [
     "Liquid output",
@@ -22490,7 +22490,7 @@
    "topic": "Urinary Elimination",
    "category": "Catheters & CAUTI",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing catheter care. Sort each action. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing catheter care. Sort each action. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Actions",
    "buckets": [
     "Lowers CAUTI risk",
@@ -25846,7 +25846,7 @@
    "topic": "Med Math",
    "category": "Abbreviations",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing a client's medication orders. Sort each abbreviation. Move each answer to the box where it belongs.",
+   "prompt": "A nurse is reviewing a client's medication orders. Sort each abbreviation. Move each answer that belongs into its box. Not every answer may be used.",
    "leftLabel": "Abbreviations",
    "buckets": [
     "Route",

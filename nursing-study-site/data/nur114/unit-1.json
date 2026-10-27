@@ -1506,7 +1506,7 @@
       "topic": "CBC/CMP Adult Lab Value Ranges",
       "category": "CBC+CMP combined",
       "type": "dragdrop",
-      "prompt": "A nurse is reviewing lab results with a nursing student. Sort each lab into the panel it belongs to. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is reviewing lab results with a nursing student. Sort each lab into the panel it belongs to. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Labs",
       "buckets": [
         "Complete blood count (CBC)",
@@ -4592,7 +4592,7 @@
       "topic": "Foundations & the Nursing Process",
       "category": "Health Promotion & Prevention",
       "type": "dragdrop",
-      "prompt": "A nurse is planning care at a community clinic. Sort each activity by its level of prevention. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is planning care at a community clinic. Sort each activity by its level of prevention. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Activities",
       "buckets": [
         "Primary",
@@ -6226,7 +6226,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Priority Setting",
       "type": "dragdrop",
-      "prompt": "A nurse is triaging clients after a mass casualty event. Sort each client into the triage category. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is triaging clients after a mass casualty event. Sort each client into the triage category. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Clients",
       "buckets": [
         "Immediate (red)",
@@ -6267,7 +6267,7 @@
       "topic": "Priority Setting & Managing Care",
       "category": "Delegation & Managing Care",
       "type": "dragdrop",
-      "prompt": "A nurse is caring for several stable clients. Sort each task by who can do it. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is caring for several stable clients. Sort each task by who can do it. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Tasks",
       "buckets": [
         "Can delegate to UAP",
@@ -8190,7 +8190,7 @@
       "topic": "Health Assessment, Vital Signs & Pain",
       "category": "Pain",
       "type": "dragdrop",
-      "prompt": "A nurse is assessing several clients who report pain. Sort each description by type of pain. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is assessing several clients who report pain. Sort each description by type of pain. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Descriptions",
       "buckets": [
         "Nociceptive",
@@ -9722,7 +9722,7 @@
       "topic": "Professionalism, Ethics & Legal",
       "category": "Legal",
       "type": "dragdrop",
-      "prompt": "A nurse manager is reviewing legal issues with staff. Sort each example by type of tort. Move each answer to the box where it belongs.",
+      "prompt": "A nurse manager is reviewing legal issues with staff. Sort each example by type of tort. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Examples",
       "buckets": [
         "Intentional tort",
@@ -11425,7 +11425,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Communication",
       "type": "dragdrop",
-      "prompt": "A nurse is talking with a client who is anxious about surgery. Sort each nurse statement. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is talking with a client who is anxious about surgery. Sort each nurse statement. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Statements",
       "buckets": [
         "Therapeutic",
@@ -11584,7 +11584,7 @@
       "topic": "Communication, Documentation & EBP",
       "category": "Documentation",
       "type": "dragdrop",
-      "prompt": "A nurse is reviewing chart entries. Sort each entry. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is reviewing chart entries. Sort each entry. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Entries",
       "buckets": [
         "Written correctly",

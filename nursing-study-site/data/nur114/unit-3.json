@@ -4094,7 +4094,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Precautions & PPE",
       "type": "dragdrop",
-      "prompt": "A nurse is assigning rooms and PPE for several newly admitted clients. Sort the conditions into the isolation precautions each requires. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is assigning rooms and PPE for several newly admitted clients. Sort the conditions into the isolation precautions each requires. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Conditions",
       "buckets": [
         "Contact",
@@ -4285,7 +4285,7 @@
       "topic": "Infection Control & Isolation",
       "category": "Chain of Infection",
       "type": "dragdrop",
-      "prompt": "A nurse is teaching assistive personnel how nursing actions break the chain of infection. Sort each action into the link it breaks. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is teaching assistive personnel how nursing actions break the chain of infection. Sort each action into the link it breaks. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Nursing actions",
       "buckets": [
         "Portal of exit",
@@ -7491,7 +7491,7 @@
       "topic": "Specimen Collection",
       "category": "Cultures & Swabs",
       "type": "dragdrop",
-      "prompt": "A nurse is delegating specimen collection on a busy unit. Sort each task by who can do it. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is delegating specimen collection on a busy unit. Sort each task by who can do it. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Tasks",
       "buckets": [
         "Can delegate to UAP",
@@ -7650,7 +7650,7 @@
       "topic": "Specimen Collection",
       "category": "Stool",
       "type": "dragdrop",
-      "prompt": "A nurse is teaching a client how to prepare for a fecal occult blood test. Sort the items by how long before the test the client should stop each one. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is teaching a client how to prepare for a fecal occult blood test. Sort the items by how long before the test the client should stop each one. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Items",
       "buckets": [
         "Stop 7 days before",
@@ -12309,7 +12309,7 @@
       "topic": "Tissue Integrity",
       "category": "Dressings, Closures & Drains",
       "type": "dragdrop",
-      "prompt": "A nurse is choosing dressings for several wounds. Sort the wounds into the dressing that fits each best. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is choosing dressings for several wounds. Sort the wounds into the dressing that fits each best. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Wounds",
       "buckets": [
         "Hydrocolloid",
@@ -12409,7 +12409,7 @@
       "topic": "Tissue Integrity",
       "category": "Wound Healing",
       "type": "dragdrop",
-      "prompt": "A nurse is caring for several clients who have wounds. Sort each wound by how it will heal. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is caring for several clients who have wounds. Sort each wound by how it will heal. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Wounds",
       "buckets": [
         "Primary intention",
@@ -15728,7 +15728,7 @@
       "topic": "Assessment: Integumentary, HEENT & Neuro",
       "category": "Basics & Integumentary",
       "type": "dragdrop",
-      "prompt": "A nurse is assessing several clients' skin color. Sort the findings by what each most likely means. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is assessing several clients' skin color. Sort the findings by what each most likely means. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Findings",
       "buckets": [
         "Hypoxia",
@@ -17908,7 +17908,7 @@
       "topic": "Cranial Nerves",
       "category": "Names & Types",
       "type": "dragdrop",
-      "prompt": "A nurse is reviewing cranial nerves. Sort each nerve by its function. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is reviewing cranial nerves. Sort each nerve by its function. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Cranial nerves",
       "buckets": [
         "Sensory only",
@@ -21395,7 +21395,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Thorax & Lungs",
       "type": "dragdrop",
-      "prompt": "A nurse is auscultating a client's lungs. Sort the sounds by what each most likely means. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is auscultating a client's lungs. Sort the sounds by what each most likely means. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Sounds",
       "buckets": [
         "Fluid in the alveoli",
@@ -21649,7 +21649,7 @@
       "topic": "Assessment: Thorax, Cardiovascular, Abdomen & Musculoskeletal",
       "category": "Abdomen",
       "type": "dragdrop",
-      "prompt": "A nurse is auscultating bowel sounds in several clients. Sort each finding. Move each answer to the box where it belongs.",
+      "prompt": "A nurse is auscultating bowel sounds in several clients. Sort each finding. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Findings",
       "buckets": [
         "Hypoactive",
@@ -26698,7 +26698,7 @@
       "topic": "Safety",
       "category": "Restraints & Seizures",
       "type": "dragdrop",
-      "prompt": "A nurse is caring for a client who has a seizure disorder. Sort the actions by when the nurse should do each. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is caring for a client who has a seizure disorder. Sort the actions by when the nurse should do each. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Actions",
       "buckets": [
         "Before a seizure",
@@ -26863,7 +26863,7 @@
       "topic": "Safety",
       "category": "Falls & Injury Prevention",
       "type": "dragdrop",
-      "prompt": "A nurse is planning fall prevention. Sort the actions by who each applies to. Move each answer that belongs into its box. Not every answer will be used.",
+      "prompt": "A nurse is planning fall prevention. Sort the actions by who each applies to. Move each answer that belongs into its box. Not every answer may be used.",
       "leftLabel": "Actions",
       "buckets": [
         "Every client (universal)",
