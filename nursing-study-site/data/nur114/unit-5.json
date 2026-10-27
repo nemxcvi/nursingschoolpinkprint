@@ -9126,6 +9126,37 @@
    ]
   },
   {
+   "id": "nur114-u5-med-admin-141",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Medication Administration",
+   "category": "Injections",
+   "type": "mc",
+   "prompt": "A nurse is comparing an 18-gauge needle with a 25-gauge needle. Which statement by the nurse is correct?",
+   "options": [
+    {
+     "text": "\"The 25-gauge needle is thinner than the 18-gauge needle.\"",
+     "correct": true,
+     "rationale": "The bigger the gauge number, the smaller (thinner) the needle."
+    },
+    {
+     "text": "\"The 25-gauge needle is wider because its number is bigger.\"",
+     "correct": false,
+     "rationale": "Gauge works backward: a bigger number means a thinner needle."
+    },
+    {
+     "text": "\"Gauge tells me how long the needle is.\"",
+     "correct": false,
+     "rationale": "Gauge is the needle's width; length is measured separately, in inches."
+    },
+    {
+     "text": "\"Both needles are the same width; only the length differs.\"",
+     "correct": false,
+     "rationale": "Different gauges mean different widths."
+    }
+   ]
+  },
+  {
    "id": "nur114-u5-med-calc-001",
    "course": "NUR 114",
    "unit": 5,
