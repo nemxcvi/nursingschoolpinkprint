@@ -75,7 +75,7 @@
     {
      "text": "One medication may have several brand names",
      "correct": true,
-     "rationale": "Each manufacturer can give the same drug its own brand name (ibuprofen is Advil, Motrin, Nuprin)."
+     "rationale": "Each manufacturer can give the same drug its own brand name (ibuprofen is ADVIL, MOTRIN, NUPRIN)."
     },
     {
      "text": "One medication may have several generic names",
@@ -86,37 +86,6 @@
      "text": "They have a greater potential for abuse than the brand-name medication",
      "correct": false,
      "rationale": "There is no difference in abuse or dependence potential between generic and brand forms."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u5-pharm-principles-002",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Pharmacology Principles",
-   "category": "Names & Categories",
-   "type": "mc",
-   "prompt": "A nurse is reviewing a client's medication list. Which entry is written as a generic name?",
-   "options": [
-    {
-     "text": "acetaminophen",
-     "correct": true,
-     "rationale": "Generic names are written in lowercase; acetaminophen is the generic for Tylenol."
-    },
-    {
-     "text": "Tylenol",
-     "correct": false,
-     "rationale": "Tylenol is a brand name: capitalized and proprietary."
-    },
-    {
-     "text": "Motrin",
-     "correct": false,
-     "rationale": "Motrin is a brand name for ibuprofen."
-    },
-    {
-     "text": "Dilaudid",
-     "correct": false,
-     "rationale": "Dilaudid is a brand name for hydromorphone."
     }
    ]
   },
@@ -148,92 +117,6 @@
      "text": "\"It uses whichever name the manufacturer prefers.\"",
      "correct": false,
      "rationale": "The exam uses the one official generic name."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u5-pharm-principles-004",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Pharmacology Principles",
-   "category": "Names & Categories",
-   "type": "matrix",
-   "prompt": "A nurse is teaching a newly hired nurse about medication names. For each name, choose whether it is a generic or a brand name.",
-   "columns": [
-    "Generic",
-    "Brand"
-   ],
-   "options": [
-    {
-     "text": "Protonix",
-     "correct": true,
-     "rationale": "Protonix® is the brand name for pantoprazole.",
-     "col": 2
-    },
-    {
-     "text": "docusate sodium",
-     "correct": true,
-     "rationale": "The generic name for Colace is docusate sodium.",
-     "col": 1
-    },
-    {
-     "text": "hydromorphone",
-     "correct": true,
-     "rationale": "The generic name for Dilaudid is hydromorphone.",
-     "col": 1
-    },
-    {
-     "text": "Motrin",
-     "correct": true,
-     "rationale": "Motrin® is a brand name for ibuprofen.",
-     "col": 2
-    },
-    {
-     "text": "lansoprazole",
-     "correct": true,
-     "rationale": "The generic name for Prevacid is lansoprazole.",
-     "col": 1
-    }
-   ],
-   "rowLabel": "Name"
-  },
-  {
-   "id": "nur114-u5-pharm-principles-005",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Pharmacology Principles",
-   "category": "Names & Categories",
-   "type": "dragdrop",
-   "prompt": "A nurse is reviewing medication name pairs. Match each brand name to its generic name. Move each answer that belongs into its box. Not every answer may be used.",
-   "leftLabel": "Brand names",
-   "buckets": [
-    "acetaminophen",
-    "pantoprazole",
-    "docusate sodium"
-   ],
-   "options": [
-    {
-     "text": "Tylenol",
-     "correct": true,
-     "rationale": "Tylenol is the brand name for acetaminophen.",
-     "bucket": 1
-    },
-    {
-     "text": "Protonix",
-     "correct": true,
-     "rationale": "Protonix is the brand name for pantoprazole.",
-     "bucket": 2
-    },
-    {
-     "text": "Colace",
-     "correct": true,
-     "rationale": "Colace is the brand name for docusate sodium.",
-     "bucket": 3
-    },
-    {
-     "text": "Dilaudid",
-     "correct": false,
-     "rationale": "Dilaudid is hydromorphone, so it doesn't belong in any of these boxes."
     }
    ]
   },
@@ -5100,7 +4983,7 @@
     }
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
-   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+   "imageAlt": "FAKELIXIR (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
   },
   {
    "id": "nur114-u5-med-admin-024",
@@ -5133,7 +5016,7 @@
     }
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
-   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+   "imageAlt": "FAKELIXIR (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
   },
   {
    "id": "nur114-u5-med-admin-025",
@@ -5166,7 +5049,7 @@
     }
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
-   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+   "imageAlt": "FAKELIXIR (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
   },
   {
    "id": "nur114-u5-med-admin-026",
@@ -5184,7 +5067,7 @@
    ],
    "options": [
     {
-     "text": "Prevacid",
+     "text": "PREVACID",
      "correct": true,
      "rationale": "The capitalized name with ® is the brand.",
      "bucket": 1
@@ -5208,7 +5091,7 @@
     }
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
-   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
+   "imageAlt": "PREVACID (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
   },
   {
    "id": "nur114-u5-med-admin-027",
@@ -5241,7 +5124,7 @@
     }
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
-   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
+   "imageAlt": "PREVACID (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
   },
   {
    "id": "nur114-u5-med-admin-028",
@@ -10140,7 +10023,7 @@
     "Makes sense: 700 mg is 2 times 350 mg, so 10 mL."
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
-   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+   "imageAlt": "FAKELIXIR (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
   },
   {
    "id": "nur114-u5-med-calc-038",
@@ -10167,7 +10050,7 @@
     "Makes sense: 525 mg is 1.5 times 350 mg, so 7.5 mL."
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
-   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+   "imageAlt": "FAKELIXIR (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
   },
   {
    "id": "nur114-u5-med-calc-039",
@@ -10194,7 +10077,7 @@
     "Makes sense: 875 mg is 2.5 times 350 mg, so 12.5 mL."
    ],
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
-   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
+   "imageAlt": "FAKELIXIR (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated"
   },
   {
    "id": "nur114-u5-med-calc-040",
@@ -10222,7 +10105,7 @@
    ],
    "summary": "Delayed-release capsules are swallowed whole.",
    "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
-   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
+   "imageAlt": "PREVACID (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only"
   },
   {
    "id": "nur114-u5-med-calc-041",
@@ -12293,7 +12176,7 @@
    "prompt": "A nurse is preparing to administer an oral solution and reviews the medication label shown. Which information on the label is the dosage strength the nurse uses as the available amount?",
    "calc": false,
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
-   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated",
+   "imageAlt": "FAKELIXIR (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated",
    "options": [
     {
      "text": "350 mg/5 mL",
@@ -12327,7 +12210,7 @@
    "prompt": "A nurse reconstitutes the oral solution shown on the label. Which actions should the nurse take? Select all that apply.",
    "calc": false,
    "image": "/unit-5-gas-exchange-med-admin/week10-img/fakelixir-label.jpg",
-   "imageAlt": "Fakelixir (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated",
+   "imageAlt": "FAKELIXIR (mixturezole difakate) oral solution label: 350 mg/5 mL, shake well before each use, 100 mL after reconstitution, discard 14 days after preparation, keep refrigerated",
    "options": [
     {
      "text": "Add 80 mL of water to the bottle",
@@ -12371,7 +12254,7 @@
    "prompt": "A nurse is preparing a client's morning medications and reviews the medication label shown. Which information should the nurse identify as the generic name?",
    "calc": false,
    "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
-   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only",
+   "imageAlt": "PREVACID (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only",
    "options": [
     {
      "text": "lansoprazole",
@@ -12379,9 +12262,9 @@
      "rationale": "The generic name, lansoprazole, is printed under the brand name. When written, generic names are lowercase."
     },
     {
-     "text": "Prevacid",
+     "text": "PREVACID",
      "correct": false,
-     "rationale": "Prevacid® is the brand (trade) name, shown with ®."
+     "rationale": "PREVACID® is the brand (trade) name, shown with ®."
     },
     {
      "text": "Takeda",
@@ -12405,7 +12288,7 @@
    "prompt": "A client who has trouble swallowing is prescribed the medication shown on the label. Which action should the nurse take?",
    "calc": false,
    "image": "/unit-5-gas-exchange-med-admin/week10-img/prevacid-label.jpg",
-   "imageAlt": "Prevacid (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only",
+   "imageAlt": "PREVACID (lansoprazole) label: 100 delayed-release capsules, 30 mg per capsule, Rx only",
    "options": [
     {
      "text": "Contact the provider to ask for a different form of the medication",
