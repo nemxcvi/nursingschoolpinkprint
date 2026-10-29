@@ -490,7 +490,7 @@
     {
      "text": "XL",
      "correct": true,
-     "rationale": "Extended length (extended-release) releases the drug over time.",
+     "rationale": "XL (extended length) is an extended-release form, like ER and XR: it releases the drug slowly over time.",
      "col": 2
     },
     {
