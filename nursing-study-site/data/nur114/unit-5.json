@@ -1940,27 +1940,27 @@
    "topic": "Pharmacology Principles",
    "category": "Pharmacodynamics",
    "type": "mc",
-   "prompt": "A nurse is caring for a client who takes metoprolol. Which statement by the nurse correctly describes how metoprolol works?",
+   "prompt": "A nurse is caring for a client who takes metoprolol, a beta blocker. Which statement by the nurse correctly describes how it works?",
    "options": [
     {
-     "text": "An antagonist that blocks cardiac beta receptors",
+     "text": "It's an antagonist that blocks beta receptors in the heart",
      "correct": true,
-     "rationale": "Metoprolol, a beta blocker, blocks beta receptors to lower blood pressure and heart rate."
+     "rationale": "A blocker is an antagonist: it blocks the receptor, lowering heart rate and blood pressure."
     },
     {
-     "text": "An agonist that activates beta receptors in the lungs",
+     "text": "It's an agonist that activates beta receptors",
      "correct": false,
-     "rationale": "That describes albuterol."
+     "rationale": "A blocker blocks receptors; it doesn't activate them."
     },
     {
-     "text": "A partial agonist at opioid receptors",
+     "text": "It's a partial agonist that partly activates beta receptors",
      "correct": false,
-     "rationale": "That describes buprenorphine."
+     "rationale": "A blocker blocks the receptor rather than partly activating it."
     },
     {
-     "text": "An agonist that activates opioid receptors",
+     "text": "It removes beta receptors from the heart",
      "correct": false,
-     "rationale": "That describes morphine."
+     "rationale": "Drugs act on receptors; they don't remove them."
     }
    ]
   },
@@ -1971,8 +1971,8 @@
    "topic": "Pharmacology Principles",
    "category": "Pharmacodynamics",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing medication actions. Sort each medication by how it acts on its receptor. Move each answer that belongs into its box. Not every answer may be used.",
-   "leftLabel": "Medications",
+   "prompt": "A nurse is reviewing how medications act on their receptors. Sort each action by type. Move each answer that belongs into its box. Not every answer may be used.",
+   "leftLabel": "Actions",
    "buckets": [
     "Agonist",
     "Antagonist",
@@ -1980,33 +1980,33 @@
    ],
    "options": [
     {
-     "text": "Albuterol",
+     "text": "Activates beta receptors to open the airways (albuterol)",
      "correct": true,
-     "rationale": "Activates beta receptors in the lungs to open the airways.",
+     "rationale": "Activating a receptor is an agonist action.",
      "bucket": 1
     },
     {
-     "text": "Morphine",
+     "text": "Activates opioid receptors to relieve pain (morphine)",
      "correct": true,
-     "rationale": "Activates opioid receptors for pain relief.",
+     "rationale": "Activating a receptor is an agonist action.",
      "bucket": 1
     },
     {
-     "text": "Metoprolol",
+     "text": "Blocks beta receptors in the heart (metoprolol)",
      "correct": true,
-     "rationale": "Blocks cardiac beta receptors.",
+     "rationale": "Blocking a receptor is an antagonist action.",
      "bucket": 2
     },
     {
-     "text": "Losartan",
+     "text": "Blocks receptors on blood vessels to lower blood pressure (losartan)",
      "correct": true,
-     "rationale": "Blocks angiotensin II receptors on blood vessels.",
+     "rationale": "Blocking a receptor is an antagonist action.",
      "bucket": 2
     },
     {
-     "text": "Buprenorphine",
+     "text": "Partly activates opioid receptors, about 10 to 40% of the full effect (buprenorphine)",
      "correct": true,
-     "rationale": "Partly activates opioid receptors to prevent withdrawal without a high.",
+     "rationale": "Partial activation is a partial agonist action.",
      "bucket": 3
     }
    ]
@@ -2018,7 +2018,7 @@
    "topic": "Pharmacology Principles",
    "category": "Pharmacodynamics",
    "type": "mc",
-   "prompt": "A client starting buprenorphine for opioid use disorder asks how it works. Which response by the nurse is correct?",
+   "prompt": "A client starting buprenorphine, a partial opioid agonist, for opioid use disorder asks how it works. Which response by the nurse is correct?",
    "options": [
     {
      "text": "\"It partly activates the brain's opioid receptors to prevent withdrawal and cravings without a high.\"",
@@ -2122,37 +2122,6 @@
    ]
   },
   {
-   "id": "nur114-u5-pharm-principles-055",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Pharmacology Principles",
-   "category": "Pharmacodynamics",
-   "type": "mc",
-   "prompt": "A nurse is teaching about how antibiotics work. How should the nurse explain the way a penicillin-type antibiotic kills bacteria?",
-   "options": [
-    {
-     "text": "Stopping the bacteria from building their cell walls",
-     "correct": true,
-     "rationale": "Penicillins inhibit cell wall synthesis, so the bacteria die."
-    },
-    {
-     "text": "Blocking folic acid from helping the bacteria make DNA",
-     "correct": false,
-     "rationale": "That's how sulfa drugs work."
-    },
-    {
-     "text": "Activating the bacteria's receptors",
-     "correct": false,
-     "rationale": "Penicillins act on the cell wall."
-    },
-    {
-     "text": "Raising the client's body temperature",
-     "correct": false,
-     "rationale": "Antibiotics don't work through body temperature."
-    }
-   ]
-  },
-  {
    "id": "nur114-u5-pharm-principles-056",
    "course": "NUR 114",
    "unit": 5,
@@ -2190,27 +2159,27 @@
    "topic": "Pharmacology Principles",
    "category": "Pharmacodynamics",
    "type": "mc",
-   "prompt": "A client asks why a provider prescribed acetaminophen for a fever. Which explanation of its expected action is correct?",
+   "prompt": "A nurse is caring for a client who is prescribed acetaminophen for a fever. Acetaminophen blocks the chemical messengers that signal the hypothalamus to raise body temperature. Which term describes how acetaminophen works?",
    "options": [
     {
-     "text": "It blocks the chemical messengers that signal the hypothalamus to raise body temperature",
+     "text": "Expected pharmacologic action",
      "correct": true,
-     "rationale": "That expected action is why reducing fever is a therapeutic use."
+     "rationale": "What a drug does in the body to produce its effect is its pharmacologic action."
     },
     {
-     "text": "It kills the bacteria causing the fever",
+     "text": "Indication",
      "correct": false,
-     "rationale": "That one, acetaminophen, isn't an antibiotic."
+     "rationale": "The indication is the fever itself, the condition it's prescribed for."
     },
     {
-     "text": "It increases sweating by activating sweat glands",
+     "text": "Contraindication",
      "correct": false,
-     "rationale": "That isn't its mechanism."
+     "rationale": "A contraindication is a reason not to give a drug."
     },
     {
-     "text": "It blocks histamine release",
+     "text": "Adverse effect",
      "correct": false,
-     "rationale": "That describes an antihistamine."
+     "rationale": "An adverse effect is unintended; this is the intended action."
     }
    ]
   },
@@ -9194,7 +9163,7 @@
    "topic": "Medication Administration",
    "category": "Injections",
    "type": "mc",
-   "prompt": "A nurse is preparing to give an iron preparation IM. Which technique should the nurse use?",
+   "prompt": "A nurse is preparing to give an iron preparation IM. The medication can irritate and stain the tissue. Which technique should the nurse use?",
    "options": [
     {
      "text": "Z-track",
@@ -9452,7 +9421,7 @@
    "topic": "Medication Administration",
    "category": "Injections",
    "type": "matrix",
-   "prompt": "A nurse is reviewing injection routes. For each medication, choose the usual route.",
+   "prompt": "A nurse is reviewing injection routes. For each injection, choose the usual route.",
    "columns": [
     "Intradermal",
     "Subcutaneous",
@@ -9462,31 +9431,25 @@
     {
      "text": "Tuberculin skin test",
      "correct": true,
-     "rationale": "TB testing is intradermal.",
+     "rationale": "TB testing is intradermal: just under the top layer of skin.",
      "col": 1
     },
     {
-     "text": "Insulin",
+     "text": "A small dose of a nonirritating, water-soluble drug, such as insulin",
      "correct": true,
-     "rationale": "Insulin is given subcutaneously.",
+     "rationale": "Small, nonirritating doses go into the subcutaneous fat.",
      "col": 2
     },
     {
-     "text": "Heparin",
+     "text": "An irritating drug or an oil-based suspension",
      "correct": true,
-     "rationale": "Heparin is given subcutaneously.",
-     "col": 2
-    },
-    {
-     "text": "Influenza vaccine",
-     "correct": true,
-     "rationale": "The flu shot is IM.",
+     "rationale": "Irritating drugs, oils and suspensions go deep into muscle.",
      "col": 3
     },
     {
-     "text": "An iron preparation (Z-track)",
+     "text": "A drug that stains the tissue, given by Z-track",
      "correct": true,
-     "rationale": "Iron is given IM by Z-track.",
+     "rationale": "Z-track is an IM technique.",
      "col": 3
     }
    ],
