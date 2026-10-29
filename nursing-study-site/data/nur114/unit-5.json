@@ -982,27 +982,27 @@
    "topic": "Pharmacology Principles",
    "category": "Pharmacokinetics",
    "type": "mc",
-   "prompt": "A nurse is caring for a client whose medication is prescribed IV instead of PO because of its high first-pass effect. Which statement by the nurse correctly explains the first-pass effect?",
+   "prompt": "A nurse is caring for a client who is receiving nitroglycerin IV and will switch to the oral form. The oral dose will be higher than the IV dose. Which explanation should the nurse give?",
    "options": [
     {
-     "text": "The liver breaks down part of an oral dose before it reaches the rest of the body",
+     "text": "The liver breaks down part of an oral dose before it reaches the rest of the body (the first-pass effect)",
      "correct": true,
-     "rationale": "Oral drugs go from the intestines to the liver first, which reduces the active drug left."
+     "rationale": "Less of an oral dose is available to the body, so the dose is higher."
     },
     {
-     "text": "The kidneys excrete the drug on its first pass",
+     "text": "The kidneys excrete the oral form faster",
      "correct": false,
-     "rationale": "First-pass metabolism happens in the liver."
+     "rationale": "The route doesn't change how fast the kidneys excrete the drug."
     },
     {
-     "text": "The drug is absorbed fastest the first time it's given",
+     "text": "The oral form has a shorter half-life",
      "correct": false,
-     "rationale": "First-pass refers to liver metabolism, not timing of doses."
+     "rationale": "The route doesn't change a drug's half-life."
     },
     {
-     "text": "The drug binds to albumin on its first pass",
+     "text": "Only the IV form crosses the blood-brain barrier",
      "correct": false,
-     "rationale": "That's protein binding, part of distribution."
+     "rationale": "Crossing the blood-brain barrier depends on the drug, not the route."
     }
    ]
   },
@@ -2459,27 +2459,27 @@
    "topic": "Pharmacology Principles",
    "category": "Adverse Effects & Toxicity",
    "type": "mc",
-   "prompt": "A client had a mild rash the first time they took a medication. Which instruction should the nurse give?",
+   "prompt": "A nurse is taking a client's health history. The client reports no allergies but says they had mild itching the last time they took amoxicillin. Which response should the nurse make?",
    "options": [
     {
-     "text": "\"Avoid this medication; a second exposure could cause a more severe reaction.\"",
+     "text": "\"Itching can be a sign of an allergy to amoxicillin, and the next reaction could be worse.\"",
      "correct": true,
-     "rationale": "Previous exposure can make the next reaction worse, up to anaphylaxis."
+     "rationale": "Even a mild reaction can mean an allergy (hypersensitivity); a second exposure can cause a more severe reaction."
     },
     {
-     "text": "\"A rash is expected, so keep taking it.\"",
+     "text": "\"Itching is an expected effect of amoxicillin, so it isn't a concern.\"",
      "correct": false,
-     "rationale": "A rash after a drug can be an allergic reaction."
+     "rationale": "Itching after a drug can be an allergic reaction and needs to be reported."
     },
     {
-     "text": "\"Take a smaller dose next time.\"",
+     "text": "\"Itching means you took too much of the medication.\"",
      "correct": false,
-     "rationale": "An allergy isn't prevented by lowering the dose."
+     "rationale": "Itching points to an allergy, not toxicity."
     },
     {
-     "text": "\"Take it with food next time.\"",
+     "text": "\"Itching only matters if it happens the first time you take a drug.\"",
      "correct": false,
-     "rationale": "Food doesn't prevent an allergic reaction."
+     "rationale": "A reaction at any time can mean an allergy."
     }
    ]
   },
@@ -3024,27 +3024,27 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A client taking nifedipine asks whether it's OK to drink grapefruit juice. Which response by the nurse is correct?",
+   "prompt": "A client taking nifedipine reports drinking grapefruit juice every morning. The nurse explains that grapefruit juice blocks a liver enzyme that breaks down nifedipine. Which risk should the nurse recognize?",
    "options": [
     {
-     "text": "\"Avoid it; grapefruit juice slows how your body breaks down the medication, so it can build up.\"",
+     "text": "Medication toxicity",
      "correct": true,
-     "rationale": "Grapefruit juice decreases metabolism and raises drug levels toward toxicity."
+     "rationale": "Slower metabolism lets the drug level rise toward toxicity."
     },
     {
-     "text": "\"Grapefruit juice makes the medication work less.\"",
+     "text": "Reduced medication absorption",
      "correct": false,
-     "rationale": "It increases, not decreases, the drug level."
+     "rationale": "Grapefruit juice raises, not lowers, the amount of drug available."
     },
     {
-     "text": "\"It's fine in small amounts at any time.\"",
+     "text": "Medication dependence",
      "correct": false,
-     "rationale": "The interaction can happen with any amount."
+     "rationale": "Dependence comes from long-term use, not grapefruit juice."
     },
     {
-     "text": "\"Only orange juice causes problems.\"",
+     "text": "Altered medication distribution",
      "correct": false,
-     "rationale": "Grapefruit juice is the one that interacts."
+     "rationale": "The enzyme affects metabolism, not distribution."
     }
    ]
   },
@@ -3448,27 +3448,27 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A nurse is preparing to teach a client about a new medication. Which information should the nurse expect to find in the precautions section of a drug reference?",
+   "prompt": "A nurse is reviewing a drug reference before giving a medication to a client who has kidney disease. The reference says the medication can be given but lists certain risks for clients with kidney disease. Which term describes these risks?",
    "options": [
     {
-     "text": "Conditions in which the drug carries extra risk or needs a dose change",
+     "text": "Precautions",
      "correct": true,
-     "rationale": "The precautions section covers clinical situations and client factors, like age, that raise the risk."
+     "rationale": "Precautions are conditions, such as kidney disease, that raise the risk or may need a dose change."
     },
     {
-     "text": "Which foods interact with the drug",
+     "text": "Contraindications",
      "correct": false,
-     "rationale": "That's in the interactions section."
+     "rationale": "A contraindication means the drug shouldn't be given; here it can be given."
     },
     {
-     "text": "How the drug is absorbed",
+     "text": "Paradoxical effects",
      "correct": false,
-     "rationale": "That's in the pharmacokinetics section."
+     "rationale": "A paradoxical effect is the opposite of the intended effect."
     },
     {
-     "text": "Which strengths are available",
+     "text": "Adverse effects",
      "correct": false,
-     "rationale": "Availability isn't part of precautions."
+     "rationale": "Adverse effects are unintended effects of the drug, not risks tied to a condition."
     }
    ]
   },
@@ -3827,27 +3827,27 @@
    "topic": "Pharmacology Principles",
    "category": "Client Teaching",
    "type": "mc",
-   "prompt": "A nurse is teaching a client about a new medication. When does the nurse's responsibility for medication teaching begin?",
+   "prompt": "A nurse is caring for a client who was just admitted for chest pain. When should the nurse begin teaching about medications and discharge planning?",
    "options": [
     {
-     "text": "As soon as possible after admission or the first dose, continuing through discharge",
+     "text": "As soon as possible",
      "correct": true,
-     "rationale": "Teaching starts early and continues until discharge."
+     "rationale": "Teaching starts at the beginning of care, when the client is ready to learn, and continues through discharge."
     },
     {
-     "text": "Only on the day of discharge",
+     "text": "On the day of discharge",
      "correct": false,
-     "rationale": "Waiting until discharge leaves too little time."
+     "rationale": "Waiting until discharge leaves too little time to learn."
     },
     {
-     "text": "Only if the client asks",
+     "text": "After the client has a definite diagnosis",
      "correct": false,
-     "rationale": "Teaching is part of the nurse's role whether or not the client asks."
+     "rationale": "Teaching shouldn't wait for the diagnosis to be confirmed."
     },
     {
-     "text": "Only after the pharmacist teaches first",
+     "text": "When family members are present",
      "correct": false,
-     "rationale": "The nurse is responsible for teaching."
+     "rationale": "Family can join, but teaching shouldn't wait for them."
     }
    ]
   },
@@ -4816,6 +4816,68 @@
      "text": "They are all available over the counter",
      "correct": false,
      "rationale": "A class can include prescription and OTC drugs."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-131",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client who has a prescription for a medication that acts as a receptor agonist. Which statement should the nurse include?",
+   "options": [
+    {
+     "text": "\"It attaches to receptors and acts like the body's own chemicals, increasing their normal effects.\"",
+     "correct": true,
+     "rationale": "An agonist activates receptors, mimicking the body's hormones or chemicals."
+    },
+    {
+     "text": "\"It blocks your cells from doing certain things.\"",
+     "correct": false,
+     "rationale": "Blocking a response describes an antagonist."
+    },
+    {
+     "text": "\"It keeps the body's chemicals from attaching to their receptors.\"",
+     "correct": false,
+     "rationale": "That describes a competitive antagonist."
+    },
+    {
+     "text": "\"It lowers the chance that your other medications become toxic.\"",
+     "correct": false,
+     "rationale": "Agonists don't affect the toxicity of other drugs."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-132",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client about naproxen enteric-coated tablets. Which statement should the nurse include?",
+   "options": [
+    {
+     "text": "\"Don't crush or chew the tablets.\"",
+     "correct": true,
+     "rationale": "Crushing or chewing destroys the coating that protects the stomach."
+    },
+    {
+     "text": "\"The medication is absorbed in your stomach.\"",
+     "correct": false,
+     "rationale": "Enteric-coated tablets dissolve and absorb in the small intestine."
+    },
+    {
+     "text": "\"You should feel it work right away.\"",
+     "correct": false,
+     "rationale": "The coating delays absorption."
+    },
+    {
+     "text": "\"Let the tablet dissolve in your mouth.\"",
+     "correct": false,
+     "rationale": "Dissolving it in the mouth destroys the coating."
     }
    ]
   },
