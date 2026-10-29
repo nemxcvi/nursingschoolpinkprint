@@ -158,7 +158,7 @@
    "topic": "Pharmacology Principles",
    "category": "Names & Categories",
    "type": "matrix",
-   "prompt": "A nurse is reading the labels on several medications before giving a client's morning doses. For each name on the labels, choose whether it is a generic or a brand name.",
+   "prompt": "A nurse is reading the labels on several medications. For each name on the labels, choose whether it is a generic or a brand name.",
    "columns": [
     "Generic",
     "Brand"
