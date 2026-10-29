@@ -4887,8 +4887,8 @@
    "unit": 5,
    "topic": "Pharmacology Principles",
    "category": "Forms & Absorption",
-   "type": "sata",
-   "prompt": "A nurse is reviewing the labels on a client's oral medications. Which abbreviations indicate a form that releases the medication slowly over time? Select all that apply.",
+   "type": "dragdrop",
+   "prompt": "A nurse is reviewing the labels on a client's oral medications. Which abbreviations indicate a form that releases the medication slowly over time? Move the correct answers to the answer box.",
    "options": [
     {
      "text": "ER",
@@ -4925,7 +4925,9 @@
      "correct": false,
      "rationale": "ODT means orally disintegrating tablet: it dissolves in the mouth."
     }
-   ]
+   ],
+   "leftLabel": "Abbreviations",
+   "rightLabel": "Slow release"
   },
   {
    "id": "nur114-u5-med-admin-001",
