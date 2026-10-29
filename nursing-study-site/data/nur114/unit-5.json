@@ -3429,39 +3429,128 @@
    "unit": 5,
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
-   "type": "matrix",
+   "type": "cloze",
    "prompt": "A nurse is reviewing medication interactions. For each example, choose the type of interaction.",
-   "columns": [
-    "Synergistic",
-    "Antagonistic"
-   ],
    "options": [
     {
-     "text": "An opioid taken with alcohol causes profound sedation",
+     "text": "Additive",
      "correct": true,
-     "rationale": "Two CNS depressants together cause a much greater effect.",
-     "col": 1
+     "rationale": "Two drugs with similar actions add together: 1 + 1 = 2.",
+     "blank": 1
     },
     {
-     "text": "An antacid lowers tetracycline absorption",
-     "correct": true,
-     "rationale": "One drug reduces the other's effect.",
-     "col": 2
+     "text": "Synergistic",
+     "correct": false,
+     "rationale": "Synergistic means 1 + 1 = more than 2: one drug's effect is made much greater.",
+     "blank": 1
     },
     {
-     "text": "An opioid taken with an antihistamine increases drowsiness",
-     "correct": true,
-     "rationale": "Both depress the CNS, adding to the effect.",
-     "col": 1
+     "text": "Antagonistic",
+     "correct": false,
+     "rationale": "Antagonistic means 1 + 1 = less than 2: one drug decreases or blocks another.",
+     "blank": 1
     },
     {
-     "text": "Vitamin K foods reduce warfarin's effect",
+     "text": "Additive",
+     "correct": false,
+     "rationale": "Additive means 1 + 1 = 2: similar actions add together.",
+     "blank": 2
+    },
+    {
+     "text": "Synergistic",
+     "correct": true,
+     "rationale": "One drug's effect is made much greater: 1 + 1 = more than 2.",
+     "blank": 2
+    },
+    {
+     "text": "Antagonistic",
+     "correct": false,
+     "rationale": "Antagonistic means 1 + 1 = less than 2: one drug decreases or blocks another.",
+     "blank": 2
+    },
+    {
+     "text": "Additive",
+     "correct": false,
+     "rationale": "Additive means 1 + 1 = 2: similar actions add together.",
+     "blank": 3
+    },
+    {
+     "text": "Synergistic",
+     "correct": false,
+     "rationale": "Synergistic means 1 + 1 = more than 2: one drug's effect is made much greater.",
+     "blank": 3
+    },
+    {
+     "text": "Antagonistic",
+     "correct": true,
+     "rationale": "One drug decreases another's effect: 1 + 1 = less than 2.",
+     "blank": 3
+    },
+    {
+     "text": "Additive",
+     "correct": false,
+     "rationale": "Additive means 1 + 1 = 2: similar actions add together.",
+     "blank": 4
+    },
+    {
+     "text": "Synergistic",
+     "correct": false,
+     "rationale": "Synergistic means 1 + 1 = more than 2: one drug's effect is made much greater.",
+     "blank": 4
+    },
+    {
+     "text": "Antagonistic",
+     "correct": true,
+     "rationale": "One drug blocks another's action.",
+     "blank": 4
+    },
+    {
+     "text": "Additive",
+     "correct": false,
+     "rationale": "Additive means 1 + 1 = 2: similar actions add together.",
+     "blank": 5
+    },
+    {
+     "text": "Synergistic",
+     "correct": false,
+     "rationale": "Synergistic means 1 + 1 = more than 2: one drug's effect is made much greater.",
+     "blank": 5
+    },
+    {
+     "text": "Antagonistic",
      "correct": true,
      "rationale": "Vitamin K counteracts the anticoagulant.",
-     "col": 2
+     "blank": 5
     }
    ],
-   "rowLabel": "Example"
+   "table": {
+    "head": [
+     "Example",
+     "Type of interaction"
+    ],
+    "rows": [
+     [
+      "Acetaminophen and codeine, which both relieve pain, give the expected pain relief at lower doses of each",
+      "{1}"
+     ],
+     [
+      "Aspirin given with warfarin greatly intensifies warfarin's effect, causing severe bleeding",
+      "{2}"
+     ],
+     [
+      "An antacid lowers the absorption of tetracycline",
+      "{3}"
+     ],
+     [
+      "A heart medication that tightens the airways blocks an asthma medication that opens them",
+      "{4}"
+     ],
+     [
+      "Vitamin K foods reduce warfarin's effect",
+      "{5}"
+     ]
+    ]
+   }
   },
   {
    "id": "nur114-u5-pharm-principles-089",
