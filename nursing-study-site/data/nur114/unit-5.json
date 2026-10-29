@@ -3755,49 +3755,6 @@
    ]
   },
   {
-   "id": "nur114-u5-pharm-principles-106",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Pharmacology Principles",
-   "category": "Names & Categories",
-   "type": "dragdrop",
-   "prompt": "A nurse is reviewing medications a client takes at home. Which are available over the counter? Move the correct answers to the answer box.",
-   "leftLabel": "Medications",
-   "rightLabel": "Over the counter",
-   "options": [
-    {
-     "text": "Ibuprofen",
-     "correct": true,
-     "rationale": "Ibuprofen (Advil) is sold over the counter."
-    },
-    {
-     "text": "Loratadine",
-     "correct": true,
-     "rationale": "Loratadine (Claritin) is sold over the counter."
-    },
-    {
-     "text": "Diphenhydramine",
-     "correct": true,
-     "rationale": "Diphenhydramine (Benadryl) is sold over the counter."
-    },
-    {
-     "text": "Ceftriaxone",
-     "correct": false,
-     "rationale": "Ceftriaxone is a prescription antibiotic."
-    },
-    {
-     "text": "Fentanyl",
-     "correct": false,
-     "rationale": "Fentanyl is a prescription opioid."
-    },
-    {
-     "text": "Furosemide",
-     "correct": false,
-     "rationale": "Furosemide is a prescription diuretic."
-    }
-   ]
-  },
-  {
    "id": "nur114-u5-pharm-principles-107",
    "course": "NUR 114",
    "unit": 5,
