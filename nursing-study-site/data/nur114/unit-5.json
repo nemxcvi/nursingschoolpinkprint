@@ -4882,6 +4882,52 @@
    ]
   },
   {
+   "id": "nur114-u5-pharm-principles-133",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "sata",
+   "prompt": "A nurse is reviewing the labels on a client's oral medications. Which abbreviations indicate a form that releases the medication slowly over time? Select all that apply.",
+   "options": [
+    {
+     "text": "ER",
+     "correct": true,
+     "rationale": "ER means extended release: released slowly over time."
+    },
+    {
+     "text": "XL",
+     "correct": true,
+     "rationale": "XL means extended length, an extended-release form."
+    },
+    {
+     "text": "SR",
+     "correct": true,
+     "rationale": "SR means sustained release, released slowly over time."
+    },
+    {
+     "text": "XR",
+     "correct": true,
+     "rationale": "XR is another extended- or sustained-release abbreviation."
+    },
+    {
+     "text": "SA",
+     "correct": true,
+     "rationale": "SA means sustained action, released slowly over time."
+    },
+    {
+     "text": "EC",
+     "correct": false,
+     "rationale": "EC means enteric-coated: it delays release until the intestine, but doesn't release slowly over time."
+    },
+    {
+     "text": "ODT",
+     "correct": false,
+     "rationale": "ODT means orally disintegrating tablet: it dissolves in the mouth."
+    }
+   ]
+  },
+  {
    "id": "nur114-u5-med-admin-001",
    "course": "NUR 114",
    "unit": 5,
