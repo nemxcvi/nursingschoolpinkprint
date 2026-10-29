@@ -3117,126 +3117,184 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "cloze",
-   "prompt": "A nurse is reviewing food–drug interactions. For each medication, choose the food it interacts with.",
+   "prompt": "A nurse is reviewing food–drug interactions. For each food, choose what it does when taken with certain medications.",
    "options": [
     {
-     "text": "Leafy green vegetables (vitamin K)",
+     "text": "Slows the drug's metabolism, so it builds up toward toxicity",
      "correct": true,
-     "rationale": "Vitamin K counteracts warfarin.",
+     "rationale": "Grapefruit juice slows metabolism, so the drug level rises.",
      "blank": 1
     },
     {
-     "text": "Milk",
+     "text": "Can cause a hypertensive crisis",
      "correct": false,
-     "rationale": "Calcium binds tetracycline.",
+     "rationale": "Tyramine in these foods can cause a hypertensive crisis (with MAOIs).",
      "blank": 1
     },
     {
-     "text": "Aged cheese and wine (tyramine)",
+     "text": "Binds the drug and reduces its absorption",
      "correct": false,
-     "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
+     "rationale": "Calcium binds the drug, so less is absorbed.",
      "blank": 1
     },
     {
-     "text": "A high-protein meal",
+     "text": "Counteracts the anticoagulant effect",
      "correct": false,
-     "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
+     "rationale": "Vitamin K works against anticoagulants such as warfarin.",
      "blank": 1
     },
     {
-     "text": "Leafy green vegetables (vitamin K)",
+     "text": "Suddenly decreases absorption, so symptoms abruptly increase",
      "correct": false,
-     "rationale": "Vitamin K counteracts warfarin.",
+     "rationale": "Protein lowers absorption (such as levodopa), so symptoms come back.",
+     "blank": 1
+    },
+    {
+     "text": "Slows the drug's metabolism, so it builds up toward toxicity",
+     "correct": false,
+     "rationale": "Grapefruit juice slows metabolism, so the drug level rises.",
      "blank": 2
     },
     {
-     "text": "Milk",
+     "text": "Can cause a hypertensive crisis",
      "correct": true,
-     "rationale": "Calcium binds tetracycline.",
+     "rationale": "Tyramine in these foods can cause a hypertensive crisis (with MAOIs).",
      "blank": 2
     },
     {
-     "text": "Aged cheese and wine (tyramine)",
+     "text": "Binds the drug and reduces its absorption",
      "correct": false,
-     "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
+     "rationale": "Calcium binds the drug, so less is absorbed.",
      "blank": 2
     },
     {
-     "text": "A high-protein meal",
+     "text": "Counteracts the anticoagulant effect",
      "correct": false,
-     "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
+     "rationale": "Vitamin K works against anticoagulants such as warfarin.",
      "blank": 2
     },
     {
-     "text": "Leafy green vegetables (vitamin K)",
+     "text": "Suddenly decreases absorption, so symptoms abruptly increase",
      "correct": false,
-     "rationale": "Vitamin K counteracts warfarin.",
+     "rationale": "Protein lowers absorption (such as levodopa), so symptoms come back.",
+     "blank": 2
+    },
+    {
+     "text": "Slows the drug's metabolism, so it builds up toward toxicity",
+     "correct": false,
+     "rationale": "Grapefruit juice slows metabolism, so the drug level rises.",
      "blank": 3
     },
     {
-     "text": "Milk",
+     "text": "Can cause a hypertensive crisis",
      "correct": false,
-     "rationale": "Calcium binds tetracycline.",
+     "rationale": "Tyramine in these foods can cause a hypertensive crisis (with MAOIs).",
      "blank": 3
     },
     {
-     "text": "Aged cheese and wine (tyramine)",
+     "text": "Binds the drug and reduces its absorption",
      "correct": true,
-     "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
+     "rationale": "Calcium binds the drug, so less is absorbed.",
      "blank": 3
     },
     {
-     "text": "A high-protein meal",
+     "text": "Counteracts the anticoagulant effect",
      "correct": false,
-     "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
+     "rationale": "Vitamin K works against anticoagulants such as warfarin.",
      "blank": 3
     },
     {
-     "text": "Leafy green vegetables (vitamin K)",
+     "text": "Suddenly decreases absorption, so symptoms abruptly increase",
      "correct": false,
-     "rationale": "Vitamin K counteracts warfarin.",
+     "rationale": "Protein lowers absorption (such as levodopa), so symptoms come back.",
+     "blank": 3
+    },
+    {
+     "text": "Slows the drug's metabolism, so it builds up toward toxicity",
+     "correct": false,
+     "rationale": "Grapefruit juice slows metabolism, so the drug level rises.",
      "blank": 4
     },
     {
-     "text": "Milk",
+     "text": "Can cause a hypertensive crisis",
      "correct": false,
-     "rationale": "Calcium binds tetracycline.",
+     "rationale": "Tyramine in these foods can cause a hypertensive crisis (with MAOIs).",
      "blank": 4
     },
     {
-     "text": "Aged cheese and wine (tyramine)",
+     "text": "Binds the drug and reduces its absorption",
      "correct": false,
-     "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
+     "rationale": "Calcium binds the drug, so less is absorbed.",
      "blank": 4
     },
     {
-     "text": "A high-protein meal",
+     "text": "Counteracts the anticoagulant effect",
      "correct": true,
-     "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
+     "rationale": "Vitamin K works against anticoagulants such as warfarin.",
      "blank": 4
+    },
+    {
+     "text": "Suddenly decreases absorption, so symptoms abruptly increase",
+     "correct": false,
+     "rationale": "Protein lowers absorption (such as levodopa), so symptoms come back.",
+     "blank": 4
+    },
+    {
+     "text": "Slows the drug's metabolism, so it builds up toward toxicity",
+     "correct": false,
+     "rationale": "Grapefruit juice slows metabolism, so the drug level rises.",
+     "blank": 5
+    },
+    {
+     "text": "Can cause a hypertensive crisis",
+     "correct": false,
+     "rationale": "Tyramine in these foods can cause a hypertensive crisis (with MAOIs).",
+     "blank": 5
+    },
+    {
+     "text": "Binds the drug and reduces its absorption",
+     "correct": false,
+     "rationale": "Calcium binds the drug, so less is absorbed.",
+     "blank": 5
+    },
+    {
+     "text": "Counteracts the anticoagulant effect",
+     "correct": false,
+     "rationale": "Vitamin K works against anticoagulants such as warfarin.",
+     "blank": 5
+    },
+    {
+     "text": "Suddenly decreases absorption, so symptoms abruptly increase",
+     "correct": true,
+     "rationale": "Protein lowers absorption (such as levodopa), so symptoms come back.",
+     "blank": 5
     }
    ],
    "table": {
     "head": [
-     "Medication",
-     "Food"
+     "Food",
+     "Effect"
     ],
     "rows": [
      [
-      "Warfarin",
+      "Grapefruit juice",
       "{1}"
      ],
      [
-      "Tetracycline",
+      "Wine, aged cheese or processed meats",
       "{2}"
      ],
      [
-      "MAOIs (monoamine oxidase inhibitors)",
+      "Milk products",
       "{3}"
      ],
      [
-      "Levodopa",
+      "Dark green vegetables high in vitamin K",
       "{4}"
+     ],
+     [
+      "A high-protein meal",
+      "{5}"
      ]
     ]
    }
@@ -4157,34 +4215,33 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "dragdrop",
-   "prompt": "A nurse is teaching a client about food and medication combinations. Which combinations should the client avoid? Move the correct answers to the answer box.",
+   "prompt": "A nurse is teaching a client which foods can make certain medications less effective. Which foods should the nurse include? Move the correct answers to the answer box.",
    "leftLabel": "Combinations",
-   "rightLabel": "Avoid together",
    "options": [
     {
-     "text": "Grapefruit juice and nifedipine",
+     "text": "Milk products",
      "correct": true,
-     "rationale": "Grapefruit juice slows the drug's metabolism, so levels rise."
+     "rationale": "Calcium binds some drugs and reduces their absorption."
     },
     {
-     "text": "Tetracycline and milk",
+     "text": "Dark green vegetables high in vitamin K",
      "correct": true,
-     "rationale": "Milk binds tetracycline and reduces its absorption."
+     "rationale": "Vitamin K counteracts anticoagulants."
     },
     {
-     "text": "An MAOI and aged cheese",
+     "text": "A high-protein meal",
      "correct": true,
-     "rationale": "Tyramine with an MAOI can cause a hypertensive crisis."
+     "rationale": "Protein can suddenly decrease a drug's absorption."
     },
     {
-     "text": "Water with acetaminophen",
+     "text": "Grapefruit juice",
      "correct": false,
-     "rationale": "Water doesn't interact with acetaminophen."
+     "rationale": "Grapefruit juice raises drug levels toward toxicity; it doesn't make drugs less effective."
     },
     {
-     "text": "Tetracycline and water",
+     "text": "Wine and aged cheese",
      "correct": false,
-     "rationale": "Water doesn't reduce tetracycline's absorption."
+     "rationale": "Tyramine can cause a hypertensive crisis; it doesn't reduce a drug's effect."
     }
    ]
   },
@@ -4928,6 +4985,37 @@
    ],
    "leftLabel": "Abbreviations",
    "rightLabel": "Slow release"
+  },
+  {
+   "id": "nur114-u5-pharm-principles-134",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A client who takes levodopa for Parkinson's disease eats a high-protein lunch. An hour later, the client's tremors suddenly get worse. Which explanation should the nurse give?",
+   "options": [
+    {
+     "text": "\"The protein in your meal suddenly decreased how much medication you absorbed.\"",
+     "correct": true,
+     "rationale": "A high-protein meal decreases absorption, so symptoms abruptly increase."
+    },
+    {
+     "text": "\"The protein made the medication build up to a toxic level.\"",
+     "correct": false,
+     "rationale": "Protein lowers absorption; it doesn't raise the level."
+    },
+    {
+     "text": "\"Protein speeds up how fast the medication works.\"",
+     "correct": false,
+     "rationale": "Protein reduces absorption, so the effect drops."
+    },
+    {
+     "text": "\"Your body has become dependent on the medication.\"",
+     "correct": false,
+     "rationale": "Dependence isn't caused by a single meal."
+    }
+   ]
   },
   {
    "id": "nur114-u5-med-admin-001",
