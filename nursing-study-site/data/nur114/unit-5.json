@@ -3024,7 +3024,7 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A client taking nifedipine reports drinking grapefruit juice every morning. The nurse explains that grapefruit juice blocks a liver enzyme that breaks down nifedipine. Which risk should the nurse recognize?",
+   "prompt": "A client taking nifedipine for high blood pressure reports drinking grapefruit juice every morning. The nurse explains that grapefruit juice blocks a liver enzyme that breaks down nifedipine. Which risk should the nurse recognize?",
    "options": [
     {
      "text": "Medication toxicity",
@@ -3055,7 +3055,7 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A client takes warfarin. Which instruction about diet should the nurse include?",
+   "prompt": "A client takes warfarin, an anticoagulant (blood thinner). Which instruction about diet should the nurse include?",
    "options": [
     {
      "text": "\"Keep your intake of leafy green vegetables steady, because vitamin K counteracts warfarin.\"",
@@ -3086,7 +3086,7 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A client taking tetracycline asks whether to take it with a glass of milk. Which response is correct?",
+   "prompt": "A client taking tetracycline, an antibiotic, asks whether to take it with a glass of milk. Which response is correct?",
    "options": [
     {
      "text": "\"No. The calcium in milk binds the drug and reduces how much is absorbed.\"",
@@ -3306,7 +3306,7 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A client taking an MAOI (monoamine oxidase inhibitor) eats aged cheese and drinks wine at a party. Which complication should the nurse monitor for?",
+   "prompt": "A client taking an MAOI (monoamine oxidase inhibitor), a type of antidepressant, eats aged cheese and drinks wine at a party. Which complication should the nurse monitor for?",
    "options": [
     {
      "text": "Hypertensive crisis",
@@ -3399,7 +3399,7 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A nurse tells a client not to take tetracycline at the same time as an antacid, because the antacid reduces its absorption. This is an example of which kind of interaction?",
+   "prompt": "A nurse tells a client not to take tetracycline, an antibiotic, at the same time as an antacid, because the antacid reduces its absorption. This is an example of which kind of interaction?",
    "options": [
     {
      "text": "Antagonistic effect",
@@ -3534,11 +3534,11 @@
       "{1}"
      ],
      [
-      "Aspirin given with warfarin greatly intensifies warfarin's effect, causing severe bleeding",
+      "Aspirin given with warfarin, a blood thinner, greatly intensifies warfarin's effect, causing severe bleeding",
       "{2}"
      ],
      [
-      "An antacid lowers the absorption of tetracycline",
+      "An antacid lowers the absorption of tetracycline, an antibiotic",
       "{3}"
      ],
      [
@@ -3546,7 +3546,7 @@
       "{4}"
      ],
      [
-      "Vitamin K foods reduce warfarin's effect",
+      "Vitamin K foods reduce the effect of warfarin, a blood thinner",
       "{5}"
      ]
     ]
@@ -3756,7 +3756,7 @@
    "category": "Precautions & Interactions",
    "type": "cloze",
    "prompt": "A nurse is teaching a client about grapefruit juice.",
-   "sentence": "Grapefruit juice {1} the metabolism of drugs such as sertraline, so the drug level can {2}.",
+   "sentence": "Grapefruit juice {1} the metabolism of drugs such as the antidepressant sertraline, so the drug level can {2}.",
    "options": [
     {
      "text": "slows",
