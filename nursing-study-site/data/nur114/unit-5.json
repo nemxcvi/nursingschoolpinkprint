@@ -834,7 +834,7 @@
    "topic": "Pharmacology Principles",
    "category": "Pharmacokinetics",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing the phases of pharmacokinetics. Match each phase to its definition. Move each answer that belongs into its box. Not every answer may be used.",
+   "prompt": "A nurse is reviewing the phases of pharmacokinetics. Match each phase to its definition. Move each answer that belongs into its box.",
    "leftLabel": "Definitions",
    "buckets": [
     "Absorption",
@@ -1549,7 +1549,7 @@
    "topic": "Pharmacology Principles",
    "category": "Half-Life & Drug Levels",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing drug level terms. Match each term to its meaning. Move each answer that belongs into its box. Not every answer may be used.",
+   "prompt": "A nurse is reviewing drug level terms. Match each term to its meaning. Move each answer that belongs into its box.",
    "leftLabel": "Meanings",
    "buckets": [
     "Onset of action",
@@ -2415,7 +2415,7 @@
    "topic": "Pharmacology Principles",
    "category": "Adverse Effects & Toxicity",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing terms related to medication effects. Match each term to its definition. Move each answer that belongs into its box. Not every answer may be used.",
+   "prompt": "A nurse is reviewing terms related to medication effects. Match each term to its definition. Move each answer that belongs into its box.",
    "leftLabel": "Definitions",
    "buckets": [
     "Tolerance",
@@ -2891,7 +2891,7 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing food–drug interactions. Match each food to the medication it interacts with. Move each answer that belongs into its box. Not every answer may be used.",
+   "prompt": "A nurse is reviewing food–drug interactions. Match each food to the medication it interacts with. Move each answer that belongs into its box.",
    "leftLabel": "Foods",
    "buckets": [
     "Warfarin",
@@ -4232,7 +4232,7 @@
    "topic": "Medication Administration",
    "category": "Prescriptions & the MAR",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing several prescriptions. Match each prescription to its type. Move each answer that belongs into its box. Not every answer may be used.",
+   "prompt": "A nurse is reviewing several prescriptions. Match each prescription to its type. Move each answer that belongs into its box.",
    "leftLabel": "Prescriptions",
    "buckets": [
     "STAT",
@@ -6293,7 +6293,7 @@
    "topic": "Medication Administration",
    "category": "Oral Medications",
    "type": "dragdrop",
-   "prompt": "A nurse is reviewing liquid medication forms. Match each form to its description. Move each answer that belongs into its box. Not every answer may be used.",
+   "prompt": "A nurse is reviewing liquid medication forms. Match each form to its description. Move each answer that belongs into its box.",
    "leftLabel": "Descriptions",
    "buckets": [
     "Elixir",
