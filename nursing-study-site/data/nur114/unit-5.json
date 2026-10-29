@@ -173,13 +173,13 @@
     {
      "text": "docusate sodium",
      "correct": true,
-     "rationale": "Docusate sodium is the generic name for Colace.",
+     "rationale": "The generic name for Colace is docusate sodium.",
      "col": 1
     },
     {
      "text": "hydromorphone",
      "correct": true,
-     "rationale": "Hydromorphone is the generic name for Dilaudid.",
+     "rationale": "The generic name for Dilaudid is hydromorphone.",
      "col": 1
     },
     {
@@ -191,7 +191,7 @@
     {
      "text": "lansoprazole",
      "correct": true,
-     "rationale": "Lansoprazole is the generic name for Prevacid.",
+     "rationale": "The generic name for Prevacid is lansoprazole.",
      "col": 1
     }
    ],
@@ -352,7 +352,7 @@
     {
      "text": "\"Supplements don't need to be listed because they're natural.\"",
      "correct": false,
-     "rationale": "Natural products can still interact; ginkgo, for example, raises bleeding risk with aspirin."
+     "rationale": "Natural products can still interact with prescribed drugs."
     },
     {
      "text": "\"You'll have to stop those while you're here.\"",
@@ -2103,7 +2103,7 @@
     {
      "text": "It kills the bacteria causing the fever",
      "correct": false,
-     "rationale": "Acetaminophen isn't an antibiotic."
+     "rationale": "That one, acetaminophen, isn't an antibiotic."
     },
     {
      "text": "It increases sweating by activating sweat glands",
@@ -2123,64 +2123,28 @@
    "unit": 5,
    "topic": "Pharmacology Principles",
    "category": "Pharmacodynamics",
-   "type": "sata",
-   "prompt": "A nurse is reviewing the therapeutic uses of diphenhydramine. For which conditions may it be prescribed? Select all that apply.",
-   "options": [
-    {
-     "text": "Allergies",
-     "correct": true,
-     "rationale": "Its antihistamine effect treats allergies."
-    },
-    {
-     "text": "Motion sickness",
-     "correct": true,
-     "rationale": "Its antiemetic effect helps motion sickness."
-    },
-    {
-     "text": "Insomnia",
-     "correct": true,
-     "rationale": "Its sedative effect makes it a sleep aid."
-    },
-    {
-     "text": "Parkinson's disease",
-     "correct": true,
-     "rationale": "Its anticholinergic effect is used in Parkinson's disease."
-    },
-    {
-     "text": "Bacterial infection",
-     "correct": false,
-     "rationale": "Diphenhydramine has no antibacterial effect."
-    }
-   ]
-  },
-  {
-   "id": "nur114-u5-pharm-principles-059",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Pharmacology Principles",
-   "category": "Pharmacodynamics",
    "type": "mc",
-   "prompt": "A client prescribed sildenafil for pulmonary hypertension asks why it was chosen. Which response by the nurse is correct?",
+   "prompt": "A client asks a nurse why a medication usually taken for allergies was also suggested for motion sickness. Which response by the nurse is correct?",
    "options": [
     {
-     "text": "\"It relaxes blood vessels and increases blood flow, which helps lower pressure in the lungs.\"",
+     "text": "\"Many medications have more than one therapeutic use, based on how they act in the body.\"",
      "correct": true,
-     "rationale": "Many drugs have more than one therapeutic use based on their action."
+     "rationale": "One drug's actions can treat several conditions."
     },
     {
-     "text": "\"It only treats erectile dysfunction, so this must be an error.\"",
+     "text": "\"A medication can only be used for the condition it was first made for.\"",
      "correct": false,
-     "rationale": "Sildenafil's vessel-relaxing action has more than one use."
+     "rationale": "Many drugs have more than one use."
     },
     {
-     "text": "\"It strengthens your heart's contractions.\"",
+     "text": "\"It must be a prescribing error.\"",
      "correct": false,
-     "rationale": "That isn't sildenafil's action."
+     "rationale": "Using a drug for a second condition can be intended."
     },
     {
-     "text": "\"It removes extra fluid from your lungs.\"",
+     "text": "\"The dose changes what the medication does.\"",
      "correct": false,
-     "rationale": "That describes a diuretic."
+     "rationale": "The drug's actions don't change with the condition it's used for."
     }
    ]
   },
@@ -2272,8 +2236,8 @@
      "rationale": "Epinephrine raises blood pressure and opens the airways."
     },
     {
-     "text": "Give diphenhydramine as prescribed",
-     "rationale": "It blocks further histamine release."
+     "text": "Give an antihistamine as prescribed",
+     "rationale": "An antihistamine blocks further histamine release."
     }
    ]
   },
@@ -2429,27 +2393,27 @@
    "topic": "Pharmacology Principles",
    "category": "Adverse Effects & Toxicity",
    "type": "mc",
-   "prompt": "A client taking lisinopril reports a dry, nonproductive cough that won't go away. How should the nurse interpret this finding?",
+   "prompt": "A client who started a new medication 2 weeks ago reports a dry, nonproductive cough that won't go away. The client has been taking the prescribed dose. How should the nurse interpret this finding?",
    "options": [
     {
      "text": "An adverse drug reaction",
      "correct": true,
-     "rationale": "Lisinopril commonly causes a dry chronic cough at therapeutic doses."
+     "rationale": "An unintended, nontherapeutic effect at a therapeutic dose is an adverse drug reaction."
     },
     {
      "text": "A sign of toxicity",
      "correct": false,
-     "rationale": "The cough happens at normal doses."
+     "rationale": "Toxicity comes from a level above the therapeutic range; the client is taking the prescribed dose."
     },
     {
      "text": "A therapeutic effect",
      "correct": false,
-     "rationale": "The intended effect is lower blood pressure."
+     "rationale": "A cough isn't the effect the medication was given for."
     },
     {
      "text": "Drug tolerance",
      "correct": false,
-     "rationale": "Tolerance is a reduced response over time."
+     "rationale": "Tolerance is a smaller response to the same dose over time."
     }
    ]
   },
@@ -2460,17 +2424,17 @@
    "topic": "Pharmacology Principles",
    "category": "Adverse Effects & Toxicity",
    "type": "mc",
-   "prompt": "A client taking lisinopril develops swelling of the lips and tongue. Which action should the nurse take first?",
+   "prompt": "A client who received the first dose of a new medication develops swelling of the lips and tongue. Which action should the nurse take first?",
    "options": [
     {
      "text": "Assess the client's airway and breathing",
      "correct": true,
-     "rationale": "Angioedema can block the airway; airway comes first."
+     "rationale": "Swelling of the lips and tongue (angioedema) can block the airway; airway comes first."
     },
     {
-     "text": "Give the next dose of lisinopril",
+     "text": "Give the next dose as scheduled",
      "correct": false,
-     "rationale": "The drug must be held."
+     "rationale": "The medication must be held."
     },
     {
      "text": "Document the finding at the end of the shift",
@@ -2564,27 +2528,27 @@
    "topic": "Pharmacology Principles",
    "category": "Adverse Effects & Toxicity",
    "type": "mc",
-   "prompt": "A nurse is caring for a client who received vancomycin. Which finding should the nurse report as a possible sign of toxicity?",
+   "prompt": "A nurse is reviewing a client's medication level, which is above the therapeutic range. Which risk should the nurse recognize?",
    "options": [
     {
-     "text": "Decreased hearing",
+     "text": "Toxicity",
      "correct": true,
-     "rationale": "Vancomycin can damage cranial nerve VIII, causing hearing loss."
+     "rationale": "A level above the therapeutic range reaches the toxic concentration."
     },
     {
-     "text": "Increased appetite",
+     "text": "A subtherapeutic effect",
      "correct": false,
-     "rationale": "That isn't a sign of vancomycin toxicity."
+     "rationale": "That happens when the level is below the minimum effective concentration."
     },
     {
-     "text": "Improved wound appearance",
+     "text": "Tolerance",
      "correct": false,
-     "rationale": "That shows the drug is working."
+     "rationale": "Tolerance is a smaller response to the same dose over time."
     },
     {
-     "text": "Mild thirst",
+     "text": "A placebo effect",
      "correct": false,
-     "rationale": "That isn't a typical toxicity sign."
+     "rationale": "That's a response to the expectation of treatment, not the drug level."
     }
    ]
   },
@@ -2662,27 +2626,27 @@
    "topic": "Pharmacology Principles",
    "category": "Adverse Effects & Toxicity",
    "type": "mc",
-   "prompt": "A nurse is caring for a client who has severe liver impairment and takes acetaminophen. Which statement explains the nurse's concern?",
+   "prompt": "A nurse is caring for a client who has severe liver impairment. Which concern about the client's medications should the nurse recognize?",
    "options": [
     {
-     "text": "Acetaminophen toxicity can damage the liver, up to liver failure",
+     "text": "Medications may build up and cause toxicity, because the liver metabolizes them more slowly",
      "correct": true,
-     "rationale": "Acetaminophen is metabolized by the liver and can cause liver damage in excess."
+     "rationale": "Most drugs are metabolized by the liver; impairment slows this and raises drug levels."
     },
     {
-     "text": "Acetaminophen causes hearing loss",
+     "text": "Medications will be excreted faster by the kidneys",
      "correct": false,
-     "rationale": "That's a vancomycin toxicity."
+     "rationale": "Liver impairment doesn't speed up kidney excretion."
     },
     {
-     "text": "Acetaminophen is excreted only through the lungs",
+     "text": "Medications will be absorbed faster from the stomach",
      "correct": false,
-     "rationale": "It's metabolized by the liver and excreted by the kidneys."
+     "rationale": "Liver impairment affects metabolism, not stomach absorption."
     },
     {
-     "text": "Acetaminophen has no adverse effects",
+     "text": "Liver impairment doesn't affect medications",
      "correct": false,
-     "rationale": "It can cause liver toxicity."
+     "rationale": "The liver is the main site of drug metabolism."
     }
    ]
   },
@@ -3040,27 +3004,27 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A client who takes nitroglycerin for chest pain asks about using sildenafil. Which response by the nurse is correct?",
+   "prompt": "A client takes a medication that dilates blood vessels and asks about starting a second medication that also dilates blood vessels. Which response by the nurse is correct?",
    "options": [
     {
-     "text": "\"Taking them together can cause a dangerous drop in blood pressure.\"",
+     "text": "\"Taking them together could make your blood pressure drop dangerously low.\"",
      "correct": true,
-     "rationale": "Both dilate blood vessels; together they can cause severe hypotension."
+     "rationale": "Two drugs with the same effect can add up to a much greater effect."
     },
     {
-     "text": "\"They can be taken together safely.\"",
+     "text": "\"Two medications with the same effect cancel each other out.\"",
      "correct": false,
-     "rationale": "This combination is dangerous."
+     "rationale": "Drugs with the same effect add together; they don't cancel."
     },
     {
-     "text": "\"Sildenafil will stop the nitroglycerin from working.\"",
+     "text": "\"They can always be taken together safely.\"",
      "correct": false,
-     "rationale": "The danger is additive hypotension."
+     "rationale": "Combining them can cause dangerous hypotension."
     },
     {
-     "text": "\"Take them at the same time to lower your dose.\"",
+     "text": "\"Taking both lets you skip doses of the first one.\"",
      "correct": false,
-     "rationale": "They shouldn't be combined."
+     "rationale": "Doses aren't skipped without the provider."
     }
    ]
   },
@@ -3071,27 +3035,27 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "mc",
-   "prompt": "A client takes aspirin daily and asks about adding ginkgo biloba. Which concern should the nurse explain?",
+   "prompt": "A client asks a nurse whether herbal supplements can interact with prescribed medications. Which response by the nurse is correct?",
    "options": [
     {
-     "text": "An increased risk of bleeding",
+     "text": "\"Yes. Herbal supplements can interact with medications, so tell your provider about every one you take.\"",
      "correct": true,
-     "rationale": "Ginkgo and aspirin both raise bleeding risk."
+     "rationale": "Supplements count as medications and can interact with prescribed drugs."
     },
     {
-     "text": "A hypertensive crisis",
+     "text": "\"No. Natural products don't interact with medications.\"",
      "correct": false,
-     "rationale": "That's the MAOI–tyramine interaction."
+     "rationale": "Natural products can still interact."
     },
     {
-     "text": "Reduced absorption of aspirin",
+     "text": "\"Only prescription medications can interact with each other.\"",
      "correct": false,
-     "rationale": "The concern is bleeding."
+     "rationale": "Supplements and OTC drugs can interact too."
     },
     {
-     "text": "Liver toxicity",
+     "text": "\"The FDA tests every supplement for interactions.\"",
      "correct": false,
-     "rationale": "Bleeding is the main concern."
+     "rationale": "The FDA doesn't regulate supplements the way it regulates drugs."
     }
    ]
   },
@@ -3890,9 +3854,9 @@
      "rationale": "Epinephrine raises blood pressure and opens the airways."
     },
     {
-     "text": "Diphenhydramine",
+     "text": "An antihistamine",
      "correct": true,
-     "rationale": "Diphenhydramine blocks further histamine release."
+     "rationale": "An antihistamine blocks further histamine release."
     },
     {
      "text": "Oxygen",
@@ -3900,12 +3864,12 @@
      "rationale": "Oxygen supports breathing after the airway is secured."
     },
     {
-     "text": "Morphine",
+     "text": "An opioid for comfort",
      "correct": false,
-     "rationale": "Morphine can depress breathing and isn't an anaphylaxis treatment."
+     "rationale": "Opioids can depress breathing and aren't an anaphylaxis treatment."
     },
     {
-     "text": "Metoprolol",
+     "text": "A beta blocker",
      "correct": false,
      "rationale": "A beta blocker would lower heart rate and blood pressure further."
     }
@@ -3918,34 +3882,34 @@
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
    "type": "dragdrop",
-   "prompt": "A nurse is teaching a client who takes several medications. Which combinations should the client avoid? Move the correct answers to the answer box.",
+   "prompt": "A nurse is teaching a client about food and medication combinations. Which combinations should the client avoid? Move the correct answers to the answer box.",
    "leftLabel": "Combinations",
    "rightLabel": "Avoid together",
    "options": [
     {
-     "text": "Sildenafil and nitroglycerin",
+     "text": "Grapefruit juice and nifedipine",
      "correct": true,
-     "rationale": "Together they can cause dangerous hypotension."
-    },
-    {
-     "text": "Ginkgo biloba and aspirin",
-     "correct": true,
-     "rationale": "Together they raise bleeding risk."
+     "rationale": "Grapefruit juice slows the drug's metabolism, so levels rise."
     },
     {
      "text": "Tetracycline and milk",
      "correct": true,
-     "rationale": "Milk reduces tetracycline absorption."
+     "rationale": "Milk binds tetracycline and reduces its absorption."
     },
     {
-     "text": "MAOIs and aged cheese",
+     "text": "An MAOI and aged cheese",
      "correct": true,
      "rationale": "Tyramine with an MAOI can cause a hypertensive crisis."
     },
     {
-     "text": "Acetaminophen and water",
+     "text": "Water with acetaminophen",
      "correct": false,
      "rationale": "Water doesn't interact with acetaminophen."
+    },
+    {
+     "text": "Tetracycline and water",
+     "correct": false,
+     "rationale": "Water doesn't reduce tetracycline's absorption."
     }
    ]
   },
@@ -5228,7 +5192,7 @@
     {
      "text": "lansoprazole",
      "correct": true,
-     "rationale": "Lansoprazole is the generic name.",
+     "rationale": "The lowercase name, lansoprazole, is the generic name.",
      "bucket": 2
     },
     {
@@ -12412,7 +12376,7 @@
     {
      "text": "lansoprazole",
      "correct": true,
-     "rationale": "Lansoprazole is the generic name; it's printed under the brand name. When written, generic names are lowercase."
+     "rationale": "The generic name, lansoprazole, is printed under the brand name. When written, generic names are lowercase."
     },
     {
      "text": "Prevacid",
