@@ -468,47 +468,6 @@
    ]
   },
   {
-   "id": "nur114-u5-pharm-principles-014",
-   "course": "NUR 114",
-   "unit": 5,
-   "topic": "Pharmacology Principles",
-   "category": "Forms & Absorption",
-   "type": "matrix",
-   "prompt": "A nurse is reviewing a client's oral medications. For each abbreviation, choose what the form does.",
-   "columns": [
-    "Delays release until the intestine",
-    "Releases slowly over time",
-    "Dissolves in the mouth"
-   ],
-   "options": [
-    {
-     "text": "EC",
-     "correct": true,
-     "rationale": "Enteric-coated tablets dissolve in the small intestine.",
-     "col": 1
-    },
-    {
-     "text": "XL",
-     "correct": true,
-     "rationale": "XL (extended length) is an extended-release form, like ER and XR: it releases the drug slowly over time.",
-     "col": 2
-    },
-    {
-     "text": "SR",
-     "correct": true,
-     "rationale": "Sustained release releases the drug over time.",
-     "col": 2
-    },
-    {
-     "text": "ODT",
-     "correct": true,
-     "rationale": "Orally disintegrating tablets dissolve in the mouth.",
-     "col": 3
-    }
-   ],
-   "rowLabel": "Abbreviation"
-  },
-  {
    "id": "nur114-u5-pharm-principles-015",
    "course": "NUR 114",
    "unit": 5,
