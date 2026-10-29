@@ -55,6 +55,7 @@ Flashcards, practice quizzes and study guides for nursing students (NUR 114, the
 
 - **When work starts on sheet 02 (NUR 121), put the unit mastery bars back on the homepage** for tracked visitors. They were taken off in October 2026 only because NUR 114 was already halfway through, so bars on the early units looked odd and unfinished. The code to restore is the unit-card part of `home()` in `nursing-study-site/js/my-study.js` as of commit `c4c0a7d` (the thin `bar(st, {thin: true})` plus "% mastered →" in each card's `.pp-card-bottom`, opening `journal.html#unit-N`, the Journal's Progress tab), and the `e2e-mystudy.js` check "homepage: mastery bars on units 1-3".
 
+- **Drug specifics for later.** Week 10's pharmacology is intro level, so quizzes and flashcards test concepts only (see "Drug specifics" under Content conventions). Week 12 is expected to go deeper into pharmacology: when it does, check with the owner whether specific side effects, toxicities and drug–drug interactions (lisinopril cough and angioedema, vancomycin and hearing, acetaminophen and the liver, sildenafil with nitroglycerin, ginkgo with aspirin) should be quizzed then.
 - **Injection details for later.** Week 10's injection table (needle gauge and length, angle, volume) and the IV catheter sizes stay in the guide as reference with `data-quiz="skip"`; for now students only need "the bigger the gauge number, the smaller the needle." When a later week or NUR 121 teaches these numbers, remove the skip tags and add quiz questions and flashcards for them.
 
 ## Quiz data
