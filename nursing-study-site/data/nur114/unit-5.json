@@ -4500,6 +4500,326 @@
    ]
   },
   {
+   "id": "nur114-u5-pharm-principles-121",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who takes diphenhydramine at bedtime for insomnia. The client reports feeling drowsy after taking it. How should the nurse interpret the drowsiness?",
+   "options": [
+    {
+     "text": "A therapeutic effect",
+     "correct": true,
+     "rationale": "The client takes it to sleep, so drowsiness is the intended effect."
+    },
+    {
+     "text": "An adverse drug reaction",
+     "correct": false,
+     "rationale": "An adverse reaction is unintended; here drowsiness is the goal."
+    },
+    {
+     "text": "A contraindication",
+     "correct": false,
+     "rationale": "A contraindication is a reason not to give a drug."
+    },
+    {
+     "text": "Toxicity",
+     "correct": false,
+     "rationale": "Toxicity is harm from too much drug; drowsiness at bedtime is expected here."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-122",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who was prescribed an antidepressant because it blocks the reuptake of certain neurotransmitters in the brain. Which term describes how the medication works?",
+   "options": [
+    {
+     "text": "Expected pharmacologic action",
+     "correct": true,
+     "rationale": "What a drug does in the body to produce its effect is its pharmacologic action."
+    },
+    {
+     "text": "Indication",
+     "correct": false,
+     "rationale": "The indication is the condition it's prescribed for (depression), not how it works."
+    },
+    {
+     "text": "Route",
+     "correct": false,
+     "rationale": "The route is how the drug is given, such as oral or IV."
+    },
+    {
+     "text": "Adverse effect",
+     "correct": false,
+     "rationale": "An adverse effect is unintended; blocking reuptake is the intended action."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-123",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Adverse Effects & Toxicity",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who has chronic kidney disease and takes a medication that is excreted by the kidneys. Which complication should the nurse monitor for?",
+   "options": [
+    {
+     "text": "Toxicity",
+     "correct": true,
+     "rationale": "Slower excretion lets the drug build up in the body."
+    },
+    {
+     "text": "Tolerance",
+     "correct": false,
+     "rationale": "Tolerance is a smaller response over time, not buildup from poor excretion."
+    },
+    {
+     "text": "Dependence",
+     "correct": false,
+     "rationale": "Dependence is a physical or psychological need for a drug."
+    },
+    {
+     "text": "Faster absorption",
+     "correct": false,
+     "rationale": "Kidney disease affects excretion, not absorption."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-124",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Pharmacodynamics",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give a medication and wants to know whether it is used for more than one condition. Which section of a drug reference should the nurse check?",
+   "options": [
+    {
+     "text": "Indications",
+     "correct": true,
+     "rationale": "The indications section lists every condition the drug is used for."
+    },
+    {
+     "text": "Contraindications",
+     "correct": false,
+     "rationale": "That section lists reasons not to give the drug."
+    },
+    {
+     "text": "Adverse effects",
+     "correct": false,
+     "rationale": "That section lists unintended effects."
+    },
+    {
+     "text": "Pharmacokinetics",
+     "correct": false,
+     "rationale": "That section covers absorption, distribution, metabolism and excretion."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-125",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "mc",
+   "prompt": "A nurse is preparing to give a medication and needs to know whether the client can safely receive it at all. Which section of a drug reference should the nurse check?",
+   "options": [
+    {
+     "text": "Contraindications",
+     "correct": true,
+     "rationale": "It lists conditions that make the drug unsafe for the client."
+    },
+    {
+     "text": "Indications",
+     "correct": false,
+     "rationale": "That section lists what the drug is used for."
+    },
+    {
+     "text": "Adverse effects",
+     "correct": false,
+     "rationale": "That section lists reactions the client might have while taking it."
+    },
+    {
+     "text": "Pharmacokinetics",
+     "correct": false,
+     "rationale": "That section covers how the drug moves through the body."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-126",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Forms & Absorption",
+   "type": "mc",
+   "prompt": "A nurse is caring for a client who has trouble remembering to take a medication three times a day. Which form of the medication could help the client take it as prescribed?",
+   "options": [
+    {
+     "text": "An extended-release tablet",
+     "correct": true,
+     "rationale": "It releases the drug slowly, so it can be taken less often."
+    },
+    {
+     "text": "An immediate-release capsule",
+     "correct": false,
+     "rationale": "It's absorbed quickly and still needs frequent doses."
+    },
+    {
+     "text": "A liquid suspension",
+     "correct": false,
+     "rationale": "Liquids are absorbed quickly and still need frequent doses."
+    },
+    {
+     "text": "A sublingual tablet",
+     "correct": false,
+     "rationale": "It's absorbed quickly under the tongue and doesn't reduce dosing."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-127",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Precautions & Interactions",
+   "type": "sata",
+   "prompt": "A nurse is caring for a client who takes acetaminophen with codeine for pain. Both medications relieve pain, so together they have an additive effect. Which statements about an additive effect are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "The two medications have similar actions",
+     "correct": true,
+     "rationale": "An additive effect comes from drugs with similar actions."
+    },
+    {
+     "text": "Lower doses of each medication can produce the desired effect",
+     "correct": true,
+     "rationale": "Their effects add together, so lower doses can work."
+    },
+    {
+     "text": "One medication reduces the effect of the other",
+     "correct": false,
+     "rationale": "That's an antagonistic effect."
+    },
+    {
+     "text": "Together they produce an effect neither would have alone",
+     "correct": false,
+     "rationale": "That isn't an additive effect; additive effects come from similar actions."
+    },
+    {
+     "text": "The combination always causes toxicity",
+     "correct": false,
+     "rationale": "Additive combinations are often used on purpose."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-128",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Client Teaching",
+   "type": "mc",
+   "prompt": "A nurse is teaching a client about the adverse effects of a newly prescribed medication. Which statement should the nurse include?",
+   "options": [
+    {
+     "text": "\"Call your provider if you notice adverse effects.\"",
+     "correct": true,
+     "rationale": "Adverse effects can be serious, so the client reports them."
+    },
+    {
+     "text": "\"Lower your dose on your own if you notice adverse effects.\"",
+     "correct": false,
+     "rationale": "The client shouldn't change the dose without the provider."
+    },
+    {
+     "text": "\"Adverse effects mean you're allergic to the medication.\"",
+     "correct": false,
+     "rationale": "Adverse effects aren't always allergies; some are minor, such as nausea."
+    },
+    {
+     "text": "\"Adverse effects are the effects the medication is meant to have.\"",
+     "correct": false,
+     "rationale": "Adverse effects are unintended."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-129",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "sata",
+   "prompt": "A nurse is taking a client's health history and learns the client takes an over-the-counter antihistamine. Which statements about over-the-counter medications are correct? Select all that apply.",
+   "options": [
+    {
+     "text": "They can be bought without a prescription",
+     "correct": true,
+     "rationale": "OTC drugs are considered relatively safe without a provider's supervision."
+    },
+    {
+     "text": "They can interact with other medications",
+     "correct": true,
+     "rationale": "OTC drugs can interact with prescribed drugs."
+    },
+    {
+     "text": "They belong in the client's medication history",
+     "correct": true,
+     "rationale": "Ask about every OTC drug and supplement."
+    },
+    {
+     "text": "They can cause toxicity if taken in excess",
+     "correct": true,
+     "rationale": "Too much of an OTC drug can still cause harm."
+    },
+    {
+     "text": "They can't cause harm",
+     "correct": false,
+     "rationale": "OTC drugs can still cause adverse effects and toxicity."
+    }
+   ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-130",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A nurse is reviewing several medications in the same class in a drug reference. Which similarity should the nurse expect them to share?",
+   "options": [
+    {
+     "text": "They usually work the same way in the body",
+     "correct": true,
+     "rationale": "Drugs in the same class share a similar mechanism of action, effects and precautions."
+    },
+    {
+     "text": "They have the same half-life",
+     "correct": false,
+     "rationale": "Half-lives differ between drugs in a class."
+    },
+    {
+     "text": "They are all given by the same route",
+     "correct": false,
+     "rationale": "Drugs in a class can come in different routes."
+    },
+    {
+     "text": "They are all available over the counter",
+     "correct": false,
+     "rationale": "A class can include prescription and OTC drugs."
+    }
+   ]
+  },
+  {
    "id": "nur114-u5-med-admin-001",
    "course": "NUR 114",
    "unit": 5,
