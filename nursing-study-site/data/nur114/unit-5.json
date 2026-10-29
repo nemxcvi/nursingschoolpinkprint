@@ -90,6 +90,37 @@
    ]
   },
   {
+   "id": "nur114-u5-pharm-principles-002",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "mc",
+   "prompt": "A nurse is reviewing a client's medication list. Which entry is written as a generic name?",
+   "options": [
+    {
+     "text": "acetaminophen",
+     "correct": true,
+     "rationale": "Generic names are written in lowercase; acetaminophen is the generic for TYLENOL."
+    },
+    {
+     "text": "TYLENOL",
+     "correct": false,
+     "rationale": "TYLENOL is a brand name: capitalized and proprietary."
+    },
+    {
+     "text": "MOTRIN",
+     "correct": false,
+     "rationale": "MOTRIN is a brand name for ibuprofen."
+    },
+    {
+     "text": "DILAUDID",
+     "correct": false,
+     "rationale": "DILAUDID is a brand name for hydromorphone."
+    }
+   ]
+  },
+  {
    "id": "nur114-u5-pharm-principles-003",
    "course": "NUR 114",
    "unit": 5,
@@ -119,6 +150,52 @@
      "rationale": "The exam uses the one official generic name."
     }
    ]
+  },
+  {
+   "id": "nur114-u5-pharm-principles-004",
+   "course": "NUR 114",
+   "unit": 5,
+   "topic": "Pharmacology Principles",
+   "category": "Names & Categories",
+   "type": "matrix",
+   "prompt": "A nurse is reading the labels on several medications before giving a client's morning doses. For each name on the labels, choose whether it is a generic or a brand name.",
+   "columns": [
+    "Generic",
+    "Brand"
+   ],
+   "options": [
+    {
+     "text": "PROTONIX",
+     "correct": true,
+     "rationale": "PROTONIX is the brand name for pantoprazole.",
+     "col": 2
+    },
+    {
+     "text": "docusate sodium",
+     "correct": true,
+     "rationale": "The generic name for COLACE is docusate sodium.",
+     "col": 1
+    },
+    {
+     "text": "hydromorphone",
+     "correct": true,
+     "rationale": "The generic name for DILAUDID is hydromorphone.",
+     "col": 1
+    },
+    {
+     "text": "MOTRIN",
+     "correct": true,
+     "rationale": "MOTRIN is a brand name for ibuprofen.",
+     "col": 2
+    },
+    {
+     "text": "lansoprazole",
+     "correct": true,
+     "rationale": "The generic name for PREVACID is lansoprazole.",
+     "col": 1
+    }
+   ],
+   "rowLabel": "Name"
   },
   {
    "id": "nur114-u5-pharm-principles-006",
