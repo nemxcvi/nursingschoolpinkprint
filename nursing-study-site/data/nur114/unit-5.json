@@ -833,41 +833,130 @@
    "unit": 5,
    "topic": "Pharmacology Principles",
    "category": "Pharmacokinetics",
-   "type": "dragdrop",
-   "prompt": "A nurse is reviewing the phases of pharmacokinetics. Match each phase to its definition. Move each answer that belongs into its box.",
-   "leftLabel": "Definitions",
-   "buckets": [
-    "Absorption",
-    "Distribution",
-    "Metabolism",
-    "Excretion"
-   ],
+   "type": "cloze",
+   "prompt": "A nurse is reviewing the phases of pharmacokinetics. For each phase, choose the matching definition.",
    "options": [
     {
      "text": "Movement of a drug from the site of administration into the bloodstream",
      "correct": true,
      "rationale": "That's absorption: how the drug gets in.",
-     "bucket": 1
+     "blank": 1
+    },
+    {
+     "text": "Transport of a drug by the circulation to its site of action",
+     "correct": false,
+     "rationale": "That's distribution: where the drug goes.",
+     "blank": 1
+    },
+    {
+     "text": "Change of a drug into a more or less active, or inactive, form",
+     "correct": false,
+     "rationale": "That's metabolism (biotransformation), mostly in the liver.",
+     "blank": 1
+    },
+    {
+     "text": "Removal of a drug or its metabolites from the body",
+     "correct": false,
+     "rationale": "That's excretion, mostly through the kidneys.",
+     "blank": 1
+    },
+    {
+     "text": "Movement of a drug from the site of administration into the bloodstream",
+     "correct": false,
+     "rationale": "That's absorption: how the drug gets in.",
+     "blank": 2
     },
     {
      "text": "Transport of a drug by the circulation to its site of action",
      "correct": true,
      "rationale": "That's distribution: where the drug goes.",
-     "bucket": 2
+     "blank": 2
+    },
+    {
+     "text": "Change of a drug into a more or less active, or inactive, form",
+     "correct": false,
+     "rationale": "That's metabolism (biotransformation), mostly in the liver.",
+     "blank": 2
+    },
+    {
+     "text": "Removal of a drug or its metabolites from the body",
+     "correct": false,
+     "rationale": "That's excretion, mostly through the kidneys.",
+     "blank": 2
+    },
+    {
+     "text": "Movement of a drug from the site of administration into the bloodstream",
+     "correct": false,
+     "rationale": "That's absorption: how the drug gets in.",
+     "blank": 3
+    },
+    {
+     "text": "Transport of a drug by the circulation to its site of action",
+     "correct": false,
+     "rationale": "That's distribution: where the drug goes.",
+     "blank": 3
     },
     {
      "text": "Change of a drug into a more or less active, or inactive, form",
      "correct": true,
      "rationale": "That's metabolism (biotransformation), mostly in the liver.",
-     "bucket": 3
+     "blank": 3
+    },
+    {
+     "text": "Removal of a drug or its metabolites from the body",
+     "correct": false,
+     "rationale": "That's excretion, mostly through the kidneys.",
+     "blank": 3
+    },
+    {
+     "text": "Movement of a drug from the site of administration into the bloodstream",
+     "correct": false,
+     "rationale": "That's absorption: how the drug gets in.",
+     "blank": 4
+    },
+    {
+     "text": "Transport of a drug by the circulation to its site of action",
+     "correct": false,
+     "rationale": "That's distribution: where the drug goes.",
+     "blank": 4
+    },
+    {
+     "text": "Change of a drug into a more or less active, or inactive, form",
+     "correct": false,
+     "rationale": "That's metabolism (biotransformation), mostly in the liver.",
+     "blank": 4
     },
     {
      "text": "Removal of a drug or its metabolites from the body",
      "correct": true,
      "rationale": "That's excretion, mostly through the kidneys.",
-     "bucket": 4
+     "blank": 4
     }
-   ]
+   ],
+   "table": {
+    "head": [
+     "Phase",
+     "Definition"
+    ],
+    "rows": [
+     [
+      "Absorption",
+      "{1}"
+     ],
+     [
+      "Distribution",
+      "{2}"
+     ],
+     [
+      "Metabolism",
+      "{3}"
+     ],
+     [
+      "Excretion",
+      "{4}"
+     ]
+    ]
+   }
   },
   {
    "id": "nur114-u5-pharm-principles-023",
@@ -1548,41 +1637,130 @@
    "unit": 5,
    "topic": "Pharmacology Principles",
    "category": "Half-Life & Drug Levels",
-   "type": "dragdrop",
-   "prompt": "A nurse is reviewing drug level terms. Match each term to its meaning. Move each answer that belongs into its box.",
-   "leftLabel": "Meanings",
-   "buckets": [
-    "Onset of action",
-    "Peak effect",
-    "Duration of action",
-    "Trough level"
-   ],
+   "type": "cloze",
+   "prompt": "A nurse is reviewing drug level terms. For each term, choose the matching meaning.",
    "options": [
     {
      "text": "Time for the drug to start a therapeutic response",
      "correct": true,
      "rationale": "That's the onset of action.",
-     "bucket": 1
+     "blank": 1
+    },
+    {
+     "text": "Time for the drug to reach its full therapeutic effect",
+     "correct": false,
+     "rationale": "That's the peak effect.",
+     "blank": 1
+    },
+    {
+     "text": "How long the therapeutic effect lasts without another dose",
+     "correct": false,
+     "rationale": "That's the duration of action.",
+     "blank": 1
+    },
+    {
+     "text": "The lowest drug level in the body",
+     "correct": false,
+     "rationale": "That's the trough level.",
+     "blank": 1
+    },
+    {
+     "text": "Time for the drug to start a therapeutic response",
+     "correct": false,
+     "rationale": "That's the onset of action.",
+     "blank": 2
     },
     {
      "text": "Time for the drug to reach its full therapeutic effect",
      "correct": true,
      "rationale": "That's the peak effect.",
-     "bucket": 2
+     "blank": 2
+    },
+    {
+     "text": "How long the therapeutic effect lasts without another dose",
+     "correct": false,
+     "rationale": "That's the duration of action.",
+     "blank": 2
+    },
+    {
+     "text": "The lowest drug level in the body",
+     "correct": false,
+     "rationale": "That's the trough level.",
+     "blank": 2
+    },
+    {
+     "text": "Time for the drug to start a therapeutic response",
+     "correct": false,
+     "rationale": "That's the onset of action.",
+     "blank": 3
+    },
+    {
+     "text": "Time for the drug to reach its full therapeutic effect",
+     "correct": false,
+     "rationale": "That's the peak effect.",
+     "blank": 3
     },
     {
      "text": "How long the therapeutic effect lasts without another dose",
      "correct": true,
      "rationale": "That's the duration of action.",
-     "bucket": 3
+     "blank": 3
+    },
+    {
+     "text": "The lowest drug level in the body",
+     "correct": false,
+     "rationale": "That's the trough level.",
+     "blank": 3
+    },
+    {
+     "text": "Time for the drug to start a therapeutic response",
+     "correct": false,
+     "rationale": "That's the onset of action.",
+     "blank": 4
+    },
+    {
+     "text": "Time for the drug to reach its full therapeutic effect",
+     "correct": false,
+     "rationale": "That's the peak effect.",
+     "blank": 4
+    },
+    {
+     "text": "How long the therapeutic effect lasts without another dose",
+     "correct": false,
+     "rationale": "That's the duration of action.",
+     "blank": 4
     },
     {
      "text": "The lowest drug level in the body",
      "correct": true,
      "rationale": "That's the trough level.",
-     "bucket": 4
+     "blank": 4
     }
-   ]
+   ],
+   "table": {
+    "head": [
+     "Term",
+     "Meaning"
+    ],
+    "rows": [
+     [
+      "Onset of action",
+      "{1}"
+     ],
+     [
+      "Peak effect",
+      "{2}"
+     ],
+     [
+      "Duration of action",
+      "{3}"
+     ],
+     [
+      "Trough level",
+      "{4}"
+     ]
+    ]
+   }
   },
   {
    "id": "nur114-u5-pharm-principles-044",
@@ -2414,41 +2592,130 @@
    "unit": 5,
    "topic": "Pharmacology Principles",
    "category": "Adverse Effects & Toxicity",
-   "type": "dragdrop",
-   "prompt": "A nurse is reviewing terms related to medication effects. Match each term to its definition. Move each answer that belongs into its box.",
-   "leftLabel": "Definitions",
-   "buckets": [
-    "Tolerance",
-    "Dependence",
-    "Toxicity",
-    "Cumulative effect"
-   ],
+   "type": "cloze",
+   "prompt": "A nurse is reviewing terms related to medication effects. For each term, choose the matching definition.",
    "options": [
     {
      "text": "A decreased response to a drug over time, so a higher dose is needed",
      "correct": true,
      "rationale": "That's tolerance.",
-     "bucket": 1
+     "blank": 1
+    },
+    {
+     "text": "A physical or psychological need for a drug",
+     "correct": false,
+     "rationale": "That's dependence; stopping can cause withdrawal.",
+     "blank": 1
+    },
+    {
+     "text": "Harm from an excessive dose or buildup of the drug",
+     "correct": false,
+     "rationale": "That's toxicity.",
+     "blank": 1
+    },
+    {
+     "text": "Buildup because one dose isn't cleared before the next is given",
+     "correct": false,
+     "rationale": "That's a cumulative effect, often from liver or kidney impairment.",
+     "blank": 1
+    },
+    {
+     "text": "A decreased response to a drug over time, so a higher dose is needed",
+     "correct": false,
+     "rationale": "That's tolerance.",
+     "blank": 2
     },
     {
      "text": "A physical or psychological need for a drug",
      "correct": true,
      "rationale": "That's dependence; stopping can cause withdrawal.",
-     "bucket": 2
+     "blank": 2
+    },
+    {
+     "text": "Harm from an excessive dose or buildup of the drug",
+     "correct": false,
+     "rationale": "That's toxicity.",
+     "blank": 2
+    },
+    {
+     "text": "Buildup because one dose isn't cleared before the next is given",
+     "correct": false,
+     "rationale": "That's a cumulative effect, often from liver or kidney impairment.",
+     "blank": 2
+    },
+    {
+     "text": "A decreased response to a drug over time, so a higher dose is needed",
+     "correct": false,
+     "rationale": "That's tolerance.",
+     "blank": 3
+    },
+    {
+     "text": "A physical or psychological need for a drug",
+     "correct": false,
+     "rationale": "That's dependence; stopping can cause withdrawal.",
+     "blank": 3
     },
     {
      "text": "Harm from an excessive dose or buildup of the drug",
      "correct": true,
      "rationale": "That's toxicity.",
-     "bucket": 3
+     "blank": 3
+    },
+    {
+     "text": "Buildup because one dose isn't cleared before the next is given",
+     "correct": false,
+     "rationale": "That's a cumulative effect, often from liver or kidney impairment.",
+     "blank": 3
+    },
+    {
+     "text": "A decreased response to a drug over time, so a higher dose is needed",
+     "correct": false,
+     "rationale": "That's tolerance.",
+     "blank": 4
+    },
+    {
+     "text": "A physical or psychological need for a drug",
+     "correct": false,
+     "rationale": "That's dependence; stopping can cause withdrawal.",
+     "blank": 4
+    },
+    {
+     "text": "Harm from an excessive dose or buildup of the drug",
+     "correct": false,
+     "rationale": "That's toxicity.",
+     "blank": 4
     },
     {
      "text": "Buildup because one dose isn't cleared before the next is given",
      "correct": true,
      "rationale": "That's a cumulative effect, often from liver or kidney impairment.",
-     "bucket": 4
+     "blank": 4
     }
-   ]
+   ],
+   "table": {
+    "head": [
+     "Term",
+     "Definition"
+    ],
+    "rows": [
+     [
+      "Tolerance",
+      "{1}"
+     ],
+     [
+      "Dependence",
+      "{2}"
+     ],
+     [
+      "Toxicity",
+      "{3}"
+     ],
+     [
+      "Cumulative effect",
+      "{4}"
+     ]
+    ]
+   }
   },
   {
    "id": "nur114-u5-pharm-principles-070",
@@ -2890,41 +3157,130 @@
    "unit": 5,
    "topic": "Pharmacology Principles",
    "category": "Precautions & Interactions",
-   "type": "dragdrop",
-   "prompt": "A nurse is reviewing food–drug interactions. Match each food to the medication it interacts with. Move each answer that belongs into its box.",
-   "leftLabel": "Foods",
-   "buckets": [
-    "Warfarin",
-    "Tetracycline",
-    "MAOIs (monoamine oxidase inhibitors)",
-    "Levodopa"
-   ],
+   "type": "cloze",
+   "prompt": "A nurse is reviewing food–drug interactions. For each medication, choose the food it interacts with.",
    "options": [
     {
      "text": "Leafy green vegetables (vitamin K)",
      "correct": true,
      "rationale": "Vitamin K counteracts warfarin.",
-     "bucket": 1
+     "blank": 1
+    },
+    {
+     "text": "Milk",
+     "correct": false,
+     "rationale": "Calcium binds tetracycline.",
+     "blank": 1
+    },
+    {
+     "text": "Aged cheese and wine (tyramine)",
+     "correct": false,
+     "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
+     "blank": 1
+    },
+    {
+     "text": "A high-protein meal",
+     "correct": false,
+     "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
+     "blank": 1
+    },
+    {
+     "text": "Leafy green vegetables (vitamin K)",
+     "correct": false,
+     "rationale": "Vitamin K counteracts warfarin.",
+     "blank": 2
     },
     {
      "text": "Milk",
      "correct": true,
      "rationale": "Calcium binds tetracycline.",
-     "bucket": 2
+     "blank": 2
+    },
+    {
+     "text": "Aged cheese and wine (tyramine)",
+     "correct": false,
+     "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
+     "blank": 2
+    },
+    {
+     "text": "A high-protein meal",
+     "correct": false,
+     "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
+     "blank": 2
+    },
+    {
+     "text": "Leafy green vegetables (vitamin K)",
+     "correct": false,
+     "rationale": "Vitamin K counteracts warfarin.",
+     "blank": 3
+    },
+    {
+     "text": "Milk",
+     "correct": false,
+     "rationale": "Calcium binds tetracycline.",
+     "blank": 3
     },
     {
      "text": "Aged cheese and wine (tyramine)",
      "correct": true,
      "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
-     "bucket": 3
+     "blank": 3
+    },
+    {
+     "text": "A high-protein meal",
+     "correct": false,
+     "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
+     "blank": 3
+    },
+    {
+     "text": "Leafy green vegetables (vitamin K)",
+     "correct": false,
+     "rationale": "Vitamin K counteracts warfarin.",
+     "blank": 4
+    },
+    {
+     "text": "Milk",
+     "correct": false,
+     "rationale": "Calcium binds tetracycline.",
+     "blank": 4
+    },
+    {
+     "text": "Aged cheese and wine (tyramine)",
+     "correct": false,
+     "rationale": "Tyramine with MAOIs can cause a hypertensive crisis.",
+     "blank": 4
     },
     {
      "text": "A high-protein meal",
      "correct": true,
      "rationale": "Protein lowers levodopa absorption, so Parkinson's symptoms suddenly worsen.",
-     "bucket": 4
+     "blank": 4
     }
-   ]
+   ],
+   "table": {
+    "head": [
+     "Medication",
+     "Food"
+    ],
+    "rows": [
+     [
+      "Warfarin",
+      "{1}"
+     ],
+     [
+      "Tetracycline",
+      "{2}"
+     ],
+     [
+      "MAOIs (monoamine oxidase inhibitors)",
+      "{3}"
+     ],
+     [
+      "Levodopa",
+      "{4}"
+     ]
+    ]
+   }
   },
   {
    "id": "nur114-u5-pharm-principles-084",
@@ -4231,41 +4587,130 @@
    "unit": 5,
    "topic": "Medication Administration",
    "category": "Prescriptions & the MAR",
-   "type": "dragdrop",
-   "prompt": "A nurse is reviewing several prescriptions. Match each prescription to its type. Move each answer that belongs into its box.",
-   "leftLabel": "Prescriptions",
-   "buckets": [
-    "STAT",
-    "PRN",
-    "Single (one-time)",
-    "Routine"
-   ],
+   "type": "cloze",
+   "prompt": "A nurse is reviewing several prescriptions. For each type of prescription, choose the matching example.",
    "options": [
     {
      "text": "nitroglycerin 0.3 mg SL stat",
      "correct": true,
      "rationale": "STAT means give immediately.",
-     "bucket": 1
+     "blank": 1
+    },
+    {
+     "text": "acetaminophen 650 mg PO q4h PRN for pain",
+     "correct": false,
+     "rationale": "PRN means as needed, no more often than the order allows.",
+     "blank": 1
+    },
+    {
+     "text": "cefazolin 1 g IV 1 hr before surgery",
+     "correct": false,
+     "rationale": "A preoperative dose is a one-time prescription.",
+     "blank": 1
+    },
+    {
+     "text": "metoprolol 25 mg PO every 12 hr",
+     "correct": false,
+     "rationale": "A regular schedule until discontinued is a routine (standing) prescription.",
+     "blank": 1
+    },
+    {
+     "text": "nitroglycerin 0.3 mg SL stat",
+     "correct": false,
+     "rationale": "STAT means give immediately.",
+     "blank": 2
     },
     {
      "text": "acetaminophen 650 mg PO q4h PRN for pain",
      "correct": true,
      "rationale": "PRN means as needed, no more often than the order allows.",
-     "bucket": 2
+     "blank": 2
+    },
+    {
+     "text": "cefazolin 1 g IV 1 hr before surgery",
+     "correct": false,
+     "rationale": "A preoperative dose is a one-time prescription.",
+     "blank": 2
+    },
+    {
+     "text": "metoprolol 25 mg PO every 12 hr",
+     "correct": false,
+     "rationale": "A regular schedule until discontinued is a routine (standing) prescription.",
+     "blank": 2
+    },
+    {
+     "text": "nitroglycerin 0.3 mg SL stat",
+     "correct": false,
+     "rationale": "STAT means give immediately.",
+     "blank": 3
+    },
+    {
+     "text": "acetaminophen 650 mg PO q4h PRN for pain",
+     "correct": false,
+     "rationale": "PRN means as needed, no more often than the order allows.",
+     "blank": 3
     },
     {
      "text": "cefazolin 1 g IV 1 hr before surgery",
      "correct": true,
      "rationale": "A preoperative dose is a one-time prescription.",
-     "bucket": 3
+     "blank": 3
+    },
+    {
+     "text": "metoprolol 25 mg PO every 12 hr",
+     "correct": false,
+     "rationale": "A regular schedule until discontinued is a routine (standing) prescription.",
+     "blank": 3
+    },
+    {
+     "text": "nitroglycerin 0.3 mg SL stat",
+     "correct": false,
+     "rationale": "STAT means give immediately.",
+     "blank": 4
+    },
+    {
+     "text": "acetaminophen 650 mg PO q4h PRN for pain",
+     "correct": false,
+     "rationale": "PRN means as needed, no more often than the order allows.",
+     "blank": 4
+    },
+    {
+     "text": "cefazolin 1 g IV 1 hr before surgery",
+     "correct": false,
+     "rationale": "A preoperative dose is a one-time prescription.",
+     "blank": 4
     },
     {
      "text": "metoprolol 25 mg PO every 12 hr",
      "correct": true,
      "rationale": "A regular schedule until discontinued is a routine (standing) prescription.",
-     "bucket": 4
+     "blank": 4
     }
-   ]
+   ],
+   "table": {
+    "head": [
+     "Type",
+     "Prescription"
+    ],
+    "rows": [
+     [
+      "STAT",
+      "{1}"
+     ],
+     [
+      "PRN",
+      "{2}"
+     ],
+     [
+      "Single (one-time)",
+      "{3}"
+     ],
+     [
+      "Routine",
+      "{4}"
+     ]
+    ]
+   }
   },
   {
    "id": "nur114-u5-med-admin-003",
@@ -6292,41 +6737,130 @@
    "unit": 5,
    "topic": "Medication Administration",
    "category": "Oral Medications",
-   "type": "dragdrop",
-   "prompt": "A nurse is reviewing liquid medication forms. Match each form to its description. Move each answer that belongs into its box.",
-   "leftLabel": "Descriptions",
-   "buckets": [
-    "Elixir",
-    "Syrup",
-    "Suspension",
-    "Solution"
-   ],
+   "type": "cloze",
+   "prompt": "A nurse is reviewing liquid medication forms. For each form, choose the matching description.",
    "options": [
     {
      "text": "Water, alcohol, sweetener and drug",
      "correct": true,
      "rationale": "Elixirs contain alcohol.",
-     "bucket": 1
+     "blank": 1
+    },
+    {
+     "text": "Water, concentrated sugar and drug",
+     "correct": false,
+     "rationale": "Syrups contain concentrated sugar.",
+     "blank": 1
+    },
+    {
+     "text": "Fine particles that don't fully dissolve; shake before giving",
+     "correct": false,
+     "rationale": "Suspensions settle and must be shaken.",
+     "blank": 1
+    },
+    {
+     "text": "Drug dissolved in water or 0.9% sodium chloride",
+     "correct": false,
+     "rationale": "Solutions are fully dissolved.",
+     "blank": 1
+    },
+    {
+     "text": "Water, alcohol, sweetener and drug",
+     "correct": false,
+     "rationale": "Elixirs contain alcohol.",
+     "blank": 2
     },
     {
      "text": "Water, concentrated sugar and drug",
      "correct": true,
      "rationale": "Syrups contain concentrated sugar.",
-     "bucket": 2
+     "blank": 2
+    },
+    {
+     "text": "Fine particles that don't fully dissolve; shake before giving",
+     "correct": false,
+     "rationale": "Suspensions settle and must be shaken.",
+     "blank": 2
+    },
+    {
+     "text": "Drug dissolved in water or 0.9% sodium chloride",
+     "correct": false,
+     "rationale": "Solutions are fully dissolved.",
+     "blank": 2
+    },
+    {
+     "text": "Water, alcohol, sweetener and drug",
+     "correct": false,
+     "rationale": "Elixirs contain alcohol.",
+     "blank": 3
+    },
+    {
+     "text": "Water, concentrated sugar and drug",
+     "correct": false,
+     "rationale": "Syrups contain concentrated sugar.",
+     "blank": 3
     },
     {
      "text": "Fine particles that don't fully dissolve; shake before giving",
      "correct": true,
      "rationale": "Suspensions settle and must be shaken.",
-     "bucket": 3
+     "blank": 3
+    },
+    {
+     "text": "Drug dissolved in water or 0.9% sodium chloride",
+     "correct": false,
+     "rationale": "Solutions are fully dissolved.",
+     "blank": 3
+    },
+    {
+     "text": "Water, alcohol, sweetener and drug",
+     "correct": false,
+     "rationale": "Elixirs contain alcohol.",
+     "blank": 4
+    },
+    {
+     "text": "Water, concentrated sugar and drug",
+     "correct": false,
+     "rationale": "Syrups contain concentrated sugar.",
+     "blank": 4
+    },
+    {
+     "text": "Fine particles that don't fully dissolve; shake before giving",
+     "correct": false,
+     "rationale": "Suspensions settle and must be shaken.",
+     "blank": 4
     },
     {
      "text": "Drug dissolved in water or 0.9% sodium chloride",
      "correct": true,
      "rationale": "Solutions are fully dissolved.",
-     "bucket": 4
+     "blank": 4
     }
-   ]
+   ],
+   "table": {
+    "head": [
+     "Form",
+     "Description"
+    ],
+    "rows": [
+     [
+      "Elixir",
+      "{1}"
+     ],
+     [
+      "Syrup",
+      "{2}"
+     ],
+     [
+      "Suspension",
+      "{3}"
+     ],
+     [
+      "Solution",
+      "{4}"
+     ]
+    ]
+   }
   },
   {
    "id": "nur114-u5-med-admin-062",
